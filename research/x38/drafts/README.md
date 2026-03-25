@@ -10,10 +10,10 @@ Bản nháp đặc tả kiến trúc.
 
 | Draft | Phụ thuộc topics | Scope | Status |
 |-------|-----------------|-------|--------|
-| `meta_spec.md` | 002 + 004 + 007 + 008 | Meta-knowledge governance: 3-tier taxonomy, lesson lifecycle, challenge/expiry, storage format. Firewall: content filtering (what passes, what's blocked). Boundary contract between firewall enforcement (architecture_spec) and content rules (this spec). | NOT STARTED |
+| `meta_spec.md` | 002 + 004 + 007 + 008 | Meta-knowledge governance: 3-tier taxonomy, lesson lifecycle, challenge/expiry, storage format. Firewall: content filtering (what passes, what's blocked). Boundary contract between firewall enforcement (architecture_spec) and content rules (this spec). | SEEDED (from Topics 002, 004, 007 closures — 2026-03-25) |
 | `engine_spec.md` | 005 + 008 | Core backtest engine: types, data, engine, cost, metrics, audit. | NOT STARTED |
 | `feature_spec.md` | 006 + 008 | Feature registry, families, threshold calibration, cross-TF alignment, exhaustive scan. | NOT STARTED |
-| `architecture_spec.md` | 001 + 002 + 004 + 007 + 008 + 009 + 010 + 011 + **013** + **016** | Campaign model, session lifecycle, directory structure, data management, immutability, Clean OOS flow. Firewall: enforcement mechanism (state machine, typed schema, filesystem). Deployment boundary. **Convergence analysis.** **Bounded recalibration path.** | SEEDED (§1 Campaign Model from Topic 001, 2026-03-23) |
+| `architecture_spec.md` | 001 + 002 + 004 + 007 + 008 + 009 + 010 + 011 + **013** + **016** | Campaign model, session lifecycle, directory structure, data management, immutability, Clean OOS flow. Firewall: enforcement mechanism (state machine, typed schema, filesystem). Deployment boundary. **Convergence analysis.** **Bounded recalibration path.** | SEEDED (§1 from Topic 001 2026-03-23; §5 from Topic 007 2026-03-23; §7 from Topic 002 2026-03-25) |
 | `protocol_spec.md` | 003 + 012 + **014** + **015** | 8-stage pipeline, phase gating, freeze checkpoint, **artifacts, change classification**, deliverable templates, quality gates. **Execution model, checkpointing.** | NOT STARTED |
 
 Quy tắc:

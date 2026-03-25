@@ -200,7 +200,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
 | **012** | quality-assurance | F-18, F-19 | 1 round | Verification gates, online evolution |
 | **001** | campaign-model | F-03, F-15, F-16 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Campaign→Session, transition |
-| **002** | contamination-firewall | F-04 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Typed schema, state machine. 4 categories permanent, UNMAPPED governance |
+| **002** | contamination-firewall | F-04 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Typed schema, state machine. 3 categories permanent (STOP_DISCIPLINE → ANTI_PATTERN), UNMAPPED governance |
 | **005** | core-engine | F-07 | 1 round | Rebuild vs vendor |
 | **006** | feature-engine | F-08 | 1 round | Registry pattern |
 | **013** | convergence-analysis | F-30, F-31 | 1-2 rounds | Convergence metrics, stop conditions |

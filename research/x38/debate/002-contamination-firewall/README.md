@@ -39,7 +39,7 @@ specifics.
 
 - Rounds used: 6 / 6 (max_rounds reached)
 - Key decisions:
-  - Typed schema: 4 categories permanent, no expansion (Facets A, E)
+  - Typed schema: 3 categories permanent (STOP_DISCIPLINE consolidated into ANTI_PATTERN per Facet C), no expansion (Facets A, E)
   - Human review: GAP/AMBIGUITY distinction permanent (Facet B-author)
   - State machine: acceptable for v1, hash-signing is core enforcement (Facet D)
   - UNMAPPED + Tier 2 + SHADOW: permanent governance for ~10 gap rules (Facet E)

@@ -389,7 +389,8 @@ vocabulary is insufficient"), not a content category (Topic 002 territory —
 **Final fix resolved by Topic 002 (CLOSED 2026-03-25)**: Topic 002 declined
 category expansion. `UNMAPPED` + Tier 2 + SHADOW is now the **permanent**
 governance path for this class of rules. The `UNMAPPED` tag does NOT retire in v1.
-4 F-06 whitelist categories unchanged. See
+3 F-06 whitelist categories (STOP_DISCIPLINE consolidated into ANTI_PATTERN per
+Facet C convergence). See
 `../002-contamination-firewall/final-resolution.md` §Decision 4, §Decision 5.
 
 ### C1 — Accept Exactly

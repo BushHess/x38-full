@@ -16,8 +16,8 @@ Debate narrowed progressively: facets C, D, and F converged in rounds 2–3. The
 remaining dispute centered on Facet E (admissibility boundary for structural priors)
 and its contingent facets A and B-author. By round 6, both sides agreed that the
 authority chain does not source a concrete per-rule admissibility criterion for
-structural priors (`claude_code/round-6_author-reply.md:62-67`;
-`codex/round-6_reviewer-reply.md:41`). The remaining choice converted to Judgment
+structural priors (`claude_code/round-6_author-reply.md` §2 concession;
+`codex/round-6_reviewer-reply.md` §What survives, point 1). The remaining choice converted to Judgment
 call per §14.
 
 **Final tally**: 3 Converged, 4 Judgment call (decided by human researcher). All
@@ -29,11 +29,11 @@ call per §14.
 
 | Facet | Subject | Resolution | Type | Round closed |
 |-------|---------|------------|------|-------------|
-| C | STOP_DISCIPLINE thinness | Keep as separate category — 3 rules justify dedicated bucket | Converged | 2 |
+| C | STOP_DISCIPLINE thinness | Consolidate into `ANTI_PATTERN` — 3 stop rules expressible as anti-patterns without operational loss at v1. Meta-level distinction (framework iteration vs search) preserved as v2+ sub-tag option | Converged | 2 |
 | D (Codex) | State machine complexity | Acceptable for v1 — hash-signing transitions is core enforcement, not optional complexity | Converged | 2 |
 | F (author) | Filesystem enforcement | chmod 444 is defense-in-depth guardrail, not primary enforcement. Primary = typed schema + state machine | Converged | 3 |
-| E | Admissibility boundary | No new positive admissibility criterion frozen by Topic 002. Permanent `UNMAPPED + Tier 2 + SHADOW` governance path for pure-gap structural priors. 4 named F-06 categories and `design_brief.md:49` ban unchanged | Judgment call (§14) → human decision | 6 |
-| A | Category gap — mechanism | No v1 vocabulary expansion. Keep 4 named F-06 categories. No `STRUCTURAL_PRIOR`, no content-annotation addition, no force-fit | Judgment call (§14) → human decision | 6 |
+| E | Admissibility boundary | No new positive admissibility criterion frozen by Topic 002. Permanent `UNMAPPED + Tier 2 + SHADOW` governance path for pure-gap structural priors. 3 named F-06 categories (post Facet C consolidation) and `design_brief.md` §3.1 ban unchanged | Judgment call (§14) → human decision | 6 |
+| A | Category gap — mechanism | No v1 vocabulary expansion. Keep 3 named F-06 categories. No `STRUCTURAL_PRIOR`, no content-annotation addition, no force-fit | Judgment call (§14) → human decision | 6 |
 | B (author) | MK-07 interim → permanent | MK-07 amended handling (GAP/AMBIGUITY distinction) adopted as permanent law for Topic 002. `UNMAPPED` is governance tag, not 5th content category. Tag does not retire in v1 | Judgment call (§14) → human decision | 6 |
 | B (Codex) | PROVENANCE_AUDIT_SERIALIZATION overload | Defer split. Keep single bucket for v1 | Judgment call (§14) → human decision | 6 |
 
@@ -43,7 +43,7 @@ call per §14.
 
 **Decision owner**: Human researcher (per §15).
 **Decision criteria**: authority chain faithfulness (burden of proof on change
-proposer per `debate/rules.md:21-22`), v1 simplicity, permanent closure (no
+proposer per `debate/rules.md` §5), v1 simplicity, permanent closure (no
 "interim until bootstrap" deferrals).
 
 ### Facet E — No New Positive Admissibility Criterion
@@ -51,25 +51,25 @@ proposer per `debate/rules.md:21-22`), v1 simplicity, permanent closure (no
 **Direction**: Topic 002 does not freeze a new positive admissibility criterion for
 structural-prior gap rules. The permanent governance path is `UNMAPPED + Tier 2 +
 SHADOW`, as already opened by Topic 004
-(`debate/004-meta-knowledge/final-resolution.md:389-392`).
+(`debate/004-meta-knowledge/final-resolution.md` §MK-07 Addendum).
 
 **Reasoning**:
 
-1. `docs/design_brief.md:46-49` and `findings-under-review.md:60-62` maintain the
-   firewall on 4 whitelist buckets and ban lessons that tilt
-   family/architecture/calibration-mode.
+1. `docs/design_brief.md` §3.1 (banned inheritance list) and
+   `findings-under-review.md` §F-04 content gate maintain the firewall on 3
+   whitelist buckets and ban lessons that tilt family/architecture/calibration-mode.
 2. By round 6, both agents agreed that the authority chain does not source a concrete
    per-rule criterion. MK-03 irreducibility was a proposal, not existing law
-   (`claude_code/round-6_author-reply.md:62-67`;
-   `codex/round-6_reviewer-reply.md:41`).
-3. Per `debate/rules.md:21-22` (§5), burden of proof belongs to the side proposing
-   change. The proposed criterion was not proven.
-4. MK-15 (bootstrap, `004-meta-knowledge/final-resolution.md:191`) specifies
-   "classify via derivation test, tag provenance, all Tier 2 = SHADOW." It does
-   not create a step for inventing a new admissibility criterion.
+   (`claude_code/round-6_author-reply.md` §2 concession;
+   `codex/round-6_reviewer-reply.md` §What survives, point 1).
+3. Per `debate/rules.md` §5, burden of proof belongs to the side proposing change.
+   The proposed criterion was not proven.
+4. MK-15 (bootstrap, `004-meta-knowledge/final-resolution.md` §Decided table,
+   MK-15 row) specifies "classify via derivation test, tag provenance, all Tier 2 =
+   SHADOW." It does not create a step for inventing a new admissibility criterion.
 5. This does not deny that some `Partially` rules survive. MK-04's
-   `admissibility_rationale` (`004-meta-knowledge/final-resolution.md:332-340`)
-   continues to serve rules whose data residue does NOT tilt
+   `admissibility_rationale` (`004-meta-knowledge/final-resolution.md` §MK-04
+   decision) continues to serve rules whose data residue does NOT tilt
    family/architecture/calibration-mode. The decision only refuses to create a
    special positive rule for pure-gap structural priors whose primary content tilts.
 
@@ -78,9 +78,10 @@ criterion development.
 
 ### Facet A — No V1 Vocabulary Expansion
 
-**Direction**: Keep 4 named F-06 categories: `PROVENANCE_AUDIT_SERIALIZATION`,
-`SPLIT_HYGIENE`, `STOP_DISCIPLINE`, `ANTI_PATTERN`. No 5th category, no
-`STRUCTURAL_PRIOR`, no content-annotation additions, no force-fitting.
+**Direction**: Keep 3 named F-06 categories (post Facet C consolidation):
+`PROVENANCE_AUDIT_SERIALIZATION`, `SPLIT_HYGIENE`, `ANTI_PATTERN` (absorbs
+former `STOP_DISCIPLINE`). No 4th category, no `STRUCTURAL_PRIOR`, no
+content-annotation additions, no force-fitting.
 
 **Handling by rule class**:
 - Rules with a primary existing home → keep primary category + `derivation_test`
@@ -91,14 +92,14 @@ criterion development.
   inventory, only V8-3) → non-admissible pending human review (fail-closed)
 
 **Rejected alternatives**:
-- 5th mutually exclusive enum `STRUCTURAL_PRIOR` — not added
+- 4th mutually exclusive enum `STRUCTURAL_PRIOR` — not added
 - `structural_prior: boolean` cross-cutting annotation — relabels the same property
   without providing content-type signal (`codex/round-3_reviewer-reply.md`)
 
 ### Facet B (author) — MK-07 Amended Handling Becomes Permanent Law
 
 **Direction**: The GAP/AMBIGUITY distinction from Topic 004's MK-07 amendment
-(`debate/004-meta-knowledge/final-resolution.md:373-392`) is adopted as permanent
+(`debate/004-meta-knowledge/final-resolution.md` §MK-07 Addendum) is adopted as permanent
 law for Topic 002:
 
 - **GAP** (rule fits no category without stretching): permanent `UNMAPPED` + Tier 2
@@ -109,7 +110,7 @@ law for Topic 002:
   question is which category, not whether to admit.
 
 **Fork chosen**: Topic 004 documented two paths
-(`final-resolution.md:389-392`): "if Topic 002 adds a category → retire UNMAPPED;
+(`final-resolution.md` §MK-07 Addendum): "if Topic 002 adds a category → retire UNMAPPED;
 if not → UNMAPPED + Tier 2 + SHADOW becomes permanent path." **Topic 002 chooses
 the second fork.** This is a permanent closure choice.
 
@@ -118,12 +119,12 @@ the second fork.** This is a permanent closure choice.
 **Direction**: Keep `PROVENANCE_AUDIT_SERIALIZATION` as a single bucket for v1.
 
 **Reasoning**:
-1. `docs/design_brief.md:40-41` already groups provenance/audit/serialization as
+1. `docs/design_brief.md` §3.1 already groups provenance/audit/serialization as
    one allowed-transfer class.
 2. `input_f06_category_coverage.md §4` describes the distribution as "unbalanced
    but functional."
 3. In the current inventory, only V8-3 is genuinely ambiguous between two existing
-   buckets (`input_f06_category_coverage.md:137`).
+   buckets (`input_f06_category_coverage.md` §A.4 V8-3 row).
 4. Both sides in rounds 2, 3, and 6 agreed: overload is real, split-now not proven,
    remainder is timing/granularity tradeoff.
 
@@ -135,23 +136,31 @@ in spec.
 
 ## Key Design Decisions (for drafts/)
 
-### Decision 1: Typed Schema with 4 Whitelist Categories (Permanent)
+### Decision 1: Typed Schema with 3 Whitelist Categories (Permanent)
 
-**Accepted position**: `MetaLesson` typed schema with 4 F-06 categories
-(`PROVENANCE_AUDIT_SERIALIZATION`, `SPLIT_HYGIENE`, `STOP_DISCIPLINE`,
-`ANTI_PATTERN`). Category whitelist enforcement: lesson with category outside
-whitelist is rejected. Lesson with content in family/architecture/calibration-mode
-is rejected for mapped categories and genuine ambiguity; pure-gap structural priors
-follow permanent `UNMAPPED + Tier 2 + SHADOW` governance path per Topic 004.
+**Accepted position**: `MetaLesson` typed schema with 3 F-06 categories
+(`PROVENANCE_AUDIT_SERIALIZATION`, `SPLIT_HYGIENE`, `ANTI_PATTERN`).
+`STOP_DISCIPLINE` consolidated into `ANTI_PATTERN` per Facet C convergence
+(Round 2) — 3 stop rules expressible as anti-patterns without v1 operational loss;
+meta-level distinction preserved as v2+ sub-tag option within `ANTI_PATTERN`.
+Category whitelist enforcement: lesson with category outside whitelist is rejected.
+Lesson with content in family/architecture/calibration-mode is rejected for mapped
+categories and genuine ambiguity; pure-gap structural priors follow permanent
+`UNMAPPED + Tier 2 + SHADOW` governance path per Topic 004.
 
 **Rejected alternatives**:
-- 5th category `STRUCTURAL_PRIOR` — not added (Facet A)
+- Keeping `STOP_DISCIPLINE` as separate 4th category — rejected per Facet C
+  convergence (criterion drift: conceptual distinction without enforcement-action
+  difference does not justify separate enum)
+- 4th category `STRUCTURAL_PRIOR` — not added (Facet A)
 - `structural_prior: boolean` annotation — rejected as relabeling (Facet A)
 - MK-03 irreducibility criterion — not source-backed (Facet E)
 
-**Rationale**: `docs/design_brief.md:40-49` (allowed/banned transfer classes),
-`004-meta-knowledge/final-resolution.md:345-347` (F-06 ⊥ tier, vocabulary ownership
-= Topic 002), `debate/rules.md:21-22` (burden of proof on change proposer)
+**Rationale**: `docs/design_brief.md` §3.1 (allowed/banned transfer classes),
+`004-meta-knowledge/final-resolution.md` §MK-07 decision (F-06 ⊥ tier, vocabulary
+ownership = Topic 002), `debate/rules.md` §5 (burden of proof on change proposer),
+Facet C debate record (`claude_code/round-2_author-reply.md` §Facet C;
+`codex/round-2_reviewer-reply.md` §Facet C — §7c confirmed)
 
 ### Decision 2: State Machine Hash-Signing for Protocol Transitions
 
@@ -162,7 +171,7 @@ prevents rollback (FROZEN → SCANNING is invalid transition).
 **Rejected alternative**: State machine too complex for v1 — rejected in round 2
 (Facet D convergence). Hash-signing is core enforcement.
 
-**Rationale**: `findings-under-review.md:67-70`, CONTAMINATION_LOG_V4
+**Rationale**: `findings-under-review.md` §F-04 part B (state machine), CONTAMINATION_LOG_V4
 [extra-archive] (8 rounds of actual contamination proves honor-based isolation
 insufficient)
 
@@ -174,7 +183,8 @@ enforcement. Primary enforcement = typed schema + state machine.
 **Rejected alternative**: chmod as primary enforcement — rejected because filesystem
 permissions alone cannot catch semantic leakage.
 
-**Rationale**: `docs/design_brief.md:55`, `findings-under-review.md:72-74`.
+**Rationale**: `docs/design_brief.md` §3.1 (filesystem guardrail phụ),
+`findings-under-review.md` §F-04 part C (chmod defense-in-depth).
 Converged round 3 (Facet F).
 
 ### Decision 4: Permanent UNMAPPED Governance for Gap Rules
@@ -182,18 +192,19 @@ Converged round 3 (Facet F).
 **Accepted position**: ~10 Tier 2 structural priors with no F-06 category home
 receive permanent `UNMAPPED` (governance tag) + Tier 2 + SHADOW treatment. Tag does
 not retire in v1. This is Topic 004's second fork
-(`004-meta-knowledge/final-resolution.md:389-392`), chosen by Topic 002.
+(`004-meta-knowledge/final-resolution.md` §MK-07 Addendum, permanent fallback),
+chosen by Topic 002.
 
 **Rejected alternative**: New positive admissibility criterion (MK-03 irreducibility
 test) to admit gap rules as positive firewall content — not source-backed, and
 proposed branch condition admitted specimens the record flags as Harm #3 risk
-(`input_f06_category_coverage.md:97,102-103`;
-`004-meta-knowledge/findings-under-review.md:114-116`).
+(`input_f06_category_coverage.md` §5.1 gap rules V5-3, T2-2, CS-6;
+`004-meta-knowledge/findings-under-review.md` §Harm 3 information laundering).
 
-**Rationale**: `docs/design_brief.md:49` (catch-all ban),
-`004-meta-knowledge/final-resolution.md:378-392` (UNMAPPED + permanent fallback),
-`debate/rules.md:21-22` (burden of proof), both-agent round-6 agreement that
-authority chain does not contain per-rule criterion
+**Rationale**: `docs/design_brief.md` §3.1 (catch-all ban),
+`004-meta-knowledge/final-resolution.md` §MK-07 Addendum (UNMAPPED + permanent
+fallback), `debate/rules.md` §5 (burden of proof), both-agent round-6 agreement
+that authority chain does not contain per-rule criterion
 
 ### Decision 5: GAP/AMBIGUITY Distinction as Permanent Law
 
@@ -203,10 +214,11 @@ authority chain does not contain per-rule criterion
 
 **Rejected alternative**: Single "ambiguous → non-admissible" rule for both cases —
 rejected by Topic 004 MK-07 investigation which showed it blocks rules that should
-be admitted (`004-meta-knowledge/final-resolution.md:366-371`).
+be admitted (`004-meta-knowledge/final-resolution.md` §MK-07 Addendum, problem
+statement).
 
-**Rationale**: `004-meta-knowledge/final-resolution.md:373-392` (amended rule, now
-permanent per Topic 002 closure)
+**Rationale**: `004-meta-knowledge/final-resolution.md` §MK-07 Addendum (amended
+rule, now permanent per Topic 002 closure)
 
 ---
 
@@ -220,8 +232,8 @@ None. All 4 Judgment calls decided by human researcher. No open items.
 
 | Topic | Finding | Impact of Topic 002 closure | Action needed |
 |-------|---------|-------------------------------|---------------|
-| 004 | MK-07 | Second fork chosen: `UNMAPPED + Tier 2 + SHADOW` permanent. Topic 002 declined category expansion | Update `004-meta-knowledge/final-resolution.md` MK-07 addendum to reference 002 closure |
-| 004 | MK-14 | Boundary contract intact. Topic 002 owns content gate (4 categories + `UNMAPPED` governance). Topic 004 owns lifecycle gate. No conflict | None |
+| 004 | MK-07 | Second fork chosen: `UNMAPPED + Tier 2 + SHADOW` permanent. Topic 002 declined category expansion | Done — addendum updated to reference 002 closure |
+| 004 | MK-14 | Boundary contract intact. Topic 002 owns content gate (3 categories + `UNMAPPED` governance). Topic 004 owns lifecycle gate. No conflict | None |
 | 009 | F-11 | chmod (002) and session immutability (009) confirmed as different mechanisms for different purposes. Converged in Facet F | None |
 | 016 | C-12 | Bounded recalibration constrained: recalibrated priors with family/architecture/calibration-mode tilt still banned for mapped categories. Pure-gap structural priors via `UNMAPPED` governance. 016 designs recalibration within these constraints | 016 owns decision |
 | 017 | ESP-02 | Reconstruction-risk gate: phenotype-derived structural priors evaluated within existing F-06 categories + `UNMAPPED`. No new category or criterion from 002. 017 defines phenotype contracts within this boundary | 017 owns phenotype contracts |
@@ -232,8 +244,8 @@ None. All 4 Judgment calls decided by human researcher. No open items.
 
 | Draft | Sections affected | Action needed |
 |-------|------------------|---------------|
-| `architecture_spec.md` | §7 (Contamination Firewall — Enforcement Mechanism) | **Fill stub**: typed schema, state machine hash-signing, chmod defense-in-depth, 4 F-06 categories (permanent), `UNMAPPED` governance path |
-| `meta_spec.md` (not yet started) | Content rules section (MK-14 interface) | **When started**: firewall content rules — 4 categories, catch-all ban, `UNMAPPED` governance, GAP/AMBIGUITY permanent distinction |
+| `architecture_spec.md` | §7 (Contamination Firewall — Enforcement Mechanism) | **Done**: typed schema, state machine hash-signing, chmod defense-in-depth, 3 F-06 categories (permanent), `UNMAPPED` governance path |
+| `meta_spec.md` | Content rules section (MK-14 interface) | **Seeded**: firewall content rules — 3 categories, catch-all ban, `UNMAPPED` governance, GAP/AMBIGUITY permanent distinction |
 
 ---
 

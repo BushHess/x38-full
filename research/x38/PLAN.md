@@ -836,7 +836,7 @@ gom N sessions trên cùng dataset. Cần tranh luận xem đây có phải abst
 
 > **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call).
 > Xem `debate/002-contamination-firewall/final-resolution.md`.
-> Key decisions: 4 F-06 categories permanent (no expansion), state machine hash-signing,
+> Key decisions: 3 F-06 categories permanent (STOP_DISCIPLINE consolidated into ANTI_PATTERN; no expansion), state machine hash-signing,
 > chmod defense-in-depth, permanent `UNMAPPED + Tier 2 + SHADOW` for ~10 gap rules
 > (Topic 004 second fork), GAP/AMBIGUITY distinction permanent,
 > PROVENANCE_AUDIT_SERIALIZATION split deferred.

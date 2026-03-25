@@ -46,9 +46,11 @@ works well" không match regex nhưng vẫn leak answer prior). Thay vào đó:
 ```
 MetaLesson {
     id: str
-    category: enum  # CHỈ cho phép 4 categories:
+    category: enum  # V1 whitelist (post Facet C convergence: 3 categories):
                     #   PROVENANCE_AUDIT_SERIALIZATION,
-                    #   SPLIT_HYGIENE, STOP_DISCIPLINE, ANTI_PATTERN
+                    #   SPLIT_HYGIENE, ANTI_PATTERN
+                    # (STOP_DISCIPLINE consolidated into ANTI_PATTERN
+                    #  per debate Round 2 — see final-resolution.md §Decision 1)
     principle: str  # Validated against whitelist categories
     confidence: float
     confirmed_by: list[str]
@@ -82,13 +84,13 @@ closure (`final-resolution.md` §Decision 4).
 - Typed schema có quá restrictive? Lesson hợp lệ nhưng không fit categories?
 - Human review cho ambiguous cases: workflow ra sao?
 - State machine complexity: quá phức tạp cho v1 framework?
-- (Added 2026-03-23, from MK-07 investigation) 4 categories thiếu chỗ cho ~10
+- (Added 2026-03-23, from MK-07 investigation) 3 categories (post Facet C) thiếu chỗ cho ~10
   Tier 2 structural priors — cần thêm category (e.g., `STRUCTURAL_PRIOR`) hay
   redefine existing? Xem `input_f06_category_coverage.md` §9 Finding A.
 - (Added 2026-03-23) `PROVENANCE_AUDIT_SERIALIZATION` overloaded (~25+ rules) —
   cần split thành finer-grained categories? Xem Finding D.
-- (Added 2026-03-23) `STOP_DISCIPLINE` chỉ có 3 rules — consolidate vào
-  `ANTI_PATTERN` hay giữ riêng? Xem Finding C.
+- (Added 2026-03-23, **RESOLVED Round 2**: consolidate vào `ANTI_PATTERN` — Facet C
+  Converged. Xem Finding C + `final-resolution.md` §Decision 1.)
 
 ---
 

@@ -197,15 +197,14 @@ _Stub._
 
 ### 7.1 Typed Schema with 4 Whitelist Categories (X38-D-04 → final-resolution.md §Decision 1)
 
-`MetaLesson` typed schema with category enum enforcement. 4 F-06 whitelist
+`MetaLesson` typed schema with category enum enforcement. 3 F-06 whitelist
 categories (permanent, no expansion in v1):
 
 | Category | Coverage | Notes |
 |----------|----------|-------|
-| `PROVENANCE_AUDIT_SERIALIZATION` | ~25 rules | Single bucket for v1 (overload acknowledged, split deferred) |
-| `ANTI_PATTERN` | ~23 rules | Methodology-level anti-patterns |
+| `PROVENANCE_AUDIT_SERIALIZATION` | ~25 rules | Single bucket for v1 (overload acknowledged, split deferred per Facet B-Codex) |
+| `ANTI_PATTERN` | ~26 rules | Methodology-level anti-patterns + absorbed `STOP_DISCIPLINE` (3 rules consolidated per Facet C convergence, Round 2) |
 | `SPLIT_HYGIENE` | ~9 rules | Data split integrity |
-| `STOP_DISCIPLINE` | ~3 rules | Kept as separate category (Facet C convergence) |
 
 **Content gate**:
 - Lesson with category outside whitelist → rejected
