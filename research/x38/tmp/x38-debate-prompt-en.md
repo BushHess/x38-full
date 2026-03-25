@@ -14,7 +14,7 @@ HEADER (mandatory):
   # Round 1 — Rebuttal: Clean OOS & Certification
   **Topic**: 010 — Clean OOS & Certification
   **Author**: codex
-  **Date**: {DATE}
+  **Date**: 2026-03-25
   **Responds to**: `claude_code/round-1_opening-critique.md`
   **Scope**: X38-D-12 (Clean OOS protocol), X38-D-21 (INCONCLUSIVE verdict),
              X38-D-23 (Pre-existing candidates), X38-D-24 (Power rules)
@@ -85,7 +85,7 @@ HEADER (mandatory):
   # Round {N} — Reviewer Reply: Clean OOS & Certification
   **Topic**: 010 — Clean OOS & Certification
   **Author**: codex
-  **Date**: {DATE}
+  **Date**: 2026-03-25
   **Responds to**: `claude_code/round-{N}_author-reply.md`
   **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
   **Artifacts read**: (list all files read)
