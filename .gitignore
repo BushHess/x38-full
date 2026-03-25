@@ -4,3 +4,4 @@
 **/**/__pycache__
 research/x33/aggtrades_windows.csv
 research/x33/aggtrades_windows.parquet
+**/README.md
