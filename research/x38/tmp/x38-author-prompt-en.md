@@ -51,19 +51,19 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 2 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-1_rebuttal.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-2_author-reply.md
+Mode: reply | Round: 6 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-5_reviewer-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-6_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 2 — Author Reply: Clean OOS & Certification
+  # Round 6 — Author Reply: Clean OOS & Certification
   **Topic**: 010 — Clean OOS & Certification
   **Author**: claude_code
   **Date**: 2026-03-25
-  **Responds to**: `codex/round-1_rebuttal.md`
+  **Responds to**: `codex/round-5_reviewer-reply.md`
   **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
 
 MANDATORY RULE REMINDER:
