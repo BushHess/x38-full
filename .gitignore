@@ -2,4 +2,5 @@
 **/**/.ruff_cache
 **/**/.venv
 **/**/__pycache__
-**/**/
+research/x33/aggtrades_windows.csv
+research/x33/aggtrades_windows.parquet
