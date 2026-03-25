@@ -183,6 +183,6 @@ schema (F-13, Open) which Topic 010 cannot unilaterally define.
 
 | Draft | Sections affected | Action needed |
 |-------|------------------|---------------|
-| `architecture_spec.md` | §6 (Clean OOS Flow) — currently stub | **Create**: Phase 2 lifecycle, verdict taxonomy, auto-trigger, Reserve Rollover Invariant, CertificationVerdict schema, pre-existing candidate treatment, power rules |
+| `architecture_spec.md` | §6 (Clean OOS Flow) | **Done** (2026-03-25): Phase 2 lifecycle, verdict taxonomy, auto-trigger, Reserve Rollover Invariant, CertificationVerdict schema, pre-existing candidate treatment, power rules — 6 subsections (§6.1-§6.6) |
 | `architecture_spec.md` | §5.2 (3-Tier Claim Model) | **Verify**: certification tier verdicts consistent with D-21 three-verdict taxonomy |
 | `architecture_spec.md` | Traceability table | **Add**: D-12, D-21, D-23, D-24 entries |

@@ -1,7 +1,7 @@
 # X38 Execution Plan
 
-**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (16 rounds done —
-topic 004, 007, 001 CLOSED; 15 topics còn lại: 14 OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
+**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (28 rounds done —
+topic 004, 007, 001, 002, 010 CLOSED; 13 topics còn lại: 12 OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
 **Cập nhật lần cuối**: 2026-03-25
@@ -29,7 +29,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
 | Debate rounds thực hiện | **28** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6). 13 topics remaining (12 OPEN + 1 SPLIT). |
-| Specs drafted | SEEDED (1): `architecture_spec.md` seeded from 001/002/004/007 closures. Formal drafting not started. |
+| Specs drafted | SEEDED (1): `architecture_spec.md` seeded from 001/002/004/007/010 closures. §6 Clean OOS Flow filled. Formal drafting not started. |
 | Specs published | ZERO |
 
 ---
