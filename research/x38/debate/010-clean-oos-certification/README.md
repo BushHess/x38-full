@@ -2,7 +2,8 @@
 
 **Topic ID**: X38-T-10
 **Opened**: 2026-03-22
-**Status**: OPEN
+**Closed**: 2026-03-25
+**Status**: **CLOSED** (6 rounds, 4/4 resolved: 3 Converged + 1 Judgment call)
 **Split from**: Topic 000 (cross-cutting)
 
 ## Scope
@@ -41,11 +42,14 @@ power rules, và mối quan hệ với pre-existing candidates từ online proce
 |-------|---------|---------|-----------------|
 | 003 | F-05 | Clean OOS stages must integrate into 8-stage protocol pipeline — but Clean OOS (Phase 2) runs AFTER research pipeline completes, unclear if same stage gating applies | 003 owns pipeline structure; 010 defines Clean OOS protocol within that structure |
 | 016 | C-04 | x38 has no bounded recalibration path — if 016 introduces recalibration, Clean OOS verdict logic (CONFIRMED/FAIL/INCONCLUSIVE) may need to account for recalibrated candidates | 016 owns decision |
+| 017 | ESP-03 | Power floors for promotion ladder (ESP-03) reuse Clean OOS power methodology (F-24). If 010 defines strict power rules, 017 consumes them for structural prior promotion decisions | 010 owns power rules; 017 consumes them |
 
 ## Files
 
 | File | Mục đích |
 |------|----------|
 | `findings-under-review.md` | 4 findings: F-12, F-21, F-23, F-24 |
-| `claude_code/` | Phản biện từ Claude Code |
-| `codex/` | Phản biện từ Codex |
+| `final-resolution.md` | Closure decisions (2026-03-25) |
+| `judgment-call-deliberation.md` | D-23 judgment call (human researcher) |
+| `claude_code/` | Phản biện từ Claude Code (6 rounds) |
+| `codex/` | Phản biện từ Codex (6 rounds + judgment-call-memo) |

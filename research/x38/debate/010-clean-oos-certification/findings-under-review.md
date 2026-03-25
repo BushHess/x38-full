@@ -22,7 +22,9 @@ power rules, và mối quan hệ với pre-existing candidates.
 - **classification**: Judgment call
 - **opened_at**: 2026-03-18
 - **opened_in_round**: 0
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_round**: 6
+- **closed_date**: 2026-03-25
 
 **Nội dung**:
 
@@ -90,7 +92,9 @@ chi tiết cho các câu hỏi mở trên.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, from Claude Code ↔ Codex cross-audit)
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_round**: 6
+- **closed_date**: 2026-03-25
 
 **Nội dung**:
 
@@ -135,7 +139,9 @@ appended data rất có khả năng gặp cùng vấn đề power nếu reserve 
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, from Claude Code ↔ Codex cross-audit)
-- **current_status**: Open
+- **current_status**: Judgment call
+- **closed_round**: 6
+- **closed_date**: 2026-03-25
 
 **Nội dung**:
 
@@ -180,7 +186,9 @@ giữa pre-existing candidate và x38 winner cần được định nghĩa rõ.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, from Claude Code ↔ Codex cross-audit)
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_round**: 3 (confirmed rounds 4-6)
+- **closed_date**: 2026-03-25
 
 **Nội dung**:
 
@@ -249,7 +257,7 @@ Giá trị cụ thể sẽ follow từ method, không nên chọn ngược.
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
-| X38-D-12 | Clean OOS via future data | Judgment call | Open |
-| X38-D-21 | CLEAN_OOS_INCONCLUSIVE — first-class verdict state | Thiếu sót | Open |
-| X38-D-23 | Pre-existing candidates vs x38 winners | Thiếu sót | Open |
-| X38-D-24 | Clean OOS power rules | Thiếu sót | Open |
+| X38-D-12 | Clean OOS via future data | Judgment call | Converged (round 6) |
+| X38-D-21 | CLEAN_OOS_INCONCLUSIVE — first-class verdict state | Thiếu sót | Converged (round 6) |
+| X38-D-23 | Pre-existing candidates vs x38 winners | Thiếu sót | Judgment call (round 6) |
+| X38-D-24 | Clean OOS power rules | Thiếu sót | Converged (round 3) |

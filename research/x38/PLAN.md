@@ -516,6 +516,16 @@ Verdict cao nhất: `INTERNAL_ROBUST_CANDIDATE`.
 > schema), 003 (protocol content), 013 (numeric thresholds), 015 (evidence
 > classes), 016 (recalibration exceptions).
 
+> **Topic 010 CLOSED (2026-03-25)**: Clean OOS protocol, verdict taxonomy,
+> power rules, and pre-existing candidate treatment frozen. 6 rounds, 4/4
+> resolved (3 Converged + 1 Judgment call). Key decisions: Phase 2 lifecycle,
+> stateless PENDING_CLEAN_OOS trigger with Reserve Rollover Invariant,
+> 3-verdict taxonomy (CONFIRMED/INCONCLUSIVE/FAIL), method-first power rules,
+> Scenario 1 deferred to Topic 008 (identity schema). See
+> `debate/010-clean-oos-certification/final-resolution.md`. Dependencies:
+> 008 (identity schema for same-family comparison), 003 (pipeline integration),
+> 016 (recalibration/certification interaction), 017 (power-floor consumption).
+
 **Giai đoạn 2: Clean OOS (chỉ khi đã có winner, chờ data mới)**
 
 ```

@@ -1,8 +1,8 @@
 # Architecture Spec — Draft
 
-**Status**: DRAFT (seeded from Topic 001, 002, 004, 007 closures — 002 section added 2026-03-25)
+**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 010 closures — 010 section added 2026-03-25)
 **Last updated**: 2026-03-25
-**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008 + 009 + 010 + 011 + 013 + 016 + 017
+**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 010(CLOSED) + 008 + 009 + 011 + 013 + 016 + 017
 **Publishable when**: ALL dependencies CLOSED
 
 ---
@@ -183,10 +183,125 @@ requiring empirical evidence of stationary failure + ablation gate specification
 
 ## 6. Clean OOS Flow
 
-> Pending: Topic 010 (clean OOS & certification)
+> Source: `debate/010-clean-oos-certification/final-resolution.md`
 > Cross-ref: §5.2 certification tier, §5.3 evidence taxonomy
 
-_Stub._
+### 6.1 Phase 2 Lifecycle (X38-D-12 → final-resolution.md §Decision 1)
+
+Clean OOS is Phase 2 after research, not a campaign type:
+
+```
+Phase 1: RESEARCH (N campaigns HANDOFF, same data file)
+  → winner chính thức or NO_ROBUST_IMPROVEMENT
+
+Phase 2: CLEAN OOS (only if winner exists, wait for new data)
+  Download new data → replay frozen winner on clean reserve
+    ├── CLEAN_OOS_CONFIRMED → certification complete
+    ├── CLEAN_OOS_INCONCLUSIVE → keep INTERNAL_ROBUST_CANDIDATE, re-trigger
+    └── CLEAN_OOS_FAIL → Phase 3
+
+Phase 3: NEW RESEARCH (only after FAIL, on expanded data)
+  New campaign on full data (old + new), open search space
+  → repeat Phase 1 → 2 → ...
+```
+
+**Clean reserve**: genuinely new data only (not internal holdout). Reserve
+opened exactly once per attempt. Boundary: executable timestamp contract
+(bar `close_time` per timeframe, not date string).
+
+**CertificationVerdict schema**:
+- `frozen_spec_ref`: path to frozen winner spec from research phase
+- `reserve_boundary_h4`, `reserve_boundary_d1`: last bar `close_time` in
+  research data (per timeframe)
+- `reserve_end_h4`, `reserve_end_d1`: last bar `close_time` in reserve
+- `append_data_ref`: path/hash of extended data file
+- `verdict`: `CONFIRMED` | `INCONCLUSIVE` | `FAIL`
+- `metrics`: evaluation results on reserve
+- `iteration_count`: attempt number (1, 2, 3, ...)
+- `previous_verdicts`: list of prior verdicts (for accumulation visibility)
+
+**FAIL lineage**: immutable record in CertificationVerdict. Historical
+evidence/provenance only — NOT anti-pattern, no MetaLesson pipeline
+interaction.
+
+**Module placement**: deferred to Topic 003 (pipeline structure).
+
+### 6.2 Auto-Trigger Governance (X38-D-12/D-21 → final-resolution.md §Decision 2)
+
+**Stateless predicate trigger**: `PENDING_CLEAN_OOS` fires whenever:
+```
+(winner exists) AND (elapsed since last_attempt_boundary > minimum_duration)
+```
+
+After `INCONCLUSIVE`, the Reserve Rollover Invariant sets
+`last_attempt_boundary := reserve_end_*`, and the predicate re-evaluates
+from that boundary.
+
+**Governance per trigger**:
+- Human researcher must act or explicitly defer with review date
+- No silent indefinite deferral (violation)
+- Enriched artifact: `iteration_count` + `previous_verdicts` (mandatory)
+- Human researcher = escalation authority at every iteration
+- No automatic count-based FAIL conversion (violates honest labeling)
+- No universal cross-attempt escalation thresholds (V2+)
+
+### 6.3 Verdict Taxonomy (X38-D-21 → final-resolution.md §Decision 3)
+
+Three certification-tier verdicts:
+
+| Verdict | Meaning | Next action |
+|---------|---------|-------------|
+| `CLEAN_OOS_CONFIRMED` | Winner validated by independent evidence | Certification complete |
+| `CLEAN_OOS_INCONCLUSIVE` | Reserve underpowered; honest label | Maintain `INTERNAL_ROBUST_CANDIDATE`, wait, re-trigger |
+| `CLEAN_OOS_FAIL` | Winner rejected by independent evidence | Phase 3: new research on expanded data |
+
+**Reserve Rollover Invariant**: Attempt N+1 starts strictly after attempt N's
+`reserve_end_*`. Prevents re-use of already-evaluated data across attempts.
+
+### 6.4 Power Rules — Method-First (X38-D-24 → final-resolution.md §Decision 4)
+
+Power rules are campaign-specific, predeclared before reserve opening.
+
+**Mandatory minimum criteria**:
+- Calendar-time coverage
+- Trade count for statistical validity
+
+**Additional dimensions** (method-dependent): regime coverage, exposure hours,
+effect size thresholds. Determined by pre-registered power method per campaign.
+
+**INCONCLUSIVE auto-path**: if predeclared power method says reserve is
+underpowered → verdict is automatically `INCONCLUSIVE` before any metric
+analysis.
+
+No universal binding dimension set or numeric thresholds frozen in V1.
+
+### 6.5 Pre-existing Candidate Treatment (X38-D-23 → final-resolution.md §Decision 5)
+
+**Scenario 1 — Same-family rediscovery**: Deferred to Topic 008 (F-13,
+identity schema). Topic 010 does not own family-identity lookup fields. If
+Topic 008 exports a same-family relation, it may be consumed for
+below-certification convergence signaling only. Clean OOS still required; no
+automatic certification uplift.
+
+**Scenario 2 — Contradiction**: Covered by Topic 007 semantic rule. If
+same-archive search contradicts historical lineage, the artifact MUST surface
+the contradiction explicitly below certification tier.
+
+**Scenario 3 — NO_ROBUST_IMPROVEMENT + pre-existing candidate**: Derived
+invariant. If shadow provenance contains a pre-existing candidate and the
+campaign verdict is `NO_ROBUST_IMPROVEMENT`, that candidate remains unchanged
+/ unadjudicated by x38, below certification tier. Not certification, not
+contradiction, does not create a new x38 winner.
+
+### 6.6 Cross-Topic Interfaces
+
+| Interface | Owner | 010 provides/consumes |
+|---|---|---|
+| Pipeline integration (Phase 2 placement) | Topic 003 (F-05) | 010 provides: Phase 2 protocol; 003 consumes |
+| Identity schema (same-family comparison) | Topic 008 (F-13) | 010 consumes: `program_lineage_id` for Scenario 1 |
+| Recalibration/certification interaction | Topic 016 | 016 consumes: verdict taxonomy; defines re-certification rules |
+| Power-floor methodology | Topic 017 (ESP-03) | 017 consumes: D-24 method-first contract |
+| Contradiction semantic rule | Topic 007 (closed) | 010 consumes: MUST-surface rule for Scenario 2 |
 
 ---
 
@@ -295,3 +410,9 @@ _Stub — to be filled after Topic 017 closure. Key sections:_
 | §7.2 State Machine Hash-Signing | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 2 |
 | §7.3 Filesystem chmod | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 3 |
 | §7.4 Cross-Spec Interface (MK-14) | X38-D-04 / X38-MK-14 | `debate/002-contamination-firewall/final-resolution.md` + `debate/004-meta-knowledge/final-resolution.md` |
+| §6.1 Phase 2 Lifecycle | X38-D-12 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 1 |
+| §6.2 Auto-Trigger Governance | X38-D-12 / X38-D-21 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 2 |
+| §6.3 Verdict Taxonomy | X38-D-21 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 3 |
+| §6.4 Power Rules — Method-First | X38-D-24 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 4 |
+| §6.5 Pre-existing Candidate Treatment | X38-D-23 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 5 |
+| §6.6 Cross-Topic Interfaces | X38-D-12/D-21/D-23/D-24 | `debate/010-clean-oos-certification/final-resolution.md` §Cross-topic impact |

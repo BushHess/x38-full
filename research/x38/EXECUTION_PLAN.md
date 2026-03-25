@@ -27,7 +27,8 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 001 | **CLOSED** (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`. |
 | Topic 017 | **OPEN** (2026-03-24). Epistemic search policy. Wave 2.5. 4 findings (ESP-01→ESP-04). |
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
-| Debate rounds thực hiện | **22** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6). 14 topics remaining (13 OPEN + 1 SPLIT). |
+| Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
+| Debate rounds thực hiện | **28** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6). 13 topics remaining (12 OPEN + 1 SPLIT). |
 | Specs drafted | SEEDED (1): `architecture_spec.md` seeded from 001/002/004/007 closures. Formal drafting not started. |
 | Specs published | ZERO |
 
@@ -174,8 +175,8 @@ Round 6: Resolution. Issues còn Open → Judgment call (human quyết định)
 
 ### Phase 2 — Debate 15 Topics (Wave-based, 2026-03-22/24)
 
-**Trạng thái**: PARTIALLY EXECUTED — Wave 1 CLOSED (007), Topic 001 debated/closed
-early in Wave 2; broad Wave 2 tranche still awaiting human approval for remaining topics.
+**Trạng thái**: PARTIALLY EXECUTED — Wave 1 CLOSED (007), Topics 001, 002, 010 closed in Wave 2;
+broad Wave 2 tranche still awaiting human approval for remaining topics.
 **Phụ thuộc**: Phase 0 (DONE), Phase 1 (DONE)
 
 Topic 000 đã SPLIT (2026-03-22) thành 11 sub-topics. Gap analysis thêm 013 + 014.
@@ -196,7 +197,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 |-------|------|----------|-----------|-------|
 | **008** | architecture-identity | F-02, F-09, F-13 | 1-2 rounds | 3 pillars, directory, identity |
 | **009** | data-integrity | F-10, F-11 | 1 round | Data copies, session immutability |
-| **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | 1-2 rounds | Clean OOS protocol, power rules |
+| **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Clean OOS protocol, verdict taxonomy, power rules, pre-existing candidates. 3 Converged + 1 Judgment call |
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
 | **012** | quality-assurance | F-18, F-19 | 1 round | Verification gates, online evolution |
 | **001** | campaign-model | F-03, F-15, F-16 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Campaign→Session, transition |
@@ -223,7 +224,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - Findings: BR-01, BR-02 (2 findings)
 - Key: Bounded recalibration path — cross-cutting decision chạm 5 Wave 2 topics
 - Ước lượng: 1-2 rounds
-- Phụ thuộc: 001 + 002 + 010 + 011 + 015 (tất cả phải CLOSED)
+- Phụ thuộc: 001✅ + 002✅ + 010✅ + 011 + 015 (3/5 satisfied)
 - **Phải close TRƯỚC 003**: nếu 016 cho phép recalibration, protocol pipeline
   cần thêm branch. Nếu close sau 003, protocol có thể phải reopen.
 
@@ -232,7 +233,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - Key: Epistemic search policy — intra-campaign illumination, phenotype/structural
   prior contracts, promotion ladder, budget governor
 - Ước lượng: 2-3 rounds
-- Phụ thuộc: 002 + 008 + 010 + 013 (tất cả phải CLOSED)
+- Phụ thuộc: 002✅ + 008 + 010✅ + 013 (2/4 satisfied)
 - **Phải close TRƯỚC 003**: cell-elite archive, descriptor tagging, và
   epistemic_delta.json ảnh hưởng protocol pipeline stage design.
 - 016 và 017 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.

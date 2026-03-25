@@ -2,7 +2,8 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-25 — Topic 002 CLOSED (6 rounds, 7/7 resolved: 3 Converged + 4 Judgment call).
+**Cập nhật**: 2026-03-25 — Topic 010 CLOSED (6 rounds, 4/4 resolved: 3 Converged + 1 Judgment call).
+Previous: 2026-03-25 — Topic 002 CLOSED (6 rounds, 7/7 resolved: 3 Converged + 4 Judgment call).
 Previous: 2026-03-24 — Topic 017 added (epistemic search policy, Wave 2.5).
 Previous: 2026-03-23 — Topic 001 CLOSED (6 rounds, 3/3 resolved: 2 Converged + 1 Judgment call).
 Topic 016 added (bounded recalibration path, Wave 2.5).
@@ -24,7 +25,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-07 | Philosophy & mission claims | 2026-03-22 | **CLOSED** (2026-03-23) | `007-philosophy-mission/` | F-01, F-20, F-22, F-25 (4) — 4/4 Converged |
 | X38-T-08 | Architecture & identity | 2026-03-22 | OPEN | `008-architecture-identity/` | F-02, F-09, F-13 (3) |
 | X38-T-09 | Data integrity | 2026-03-22 | OPEN | `009-data-integrity/` | F-10, F-11 (2) |
-| X38-T-10 | Clean OOS & certification | 2026-03-22 | OPEN | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) |
+| X38-T-10 | Clean OOS & certification | 2026-03-22 | **CLOSED** (2026-03-25) | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) — 3 Converged + 1 Judgment call |
 | X38-T-11 | Deployment boundary | 2026-03-22 | OPEN | `011-deployment-boundary/` | F-26, F-27, F-28, F-29 (4) |
 | X38-T-12 | Quality assurance | 2026-03-22 | OPEN | `012-quality-assurance/` | F-18, F-19 (2) |
 | X38-T-13 | Convergence analysis | 2026-03-22 | OPEN | `013-convergence-analysis/` | CA-01, CA-02 (2) |
@@ -33,7 +34,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 (4) |
 
-**Totals**: 18 topics (4 CLOSED, 1 SPLIT, 13 OPEN). 39 findings distributed.
+**Totals**: 18 topics (5 CLOSED, 1 SPLIT, 12 OPEN). 39 findings distributed.
 
 ## Debate Waves
 
@@ -117,8 +118,8 @@ convergence notes liên quan — không lặp lại full text.
 013 (convergence) ← soft-dep from 007, 001
 015 (artifact/version) ← soft-dep from 007, 008
     ↓
-016 (bounded-recal) ← HARD-dep from 001 + 002 + 010 + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002 + 008 + 010 + 013
+016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
+017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013
     ↓
 003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017
 014 (execution) ← soft-dep from 003, 005
