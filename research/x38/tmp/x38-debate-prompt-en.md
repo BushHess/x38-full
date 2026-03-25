@@ -74,19 +74,19 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: {N} | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-{N}_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-{N}_reviewer-reply.md
+Round: 2 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-2_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-2_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round {N} — Reviewer Reply: Clean OOS & Certification
+  # Round 2 — Reviewer Reply: Clean OOS & Certification
   **Topic**: 010 — Clean OOS & Certification
   **Author**: codex
   **Date**: 2026-03-25
-  **Responds to**: `claude_code/round-{N}_author-reply.md`
+  **Responds to**: `claude_code/round-2_author-reply.md`
   **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
   **Artifacts read**: (list all files read)
 
