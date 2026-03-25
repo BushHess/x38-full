@@ -21,13 +21,13 @@ Nhầm lẫn này là lỗi nghiêm trọng nhất agent có thể mắc trong d
 
 ## Environment Boundaries
 
-X38 runs inside a nested git repository.
+X38 lives inside the btc-spot-dev repository.
 
 - Primary working directory for x38 tasks:
   `/var/www/trading-bots/btc-spot-dev/research/x38/`
 
-- Git repository root for x38:
-  `/var/www/trading-bots/btc-spot-dev/research/x38/`
+- Git repository root:
+  `/var/www/trading-bots/btc-spot-dev/`
   (`.git` lives here)
 
 - Shared Python/project root:
@@ -36,10 +36,10 @@ X38 runs inside a nested git repository.
 Operational rules:
 - For file reads/writes in x38, prefer working inside:
   `/var/www/trading-bots/btc-spot-dev/research/x38/`
-- For git commands, run them against the x38 repo root, for example:
-  `git -C /var/www/trading-bots/btc-spot-dev/research/x38 status`
-- Do NOT assume `/var/www/trading-bots/` or `/var/www/trading-bots/btc-spot-dev/`
-  is the git root for x38.
+- For git commands, run them against the btc-spot-dev repo root, for example:
+  `git -C /var/www/trading-bots/btc-spot-dev status`
+- Do NOT assume `/var/www/trading-bots/` is the git root.
+  The git root is `/var/www/trading-bots/btc-spot-dev/`.
 - If a Python command needs the shared environment or top-level imports,
   launch it from `/var/www/trading-bots/` or set paths explicitly.
 - When citing paths in artifacts, use absolute paths if environment ambiguity is possible.

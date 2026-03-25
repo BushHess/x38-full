@@ -4,19 +4,20 @@ MODE A - Opening Critique
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 1 | Scope: X38-D-04 (Contamination Firewall)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/002-contamination-firewall/claude_code/round-1_opening-critique.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/002-contamination-firewall/codex/round-1_rebuttal.md
+Round: 1 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-1_opening-critique.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-1_rebuttal.md
 
 Read Prompt A in `debate/prompt_template.md` for the canonical round structure.
 
 HEADER (mandatory):
-  # Round 1 — Rebuttal: Contamination Firewall
-  **Topic**: 002 — Contamination Firewall
+  # Round 1 — Rebuttal: Clean OOS & Certification
+  **Topic**: 010 — Clean OOS & Certification
   **Author**: codex
-  **Date**: 2026-03-25
+  **Date**: {DATE}
   **Responds to**: `claude_code/round-1_opening-critique.md`
-  **Scope**: X38-D-04 (F-04: Contamination firewall — machine-enforced)
+  **Scope**: X38-D-12 (Clean OOS protocol), X38-D-21 (INCONCLUSIVE verdict),
+             X38-D-23 (Pre-existing candidates), X38-D-24 (Power rules)
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -43,22 +44,25 @@ DECISION DISCIPLINE:
 ENVIRONMENT REMINDER:
 - Follow `research/x38/AGENTS.md` for repo/environment boundaries.
 - Main working directory: `/var/www/trading-bots/btc-spot-dev/research/x38/`
-- Git root: `/var/www/trading-bots/btc-spot-dev/research/x38/`
+- Git root: `/var/www/trading-bots/btc-spot-dev/`
 - Shared Python root: `/var/www/trading-bots/`
-- Do not assume `/var/www/trading-bots/` or `/var/www/trading-bots/btc-spot-dev/` is the git root.
+- Do not assume `/var/www/trading-bots/` is the git root. Git root is `/var/www/trading-bots/btc-spot-dev/`.
 
 Task:
-- Review X38-D-04 and its sub-questions (Findings A-D from
-  input_f06_category_coverage.md) as facets of the single issue.
-- Give each facet a verdict, but put the most depth on the arguments
+- Review X38-D-12, X38-D-21, X38-D-23, X38-D-24 as four separate issues
+  (not facets of a single finding).
+- Give each issue a verdict, but put the most depth on the arguments
   that could actually change the design.
 - Key battlegrounds for this topic:
-  (a) Category gap: 5th category (STRUCTURAL_PRIOR) vs redefine existing?
-  (b) PROVENANCE_AUDIT_SERIALIZATION overload: split or keep?
-  (c) STOP_DISCIPLINE thinness: consolidate into ANTI_PATTERN?
-  (d) State machine complexity: appropriate for v1?
-  (e) MK-14 interface: firewall enforcement vs legitimate MK updates?
-- For each facet addressed: classification + evidence pointer + critique.
+  (a) F-12: Clean OOS minimum duration — 6 months floor? Trade-frequency dependent?
+      Module vs pipeline integration? FAIL → research-again provenance handling?
+  (b) F-21: INCONCLUSIVE as first-class verdict — upper bound on consecutive
+      INCONCLUSIVE before escalation? Difference from FAIL path?
+  (c) F-23: Pre-existing candidates — shadow-only per MK-17? Parallel Clean OOS?
+      Scope boundary (x38 design vs operational decision)?
+  (d) F-24: Power rules — pre-registered vs per-campaign? Formal power analysis
+      vs heuristic? Regime classification criteria? Specific thresholds?
+- For each issue addressed: classification + evidence pointer + critique.
 - Split verdicts are allowed, for example:
   "accept observation, reject mechanism".
 - End with the status table required by `debate/rules.md` §11.
@@ -70,20 +74,20 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 6 | Scope: X38-D-04 (Contamination Firewall)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/002-contamination-firewall/claude_code/round-6_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/002-contamination-firewall/codex/round-6_reviewer-reply.md
+Round: {N} | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-{N}_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-{N}_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 6 — Reviewer Reply: Contamination Firewall
-  **Topic**: 002 — Contamination Firewall
+  # Round {N} — Reviewer Reply: Clean OOS & Certification
+  **Topic**: 010 — Clean OOS & Certification
   **Author**: codex
-  **Date**: 2026-03-25
-  **Responds to**: `claude_code/round-6_author-reply.md`
-  **Scope**: X38-D-04 (F-04: Contamination firewall — machine-enforced)
+  **Date**: {DATE}
+  **Responds to**: `claude_code/round-{N}_author-reply.md`
+  **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -110,9 +114,9 @@ DECISION DISCIPLINE:
 ENVIRONMENT REMINDER:
 - Follow `research/x38/AGENTS.md` for repo/environment boundaries.
 - Main working directory: `/var/www/trading-bots/btc-spot-dev/research/x38/`
-- Git root: `/var/www/trading-bots/btc-spot-dev/research/x38/`
+- Git root: `/var/www/trading-bots/btc-spot-dev/`
 - Shared Python root: `/var/www/trading-bots/`
-- Do not assume `/var/www/trading-bots/` or `/var/www/trading-bots/btc-spot-dev/` is the git root.
+- Do not assume `/var/www/trading-bots/` is the git root. Git root is `/var/www/trading-bots/btc-spot-dev/`.
 
 Task:
 - Reply to the strongest current version of the opposing argument.
@@ -137,47 +141,50 @@ multi-role stack is usually unnecessary here.
 
 ```
 Role: Codex (advisor for closure)
-Task: Judgment-call memo for debate/002-contamination-firewall/, after Round {ROUND_NUM}
-Scope: X38-D-04 (F-04: Contamination firewall — machine-enforced)
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/002-contamination-firewall/codex/judgment-call-memo.md
+Task: Judgment-call memo for debate/010-clean-oos-certification/, after Round {ROUND_NUM}
+Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/judgment-call-memo.md
 Read-only — do not modify existing files.
 
 Additionally read all round files in:
-  - debate/002-contamination-firewall/claude_code/
-  - debate/002-contamination-firewall/codex/
+  - debate/010-clean-oos-certification/claude_code/
+  - debate/010-clean-oos-certification/codex/
 
 Produce:
 
 1. PER-ISSUE SUMMARY
    | Issue ID | Finding | Final positions | Agreement level | Recommended resolution |
 
-   Issue: X38-D-04 (single finding, multiple facets from MK-07 investigation)
-
-   Facets to assess separately:
-   - F-04 core: typed schema + whitelist + state machine + filesystem enforcement
-   - Finding A: category gap (~10 Tier 2 structural priors homeless)
-   - Finding B: MK-07 interim rule blocks admissible rules
-   - Finding C: STOP_DISCIPLINE thinness (3 rules)
-   - Finding D: PROVENANCE_AUDIT_SERIALIZATION overload (~25+ rules)
+   Issues to assess separately:
+   - X38-D-12: Clean OOS protocol (Phase 2 lifecycle, minimum duration, auto-trigger,
+     FAIL → research-again provenance)
+   - X38-D-21: INCONCLUSIVE verdict state (first-class status, upper bound,
+     difference from FAIL path)
+   - X38-D-23: Pre-existing candidates (shadow-only treatment, parallel validation,
+     scope boundary)
+   - X38-D-24: Power rules (pre-registered thresholds, dimensions, formal power
+     analysis vs heuristic, regime classification)
 
    Agreement levels:
    - Converged: §7(a)(b)(c) complete
    - Near-converged: substantive agreement, §7 incomplete
    - Disputed: genuine disagreement remains
 
-   For near-converged or disputed facets, state both positions with evidence
+   For near-converged or disputed issues, state both positions with evidence
    pointers. For judgment calls, state the tradeoff clearly and do not pick a
    winner.
 
 2. STEEL-MAN AUDIT
-   - Which facets completed §7(a)(b)(c)?
-   - Which facets still have incomplete steel-man?
+   - Which issues completed §7(a)(b)(c)?
+   - Which issues still have incomplete steel-man?
 
-3. MK-07 RESOLUTION CHECK
-   - Did debate produce a final fix for the ~10 Tier 2 structural priors gap?
-   - Is UNMAPPED tag retired or made permanent?
-   - Is the MK-07 addendum in Topic 004 final-resolution.md consistent with
-     the debate outcome?
+3. CROSS-TOPIC IMPACT CHECK
+   - Topic 003 (protocol engine): does Clean OOS protocol integrate cleanly
+     with 8-stage pipeline, or does it require a separate Phase 2 mechanism?
+   - Topic 016 (bounded recalibration): do verdict states account for
+     recalibrated candidates?
+   - Topic 017 (epistemic search policy): are power floors consistent with
+     promotion ladder requirements?
 
 4. STATUS DRIFT CHECK
    - Compare `findings-under-review.md` against actual round outcomes.
