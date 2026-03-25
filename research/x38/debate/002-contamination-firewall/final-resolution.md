@@ -55,7 +55,7 @@ SHADOW`, as already opened by Topic 004
 
 **Reasoning**:
 
-1. `docs/design_brief.md:46-49` and `findings-under-review.md:59-61` maintain the
+1. `docs/design_brief.md:46-49` and `findings-under-review.md:60-62` maintain the
    firewall on 4 whitelist buckets and ban lessons that tilt
    family/architecture/calibration-mode.
 2. By round 6, both agents agreed that the authority chain does not source a concrete
@@ -162,7 +162,7 @@ prevents rollback (FROZEN → SCANNING is invalid transition).
 **Rejected alternative**: State machine too complex for v1 — rejected in round 2
 (Facet D convergence). Hash-signing is core enforcement.
 
-**Rationale**: `findings-under-review.md:63-66`, CONTAMINATION_LOG_V4
+**Rationale**: `findings-under-review.md:67-70`, CONTAMINATION_LOG_V4
 [extra-archive] (8 rounds of actual contamination proves honor-based isolation
 insufficient)
 
@@ -174,7 +174,7 @@ enforcement. Primary enforcement = typed schema + state machine.
 **Rejected alternative**: chmod as primary enforcement — rejected because filesystem
 permissions alone cannot catch semantic leakage.
 
-**Rationale**: `docs/design_brief.md:55`, `findings-under-review.md:68-70`.
+**Rationale**: `docs/design_brief.md:55`, `findings-under-review.md:72-74`.
 Converged round 3 (Facet F).
 
 ### Decision 4: Permanent UNMAPPED Governance for Gap Rules
