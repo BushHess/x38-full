@@ -1,0 +1,4 @@
+strategy,d_sharpe,d_cagr,d_mdd,d_calmar,d_trades
+X0E5_LL30,-0.0631,-2.5,0.06,-0.1,2
+X0E5_FLOOR_SM,-0.0631,-2.5,0.06,-0.1,2
+X0E5_FLOOR_LATCH,-0.0631,-2.5,0.06,-0.1,2

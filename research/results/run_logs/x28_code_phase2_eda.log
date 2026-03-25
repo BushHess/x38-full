@@ -1,0 +1,131 @@
+Loading data...
+  H4: 18752 bars, D1: 3128 bars
+  H4 returns: 18751, D1 returns: 3127
+
+=== SECTION 1: Return Distribution ===
+  Mean:     0.000148
+  Std:      0.014839
+  Skew:     -0.2008
+  Kurtosis: 20.4145 (excess)
+  JB stat:  325731.15, p=0.00e+00
+  Obs01: H4 log returns: mean=0.000148, std=0.0148, skew=-0.201, excess_kurt=20.41
+  Obs02: Jarque-Bera rejects normality: stat=325731.1, p=0.00e+00. Excess kurtosis 20.4 indicates heavy tails.
+  Obs03: Tail excess: P(|r|>3σ)=0.0187 vs normal 0.0027 (6.9x). P(|r|>4σ)=0.00784 vs normal 0.000063 (124x).
+  Saved Fig01
+
+=== SECTION 2: Serial Dependence ===
+  ACF returns: 25 significant lags out of 100
+  Significant lags: [1, 3, 4, 6, 7, 10, 11, 16, 19, 23, 26, 29, 32, 33, 38, 39, 55, 56, 66, 85]...
+  ACF lag1=-0.0441, max|ACF|=0.0740
+  Obs04: ACF(returns): 25/100 lags significant at 5%. Lag1=-0.0441. Max |ACF|=0.0740. Weak serial dependence in raw returns.
+  Saved Fig02
+  ACF |returns|: 100/100 significant lags
+  ACF |ret| lag1=0.2607, lag50=0.1326, lag100=0.1117
+  Obs05: ACF(|returns|): 100/100 lags significant. Lag1=0.2607, lag50=0.1326, lag100=0.1117. Strong volatility clustering — slow decay.
+  Saved Fig03
+  PACF: significant lags = [1, 3, 4, 6, 7, 9, 10, 11, 16, 19]
+  Obs06: PACF(returns): significant lags = [1, 3, 4, 6, 7, 9, 10, 11, 16, 19]. Lag1=-0.0441. Little structure beyond lag 1-2.
+  Saved Fig04
+
+  Variance Ratio Test (Lo-MacKinlay):
+    k=  2: VR=0.9558, z*=-0.023, p=0.9819 
+    k=  5: VR=0.9737, z*=-0.006, p=0.9952 
+    k= 10: VR=0.9480, z*=-0.008, p=0.9938 
+    k= 20: VR=0.9499, z*=-0.005, p=0.9957 
+    k= 40: VR=0.9801, z*=-0.002, p=0.9987 
+    k= 60: VR=0.9979, z*=-0.000, p=0.9999 
+    k= 80: VR=1.0200, z*=0.001, p=0.9990 
+    k=100: VR=1.0412, z*=0.002, p=0.9982 
+    k=120: VR=1.0651, z*=0.003, p=0.9973 
+  Obs07: Variance ratio: 3/9 periods VR>1, 0/9 significant at 5%. VR(20)=0.9499, VR(120)=1.0651. Mostly consistent with random walk.
+
+  Hurst Exponent (R/S):
+  Full sample: H=0.5834
+  Rolling Hurst: mean=0.5885, min=0.4953, max=0.7016, std=0.0360
+  Obs08: Hurst (R/S): full sample H=0.583. Rolling (500-bar): mean=0.588, range [0.50, 0.70]. H>0.5 suggests mild persistence.
+  Saved Fig05
+
+=== SECTION 3: Trend Anatomy ===
+  Trends >=10%: 175
+  Trends >=20%: 61
+  [10%] count=175, mean_dur=52.7 bars, mean_mag=21.5%, median_dur=39
+  [20%] count=61, mean_dur=149.7 bars, mean_mag=45.2%, median_dur=110
+  Obs09: Uptrends ≥10%: 175 events, mean duration=53 bars (211h), mean magnitude=21.5%.
+  Obs10: Uptrends ≥20%: 61 events, mean duration=150 bars (599h), mean magnitude=45.2%.
+  Saved Tbl06
+  Saved Fig06
+
+=== SECTION 4: Volatility Structure ===
+  Vol ACF: 100/100 significant lags
+  Vol ACF lag1=0.9862, lag50=0.4678
+  Obs11: Volatility ACF: 100/100 lags significant. Lag1=0.986, lag50=0.468. Extremely persistent — characteristic of long-memory vol.
+  Vol-return corr (contemp): r=0.0092, p=0.2071
+  Vol_t → ret_1: r=0.0128, p=0.0798
+  Vol_t → ret_5: r=0.0095, p=0.1949
+  Vol_t → ret_10: r=0.0042, p=0.5683
+  Vol_t → ret_20: r=0.0041, p=0.5763
+  Obs12: Vol-return correlation: contemporaneous r=0.0092 (p=0.207). Lagged vol→ret: lag1 r=0.0128, lag20 r=0.0041. Weak vol→return predictability.
+  Saved Tbl07
+  Obs13: Vol regimes — Low (<39%): mean ret 1.69 bps, High (>62%): mean ret -0.04 bps.
+  Regime transitions: 1206 out of 18731 bars (6.4%)
+  Saved Fig07
+  Saved Fig08
+
+=== SECTION 5: Volume Structure ===
+  Volume: mean=10281.0, median=5969.4, std=14204.3
+  Taker buy ratio: mean=0.4950, std=0.0481
+  Obs14: H4 volume: mean=10281 BTC, heavily right-skewed (skew=4.60). Taker buy ratio: mean=0.4950, std=0.0481 — centered near 0.50 with low dispersion.
+  Volume × |return| (contemp): r=0.3323, p=0.00e+00
+  vol_t → ret_{t+1}: r=0.0048, p=0.5117
+  vol_t → ret_{t+5}: r=0.0029, p=0.6945
+  vol_t → ret_{t+10}: r=-0.0018, p=0.8003
+  vol_t → ret_{t+20}: r=0.0000, p=0.9997
+  tbr_t → ret_{t+1}: r=-0.0253, p=0.0005
+  tbr_t → ret_{t+5}: r=-0.0002, p=0.9734
+  tbr_t → ret_{t+10}: r=0.0099, p=0.1769
+  tbr_t → ret_{t+20}: r=0.0070, p=0.3379
+  Saved Tbl08
+  Obs15: Volume × |return| (contemp): r=0.3323 — volume concurrent with large moves. Leading volume→return: |r| < 0.03 at all horizons. Taker buy ratio→return: similarly negligible.
+  Saved Fig09
+
+=== SECTION 6: D1 Context ===
+  D1 returns: mean=0.000893, std=0.0361, skew=-0.958, kurt=15.44
+  SMA(200): above=1595, below=1334, diff=202.8 pp/yr, Welch p=0.0000, MW p=0.0000
+  EMA(21): above=1526, below=1403, diff=661.2 pp/yr, Welch p=0.0000, MW p=0.0000
+  EMA(50): above=1507, below=1422, diff=428.7 pp/yr, Welch p=0.0000, MW p=0.0000
+  Saved Tbl09
+  Obs16: D1 regime differentials: SMA(200) diff=202.8 pp/yr (p=0.0000), EMA(21) diff=661.2 pp/yr (p=0.0000), EMA(50) diff=428.7 pp/yr (p=0.0000).
+  H4|D1 EMA(21): above 9861 bars (mean 3.67 bps), below 8886 bars (mean -0.93 bps), Welch p=0.0356
+  H4|D1 EMA(50): above 9805 bars (mean 3.71 bps), below 8942 bars (mean -0.95 bps), Welch p=0.0324
+  H4|D1 SMA(200): above 9566 bars (mean 2.02 bps), below 9181 bars (mean 0.93 bps), Welch p=0.6175
+  Saved Tbl10
+  Obs17: H4 returns conditioned on D1 regime (1-day lag): EMA(21) above=3.67 bps, below=-0.93 bps (Welch p=0.0356). Cross-timeframe regime conditioning has significant effect on H4 mean returns.
+  Saved Tbl05
+
+=== SECTION 7: Observation Summary ===
+  Obs01: H4 log returns: mean=0.000148, std=0.0148, skew=-0.201, excess_kurt=20.41...
+  Obs02: Jarque-Bera rejects normality: stat=325731.1, p=0.00e+00. Excess kurtosis 20.4 indicates heavy tails...
+  Obs03: Tail excess: P(|r|>3σ)=0.0187 vs normal 0.0027 (6.9x). P(|r|>4σ)=0.00784 vs normal 0.000063 (124x)....
+  Obs04: ACF(returns): 25/100 lags significant at 5%. Lag1=-0.0441. Max |ACF|=0.0740. Weak serial dependence ...
+  Obs05: ACF(|returns|): 100/100 lags significant. Lag1=0.2607, lag50=0.1326, lag100=0.1117. Strong volatilit...
+  Obs06: PACF(returns): significant lags = [1, 3, 4, 6, 7, 9, 10, 11, 16, 19]. Lag1=-0.0441. Little structure...
+  Obs07: Variance ratio: 3/9 periods VR>1, 0/9 significant at 5%. VR(20)=0.9499, VR(120)=1.0651. Mostly consi...
+  Obs08: Hurst (R/S): full sample H=0.583. Rolling (500-bar): mean=0.588, range [0.50, 0.70]. H>0.5 suggests ...
+  Obs09: Uptrends ≥10%: 175 events, mean duration=53 bars (211h), mean magnitude=21.5%....
+  Obs10: Uptrends ≥20%: 61 events, mean duration=150 bars (599h), mean magnitude=45.2%....
+  Obs11: Volatility ACF: 100/100 lags significant. Lag1=0.986, lag50=0.468. Extremely persistent — characteri...
+  Obs12: Vol-return correlation: contemporaneous r=0.0092 (p=0.207). Lagged vol→ret: lag1 r=0.0128, lag20 r=0...
+  Obs13: Vol regimes — Low (<39%): mean ret 1.69 bps, High (>62%): mean ret -0.04 bps....
+  Obs14: H4 volume: mean=10281 BTC, heavily right-skewed (skew=4.60). Taker buy ratio: mean=0.4950, std=0.048...
+  Obs15: Volume × |return| (contemp): r=0.3323 — volume concurrent with large moves. Leading volume→return: |...
+  Obs16: D1 regime differentials: SMA(200) diff=202.8 pp/yr (p=0.0000), EMA(21) diff=661.2 pp/yr (p=0.0000), ...
+  Obs17: H4 returns conditioned on D1 regime (1-day lag): EMA(21) above=3.67 bps, below=-0.93 bps (Welch p=0....
+
+  Saved 17 observations to /var/www/trading-bots/btc-spot-dev/research/x28/tables/observations_phase2.json
+
+=== ALL OUTPUTS ===
+  Figures: Fig01-Fig09 (24 files)
+  Tables: Tbl04-Tbl10 (29 files)
+  Observations: 17
+
+Done.

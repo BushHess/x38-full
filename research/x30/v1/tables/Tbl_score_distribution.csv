@@ -1,0 +1,17 @@
+metric,value
+full_auc,0.8421
+oos_auc,0.8029
+calibration_brier,0.1679
+calibration_ece,0.0877
+spearman_corr,0.5608
+spearman_pval,0.0
+score_min,0.2491
+score_max,0.9889
+score_mean,0.6448
+score_std,0.1718
+x18_thresh,0.6867
+youden_thresh,0.555
+youden_j,0.5106
+mass_above_x18_pct,39.89
+n_kde_peaks,1
+bimodal,False

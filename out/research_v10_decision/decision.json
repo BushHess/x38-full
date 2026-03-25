@@ -1,0 +1,86 @@
+{
+  "selected_candidate": "baseline_legacy",
+  "metadata": {
+    "git_hash": "unknown",
+    "timestamp": "2026-02-22T05:45:08.450914+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline_legacy",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 25.8x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 83.48,
+        "min_cagr": 34.35,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.9,
+        "trades": 103
+      }
+    },
+    {
+      "name": "v9_like",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 77.45 < baseline 83.5"
+      ],
+      "worst": {
+        "min_score": 77.45,
+        "min_cagr": 33.05,
+        "max_mdd": 36.3,
+        "max_fee_drag": 3.89,
+        "trades": 101
+      }
+    },
+    {
+      "name": "peak_emergency",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 54.1% > baseline 33.1% + 5"
+      ],
+      "worst": {
+        "min_score": 31.28,
+        "min_cagr": 20.52,
+        "max_mdd": 54.14,
+        "max_fee_drag": 2.86,
+        "trades": 75
+      }
+    },
+    {
+      "name": "peak_cooldown",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 54.2% > baseline 33.1% + 5"
+      ],
+      "worst": {
+        "min_score": 31.68,
+        "min_cagr": 20.5,
+        "max_mdd": 54.17,
+        "max_fee_drag": 2.43,
+        "trades": 70
+      }
+    },
+    {
+      "name": "peak_dd_adaptive",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 40.4% > baseline 33.1% + 5"
+      ],
+      "worst": {
+        "min_score": 22.95,
+        "min_cagr": 13.9,
+        "max_mdd": 40.41,
+        "max_fee_drag": 1.61,
+        "trades": 71
+      }
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "overall": "PASS",
+  "alignment_rule": "allow_exact_matches",
+  "cost_rt_bps": 20.0,
+  "performance": {
+    "trades": {
+      "actual": 51,
+      "target": 51,
+      "delta": 0,
+      "tolerance": 3,
+      "status": "PASS"
+    },
+    "sharpe": {
+      "actual": 1.865,
+      "target": 1.8395,
+      "delta": 0.0255,
+      "tolerance": 0.1,
+      "status": "PASS"
+    },
+    "cagr_pct": {
+      "actual": 67.07,
+      "target": 67.1,
+      "delta": 0.03,
+      "tolerance": 5.0,
+      "status": "PASS"
+    },
+    "mdd_pct": {
+      "actual": 23.87,
+      "target": 22.7,
+      "delta": 1.17,
+      "tolerance": 3.0,
+      "status": "PASS"
+    },
+    "win_rate": {
+      "actual": 0.5882,
+      "target": 0.588,
+      "delta": 0.0002,
+      "tolerance": 0.05,
+      "status": "PASS"
+    }
+  },
+  "thresholds": [
+    {
+      "year": 2020,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.01733118,
+        "entry_q60": 0.44456083,
+        "hold_q50": 0.18495011,
+        "flow_q55": 0.03494195
+      },
+      "computed": {
+        "macro_q50": 0.01733118,
+        "entry_q60": 0.44456083,
+        "hold_q50": 0.18495011,
+        "flow_q55": 0.03494195
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2021,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.11701675,
+        "entry_q60": 0.59767632,
+        "hold_q50": 0.37280954,
+        "flow_q55": -0.02210511
+      },
+      "computed": {
+        "macro_q50": 0.11701675,
+        "entry_q60": 0.59767632,
+        "hold_q50": 0.37280954,
+        "flow_q55": -0.02210511
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2022,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.16551381,
+        "entry_q60": 0.53271889,
+        "hold_q50": 0.2733411,
+        "flow_q55": -0.01170659
+      },
+      "computed": {
+        "macro_q50": 0.16551381,
+        "entry_q60": 0.53271889,
+        "hold_q50": 0.2733411,
+        "flow_q55": -0.01170659
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2023,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.0247632,
+        "entry_q60": 0.39796868,
+        "hold_q50": 0.12118843,
+        "flow_q55": -0.00430096
+      },
+      "computed": {
+        "macro_q50": 0.0247632,
+        "entry_q60": 0.39796868,
+        "hold_q50": 0.12118843,
+        "flow_q55": -0.00430096
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2024,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.07826335,
+        "entry_q60": 0.41624702,
+        "hold_q50": 0.15029781,
+        "flow_q55": -0.01361452
+      },
+      "computed": {
+        "macro_q50": 0.07826335,
+        "entry_q60": 0.41624702,
+        "hold_q50": 0.15029781,
+        "flow_q55": -0.01361452
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2025,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.07915294,
+        "entry_q60": 0.43110899,
+        "hold_q50": 0.15856132,
+        "flow_q55": -0.00484446
+      },
+      "computed": {
+        "macro_q50": 0.07915294,
+        "entry_q60": 0.43110899,
+        "hold_q50": 0.15856132,
+        "flow_q55": -0.00484446
+      },
+      "max_delta": 0.0
+    },
+    {
+      "year": 2026,
+      "status": "PASS",
+      "spec": {
+        "macro_q50": 0.06139221,
+        "entry_q60": 0.39132836,
+        "hold_q50": 0.12691468,
+        "flow_q55": -0.03080399
+      },
+      "computed": {
+        "macro_q50": 0.06139221,
+        "entry_q60": 0.39132836,
+        "hold_q50": 0.12691468,
+        "flow_q55": -0.03080399
+      },
+      "max_delta": 0.0
+    }
+  ],
+  "trade_path": {
+    "status": "PASS",
+    "count_match": true,
+    "rebuilt_trade_count": 51,
+    "archived_trade_count": 51,
+    "timestamp_mismatch_count": 0,
+    "hold_day_mismatch_count": 0,
+    "max_net_ret_delta": 1.757981e-06,
+    "net_ret_status": "PASS",
+    "net_ret_tolerance": 0.001,
+    "timestamp_mismatches_sample": [],
+    "hold_day_mismatches_sample": []
+  },
+  "trade_distribution": {
+    "trades": 51,
+    "win_rate": 0.5882,
+    "avg_return": 0.075134,
+    "median_return": 0.00365,
+    "avg_hold_days": 11.05,
+    "median_hold_days": 6.33,
+    "top5_pnl_sum": 155133.99,
+    "bottom5_pnl_sum": -20660.51
+  },
+  "summary_full": {
+    "initial_cash": 10000.0,
+    "report_start_nav": 10000.0,
+    "final_nav_mid": 233750.73,
+    "total_return_pct": 2237.51,
+    "cagr_pct": 67.07,
+    "max_drawdown_mid_pct": 23.87,
+    "max_drawdown_liq_pct": 23.87,
+    "sharpe": 1.865,
+    "sortino": 1.3405,
+    "calmar": 2.8104,
+    "trades": 51,
+    "wins": 30,
+    "losses": 21,
+    "win_rate_pct": 58.82,
+    "profit_factor": 6.2705,
+    "avg_trade_pnl": 4387.27,
+    "avg_win": 8873.46,
+    "avg_loss": -2021.58,
+    "avg_days_held": 11.05,
+    "avg_exposure": 0.2511,
+    "time_in_market_pct": 25.11,
+    "fees_total": 5261.93,
+    "turnover_notional": 8769891.03,
+    "fee_drag_pct_per_year": 0.91,
+    "turnover_per_year": 15.2,
+    "fills": 102,
+    "years": 6.14
+  },
+  "summary_dev": {
+    "initial_cash": 10000.0,
+    "report_start_nav": 10000.0,
+    "final_nav_mid": 90101.67,
+    "total_return_pct": 801.02,
+    "cagr_pct": 73.26,
+    "max_drawdown_mid_pct": 23.87,
+    "max_drawdown_liq_pct": 23.87,
+    "sharpe": 1.8493,
+    "sortino": 1.3405,
+    "calmar": 3.0698,
+    "trades": 35,
+    "wins": 18,
+    "losses": 17,
+    "win_rate_pct": 51.43,
+    "profit_factor": 3.7537,
+    "avg_trade_pnl": 2288.62,
+    "avg_win": 6066.13,
+    "avg_loss": -1711.09,
+    "avg_days_held": 10.59,
+    "avg_exposure": 0.2536,
+    "time_in_market_pct": 25.36,
+    "fees_total": 2098.51,
+    "turnover_notional": 3497521.8,
+    "fee_drag_pct_per_year": 1.16,
+    "turnover_per_year": 19.36,
+    "fills": 70,
+    "years": 4.0
+  },
+  "summary_holdout": {
+    "initial_cash": 10000.0,
+    "report_start_nav": 10000.0,
+    "final_nav_mid": 25943.0,
+    "total_return_pct": 159.43,
+    "cagr_pct": 56.11,
+    "max_drawdown_mid_pct": 12.15,
+    "max_drawdown_liq_pct": 12.15,
+    "sharpe": 1.9649,
+    "sortino": 1.4212,
+    "calmar": 4.6164,
+    "trades": 16,
+    "wins": 12,
+    "losses": 4,
+    "win_rate_pct": 75.0,
+    "profit_factor": 11.7485,
+    "avg_trade_pnl": 996.44,
+    "avg_win": 1452.19,
+    "avg_loss": -370.82,
+    "avg_days_held": 12.04,
+    "avg_exposure": 0.2464,
+    "time_in_market_pct": 24.64,
+    "fees_total": 351.09,
+    "turnover_notional": 585157.74,
+    "fee_drag_pct_per_year": 0.8,
+    "turnover_per_year": 13.31,
+    "fills": 32,
+    "years": 2.14
+  }
+}

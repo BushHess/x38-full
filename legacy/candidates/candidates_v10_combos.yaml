@@ -1,0 +1,42 @@
+candidates:
+  # Baseline: current defaults (trail_tighten=0.25, rsi=ewm_span)
+  - name: baseline
+    description: "Current V10 defaults"
+    params: {}
+
+  # --- Combination candidates ---
+  # Logic: rsi_wilder/cooldown_2 boost harsh but hurt TOPPING
+  #        trail_atr_30 helps TOPPING but hurts harsh
+  #        => combine to offset weaknesses
+
+  # Combo A: rsi_wilder + trail_atr_30
+  # (wilder boosts harsh +6pts, trail_30 helps TOPPING +1.4%)
+  - name: combo_wilder_trail30
+    description: "rsi_wilder + trail_atr_mult=3.0"
+    params:
+      rsi_method: wilder
+      trail_atr_mult: 3.0
+
+  # Combo B: cooldown_2 + trail_atr_30
+  # (cooldown boosts harsh +8.6pts, trail_30 helps TOPPING +1.4%)
+  - name: combo_cd2_trail30
+    description: "cooldown_2 + trail_atr_mult=3.0"
+    params:
+      entry_cooldown_bars: 2
+      trail_atr_mult: 3.0
+
+  # Combo C: rsi_wilder + cooldown_2
+  # (two strongest harsh boosters combined)
+  - name: combo_wilder_cd2
+    description: "rsi_wilder + cooldown_2 (both harsh boosters)"
+    params:
+      rsi_method: wilder
+      entry_cooldown_bars: 2
+
+  # Combo D: triple - all three promising changes
+  - name: combo_triple
+    description: "rsi_wilder + cooldown_2 + trail_atr_30"
+    params:
+      rsi_method: wilder
+      entry_cooldown_bars: 2
+      trail_atr_mult: 3.0

@@ -1,0 +1,64 @@
+Loading data...
+
+===============================================================================================
+INFRASTRUCTURE MITIGATION: Combined disruption at tighter entry delay bounds
+===============================================================================================
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  E5_plus_EMA1D21
+───────────────────────────────────────────────────────────────────────────────────────────────
+  baseline               Sharpe=1.2846  delta=+0.0000  trades=194  MDD=0.163
+  exit_only_D1           Sharpe=1.1785  delta=-0.1062  trades=186  MDD=0.331  → GO
+  exit_only_D2           Sharpe=1.1631  delta=-0.1216  trades=184  MDD=0.346  → GO
+  entry_D1+exit_D1       Sharpe=1.1139  delta=-0.1707  trades=182  MDD=0.350  → GO
+  entry_D1+exit_D2       Sharpe=1.1351  delta=-0.1495  trades=180  MDD=0.359  → GO
+  entry_D2+exit_D1       Sharpe=1.1058  delta=-0.1788  trades=180  MDD=0.387  → GO
+  entry_D2+exit_D2       Sharpe=1.1055  delta=-0.1791  trades=179  MDD=0.398  → GO
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  E0_plus_EMA1D21
+───────────────────────────────────────────────────────────────────────────────────────────────
+  baseline               Sharpe=1.0404  delta=+0.0000  trades=180  MDD=0.273
+  exit_only_D1           Sharpe=1.0292  delta=-0.0111  trades=173  MDD=0.341  → GO
+  exit_only_D2           Sharpe=1.0949  delta=+0.0546  trades=170  MDD=0.385  → GO
+  entry_D1+exit_D1       Sharpe=1.0153  delta=-0.0251  trades=169  MDD=0.359  → GO
+  entry_D1+exit_D2       Sharpe=1.0613  delta=+0.0210  trades=168  MDD=0.402  → GO
+  entry_D2+exit_D1       Sharpe=1.0126  delta=-0.0277  trades=167  MDD=0.396  → GO
+  entry_D2+exit_D2       Sharpe=1.0480  delta=+0.0077  trades=166  MDD=0.437  → GO
+
+===============================================================================================
+SUMMARY: Sign-off status at each infrastructure level
+===============================================================================================
+
+Scenario                    E5_plus             Status      E0_plus             Status
+────────────────────────────────────────────────────────────────────────────────────
+exit_only_D1                -0.1062                 GO      -0.0111                 GO
+exit_only_D2                -0.1216                 GO      +0.0546                 GO
+entry_D1+exit_D1            -0.1707                 GO      -0.0251                 GO
+entry_D1+exit_D2            -0.1495                 GO      +0.0210                 GO
+entry_D2+exit_D1            -0.1788                 GO      -0.0277                 GO
+entry_D2+exit_D2            -0.1791                 GO      +0.0077                 GO
+
+===============================================================================================
+INFRASTRUCTURE LEVELS: What entry delay bound is needed for E5_plus to pass?
+===============================================================================================
+
+Infrastructure Level                             E5+ delta  Pass -0.35?    E0+ delta    Pass?
+───────────────────────────────────────────────────────────────────────────────────────────
+LT0.5: entry < 2h (D0 guaranteed)                  -0.1216          YES      +0.0546      YES
+LT0.75: entry ≤ 4h (D1 max)                        -0.1707          YES      -0.0251      YES
+LT0.75+: entry ≤ 4h, exit degraded                 -0.1495          YES      +0.0210      YES
+LT1 current: entry ≤ 8h (D2 max)                   -0.1788          YES      -0.0277      YES
+
+KEY FINDING:
+  Step 5 binding scenario (entry_D2 + exit_D1):
+    E5_plus delta = -0.1788  → FAILS -0.35 threshold
+    E0_plus delta = -0.0277  → passes
+
+  With entry_D1 max (entry ≤ 4h infrastructure):
+    E5_plus delta = -0.1707  → PASSES -0.35 threshold
+    E0_plus delta = -0.0251  → passes
+
+  Conclusion: If infrastructure guarantees entry delay ≤ 1 H4 bar (4h),
+  E5_plus's worst combined disruption drops from -0.1788 to -0.1707.
+

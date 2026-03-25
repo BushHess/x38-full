@@ -1,0 +1,58 @@
+{
+  "state_pack_version": "state_pack_v1",
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "parent_system_version_id": null,
+  "session_id": "session_20260319_seed_001",
+  "mode": "seed_discovery",
+  "snapshot_id": "snapshot_20260318",
+  "freeze_cutoff_utc": "2026-03-18T23:59:59.999000+00:00",
+  "design_inputs_end_utc": "2026-03-18T23:59:59.999000+00:00",
+  "evidence_clean_since_utc": "2026-03-19T00:00:00+00:00",
+  "reason_for_freeze": "Completed the first seed discovery session on snapshot_20260318 under constitution v4.0. Froze V1 with one champion and one challenger; all evidence to date remains internal seed evidence only.",
+  "active_champion_id": "btcsd_20260318_c3_trade4h15m",
+  "active_challenger_ids": [
+    "btcsd_20260318_c1_av4h"
+  ],
+  "current_forward_status": "not_started",
+  "forward_boundary_utc": "2026-03-18T23:59:59.999000+00:00",
+  "live_candidate_ids": [
+    "btcsd_20260318_c3_trade4h15m",
+    "btcsd_20260318_c1_av4h"
+  ],
+  "retired_candidate_ids": [
+    "btcsd_20260318_c2_flow1hpb"
+  ],
+  "origin_snapshot": {
+    "snapshot_id": "snapshot_20260318",
+    "notes": "First seed discovery session. Historical snapshot covers 2017-08-17 to 2026-03-18 UTC. 4 timeframes: 15m, 1h, 4h, 1d. All files canonicalized to 13-column schema.",
+    "admitted_input_files": [
+      "spot_btcusdt_15m.csv",
+      "spot_btcusdt_1h.csv",
+      "spot_btcusdt_4h.csv",
+      "spot_btcusdt_1d.csv"
+    ],
+    "constitution_file": "research_constitution_v4.0.yaml",
+    "schema_conventions_file": "FILE_AND_SCHEMA_CONVENTIONS_EN.md",
+    "hash_manifest_file": "input_hash_manifest.txt"
+  },
+  "artifact_inventory": {
+    "frozen_system_specs": [
+      "frozen_system_specs/btcsd_20260318_c3_trade4h15m.md",
+      "frozen_system_specs/btcsd_20260318_c1_av4h.md"
+    ],
+    "impl": [
+      "impl/btcsd_20260318_c3_trade4h15m.py",
+      "impl/btcsd_20260318_c1_av4h.py"
+    ],
+    "warmup_buffers_required": true,
+    "warmup_buffer_files": [
+      "warmup_buffers/raw/spot_btcusdt_15m.csv",
+      "warmup_buffers/raw/spot_btcusdt_4h.csv",
+      "warmup_buffers/raw/spot_btcusdt_1d.csv",
+      "warmup_buffers/warmup_manifest.json"
+    ]
+  },
+  "packaged_at_utc": "2026-03-21T11:30:04.382023+00:00"
+}

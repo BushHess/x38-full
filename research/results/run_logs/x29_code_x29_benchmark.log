@@ -1,0 +1,94 @@
+/var/www/trading-bots/btc-spot-dev/research/x29/code/x29_benchmark.py:35: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+======================================================================
+X29: Optimal Stack — Combination of Validated Overlays on E5+EMA1D21
+======================================================================
+  12 strategies × 9 costs = 108 backtests
+  Primary cost: 25 bps RT
+
+Loading data...
+  H4 bars: 17838, D1 bars: 2973, warmup: 2190 bars
+  Post-warmup years: 7.14
+
+Computing indicators...
+Computing Monitor V2 alerts...
+  RED bars on H4: 1638 (9.2%)
+
+Training churn model on E5+EMA1D21 trades (50 bps)...
+  E5+EMA1D21 @ 50 bps: 202 trades, Sh=1.4690
+  Churn model: C=10.0, n_train=183
+  X14D threshold: 0.500
+  X18 threshold (α=40%): 0.718
+
+======================================================================
+T0: Full-Sample Matrix (108 backtests)
+======================================================================
+  S01 Base             @25bps: Sh=1.640 CAGR=73.4% MDD=36.6% T=202 Sup=0 MonBlk=0
+  S02 Base+T45         @25bps: Sh=1.337 CAGR=57.5% MDD=42.7% T=139 Sup=0 MonBlk=0
+  S03 X14D             @25bps: Sh=1.547 CAGR=72.8% MDD=42.7% T=106 Sup=1667 MonBlk=0
+  S04 X14D+T45         @25bps: Sh=1.455 CAGR=66.7% MDD=45.7% T=103 Sup=420 MonBlk=0
+  S05 X18              @25bps: Sh=1.654 CAGR=78.8% MDD=35.2% T=161 Sup=531 MonBlk=0
+  S06 X18+T45          @25bps: Sh=1.447 CAGR=65.9% MDD=40.6% T=128 Sup=106 MonBlk=0
+  S07 Mon              @25bps: Sh=1.770 CAGR=79.4% MDD=36.6% T=184 Sup=0 MonBlk=268
+  S08 Mon+T45          @25bps: Sh=1.415 CAGR=60.8% MDD=36.6% T=128 Sup=0 MonBlk=268
+  S09 Mon+X14D         @25bps: Sh=1.678 CAGR=79.8% MDD=29.3% T=96 Sup=1555 MonBlk=268
+  S10 Mon+X14D+T45     @25bps: Sh=1.589 CAGR=73.8% MDD=38.5% T=93 Sup=364 MonBlk=268
+  S11 Mon+X18          @25bps: Sh=1.763 CAGR=84.1% MDD=35.2% T=145 Sup=525 MonBlk=268
+  S12 Mon+X18+T45      @25bps: Sh=1.526 CAGR=69.4% MDD=39.1% T=117 Sup=106 MonBlk=268
+
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x29/tables/Tbl_full_matrix.csv
+
+  Gate T0: PASS
+  T0 figures saved.
+
+======================================================================
+T1: Interaction Analysis (factorial decomposition)
+======================================================================
+  @25 bps interactions:
+    Mon×X14D            : +0.0020
+    Mon×X18             : -0.0215
+    Mon×T45             : -0.0513
+    X14D×T45            : +0.2123 ***
+    X18×T45             : +0.0957
+    Mon×X14D×T45        : +0.0527
+    Mon×X18×T45         : +0.0221
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x29/tables/Tbl_interactions.csv
+  Gate T1 WARN: X14D×T45 has |interaction| > 0.10 in 7/9 costs
+  Max |interaction|: 0.2468
+  Gate T1: WARN (strong interference)
+
+======================================================================
+T2: Walk-Forward Optimization (4-fold)
+======================================================================
+  Top strategies for WFO: ['Base', 'X18', 'Mon', 'Mon+X14D', 'Mon+X18']
+  Base            : WFO 0/4 (0%), mean Δsh=+0.000
+  X18             : WFO 3/4 (75%), mean Δsh=+0.182
+  Mon             : WFO 4/4 (100%), mean Δsh=+0.227
+  Mon+X14D        : WFO 3/4 (75%), mean Δsh=+0.021
+  Mon+X18         : WFO 3/4 (75%), mean Δsh=+0.400
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x29/tables/Tbl_wfo_results.csv
+
+  Best WFO: Mon (100%)
+  Gate T2: PASS
+
+======================================================================
+T3: Bootstrap Validation (500 VCBB)
+======================================================================
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+  X18             : P(Δsh>0)=47.0%, med Δsh=-0.014, P(Δmdd<0)=37.6%, med Δmdd=+1.2pp
+  Mon             : P(Δsh>0)=47.0%, med Δsh=-0.008, P(Δmdd<0)=55.0%, med Δmdd=-0.0pp
+  Mon+X14D        : P(Δsh>0)=37.6%, med Δsh=-0.062, P(Δmdd<0)=24.0%, med Δmdd=+6.3pp
+  Mon+X18         : P(Δsh>0)=41.4%, med Δsh=-0.035, P(Δmdd<0)=41.8%, med Δmdd=+0.8pp
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x29/tables/Tbl_bootstrap.csv
+
+  Best P(Δsh>0): X18 (47.0%)
+  Gate T3: FAIL
+
+*** T3 FAIL: P(d_sharpe>0) < 55%. Recommend Monitor V2 only. ***
+
+  Results saved: /var/www/trading-bots/btc-spot-dev/research/x29/x29_results.json
+  Report saved: /var/www/trading-bots/btc-spot-dev/research/x29/x29_report.md

@@ -1,0 +1,58 @@
+VALIDATION PACK — OUTPUT INDEX
+========================================
+Generated: 2026-02-26 10:03:03 UTC
+Candidate: amt from amt_default.yaml
+Baseline:  v8_apex from v10_baseline.yaml
+Period:    2019-01-01 -> 2026-02-20
+Suite:     full
+Seed:      42
+
+REPORTS (2 files)
+------------------------------
+  reports/decision.json
+  reports/validation_report.md
+
+DATA (18 files)
+------------------------------
+  results/backtest_detail.json
+  results/backtest_summary.csv
+  results/bootstrap_paired.csv
+  results/bootstrap_summary.json
+  results/dd_episodes_baseline.csv
+  results/dd_episodes_candidate.csv
+  results/dd_episodes_summary.json
+  results/holdout_detail.json
+  results/holdout_lock.json
+  results/holdout_metrics.csv
+  results/holdout_regime.csv
+  results/regime_decomposition.csv
+  results/regime_decomposition.json
+  results/selection_bias.json
+  results/sensitivity_detail.json
+  results/sensitivity_grid.csv
+  results/wfo_per_round.csv
+  results/wfo_summary.json
+
+CONFIGS (2 files)
+------------------------------
+  configs/baseline_v10_baseline.yaml
+  configs/candidate_amt_default.yaml
+
+LOGS (1 files)
+------------------------------
+  logs/run.log
+
+SUITE RESULTS
+========================================
+  lookahead            SKIP
+  backtest             PASS
+  regime               INFO
+  wfo                  PASS
+  bootstrap            FAIL
+  sensitivity          INFO
+  holdout              FAIL
+  selection_bias       PASS
+  trade_level          ERROR — 'Trade' object has no attribute 'entry_time'
+  dd_episodes          INFO
+
+Decision: REJECT (exit code 2)

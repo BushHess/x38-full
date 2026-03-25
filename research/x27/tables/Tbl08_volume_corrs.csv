@@ -1,0 +1,16 @@
+type,lag_or_k,corr,p_value
+contemporaneous_log_vol_abs_ret,0,0.223293,0.0
+leading_log_vol_abs_ret,1,0.073478,0.0
+leading_log_vol_abs_ret,2,0.052459,0.0
+leading_log_vol_abs_ret,3,0.040152,0.0
+leading_log_vol_abs_ret,4,0.032944,6e-06
+leading_log_vol_abs_ret,5,0.036866,0.0
+leading_log_vol_abs_ret,6,0.038785,0.0
+leading_log_vol_abs_ret,7,0.019107,0.008898
+leading_log_vol_abs_ret,8,0.005815,0.426013
+leading_log_vol_abs_ret,9,0.002661,0.715678
+leading_log_vol_abs_ret,10,-0.003797,0.603227
+tbr_fwd_ret,1,-0.00363,0.619201
+tbr_fwd_ret,5,0.01236,0.090608
+tbr_fwd_ret,10,0.016781,0.021602
+tbr_fwd_ret,20,0.026528,0.000282

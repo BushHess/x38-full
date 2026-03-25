@@ -1,0 +1,32 @@
+2026-02-24 06:01:39,948 INFO validation: Validation run started
+2026-02-24 06:01:39,948 INFO validation: command=python validate_strategy.py --strategy v8_apex --baseline v8_apex --config v10/configs/v10_overlayA.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --out out_validation_sample_small --suite full --scenarios smart,base,harsh --bootstrap 200 --seed 1337 --lookahead-check off --sensitivity-grid --start 2024-01-01 --end 2024-09-01 --wfo-train-months 2 --wfo-test-months 1 --wfo-slide-months 1 --wfo-windows 2 --force
+2026-02-24 06:01:39,948 INFO validation: seed=1337
+2026-02-24 06:01:39,948 INFO validation: git_hash=c74c650
+2026-02-24 06:01:39,948 INFO validation: candidate=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/v10_overlayA.yaml
+2026-02-24 06:01:39,948 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:01:39,948 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 06:01:39,948 INFO validation: period=2024-01-01 -> 2024-09-01
+2026-02-24 06:01:40,266 INFO validation: suite backtest started
+2026-02-24 06:01:40,266 INFO validation:   backtest: candidate x smart
+2026-02-24 06:01:40,299 INFO validation:   backtest: candidate x base
+2026-02-24 06:01:40,332 INFO validation:   backtest: candidate x harsh
+2026-02-24 06:01:40,364 INFO validation:   backtest: baseline x smart
+2026-02-24 06:01:40,398 INFO validation:   backtest: baseline x base
+2026-02-24 06:01:40,430 INFO validation:   backtest: baseline x harsh
+2026-02-24 06:01:40,464 INFO validation: suite backtest finished: pass (0.20s)
+2026-02-24 06:01:40,464 INFO validation: suite regime started
+2026-02-24 06:01:40,472 INFO validation: suite regime finished: info (0.01s)
+2026-02-24 06:01:40,472 INFO validation: suite wfo started
+2026-02-24 06:01:40,990 INFO validation: suite wfo finished: fail (0.52s)
+2026-02-24 06:01:40,990 WARNING validation: Low-trade WFO detected (2 windows); trade-level suite auto-enabled
+2026-02-24 06:01:40,992 INFO validation: suite bootstrap started
+2026-02-24 06:01:41,377 INFO validation: suite bootstrap finished: fail (0.39s)
+2026-02-24 06:01:41,378 INFO validation: suite sensitivity started
+2026-02-24 06:01:42,291 INFO validation: suite sensitivity finished: info (0.91s)
+2026-02-24 06:01:42,291 INFO validation: suite holdout started
+2026-02-24 06:01:42,631 INFO validation: suite holdout finished: pass (0.34s)
+2026-02-24 06:01:42,632 INFO validation: suite selection_bias started
+2026-02-24 06:01:43,180 INFO validation: suite selection_bias finished: pass (0.55s)
+2026-02-24 06:01:43,181 INFO validation: suite trade_level started
+2026-02-24 06:01:43,196 INFO validation: suite trade_level finished: info (0.02s)
+2026-02-24 06:01:43,326 INFO validation: Validation run complete in 3.38s

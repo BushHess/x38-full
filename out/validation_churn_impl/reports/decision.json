@@ -1,0 +1,48 @@
+{
+  "verdict": "PROMOTE",
+  "exit_code": 0,
+  "deltas": {
+    "full_harsh_score_delta": 0.0,
+    "matched_trade_p_positive": 0.0,
+    "matched_trade_ci_lower": 0.0,
+    "matched_trade_ci_upper": 0.0
+  },
+  "failures": [],
+  "reasons": [
+    "All configured decision gates passed"
+  ],
+  "key_links": {
+    "data_integrity": "results/data_integrity.json",
+    "backtest": "results/full_backtest_summary.csv",
+    "wfo": "results/wfo_per_round_metrics.csv",
+    "holdout": "results/final_holdout_metrics.csv",
+    "bootstrap": "results/bootstrap_paired_test.csv",
+    "trade_level": "results/matched_trades.csv",
+    "regression_guard": "results/regression_guard.json"
+  },
+  "gates": [
+    {
+      "name": "full_harsh_delta",
+      "passed": true,
+      "severity": "hard",
+      "detail": "delta=0.0000, min=-0.2000"
+    },
+    {
+      "name": "wfo_robustness",
+      "passed": true,
+      "severity": "soft",
+      "detail": "positive=0/1, required>=0"
+    },
+    {
+      "name": "trade_level_matched_delta",
+      "passed": true,
+      "severity": "soft",
+      "detail": "p(delta>0)=0.0000"
+    }
+  ],
+  "metadata": {
+    "n_gates": 3,
+    "n_hard_fail": 0,
+    "n_soft_fail": 0
+  }
+}

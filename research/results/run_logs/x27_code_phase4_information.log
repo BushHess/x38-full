@@ -1,0 +1,74 @@
+======================================================================
+INFORMATION RANKING (horizon k=20, sorted by |Spearman rho|)
+======================================================================
+  ema_spread_120       [price     ]  rho=+0.0479***  MI=0.02649***  n=18712
+  roc_120              [price     ]  rho=+0.0476***  MI=0.02226***  n=18612
+  d1_above_ema21       [d1_regime ]  rho=+0.0462***  MI=0.00000     n=18712
+  ema_spread_80        [price     ]  rho=+0.0411***  MI=0.02434***  n=18712
+  roc_60               [price     ]  rho=+0.0352***  MI=0.02375***  n=18672
+  breakout_120         [price     ]  rho=+0.0346***  MI=0.00000     n=18712
+  breakout_40          [price     ]  rho=+0.0338***  MI=0.00000     n=18712
+  atr_pctl             [volatility]  rho=+0.0330***  MI=0.00758***  n=18463
+  ema_spread_50        [price     ]  rho=+0.0326***  MI=0.02431***  n=18712
+  vol60                [volatility]  rho=+0.0307***  MI=0.05255***  n=18672
+  breakout_60          [price     ]  rho=+0.0306***  MI=0.00000     n=18712
+  vol_regime_high      [volatility]  rho=+0.0273***  MI=0.00000     n=18712
+  breakout_20          [price     ]  rho=+0.0241***  MI=0.00000     n=18712
+  vol20                [volatility]  rho=+0.0239**   MI=0.04007***  n=18712
+  tbr                  [volume    ]  rho=+0.0197**   MI=0.00311**   n=18712
+  roc_40               [price     ]  rho=+0.0194**   MI=0.02196***  n=18692
+  roc_10               [price     ]  rho=+0.0147*    MI=0.01969***  n=18712
+  log_vol              [volume    ]  rho=+0.0109     MI=0.00854***  n=18712
+  roc_20               [price     ]  rho=+0.0108     MI=0.02470***  n=18712
+  d1_above_sma200      [d1_regime ]  rho=+0.0084     MI=0.00000     n=18712
+
+======================================================================
+CATEGORY SUMMARY (avg |rho| across horizons)
+======================================================================
+            avg_abs_rho  max_abs_rho  n_significant  n_total
+category                                                    
+price          0.026775      0.07092             53       72
+d1_regime      0.026766      0.05603              7       12
+volatility     0.026086      0.05691             21       24
+volume         0.012193      0.02529              4       12
+
+======================================================================
+POWER ANALYSIS
+======================================================================
+  B_breakout   + Y_atr_trail    + none            DOF=3  N= 50  MDE=0.396  Obs=1.064  Ratio=2.69  → POWERED
+  B_breakout   + W_time         + none            DOF=2  N= 47  MDE=0.409  Obs=0.740  Ratio=1.81  → POWERED
+  B_breakout   + Z_signal_rev   + none            DOF=3  N= 35  MDE=0.474  Obs=0.886  Ratio=1.87  → POWERED
+  C_roc        + Y_atr_trail    + none            DOF=4  N=105  MDE=0.273  Obs=0.833  Ratio=3.05  → POWERED
+  C_roc        + W_time         + none            DOF=3  N= 72  MDE=0.330  Obs=0.394  Ratio=1.19  → BORDERLINE
+  C_roc        + Z_signal_rev   + none            DOF=4  N= 69  MDE=0.337  Obs=0.726  Ratio=2.15  → POWERED
+  B_breakout   + Y_atr_trail    + regime_sma200   DOF=4  N= 32  MDE=0.495  Obs=0.873  Ratio=1.76  → POWERED
+  B_breakout   + W_time         + regime_sma200   DOF=3  N= 31  MDE=0.503  Obs=0.975  Ratio=1.94  → POWERED
+  C_roc        + Y_atr_trail    + regime_sma200   DOF=5  N= 55  MDE=0.378  Obs=0.571  Ratio=1.51  → POWERED
+  C_roc        + W_time         + regime_sma200   DOF=4  N= 40  MDE=0.443  Obs=0.574  Ratio=1.30  → BORDERLINE
+
+======================================================================
+DOF BUDGET — Component Classes
+======================================================================
+  Entry: Breakout (B)                  DOF=1  (N)
+  Entry: ROC threshold (C)             DOF=2  (N, tau)
+  Exit: ATR trail (Y)                  DOF=2  (period, multiplier)
+  Exit: Time-based (W)                 DOF=1  (H)
+  Exit: Signal reversal (Z)            DOF=2  (type, param)
+  Filter: Price-level regime           DOF=1  (K)
+  Filter: None                         DOF=0  (-)
+
+======================================================================
+DOF BUDGET — Combinations
+======================================================================
+  B + Y                 = 1 + 2 + 0 = 3 DOF  ✓
+  B + Y + regime        = 1 + 2 + 1 = 4 DOF  ✓
+  B + W                 = 1 + 1 + 0 = 2 DOF  ✓
+  B + W + regime        = 1 + 1 + 1 = 3 DOF  ✓
+  C + Y                 = 2 + 2 + 0 = 4 DOF  ✓
+  C + Y + regime        = 2 + 2 + 1 = 5 DOF  ✓
+  C + W                 = 2 + 1 + 0 = 3 DOF  ✓
+  C + W + regime        = 2 + 1 + 1 = 4 DOF  ✓
+
+✓ All combinations ≤ 10 DOF budget
+
+Tables saved to /var/www/trading-bots/btc-spot-dev/research/x27/tables/

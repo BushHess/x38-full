@@ -1,0 +1,19 @@
+{
+  "candidate": {
+    "unused_fields": [
+      "warmup_days"
+    ],
+    "unused_raw": [
+      "warmup_days"
+    ],
+    "allowlist": [],
+    "status": "FAIL"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "status": "FAIL"
+}

@@ -1,0 +1,72 @@
+{
+  "l2_model": {
+    "C": 10.0,
+    "cv_auc": 0.8281
+  },
+  "enet_model": {
+    "C": 10.0,
+    "l1_ratio": 0.0,
+    "cv_auc": 0.8281,
+    "zeroed_features": 0
+  },
+  "score_correlation": 1.0,
+  "wfo_results": {
+    "l2": {
+      "discrete_pf90": {
+        "wins": 2,
+        "mean_dsh": 0.1388
+      },
+      "B2_mf60": {
+        "wins": 2,
+        "mean_dsh": 0.2495
+      },
+      "B2_mf80": {
+        "wins": 2,
+        "mean_dsh": 0.0491
+      }
+    },
+    "enet": {
+      "discrete_pf90": {
+        "wins": 2,
+        "mean_dsh": 0.1388
+      },
+      "B2_mf60": {
+        "wins": 2,
+        "mean_dsh": 0.2495
+      },
+      "B2_mf80": {
+        "wins": 2,
+        "mean_dsh": 0.0491
+      }
+    }
+  },
+  "bootstrap": {
+    "enet_B2_mf60": {
+      "p_dsh": 0.308,
+      "med_dsh": -0.1278,
+      "p_dmdd": 0.744,
+      "med_dmdd": -4.89
+    },
+    "enet_discrete_pf90": {
+      "p_dsh": 0.436,
+      "med_dsh": -0.0168,
+      "p_dmdd": 0.572,
+      "med_dmdd": -0.8
+    },
+    "l2_B2_mf60": {
+      "p_dsh": 0.308,
+      "med_dsh": -0.1278,
+      "p_dmdd": 0.744,
+      "med_dmdd": -4.89
+    },
+    "l2_discrete_pf90": {
+      "p_dsh": 0.436,
+      "med_dsh": -0.0168,
+      "p_dmdd": 0.572,
+      "med_dmdd": -0.8
+    }
+  },
+  "enet_changes_verdict": false,
+  "best_overall": "enet_discrete_pf90",
+  "best_p_dsh": 0.436
+}

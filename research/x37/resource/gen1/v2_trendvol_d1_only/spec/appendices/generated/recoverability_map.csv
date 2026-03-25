@@ -1,0 +1,4 @@
+class,item
+EXACT,"Final-system formulas, annual thresholds, signal path, entry/exit dates, search grids preserved in archived CSVs"
+HIGH_CONFIDENCE,Most exploratory feature formulas recoverable from naming DSL and report semantics
+NOT_FULLY_RECOVERABLE,"Original bootstrap RNG seed, exact plotting code, and a small number of exploratory-only x_ interaction formulas were not serialized in surviving artifacts"

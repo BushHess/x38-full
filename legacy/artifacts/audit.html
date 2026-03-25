@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTREND Deployment — Full Mechanism Audit</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --dim: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --yellow: #d29922; --red: #f85149;
+    --orange: #db6d28; --purple: #bc8cff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; }
+  h1 { font-size: 1.8em; margin-bottom: 4px; color: var(--accent); }
+  h2 { font-size: 1.35em; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--text); }
+  h3 { font-size: 1.1em; margin: 24px 0 12px; color: var(--purple); }
+  .subtitle { color: var(--dim); margin-bottom: 24px; font-size: 0.95em; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0 28px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { font-size: 0.8em; color: var(--dim); margin-top: 4px; }
+  .num.green { color: var(--green); }
+  .num.yellow { color: var(--yellow); }
+  .num.red { color: var(--red); }
+  .num.accent { color: var(--accent); }
+  .num.purple { color: var(--purple); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 0.88em; }
+  th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: #1c2129; color: var(--accent); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+  tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  tr:hover { background: rgba(88,166,255,0.06); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.78em; font-weight: 600; white-space: nowrap; }
+  .badge-proven { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-infra { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .badge-good { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
+  .badge-neutral { background: rgba(139,148,158,0.15); color: var(--dim); border: 1px solid rgba(139,148,158,0.3); }
+  .badge-bad { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-ironclad { background: rgba(219,109,40,0.15); color: var(--orange); border: 1px solid rgba(219,109,40,0.3); }
+  .badge-spotbot { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+  .badge-both { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-star { background: rgba(210,153,34,0.2); color: var(--yellow); border: 1px solid rgba(210,153,34,0.4); }
+
+  .verdict { font-weight: 700; }
+  .verdict-use { color: var(--green); }
+  .verdict-test { color: var(--yellow); }
+  .verdict-skip { color: var(--red); }
+  .verdict-review { color: var(--dim); }
+
+  .note { background: var(--surface); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9em; }
+  .note-warn { border-left-color: var(--yellow); }
+  .note-critical { border-left-color: var(--red); }
+  .note-star { border-left-color: var(--yellow); background: rgba(210,153,34,0.08); }
+
+  .section-divider { border: none; border-top: 2px solid var(--border); margin: 40px 0; }
+  .tag { font-size: 0.75em; color: var(--dim); }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+  .highlight { background: rgba(210,153,34,0.15); padding: 1px 4px; border-radius: 3px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>VTREND Deployment — Full Mechanism Audit</h1>
+<p class="subtitle">Scan toàn bộ IRONCLAD (spot_portfolio_bot_v2.py, 5420 dòng) + spotbot (V8 VdoMomentum, engine, risk, paper) · Feb 2026</p>
+
+<!-- ============================================================ -->
+<!-- SUMMARY -->
+<!-- ============================================================ -->
+
+<div class="summary-grid">
+  <div class="stat-card"><div class="num green">24</div><div class="label">Tổng cơ chế có giá trị</div></div>
+  <div class="stat-card"><div class="num accent">14</div><div class="label">Execution / Infra (dùng ngay)</div></div>
+  <div class="stat-card"><div class="num yellow">8</div><div class="label">Operational Safety (dùng ngay)</div></div>
+  <div class="stat-card"><div class="num purple">2</div><div class="label">Strategy-level (cần test)</div></div>
+</div>
+
+<div class="note note-star">
+  <strong>⭐ Top 3 bị sót quan trọng nhất:</strong> Symbol Cooldown (#15), Escalating Cooldown (#23), Max Position Value Cap (#21). Ba cái này trực tiếp address cascade DD — vấn đề lớn nhất của VTREND mà chưa có giải pháp.
+</div>
+
+<!-- ============================================================ -->
+<!-- PART A: 14 EXECUTION FEATURES (ĐÃ LIỆT KÊ) -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>A. Execution & Fee Optimization — 14 Features (đã liệt kê trước đó)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Tất cả là infrastructure, không phải strategy logic. Prevent mất tiền vì operational failures.</p>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Cơ chế</th>
+  <th>Mô tả</th>
+  <th>Tại sao có giá trị</th>
+  <th>Nguồn</th>
+  <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>LIMIT_MAKER entry</strong></td>
+  <td>Vào lệnh bằng post-only limit order, trả maker fee thay vì taker fee</td>
+  <td>Tiết kiệm ~0.05-0.10% mỗi entry. Ở 230 trades, tiết kiệm ~12-23% fee tổng</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Slippage buffer</strong> <span class="mono">(10 bps)</span></td>
+  <td>Size lệnh nhỏ hơn 0.1% để account cho fill slippage</td>
+  <td>Risk thật không vượt risk tính toán khi fill price xấu hơn expected</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Spread filter</strong> <span class="mono">(max 0.2%)</span></td>
+  <td>Không trade khi bid-ask spread > 0.2%</td>
+  <td>Spread rộng = execution cost gấp 5-10x. Cũng hoạt động như vol gate ẩn — khi vol cực đoan, spread tự blow out → tự block</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Fee caching</strong> <span class="mono">(6h TTL)</span></td>
+  <td>Fetch real maker/taker fee từ exchange API, cache 6 giờ</td>
+  <td>Fee thay đổi theo VIP tier, BNB holding. Dùng fee thật cho sizing chính xác</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Atomic cancel-replace</strong></td>
+  <td>Update stop bằng cancelReplace API, không có naked window</td>
+  <td><strong>Critical.</strong> Cancel rồi place mới = có khoảng trống không có stop. Nếu flash crash trong window đó → loss không giới hạn</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>Stop watchdog</strong></td>
+  <td>Mỗi loop verify stop order vẫn tồn tại. Nếu mất → repair hoặc market exit</td>
+  <td>Stop có thể mất silently (API error, exchange glitch). Watchdog = safety net</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><strong>Soft-stop rescue</strong> <span class="mono">(20% gap)</span></td>
+  <td>Nếu giá gap 20% qua stop → market exit ngay</td>
+  <td>Stop order có thể không fill khi price gap qua. Rescue = emergency exit thay vì chờ fill mãi</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><strong>Trail update cooldown</strong> <span class="mono">(60s, 0.25 ATR)</span></td>
+  <td>Chỉ update trail stop mỗi 60s và khi tăng ≥ 0.25 ATR</td>
+  <td>Giảm API spam, tránh rate limit. Mỗi cancel-replace = 2 API calls</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><strong>Orphan detection</strong></td>
+  <td>Sau restart, scan balance cho positions không có trong state → alert hoặc flatten</td>
+  <td>Crash giữa buy và save state → có position nhưng bot không biết. Orphan scan phát hiện</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><strong>Cash buffer</strong> <span class="mono">(5% NAV)</span></td>
+  <td>Giữ lại 5% NAV bằng cash, không bao giờ all-in</td>
+  <td>Dự phòng cho fee, slippage, emergency order. Tránh insufficient balance error</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><strong>Heartbeat + Telegram</strong></td>
+  <td>Gửi heartbeat mỗi 12h. Alert nếu bot die</td>
+  <td>Biết bot vẫn sống. Không heartbeat = bot chết = không có stop protection</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><strong>Kill switch</strong> <span class="mono">(45% DD)</span></td>
+  <td>NAV giảm 45% từ peak → flatten all, lock 72h</td>
+  <td>Emergency shutdown. Prevent total wipeout. 45% DD = something fundamentally wrong</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><strong>Daily order limiter</strong> <span class="mono">(5/ngày)</span></td>
+  <td>Max 5 orders/ngày. Prevent bug loops</td>
+  <td>Bug → bot buy/sell liên tục = hết tiền vì fee. Limiter caps damage</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><strong>SQLite persistence</strong></td>
+  <td>Tất cả state (positions, stops, orders) lưu SQLite, crash-safe</td>
+  <td>Bot restart → biết đang có position nào, stop ở đâu. Không mất state</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- PART B: 8 OPERATIONAL SAFETY (BỊ SÓT) -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>B. Operational Safety — 8 Features bị sót, có giá trị thật</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Không phải strategy logic. Prevent operational failures trong live trading.</p>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Cơ chế</th>
+  <th>Mô tả</th>
+  <th>Tại sao có giá trị</th>
+  <th>Nguồn</th>
+  <th>Khác biệt</th>
+  <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td>15</td>
+  <td><strong>Symbol cooldown</strong> <span class="badge badge-star">⭐ QUAN TRỌNG</span></td>
+  <td>Sau khi bị stop, không re-entry coin đó trong 12-24h</td>
+  <td><strong>Trực tiếp address cascade DD.</strong> VTREND bị stop → EMA vẫn bullish → muốn re-entry ngay → stop lại → cascade. Cooldown bắt buộc chờ. Giảm trades trong cascade từ 5-8 → 2-3</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>Fixed duration. IRONCLAD dùng 12h cho mọi case, không phân biệt isolated vs cascade</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><strong>User Data Stream (WebSocket)</strong></td>
+  <td>Real-time nhận fill/cancel events qua WebSocket thay vì REST polling</td>
+  <td>Polling 30s = 30s blind window. WS = biết ngay khi stop fill, entry fill. Critical cho TP1 logic (cancel stop → sell → re-place stop)</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>spotbot chỉ có backtest engine, không có WS</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><strong>Require UDS live gate</strong></td>
+  <td>Block mở position mới nếu WebSocket disconnected</td>
+  <td>WS down = không detect fills. Mở position mới khi blind = nguy hiểm. Gate prevent</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>—</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><strong>Reconciliation snapshot</strong></td>
+  <td>Sau WS reconnect hoặc restart: REST verify toàn bộ balances, positions, stop orders</td>
+  <td>WS có thể miss events khi disconnect. REST snapshot phát hiện: ghost positions, missing stops, size mismatch</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>—</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><strong>API rate limit soft throttle</strong></td>
+  <td>Khi <span class="mono">X-MBX-USED-WEIGHT-1M</span> gần limit → skip non-critical tasks (breadth, regime, entry scan)</td>
+  <td>HTTP 429 = locked out khỏi exchange. Nếu đang có position → không thể update stop, không thể exit. Throttle prevent lockout</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>—</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><strong>Entry candle grace</strong> <span class="mono">(20s)</span></td>
+  <td>Đợi 20s sau candle close trước khi fetch klines</td>
+  <td>Exchange cần thời gian finalize candle. Fetch quá sớm → incomplete/stale data → sai signal</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>—</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td>21</td>
+  <td><strong>Max position value cap</strong> <span class="mono">(12% NAV)</span> <span class="badge badge-star">⭐</span></td>
+  <td>Single position ≤ 12% NAV, independent of stop distance</td>
+  <td>ATR-based sizing: khi ATR nhỏ (low vol) → stop gần → size lớn để cùng risk. Nhưng nếu ATR đột ngột tăng (flash crash), position quá lớn → loss vượt expected. Cap = safety net</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>Cho VTREND f=0.30 → cap nên là 30% NAV (toàn bộ allocation). Nhiều instruments → chia nhỏ</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><strong>Safe live defaults</strong></td>
+  <td>Auto-override thành conservative params khi chạy LIVE (không dry_run)</td>
+  <td>Prevent "quên đổi config từ backtest sang live" → risk quá lớn. Opt-out bằng env var</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>—</td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-warn">
+  <strong>Ghi chú #15 Symbol Cooldown:</strong> Đây là cơ chế quan trọng nhất bị sót. Nó trực tiếp address cascade DD — vấn đề duy nhất chưa giải quyết của VTREND. Không phải prediction ("market sẽ xuống thêm"). Chỉ là rule: "vừa thua, bắt buộc chờ." Cost: miss V-shape recovery re-entry. Nhưng VPULL (p=1.0000) đã chứng minh chờ re-entry vẫn tốt hơn chasing.
+</div>
+
+<!-- ============================================================ -->
+<!-- PART C: 2 STRATEGY-LEVEL MỚI (CẦN TEST) -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>C. Strategy-level — 2 cơ chế mới từ spotbot, cần test</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Ảnh hưởng đến signal generation hoặc exit logic. Cần permutation test hoặc bootstrap comparison trước khi dùng.</p>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Cơ chế</th>
+  <th>Mô tả chi tiết</th>
+  <th>Tại sao có giá trị</th>
+  <th>Tiên lượng</th>
+  <th>Nguồn</th>
+  <th>Khác biệt với IRONCLAD</th>
+  <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td>23</td>
+  <td><strong>Escalating cooldown</strong> <span class="badge badge-star">⭐ QUAN TRỌNG</span></td>
+  <td>
+    Đếm emergency exits trong cửa sổ <span class="mono">24 bars (4 ngày)</span>.<br><br>
+    &bull; 1 stop isolated → cooldown <strong>3 bars (12h)</strong><br>
+    &bull; ≥2 stops trong window (cascade detected) → cooldown <strong>12 bars (48h)</strong><br>
+    &bull; Reset counter khi lookback window hết<br>
+    &bull; Không chặn exit, chỉ chặn re-entry
+  </td>
+  <td>
+    <strong>Upgrade thông minh hơn fixed cooldown (#15).</strong><br><br>
+    Single stop = chuyện bình thường, pause ngắn (12h) đủ.<br>
+    Multiple stops = đang trong cascade, pause ngắn không đủ — cần 48h để market "settle."<br><br>
+    <em>Không phải prediction.</em> Không nói "market sẽ xuống." Chỉ nói "đang bị hit liên tục, dừng."
+  </td>
+  <td>
+    <span class="badge badge-good">TỐT</span><br><br>
+    Kết hợp evidence:<br>
+    • Cascade DD = vấn đề thật (bootstrap MDD 25%)<br>
+    • VPULL (p=1.0) = re-entry ngay luôn tệ<br>
+    • Không thêm param mới nhiều (chỉ lookback window + trigger count)<br>
+    • Có thể test bằng paired bootstrap
+  </td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>
+    IRONCLAD: fixed <span class="mono">symbol_cooldown_hours=12</span>, mọi stop đều cùng cooldown.<br><br>
+    spotbot: <strong>adaptive</strong> — phân biệt isolated vs cascade. Isolated = 12h, cascade = 48h. Thêm lookback window (24 bars) để detect cascade pattern.
+  </td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><strong>Trail tighten at profit</strong></td>
+  <td>
+    Trail ATR multiplier giảm khi profit cao:<br>
+    &bull; Profit &lt; 5% → no trail (chờ activate)<br>
+    &bull; 5% ≤ profit &lt; 25% → trail = <span class="mono">3.5 × ATR</span> (rộng)<br>
+    &bull; Profit ≥ 25% → trail = <span class="mono">2.5 × ATR</span> (chặt hơn)
+  </td>
+  <td>
+    Lock in more profit trên big winners. Khi đã +25%, tighter trail prevent giveback lớn.<br><br>
+    Ví dụ: entry $80k, giá lên $100k (+25%). Trail rộng (3.5 ATR ≈ $7k) → stop ở $93k. Trail chặt (2.5 ATR ≈ $5k) → stop ở $95k. Giữ thêm $2k profit.
+  </td>
+  <td>
+    <span class="badge badge-neutral">TRUNG BÌNH</span><br><br>
+    Tighter trail = lock profit nhưng <em>cũng</em> bị shake out sớm hơn trên winners.<br><br>
+    Giống mọi sizing/stop variant trước đó → Sharpe có thể invariant. Đổi: giữ profit ↔ miss extended run.
+  </td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>
+    IRONCLAD: fixed <span class="mono">trail_atr_mult</span> after TP1. Có <span class="mono">tp1_be_atr_mult</span> cho BE floor nhưng không tighten trail theo profit.<br><br>
+    spotbot: dynamic trail — profit càng cao, trail càng chặt. Hai bước (wide/tight) dựa trên <span class="mono">trail_tighten_profit_pct</span>.
+  </td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- PART D: STRATEGY-LEVEL ĐÃ COVER / REJECTED -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>D. Strategy-level — Đã có hoặc đã bác bỏ</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Những cơ chế từ IRONCLAD/spotbot mà đã covered bởi VTREND hoặc đã disproven bởi validation.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Cơ chế</th>
+  <th>Nguồn</th>
+  <th>VTREND tương đương</th>
+  <th>Khác biệt</th>
+  <th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Regime filter (EMA50/200 D1)</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td>Đã test regime filter → disproven. VTREND profits mọi regime</td>
+  <td>IRONCLAD dùng regime + hysteresis band + confirm bars. V8 dùng EMA50/200 + confirm/off bars. Cả hai phức tạp hơn nhưng cùng concept</td>
+  <td><span class="verdict verdict-skip">DISPROVEN</span></td>
+</tr>
+<tr>
+  <td>Vol targeting (BTC D1 vol)</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>Đã test vol targeting → Sharpe invariant (0.442 vs 0.445)</td>
+  <td>IRONCLAD: scale risk bằng <span class="mono">target_vol_annual / btc_vol_ann</span>. V8: tương tự với <span class="mono">target_vol_annual / d1_vol_ann</span></td>
+  <td><span class="verdict verdict-skip">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>Vol brake (ATR ratio)</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>Đã test → Sharpe invariant. Spread filter (#3) cover execution-level</td>
+  <td>V8: <span class="mono">atr/close > 3.5% → size × 0.40</span>. IRONCLAD: vol_scale via D1 vol. Cả hai đều sizing, không skip</td>
+  <td><span class="verdict verdict-skip">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>DD adaptive sizing</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>Đã test sizing variants → Sharpe invariant to sizing</td>
+  <td>V8: giảm size dần khi DD tăng (16% → 28%). Progressive scale-down. Concept giống f-scaling đã test</td>
+  <td><span class="verdict verdict-skip">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>Emergency DD exit (28%)</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>Soft-stop rescue (#7) + Kill switch (#12)</td>
+  <td>V8: NAV-based (portfolio DD). IRONCLAD: price-based (stop rescue) + NAV-based (kill switch). Cùng mục đích, khác trigger</td>
+  <td><span class="verdict verdict-use">COVERED</span></td>
+</tr>
+<tr>
+  <td>Breadth scaling (universe > EMA200)</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>Regime filter variant → disproven</td>
+  <td>IRONCLAD: đếm % coins > EMA200 → scale risk. Đây là regime filter dạng breadth — cùng concept đã disproven</td>
+  <td><span class="verdict verdict-skip">DISPROVEN</span></td>
+</tr>
+<tr>
+  <td>Volume confirmation (1.5× MA20)</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>VDO đã là volume component trong VTREND. Thêm filter → giảm cả win lẫn loss</td>
+  <td>IRONCLAD: <span class="mono">vol > vol_ma × 1.5</span> to enter. V8: VDO > threshold</td>
+  <td><span class="verdict verdict-skip">REDUNDANT</span></td>
+</tr>
+<tr>
+  <td>Trend strength (EMA slope / ADX)</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td>Entry filter → giống regime filter pattern</td>
+  <td>IRONCLAD: <span class="mono">EMA slope > 0.02%</span> or <span class="mono">ADX > 18</span>. Conditional entry → skip trades khi "trend weak" → giảm cả win lẫn loss</td>
+  <td><span class="verdict verdict-skip">DISPROVEN pattern</span></td>
+</tr>
+<tr>
+  <td>Structural exit (close &lt; EMA200)</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>ATR trail đã handle exits. Thêm structural exit = early exit, miss continuation</td>
+  <td>V8: disabled by default. 5 bars close &lt; EMA200 → exit. Redundant với trail</td>
+  <td><span class="verdict verdict-skip">DISABLED</span></td>
+</tr>
+<tr>
+  <td>HMA cross exit</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>Cùng OHLC data, same alpha ceiling. HMA = different indicator, same info</td>
+  <td>V8: disabled by default. <span class="mono">close &lt; HMA and VDO &lt; 0</span> → exit</td>
+  <td><span class="verdict verdict-skip">DISABLED</span></td>
+</tr>
+<tr>
+  <td>RSI overbought/oversold sizing</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>V8-specific entry logic, không áp dụng cho VTREND. Sizing variant → invariant</td>
+  <td>V8: <span class="mono">RSI > 75 → size × 0.5, RSI &lt; 30 → size × 1.3</span></td>
+  <td><span class="verdict verdict-skip">V8-ONLY</span></td>
+</tr>
+<tr>
+  <td>Compression boost (ATR fast/slow)</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>V8-specific. Vol compression = low vol period → bigger size. Sizing → invariant</td>
+  <td>V8: <span class="mono">atr_fast/atr_slow &lt; 0.75 → boost</span></td>
+  <td><span class="verdict verdict-skip">V8-ONLY</span></td>
+</tr>
+<tr>
+  <td>Acceleration sizing (ROC diff)</td>
+  <td><span class="badge badge-spotbot">spotbot V8</span></td>
+  <td>V8-specific momentum scaling. Sizing → invariant</td>
+  <td>V8: smoothed diff(ROC) > 0 → <span class="mono">size × 1.15</span></td>
+  <td><span class="verdict verdict-skip">V8-ONLY</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- PART E: ANTI-CHASE + OTHER BORDERLINE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>E. Borderline — Tiên lượng hỗn hợp, có thể test nếu muốn</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Không rõ ràng dùng hay bỏ. Có lý do để test nhưng cũng có lý do để skip.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Cơ chế</th>
+  <th>Mô tả</th>
+  <th>Lý do NÊN test</th>
+  <th>Lý do KHÔNG nên test</th>
+  <th>Nguồn</th>
+  <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Anti-chase filter</strong><br><span class="mono">close > EMA_PB × 1.03 → skip</span></td>
+  <td>Không entry nếu giá đã chạy quá xa khỏi EMA (>3% extension)</td>
+  <td>Execution quality, không prediction. Buy cao = stop xa hơn tính toán = RR xấu thật. Address fill quality chứ không filter signal</td>
+  <td>Giống VPULL concept — chờ giá tốt hơn. VPULL p=1.0000. Mọi "chờ giá tốt hơn" đều fail trên BTC</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+<tr>
+  <td><strong>Dead money exit</strong><br><span class="mono">30 ngày + no TP1 → close</span></td>
+  <td>Position giữ >30 ngày mà TP1 chưa hit → đóng để recycle capital</td>
+  <td>Capital efficiency. Position "zombie" tie up vốn mà không sinh lời. Trail tự handle winners, nhưng dead trades thì không</td>
+  <td>Trail + ATR stop sẽ tự exit khi trend mất. Dead money exit = early exit nếu trade đang ở +0.2R nhưng chậm. 30 ngày arbitrary</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+<tr>
+  <td><strong>Pre-TP1 partial derisk</strong><br><span class="mono">+1R → move stop to BE</span></td>
+  <td>Khi profit đạt +1R (trước TP1 hit), nâng stop lên breakeven</td>
+  <td>Giảm giveback trên trades mà chạm +1R rồi quay đầu. Lock "không thua" sớm</td>
+  <td>Tighter stop = bị shake out sớm hơn trên trades mà đang winning nhưng volatile. Sharpe likely invariant</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+<tr>
+  <td><strong>Entry ranking</strong><br><span class="mono">score = trend + vol - spread - atr</span></td>
+  <td>Khi nhiều coins signal cùng lúc, pick coin có score cao nhất</td>
+  <td>Multi-instrument. Khi có 3 signals nhưng chỉ budget cho 1 trade → pick best</td>
+  <td>Scoring = prediction ("coin này sẽ tốt hơn"). Ranking unproven. Equal weight đơn giản hơn</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="verdict verdict-review">TÙY (multi-coin)</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- FINAL SUMMARY -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2>F. Tổng kết quyết định</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Verdict</th>
+  <th>Số lượng</th>
+  <th>Hành động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="verdict verdict-use">DÙNG NGAY</span></td>
+  <td><strong>22</strong></td>
+  <td>Implement vào VTREND deployment. Tất cả là infra/execution, không ảnh hưởng strategy logic. Zero risk of overfitting</td>
+</tr>
+<tr>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+  <td><strong>2</strong></td>
+  <td>#23 Escalating cooldown: paired bootstrap so với fixed cooldown. #24 Trail tighten: paired bootstrap so với fixed trail</td>
+</tr>
+<tr>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+  <td><strong>4</strong></td>
+  <td>Anti-chase, dead money, pre-TP1 derisk, entry ranking. Test nếu có bandwidth, skip nếu không. Tiên lượng trung bình</td>
+</tr>
+<tr>
+  <td><span class="verdict verdict-skip">SKIP / DISPROVEN</span></td>
+  <td><strong>13</strong></td>
+  <td>Regime filters, vol targeting, sizing variants, V8-specific logic. Đã proven Sharpe invariant hoặc disproven bởi data</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-star">
+  <strong>Priority cho deployment:</strong><br><br>
+  <strong>Phase 1:</strong> 22 infra features → implement. Không cần test, proven by production use trong IRONCLAD.<br><br>
+  <strong>Phase 2:</strong> Test #23 (escalating cooldown) — trực tiếp giảm cascade DD. Có thể test song song với resolution sweep.<br><br>
+  <strong>Phase 3:</strong> Test #24 (trail tighten) — nice-to-have, tiên lượng trung bình. Chỉ test nếu Phase 2 xong.
+</div>
+
+<div style="margin-top: 40px; padding: 16px; background: var(--surface); border-radius: 8px; font-size: 0.85em; color: var(--dim);">
+  <strong>Methodology:</strong> Full scan IRONCLAD <span class="mono">spot_portfolio_bot_v2.py</span> (5420 dòng: Config class 489 params, IroncladBot 60+ methods) + spotbot <span class="mono">strategies/vdo_momentum.py</span> (518 dòng), <span class="mono">engine/</span> (backtest, execution, metrics), <span class="mono">risk/guards.py</span>, <span class="mono">cli/paper.py</span>. Cross-referenced với validation results: permutation tests, bootstrap, timescale sweep.
+</div>
+
+</body>
+</html>

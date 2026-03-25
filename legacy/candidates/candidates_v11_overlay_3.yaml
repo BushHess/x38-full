@@ -1,0 +1,70 @@
+candidates:
+  - name: ov3_b3_t1.5
+    strategy: v11_hybrid
+    description: "Overlay 3: decel bars=3, trail=1.5"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_decel: true
+      ov3_accel_neg_bars: 3
+      ov3_trail_tighten_mult: 1.5
+
+  - name: ov3_b3_t2.5
+    strategy: v11_hybrid
+    description: "Overlay 3: decel bars=3, trail=2.5"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_decel: true
+      ov3_accel_neg_bars: 3
+      ov3_trail_tighten_mult: 2.5
+
+  - name: ov3_b5_t2.0
+    strategy: v11_hybrid
+    description: "Overlay 3: decel bars=5, trail=2.0"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_decel: true
+      ov3_accel_neg_bars: 5
+      ov3_trail_tighten_mult: 2.0
+
+  - name: ov3_b8_t1.5
+    strategy: v11_hybrid
+    description: "Overlay 3: decel bars=8, trail=1.5"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_decel: true
+      ov3_accel_neg_bars: 8
+      ov3_trail_tighten_mult: 1.5
+
+  - name: ov3_b8_t2.5
+    strategy: v11_hybrid
+    description: "Overlay 3: decel bars=8, trail=2.5"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_decel: true
+      ov3_accel_neg_bars: 8
+      ov3_trail_tighten_mult: 2.5

@@ -1,0 +1,76 @@
+{
+  "total_trades": 232,
+  "winners": 95,
+  "losers": 137,
+  "win_rate_pct": 40.94827586206897,
+  "avg_return_pct": 1.9463742413277718,
+  "median_return_pct": -0.8886463839492631,
+  "avg_winner_pct": 10.034025998119757,
+  "avg_loser_pct": -3.661851429440393,
+  "best_trade_pct": 67.57040267069745,
+  "worst_trade_pct": -19.510671450399318,
+  "avg_days_held": 5.670258620689655,
+  "median_days_held": 4.333333333333333,
+  "max_days_held": 24.5,
+  "total_pnl": 277317.34248580656,
+  "avg_pnl": 1195.3333727836489,
+  "top5_pnl_contribution_pct": 74.39141413993002,
+  "exit_reasons": {
+    "vp1_trailing_stop": 220,
+    "vp1_trend_reversal": 12
+  },
+  "avg_exposure": 0.4229450219697782,
+  "max_exposure": 1.0000000000000002,
+  "yearly_stats": {
+    "2017": {
+      "trades": 17,
+      "pnl": 5560.94,
+      "win_rate": 47.1
+    },
+    "2018": {
+      "trades": 21,
+      "pnl": -6280.74,
+      "win_rate": 23.8
+    },
+    "2019": {
+      "trades": 25,
+      "pnl": 8084.99,
+      "win_rate": 40.0
+    },
+    "2020": {
+      "trades": 30,
+      "pnl": 44416.85,
+      "win_rate": 53.3
+    },
+    "2021": {
+      "trades": 26,
+      "pnl": 56515.78,
+      "win_rate": 46.2
+    },
+    "2022": {
+      "trades": 18,
+      "pnl": -25609.12,
+      "win_rate": 27.8
+    },
+    "2023": {
+      "trades": 35,
+      "pnl": 63193.54,
+      "win_rate": 37.1
+    },
+    "2024": {
+      "trades": 28,
+      "pnl": 164192.57,
+      "win_rate": 53.6
+    },
+    "2025": {
+      "trades": 28,
+      "pnl": -25536.32,
+      "win_rate": 32.1
+    },
+    "2026": {
+      "trades": 4,
+      "pnl": -7221.17,
+      "win_rate": 50.0
+    }
+  }
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/research/x0_entry_risk_scorecard/p0_3_validate_scorecard.py", line 640, in <module>
+    main()
+  File "/var/www/trading-bots/btc-spot-dev/research/x0_entry_risk_scorecard/p0_3_validate_scorecard.py", line 536, in main
+    decision = _decision(per_strategy)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/trading-bots/btc-spot-dev/research/x0_entry_risk_scorecard/p0_3_validate_scorecard.py", line 328, in _decision
+    and x0_full["high_avg_pnl_usd"] < 0.0
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'NoneType' and 'float'

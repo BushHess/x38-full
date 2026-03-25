@@ -1,0 +1,10 @@
+measure,value
+ACF(ret) lag1,-0.0441
+ACF(ret) max|val|,0.0740
+ACF(ret) sig lags /100,25
+ACF(|ret|) lag1,0.2607
+ACF(|ret|) lag50,0.1326
+ACF(|ret|) sig lags /100,100
+PACF(ret) sig lags /20,10
+Hurst (full),0.5834
+Hurst (rolling mean),0.5885

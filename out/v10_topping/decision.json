@@ -1,0 +1,87 @@
+{
+  "selected_candidate": "baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T20:24:03.832947+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "fast_regime_off",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 72.36 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 72.36,
+        "min_cagr": 31.93,
+        "max_mdd": 38.97,
+        "max_fee_drag": 3.51,
+        "trades": 91
+      }
+    },
+    {
+      "name": "cautious_030",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 85.95 < baseline 88.9",
+        "TOPPING return -17.7% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 85.95,
+        "min_cagr": 36.19,
+        "max_mdd": 36.49,
+        "max_fee_drag": 3.93,
+        "trades": 100
+      }
+    },
+    {
+      "name": "rsi_ob_70",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 41.9% > baseline 36.3% + 5"
+      ],
+      "worst": {
+        "min_score": 69.65,
+        "min_cagr": 31.57,
+        "max_mdd": 43.17,
+        "max_fee_drag": 3.71,
+        "trades": 97
+      }
+    },
+    {
+      "name": "topping_defense",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 45.1% > baseline 36.3% + 5"
+      ],
+      "worst": {
+        "min_score": 56.34,
+        "min_cagr": 27.38,
+        "max_mdd": 46.25,
+        "max_fee_drag": 3.28,
+        "trades": 88
+      }
+    }
+  ]
+}

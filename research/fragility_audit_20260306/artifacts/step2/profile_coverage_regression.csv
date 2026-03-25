@@ -1,0 +1,7 @@
+candidate_label,profile_source_mode,existing_profile_present,rerun_required,regression_target_path,regression_status,notes
+E0,imported,True,False,/var/www/trading-bots/btc-spot-dev/results/trade_profile_8x5/E0/profile.json,N/A,
+E5,imported,True,False,/var/www/trading-bots/btc-spot-dev/results/trade_profile_8x5/E5/profile.json,N/A,
+SM,imported,True,False,/var/www/trading-bots/btc-spot-dev/results/trade_profile_8x5/SM/profile.json,N/A,
+LATCH,imported,True,False,/var/www/trading-bots/btc-spot-dev/results/trade_profile_8x5/LATCH/profile.json,N/A,
+E0_plus_EMA1D21,imported,True,False,/var/www/trading-bots/btc-spot-dev/results/trade_profile_8x5/E0_plus_EMA1D21/profile.json,N/A,
+E5_plus_EMA1D21,computed_step2,False,True,N/A,computed_fresh,E5_plus_EMA1D21 profile gap closed in Step 2

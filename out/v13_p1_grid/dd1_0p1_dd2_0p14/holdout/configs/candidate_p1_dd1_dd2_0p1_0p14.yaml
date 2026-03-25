@@ -1,0 +1,21 @@
+engine:
+  symbol: BTCUSDT
+  timeframe_h4: 4h
+  timeframe_d1: 1d
+  warmup_days: 365
+  warmup_mode: no_trade
+  scenario_eval: base
+  initial_cash: 10000.0
+strategy:
+  name: v13_add_throttle
+  emergency_ref: pre_cost_legacy
+  rsi_method: wilder
+  entry_cooldown_bars: 3
+  add_throttle_dd1: 0.1
+  add_throttle_dd2: 0.14
+  add_throttle_mult: 0.2
+risk:
+  max_total_exposure: 1.0
+  min_notional_usdt: 10
+  kill_switch_dd_total: 0.45
+  max_daily_orders: 5

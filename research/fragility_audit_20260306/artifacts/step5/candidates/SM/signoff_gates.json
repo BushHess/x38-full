@@ -1,0 +1,43 @@
+{
+  "candidate": "SM",
+  "alternative": "E5_plus_EMA1D21",
+  "status": "FALLBACK",
+  "all_pass": false,
+  "gates": [
+    {
+      "gate": "G1_absolute_dominance",
+      "passed": "False",
+      "value": 0.754454,
+      "threshold": 0.876926,
+      "detail": "candidate_worst=0.7545 <= alternative_worst=0.8769"
+    },
+    {
+      "gate": "G2_state_dominance",
+      "passed": false,
+      "value": 0.076923,
+      "threshold": 0.5,
+      "detail": "wins=1/13 (7.7%), threshold>50%"
+    },
+    {
+      "gate": "G3_fractional_loss",
+      "passed": "True",
+      "value": 0.075503,
+      "threshold": 0.35,
+      "detail": "loss=7.6% (baseline=0.8161, worst=0.7545)"
+    },
+    {
+      "gate": "G4_absolute_floor",
+      "passed": "True",
+      "value": 0.754454,
+      "threshold": 0.5,
+      "detail": "worst_sharpe=0.7545, floor=0.50"
+    },
+    {
+      "gate": "G5_infra_conditioned",
+      "passed": "True",
+      "value": 0.020281,
+      "threshold": -0.2,
+      "detail": "d1_d1_delta=0.0203, threshold=-0.20"
+    }
+  ]
+}

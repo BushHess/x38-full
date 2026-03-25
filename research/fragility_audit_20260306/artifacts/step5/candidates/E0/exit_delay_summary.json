@@ -1,0 +1,62 @@
+{
+  "1": {
+    "n_trades": 191,
+    "native_terminal": 116866.44991335677,
+    "unit_terminal": 175547.71169836307,
+    "sharpe": 0.969574270533182,
+    "cagr_native": 0.4596877964231174,
+    "mdd_native": 0.38551477940305595,
+    "delta_sharpe": -0.16831772044954407,
+    "delta_cagr_native": -0.15859160157630714,
+    "delta_mdd_native": 0.07246513119629616,
+    "delta_n_trades": -1,
+    "suppressed_entries": 0,
+    "baseline_sharpe": 1.137891990982726,
+    "baseline_cagr_native": 0.6182793979994246
+  },
+  "2": {
+    "n_trades": 188,
+    "native_terminal": 140221.59072337011,
+    "unit_terminal": 213187.75752978423,
+    "sharpe": 1.046982807364612,
+    "cagr_native": 0.5011810031019865,
+    "mdd_native": 0.43568335978342104,
+    "delta_sharpe": -0.09090918361811418,
+    "delta_cagr_native": -0.11709839489743801,
+    "delta_mdd_native": 0.12263371157666125,
+    "delta_n_trades": -4,
+    "suppressed_entries": 0,
+    "baseline_sharpe": 1.137891990982726,
+    "baseline_cagr_native": 0.6182793979994246
+  },
+  "3": {
+    "n_trades": 187,
+    "native_terminal": 105002.25141269201,
+    "unit_terminal": 159399.8495801253,
+    "sharpe": 0.9621276433214989,
+    "cagr_native": 0.43584473037684246,
+    "mdd_native": 0.4037663377108276,
+    "delta_sharpe": -0.17576434766122717,
+    "delta_cagr_native": -0.1824346676225821,
+    "delta_mdd_native": 0.0907166895040678,
+    "delta_n_trades": -5,
+    "suppressed_entries": 0,
+    "baseline_sharpe": 1.137891990982726,
+    "baseline_cagr_native": 0.6182793979994246
+  },
+  "4": {
+    "n_trades": 185,
+    "native_terminal": 97377.84323623482,
+    "unit_terminal": 144862.66912257412,
+    "sharpe": 0.8953202555750077,
+    "cagr_native": 0.41928885515477043,
+    "mdd_native": 0.4348767694948697,
+    "delta_sharpe": -0.24257173540771837,
+    "delta_cagr_native": -0.19899054284465412,
+    "delta_mdd_native": 0.12182712128810991,
+    "delta_n_trades": -7,
+    "suppressed_entries": 0,
+    "baseline_sharpe": 1.137891990982726,
+    "baseline_cagr_native": 0.6182793979994246
+  }
+}

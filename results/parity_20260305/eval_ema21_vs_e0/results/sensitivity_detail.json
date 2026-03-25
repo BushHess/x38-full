@@ -1,0 +1,48 @@
+{
+  "summary": {
+    "grid": {
+      "trail_mult": [
+        2.7,
+        3.0,
+        3.3
+      ]
+    },
+    "scenario": "harsh",
+    "n_points": 3,
+    "default_score": 120.5004,
+    "min_score": 102.8306,
+    "max_score": 128.0886
+  },
+  "rows": [
+    {
+      "trail_mult": 2.7,
+      "scenario": "harsh",
+      "score": 128.0886,
+      "delta_vs_default": 7.5882,
+      "cagr_pct": 53.19,
+      "max_drawdown_mid_pct": 39.28,
+      "sharpe": 1.3042,
+      "trades": 187
+    },
+    {
+      "trail_mult": 3.0,
+      "scenario": "harsh",
+      "score": 120.5004,
+      "delta_vs_default": 0.0,
+      "cagr_pct": 51.0,
+      "max_drawdown_mid_pct": 42.1,
+      "sharpe": 1.2578,
+      "trades": 172
+    },
+    {
+      "trail_mult": 3.3,
+      "scenario": "harsh",
+      "score": 102.8306,
+      "delta_vs_default": -17.6698,
+      "cagr_pct": 45.95,
+      "max_drawdown_mid_pct": 49.27,
+      "sharpe": 1.1607,
+      "trades": 156
+    }
+  ]
+}

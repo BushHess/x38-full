@@ -1,0 +1,7 @@
+exit_reason,exits,reenter_le3,reenter_le6,pct_le3,pct_le6,combo
+time_stop,82,0,0,0.0,0.0,combo1_entryFreeze_exitWinner
+trail_stop,36,0,0,0.0,0.0,combo1_entryFreeze_exitWinner
+time_stop,54,0,26,0.0,0.48148148148148145,combo2_entryFreeze_exitRunner
+trail_stop,69,0,20,0.0,0.2898550724637681,combo2_entryFreeze_exitRunner
+trail_stop,92,24,39,0.2608695652173913,0.42391304347826086,combo3_entryFreeze_baseExit
+trend_exit,8,0,1,0.0,0.125,combo3_entryFreeze_baseExit

@@ -1,0 +1,32 @@
+{
+  "git_hash": "unknown",
+  "timestamp_utc": "2026-03-04T15:25:01Z",
+  "argv": [
+    "/var/www/trading-bots/btc-spot-dev/v10/cli/backtest.py",
+    "--data",
+    "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "--strategy",
+    "vtrend_sm",
+    "--scenario",
+    "base",
+    "--outdir",
+    "out/vtrend_sm_base",
+    "--warmup-days",
+    "365"
+  ],
+  "config": {
+    "strategy": "vtrend_sm",
+    "scenario": "base",
+    "cost": {
+      "spread_bps": 5.0,
+      "slippage_bps": 3.0,
+      "taker_fee_pct": 0.1
+    },
+    "initial_cash": 10000.0,
+    "warmup_days": 365,
+    "warmup_mode": "no_trade",
+    "rsi_method": "ewm_span",
+    "emergency_ref": "pre_cost_legacy"
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

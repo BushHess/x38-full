@@ -1,0 +1,18 @@
+2026-02-24 17:18:15,494 INFO validation: Validation run started
+2026-02-24 17:18:15,494 INFO validation: command=python validate_strategy.py --strategy v13_add_throttle --baseline v8_apex --config /var/www/trading-bots/btc-spot/configs/v13/grid/p1_dd1_dd2_0p06_0p22.yaml --baseline-config /var/www/trading-bots/btc-spot/configs/frozen/v10_baseline.yaml --out /var/www/trading-bots/btc-spot/out_v13_p1_grid/dd1_0p06_dd2_0p22/full --suite trade --scenarios harsh --seed 1505 --trade-level on --start 2019-01-01 --end 2026-02-20 --bootstrap 0 --selection-bias none --data-integrity-check off --cost-sweep-bps  --invariant-check off --churn-metrics off --force
+2026-02-24 17:18:15,494 INFO validation: seed=1505
+2026-02-24 17:18:15,494 INFO validation: git_hash=82e6f13
+2026-02-24 17:18:15,494 INFO validation: candidate=v13_add_throttle config=/var/www/trading-bots/btc-spot/configs/v13/grid/p1_dd1_dd2_0p06_0p22.yaml
+2026-02-24 17:18:15,494 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/configs/frozen/v10_baseline.yaml
+2026-02-24 17:18:15,494 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 17:18:15,494 INFO validation: period=2019-01-01 -> 2026-02-20
+2026-02-24 17:18:16,427 INFO validation: suite lookahead started
+2026-02-24 17:18:16,427 INFO validation:   lookahead: python -m pytest -q /var/www/trading-bots/btc-spot/v10/tests/test_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_v10_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_mtf_alignment.py
+2026-02-24 17:18:16,427 INFO validation: suite lookahead finished: fail (0.00s)
+2026-02-24 17:18:16,428 INFO validation: suite backtest started
+2026-02-24 17:18:16,428 INFO validation:   backtest: candidate x harsh
+2026-02-24 17:18:16,652 INFO validation:   backtest: baseline x harsh
+2026-02-24 17:18:16,868 INFO validation: suite backtest finished: fail (0.44s)
+2026-02-24 17:18:16,870 INFO validation: suite trade_level started
+2026-02-24 17:18:32,348 INFO validation: suite trade_level finished: info (15.48s)
+2026-02-24 17:18:32,526 INFO validation: Validation run complete in 17.03s

@@ -1,0 +1,36 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-02-24 06:03:31 UTC
+Candidate: v8_apex
+Baseline: v8_apex
+Suite: dd
+Scenarios: smart,base,harsh
+Seed: 1337
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_baseline_legacy.live.yaml
+configs/candidate_v10_overlayA.yaml
+
+[results]
+results/dd_episodes_baseline.csv
+results/dd_episodes_candidate.csv
+results/dd_episodes_summary.json
+results/full_backtest_detail.json
+results/full_backtest_summary.csv
+
+[reports]
+reports/decision.json
+reports/discovered_tests.md
+reports/validation_report.md
+
+[suite_status]
+backtest: pass
+dd_episodes: info
+
+[decision]
+verdict=PROMOTE
+exit_code=0
+- All configured decision gates passed

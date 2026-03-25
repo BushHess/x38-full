@@ -1,0 +1,63 @@
+{
+  "named_hypotheses": {
+    "H1": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": -0.0740969927044189,
+      "ref_block_sign_prob": 0.048
+    },
+    "H2": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": -0.10535777398748239,
+      "ref_block_sign_prob": 0.1166
+    },
+    "H3": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": 0.21336999343589877,
+      "ref_block_sign_prob": 0.8516
+    },
+    "H4": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": 0.20945110480624102,
+      "ref_block_sign_prob": 0.8482
+    },
+    "H5": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": 0.10942827141552834,
+      "ref_block_sign_prob": 0.8864
+    },
+    "H6": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": 0.07816749013246488,
+      "ref_block_sign_prob": 0.9592
+    },
+    "H7": {
+      "evidence": "TENTATIVE",
+      "ref_block_mean": 0.18352526411994727,
+      "ref_block_sign_prob": 0.9676
+    },
+    "H8": {
+      "evidence": "UNSUPPORTED",
+      "ref_block_mean": 0.0032949758906106992,
+      "ref_block_sign_prob": 0.5488
+    }
+  },
+  "_meta": {
+    "elapsed_s": 562.1,
+    "n_boot": 5000,
+    "block_lengths": [
+      42,
+      126,
+      252
+    ],
+    "seed": 20260306,
+    "date": "2026-03-06",
+    "strategies": [
+      "E0",
+      "E5",
+      "SM",
+      "LATCH",
+      "E0_plus_EMA1D21",
+      "E5_plus_EMA1D21"
+    ]
+  }
+}

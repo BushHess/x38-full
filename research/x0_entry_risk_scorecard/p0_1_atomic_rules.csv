@@ -1,0 +1,11 @@
+strategy_id,rule_id,expression,dof,train_flagged_support,train_flagged_core_bad_rate,train_kept_core_bad_rate,train_core_bad_gap,train_flagged_avg_pnl,train_kept_avg_pnl,holdout_flagged_support,holdout_flagged_core_bad_rate,holdout_kept_core_bad_rate,holdout_core_bad_gap,holdout_flagged_avg_pnl,holdout_kept_avg_pnl,train_flagged_any_bad_rate,holdout_flagged_any_bad_rate,stable_core_bad
+X0,chop,entry_context == chop,1,90,0.3,0.28125,0.01875,1014.53,1400.32,40,0.275,0.083333,0.191667,1063.87,4793.32,0.622222,0.625,False
+X0,stretch18,entry_context == chop and entry_price_to_slow_atr > 1.8,2,35,0.342857,0.275862,0.066995,-355.63,1707.64,17,0.352941,0.171429,0.181513,-1200.17,3442.21,0.771429,0.705882,True
+X0,stretch18_er10,chop and stretch18 and entry_er30 <= 0.10,3,21,0.380952,0.277228,0.103725,-1363.72,1631.25,9,0.222222,0.232558,-0.010336,-719.21,2477.85,0.761905,0.666667,False
+X0,stretch18_vdo2,chop and stretch18 and entry_vdo <= 0.002,3,13,0.384615,0.284404,0.100212,-2216.58,1513.15,4,0.5,0.208333,0.291667,-5817.4,2569.67,0.846154,1.0,False
+X0,stretch18_spread15,chop and stretch18 and entry_ema_spread_atr >= 1.5,3,27,0.333333,0.284211,0.049123,-909.28,1691.25,12,0.25,0.225,0.025,-1252.56,2877.63,0.740741,0.75,False
+X0_E5EXIT,chop,entry_context == chop,1,93,0.301075,0.282051,0.019024,1167.57,1399.24,43,0.27907,0.076923,0.202147,1104.3,6703.96,0.612903,0.581395,False
+X0_E5EXIT,stretch18,entry_context == chop and entry_price_to_slow_atr > 1.8,2,37,0.324324,0.284211,0.040114,-55.94,1739.2,19,0.315789,0.189189,0.1266,-446.32,3868.02,0.72973,0.578947,True
+X0_E5EXIT,stretch18_er10,chop and stretch18 and entry_er30 <= 0.10,3,22,0.318182,0.290909,0.027273,-1631.89,1809.6,9,0.111111,0.255319,-0.144208,1637.18,2551.11,0.727273,0.444444,False
+X0_E5EXIT,stretch18_vdo2,chop and stretch18 and entry_vdo <= 0.002,3,17,0.352941,0.286957,0.065985,-1324.67,1614.55,5,0.2,0.235294,-0.035294,254.71,2614.96,0.705882,0.4,False
+X0_E5EXIT,stretch18_spread15,chop and stretch18 and entry_ema_spread_atr >= 1.5,3,29,0.310345,0.291262,0.019083,-683.87,1776.56,13,0.230769,0.232558,-0.001789,239.0,3058.83,0.689655,0.538462,False

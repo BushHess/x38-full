@@ -1,0 +1,39 @@
+{
+  "candidate_id": "S3_H4_RET168_Z0",
+  "evidence_label": "INTERNAL ROBUST CANDIDATE",
+  "research_protocol": "BTC/USDT Spot Long-Only System Discovery V6",
+  "market": "BTC/USDT spot",
+  "direction": "long_only",
+  "bar_timeframe": "H4 native",
+  "signal_definition": {
+    "feature": "ret",
+    "lookback_bars": 168,
+    "formula": "close_t / close_(t-168) - 1",
+    "threshold_mode": "fixed_zero",
+    "threshold": 0.0,
+    "signal_at_close": "long if feature > 0 else flat"
+  },
+  "state_machine": {
+    "entry": "If signal_t changes from 0 to 1 at H4 close, buy at next H4 open.",
+    "hold": "Stay long while signal_t remains 1.",
+    "exit": "If signal_t changes from 1 to 0 at H4 close, sell at next H4 open."
+  },
+  "position_sizing": {
+    "gross_exposure_when_long": 1.0,
+    "gross_exposure_when_flat": 0.0,
+    "leverage": 0.0,
+    "pyramiding": false
+  },
+  "cost_model": {
+    "side_cost_bps": 10,
+    "round_trip_bps": 20,
+    "stress_round_trip_bps": 50
+  },
+  "warmup_and_live_rules": {
+    "live_scoring_after": "2020-01-01",
+    "earlier_data_use": "context and calibration only"
+  },
+  "evaluation_code_path": "native H4 feature -> close-time state -> next-open execution -> realized bar returns -> UTC daily aggregation for reporting",
+  "tunable_quantities": 1,
+  "frozen_before_reserve": true
+}

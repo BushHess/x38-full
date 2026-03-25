@@ -1,0 +1,548 @@
+{
+  "suites": [
+    {
+      "spec": {
+        "tag": "canonical_24_6_last8",
+        "train_months": 24,
+        "test_months": 6,
+        "slide_months": 6,
+        "max_windows": 8
+      },
+      "summary": {
+        "n_windows_total": 8,
+        "n_windows_valid": 8,
+        "n_windows_power_only": 8,
+        "n_windows": 8,
+        "positive_delta_windows": 5,
+        "win_rate": 0.625,
+        "mean_delta_score": 12.4563,
+        "median_delta_score": 12.9825,
+        "worst_delta_score": -20.788,
+        "best_delta_score": 54.8324,
+        "invalid_windows_count": 0,
+        "low_trade_windows_count": 0,
+        "low_trade_windows": 0,
+        "min_trades_for_power": 5,
+        "low_trade_threshold": 5,
+        "stats_all_valid": {
+          "n_windows": 8,
+          "win_count": 5,
+          "win_rate": 0.625,
+          "mean_delta": 12.4563,
+          "median_delta": 12.9825,
+          "worst_delta": -20.788,
+          "best_delta": 54.8324
+        },
+        "stats_power_only": {
+          "n_windows": 8,
+          "win_count": 5,
+          "win_rate": 0.625,
+          "mean_delta": 12.4563,
+          "median_delta": 12.9825,
+          "worst_delta": -20.788,
+          "best_delta": 54.8324
+        },
+        "wilcoxon": {
+          "statistic": 27.0,
+          "p_value": 0.125,
+          "n_nonzero": 8,
+          "sufficient": true
+        },
+        "bootstrap_ci": {
+          "ci_lower": -3.4378,
+          "ci_upper": 29.279,
+          "mean_delta": 12.4563,
+          "excludes_zero": false,
+          "n": 8,
+          "seed": 1337
+        },
+        "low_trade_ratio": 0.0,
+        "wfo_low_power": false,
+        "pass": false,
+        "pass_detail": "wilcoxon_p=0.125000; bootstrap_ci_lower=-3.4378; pass=false"
+      },
+      "window_deltas": [
+        {
+          "window_id": 0,
+          "test_start": "2022-01-01",
+          "test_end": "2022-06-30",
+          "delta_score": 27.662,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 1,
+          "test_start": "2022-07-01",
+          "test_end": "2022-12-31",
+          "delta_score": -20.788,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 2,
+          "test_start": "2023-01-01",
+          "test_end": "2023-06-30",
+          "delta_score": -4.9226,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 3,
+          "test_start": "2023-07-01",
+          "test_end": "2023-12-31",
+          "delta_score": 30.0936,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 4,
+          "test_start": "2024-01-01",
+          "test_end": "2024-06-30",
+          "delta_score": 54.8324,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 5,
+          "test_start": "2024-07-01",
+          "test_end": "2024-12-31",
+          "delta_score": 14.629,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 6,
+          "test_start": "2025-01-01",
+          "test_end": "2025-06-30",
+          "delta_score": -13.192,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 7,
+          "test_start": "2025-07-01",
+          "test_end": "2025-12-31",
+          "delta_score": 11.336,
+          "valid_window": true,
+          "low_trade_window": false
+        }
+      ]
+    },
+    {
+      "spec": {
+        "tag": "short_horizon_24_3_last12",
+        "train_months": 24,
+        "test_months": 3,
+        "slide_months": 3,
+        "max_windows": 12
+      },
+      "summary": {
+        "n_windows_total": 12,
+        "n_windows_valid": 12,
+        "n_windows_power_only": 10,
+        "n_windows": 12,
+        "positive_delta_windows": 6,
+        "win_rate": 0.5,
+        "mean_delta_score": 12.057525,
+        "median_delta_score": 2.3956,
+        "worst_delta_score": -78.1378,
+        "best_delta_score": 210.1049,
+        "invalid_windows_count": 0,
+        "low_trade_windows_count": 2,
+        "low_trade_windows": 2,
+        "min_trades_for_power": 5,
+        "low_trade_threshold": 5,
+        "stats_all_valid": {
+          "n_windows": 12,
+          "win_count": 6,
+          "win_rate": 0.5,
+          "mean_delta": 12.057525,
+          "median_delta": 2.3956,
+          "worst_delta": -78.1378,
+          "best_delta": 210.1049
+        },
+        "stats_power_only": {
+          "n_windows": 10,
+          "win_count": 4,
+          "win_rate": 0.4,
+          "mean_delta": 8.69643,
+          "median_delta": -8.0109,
+          "worst_delta": -78.1378,
+          "best_delta": 210.1049
+        },
+        "wilcoxon": {
+          "statistic": 26.0,
+          "p_value": 0.577148,
+          "n_nonzero": 10,
+          "sufficient": true
+        },
+        "bootstrap_ci": {
+          "ci_lower": -31.8353,
+          "ci_upper": 60.7555,
+          "mean_delta": 8.6964,
+          "excludes_zero": false,
+          "n": 10,
+          "seed": 1337
+        },
+        "low_trade_ratio": 0.166667,
+        "wfo_low_power": false,
+        "pass": false,
+        "pass_detail": "wilcoxon_p=0.577148; bootstrap_ci_lower=-31.8353; pass=false"
+      },
+      "window_deltas": [
+        {
+          "window_id": 0,
+          "test_start": "2023-01-01",
+          "test_end": "2023-03-31",
+          "delta_score": -78.1378,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 1,
+          "test_start": "2023-04-01",
+          "test_end": "2023-06-30",
+          "delta_score": 52.8198,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 2,
+          "test_start": "2023-07-01",
+          "test_end": "2023-09-30",
+          "delta_score": 26.423,
+          "valid_window": true,
+          "low_trade_window": true
+        },
+        {
+          "window_id": 3,
+          "test_start": "2023-10-01",
+          "test_end": "2023-12-31",
+          "delta_score": -6.9428,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 4,
+          "test_start": "2024-01-01",
+          "test_end": "2024-03-31",
+          "delta_score": 210.1049,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 5,
+          "test_start": "2024-04-01",
+          "test_end": "2024-06-30",
+          "delta_score": -9.079,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 6,
+          "test_start": "2024-07-01",
+          "test_end": "2024-09-30",
+          "delta_score": 26.2164,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 7,
+          "test_start": "2024-10-01",
+          "test_end": "2024-12-31",
+          "delta_score": -25.706,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 8,
+          "test_start": "2025-01-01",
+          "test_end": "2025-03-31",
+          "delta_score": 11.734,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 9,
+          "test_start": "2025-04-01",
+          "test_end": "2025-06-30",
+          "delta_score": -69.8443,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 10,
+          "test_start": "2025-07-01",
+          "test_end": "2025-09-30",
+          "delta_score": -24.2009,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 11,
+          "test_start": "2025-10-01",
+          "test_end": "2025-12-31",
+          "delta_score": 31.303,
+          "valid_window": true,
+          "low_trade_window": true
+        }
+      ]
+    },
+    {
+      "spec": {
+        "tag": "long_horizon_24_9_last6",
+        "train_months": 24,
+        "test_months": 9,
+        "slide_months": 9,
+        "max_windows": 6
+      },
+      "summary": {
+        "n_windows_total": 6,
+        "n_windows_valid": 6,
+        "n_windows_power_only": 6,
+        "n_windows": 6,
+        "positive_delta_windows": 4,
+        "win_rate": 0.666667,
+        "mean_delta_score": 32.959467,
+        "median_delta_score": 38.31555,
+        "worst_delta_score": -31.477,
+        "best_delta_score": 124.7487,
+        "invalid_windows_count": 0,
+        "low_trade_windows_count": 0,
+        "low_trade_windows": 0,
+        "min_trades_for_power": 5,
+        "low_trade_threshold": 5,
+        "stats_all_valid": {
+          "n_windows": 6,
+          "win_count": 4,
+          "win_rate": 0.666667,
+          "mean_delta": 32.959467,
+          "median_delta": 38.31555,
+          "worst_delta": -31.477,
+          "best_delta": 124.7487
+        },
+        "stats_power_only": {
+          "n_windows": 6,
+          "win_count": 4,
+          "win_rate": 0.666667,
+          "mean_delta": 32.959467,
+          "median_delta": 38.31555,
+          "worst_delta": -31.477,
+          "best_delta": 124.7487
+        },
+        "wilcoxon": {
+          "statistic": 18.0,
+          "p_value": 0.078125,
+          "n_nonzero": 6,
+          "sufficient": true
+        },
+        "bootstrap_ci": {
+          "ci_lower": -3.6701,
+          "ci_upper": 74.4565,
+          "mean_delta": 32.9595,
+          "excludes_zero": false,
+          "n": 6,
+          "seed": 1337
+        },
+        "low_trade_ratio": 0.0,
+        "wfo_low_power": false,
+        "pass": true,
+        "pass_detail": "wilcoxon_p=0.078125; bootstrap_ci_lower=-3.6701; pass=true"
+      },
+      "window_deltas": [
+        {
+          "window_id": 0,
+          "test_start": "2021-01-01",
+          "test_end": "2021-09-30",
+          "delta_score": 124.7487,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 1,
+          "test_start": "2021-10-01",
+          "test_end": "2022-06-30",
+          "delta_score": 31.9919,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 2,
+          "test_start": "2022-07-01",
+          "test_end": "2023-03-31",
+          "delta_score": -31.477,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 3,
+          "test_start": "2023-04-01",
+          "test_end": "2023-12-31",
+          "delta_score": 44.7221,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 4,
+          "test_start": "2024-01-01",
+          "test_end": "2024-09-30",
+          "delta_score": 44.6392,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 5,
+          "test_start": "2024-10-01",
+          "test_end": "2025-06-30",
+          "delta_score": -16.8681,
+          "valid_window": true,
+          "low_trade_window": false
+        }
+      ]
+    },
+    {
+      "spec": {
+        "tag": "canonical_24_6_all",
+        "train_months": 24,
+        "test_months": 6,
+        "slide_months": 6,
+        "max_windows": null
+      },
+      "summary": {
+        "n_windows_total": 10,
+        "n_windows_valid": 10,
+        "n_windows_power_only": 10,
+        "n_windows": 10,
+        "positive_delta_windows": 7,
+        "win_rate": 0.7,
+        "mean_delta_score": 28.08685,
+        "median_delta_score": 21.1455,
+        "worst_delta_score": -20.788,
+        "best_delta_score": 150.5902,
+        "invalid_windows_count": 0,
+        "low_trade_windows_count": 0,
+        "low_trade_windows": 0,
+        "min_trades_for_power": 5,
+        "low_trade_threshold": 5,
+        "stats_all_valid": {
+          "n_windows": 10,
+          "win_count": 7,
+          "win_rate": 0.7,
+          "mean_delta": 28.08685,
+          "median_delta": 21.1455,
+          "worst_delta": -20.788,
+          "best_delta": 150.5902
+        },
+        "stats_power_only": {
+          "n_windows": 10,
+          "win_count": 7,
+          "win_rate": 0.7,
+          "mean_delta": 28.08685,
+          "median_delta": 21.1455,
+          "worst_delta": -20.788,
+          "best_delta": 150.5902
+        },
+        "wilcoxon": {
+          "statistic": 46.0,
+          "p_value": 0.032227,
+          "n_nonzero": 10,
+          "sufficient": true
+        },
+        "bootstrap_ci": {
+          "ci_lower": 4.0386,
+          "ci_upper": 60.4751,
+          "mean_delta": 28.0869,
+          "excludes_zero": true,
+          "n": 10,
+          "seed": 1337
+        },
+        "low_trade_ratio": 0.0,
+        "wfo_low_power": false,
+        "pass": true,
+        "pass_detail": "wilcoxon_p=0.032227; bootstrap_ci_lower=4.0386; pass=true"
+      },
+      "window_deltas": [
+        {
+          "window_id": 0,
+          "test_start": "2021-01-01",
+          "test_end": "2021-06-30",
+          "delta_score": 150.5902,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 1,
+          "test_start": "2021-07-01",
+          "test_end": "2021-12-31",
+          "delta_score": 30.6279,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 2,
+          "test_start": "2022-01-01",
+          "test_end": "2022-06-30",
+          "delta_score": 27.662,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 3,
+          "test_start": "2022-07-01",
+          "test_end": "2022-12-31",
+          "delta_score": -20.788,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 4,
+          "test_start": "2023-01-01",
+          "test_end": "2023-06-30",
+          "delta_score": -4.9226,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 5,
+          "test_start": "2023-07-01",
+          "test_end": "2023-12-31",
+          "delta_score": 30.0936,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 6,
+          "test_start": "2024-01-01",
+          "test_end": "2024-06-30",
+          "delta_score": 54.8324,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 7,
+          "test_start": "2024-07-01",
+          "test_end": "2024-12-31",
+          "delta_score": 14.629,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 8,
+          "test_start": "2025-01-01",
+          "test_end": "2025-06-30",
+          "delta_score": -13.192,
+          "valid_window": true,
+          "low_trade_window": false
+        },
+        {
+          "window_id": 9,
+          "test_start": "2025-07-01",
+          "test_end": "2025-12-31",
+          "delta_score": 11.336,
+          "valid_window": true,
+          "low_trade_window": false
+        }
+      ]
+    }
+  ]
+}

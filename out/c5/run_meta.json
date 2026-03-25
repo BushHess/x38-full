@@ -1,0 +1,14 @@
+{
+  "run_id": "smoke_c5_1773048968",
+  "started_at": "2026-03-09T09:36:08Z",
+  "finished_at": "2026-03-09T09:36:08Z",
+  "strategy": "vtrend_e5_ema21_d1",
+  "replay_bars": 500,
+  "warmup_bars": 18162,
+  "signals_generated": 6,
+  "orders_sent": 6,
+  "orders_filled": 6,
+  "no_trade": false,
+  "order_notional_usdt": 15.0,
+  "env": "testnet"
+}

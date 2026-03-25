@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.2, pluggy-1.6.0 -- /var/www/trading-bots/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /var/www/trading-bots
+configfile: pyproject.toml
+collecting ... collected 7 items
+
+v10/tests/test_no_lookahead_htf.py::TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1 PASSED [ 14%]
+v10/tests/test_no_lookahead_htf.py::TestV11IndicatorIndexing::test_indicator_array_bounds PASSED [ 28%]
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data PASSED [ 42%]
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day PASSED [ 57%]
+v10/tests/test_no_lookahead_htf.py::TestD1IndexMonotonicity::test_d1_index_never_decreases PASSED [ 71%]
+v10/tests/test_no_lookahead_htf.py::TestCodeAuditNoBeyondD1Index::test_no_future_d1_access_pattern PASSED [ 85%]
+v10/tests/test_no_lookahead_htf.py::TestCodeAuditNoBeyondD1Index::test_all_d1_accesses_use_d1i_from_state PASSED [100%]
+
+=============================== warnings summary ===============================
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestV11IndicatorIndexing::test_indicator_array_bounds
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day
+  /var/www/trading-bots/btc-spot/v10/strategies/v11_hybrid.py:140: RuntimeWarning: divide by zero encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestV11IndicatorIndexing::test_indicator_array_bounds
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day
+btc-spot/v10/tests/test_no_lookahead_htf.py::TestD1IndexMonotonicity::test_d1_index_never_decreases
+  /var/www/trading-bots/btc-spot/v10/strategies/v11_hybrid.py:140: RuntimeWarning: invalid value encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 7 passed, 9 warnings in 1.02s =========================
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.2, pluggy-1.6.0 -- /var/www/trading-bots/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /var/www/trading-bots
+configfile: pyproject.toml
+collecting ... collected 9 items
+
+v10/tests/test_mtf_alignment.py::TestNoD1BeforeFirstClose::test_day0_all_slots PASSED [ 11%]
+v10/tests/test_mtf_alignment.py::TestNoD1BeforeFirstClose::test_d1_index_is_minus_one PASSED [ 22%]
+v10/tests/test_mtf_alignment.py::TestDayBoundaryNoLookahead::test_last_h4_uses_previous_day_d1 PASSED [ 33%]
+v10/tests/test_mtf_alignment.py::TestDayBoundaryNoLookahead::test_boundary_exact_timestamps PASSED [ 44%]
+v10/tests/test_mtf_alignment.py::TestD1IndexMapping::test_expected_d1_index_sequence PASSED [ 55%]
+v10/tests/test_mtf_alignment.py::TestMtfMapOutput::test_mtf_map_matches_strategy_view PASSED [ 66%]
+v10/tests/test_mtf_alignment.py::TestMtfMapOutput::test_mtf_map_disabled_by_default PASSED [ 77%]
+v10/tests/test_mtf_alignment.py::TestNoD1Bars::test_no_d1_bars PASSED    [ 88%]
+v10/tests/test_mtf_alignment.py::TestLookaheadSensitiveStrategy::test_strategy_sees_lagged_d1_close PASSED [100%]
+
+============================== 9 passed in 0.27s ===============================

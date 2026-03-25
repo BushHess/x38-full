@@ -1,0 +1,25 @@
+======================================================================
+Step 1: E0 Home-Run Dependence & Behavioral Fragility Audit
+======================================================================
+Phase 1: RECON_ASSERT and anchor checks
+  RECON_ASSERT: PASS (192 trades)
+  T7 anchor check: PASS (15 points)
+  Giveback join: PASS
+Phase 2: Build ledgers and giveback
+  Giveback: 188 valid, mean=4.077, median=1.206
+Phase 3: Sensitivity curves
+  Native sensitivity curve: 39 points, anchor checks PASS
+  Unit-size sensitivity curve: 39 points
+Phase 4: Cliff-edge detection
+  native: terminal cliff=True (score=3.60), cagr cliff=True (score=17.36), interp=single-point collapse
+  unit_size: terminal cliff=True (score=17.81), cagr cliff=True (score=5.64), interp=single-point collapse
+Phase 5: Skip-after-N-losses
+  N=2: skips=37, winners_skipped=18, delta_sharpe=-0.2625, top10_hit=3
+  N=3: skips=16, winners_skipped=7, delta_sharpe=-0.1087, top10_hit=2
+  N=4: skips=8, winners_skipped=3, delta_sharpe=0.0007, top10_hit=0
+  N=5: skips=5, winners_skipped=1, delta_sharpe=0.0038, top10_hit=0
+Phase 6: Column dictionary
+
+======================================================================
+All Step 1 artifacts written successfully.
+======================================================================

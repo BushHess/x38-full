@@ -1,0 +1,10 @@
+{
+  "trade_count_asserted": 192,
+  "trade_count_observed": 192,
+  "period_asserted": "2019-01-01 to 2026-02-20",
+  "period_observed": "2019-01-04 to 2026-01-21",
+  "fee_asserted": "50 bps RT (from run_meta.json harsh_cost_bps=50)",
+  "fee_observed": "50 bps RT (confirmed via Step 0 reconciliation)",
+  "recon_status": "PASS",
+  "notes": "Trade count matches. Period within canonical range."
+}

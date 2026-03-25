@@ -1,0 +1,10 @@
+{
+  "candidate_label": "E5_plus_EMA1D21",
+  "canonical_trade_csv": "results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv",
+  "canonical_profile_dir": "computed_step2",
+  "profile_source_mode": "computed_step2",
+  "canonical_period": "2019-01-01 to 2026-02-20",
+  "canonical_fee_bps_rt": 50,
+  "initial_cash": 10000.0,
+  "expected_trade_count": 186
+}

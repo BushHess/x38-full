@@ -1,0 +1,183 @@
+========================================================================
+MULTIPLE COMPARISON CORRECTION
+Formal Bonferroni / Holm / BH Analysis
+========================================================================
+  α = 0.05
+  Permutations: 10000
+  Period: 2019-01-01 → 2026-02-20
+  Cost: harsh (50 bps RT)
+
+Loading data...
+  17838 H4 bars, warmup idx=2190
+
+========================================================================
+STEP 1: COMPONENT PERMUTATION TESTS (10,000 permutations)
+========================================================================
+
+  TEST 1: EMA circular-shift permutation
+    Real score: 124.5  (trades=211)
+      2000/10000  (30s)
+      4000/10000  (60s)
+      6000/10000  (90s)
+      8000/10000  (120s)
+      10000/10000  (151s)
+    Null mean: 5.3 ± 37.5
+    p = 0.001300  (151s)
+
+  TEST 2: VDO vs random filter
+    Real (VDO): score=124.5  trades=211
+    No-VDO:     score=107.5  trades=267
+    VDO skip rate: 0.210 (21.0%)
+      2000/10000  (32s)
+      4000/10000  (64s)
+      6000/10000  (95s)
+      8000/10000  (127s)
+      10000/10000  (157s)
+    Null mean: 109.5 ± 5.2
+    p = 0.003400  (157s)
+
+  TEST 3: ATR block-shuffle permutation (block=40)
+    Real score: 124.5  (trades=211)
+      2000/10000  (30s)
+      4000/10000  (60s)
+      6000/10000  (90s)
+      8000/10000  (120s)
+      10000/10000  (149s)
+    Null mean: 55.0 ± 20.8
+    p = 0.000300  (149s)
+
+  Summary of component p-values:
+    EMA: p = 0.001300
+    VDO: p = 0.003400
+    ATR: p = 0.000300
+  (Total time: 458s)
+
+  Previous results (for reference):
+    EMA: p = 0.000 (true_wfo_compare.py, 1000 perms)
+    VDO: p = 0.060 (true_wfo_compare.py, 1000 perms)
+    VDO: p = 0.005 (component_analysis.py, 200 perms)
+    ATR: unknown (component_analysis.py, 200 perms, not saved)
+
+========================================================================
+STEP 2: FULL HYPOTHESIS ENUMERATION
+========================================================================
+
+  Total hypotheses tested on this dataset: K = 16
+
+    #                      Hypothesis     p-value                Source      Type
+  ------------------------------------------------------------------------------
+    1                EMA trend signal    0.001300    circular-shift 10K  positive
+    2                      VDO filter    0.003400     random-filter 10K  positive
+    3               ATR trail scaling    0.000300     block-shuffle 10K  positive
+    4                 gate360 vs base    0.540000      bootstrap paired      null
+    5                 gate500 vs base    0.505000      bootstrap paired      null
+    6                gate360x vs base    0.540000      bootstrap paired      null
+    7          f=0.20 Calmar vs f=1.0    0.350000      bootstrap paired      null
+    8          f=0.30 Calmar vs f=1.0    0.300000      bootstrap paired      null
+    9          f=0.50 Calmar vs f=1.0    0.250000      bootstrap paired      null
+   10         vol=15% Calmar vs f=1.0    0.250000      bootstrap paired      null
+   11             hand_cons vs f=0.30    0.580000      bootstrap paired      null
+   12             hand_aggr vs f=0.30    0.580000      bootstrap paired      null
+   13            half_kelly vs f=0.30    0.710000      bootstrap paired      null
+   14           binary_bull vs f=0.30    0.590000      bootstrap paired      null
+   15           return_prop vs f=0.30    0.530000      bootstrap paired      null
+   16            regime_vol vs f=0.30    0.570000      bootstrap paired      null
+
+========================================================================
+STEP 3: MULTIPLE COMPARISON CORRECTIONS
+========================================================================
+
+  A. BONFERRONI (most conservative, FWER control)
+     Threshold: α/K = 0.05/16 = 0.003125
+
+                         Hypothesis     p-value   Threshold   Reject H0
+     -----------------------------------------------------------------
+                   EMA trend signal    0.001300    0.003125   ✓ REJECT
+                         VDO filter    0.003400    0.003125   ✗ fail
+                  ATR trail scaling    0.000300    0.003125   ✓ REJECT
+                    gate360 vs base    0.540000    0.003125   ✗ fail
+                    gate500 vs base    0.505000    0.003125   ✗ fail
+                   gate360x vs base    0.540000    0.003125   ✗ fail
+             f=0.20 Calmar vs f=1.0    0.350000    0.003125   ✗ fail
+             f=0.30 Calmar vs f=1.0    0.300000    0.003125   ✗ fail
+             f=0.50 Calmar vs f=1.0    0.250000    0.003125   ✗ fail
+            vol=15% Calmar vs f=1.0    0.250000    0.003125   ✗ fail
+                hand_cons vs f=0.30    0.580000    0.003125   ✗ fail
+                hand_aggr vs f=0.30    0.580000    0.003125   ✗ fail
+               half_kelly vs f=0.30    0.710000    0.003125   ✗ fail
+              binary_bull vs f=0.30    0.590000    0.003125   ✗ fail
+              return_prop vs f=0.30    0.530000    0.003125   ✗ fail
+               regime_vol vs f=0.30    0.570000    0.003125   ✗ fail
+
+  B. HOLM STEP-DOWN (less conservative, still FWER)
+
+                         Hypothesis     p-value   Reject H0
+     -------------------------------------------------------
+                   EMA trend signal    0.001300   ✓ REJECT
+                         VDO filter    0.003400   ✓ REJECT
+                  ATR trail scaling    0.000300   ✓ REJECT
+                    gate360 vs base    0.540000   ✗ fail
+                    gate500 vs base    0.505000   ✗ fail
+                   gate360x vs base    0.540000   ✗ fail
+             f=0.20 Calmar vs f=1.0    0.350000   ✗ fail
+             f=0.30 Calmar vs f=1.0    0.300000   ✗ fail
+             f=0.50 Calmar vs f=1.0    0.250000   ✗ fail
+            vol=15% Calmar vs f=1.0    0.250000   ✗ fail
+                hand_cons vs f=0.30    0.580000   ✗ fail
+                hand_aggr vs f=0.30    0.580000   ✗ fail
+               half_kelly vs f=0.30    0.710000   ✗ fail
+              binary_bull vs f=0.30    0.590000   ✗ fail
+              return_prop vs f=0.30    0.530000   ✗ fail
+               regime_vol vs f=0.30    0.570000   ✗ fail
+
+  C. BENJAMINI-HOCHBERG (FDR control at q = 0.05)
+
+                         Hypothesis     p-value   Reject H0
+     -------------------------------------------------------
+                   EMA trend signal    0.001300   ✓ REJECT
+                         VDO filter    0.003400   ✓ REJECT
+                  ATR trail scaling    0.000300   ✓ REJECT
+                    gate360 vs base    0.540000   ✗ fail
+                    gate500 vs base    0.505000   ✗ fail
+                   gate360x vs base    0.540000   ✗ fail
+             f=0.20 Calmar vs f=1.0    0.350000   ✗ fail
+             f=0.30 Calmar vs f=1.0    0.300000   ✗ fail
+             f=0.50 Calmar vs f=1.0    0.250000   ✗ fail
+            vol=15% Calmar vs f=1.0    0.250000   ✗ fail
+                hand_cons vs f=0.30    0.580000   ✗ fail
+                hand_aggr vs f=0.30    0.580000   ✗ fail
+               half_kelly vs f=0.30    0.710000   ✗ fail
+              binary_bull vs f=0.30    0.590000   ✗ fail
+              return_prop vs f=0.30    0.530000   ✗ fail
+               regime_vol vs f=0.30    0.570000   ✗ fail
+
+========================================================================
+STEP 4: FINAL DETERMINATION
+========================================================================
+
+     Component     p-value    Bonferroni          Holm      BH (FDR)
+  ---------------------------------------------------------------
+           EMA    0.001300      SURVIVES      SURVIVES      SURVIVES
+           VDO    0.003400         FAILS      SURVIVES      SURVIVES
+           ATR    0.000300      SURVIVES      SURVIVES      SURVIVES
+
+  INTERPRETATION:
+    EMA: PROVEN genuine. Survives all corrections.
+    ATR: PROVEN genuine. Survives all corrections.
+    VDO: Survives BH (FDR), fails FWER corrections.
+         VDO should be treated as a HYPOTHESIS, not proven.
+
+  Findings surviving Bonferroni: 2/16
+  Findings surviving BH (FDR):  3/16
+
+  NULL RESULTS (Hướng A, B) are ROBUST:
+    These are mathematical consequences of Sharpe invariance.
+    Adding them to K makes the correction STRICTER for positive
+    findings, but they themselves are not at risk of being
+    false positives (you can't p-hack a null result).
+
+  Results saved → /var/www/trading-bots/btc-spot-dev/research/results/multiple_comparison.json
+
+========================================================================
+DONE
+========================================================================

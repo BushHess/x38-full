@@ -1,0 +1,4 @@
+cycle,time_iso,client_order_id,side,expected_mid,fill_price,slippage_bps,qty,commission,commission_asset
+1,2026-02-22T16:46:06Z,9781ed73822291837600,BUY,67593.98,67606.0,1.78,0.001,0.0,BTC
+2,2026-02-22T16:46:07Z,b47c426de714259e89ae,BUY,67593.98,67606.0,1.78,0.001,0.0,BTC
+4,2026-02-22T16:46:08Z,fec5296628f069894d8f,SELL,67606.0,67605.99,0.0,0.002,0.0,USDT

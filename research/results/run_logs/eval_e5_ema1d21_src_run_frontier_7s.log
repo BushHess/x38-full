@@ -1,0 +1,76 @@
+6-Strategy Matched-Risk Frontier (with E5_plus_EMA1D21)
+======================================================================
+Loaded 24 equity curves, 18662 bars
+Prepared 6 strategy return streams
+
+======================================================================
+LINEARITY SANITY CHECK
+======================================================================
+  E0                   PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  E5                   PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  SM                   PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  LATCH                PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  E0_plus_EMA1D21      PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  E5_plus_EMA1D21      PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+
+======================================================================
+BUILDING 101-POINT FRONTIERS
+======================================================================
+/var/www/trading-bots/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/var/www/trading-bots/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+  E0                   k=0.50: CAGR=0.2328 MDD=0.3779 Sharpe=1.0773
+  E5                   k=0.50: CAGR=0.2617 MDD=0.3230 Sharpe=1.2076
+  SM                   k=0.50: CAGR=0.0687 MDD=0.0767 Sharpe=1.3118
+  LATCH                k=0.50: CAGR=0.0555 MDD=0.0570 Sharpe=1.3148
+  E0_plus_EMA1D21      k=0.50: CAGR=0.2509 MDD=0.3238 Sharpe=1.1638
+  E5_plus_EMA1D21      k=0.50: CAGR=0.2816 MDD=0.2641 Sharpe=1.3047
+
+======================================================================
+MATCHED-MDD ANALYSIS
+======================================================================
+  Native MDDs:
+    E0                   MDD=0.6330 (63.30%)
+    E5                   MDD=0.5647 (56.47%)
+    SM                   MDD=0.1500 (15.00%)
+    LATCH                MDD=0.1124 (11.24%)
+    E0_plus_EMA1D21      MDD=0.5648 (56.48%)
+    E5_plus_EMA1D21      MDD=0.4838 (48.38%)
+  Min native MDD: 0.1124
+  Feasible targets: ['5.0%', '10.0%']
+
+  Matched-MDD comparison table:
+  MDD=5.0%  E0=0.0264/1.0773  E5=0.0360/1.2076  SM=0.0448/1.3118  LATCH=0.0485/1.3148  E0_plus_EMA1D21=0.0348/1.1638  E5_plus_EMA1D21=0.0489/1.3047
+  MDD=10.0%  E0=0.0538/1.0773  E5=0.0724/1.2076  SM=0.0905/1.3118  LATCH=0.0997/1.3148  E0_plus_EMA1D21=0.0698/1.1638  E5_plus_EMA1D21=0.0987/1.3047
+
+======================================================================
+OPERATIONAL RISK-BUDGET REGION
+======================================================================
+  MDD=12.5%  E0=Y/0.0684  E5=Y/0.0927  SM=Y/0.1146  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.0884  E5_plus_EMA1D21=Y/0.1249
+  MDD=15.0%  E0=Y/0.0830  E5=Y/0.1111  SM=Y/0.1384  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.1070  E5_plus_EMA1D21=Y/0.1514
+  MDD=20.0%  E0=Y/0.1132  E5=Y/0.1521  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.1464  E5_plus_EMA1D21=Y/0.2071
+  MDD=25.0%  E0=Y/0.1442  E5=Y/0.1955  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.1878  E5_plus_EMA1D21=Y/0.2658
+  MDD=30.0%  E0=Y/0.1778  E5=Y/0.2410  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.2292  E5_plus_EMA1D21=Y/0.3249
+  MDD=35.0%  E0=Y/0.2131  E5=Y/0.2866  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.2745  E5_plus_EMA1D21=Y/0.3889
+  MDD=40.0%  E0=Y/0.2489  E5=Y/0.3383  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.3214  E5_plus_EMA1D21=Y/0.4554
+  MDD=50.0%  E0=Y/0.3296  E5=Y/0.4447  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=Y/0.4234  E5_plus_EMA1D21=N/0.5739
+  MDD=60.0%  E0=Y/0.4184  E5=N/0.5226  SM=N/0.1390  LATCH=N/0.1121  E0_plus_EMA1D21=N/0.4960  E5_plus_EMA1D21=N/0.5739
+
+======================================================================
+PAIRWISE: ALL vs E0 AT E0-MATCHED RISK
+======================================================================
+  E0 at E5 MDD (56.47%): k=0.844 CAGR=0.3855 vs 0.5226 (delta=+0.1370)
+  E0 at SM MDD (15.00%): k=0.178 CAGR=0.0830 vs 0.1390 (delta=+0.0560)
+  E0 at LATCH MDD (11.24%): k=0.131 CAGR=0.0611 vs 0.1121 (delta=+0.0511)
+  E0 at E0_plus_EMA1D21 MDD (56.48%): k=0.844 CAGR=0.3855 vs 0.4960 (delta=+0.1105)
+  E0 at E5_plus_EMA1D21 MDD (48.38%): k=0.684 CAGR=0.3158 vs 0.5739 (delta=+0.2581)
+
+======================================================================
+SAVING ARTIFACTS
+======================================================================
+  frontier_7s_grid.csv (606 rows)
+
+======================================================================
+COMPLETE in 16.2s
+======================================================================

@@ -1,0 +1,394 @@
+version: "2.0"
+name: "Spot BTC/USDT Mainline Constitution"
+status: "active"
+purpose: >
+  Provide a stable research charter for finding and forward-validating a deployable
+  Binance Spot BTC/USDT strategy using only spot OHLCV plus taker flow data on 15m, 1h, 4h, and 1d bars.
+
+mission_statement: >
+  The goal is not to discover a timeless global optimum.
+  The goal is to maintain a champion-challenger process that selects the best
+  currently deployable mechanism under a frozen charter and validates it on genuinely appended data.
+
+operating_principles:
+  - "One historical snapshot may be used once for seed discovery only."
+  - "New evidence comes only from genuinely appended data."
+  - "One execution chat must perform one mode only."
+  - "The latest state pack is the only intended machine handoff between execution sessions."
+  - "Human-only explanatory documents should not be uploaded to execution chats by default."
+
+admissible_domain:
+  venue: "Binance Spot"
+  symbol: "BTCUSDT"
+  asset_universe: ["BTCUSDT"]
+  timeframes: ["15m", "1h", "4h", "1d"]
+  data_surface:
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "quote_volume"
+    - "num_trades"
+    - "taker_buy_base_vol"
+    - "taker_buy_quote_vol"
+  excluded_from_mainline:
+    - "futures funding rate"
+    - "open interest"
+    - "basis"
+    - "long-short ratio"
+    - "liquidation feed"
+    - "order book depth"
+    - "tick or aggTrade microstructure"
+    - "options surface"
+    - "cross-asset features"
+  timezone: "UTC"
+
+canonical_input_schema:
+  columns:
+    - "symbol"
+    - "interval"
+    - "open_time"
+    - "close_time"
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "quote_volume"
+    - "num_trades"
+    - "taker_buy_base_vol"
+    - "taker_buy_quote_vol"
+  timestamp_unit: "integer milliseconds since Unix epoch"
+  timestamp_semantics: "UTC"
+  notes:
+    - "If raw Binance kline exports contain an unused final column, drop it during canonicalization."
+    - "All source files must be canonicalized into the 13-column schema before research begins."
+    - "No synthetic bar repair is allowed."
+
+research_modes:
+  - mode: "seed_discovery"
+    purpose: >
+      Mine one contaminated historical snapshot only once to produce a champion seed and up to two challenger seeds.
+      This mode may use the historical snapshot for candidate generation and internal screening,
+      but it does not create clean out-of-sample evidence.
+  - mode: "forward_evaluation"
+    purpose: >
+      Evaluate the frozen champion and challengers on genuinely appended data not used in seed discovery.
+      This mode may update champion status, challenger status, evidence labels, and the latest state pack.
+  - mode: "governance_review"
+    purpose: >
+      Decide whether the constitution itself is still fit for purpose without performing strategy search.
+
+historical_seed_protocol:
+  allowed_only_in_mode: "seed_discovery"
+  role: "candidate mining only"
+  output_contract:
+    - "Freeze exactly one champion seed and up to two challenger seeds."
+    - "Create historical_seed_audit.csv."
+    - "Initialize forward_evaluation_ledger.csv with header only."
+  warmup:
+    start: "first available bar"
+    end: "2019-12-31"
+  discovery:
+    start: "2020-01-01"
+    end: "2023-06-30"
+    walk_forward:
+      type: "quarterly_expanding"
+      unseen_test_folds: 14
+      test_folds:
+        - {fold: 1,  train_end_exclusive: "2020-01-01", test_start: "2020-01-01", test_end: "2020-03-31"}
+        - {fold: 2,  train_end_exclusive: "2020-04-01", test_start: "2020-04-01", test_end: "2020-06-30"}
+        - {fold: 3,  train_end_exclusive: "2020-07-01", test_start: "2020-07-01", test_end: "2020-09-30"}
+        - {fold: 4,  train_end_exclusive: "2020-10-01", test_start: "2020-10-01", test_end: "2020-12-31"}
+        - {fold: 5,  train_end_exclusive: "2021-01-01", test_start: "2021-01-01", test_end: "2021-03-31"}
+        - {fold: 6,  train_end_exclusive: "2021-04-01", test_start: "2021-04-01", test_end: "2021-06-30"}
+        - {fold: 7,  train_end_exclusive: "2021-07-01", test_start: "2021-07-01", test_end: "2021-09-30"}
+        - {fold: 8,  train_end_exclusive: "2021-10-01", test_start: "2021-10-01", test_end: "2021-12-31"}
+        - {fold: 9,  train_end_exclusive: "2022-01-01", test_start: "2022-01-01", test_end: "2022-03-31"}
+        - {fold: 10, train_end_exclusive: "2022-04-01", test_start: "2022-04-01", test_end: "2022-06-30"}
+        - {fold: 11, train_end_exclusive: "2022-07-01", test_start: "2022-07-01", test_end: "2022-09-30"}
+        - {fold: 12, train_end_exclusive: "2022-10-01", test_start: "2022-10-01", test_end: "2022-12-31"}
+        - {fold: 13, train_end_exclusive: "2023-01-01", test_start: "2023-01-01", test_end: "2023-03-31"}
+        - {fold: 14, train_end_exclusive: "2023-04-01", test_start: "2023-04-01", test_end: "2023-06-30"}
+  holdout:
+    start: "2023-07-01"
+    end: "2024-09-30"
+  reserve_internal:
+    start: "2024-10-01"
+    end: "snapshot_end"
+
+objective:
+  hard_constraints:
+    cagr_50bps_gt_zero: true
+    max_drawdown_50bps_lte: 0.45
+    entries_per_year_between: [6, 80]
+    exposure_between: [0.15, 0.90]
+    bootstrap_lb5_mean_daily_return_gt_zero: true
+    notes:
+      - "In forward evaluation, hard constraints are applied on cumulative forward metrics once the minimum decision threshold is met."
+      - "Before the minimum decision threshold is met, only provisional labeling is allowed unless an emergency trigger fires."
+  ranking:
+    primary_metric: "Calmar_50bps"
+    definition: "CAGR_50bps / max(abs(MDD_50bps), 0.15)"
+    tie_break_order:
+      - "meaningful paired advantage over current champion when applicable"
+      - "higher bootstrap lower bound of cumulative mean daily return"
+      - "higher cost resilience from 20bps to 50bps"
+      - "lower logical complexity"
+      - "broader parameter plateau"
+      - "higher trade count at similar utility"
+      - "lexical candidate_id"
+  evidence_labels:
+    - name: "FORWARD_CONFIRMED"
+      rule: >
+        Candidate is the active champion, was frozen before the evaluated appended data began,
+        has at least 180 cumulative forward calendar days and at least 6 cumulative forward entries,
+        and satisfies the cumulative hard constraints.
+    - name: "FORWARD_PROVISIONAL"
+      rule: >
+        Candidate has begun to accumulate forward evidence on appended data but has not yet reached
+        the minimum cumulative evidence threshold for promote or kill decisions.
+    - name: "INTERNAL_SEED_CANDIDATE"
+      rule: >
+        Candidate was selected from the historical seed snapshot under this constitution and has not yet
+        started a forward appended evaluation window.
+    - name: "NO_ROBUST_CANDIDATE"
+      rule: "No live candidate survives the hard constraints."
+
+cost_model:
+  main_costs_bps_round_trip: [20, 50]
+  per_side_bps: [10, 25]
+  application: "Apply cost at each entry and exit execution event."
+  slippage_model: "Flat cost only in mainline research."
+
+execution_model:
+  mainline_style: "spot long-only or long-flat"
+  preferred_decision_hierarchy:
+    - "D1 permission layer"
+    - "H4 state layer"
+    - "1h entry timing layer"
+    - "15m execution refinement only"
+  allowed_position_sizing:
+    - "binary 0 or 100% notional"
+  disallowed:
+    - "leverage"
+    - "pyramiding"
+    - "regime-specific parameter sets"
+    - "discretionary overrides"
+
+search_space:
+  archetypes:
+    - name: "A_slow_trend_state"
+      description: >
+        D1 decides whether the market is permitted for long exposure.
+        H4 maintains, degrades, or exits the state.
+      allowed_primitives:
+        d1_permission:
+          - "D1 momentum over rolling lookback"
+          - "D1 EMA slope or spread"
+          - "D1 close relative to rolling anchor"
+        h4_state:
+          - "H4 trend persistence"
+          - "H4 drawdown or pullback depth"
+          - "H4 volatility quiet or expansion state"
+        exits:
+          - "permission turns off"
+          - "state deteriorates"
+          - "ATR-style trailing logic"
+    - name: "B_pullback_continuation"
+      description: >
+        D1 trend must already be permissive. H4 identifies a constructive pullback.
+        1h handles reclaim or continuation timing.
+      allowed_primitives:
+        d1_permission:
+          - "same allowed set as archetype A"
+        h4_pullback:
+          - "drawdown from rolling high"
+          - "distance from moving average or anchor"
+          - "range position within H4 structure"
+        h1_timing:
+          - "reclaim above local anchor"
+          - "break of short consolidation"
+          - "participation confirmation"
+    - name: "C_compression_breakout"
+      description: >
+        D1 must not be bearish. H4 identifies compression.
+        1h confirms expansion and participation.
+      allowed_primitives:
+        d1_permission:
+          - "non-bearish trend or neutral-positive filter"
+        h4_compression:
+          - "ATR percentile low"
+          - "range compression"
+          - "body compression"
+        h1_breakout:
+          - "breakout above local range"
+          - "volume or taker-flow participation rise"
+  hard_caps:
+    max_candidates_after_seed: 3
+    max_challengers_after_seed: 2
+    max_logical_layers_per_candidate: 3
+    max_slow_context_layers: 1
+    max_fast_state_layers: 1
+    max_optional_entry_layers: 1
+    max_tunable_quantities_per_candidate: 4
+    max_discovery_configs_per_archetype: 20
+    max_total_seed_configs: 60
+  complexity_penalty:
+    logical_layer_penalty: 0.02
+    tunable_quantity_penalty: 0.03
+    use: "Subtract from preference only after hard constraints and primary metric are computed."
+
+seed_discovery_rules:
+  required_outputs:
+    - "one champion seed"
+    - "up to two challenger seeds"
+    - "frozen system specs"
+    - "candidate registry"
+    - "meta-knowledge registry"
+    - "portfolio state"
+    - "historical_seed_audit.csv"
+    - "empty forward_evaluation_ledger.csv"
+    - "contamination map"
+  forbidden:
+    - "claiming clean external OOS from the historical snapshot"
+    - "iterating same-snapshot discovery in follow-up chats as if it were new evidence"
+
+forward_review_policy:
+  standard_review:
+    cadence: "quarterly"
+    minimum_appended_calendar_days: 90
+    maximum_appended_calendar_days_before_forced_review: 180
+  emergency_review_triggers:
+    - "data integrity failure in appended delta"
+    - "operational inability to reconstruct deterministic candidate state"
+    - "active champion cumulative 50bps max drawdown exceeds the hard cap"
+  decision_basis:
+    report_incremental_window_metrics: true
+    report_cumulative_forward_metrics_since_freeze_or_last_promotion: true
+    promotion_and_kill_use_cumulative_basis: true
+    minimum_cumulative_forward_calendar_days: 90
+    minimum_cumulative_forward_entries: 6
+    if_minimum_not_met: "Only provisional labeling is allowed unless an emergency trigger fires."
+  champion_retention_rule:
+    rule: >
+      The champion remains active if it satisfies cumulative hard constraints and no eligible challenger
+      both ranks higher on the cumulative forward objective and shows meaningful paired advantage over the champion.
+  challenger_promotion_rule:
+    requires_all:
+      - "minimum cumulative evidence threshold is met"
+      - "challenger satisfies cumulative hard constraints"
+      - "challenger ranks above champion on cumulative forward objective"
+      - "challenger shows meaningful paired advantage over champion on cumulative forward daily returns, OR champion fails cumulative hard constraints while challenger passes"
+  challenger_kill_rule:
+    kill_if_any:
+      - "after at least 180 cumulative forward calendar days, challenger fails cumulative hard constraints in two consecutive standard reviews"
+      - "after at least 180 cumulative forward calendar days, challenger CAGR_50bps is non-positive and shows no meaningful paired advantage over champion"
+      - "after at least 360 cumulative forward calendar days, challenger has fewer than 2 entries and no explicit low-turnover exception in its frozen spec"
+  fallback_if_no_candidate_survives: "Label NO_ROBUST_CANDIDATE and escalate governance review."
+
+paired_evaluation:
+  unit: "daily UTC returns"
+  applies_to:
+    - "promotion decisions"
+    - "governance diagnostics where candidate ranking is otherwise close"
+  bootstrap:
+    method: "moving block bootstrap"
+    block_sizes_days: [5, 10, 20]
+    resamples_per_block_size: 3000
+    seed: 20260318
+    paired_common_indices: true
+  meaningful_advantage_definition:
+    probability_threshold: 0.95
+    required_block_sizes_meeting_threshold: 2
+    pooled_resample_threshold: 0.95
+    point_estimate_minimum_mean_daily_return_diff: 0.00005
+
+contamination_firewall:
+  forbidden_cross_session_inputs_to_blind_seed_discovery:
+    - "prior reports"
+    - "prior winners"
+    - "prior shortlist tables"
+    - "prior system specs"
+    - "prior benchmark definitions"
+    - "precomputed artifacts from earlier sessions"
+    - "prior state packs from another lineage"
+    - "prior contamination logs except as axioms already embedded in this constitution"
+  allowed_cross_session_inputs:
+    - "constitution"
+    - "canonical schema document"
+    - "empty templates"
+    - "hash manifests"
+    - "snapshot notes"
+  overlap_policy:
+    - "The historical seed snapshot remains contaminated for same-file out-of-sample claims."
+    - "Forward-confirmed status requires data appended after seed freeze."
+    - "Tier 2 and Tier 3 meta-knowledge from overlapping data cannot narrow blind seed discovery on the same snapshot."
+
+meta_knowledge_policy:
+  tiers:
+    - tier: "Tier1_Axiom"
+      authority: "hard-lock"
+      examples:
+        - "no lookahead"
+        - "UTC alignment"
+        - "next-open execution semantics"
+        - "no synthetic bar repair"
+    - tier: "Tier2_StructuralPrior"
+      authority: "budget and burden only"
+      examples:
+        - "microstructure is not mainline for this swing horizon"
+        - "layering is a hypothesis, not a default"
+      restrictions:
+        - "cannot delete an archetype from ontology"
+        - "must carry scope, provenance, overlap guard, challenge, and expiry"
+        - "cannot narrow blind discovery on overlapping data"
+    - tier: "Tier3_SessionNote"
+      authority: "advisory only"
+      restrictions:
+        - "expires quickly"
+        - "cannot shape search on overlapping data"
+  default_policy:
+    ai_may_propose: true
+    ai_may_self_approve_hard_power: false
+
+versioning_policy:
+  minor_version:
+    allowed_changes:
+      - "wording clarifications"
+      - "logging format"
+      - "export format"
+    forbidden_changes:
+      - "anything that could change the winner on the same data"
+  major_version:
+    trigger_examples:
+      - "objective changes"
+      - "admissible data domain changes"
+      - "execution model changes"
+      - "selection law changes"
+      - "complexity law changes"
+      - "paired evaluation semantics changes"
+
+required_artifacts_by_mode:
+  seed_discovery:
+    - "state_pack_v1"
+    - "historical_seed_audit.csv"
+    - "empty forward_evaluation_ledger.csv"
+  forward_evaluation:
+    - "updated forward_evaluation_ledger.csv"
+    - "updated candidate_registry.json"
+    - "updated portfolio_state.json"
+    - "state_pack_vN+1"
+  governance_review:
+    - "governance_decision.md"
+    - "constitution_status.txt"
+    - "next_major_constitution_file if released"
+
+stop_conditions:
+  for_each_execution_chat:
+    - "After packaging the state pack or governance package, stop the chat."
+    - "Do not continue with a different mode in the same chat."
+  for_same_historical_snapshot:
+    - "Do not run repeated improved discovery sessions once seeds are frozen."
+    - "Use new appended data for future evidence."

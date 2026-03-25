@@ -1,0 +1,274 @@
+======================================================================
+HƯỚNG B: REGIME-DEPENDENT POSITION SIZING
+======================================================================
+  Period: 2019-01-01 → 2026-02-20   Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 2000 paths, block=60
+  Regimes: SHOCK, BEAR, CHOP, TOPPING, BULL, NEUTRAL
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+======================================================================
+PART B1: PER-REGIME TRADE ANALYSIS (real data)
+======================================================================
+
+  H4 regime distribution (post-warmup, bars 2190+):
+    SHOCK         534 bars  (  3.4%)
+    BEAR         3966 bars  ( 25.3%)
+    CHOP         1290 bars  (  8.2%)
+    TOPPING       612 bars  (  3.9%)
+    BULL         7266 bars  ( 46.4%)
+    NEUTRAL      1980 bars  ( 12.7%)
+
+  Total trades: 189
+
+      Regime     N    WinR    AvgRet    AvgWin   AvgLoss   Payoff   Kelly
+  ----------------------------------------------------------------------
+       SHOCK    11   54.5%    +2.15%   +10.59%    -7.97%     1.33  1.000
+        BEAR    39   48.7%    +2.71%    +8.45%    -2.75%     3.07  1.000
+        CHOP    16   37.5%    +2.32%   +10.67%    -2.68%     3.98  1.000
+     TOPPING     8   62.5%    +5.11%    +8.99%    -1.36%     6.62  1.000 ⚠
+        BULL   104   31.7%    +1.55%   +11.49%    -3.07%     3.74  1.000
+     NEUTRAL    11   27.3%    +3.19%   +18.91%    -2.71%     6.97  1.000
+
+  Overall avg return: +2.14%
+  ⚠ = fewer than 10 trades (Kelly estimate unreliable)
+
+  Entry regime distribution:
+    SHOCK         11 entries  (  5.8%)
+    BEAR          39 entries  ( 20.6%)
+    CHOP          16 entries  (  8.5%)
+    TOPPING        8 entries  (  4.2%)
+    BULL         104 entries  ( 55.0%)
+    NEUTRAL       11 entries  (  5.8%)
+
+======================================================================
+PART B2: REGIME SIZING FUNCTIONS (real data)
+======================================================================
+
+  Fraction maps per regime:
+    hand_cons       SHOC=0.05 BEAR=0.15 CHOP=0.10 TOPP=0.15 BULL=0.40 NEUT=0.25
+    hand_aggr       SHOC=0.10 BEAR=0.25 CHOP=0.15 TOPP=0.25 BULL=0.50 NEUT=0.30
+    half_kelly      SHOC=0.50 BEAR=0.50 CHOP=0.50 TOPP=0.50 BULL=0.50 NEUT=0.50
+    binary_bull     SHOC=0.15 BEAR=0.15 CHOP=0.15 TOPP=0.15 BULL=0.40 NEUT=0.15
+    return_prop     SHOC=0.30 BEAR=0.32 CHOP=0.31 TOPP=0.38 BULL=0.29 NEUT=0.33
+    regime_vol      SHOC=8% BEAR=10% CHOP=12% TOPP=12% BULL=25% NEUT=15%
+
+         Variant   avgF     CAGR     MDD   Sharpe   Calmar  Trades
+  --------------------------------------------------------------
+          f=0.20   0.20   +11.2%   11.2%     1.26    1.001    211 ←base
+          f=0.30   0.30   +16.7%   16.1%     1.26    1.041    211 ←base
+          f=1.00   1.00   +52.7%   41.5%     1.28    1.268    211 ←base
+         vol=15%   0.34   +23.4%   14.5%     1.53    1.609    210 ←base
+       hand_cons   0.27   +13.0%   23.7%     1.00    0.550    211
+       hand_aggr   0.36   +17.6%   25.1%     1.07    0.702    211
+      half_kelly   0.50   +27.5%   24.7%     1.27    1.116    211
+     binary_bull   0.27   +13.2%   20.3%     1.01    0.648    211
+     return_prop   0.30   +17.5%   15.8%     1.30    1.103    211
+      regime_vol   0.40   +23.3%   20.4%     1.30    1.138    210
+
+  Best regime Calmar  : regime_vol (Calmar=1.138)
+  Best regime Sharpe  : return_prop (Sharpe=1.30)
+
+  Comparison vs uniform baselines:
+    f=0.30      Calmar=1.041  Sharpe=1.26  CAGR=+16.7%  MDD=16.1%
+    f=0.20      Calmar=1.001  Sharpe=1.26  CAGR=+11.2%  MDD=11.2%
+    vol=15%     Calmar=1.609  Sharpe=1.53  CAGR=+23.4%  MDD=14.5%
+
+======================================================================
+PART B3: BOOTSTRAP ROBUSTNESS (2000 paths)
+======================================================================
+
+  Testing 10 variants on 2000 bootstrap paths:
+    f=0.20          (uniform)
+    f=0.30          (uniform)
+    f=1.00          (uniform)
+    vol=15%         (vol_uniform)
+    hand_cons       (regime_frac)
+    hand_aggr       (regime_frac)
+    half_kelly      (regime_frac)
+    binary_bull     (regime_frac)
+    return_prop     (regime_frac)
+    regime_vol      (regime_vol)
+        1/2000  (0s, ~0s left)
+      200/2000  (40s, ~362s left)
+      400/2000  (83s, ~331s left)
+      600/2000  (126s, ~294s left)
+      800/2000  (170s, ~255s left)
+     1000/2000  (214s, ~214s left)
+     1200/2000  (258s, ~172s left)
+     1400/2000  (302s, ~130s left)
+     1600/2000  (346s, ~87s left)
+     1800/2000  (390s, ~43s left)
+     2000/2000  (434s, ~0s left)
+
+  Done: 433.7s (4.6 paths/sec)
+
+----------------------------------------------------------------------
+BOOTSTRAP DISTRIBUTIONS
+----------------------------------------------------------------------
+
+         variant   P(CAGR>0)   P(MDD<30)   medCAGR   medMDD   medShrp   medCalm
+  ---------------------------------------------------------------------------
+          f=0.20       83.7%       94.2%     +3.5%    17.4%     0.446     0.201
+          f=0.30       82.1%       70.5%     +4.9%    25.2%     0.446     0.198
+          f=1.00       70.9%        0.0%     +9.7%    64.3%     0.432     0.158
+         vol=15%       82.7%       70.2%     +5.0%    25.3%     0.443     0.196
+       hand_cons       78.8%       80.7%     +3.7%    23.3%     0.370     0.161
+       hand_aggr       78.8%       54.7%     +4.8%    29.1%     0.389     0.167
+      half_kelly       79.0%       17.2%     +7.2%    38.9%     0.442     0.190
+     binary_bull       79.5%       80.3%     +3.8%    23.4%     0.383     0.168
+     return_prop       81.8%       68.2%     +5.0%    25.6%     0.446     0.199
+      regime_vol       78.7%       50.6%     +5.0%    29.9%     0.397     0.170
+
+  Detailed percentiles:
+
+    ── f=0.20 ──
+      cagr      p5=  -2.15  p25=  +1.02  p50=  +3.46  p75=  +6.13  p95= +10.05
+      mdd       p5= +11.03  p25= +14.00  p50= +17.44  p75= +21.84  p95= +30.51
+      sharpe    p5=  -0.22  p25=  +0.16  p50=  +0.45  p75=  +0.72  p95=  +1.11
+      calmar    p5=  -0.08  p25=  +0.05  p50=  +0.20  p75=  +0.40  p95=  +0.78
+
+    ── f=0.30 ──
+      cagr      p5=  -3.44  p25=  +1.24  p50=  +4.92  p75=  +8.96  p95= +14.94
+      mdd       p5= +16.18  p25= +20.43  p50= +25.15  p75= +31.30  p95= +42.53
+      sharpe    p5=  -0.22  p25=  +0.16  p50=  +0.45  p75=  +0.72  p95=  +1.11
+      calmar    p5=  -0.09  p25=  +0.04  p50=  +0.20  p75=  +0.41  p95=  +0.80
+
+    ── f=1.00 ──
+      cagr      p5= -15.32  p25=  -1.92  p50=  +9.70  p75= +22.95  p95= +45.47
+      mdd       p5= +45.48  p25= +55.26  p50= +64.35  p75= +74.44  p95= +86.77
+      sharpe    p5=  -0.24  p25=  +0.15  p50=  +0.43  p75=  +0.71  p95=  +1.10
+      calmar    p5=  -0.19  p25=  -0.03  p50=  +0.16  p75=  +0.41  p95=  +0.88
+
+    ── vol=15% ──
+      cagr      p5=  -3.49  p25=  +1.33  p50=  +4.97  p75=  +9.17  p95= +15.24
+      mdd       p5= +16.58  p25= +20.82  p50= +25.31  p75= +31.32  p95= +42.54
+      sharpe    p5=  -0.24  p25=  +0.17  p50=  +0.44  p75=  +0.72  p95=  +1.11
+      calmar    p5=  -0.09  p25=  +0.04  p50=  +0.20  p75=  +0.41  p95=  +0.81
+
+    ── hand_cons ──
+      cagr      p5=  -3.45  p25=  +0.44  p50=  +3.69  p75=  +7.46  p95= +13.50
+      mdd       p5= +15.35  p25= +19.28  p50= +23.31  p75= +28.49  p95= +37.62
+      sharpe    p5=  -0.31  p25=  +0.10  p50=  +0.37  p75=  +0.65  p95=  +1.02
+      calmar    p5=  -0.10  p25=  +0.02  p50=  +0.16  p75=  +0.36  p95=  +0.75
+
+    ── hand_aggr ──
+      cagr      p5=  -4.46  p25=  +0.54  p50=  +4.78  p75=  +9.73  p95= +17.48
+      mdd       p5= +19.39  p25= +24.31  p50= +29.06  p75= +35.58  p95= +46.46
+      sharpe    p5=  -0.29  p25=  +0.11  p50=  +0.39  p75=  +0.67  p95=  +1.04
+      calmar    p5=  -0.11  p25=  +0.02  p50=  +0.17  p75=  +0.38  p95=  +0.78
+
+    ── half_kelly ──
+      cagr      p5=  -6.30  p25=  +1.15  p50=  +7.25  p75= +13.98  p95= +24.48
+      mdd       p5= +25.66  p25= +32.00  p50= +38.90  p75= +47.27  p95= +61.43
+      sharpe    p5=  -0.23  p25=  +0.16  p50=  +0.44  p75=  +0.72  p95=  +1.11
+      calmar    p5=  -0.11  p25=  +0.03  p50=  +0.19  p75=  +0.41  p95=  +0.83
+
+    ── binary_bull ──
+      cagr      p5=  -3.26  p25=  +0.58  p50=  +3.84  p75=  +7.57  p95= +13.72
+      mdd       p5= +15.47  p25= +19.38  p50= +23.38  p75= +28.52  p95= +37.20
+      sharpe    p5=  -0.29  p25=  +0.11  p50=  +0.38  p75=  +0.66  p95=  +1.04
+      calmar    p5=  -0.10  p25=  +0.02  p50=  +0.17  p75=  +0.36  p95=  +0.76
+
+    ── return_prop ──
+      cagr      p5=  -3.57  p25=  +1.25  p50=  +5.04  p75=  +9.04  p95= +15.24
+      mdd       p5= +16.39  p25= +20.79  p50= +25.63  p75= +31.88  p95= +43.29
+      sharpe    p5=  -0.24  p25=  +0.16  p50=  +0.45  p75=  +0.72  p95=  +1.11
+      calmar    p5=  -0.09  p25=  +0.04  p50=  +0.20  p75=  +0.41  p95=  +0.81
+
+    ── regime_vol ──
+      cagr      p5=  -4.56  p25=  +0.69  p50=  +4.99  p75=  +9.87  p95= +18.47
+      mdd       p5= +19.51  p25= +24.93  p50= +29.89  p75= +36.34  p95= +46.99
+      sharpe    p5=  -0.29  p25=  +0.12  p50=  +0.40  p75=  +0.67  p95=  +1.06
+      calmar    p5=  -0.11  p25=  +0.02  p50=  +0.17  p75=  +0.37  p95=  +0.79
+
+----------------------------------------------------------------------
+PAIRED TESTS vs f=0.30
+----------------------------------------------------------------------
+  P(better) > 97.5% ≈ significant at α=0.05 (one-sided).
+
+  ── hand_cons vs f=0.30 ──
+    ΔCAGR     mean=  -0.99  P(higher)= 36.0%  CI=[-6.45, +3.86]
+    ΔMDD(red) mean=  +2.18  P(lower) = 65.1%  CI=[-10.10, +14.38]
+    ΔSharpe   mean= -0.067  P(higher)= 37.5%  CI=[-0.452, +0.316]
+    ΔCalmar   mean= -0.036  P(higher)= 41.9%  CI=[-0.395, +0.266]
+
+  ── hand_aggr vs f=0.30 ──
+    ΔCAGR     mean=  +0.28  P(higher)= 52.8%  CI=[-4.90, +6.30]
+    ΔMDD(red) mean=  -3.88  P(lower) = 22.1%  CI=[-15.09, +5.64]
+    ΔSharpe   mean= -0.049  P(higher)= 39.4%  CI=[-0.381, +0.263]
+    ΔCalmar   mean= -0.027  P(higher)= 41.9%  CI=[-0.339, +0.248]
+
+  ── half_kelly vs f=0.30 ──
+    ΔCAGR     mean=  +2.63  P(higher)= 74.0%  CI=[-3.79, +10.88]
+    ΔMDD(red) mean= -13.81  P(lower) =  0.0%  CI=[-19.10, -8.82]
+    ΔSharpe   mean= -0.003  P(higher)= 37.0%  CI=[-0.021, +0.010]
+    ΔCalmar   mean= -0.005  P(higher)= 29.1%  CI=[-0.029, +0.048]
+
+  ── binary_bull vs f=0.30 ──
+    ΔCAGR     mean=  -0.86  P(higher)= 35.5%  CI=[-5.54, +3.45]
+    ΔMDD(red) mean=  +2.11  P(lower) = 64.8%  CI=[-8.30, +12.99]
+    ΔSharpe   mean= -0.060  P(higher)= 36.7%  CI=[-0.384, +0.274]
+    ΔCalmar   mean= -0.030  P(higher)= 41.2%  CI=[-0.364, +0.235]
+
+  ── return_prop vs f=0.30 ──
+    ΔCAGR     mean=  +0.08  P(higher)= 58.6%  CI=[-0.46, +0.75]
+    ΔMDD(red) mean=  -0.53  P(lower) = 18.8%  CI=[-1.65, +0.65]
+    ΔSharpe   mean= +0.002  P(higher)= 52.7%  CI=[-0.035, +0.044]
+    ΔCalmar   mean= -0.000  P(higher)= 47.1%  CI=[-0.034, +0.038]
+
+  ── regime_vol vs f=0.30 ──
+    ΔCAGR     mean=  +0.46  P(higher)= 52.9%  CI=[-5.99, +8.02]
+    ΔMDD(red) mean=  -4.48  P(lower) = 23.4%  CI=[-18.37, +7.98]
+    ΔSharpe   mean= -0.050  P(higher)= 40.9%  CI=[-0.450, +0.362]
+    ΔCalmar   mean= -0.024  P(higher)= 43.0%  CI=[-0.391, +0.325]
+
+  ── Quick comparison vs f=0.20 (best MDD control) ──
+         variant    ΔCAGR    P(+)     ΔMDD    P(↓)    ΔCalm    P(+)
+  --------------------------------------------------------------
+       hand_cons   +0.58   57.0%   -5.83   11.1%  -0.037   39.9%
+       hand_aggr   +1.85   66.6%  -11.88    0.1%  -0.028   39.5%
+      half_kelly   +4.20   75.6%  -21.82    0.0%  -0.006   30.1%
+     binary_bull   +0.71   59.4%   -5.89    8.8%  -0.032   38.8%
+     return_prop   +1.65   79.0%   -8.53    0.0%  -0.001   37.0%
+      regime_vol   +2.03   66.2%  -12.49    1.2%  -0.026   41.4%
+
+  ── Regime approaches cross-comparison (Calmar) ──
+                     hand_cons     hand_aggr    half_kelly   binary_bull   return_prop    regime_vol
+       hand_cons           ---         43.1%         46.7%         46.2%         42.4%         48.8%
+       hand_aggr         56.9%           ---         47.3%         49.1%         43.0%         49.4%
+      half_kelly         53.3%         52.6%           ---         53.8%         32.6%         52.2%
+     binary_bull         53.8%         50.9%         46.2%           ---         41.5%         50.1%
+     return_prop         57.6%         57.0%         67.4%         58.5%           ---         56.8%
+      regime_vol         51.2%         50.6%         47.8%         49.9%         43.2%           ---
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+
+  Best regime approach   : return_prop
+    median Calmar=0.199  median CAGR=+5.0%  median MDD=25.6%
+
+  Best overall (by Calmar): f=0.20
+    median Calmar=0.201  median CAGR=+3.5%  median MDD=17.4%
+
+  NO regime approach significantly beats f=0.30 on Calmar (all P < 97.5%)
+
+  Sharpe comparison (median bootstrap):
+            f=0.30  Sharpe=0.446
+            f=0.20  Sharpe=0.446
+           vol=15%  Sharpe=0.443
+         hand_cons  Sharpe=0.370
+         hand_aggr  Sharpe=0.389
+        half_kelly  Sharpe=0.442
+       binary_bull  Sharpe=0.383
+       return_prop  Sharpe=0.446
+        regime_vol  Sharpe=0.397
+
+  Results saved → /var/www/trading-bots/btc-spot-dev/research/results/regime_sizing.json
+
+======================================================================
+DONE
+======================================================================

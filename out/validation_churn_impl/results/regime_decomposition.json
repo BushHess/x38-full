@@ -1,0 +1,70 @@
+{
+  "detail": {
+    "candidate": {
+      "SHOCK": {
+        "total_return_pct": -1.84,
+        "max_dd_pct": 2.52,
+        "n_bars": 6,
+        "n_days": 1.0,
+        "sharpe": -13.5275
+      },
+      "CHOP": {
+        "total_return_pct": -6.52,
+        "max_dd_pct": 10.77,
+        "n_bars": 150,
+        "n_days": 25.0,
+        "sharpe": -3.4584
+      },
+      "TOPPING": {
+        "total_return_pct": 2.64,
+        "max_dd_pct": 1.46,
+        "n_bars": 24,
+        "n_days": 4.0,
+        "sharpe": 12.0644
+      },
+      "BULL": {
+        "total_return_pct": 37.12,
+        "max_dd_pct": 7.68,
+        "n_bars": 186,
+        "n_days": 31.0,
+        "sharpe": 10.6048
+      }
+    },
+    "baseline": {
+      "SHOCK": {
+        "total_return_pct": -1.84,
+        "max_dd_pct": 2.52,
+        "n_bars": 6,
+        "n_days": 1.0,
+        "sharpe": -13.5275
+      },
+      "CHOP": {
+        "total_return_pct": -6.52,
+        "max_dd_pct": 10.77,
+        "n_bars": 150,
+        "n_days": 25.0,
+        "sharpe": -3.4584
+      },
+      "TOPPING": {
+        "total_return_pct": 2.64,
+        "max_dd_pct": 1.46,
+        "n_bars": 24,
+        "n_days": 4.0,
+        "sharpe": 12.0644
+      },
+      "BULL": {
+        "total_return_pct": 37.12,
+        "max_dd_pct": 7.68,
+        "n_bars": 186,
+        "n_days": 31.0,
+        "sharpe": 10.6048
+      }
+    }
+  },
+  "overlap": {
+    "enabled": false,
+    "scenario": "base",
+    "trades_in_topping": 0,
+    "trades_in_late_bull": 0
+  }
+}

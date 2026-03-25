@@ -1,0 +1,6 @@
+feature,column,n_winners,n_losers,median_winners,median_losers,U,p_value,rank_biserial,direction
+taker_buy_ratio (single bar),tbr_entry,79,125,0.519281,0.520309,4784.0,0.7095140392988708,0.0311,losers_higher
+mean TBR 5 bars before entry,tbr_mean5,79,125,0.495763,0.494138,5285.0,0.3982000180398806,-0.0704,winners_higher
+mean TBR 10 bars before entry,tbr_mean10,79,125,0.491982,0.492115,4863.0,0.85702093934051,0.0151,losers_higher
+volume / rolling_median_volume(20),vol_rel,79,125,1.036008,1.01537,4963.0,0.9514647678835081,-0.0052,winners_higher
+ATR(20) / price,atr20_pct,79,125,0.017098,0.016016,4820.0,0.7757516373330152,0.0238,winners_higher

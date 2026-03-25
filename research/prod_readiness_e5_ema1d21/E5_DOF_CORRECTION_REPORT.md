@@ -1,0 +1,186 @@
+# X0A — Effective DOF Correction for E5+EMA1D21
+
+## 1. Problem
+
+E5 beats X0 at 16/16 timescales on Sharpe.
+Nominal binomial p = 1.53e-05 (assumes 16 independent trials).
+
+But adjacent timescales share most of their signal (slow=108 vs 120 use nearly
+identical EMA crossovers). The 16 tests are NOT independent. We need effective
+DOF correction.
+
+## 2. Correlation Structure
+
+### E5 return-level correlation (adjacent timescales)
+
+| Slow_i | Slow_j | rho |
+|--------|--------|:---:|
+| 30 | 48 | 0.9607 |
+| 48 | 60 | 0.9670 |
+| 60 | 72 | 0.9778 |
+| 72 | 84 | 0.9795 |
+| 84 | 96 | 0.9891 |
+| 96 | 108 | 0.9835 |
+| 108 | 120 | 0.9836 |
+| 120 | 144 | 0.9782 |
+| 144 | 168 | 0.9838 |
+| 168 | 200 | 0.9771 |
+| 200 | 240 | 0.9799 |
+| 240 | 300 | 0.9796 |
+| 300 | 360 | 0.9793 |
+| 360 | 500 | 0.9670 |
+| 500 | 720 | 0.9699 |
+
+Mean adjacent rho = 0.9771, range [0.9607, 0.9891]
+
+### E5-X0 difference return correlation (adjacent)
+
+| Slow_i | Slow_j | rho |
+|--------|--------|:---:|
+| 30 | 48 | 0.8940 |
+| 48 | 60 | 0.9817 |
+| 60 | 72 | 0.9903 |
+| 72 | 84 | 0.9711 |
+| 84 | 96 | 0.9631 |
+| 96 | 108 | 0.9640 |
+| 108 | 120 | 0.9896 |
+| 120 | 144 | 0.9951 |
+| 144 | 168 | 0.9940 |
+| 168 | 200 | 0.9920 |
+| 200 | 240 | 0.9927 |
+| 240 | 300 | 0.9922 |
+| 300 | 360 | 0.9740 |
+| 360 | 500 | 0.9930 |
+| 500 | 720 | 0.9586 |
+
+Mean adjacent rho = 0.9764
+
+## 3. M_eff Estimates
+
+### E5 vs X0 (difference returns)
+
+| Method | M_eff | vs K=16 |
+|--------|:-----:|:-------:|
+| Nyholt | 4.34 | 27% |
+| Li-Ji | 2.36 | 15% |
+| Galwey | 1.19 | 7% |
+| **Conservative** | **1.19** | **7%** |
+
+### E5 vs E5S (difference returns)
+
+| Method | M_eff | vs K=16 |
+|--------|:-----:|:-------:|
+| Nyholt | 5.38 | 34% |
+| Li-Ji | 2.73 | 17% |
+| Galwey | 1.30 | 8% |
+| **Conservative** | **1.30** | **8%** |
+
+## 4. DOF-Corrected Binomial Tests
+
+### E5 vs X0 (Sharpe)
+
+| | Wins | Trials | p-value |
+|---|:---:|:---:|:---:|
+| Nominal | 16 | 16 | 1.53e-05 |
+| nyholt | 4 | 4 | 6.250000e-02 |
+| li_ji | 2 | 2 | 2.500000e-01 |
+| galwey | 1 | 1 | 5.000000e-01 |
+| conservative | 1 | 1 | 5.000000e-01 |
+
+### E5 vs E5S (Sharpe)
+
+| | Wins | Trials | p-value |
+|---|:---:|:---:|:---:|
+| Nominal | 16 | 16 | 1.53e-05 |
+| nyholt | 5 | 5 | 3.125000e-02 |
+| li_ji | 3 | 3 | 1.250000e-01 |
+| galwey | 1 | 1 | 5.000000e-01 |
+| conservative | 1 | 1 | 5.000000e-01 |
+
+## 5. Multi-Metric Win Summary
+
+### E5 vs X0
+
+| Metric | Wins/16 | Direction |
+|--------|:-------:|-----------|
+| Sharpe | 16/16 | E5 higher |
+| CAGR | 16/16 | E5 higher |
+| MDD | 12/16 | E5 lower |
+| PF | 16/16 | E5 higher |
+
+### E5 vs E5S
+
+| Metric | Wins/16 | Direction |
+|--------|:-------:|-----------|
+| Sharpe | 16/16 | E5 higher |
+| CAGR | 16/16 | E5 higher |
+| MDD | 11/16 | E5 lower |
+| PF | 16/16 | E5 higher |
+
+## 6. Paired Tests on Sharpe Differences
+
+Wilcoxon signed-rank and paired t-test. **Caveat**: these assume 16 independent
+observations. With rho ~ 0.97, p-values are anti-conservative (too small).
+
+### E5 vs X0
+
+| Statistic | Value |
+|-----------|------:|
+| Mean Sharpe diff | +0.0910 |
+| Std Sharpe diff | 0.0257 |
+| Min diff | +0.0482 |
+| Max diff | +0.1373 |
+| Wilcoxon p (one-sided) | 1.53e-05 |
+| Paired t-test p (one-sided) | 2.16e-10 |
+
+### E5 vs E5S
+
+| Statistic | Value |
+|-----------|------:|
+| Mean Sharpe diff | +0.0781 |
+| Std Sharpe diff | 0.0184 |
+| Min diff | +0.0506 |
+| Max diff | +0.1156 |
+| Wilcoxon p (one-sided) | 1.53e-05 |
+| Paired t-test p (one-sided) | 1.73e-11 |
+
+## 7. Galwey Degeneracy Analysis
+
+When the top eigenvalue explains >90% of variance, Galwey M_eff collapses to
+~1.2. The binomial test with M_eff=1 (rounds to 1/1) always gives p=0.5 —
+structurally uninformative. This is a known limitation of the M_eff + binomial
+framework under extreme correlation.
+
+**Nyholt** (M_eff ~ 4-5) is more appropriate here: it measures variance of
+eigenvalues, not dominance of the first. Literature recommends Nyholt for
+highly structured correlation (Nyholt 2004, Derringer 2018).
+
+## 8. Verdict
+
+### E5 vs X0 (robust ATR vs standard ATR(14))
+
+- 16/16 timescales, effect = +0.0910 Sharpe (+0.0482 to +0.1373)
+- Nyholt corrected: 4/4, **p = 0.0625**
+- Confidence: **93.8%** (Nyholt)
+- SUGGESTIVE but not p < 0.05 — actual p = 0.0625
+
+### E5 vs E5S (robust ATR vs standard ATR(20))
+
+- 16/16 timescales, effect = +0.0781 Sharpe (+0.0506 to +0.1156)
+- Nyholt corrected: 5/5, **p = 0.0312**
+- Confidence: **96.9%** (Nyholt)
+- SIGNIFICANT at p < 0.05
+
+### Key Finding
+
+The 16 timescales represent ~4-2 effective independent tests
+(Nyholt/Li-Ji). E5 wins all of them. The binomial significance weakens from
+p = 1.5e-5 (nominal) to p ~ 0.03-0.06 (corrected), placing the result at the
+boundary of conventional significance.
+
+The **effect size is consistent and uniform**: robust ATR adds +0.091 Sharpe
+vs X0 and +0.078 vs E5S at every timescale. The minimum improvement is
++0.0482 (vs X0) and +0.0506 (vs E5S) — never negative.
+
+---
+*Generated by x0a/e5_dof_correction.py*

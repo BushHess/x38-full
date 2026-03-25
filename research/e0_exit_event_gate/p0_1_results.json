@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "total_floor_events": 56,
+    "actionable_floor_events": 23,
+    "actionable_matched_events": 22,
+    "good_events": 14,
+    "bad_events": 8,
+    "neutral_events": 0,
+    "actionable_net_delta_usd": -91444.80899701343,
+    "runtime_seconds": 7.51
+  },
+  "top_rule": {
+    "rule_id": "er20",
+    "description": "ER30 <= 0.20",
+    "accepted_events": 6,
+    "rejected_events": 16,
+    "accepted_good": 5,
+    "accepted_bad": 1,
+    "accepted_neutral": 0,
+    "accepted_net_delta_usd": 13808.7,
+    "accepted_avg_delta_usd": 2301.45,
+    "good_capture_pct": 35.71,
+    "bad_capture_pct": 12.5,
+    "precision_good_pct": 83.33,
+    "baseline_net_delta_usd": -91444.81
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "SHOCK": {
+    "total_return_pct": -13.91,
+    "max_dd_pct": 32.74,
+    "n_bars": 534,
+    "n_days": 89.0,
+    "sharpe": -1.0237
+  },
+  "BEAR": {
+    "total_return_pct": 0.16,
+    "max_dd_pct": 14.92,
+    "n_bars": 3966,
+    "n_days": 661.0,
+    "sharpe": 0.0651
+  },
+  "CHOP": {
+    "total_return_pct": -0.22,
+    "max_dd_pct": 31.1,
+    "n_bars": 1290,
+    "n_days": 215.0,
+    "sharpe": 0.1447
+  },
+  "TOPPING": {
+    "total_return_pct": -17.7,
+    "max_dd_pct": 25.73,
+    "n_bars": 612,
+    "n_days": 102.0,
+    "sharpe": -3.6799
+  },
+  "BULL": {
+    "total_return_pct": 547.52,
+    "max_dd_pct": 34.42,
+    "n_bars": 7266,
+    "n_days": 1211.0,
+    "sharpe": 1.8284
+  },
+  "NEUTRAL": {
+    "total_return_pct": 10.04,
+    "max_dd_pct": 21.07,
+    "n_bars": 1980,
+    "n_days": 330.0,
+    "sharpe": 0.5812
+  }
+}

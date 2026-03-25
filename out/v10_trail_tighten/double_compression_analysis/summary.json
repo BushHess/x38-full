@@ -1,0 +1,54 @@
+{
+  "total_trail_exits": 65,
+  "total_false_exits": 23,
+  "overall_false_rate_pct": 35.38,
+  "by_compression": {
+    "DOUBLE": {
+      "exits": 3,
+      "false_exits": 0,
+      "false_rate_pct": 0.0
+    },
+    "MULT_ONLY": {
+      "exits": 11,
+      "false_exits": 6,
+      "false_rate_pct": 54.55
+    },
+    "ATR_ONLY": {
+      "exits": 22,
+      "false_exits": 6,
+      "false_rate_pct": 27.27
+    },
+    "NONE": {
+      "exits": 29,
+      "false_exits": 11,
+      "false_rate_pct": 37.93
+    }
+  },
+  "by_regime": {
+    "BULL": {
+      "exits": 51,
+      "false_exits": 17,
+      "false_rate_pct": 33.33
+    },
+    "CHOP": {
+      "exits": 6,
+      "false_exits": 1,
+      "false_rate_pct": 16.67
+    },
+    "NEUTRAL": {
+      "exits": 3,
+      "false_exits": 2,
+      "false_rate_pct": 66.67
+    },
+    "SHOCK": {
+      "exits": 4,
+      "false_exits": 3,
+      "false_rate_pct": 75.0
+    },
+    "TOPPING": {
+      "exits": 1,
+      "false_exits": 0,
+      "false_rate_pct": 0.0
+    }
+  }
+}

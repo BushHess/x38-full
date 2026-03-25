@@ -1,0 +1,95 @@
+/var/www/trading-bots/btc-spot-dev/research/prod_readiness_e5_ema1d21/regime_monitor_v2.py:43: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.prod_readiness_e5_ema1d21.rejected.regime_monitor_v1_REJECTED import (
+================================================================================
+E5A-V2: MDD-ONLY REGIME MONITOR (E5+EMA1D21 core)
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  AMBER: 6m MDD>45% or 12m MDD>60%
+  RED:   6m MDD>55% or 12m MDD>70%
+  ATR channel: REMOVED
+================================================================================
+
+  D1 bars: 2973, H4 bars: 17838
+  H4 warmup idx: 2190, D1 report start idx: 365
+
+================================================================================
+S1: MDD-ONLY MONITOR (dual window: 6m + 12m)
+================================================================================
+  D1 bars: 2973
+  Rolling MDD(6m, 180d) computed (0.04s)
+  Rolling MDD(12m, 360d) computed (0.04s)
+
+  Alert distribution:
+    NORMAL:  1807 (60.8%)
+    AMBER:    893 (30.0%)
+    RED:      273 (9.2%)
+
+  RED trigger breakdown:
+    6m MDD only:  45
+    12m MDD only: 42
+    Both:         186
+
+================================================================================
+S2: EPISODE ANALYSIS
+================================================================================
+
+  AMBER: 8 episodes (1166 total days, mean 145.8d)
+    # 1  2018-06-29 -> 2018-09-01  ( 65d)  BTC ret=+16.2%
+    # 2  2018-11-20 -> 2019-07-24  (247d)  BTC ret=+114.2%
+    # 3  2019-11-24 -> 2020-01-05  ( 43d)  BTC ret=+6.6%
+    # 4  2020-03-12 -> 2020-09-02  (175d)  BTC ret=+137.3%
+    # 5  2021-05-23 -> 2021-11-06  (168d)  BTC ret=+77.4%
+    # 6  2022-01-21 -> 2022-05-31  (131d)  BTC ret=-12.7%
+    # 7  2022-06-12 -> 2023-04-28  (321d)  BTC ret=+10.3%
+    # 8  2026-02-05 -> 2026-02-20  ( 16d)  BTC ret=+8.1%
+
+  RED: 4 episodes (273 total days, mean 68.2d)
+    # 1  2018-06-29 -> 2018-07-13  ( 15d)  BTC ret=+0.3%
+    # 2  2018-12-05 -> 2019-03-02  ( 88d)  BTC ret=+1.3%
+    # 3  2022-05-11 -> 2022-05-12  (  2d)  BTC ret=-0.3%
+    # 4  2022-06-13 -> 2022-11-27  (168d)  BTC ret=-26.9%
+
+================================================================================
+S3: FALSE POSITIVE ANALYSIS (RED, reporting period)
+================================================================================
+  2019-01-01 -> 2019-03-02  ( 61d)  BTC during=+0.6%  [FP]  fwd30=-9.6%  fwd90=+9.1%
+  2022-05-11 -> 2022-05-12  (  2d)  BTC during=-0.3%  [TP]  fwd30=-0.0%  fwd90=-20.5%
+  2022-06-13 -> 2022-11-27  (168d)  BTC during=-26.9%  [TP]  fwd30=-10.0%  fwd90=-2.9%
+
+  Summary: 3 RED episodes in reporting period
+    True Positives:  2
+    False Positives: 1
+    FP Rate: 33.3%
+
+================================================================================
+S4: BACKTEST COMPARISON — E5 vs E5+MONITOR-V2 (harsh)
+================================================================================
+
+  Metric                   E5 Vanilla          E5+V2        Delta
+  ------------------------------------------------------------
+  Sharpe                       1.1255         1.2826      +0.1572
+  CAGR %                        42.74          50.06        +7.32
+  MDD %                         49.87          42.51        -7.35
+  Trades                          202            184          -18
+  Monitor exits                    --              0
+  Final NAV                  94731.38      159129.78    +64398.39
+
+================================================================================
+S5: DIAGNOSTIC — Peak rolling MDD at key periods
+================================================================================
+
+  Period                          Peak 6m MDD   vs RED 55%  Peak 12m MDD   vs RED 70%
+  ----------------------------------------------------------------------------------
+  2019 H2 (post-July)                   49.4%        -5.6% [---]         61.8%        -8.2% [---]
+  2020 Q1 (COVID)                       53.6%        -1.4% [---]         63.3%        -6.7% [---]
+  2021 Q2 (May crash)                   53.1%        -1.9% [---]         53.1%       -16.9% [---]
+  2022 H1 (Luna)                        62.7%        +7.7% [RED]         71.9%        +1.9% [RED]
+  2022 H2 (FTX)                         61.1%        +6.1% [RED]         75.0%        +5.0% [RED]
+  2022 full bear                        62.7%        +7.7% [RED]         75.0%        +5.0% [RED]
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/prod_readiness_e5_ema1d21/e5a_v2_results.json
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/prod_readiness_e5_ema1d21/E5A_REGIME_MONITOR_V2_REPORT.md
+
+================================================================================
+E5A V2 MONITOR COMPLETE (2s)
+================================================================================

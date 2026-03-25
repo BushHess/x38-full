@@ -1,0 +1,182 @@
+{
+  "harsh": {
+    "n_trades": 96,
+    "observed_mean_delta_pnl": 418.08,
+    "observed_total_delta_pnl": 40135.87,
+    "observed_mean_delta_return": 0.3587,
+    "lag1_autocorr": 0.1818,
+    "window_diagnostics": {
+      "n_windows": 12,
+      "trades_per_window": {
+        "2019H1": 4,
+        "2019H2": 10,
+        "2020H1": 8,
+        "2020H2": 7,
+        "2021H1": 7,
+        "2021H2": 10,
+        "2023H1": 4,
+        "2023H2": 7,
+        "2024H1": 11,
+        "2024H2": 10,
+        "2025H1": 9,
+        "2025H2": 9
+      },
+      "mean_trades_per_window": 8.0,
+      "min_trades_per_window": 4,
+      "max_trades_per_window": 11,
+      "windows_lt_10": 8
+    },
+    "cluster_bootstrap_pnl": {
+      "observed_mean": 418.08,
+      "boot_mean": 422.37,
+      "boot_se": 219.86,
+      "p_v11_gt_v10": 0.9824,
+      "ci95_lo": 23.71,
+      "ci95_hi": 879.61,
+      "ci90_lo": 73.97,
+      "ci90_hi": 795.36
+    },
+    "cluster_bootstrap_return": {
+      "observed_mean": 0.36,
+      "boot_mean": 0.36,
+      "boot_se": 0.22,
+      "p_v11_gt_v10": 0.9867,
+      "ci95_lo": 0.03,
+      "ci95_hi": 0.87,
+      "ci90_lo": 0.07,
+      "ci90_hi": 0.78
+    },
+    "block_bootstrap_pnl": {
+      "5": {
+        "observed_mean": 418.08,
+        "boot_mean": 463.35,
+        "boot_se": 277.41,
+        "p_v11_gt_v10": 0.9597,
+        "ci95_lo": -50.01,
+        "ci95_hi": 1032.98,
+        "ci90_lo": 26.86,
+        "ci90_hi": 939.2
+      },
+      "8": {
+        "observed_mean": 418.08,
+        "boot_mean": 483.17,
+        "boot_se": 265.21,
+        "p_v11_gt_v10": 0.9751,
+        "ci95_lo": 1.51,
+        "ci95_hi": 1023.34,
+        "ci90_lo": 58.07,
+        "ci90_hi": 937.92
+      },
+      "12": {
+        "observed_mean": 418.08,
+        "boot_mean": 506.22,
+        "boot_se": 245.97,
+        "p_v11_gt_v10": 0.9928,
+        "ci95_lo": 65.83,
+        "ci95_hi": 1013.87,
+        "ci90_lo": 124.56,
+        "ci90_hi": 929.09
+      }
+    },
+    "iid_bootstrap_pnl": {
+      "observed_mean": 418.08,
+      "boot_mean": 416.99,
+      "boot_se": 248.68,
+      "p_v11_gt_v10": 0.9635,
+      "ci95_lo": -28.89,
+      "ci95_hi": 941.04,
+      "ci90_lo": 32.63,
+      "ci90_hi": 849.17
+    }
+  },
+  "base": {
+    "n_trades": 95,
+    "observed_mean_delta_pnl": -262.57,
+    "observed_total_delta_pnl": -24944.59,
+    "observed_mean_delta_return": -0.4312,
+    "lag1_autocorr": 0.0585,
+    "window_diagnostics": {
+      "n_windows": 12,
+      "trades_per_window": {
+        "2019H1": 4,
+        "2019H2": 10,
+        "2020H1": 8,
+        "2020H2": 7,
+        "2021H1": 7,
+        "2021H2": 10,
+        "2023H1": 4,
+        "2023H2": 7,
+        "2024H1": 11,
+        "2024H2": 10,
+        "2025H1": 9,
+        "2025H2": 8
+      },
+      "mean_trades_per_window": 7.9,
+      "min_trades_per_window": 4,
+      "max_trades_per_window": 11,
+      "windows_lt_10": 8
+    },
+    "cluster_bootstrap_pnl": {
+      "observed_mean": -262.57,
+      "boot_mean": -258.56,
+      "boot_se": 350.9,
+      "p_v11_gt_v10": 0.2417,
+      "ci95_lo": -1010.03,
+      "ci95_hi": 338.67,
+      "ci90_lo": -889.02,
+      "ci90_hi": 276.29
+    },
+    "cluster_bootstrap_return": {
+      "observed_mean": -0.43,
+      "boot_mean": -0.42,
+      "boot_se": 0.47,
+      "p_v11_gt_v10": 0.2186,
+      "ci95_lo": -1.48,
+      "ci95_hi": 0.28,
+      "ci90_lo": -1.28,
+      "ci90_hi": 0.22
+    },
+    "block_bootstrap_pnl": {
+      "5": {
+        "observed_mean": -262.57,
+        "boot_mean": -248.26,
+        "boot_se": 365.65,
+        "p_v11_gt_v10": 0.2717,
+        "ci95_lo": -1062.91,
+        "ci95_hi": 342.07,
+        "ci90_lo": -904.27,
+        "ci90_hi": 285.04
+      },
+      "8": {
+        "observed_mean": -262.57,
+        "boot_mean": -190.64,
+        "boot_se": 351.28,
+        "p_v11_gt_v10": 0.3213,
+        "ci95_lo": -971.76,
+        "ci95_hi": 363.86,
+        "ci90_lo": -833.87,
+        "ci90_hi": 312.09
+      },
+      "12": {
+        "observed_mean": -262.57,
+        "boot_mean": -175.23,
+        "boot_se": 348.16,
+        "p_v11_gt_v10": 0.3283,
+        "ci95_lo": -940.32,
+        "ci95_hi": 400.84,
+        "ci90_lo": -788.34,
+        "ci90_hi": 342.25
+      }
+    },
+    "iid_bootstrap_pnl": {
+      "observed_mean": -262.57,
+      "boot_mean": -262.64,
+      "boot_se": 346.56,
+      "p_v11_gt_v10": 0.2411,
+      "ci95_lo": -1031.94,
+      "ci95_hi": 287.32,
+      "ci90_lo": -892.2,
+      "ci90_hi": 227.68
+    }
+  }
+}

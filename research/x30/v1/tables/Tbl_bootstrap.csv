@@ -1,0 +1,4 @@
+candidate,p_delta_sh_pos,median_delta_sh,mean_delta_sh,p_delta_mdd_neg,median_delta_mdd
+discrete_pf90,0.436,-0.0168,-0.0284,0.572,-0.8
+B2_mf60,0.308,-0.1278,-0.1357,0.744,-4.89
+B2_mf80,0.34,-0.1165,-0.1235,0.744,-5.31

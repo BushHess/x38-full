@@ -1,0 +1,42 @@
+{
+  "statistical_significance": {
+    "fisher_p_value": 0.8042,
+    "significant": false,
+    "tightened_false_rate": 42.9,
+    "non_tightened_false_rate": 33.3,
+    "tightened_95ci": [
+      14.3,
+      71.4
+    ]
+  },
+  "reentry_capture": {
+    "total_forgone_pct": 179.3,
+    "total_recaptured_pct": 14.0,
+    "recovery_rate_pct": 7.8,
+    "tightened_forgone_pct": 44.2,
+    "tightened_recaptured_pct": 0.9
+  },
+  "counterfactual": {
+    "would_survive_with_35": 10,
+    "total_tightened": 14,
+    "false_exits_would_survive": 5
+  },
+  "profit_protection": {
+    "captured_pct": 410.9,
+    "forgone_pct": 62.6,
+    "ratio": 6.6
+  },
+  "net_damage": {
+    "forgone_dollars": 16297.0,
+    "recaptured_dollars": 125.0,
+    "net_damage_dollars": 16172.0,
+    "pct_of_total_pnl": 16.56
+  },
+  "scenario_table_evidence": {
+    "baseline_cagr": 38.55,
+    "tighten030_cagr": 43.21,
+    "improvement_cagr": 4.66
+  },
+  "verdict": "MILD_ISSUE",
+  "recommendation": "Raise trail_tighten_profit_pct from 0.20 to 0.30"
+}

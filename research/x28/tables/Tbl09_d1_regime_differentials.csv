@@ -1,0 +1,4 @@
+regime,above_bars,below_bars,mean_ret_above_ann_pct,mean_ret_below_ann_pct,diff_pp_yr,welch_t,welch_p,mann_whitney_p
+SMA(200),1595,1334,114.89,-87.86,202.8,4.389,0.0000,0.0000
+EMA(21),1526,1403,339.29,-321.95,661.2,14.950,0.0000,0.0000
+EMA(50),1507,1422,230.69,-198.02,428.7,9.510,0.0000,0.0000

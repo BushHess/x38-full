@@ -1,0 +1,194 @@
+{
+  "strategy_id": "X0_E5EXIT",
+  "scenario": "harsh",
+  "full_summary": {
+    "initial_cash": 10000.0,
+    "report_start_nav": 10000.0,
+    "final_nav_mid": 307790.48,
+    "total_return_pct": 2977.9,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97,
+    "max_drawdown_liq_pct": 40.97,
+    "sharpe": 1.4545,
+    "sortino": 1.3508,
+    "calmar": 1.5037,
+    "trades": 188,
+    "wins": 79,
+    "losses": 109,
+    "win_rate_pct": 42.02,
+    "profit_factor": 1.6519,
+    "avg_trade_pnl": 1583.99,
+    "avg_win": 9552.2,
+    "avg_loss": -4191.13,
+    "avg_days_held": 6.17,
+    "avg_exposure": 0.4448,
+    "time_in_market_pct": 44.48,
+    "fees_total": 80147.19,
+    "turnover_notional": 53431457.57,
+    "fee_drag_pct_per_year": 7.74,
+    "turnover_per_year": 51.57,
+    "fills": 376,
+    "years": 7.14
+  },
+  "current_window": {
+    "start": "2025-01-01",
+    "end": "2026-02-20",
+    "window_days": 416,
+    "ret_pct": -0.1553122378655014,
+    "underwater_share": 0.9955911823647294,
+    "trades": 26,
+    "pnl_usd": -478.7798928513639,
+    "ret_rank_worst_count": 61,
+    "underwater_rank_worst_count": 78,
+    "trade_rank_low_count": 66,
+    "rolling_window_count": 314
+  },
+  "longest_underwater_streaks": [
+    {
+      "start_month": "2021-11",
+      "end_month": "2024-01",
+      "months": 27,
+      "min_nav_ratio_to_peak": 0.6681350627101341
+    },
+    {
+      "start_month": "2019-07",
+      "end_month": "2020-06",
+      "months": 12,
+      "min_nav_ratio_to_peak": 0.7194566658184884
+    },
+    {
+      "start_month": "2025-06",
+      "end_month": "2026-02",
+      "months": 9,
+      "min_nav_ratio_to_peak": 0.9151985609223986
+    },
+    {
+      "start_month": "2024-03",
+      "end_month": "2024-10",
+      "months": 8,
+      "min_nav_ratio_to_peak": 0.8705609815432586
+    },
+    {
+      "start_month": "2021-04",
+      "end_month": "2021-06",
+      "months": 3,
+      "min_nav_ratio_to_peak": 0.900918508974689
+    },
+    {
+      "start_month": "2025-01",
+      "end_month": "2025-03",
+      "months": 3,
+      "min_nav_ratio_to_peak": 0.9309236237951802
+    },
+    {
+      "start_month": "2020-08",
+      "end_month": "2020-09",
+      "months": 2,
+      "min_nav_ratio_to_peak": 0.9201797653357057
+    },
+    {
+      "start_month": "2021-09",
+      "end_month": "2021-09",
+      "months": 1,
+      "min_nav_ratio_to_peak": 0.9208896157940744
+    }
+  ],
+  "similar_or_worse_windows": [
+    {
+      "start": "2021-11-09",
+      "end": "2022-12-30",
+      "ret_pct": -37.36769380029382,
+      "underwater_share": 0.9995995194233079,
+      "trades": 21,
+      "pnl_usd": -59830.24136279475
+    },
+    {
+      "start": "2021-10-26",
+      "end": "2022-12-16",
+      "ret_pct": -34.59960839976116,
+      "underwater_share": 0.9995995194233079,
+      "trades": 23,
+      "pnl_usd": -53742.59646191931
+    },
+    {
+      "start": "2021-10-19",
+      "end": "2022-12-09",
+      "ret_pct": -32.98341043793811,
+      "underwater_share": 0.9979975971165399,
+      "trades": 23,
+      "pnl_usd": -58073.75541500275
+    },
+    {
+      "start": "2022-03-29",
+      "end": "2023-05-19",
+      "ret_pct": -31.682722172556332,
+      "underwater_share": 1.0,
+      "trades": 30,
+      "pnl_usd": -47433.11699681045
+    },
+    {
+      "start": "2021-11-02",
+      "end": "2022-12-23",
+      "ret_pct": -30.552655200945267,
+      "underwater_share": 0.9995995194233079,
+      "trades": 22,
+      "pnl_usd": -50531.234537769094
+    },
+    {
+      "start": "2022-04-05",
+      "end": "2023-05-26",
+      "ret_pct": -29.133953436530835,
+      "underwater_share": 1.0,
+      "trades": 29,
+      "pnl_usd": -38881.875052356394
+    },
+    {
+      "start": "2021-11-16",
+      "end": "2023-01-06",
+      "ret_pct": -28.311594921003636,
+      "underwater_share": 1.0,
+      "trades": 20,
+      "pnl_usd": -46035.04643601026
+    },
+    {
+      "start": "2022-02-08",
+      "end": "2023-03-31",
+      "ret_pct": -27.28083801725869,
+      "underwater_share": 1.0,
+      "trades": 29,
+      "pnl_usd": -38926.75601517396
+    },
+    {
+      "start": "2022-04-12",
+      "end": "2023-06-02",
+      "ret_pct": -27.06622636416578,
+      "underwater_share": 1.0,
+      "trades": 30,
+      "pnl_usd": -42143.3910708068
+    },
+    {
+      "start": "2022-04-19",
+      "end": "2023-06-09",
+      "ret_pct": -27.06622636416578,
+      "underwater_share": 1.0,
+      "trades": 30,
+      "pnl_usd": -42143.3910708068
+    },
+    {
+      "start": "2022-04-26",
+      "end": "2023-06-16",
+      "ret_pct": -27.06622636416578,
+      "underwater_share": 1.0,
+      "trades": 30,
+      "pnl_usd": -42143.3910708068
+    },
+    {
+      "start": "2022-01-25",
+      "end": "2023-03-17",
+      "ret_pct": -25.507223401180056,
+      "underwater_share": 1.0,
+      "trades": 28,
+      "pnl_usd": -36578.550105640286
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+2026-02-26 10:02:15,355 INFO validation: Validation run started
+2026-02-26 10:02:15,356 INFO validation:   candidate: amt from /var/www/trading-bots/btc-spot-dev/configs/amt/amt_default.yaml
+2026-02-26 10:02:15,356 INFO validation:   baseline:  v8_apex from /var/www/trading-bots/btc-spot-dev/configs/frozen/v10_baseline.yaml
+2026-02-26 10:02:15,356 INFO validation:   period:    2019-01-01 -> 2026-02-20
+2026-02-26 10:02:15,356 INFO validation:   suite:     full
+2026-02-26 10:02:15,383 INFO validation: Loading data from bars_btcusdt_2016_now_h1_4h_1d.csv ...
+2026-02-26 10:02:16,284 INFO validation:   h4 bars: 17838, d1 bars: 2973
+2026-02-26 10:02:16,286 INFO validation: Suites to run: ['lookahead', 'backtest', 'regime', 'wfo', 'bootstrap', 'sensitivity', 'holdout', 'selection_bias', 'trade_level', 'dd_episodes']
+2026-02-26 10:02:16,287 INFO validation: Suite lookahead: SKIP — lookahead check disabled
+2026-02-26 10:02:16,301 INFO validation: Suite backtest: START
+2026-02-26 10:02:16,302 INFO validation:   backtest: candidate × smart
+2026-02-26 10:02:16,377 INFO validation:   backtest: candidate × base
+2026-02-26 10:02:16,452 INFO validation:   backtest: candidate × harsh
+2026-02-26 10:02:16,533 INFO validation:   backtest: baseline × smart
+2026-02-26 10:02:16,704 INFO validation:   backtest: baseline × base
+2026-02-26 10:02:16,892 INFO validation:   backtest: baseline × harsh
+2026-02-26 10:02:17,070 INFO validation: Suite backtest: PASS (0.8s)
+2026-02-26 10:02:17,071 INFO validation: Suite regime: START
+2026-02-26 10:02:17,134 INFO validation: Suite regime: INFO (0.1s)
+2026-02-26 10:02:17,135 INFO validation: Suite wfo: START
+2026-02-26 10:02:17,136 INFO validation:   wfo: 10 windows (24m train / 6m test / 6m slide)
+2026-02-26 10:02:17,435 INFO validation:   wfo: window 1/10  2021-01-01→2021-07-01  Δ=1000042.6
+2026-02-26 10:02:17,742 INFO validation:   wfo: window 2/10  2021-07-01→2022-01-01  Δ=1000320.7
+2026-02-26 10:02:18,038 INFO validation:   wfo: window 3/10  2022-01-01→2022-07-01  Δ=0.0
+2026-02-26 10:02:18,335 INFO validation:   wfo: window 4/10  2022-07-01→2023-01-01  Δ=999895.8
+2026-02-26 10:02:18,639 INFO validation:   wfo: window 5/10  2023-01-01→2023-07-01  Δ=1000035.4
+2026-02-26 10:02:18,943 INFO validation:   wfo: window 6/10  2023-07-01→2024-01-01  Δ=1000225.5
+2026-02-26 10:02:19,247 INFO validation:   wfo: window 7/10  2024-01-01→2024-07-01  Δ=-10.4
+2026-02-26 10:02:19,546 INFO validation:   wfo: window 8/10  2024-07-01→2025-01-01  Δ=30.7
+2026-02-26 10:02:19,839 INFO validation:   wfo: window 9/10  2025-01-01→2025-07-01  Δ=1000030.5
+2026-02-26 10:02:20,139 INFO validation:   wfo: window 10/10  2025-07-01→2026-01-01  Δ=0.0
+2026-02-26 10:02:20,140 INFO validation: Suite wfo: PASS (3.0s)
+2026-02-26 10:02:20,144 INFO validation: Suite bootstrap: START
+2026-02-26 10:02:20,144 INFO validation:   bootstrap: paired harsh block=10 n=2000
+2026-02-26 10:02:25,685 INFO validation:   bootstrap: paired harsh block=20 n=2000
+2026-02-26 10:02:28,713 INFO validation:   bootstrap: paired harsh block=40 n=2000
+2026-02-26 10:02:30,486 INFO validation:   bootstrap: paired base block=10 n=2000
+2026-02-26 10:02:36,130 INFO validation:   bootstrap: paired base block=20 n=2000
+2026-02-26 10:02:39,172 INFO validation:   bootstrap: paired base block=40 n=2000
+2026-02-26 10:02:40,935 INFO validation:   bootstrap: individual harsh n=2000
+2026-02-26 10:02:57,460 INFO validation: Suite bootstrap: FAIL (37.3s)
+2026-02-26 10:02:57,462 INFO validation: Suite sensitivity: START
+2026-02-26 10:02:57,462 INFO validation:   sensitivity: 27 combos (slow_period[3] × trail_mult[3] × vdo_threshold[3]) under harsh
+2026-02-26 10:02:57,882 INFO validation:   sensitivity: 5/27 done
+2026-02-26 10:02:58,283 INFO validation:   sensitivity: 10/27 done
+2026-02-26 10:02:58,701 INFO validation:   sensitivity: 15/27 done
+2026-02-26 10:02:59,129 INFO validation:   sensitivity: 20/27 done
+2026-02-26 10:02:59,565 INFO validation:   sensitivity: 25/27 done
+2026-02-26 10:02:59,727 INFO validation:   sensitivity: 27/27 done
+2026-02-26 10:02:59,728 INFO validation: Suite sensitivity: INFO (2.3s)
+2026-02-26 10:02:59,730 INFO validation: Suite holdout: START
+2026-02-26 10:02:59,730 INFO validation:   holdout: 2024-09-17 -> 2026-02-20
+2026-02-26 10:03:00,380 INFO validation: Suite holdout: FAIL (0.6s)
+2026-02-26 10:03:00,381 INFO validation: Suite selection_bias: START
+2026-02-26 10:03:03,243 INFO validation:   selection_bias: PBO computed (10 windows)
+2026-02-26 10:03:03,245 INFO validation: Suite selection_bias: PASS (2.9s)
+2026-02-26 10:03:03,246 INFO validation: Suite trade_level: START
+2026-02-26 10:03:03,261 ERROR validation: Suite trade_level: ERROR — 'Trade' object has no attribute 'entry_time'
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/v10/validation/runner.py", line 171, in run
+    result = suite.run(ctx)
+             ^^^^^^^^^^^^^^
+  File "/var/www/trading-bots/btc-spot-dev/v10/validation/suites/trade_level.py", line 123, in run
+    cand_rows = [_trade_to_row(t, _regime_at_time(regime_map, t.entry_time), "candidate")
+                                                              ^^^^^^^^^^^^
+AttributeError: 'Trade' object has no attribute 'entry_time'. Did you mean: 'entry_price'?
+2026-02-26 10:03:03,263 INFO validation: Suite dd_episodes: START
+2026-02-26 10:03:03,265 INFO validation:   dd_episodes: candidate — 28 episodes (>5% DD)
+2026-02-26 10:03:03,268 INFO validation:   dd_episodes: baseline — 18 episodes (>5% DD)
+2026-02-26 10:03:03,269 INFO validation: Suite dd_episodes: INFO (0.0s)
+2026-02-26 10:03:03,269 INFO validation: Decision: REJECT (exit code 2)
+2026-02-26 10:03:03,271 INFO validation: Validation run complete in 47.9s

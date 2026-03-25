@@ -1,0 +1,3 @@
+label,scenario,score,cagr_pct,max_drawdown_mid_pct,sharpe,sortino,calmar,profit_factor,win_rate_pct,trades,avg_trade_pnl,fees_total,fee_drag_pct_per_year,turnover_per_year,avg_exposure,time_in_market_pct,total_return_pct,initial_cash,final_nav_mid
+candidate,harsh,31.2494,14.28,24.58,0.7043,0.7487,0.5809,1.4726,56.52,23,105.49,655.18,3.55,23.66,0.3634,63.41,21.01,10000.0,12100.69
+baseline,harsh,86.1051,33.9,25.39,1.1577,1.2571,1.3347,1.9855,62.5,24,235.03,941.68,4.61,30.75,0.5166,61.17,51.74,10000.0,15174.38

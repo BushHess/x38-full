@@ -1,0 +1,18 @@
+{
+  "delta_sharpe": {
+    "a5_vs_full": 0.10450000000000004,
+    "a3_vs_full": 0.10650000000000004,
+    "a5_vs_e0": -0.010099999999999998,
+    "a3_vs_e0": -0.008099999999999996,
+    "full_vs_e0": -0.11460000000000004
+  },
+  "relation": {
+    "a5_vs_full": ">>",
+    "a3_vs_full": ">>",
+    "a5_vs_e0": "\u2248",
+    "a3_vs_e0": "\u2248",
+    "full_vs_e0": "<<"
+  },
+  "verdict": "CLOSE Q-VDO-RH family",
+  "next_action": "Full Q-VDO-RH loses mainly from normalized input; A5 and A3 only recover back toward E0, so do not open d_ or e_."
+}

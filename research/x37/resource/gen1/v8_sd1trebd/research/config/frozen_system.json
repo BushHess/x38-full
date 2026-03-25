@@ -1,0 +1,102 @@
+{
+  "system_id": "S_D1_TREND",
+  "evidence_label": "INTERNAL ROBUST CANDIDATE",
+  "selection_stage": "Stage 5C pre-reserve leader declaration",
+  "frozen_before_reserve": true,
+  "architecture": {
+    "layers": 1,
+    "logic_type": "single_feature_state_system",
+    "execution_timeframe": "1d",
+    "native_timeframe": "1d",
+    "cross_timeframe_dependence": false
+  },
+  "feature": {
+    "feature_id": "D1_MOM_RET",
+    "family": "directional_persistence",
+    "formula": "close_t / close_(t-40) - 1",
+    "lookback_bars": 40,
+    "tail": "high",
+    "threshold_mode": "sign",
+    "threshold_value": 0.0,
+    "calibration_mode": "fixed_structural"
+  },
+  "state_machine": {
+    "signal_observation_time": "D1 bar close",
+    "decision_rule": "long if D1_MOM_RET(n=40) > 0 else flat",
+    "execution_rule": "apply state at next D1 bar open",
+    "position_sizing": "100% long when active, 0% when inactive",
+    "long_only": true,
+    "leverage": false,
+    "pyramiding": false,
+    "discretionary_override": false
+  },
+  "cost_and_data_rules": {
+    "market": "BTC/USDT spot",
+    "cost_per_side_bps": 10,
+    "round_trip_cost_bps": 20,
+    "warmup_live_start": "2020-01-01",
+    "timestamps_interpreted_as": "UTC",
+    "raw_data_surface": [
+      "symbol",
+      "interval",
+      "open_time",
+      "close_time",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "quote_volume",
+      "num_trades",
+      "taker_buy_base_vol",
+      "taker_buy_quote_vol"
+    ]
+  },
+  "selection_context": {
+    "comparison_set_ids": [
+      "S_D1_TREND",
+      "S_H4_TREND",
+      "S_H4_TREND_Q",
+      "S_XR_D1EMA",
+      "S_XR_D1ROLL",
+      "L2_D1_TREND_AND_H4_VOLQUIET",
+      "L2_D1_VOLHIGH_AND_H4_PULLBACK"
+    ],
+    "cluster_winner_logic": {
+      "h4_trend_cluster": "S_H4_TREND chosen over S_H4_TREND_Q because the more complex calibrated rival failed to show meaningful paired daily-return advantage.",
+      "cross_tf_cluster": "S_XR_D1EMA chosen over S_XR_D1ROLL because the more complex rival failed to show meaningful paired daily-return advantage.",
+      "final_choice": "S_D1_TREND chosen over S_H4_TREND and S_XR_D1EMA because neither more operationally complex rival showed meaningful paired daily-return advantage, while S_D1_TREND remained the simplest native single-timeframe leader with the highest pre-reserve mean daily return and the strongest cost resilience."
+    }
+  },
+  "pre_reserve_results": {
+    "discovery": {
+      "sharpe_daily_365": 1.6941374309038109,
+      "cagr": 1.0123385137956236,
+      "max_drawdown": -0.4831580747532276,
+      "trade_count_entries": 61,
+      "positive_fold_share": 0.6428571428571429,
+      "stress50bps_cagr": 0.9603019926078176
+    },
+    "holdout": {
+      "sharpe_daily_365": 1.081889180380942,
+      "cagr": 0.4081594033733569,
+      "max_drawdown": -0.43372783553847405,
+      "trade_count_entries": 34
+    },
+    "pre_reserve_combined": {
+      "sharpe_daily_365": 1.5506514523048536,
+      "cagr": 0.8313511260610988,
+      "max_drawdown": -0.4831580747532276
+    }
+  },
+  "reserve_internal_result": {
+    "sharpe_daily_365": 0.873430172877608,
+    "cagr": 0.24164202060490902,
+    "max_drawdown": -0.24006039611162733,
+    "trade_count_entries": 35
+  },
+  "session_finality_statement": {
+    "statement": "This V8 run is the final same-file audit on the current BTC/USDT file pair.",
+    "stop_condition": "After reserve/internal evaluation is reported, same-file prompt iteration stops; stronger claims require appended future data."
+  }
+}

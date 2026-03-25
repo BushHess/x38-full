@@ -1,0 +1,84 @@
+{
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "state_pack_version": "state_pack_v1",
+  "active_champion_id": "btcsd_20260318_c3_trade4h15m",
+  "active_challenger_ids": [
+    "btcsd_20260318_c1_av4h"
+  ],
+  "current_forward_status": "not_started",
+  "forward_boundary_utc": "2026-03-18T23:59:59.999000+00:00",
+  "last_evaluated_timestamp_by_timeframe_utc": {
+    "15m": null,
+    "1h": null,
+    "4h": null,
+    "1d": null
+  },
+  "warmup_requirements": {
+    "15m": {
+      "minimum_closed_bars": 168,
+      "full_prior_history_required": false,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "M15 relative-volume timing window for btcsd_20260318_c3_trade4h15m."
+    },
+    "1h": {
+      "minimum_closed_bars": 0,
+      "full_prior_history_required": false,
+      "required_by_candidate_ids": [],
+      "note": "No live V1 candidate consumes 1h bars directly."
+    },
+    "4h": {
+      "minimum_closed_bars": 168,
+      "full_prior_history_required": false,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c1_av4h",
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "H4 range-position windows for both live candidates."
+    },
+    "1d": {
+      "minimum_closed_bars": 448,
+      "full_prior_history_required": true,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c1_av4h",
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "btcsd_20260318_c1_av4h needs 448 closed D1 bars for rangevol84 + rank365. btcsd_20260318_c3_trade4h15m uses a D1 trade-surprise model whose deterministic replay should refit on all prior closed D1 bars before the forward boundary."
+    }
+  },
+  "candidate_states": {
+    "btcsd_20260318_c3_trade4h15m": {
+      "position_state": "flat",
+      "position_fraction": 0.0,
+      "entry_time_utc": null,
+      "entry_price": null,
+      "trail_state": null,
+      "custom_state": {
+        "candidate_id": "btcsd_20260318_c3_trade4h15m",
+        "decision_timeframe": "15m",
+        "config_id": "cfg_025",
+        "disabled_layers": []
+      },
+      "last_signal_time_utc": "2026-03-18T23:29:59.999000+00:00",
+      "reconstructable_from_warmup_only": true
+    },
+    "btcsd_20260318_c1_av4h": {
+      "position_state": "flat",
+      "position_fraction": 0.0,
+      "entry_time_utc": null,
+      "entry_price": null,
+      "trail_state": null,
+      "custom_state": {
+        "candidate_id": "btcsd_20260318_c1_av4h",
+        "decision_timeframe": "4h",
+        "config_id": "cfg_001",
+        "disabled_layers": []
+      },
+      "last_signal_time_utc": "2026-03-18T15:59:59.999000+00:00",
+      "reconstructable_from_warmup_only": true
+    }
+  }
+}

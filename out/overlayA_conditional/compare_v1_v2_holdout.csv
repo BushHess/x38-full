@@ -1,0 +1,4 @@
+config,benefit,cost,net,bcr,share_top1,share_top2,n_blocked_winners,blocked_winners_pnl,g1_delta_total,g2_delta,n_cascade_episodes,n_trades,final_nav
+baseline,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,1,26,95968.45
+v1_K12,13448.74,5765.09,7683.66,2.333,100.0,100.0,1,2224.16,13448.74,-5765.09,1,24,94552.53
+v2_escalating,0.0,0.0,-11728.08,0.0,0.0,0.0,0,0,-11728.08,0.0,1,25,84240.37

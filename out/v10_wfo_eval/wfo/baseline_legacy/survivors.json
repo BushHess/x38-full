@@ -1,0 +1,202 @@
+[
+  {
+    "params": {
+      "emergency_dd_pct": 0.28,
+      "emergency_ref": "pre_cost_legacy",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.18,
+      "rsi_method": "wilder",
+      "trail_atr_mult": 3.0
+    },
+    "windows_tested": 2,
+    "windows_passed": 2,
+    "pass_rate": 1.0,
+    "median_test_score": 193.3,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 292.8,
+        "test_score": 193.3,
+        "test_return_pct": 32.26,
+        "test_mdd_pct": 23.69,
+        "passed": true
+      },
+      {
+        "window_id": 1,
+        "train_score": 209.31,
+        "test_score": -3.74,
+        "test_return_pct": 1.61,
+        "test_mdd_pct": 25.72,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.28,
+      "emergency_ref": "pre_cost_legacy",
+      "entry_cooldown_bars": 3,
+      "fixed_stop_pct": 0.18,
+      "rsi_method": "wilder",
+      "trail_atr_mult": 3.0
+    },
+    "windows_tested": 4,
+    "windows_passed": 4,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 1,
+        "train_score": 229.94,
+        "test_score": -1000000.0,
+        "test_return_pct": 17.34,
+        "test_mdd_pct": 22.67,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 271.86,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 291.14,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 61.61,
+        "test_score": -1000000.0,
+        "test_return_pct": 2.71,
+        "test_mdd_pct": 13.57,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "pre_cost_legacy",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.18,
+      "rsi_method": "wilder",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 5,
+    "windows_passed": 3,
+    "pass_rate": 0.6,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 3,
+        "train_score": 290.34,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 64.61,
+        "test_score": -1000000.0,
+        "test_return_pct": 7.01,
+        "test_mdd_pct": 17.51,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 90.41,
+        "test_score": 543.08,
+        "test_return_pct": 75.93,
+        "test_mdd_pct": 13.05,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 187.98,
+        "test_score": -1000000.0,
+        "test_return_pct": -11.99,
+        "test_mdd_pct": 43.7,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 130.88,
+        "test_score": -1000000.0,
+        "test_return_pct": -7.19,
+        "test_mdd_pct": 17.75,
+        "passed": false
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "pre_cost_legacy",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.12,
+      "rsi_method": "wilder",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 2,
+    "windows_passed": 1,
+    "pass_rate": 0.5,
+    "median_test_score": 543.08,
+    "window_details": [
+      {
+        "window_id": 7,
+        "train_score": 90.41,
+        "test_score": 543.08,
+        "test_return_pct": 75.93,
+        "test_mdd_pct": 13.05,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 187.98,
+        "test_score": -133.26,
+        "test_return_pct": -24.98,
+        "test_mdd_pct": 41.19,
+        "passed": false
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "pre_cost_legacy",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.15,
+      "rsi_method": "wilder",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 2,
+    "windows_passed": 1,
+    "pass_rate": 0.5,
+    "median_test_score": 543.08,
+    "window_details": [
+      {
+        "window_id": 7,
+        "train_score": 90.41,
+        "test_score": 543.08,
+        "test_return_pct": 75.93,
+        "test_mdd_pct": 13.05,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 187.98,
+        "test_score": -146.88,
+        "test_return_pct": -28.24,
+        "test_mdd_pct": 43.75,
+        "passed": false
+      }
+    ]
+  }
+]

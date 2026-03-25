@@ -1,0 +1,4 @@
+pair,a_baseline_sharpe,b_baseline_sharpe,a_miss_k1_sharpe_p5,b_miss_k1_sharpe_p5,a_miss_k1_sharpe_cv,b_miss_k1_sharpe_cv,a_outage_168h_sharpe_worst,b_outage_168h_sharpe_worst,a_delay_4_delta_sharpe,b_delay_4_delta_sharpe
+SM vs LATCH,0.816070,0.825127,0.806109,0.814844,0.015095,0.014769,0.739434,0.749684,-0.033017,-0.032835
+E0 vs E0_plus_EMA1D21,1.137892,1.183661,1.132590,1.176892,0.003247,0.003385,1.073784,1.118906,-0.336212,-0.385609
+E5 vs E5_plus_EMA1D21,1.229858,1.280058,1.223120,1.270820,0.003240,0.003476,1.160419,1.209517,-0.453426,-0.511848

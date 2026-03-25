@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "data": "/var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "holdout_start": "2024-01-01",
+    "warmup_days": 365
+  },
+  "elapsed_seconds": 86.42
+}

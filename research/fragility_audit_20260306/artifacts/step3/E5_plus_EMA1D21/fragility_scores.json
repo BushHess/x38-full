@@ -1,0 +1,12 @@
+{
+  "miss_k1_sharpe_cv": 0.0034757215586864753,
+  "miss_k1_sharpe_p5": 1.2708202628268264,
+  "miss_k1_sharpe_mean": 1.2797992109693923,
+  "miss_k3_sharpe_p5": 1.266325139997147,
+  "outage_168h_sharpe_worst": 1.2095172199960187,
+  "outage_168h_sharpe_p5": 1.2536583834344366,
+  "delay_1_delta_sharpe": -0.07067393308183911,
+  "delay_4_delta_sharpe": -0.5118483134727108,
+  "baseline_sharpe": 1.2800583413288134,
+  "baseline_cagr_native": 0.7261775760097144
+}

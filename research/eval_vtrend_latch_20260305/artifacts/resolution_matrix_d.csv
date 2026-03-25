@@ -1,0 +1,7 @@
+id,question,verdict,detail
+D1,"At matched MDD, which strategy has higher CAGR?",LATCH wins at MDD≈10.0%: CAGR 9.97% vs 5.38%,target_mdd=10.0%
+D2,"At matched MDD, which has higher Sharpe?",LATCH wins at MDD≈10.0%: Sharpe 1.3148 vs 1.0773,
+D3,E0 scaled to LATCH MDD: head-to-head,"E0(k=0.131): CAGR=6.11%, Sharpe=1.0773 | LATCH: CAGR=11.21%, Sharpe=1.3148",
+D4,Can LATCH reach E0-level MDD without leverage?,LATCH native MDD=0.1124 < E0 native MDD=0.6330. LATCH cannot reach E0-level MDD without leverage >1.,
+D5,Equal-overlay control (EntryVol_12),"E0 Sharpe=1.3316, LATCH Sharpe=1.1951, ΔSharpe=-0.1365, ΔScore=-1.05","Same signal extraction, same sizing, same cost"
+D6,Overall deploy-oriented comparison,See report narrative,Matched-risk analysis resolves exposure bias

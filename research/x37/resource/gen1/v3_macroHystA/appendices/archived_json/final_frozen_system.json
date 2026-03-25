@@ -1,0 +1,139 @@
+{
+  "name": "Slow D1 macro trend + H4 trend-quality hysteresis",
+  "research_status": "post_holdout_redesign",
+  "evidence_caveat": "The original 2024-2026 holdout had already been exposed in prior research rounds, so this is not an untouched-holdout discovery result. It is a post-mortem redesign using all current understanding.",
+  "market": "BTCUSDT spot",
+  "positioning": "long_flat_full_notional",
+  "timeframes": [
+    "1d",
+    "4h"
+  ],
+  "signal_timing": "compute on H4 close; execute at next H4 open",
+  "cost_per_side": 0.001,
+  "warmup": [
+    "2017-08-17",
+    "2018-12-31"
+  ],
+  "development_for_threshold_build": [
+    "2019-01-01",
+    "2019-12-31"
+  ],
+  "development_evaluation": [
+    "2020-01-01",
+    "2023-12-31"
+  ],
+  "holdout_evaluation": [
+    "2024-01-01",
+    "2026-02-20"
+  ],
+  "features": {
+    "d1_ret_60": "close / close.shift(60) - 1 on D1 bars; aligned to H4 by close_dt backward-asof so only completed D1 bars are visible.",
+    "h4_trendq_84": "(close / close.shift(84) - 1) / (rolling_std(log(close/close.shift(1)), 84, shifted by 1) * sqrt(84)) on H4 bars."
+  },
+  "calibration_rules": {
+    "macro_threshold": "At each calendar-year start y>=2020, compute the 50th percentile of d1_ret_60 on D1 bars with close_dt in [max(2019-01-01, y-1095d), y-01-01).",
+    "entry_threshold": "At each calendar-year start y>=2020, compute the 60th percentile of h4_trendq_84 on H4 bars with close_dt in [2019-01-01, y-01-01).",
+    "hold_threshold": "At each calendar-year start y>=2020, compute the 50th percentile of h4_trendq_84 on H4 bars with close_dt in [2019-01-01, y-01-01).",
+    "trade_start": "2020-01-01"
+  },
+  "rules": {
+    "macro_gate": "macro_on = d1_ret_60 > yearly_macro_threshold",
+    "entry": "If flat and macro_on and h4_trendq_84 > yearly_entry_threshold, enter long.",
+    "hold": "If long and macro_on and h4_trendq_84 > yearly_hold_threshold, stay long.",
+    "exit": "If long and (macro_on is false or h4_trendq_84 <= yearly_hold_threshold), exit to cash at next H4 open."
+  },
+  "frozen_parameters": {
+    "macro_feature": "d1_ret_60",
+    "macro_lookback_bars": 60,
+    "macro_quantile": 0.5,
+    "macro_calibration_lookback_days": 1095,
+    "micro_feature": "h4_trendq_84",
+    "micro_lookback_bars": 84,
+    "entry_quantile": 0.6,
+    "hold_quantile": 0.5,
+    "micro_calibration": "expanding_from_2019"
+  },
+  "optional_not_frozen_extension": {
+    "name": "anti_chase_cap",
+    "rule": "Block new entries when h4_ma_gap_84 exceeds its yearly 90th percentile on a trailing 1095-day calibration window.",
+    "note": "This marginally improves realized metrics, but was not frozen into the final base system because the core macro+hysteresis mechanism carries the main edge and is simpler."
+  },
+  "yearly_thresholds": [
+    {
+      "year": 2020,
+      "d1_ret_60_q50_trailing1095d": 0.017331177924108765,
+      "h4_trendq_84_entry_q60_expanding": 0.4431803227111183,
+      "h4_trendq_84_hold_q50_expanding": 0.18469316834273913
+    },
+    {
+      "year": 2021,
+      "d1_ret_60_q50_trailing1095d": 0.11793947047366271,
+      "h4_trendq_84_entry_q60_expanding": 0.5944889964511677,
+      "h4_trendq_84_hold_q50_expanding": 0.373152559301904
+    },
+    {
+      "year": 2022,
+      "d1_ret_60_q50_trailing1095d": 0.166431656916032,
+      "h4_trendq_84_entry_q60_expanding": 0.530317126363086,
+      "h4_trendq_84_hold_q50_expanding": 0.2734893615913331
+    },
+    {
+      "year": 2023,
+      "d1_ret_60_q50_trailing1095d": 0.028800968777088487,
+      "h4_trendq_84_entry_q60_expanding": 0.39566761025783564,
+      "h4_trendq_84_hold_q50_expanding": 0.12104510849670166
+    },
+    {
+      "year": 2024,
+      "d1_ret_60_q50_trailing1095d": 0.03833606476801399,
+      "h4_trendq_84_entry_q60_expanding": 0.4154264628390495,
+      "h4_trendq_84_hold_q50_expanding": 0.15015314698856913
+    },
+    {
+      "year": 2025,
+      "d1_ret_60_q50_trailing1095d": 0.013723269349833478,
+      "h4_trendq_84_entry_q60_expanding": 0.4302275569724437,
+      "h4_trendq_84_hold_q50_expanding": 0.15890950056860778
+    },
+    {
+      "year": 2026,
+      "d1_ret_60_q50_trailing1095d": 0.07933136207917046,
+      "h4_trendq_84_entry_q60_expanding": 0.38985670664013494,
+      "h4_trendq_84_hold_q50_expanding": 0.12649937612416443
+    }
+  ],
+  "headline_metrics": {
+    "walkforward_2020_2023": {
+      "sharpe": 1.627998919433356,
+      "cagr": 0.6653309787919948,
+      "mdd": -0.23221426704758574,
+      "trades": 116,
+      "exposure": 0.2966343411294923,
+      "days": 1461
+    },
+    "holdout_2024_2026_02_20": {
+      "sharpe": 1.3747646041768045,
+      "cagr": 0.40315679641922864,
+      "mdd": -0.15220819410848074,
+      "trades": 56,
+      "exposure": 0.2640664961636829,
+      "days": 782
+    },
+    "full_context_2019_2026_02_20": {
+      "sharpe": 1.4467026684968318,
+      "cagr": 0.47270886937422785,
+      "mdd": -0.23221426704758574,
+      "trades": 172,
+      "exposure": 0.24541328389695072,
+      "days": 2608
+    },
+    "full_context_2020_2026_02_20": {
+      "sharpe": 1.5607062609813989,
+      "cagr": 0.5685071907098531,
+      "mdd": -0.23221426704758574,
+      "trades": 172,
+      "exposure": 0.2852790369324515,
+      "days": 2243
+    }
+  }
+}

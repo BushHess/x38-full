@@ -1,0 +1,17 @@
+Phenomenon,Block,Sign,Significant
+P1_MeanReversion,1,-1,True
+P1_MeanReversion,2,-1,True
+P1_MeanReversion,3,-1,True
+P1_MeanReversion,4,-1,True
+P2_Autocorrelation24h,1,-1,True
+P2_Autocorrelation24h,2,-1,True
+P2_Autocorrelation24h,3,-1,True
+P2_Autocorrelation24h,4,-1,True
+P3_PostExitAsymmetry,1,1,False
+P3_PostExitAsymmetry,2,1,False
+P3_PostExitAsymmetry,3,-1,False
+P3_PostExitAsymmetry,4,-1,False
+P4_CalendarReturn,1,1,True
+P4_CalendarReturn,2,1,True
+P4_CalendarReturn,3,1,True
+P4_CalendarReturn,4,1,True

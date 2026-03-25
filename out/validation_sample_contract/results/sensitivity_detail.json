@@ -1,0 +1,352 @@
+{
+  "summary": {
+    "grid": {
+      "entry_aggression": [
+        0.85,
+        0.9,
+        0.95
+      ],
+      "trail_atr_mult": [
+        2.7,
+        3.0,
+        3.3
+      ],
+      "max_total_exposure": [
+        0.75,
+        0.9,
+        0.95
+      ]
+    },
+    "scenario": "harsh",
+    "n_points": 27,
+    "default_score": 68.4542,
+    "min_score": 62.9892,
+    "max_score": 166.7777
+  },
+  "rows": [
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 85.384,
+      "delta_vs_default": 16.9298,
+      "cagr_pct": 31.74,
+      "max_drawdown_mid_pct": 17.68,
+      "sharpe": 1.192,
+      "trades": 14
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 112.8715,
+      "delta_vs_default": 44.4173,
+      "cagr_pct": 42.68,
+      "max_drawdown_mid_pct": 19.6,
+      "sharpe": 1.3695,
+      "trades": 16
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 71.9965,
+      "delta_vs_default": 3.5423,
+      "cagr_pct": 28.58,
+      "max_drawdown_mid_pct": 21.31,
+      "sharpe": 1.006,
+      "trades": 18
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 123.9949,
+      "delta_vs_default": 55.5407,
+      "cagr_pct": 45.61,
+      "max_drawdown_mid_pct": 17.68,
+      "sharpe": 1.5213,
+      "trades": 13
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 166.7777,
+      "delta_vs_default": 98.3235,
+      "cagr_pct": 62.57,
+      "max_drawdown_mid_pct": 19.6,
+      "sharpe": 1.7419,
+      "trades": 15
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 125.3454,
+      "delta_vs_default": 56.8912,
+      "cagr_pct": 48.1,
+      "max_drawdown_mid_pct": 21.31,
+      "sharpe": 1.4233,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 95.4715,
+      "delta_vs_default": 27.0173,
+      "cagr_pct": 35.91,
+      "max_drawdown_mid_pct": 18.45,
+      "sharpe": 1.2525,
+      "trades": 13
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 130.4027,
+      "delta_vs_default": 61.9485,
+      "cagr_pct": 49.73,
+      "max_drawdown_mid_pct": 20.49,
+      "sharpe": 1.4539,
+      "trades": 15
+    },
+    {
+      "entry_aggression": 0.85,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 91.4249,
+      "delta_vs_default": 22.9707,
+      "cagr_pct": 36.26,
+      "max_drawdown_mid_pct": 22.79,
+      "sharpe": 1.1398,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 62.9892,
+      "delta_vs_default": -5.465,
+      "cagr_pct": 25.21,
+      "max_drawdown_mid_pct": 20.93,
+      "sharpe": 0.9979,
+      "trades": 15
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 71.2912,
+      "delta_vs_default": 2.837,
+      "cagr_pct": 28.11,
+      "max_drawdown_mid_pct": 20.74,
+      "sharpe": 1.0159,
+      "trades": 18
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 79.6829,
+      "delta_vs_default": 11.2287,
+      "cagr_pct": 31.38,
+      "max_drawdown_mid_pct": 21.52,
+      "sharpe": 1.0648,
+      "trades": 18
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 100.0956,
+      "delta_vs_default": 31.6414,
+      "cagr_pct": 38.61,
+      "max_drawdown_mid_pct": 20.93,
+      "sharpe": 1.3412,
+      "trades": 14
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 121.2627,
+      "delta_vs_default": 52.8085,
+      "cagr_pct": 46.33,
+      "max_drawdown_mid_pct": 20.74,
+      "sharpe": 1.4224,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 134.8042,
+      "delta_vs_default": 66.35,
+      "cagr_pct": 51.61,
+      "max_drawdown_mid_pct": 21.52,
+      "sharpe": 1.4789,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 73.5678,
+      "delta_vs_default": 5.1136,
+      "cagr_pct": 29.39,
+      "max_drawdown_mid_pct": 21.67,
+      "sharpe": 1.0756,
+      "trades": 14
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 89.0261,
+      "delta_vs_default": 20.5719,
+      "cagr_pct": 35.1,
+      "max_drawdown_mid_pct": 22.02,
+      "sharpe": 1.1412,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.9,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 100.1436,
+      "delta_vs_default": 31.6894,
+      "cagr_pct": 39.36,
+      "max_drawdown_mid_pct": 22.45,
+      "sharpe": 1.1962,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 89.3748,
+      "delta_vs_default": 20.9206,
+      "cagr_pct": 33.77,
+      "max_drawdown_mid_pct": 18.64,
+      "sharpe": 1.2636,
+      "trades": 15
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 75.8391,
+      "delta_vs_default": 7.3849,
+      "cagr_pct": 29.83,
+      "max_drawdown_mid_pct": 20.99,
+      "sharpe": 1.0482,
+      "trades": 18
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 2.7,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 63.5279,
+      "delta_vs_default": -4.9263,
+      "cagr_pct": 25.75,
+      "max_drawdown_mid_pct": 21.76,
+      "sharpe": 0.9188,
+      "trades": 19
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 129.2911,
+      "delta_vs_default": 60.8369,
+      "cagr_pct": 48.26,
+      "max_drawdown_mid_pct": 18.64,
+      "sharpe": 1.6022,
+      "trades": 14
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 126.9793,
+      "delta_vs_default": 58.5251,
+      "cagr_pct": 48.53,
+      "max_drawdown_mid_pct": 20.99,
+      "sharpe": 1.4521,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.0,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 116.8431,
+      "delta_vs_default": 48.3889,
+      "cagr_pct": 45.26,
+      "max_drawdown_mid_pct": 21.76,
+      "sharpe": 1.3452,
+      "trades": 18
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.75,
+      "scenario": "harsh",
+      "score": 100.6244,
+      "delta_vs_default": 32.1702,
+      "cagr_pct": 38.32,
+      "max_drawdown_mid_pct": 19.42,
+      "sharpe": 1.3278,
+      "trades": 14
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.9,
+      "scenario": "harsh",
+      "score": 94.3393,
+      "delta_vs_default": 25.8851,
+      "cagr_pct": 37.09,
+      "max_drawdown_mid_pct": 22.16,
+      "sharpe": 1.1746,
+      "trades": 17
+    },
+    {
+      "entry_aggression": 0.95,
+      "trail_atr_mult": 3.3,
+      "max_total_exposure": 0.95,
+      "scenario": "harsh",
+      "score": 83.7217,
+      "delta_vs_default": 15.2675,
+      "cagr_pct": 33.56,
+      "max_drawdown_mid_pct": 22.69,
+      "sharpe": 1.0659,
+      "trades": 18
+    }
+  ]
+}

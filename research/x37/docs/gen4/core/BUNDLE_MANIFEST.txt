@@ -1,0 +1,78 @@
+# Research Operating Kit v4 — Bundle Manifest
+# Paths are relative to the bundle root directory.
+
+# Core charter and operating documents
+core/BUNDLE_MANIFEST.txt
+core/README_EN.md
+core/research_constitution_v4.0.yaml
+core/FILE_AND_SCHEMA_CONVENTIONS_EN.md
+core/SESSION_BOUNDARIES_EN.md
+core/STATE_PACK_SPEC_v4.0_EN.md
+core/HISTORICAL_SEED_AUDIT_SPEC_EN.md
+core/FORWARD_DECISION_POLICY_EN.md
+core/PROMPT_INDEX_EN.md
+core/UPLOAD_MATRIX_EN.md
+core/KIT_REVIEW_AND_FIXLOG_EN.md
+
+# Prompt set — seed discovery (mainline)
+prompt_set/PROMPT_D0_PRECHECK_NEW_SESSION.md
+prompt_set/PROMPT_D1a_DATA_INGESTION.md
+prompt_set/PROMPT_D1b1_PRICE_MOMENTUM.md
+prompt_set/PROMPT_D1b2_VOLATILITY_REGIME.md
+prompt_set/PROMPT_D1b3_VOLUME_FLOW.md
+prompt_set/PROMPT_D1b4_CROSS_TF_RANKING.md
+prompt_set/PROMPT_D1c_CANDIDATE_DESIGN.md
+prompt_set/PROMPT_D1d1_IMPLEMENT.md
+prompt_set/PROMPT_D1d2_WFO_BATCH.md
+prompt_set/PROMPT_D1d3_WFO_AGGREGATE.md
+prompt_set/PROMPT_D1e1_FILTER_SELECTION.md
+prompt_set/PROMPT_D1e2_HOLDOUT_RESERVE.md
+prompt_set/PROMPT_D1e3_BOOTSTRAP_RANKING.md
+prompt_set/PROMPT_D1f1_FREEZE_SPECS.md
+prompt_set/PROMPT_D1f2_REGISTRY_STATE.md
+prompt_set/PROMPT_D1f3_AUDIT_LEDGER_MAP.md
+prompt_set/PROMPT_D2_PACKAGE_STATE.md
+prompt_set/PROMPT_D1_SEED_DISCOVERY.md          # MONOLITHIC REFERENCE ONLY — do NOT use for chat execution
+prompt_set/PROMPT_D1b_MEASUREMENT.md             # DEPRECATED first-gen split — do NOT use
+prompt_set/PROMPT_D1d_WALK_FORWARD.md            # DEPRECATED first-gen split — do NOT use
+prompt_set/PROMPT_D1e_HOLDOUT_RANKING.md         # DEPRECATED first-gen split — do NOT use
+prompt_set/PROMPT_D1f_FREEZE_DRAFT.md            # DEPRECATED first-gen split — do NOT use
+
+# Prompt set — redesign freeze (mainline)
+prompt_set/PROMPT_R0_PRECHECK_NEW_SESSION.md
+prompt_set/PROMPT_R1_REDESIGN_EXECUTION.md
+prompt_set/PROMPT_R2_PACKAGE_STATE.md
+
+# Prompt set — forward evaluation (mainline)
+prompt_set/PROMPT_F0_PRECHECK_NEW_SESSION.md
+prompt_set/PROMPT_F1_FORWARD_EVALUATION.md
+prompt_set/PROMPT_F2_PACKAGE_STATE.md
+
+# Prompt set — governance (mainline)
+prompt_set/PROMPT_G0_PRECHECK_NEW_SESSION.md
+prompt_set/PROMPT_G1_GOVERNANCE_REVIEW.md
+prompt_set/PROMPT_G2_RELEASE_PACKAGE.md
+
+# Machine-readable templates
+template/candidate_registry.template.json
+template/constitution_status.template.txt
+template/contamination_map.template.md
+template/forward_daily_returns.template.csv
+template/forward_equity_curve.template.csv
+template/forward_evaluation_ledger.template.csv
+template/frozen_system_spec.template.md
+template/governance_decision.template.md
+template/governance_failure_dossier.template.md
+template/historical_seed_audit.template.csv
+template/input_hash_manifest.template.txt
+template/meta_knowledge_registry.template.json
+template/migration_note_current_to_next_major.template.md
+template/portfolio_state.template.json
+template/redesign_dossier.template.md
+template/session_manifest.template.json
+template/session_summary.template.md
+template/snapshot_notes.template.md
+template/system_version_manifest.template.json
+
+# Human guide
+guide/USER_GUIDE_VI.md

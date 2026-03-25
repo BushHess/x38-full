@@ -1,0 +1,45 @@
+{
+  "study": "X29",
+  "config": {
+    "strategies": [
+      "Base",
+      "Base+T45",
+      "X14D",
+      "X14D+T45",
+      "X18",
+      "X18+T45",
+      "Mon",
+      "Mon+T45",
+      "Mon+X14D",
+      "Mon+X14D+T45",
+      "Mon+X18",
+      "Mon+X18+T45"
+    ],
+    "cost_bps": [
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      50,
+      75,
+      100
+    ],
+    "primary_cost": 25,
+    "x14d_thresh": 0.5,
+    "x18_thresh": 0.7175779575794714,
+    "n_boot": 500,
+    "n_h4_bars": 17838,
+    "n_d1_bars": 2973,
+    "warmup_bars": 2190,
+    "years": 7.14031485284052
+  },
+  "gates": {
+    "T0": true,
+    "T1": false,
+    "T2": true,
+    "T3": false
+  },
+  "verdict": "RECOMMEND: Monitor V2 only (bootstrap fail)"
+}

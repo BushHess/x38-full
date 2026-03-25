@@ -1,0 +1,5 @@
+label,entry_risk_level,n_trades,share_trades,total_pnl,avg_pnl,win_rate,loss_rate
+baseline,untagged,100,1.0,10212.773171,102.127732,0.41,0.59
+candidate,low_non_chop,31,0.292453,8931.309361,288.106754,0.483871,0.516129
+candidate,medium_chop,40,0.377358,3810.059495,95.251487,0.425,0.575
+candidate,high_chop_stretch,35,0.330189,-1644.640172,-46.989719,0.342857,0.657143

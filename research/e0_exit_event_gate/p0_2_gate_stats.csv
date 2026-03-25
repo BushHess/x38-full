@@ -1,0 +1,4 @@
+strategy_id,floor_hits,floor_hits_total,floor_hits_armed,floor_hits_blocked
+X0E5_FLOOR_LATCH,56,,,
+X0E5_FLOOR_BSLOW,,60,43,17
+X0E5_FLOOR_PEAK3,,58,50,8

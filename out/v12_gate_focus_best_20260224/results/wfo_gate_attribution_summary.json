@@ -1,0 +1,40 @@
+{
+  "params": {
+    "config": "configs/v12/v12_gate_focus_best_20260224.yaml",
+    "dataset": "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "scenario": "harsh",
+    "wfo_train_months": 24,
+    "wfo_test_months": 6,
+    "wfo_slide_months": 6,
+    "wfo_windows": 8,
+    "warmup_days": 365
+  },
+  "n_windows": 8,
+  "total_entry_checks": 26304,
+  "total_entry_signals_emitted": 885,
+  "entry_signal_rate": 0.03364507299270073,
+  "gate_totals": {
+    "gate_entry_cooldown": 1766,
+    "gate_exit_cooldown": 78,
+    "gate_min_target_to_add": 451,
+    "gate_overlay_cooldown": 0,
+    "gate_regime_off": 10094,
+    "gate_size_floor": 0,
+    "gate_trend_filter": 692,
+    "gate_unknown": 0,
+    "gate_vdo_threshold": 12338
+  },
+  "gate_ratios": {
+    "gate_entry_cooldown": 0.06713807785888078,
+    "gate_exit_cooldown": 0.0029653284671532845,
+    "gate_min_target_to_add": 0.017145681265206814,
+    "gate_overlay_cooldown": 0.0,
+    "gate_regime_off": 0.3837439172749392,
+    "gate_size_floor": 0.0,
+    "gate_trend_filter": 0.026307785888077858,
+    "gate_unknown": 0.0,
+    "gate_vdo_threshold": 0.4690541362530414
+  }
+}

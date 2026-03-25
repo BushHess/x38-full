@@ -1,0 +1,26 @@
+artifact_name,column_name,definition,source,transformation
+e0_native_episode_ledger.csv,episode_id,Sequential episode identifier (1-192),derived,sequential counter
+e0_native_episode_ledger.csv,entry_time,ISO timestamp of trade entry,trades_candidate.csv:entry_ts,direct copy
+e0_native_episode_ledger.csv,exit_time,ISO timestamp of trade exit,trades_candidate.csv:exit_ts,direct copy
+e0_native_episode_ledger.csv,hold_bars,Number of H4 bars held,"trades_candidate.csv:entry_ts_ms,exit_ts_ms",(exit_ts_ms - entry_ts_ms) / (4*3600*1000)
+e0_native_episode_ledger.csv,hold_days,Holding time in days,trades_candidate.csv:days_held,direct copy
+e0_native_episode_ledger.csv,exit_reason,Exit type (vtrend_trail_stop or vtrend_trend_exit),trades_candidate.csv:exit_reason,direct copy
+e0_native_episode_ledger.csv,realized_return_pct,Net realized return after fees (%),trades_candidate.csv:return_pct,direct copy
+e0_native_episode_ledger.csv,pnl_usd,"Realized PnL in USD (deploy-reality, NAV-weighted)",trades_candidate.csv:pnl_usd,direct copy
+e0_native_episode_ledger.csv,mfe_pct,Maximum favorable excursion (% of entry price),computed,"max(H4 highs during hold) / entry_price - 1, *100"
+e0_native_episode_ledger.csv,mae_pct,Maximum adverse excursion (% of entry price),computed,"1 - min(H4 lows during hold) / entry_price, *100"
+e0_native_episode_ledger.csv,giveback_ratio,Fraction of MFE surrendered: (MFE - realized) / MFE,computed,(mfe_pct - realized_return_pct) / mfe_pct; NA if mfe_pct=0
+e0_native_episode_ledger.csv,win_flag,"1 if realized_return_pct > 0, else 0",derived,return_pct > 0
+e0_native_episode_ledger.csv,native_positive_contribution_rank_desc,Rank by pnl_usd descending (1=highest PnL),derived,"rank of pnl_usd, method=first"
+e0_unit_size_episode_ledger.csv,episode_id,Sequential episode identifier (1-192),derived,same as native
+e0_unit_size_episode_ledger.csv,entry_time,ISO timestamp of trade entry,trades_candidate.csv:entry_ts,direct copy
+e0_unit_size_episode_ledger.csv,exit_time,ISO timestamp of trade exit,trades_candidate.csv:exit_ts,direct copy
+e0_unit_size_episode_ledger.csv,hold_bars,Number of H4 bars held,trades_candidate.csv,(exit_ts_ms - entry_ts_ms) / (4*3600*1000)
+e0_unit_size_episode_ledger.csv,hold_days,Holding time in days,trades_candidate.csv:days_held,direct copy
+e0_unit_size_episode_ledger.csv,exit_reason,Exit type,trades_candidate.csv:exit_reason,direct copy
+e0_unit_size_episode_ledger.csv,realized_return_pct,Net realized return after fees (%) — exposure-neutral,trades_candidate.csv:return_pct,direct copy
+e0_unit_size_episode_ledger.csv,mfe_pct,Maximum favorable excursion (%),computed,same as native
+e0_unit_size_episode_ledger.csv,mae_pct,Maximum adverse excursion (%),computed,same as native
+e0_unit_size_episode_ledger.csv,giveback_ratio,Fraction of MFE surrendered,computed,same as native
+e0_unit_size_episode_ledger.csv,win_flag,"1 if realized_return_pct > 0, else 0",derived,same as native
+e0_unit_size_episode_ledger.csv,unit_size_positive_contribution_rank_desc,Rank by return_pct descending (1=highest return),derived,"rank of return_pct, method=first"

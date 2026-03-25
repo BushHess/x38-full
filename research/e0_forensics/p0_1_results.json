@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "data": "/var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "scenario": "harsh"
+  },
+  "backtest": {
+    "trades": 192,
+    "sharpe": 1.2653,
+    "cagr_pct": 52.04,
+    "max_drawdown_mid_pct": 41.61,
+    "win_rate_pct": 38.02,
+    "profit_factor": 1.5057,
+    "avg_exposure": 0.4682
+  },
+  "summary": {
+    "primary_failure_mode": "false_breakout",
+    "primary_failure_loss_share_pct": 40.797752701368964,
+    "worst_entry_context": {
+      "entry_context": "chop",
+      "entry_d1_regime": "on",
+      "trades": 112,
+      "win_rate_pct": 39.285714285714285,
+      "avg_return_pct": 2.6544021247981076,
+      "net_pnl_usd": 135694.23177129708,
+      "loser_loss_usd": -233898.45577868965,
+      "share_of_total_loss_pct": 62.52515461411666,
+      "median_bars_held": 30.0
+    },
+    "largest_drawdown_episode": {
+      "episode_id": 10,
+      "peak_date": "2019-06-26T19:59:59Z",
+      "trough_date": "2020-01-05T23:59:59Z",
+      "recovery_date": "2020-11-17T15:59:59Z",
+      "drawdown_pct": 41.61185726762927,
+      "bars_to_trough": 1159,
+      "bars_to_recovery": 3059,
+      "overlap_trades": 44,
+      "overlap_losers": 29,
+      "overlap_net_pnl_usd": 15588.304914885408,
+      "overlap_loser_pnl_usd": -25228.699967349105,
+      "top_failure_mode": "trail_stop_noise",
+      "share_of_total_drawdown_mass_pct": 10.363275912512595
+    },
+    "drawdown_episode_count": 28
+  },
+  "elapsed_seconds": 2.73026442527771
+}

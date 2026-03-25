@@ -1,0 +1,200 @@
+======================================================================
+BLOCK BOOTSTRAP ROBUSTNESS + REGIME ANALYSIS
+======================================================================
+  Period: 2019-01-01 → 2026-02-20   Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 2000 paths, block=60 bars (~10d)
+  Gate EMAs: 360 (60d), 500 (83d)
+
+======================================================================
+PART 1: BLOCK BOOTSTRAP ROBUSTNESS TEST
+======================================================================
+  N=2000, block=60 bars (~10d), cost=50bps RT
+  17838 H4 bars total, warmup idx=2190, trading bars=15648 (~7.1y)
+
+  Real-data reference (fast sim):
+    base          CAGR= +52.7%  MDD= 41.5%  Sharpe=1.28  Calmar=1.268  Trades=211
+    gate360       CAGR= +43.9%  MDD= 47.3%  Sharpe=1.15  Calmar=0.929  Trades=181
+    gate500       CAGR= +48.2%  MDD= 40.2%  Sharpe=1.25  Calmar=1.200  Trades=168
+    gate360x      CAGR= +44.1%  MDD= 46.2%  Sharpe=1.16  Calmar=0.955  Trades=203
+
+  Running 2000 bootstrap paths...
+        1/2000  (0s elapsed, ~0s left)
+      200/2000  (50s elapsed, ~454s left)
+      400/2000  (102s elapsed, ~408s left)
+      600/2000  (153s elapsed, ~356s left)
+      800/2000  (202s elapsed, ~302s left)
+     1000/2000  (256s elapsed, ~256s left)
+     1200/2000  (308s elapsed, ~205s left)
+     1400/2000  (359s elapsed, ~154s left)
+     1600/2000  (410s elapsed, ~103s left)
+     1800/2000  (464s elapsed, ~52s left)
+     2000/2000  (514s elapsed, ~0s left)
+
+  Done: 514.6s (3.9 paths/sec)
+
+----------------------------------------------------------------------
+DISTRIBUTION SUMMARY
+----------------------------------------------------------------------
+
+  ── base ──
+    cagr      mean=  +11.50  [p5= -15.32  p50=  +9.70  p95= +45.47]  real= +52.68
+    mdd       mean=  +65.03  [p5= +45.48  p50= +64.35  p95= +86.77]  real= +41.53
+    sharpe    mean=   +0.43  [p5=  -0.24  p50=  +0.43  p95=  +1.10]  real=  +1.28
+    calmar    mean=   +0.23  [p5=  -0.19  p50=  +0.16  p95=  +0.88]  real=  +1.27
+    trades    mean= +229.62  [p5=+205.00  p50=+230.00  p95=+256.00]  real=+211.00
+
+  ── gate360 ──
+    cagr      mean=  +11.40  [p5= -14.01  p50=  +9.92  p95= +43.16]  real= +43.92
+    mdd       mean=  +62.96  [p5= +42.87  p50= +62.07  p95= +84.78]  real= +47.25
+    sharpe    mean=   +0.43  [p5=  -0.23  p50=  +0.44  p95=  +1.10]  real=  +1.15
+    calmar    mean=   +0.23  [p5=  -0.18  p50=  +0.16  p95=  +0.89]  real=  +0.93
+    trades    mean= +200.65  [p5=+169.95  p50=+200.00  p95=+231.05]  real=+181.00
+
+  ── gate500 ──
+    cagr      mean=  +10.98  [p5= -13.98  p50=  +9.31  p95= +42.77]  real= +48.18
+    mdd       mean=  +62.30  [p5= +42.47  p50= +61.80  p95= +83.82]  real= +40.16
+    sharpe    mean=   +0.42  [p5=  -0.24  p50=  +0.42  p95=  +1.09]  real=  +1.25
+    calmar    mean=   +0.23  [p5=  -0.18  p50=  +0.16  p95=  +0.89]  real=  +1.20
+    trades    mean= +193.09  [p5=+158.00  p50=+193.00  p95=+227.00]  real=+168.00
+
+  ── gate360x ──
+    cagr      mean=   +8.74  [p5= -16.47  p50=  +6.88  p95= +39.94]  real= +44.13
+    mdd       mean=  +64.56  [p5= +43.64  p50= +64.42  p95= +85.84]  real= +46.23
+    sharpe    mean=   +0.36  [p5=  -0.34  p50=  +0.36  p95=  +1.06]  real=  +1.16
+    calmar    mean=   +0.18  [p5=  -0.20  p50=  +0.11  p95=  +0.83]  real=  +0.95
+    trades    mean= +235.67  [p5=+204.00  p50=+236.00  p95=+268.00]  real=+203.00
+
+----------------------------------------------------------------------
+ROBUSTNESS PROBABILITIES
+----------------------------------------------------------------------
+
+  base:
+    P(CAGR > 0)     =  70.9%    median CAGR = +9.7%
+    P(MDD < 30%)    =   0.0%    median MDD  = 64.3%
+    P(Calmar > 0.5) =  18.3%    median Calmar = 0.158
+    P(Sharpe > 0.5) =  43.2%    median Sharpe = 0.43
+
+  gate360:
+    P(CAGR > 0)     =  71.7%    median CAGR = +9.9%
+    P(MDD < 30%)    =   0.0%    median MDD  = 62.1%
+    P(Calmar > 0.5) =  19.3%    median Calmar = 0.157
+    P(Sharpe > 0.5) =  43.9%    median Sharpe = 0.44
+
+  gate500:
+    P(CAGR > 0)     =  71.0%    median CAGR = +9.3%
+    P(MDD < 30%)    =   0.1%    median MDD  = 61.8%
+    P(Calmar > 0.5) =  17.5%    median Calmar = 0.157
+    P(Sharpe > 0.5) =  42.9%    median Sharpe = 0.42
+
+  gate360x:
+    P(CAGR > 0)     =  66.4%    median CAGR = +6.9%
+    P(MDD < 30%)    =   0.0%    median MDD  = 64.4%
+    P(Calmar > 0.5) =  14.9%    median Calmar = 0.111
+    P(Sharpe > 0.5) =  38.4%    median Sharpe = 0.36
+
+----------------------------------------------------------------------
+PAIRED BOOTSTRAP TESTS: GATE vs BASE
+----------------------------------------------------------------------
+  Paired difference on same path → eliminates path-level noise.
+  P(better) > 97.5% ≈ significant at α=0.05 (one-sided).
+
+  ── gate360 vs base ──
+    Δcagr      mean= -0.100  P(better)= 49.1%  95%CI=[-9.490, +9.757]
+    Δsharpe    mean= +0.001  P(better)= 49.2%  95%CI=[-0.211, +0.234]
+    Δcalmar    mean= +0.005  P(better)= 51.9%  95%CI=[-0.220, +0.248]
+    ΔMDD(red)  mean= +2.072  P(lower) = 61.8%  95%CI=[-9.390, +15.575]
+
+  ── gate500 vs base ──
+    Δcagr      mean= -0.526  P(better)= 46.2%  95%CI=[-12.477, +11.284]
+    Δsharpe    mean= -0.007  P(better)= 46.2%  95%CI=[-0.261, +0.268]
+    Δcalmar    mean= -0.000  P(better)= 49.5%  95%CI=[-0.285, +0.288]
+    ΔMDD(red)  mean= +2.729  P(lower) = 64.2%  95%CI=[-10.815, +18.848]
+
+  ── gate360x vs base ──
+    Δcagr      mean= -2.763  P(better)= 33.5%  95%CI=[-15.200, +8.943]
+    Δsharpe    mean= -0.063  P(better)= 32.6%  95%CI=[-0.343, +0.224]
+    Δcalmar    mean= -0.043  P(better)= 37.1%  95%CI=[-0.333, +0.221]
+    ΔMDD(red)  mean= +0.477  P(lower) = 52.8%  95%CI=[-15.293, +16.337]
+
+
+
+======================================================================
+PART 2: REGIME-CONDITIONAL P&L DECOMPOSITION (real data)
+======================================================================
+
+  D1 Regime Distribution:
+    SHOCK        120 days  (4.0%)
+    BEAR         980 days  (33.0%)
+    CHOP         218 days  (7.3%)
+    TOPPING      102 days  (3.4%)
+    BULL        1218 days  (41.0%)
+    NEUTRAL      335 days  (11.3%)
+
+  Full-engine backtest results:
+    base          CAGR=+52.0%  MDD=41.6%  Sharpe=1.27  Score=122.8  Trades=192
+    gate360       CAGR=+42.9%  MDD=45.8%  Sharpe=1.13  Score=96.1  Trades=169
+    gate500       CAGR=+48.8%  MDD=40.2%  Sharpe=1.26  Score=115.9  Trades=157
+    gate360x      CAGR=+44.2%  MDD=46.0%  Sharpe=1.16  Score=99.5  Trades=184
+
+----------------------------------------------------------------------
+PER-REGIME RETURN DECOMPOSITION
+----------------------------------------------------------------------
+
+  ── base ──
+    SHOCK       Ret=   -33.6%  MDD= 35.2%  Days=    89  Sharpe=-2.68
+    BEAR        Ret=  +109.1%  MDD= 32.6%  Days=   661  Sharpe=+1.51
+    CHOP        Ret=   +32.3%  MDD= 30.4%  Days=   215  Sharpe=+1.58
+    TOPPING     Ret=    -4.6%  MDD= 30.1%  Days=   102  Sharpe=-0.87
+    BULL        Ret=  +846.5%  MDD= 40.6%  Days=  1211  Sharpe=+1.71
+    NEUTRAL     Ret=   +20.0%  MDD= 32.7%  Days=   330  Sharpe=+0.81
+
+  ── gate360 ──
+    SHOCK       Ret=   -32.1%  MDD= 36.3%  Days=    89  Sharpe=-2.53
+    BEAR        Ret=   +34.6%  MDD= 37.8%  Days=   661  Sharpe=+0.84
+    CHOP        Ret=   +23.1%  MDD= 31.6%  Days=   215  Sharpe=+1.23
+    TOPPING     Ret=    -3.9%  MDD= 36.5%  Days=   102  Sharpe=-0.73
+    BULL        Ret=  +882.5%  MDD= 45.8%  Days=  1211  Sharpe=+1.74
+    NEUTRAL     Ret=   +20.5%  MDD= 36.2%  Days=   330  Sharpe=+0.83
+
+  ── gate500 ──
+    SHOCK       Ret=   -32.1%  MDD= 34.3%  Days=    89  Sharpe=-2.53
+    BEAR        Ret=   +66.8%  MDD= 20.5%  Days=   661  Sharpe=+1.59
+    CHOP        Ret=   +25.1%  MDD= 22.5%  Days=   215  Sharpe=+1.32
+    TOPPING     Ret=    -4.2%  MDD= 21.4%  Days=   102  Sharpe=-0.95
+    BULL        Ret=  +922.1%  MDD= 38.9%  Days=  1211  Sharpe=+1.77
+    NEUTRAL     Ret=   +23.1%  MDD= 30.1%  Days=   330  Sharpe=+0.91
+
+  ── gate360x ──
+    SHOCK       Ret=   -32.1%  MDD= 36.6%  Days=    89  Sharpe=-2.53
+    BEAR        Ret=   +36.7%  MDD= 37.9%  Days=   661  Sharpe=+0.90
+    CHOP        Ret=   +23.0%  MDD= 31.3%  Days=   215  Sharpe=+1.24
+    TOPPING     Ret=    -0.2%  MDD= 36.8%  Days=   102  Sharpe=+0.02
+    BULL        Ret=  +889.8%  MDD= 46.0%  Days=  1211  Sharpe=+1.75
+    NEUTRAL     Ret=   +20.7%  MDD= 36.8%  Days=   330  Sharpe=+0.84
+
+----------------------------------------------------------------------
+BEAR MARKET COMPARISON (key question)
+----------------------------------------------------------------------
+  Does the regime gate protect against bear-market losses?
+
+    base          BEAR ret=  109.14%  BEAR MDD= 32.57%  BULL ret=  846.54%
+    gate360       BEAR ret=    34.6%  BEAR MDD= 37.82%  BULL ret=  882.47%
+    gate500       BEAR ret=   66.76%  BEAR MDD=  20.5%  BULL ret=  922.15%
+    gate360x      BEAR ret=   36.73%  BEAR MDD= 37.92%  BULL ret=  889.75%
+
+----------------------------------------------------------------------
+VERIFICATION: FAST SIM vs FULL ENGINE (real data)
+----------------------------------------------------------------------
+  Small differences expected (fill price approximation).
+
+    base          sim CAGR=+52.7% / eng CAGR=+52.0%  |  sim MDD=41.5% / eng MDD=41.6%
+    gate360       sim CAGR=+43.9% / eng CAGR=+42.9%  |  sim MDD=47.3% / eng MDD=45.8%
+    gate500       sim CAGR=+48.2% / eng CAGR=+48.8%  |  sim MDD=40.2% / eng MDD=40.2%
+    gate360x      sim CAGR=+44.1% / eng CAGR=+44.2%  |  sim MDD=46.2% / eng MDD=46.0%
+
+  Results saved → /var/www/trading-bots/btc-spot-dev/research/results/bootstrap_regime.json
+
+======================================================================
+DONE
+======================================================================

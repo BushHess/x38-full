@@ -1,0 +1,4 @@
+class,operates_during,time_overlap_vtrend,capital_conflict_rate,correlation_with_vtrend
+A,FLAT only,0%,1.4%,0.00 (non-overlapping)
+B,FLAT only,0%,varies by k,0.00 (non-overlapping)
+C,FLAT→VTREND transition,0% (modifies entry decision),0% (no capital deployment),modifies VTREND

@@ -1,0 +1,85 @@
+{
+  "_schema_notes": {
+    "no_robust_candidate": "If no candidate survives hard constraints: set active_champion_id to \"NO_ROBUST_CANDIDATE\" and live_candidates to [].",
+    "holdout_flag": "Set to \"PASS\" if candidate passes holdout hard constraints, \"FAIL\" if not. Challengers may have holdout_flag FAIL and still be live.",
+    "cumulative_anchor": "cumulative_anchor_utc marks when cumulative forward metrics were last reset. cumulative_anchor_event is 'freeze' (initial) or 'promotion' (after challenger promoted). On promotion, reset cumulative_forward_metrics to zero and set anchor to the promotion window_end_utc.",
+    "retired_candidate_schema": {
+      "candidate_id": "string",
+      "mechanism_type": "string",
+      "status": "eliminated",
+      "elimination_reason": "string (e.g. 'failed discovery hard constraint: MDD_50bps > 0.45')",
+      "eliminated_at_stage": "string (discovery_hard_constraints | holdout | bootstrap | forward_kill | forward_retention_fail | forward_retention_fail_on_promotion)",
+      "seed_snapshot_id": "string"
+    }
+  },
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "3.0",
+  "registry_created_in_session": "session_YYYYMMDD_mode_seq",
+  "active_champion_id": "CHAMPION_PLACEHOLDER",
+  "live_candidates": [
+    {
+      "candidate_id": "CHAMPION_PLACEHOLDER",
+      "role": "champion",
+      "status": "active",
+      "mechanism_type": "MECHANISM_PLACEHOLDER",
+      "frozen_spec_file": "frozen_system_specs/CHAMPION_PLACEHOLDER.md",
+      "seed_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 2,
+      "tunable_quantities": 3,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "PASS",
+      "cumulative_anchor_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "retention_rule_ref": "research_constitution_v3.0.yaml#forward_review_policy.champion_retention_rule"
+    },
+    {
+      "candidate_id": "CHALLENGER_1_PLACEHOLDER",
+      "role": "challenger",
+      "status": "active",
+      "mechanism_type": "MECHANISM_PLACEHOLDER",
+      "frozen_spec_file": "frozen_system_specs/CHALLENGER_1_PLACEHOLDER.md",
+      "seed_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 3,
+      "tunable_quantities": 4,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "PASS",
+      "cumulative_anchor_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "promotion_rule_ref": "research_constitution_v3.0.yaml#forward_review_policy.challenger_promotion_rule",
+      "kill_rule_ref": "research_constitution_v3.0.yaml#forward_review_policy.challenger_kill_rule"
+    }
+  ],
+  "retired_candidates": []
+}

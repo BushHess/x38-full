@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh mục cơ chế đầy đủ — Tài liệu tham chiếu tái dựng bot</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --dim: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --yellow: #d29922; --red: #f85149;
+    --orange: #db6d28; --purple: #bc8cff; --cyan: #39d353;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; max-width: 1400px; margin: 0 auto; }
+  h1 { font-size: 1.8em; margin-bottom: 4px; color: var(--accent); }
+  h2 { font-size: 1.35em; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--text); }
+  h3 { font-size: 1.1em; margin: 24px 0 12px; color: var(--purple); }
+  .subtitle { color: var(--dim); margin-bottom: 24px; font-size: 0.95em; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0 28px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { font-size: 0.8em; color: var(--dim); margin-top: 4px; }
+  .num.green { color: var(--green); }
+  .num.yellow { color: var(--yellow); }
+  .num.red { color: var(--red); }
+  .num.accent { color: var(--accent); }
+  .num.purple { color: var(--purple); }
+  .num.orange { color: var(--orange); }
+  .num.cyan { color: var(--cyan); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 0.85em; }
+  th, td { padding: 8px 10px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: #1c2129; color: var(--accent); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+  tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  tr:hover { background: rgba(88,166,255,0.06); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.78em; font-weight: 600; white-space: nowrap; }
+  .badge-critical { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-important { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
+  .badge-valuable { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .badge-nice { background: rgba(139,148,158,0.15); color: var(--dim); border: 1px solid rgba(139,148,158,0.3); }
+  .badge-ironclad { background: rgba(219,109,40,0.15); color: var(--orange); border: 1px solid rgba(219,109,40,0.3); }
+  .badge-spotbot { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+  .badge-both { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-proven { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-disproven { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-invariant { background: rgba(139,148,158,0.15); color: var(--dim); border: 1px solid rgba(139,148,158,0.3); }
+
+  .verdict { font-weight: 700; }
+  .verdict-use { color: var(--green); }
+  .verdict-test { color: var(--yellow); }
+  .verdict-skip { color: var(--red); }
+  .verdict-review { color: var(--dim); }
+
+  .note { background: var(--surface); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9em; }
+  .note-warn { border-left-color: var(--yellow); }
+  .note-critical { border-left-color: var(--red); }
+  .note-star { border-left-color: var(--yellow); background: rgba(210,153,34,0.08); }
+  .note-green { border-left-color: var(--green); }
+
+  .section-divider { border: none; border-top: 2px solid var(--border); margin: 40px 0; }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  details { margin: 8px 0; }
+  details summary { cursor: pointer; color: var(--accent); font-weight: 600; padding: 4px 0; }
+  details summary:hover { text-decoration: underline; }
+  .errata { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.2); border-radius: 6px; padding: 12px 16px; margin: 8px 0; }
+  .errata-item { margin: 6px 0; padding-left: 16px; border-left: 2px solid var(--red); }
+  .correct { color: var(--green); font-weight: 600; }
+  .wrong { color: var(--red); text-decoration: line-through; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin: 20px 0; }
+  .toc a { display: block; padding: 3px 0; }
+  .toc .indent { padding-left: 20px; font-size: 0.9em; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<h1>Danh mục cơ chế đầy đủ — Tài liệu tham chiếu tái dựng bot</h1>
+<p class="subtitle">
+  Quét xác minh: IRONCLAD (<span class="mono">spot_portfolio_bot.py</span>, 4416 dòng, ~93 tham số cấu hình) +
+  spotbot V10 (<span class="mono">btc-spot/spotbot/</span>, ~3500 dòng trên hơn 20 tệp) &middot;
+  Tháng 2/2026 &middot; Thay thế audit.html trước đó
+</p>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+
+<div class="toc">
+  <strong>Mục lục</strong>
+  <a href="#summary">0. Tổng quan</a>
+  <a href="#errata">1. Chỉnh sửa từ audit cũ (13 lỗi)</a>
+  <a href="#sec-A">A. Hệ kiểu & Mô hình dữ liệu</a>
+  <a href="#sec-B">B. API sàn giao dịch & Mạng</a>
+  <a href="#sec-C">C. Tuân thủ bộ lọc sàn</a>
+  <a href="#sec-D">D. Mẫu thực thi lệnh</a>
+  <a href="#sec-E">E. Vòng đời lệnh & Khôi phục sự cố</a>
+  <a href="#sec-F">F. Quản trị rủi ro & Ngắt mạch</a>
+  <a href="#sec-G">G. Vòng đời vị thế & Quản lý</a>
+  <a href="#sec-H">H. Lưu trạng thái & Khôi phục</a>
+  <a href="#sec-I">I. Dữ liệu thị trường, thời gian & xử lý nến</a>
+  <a href="#sec-J">J. Chiến lược: Logic vào lệnh</a>
+  <a href="#sec-K">K. Chiến lược: Logic thoát lệnh</a>
+  <a href="#sec-L">L. Cấu hình & Kiểm định</a>
+  <a href="#sec-M">M. Giám sát, ghi log & quan sát</a>
+  <a href="#sec-N">N. Giao dịch giấy, backtest & kiểm thử</a>
+  <a href="#sec-O">O. Quản lý phiên & metadata</a>
+  <a href="#sec-P">P. Quyết định chiến lược — Đã kiểm chứng / Bị bác bỏ / Chờ kiểm thử</a>
+  <a href="#rebuild">Q. Thứ tự ưu tiên tái dựng</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUMMARY -->
+<!-- ============================================================ -->
+
+<h2 id="summary">0. Tổng quan</h2>
+
+<div class="summary-grid">
+  <div class="stat-card"><div class="num red">48</div><div class="label">THIẾT YẾU</div></div>
+  <div class="stat-card"><div class="num yellow">35</div><div class="label">QUAN TRỌNG</div></div>
+  <div class="stat-card"><div class="num accent">18</div><div class="label">GIÁ TRỊ</div></div>
+  <div class="stat-card"><div class="num purple">3</div><div class="label">NÊN CÓ</div></div>
+  <div class="stat-card"><div class="num green">104</div><div class="label">Tổng cơ chế đã xác thực</div></div>
+  <div class="stat-card"><div class="num orange">56</div><div class="label">từ IRONCLAD</div></div>
+  <div class="stat-card"><div class="num purple">65</div><div class="label">từ spotbot V10</div></div>
+  <div class="stat-card"><div class="num cyan">15</div><div class="label">Phần / Nhóm</div></div>
+</div>
+
+<div class="note note-star">
+  <strong>So với audit cũ:</strong> Audit cũ liệt kê 24 cơ chế, trong đó 3 là bịa đặt, 6 sai chi tiết, 3 sai metadata.
+  Tài liệu này thay thế hoàn toàn: <strong>104 cơ chế đã xác thực</strong> từ code thật, phân loại theo 15 nhóm,
+  mỗi cơ chế có số dòng, nguồn, ưu tiên.
+</div>
+
+<!-- ============================================================ -->
+<!-- ERRATA -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="errata">1. Chỉnh sửa từ audit cũ (13 lỗi)</h2>
+
+<h3>Siêu dữ liệu sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Tên tệp:</strong> <span class="wrong">spot_portfolio_bot_v2.py</span> &rarr; <span class="correct">spot_portfolio_bot.py</span> (không có v2)</div>
+  <div class="errata-item"><strong>Số dòng:</strong> <span class="wrong">5420 dòng</span> &rarr; <span class="correct">4416 dòng</span></div>
+  <div class="errata-item"><strong>Tham số cấu hình:</strong> <span class="wrong">489 tham số</span> &rarr; <span class="correct">~93 tham số</span> (frozen dataclass, dòng 1078-1244)</div>
+</div>
+
+<h3>3 cơ chế bịa đặt (KHÔNG tồn tại trong code)</h3>
+<div class="errata">
+  <div class="errata-item"><strong>#1 Vào lệnh LIMIT_MAKER:</strong> Code dùng MARKET hoặc LIMIT_SNIPER (limit mua tại EMA/low), KHÔNG CÓ post-only LIMIT_MAKER. Đã xác nhận qua grep toàn bộ file.</div>
+  <div class="errata-item"><strong>#4 Cache phí 6h TTL:</strong> KHÔNG tồn tại. Dry-run dùng tỷ lệ cố định <span class="mono">dry_taker_fee_pct=0.1%</span>. Live dùng cấu hình cố định, KHÔNG tải phí từ API.</div>
+  <div class="errata-item"><strong>Giảm rủi ro trước TP1 (+1R &rarr; BE):</strong> KHÔNG tồn tại. TP1 chỉ kích hoạt khi giá chạm <span class="mono">tp1_price</span>. Chính sách stop sau TP1 (BE/ATR) chỉ áp dụng SAU khi TP1 chạm, KHÔNG có logic trước TP1.</div>
+</div>
+
+<h3>6 chi tiết sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Vùng đệm trượt giá:</strong> <span class="wrong">10 bps</span> &rarr; <span class="correct">3 bps</span> (<span class="mono">dry_slippage_bps=3</span>, dòng 1220)</div>
+  <div class="errata-item"><strong>Ngắt mạch DD:</strong> <span class="wrong">45% DD</span> &rarr; <span class="correct">15% mặc định, ghi đè an toàn live 10%</span> (<span class="mono">max_drawdown_stop=0.15</span>, an toàn live=0.10, dòng 1208, 1394)</div>
+  <div class="errata-item"><strong>Hủy-thay thế:</strong> <span class="wrong">API cancelReplace nguyên tử</span> &rarr; <span class="correct">Hủy + đặt tuần tự</span>. Code thực hiện <span class="mono">_cancel_order()</span> rồi <span class="mono">_order_stop_loss()</span>. Có cửa sổ trần, xử lý bằng giám sát stop.</div>
+  <div class="errata-item"><strong>Thời gian chờ cập nhật trail:</strong> <span class="wrong">60s + 0.25 ATR</span> &rarr; <span class="correct">Chỉ mỗi nến H4 đóng</span>. Trail chỉ cập nhật trên nến H4 đóng mới, không có bộ đếm giờ hay ngưỡng ATR. (dòng 3851-3943)</div>
+  <div class="errata-item"><strong>Giới hạn lệnh ngày:</strong> <span class="wrong">5 lệnh/ngày</span> &rarr; <span class="correct">Khóa THUA ngày</span>. IRONCLAD dùng <span class="mono">daily_loss_limit</span> (% NAV), KHÔNG phải đếm lệnh. spotbot V10 có <span class="mono">max_daily_orders=5</span>. Hai hệ thống khác nhau.</div>
+  <div class="errata-item"><strong>Sức mạnh xu hướng:</strong> <span class="wrong">Độ dốc EMA + ADX</span> &rarr; <span class="correct">Chỉ dùng độ lệch EMA</span>. Code dùng <span class="mono">close > EMA_TREND</span>, KHÔNG có ADX. (IRONCLAD dòng 3043)</div>
+</div>
+
+<h3>1 nguồn sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Thoát vốn chết:</strong> <span class="wrong">CẢ HAI</span> &rarr; <span class="correct">Chỉ IRONCLAD</span>. spotbot V10 KHÔNG có cơ chế thoát vốn chết / thoát theo thời gian.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- A. TYPE SYSTEM -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-A">A. Hệ kiểu & Mô hình dữ liệu (7 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Nền tảng dữ liệu. Mỗi kiểu là một hợp đồng giữa các module.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>A1</td>
+  <td><strong>Bar (Frozen OHLCV Record)</strong></td>
+  <td>Dataclass bất biến: open_time, OHLCV, close_time, taker_buy_base_vol, interval. Frozen+slots cho hiệu năng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">types.py:46-57</span></td>
+</tr>
+<tr>
+  <td>A2</td>
+  <td><strong>CostConfig + 3 Scenarios</strong></td>
+  <td>Tham số hóa chi phí thực thi (chênh lệch, trượt giá, phí). Smart=13bps KH, Base=31bps, Harsh=50bps. Thuộc tính dẫn xuất cho chi phí mỗi chiều.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">types.py:64-96</span></td>
+</tr>
+<tr>
+  <td>A3</td>
+  <td><strong>Signal (Dual-Mode Output)</strong></td>
+  <td>Đầu ra chiến lược: target_exposure (phân số 0-1) HOẶC danh sách Order tường minh. Lệnh ưu tiên hơn. Mang chuỗi lý do.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">types.py:133-154</span></td>
+</tr>
+<tr>
+  <td>A4</td>
+  <td><strong>MarketState (Strategy Input View)</strong></td>
+  <td>Ảnh chụp truyền vào strategy.on_bar(): bar, danh sách bar, chỉ mục, tiền mặt, btc_qty, NAV, mức phơi nhiễm, giá vào TB, NAV lúc vào lệnh. Chiến lược KHÔNG BAO GIỜ thấy nội bộ danh mục.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">types.py:160-178</span></td>
+</tr>
+<tr>
+  <td>A5</td>
+  <td><strong>EntryNavMode (3-Way Enum)</strong></td>
+  <td>Kiểm soát cách tính position_entry_nav khi fill đầu tiên: PRE_TRADE_NAV (trước biến đổi), POST_TRADE_NAV (sau), LEGACY_GROSS (sau + chi phí). Quyết định mốc tham chiếu DD khẩn cấp.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">types.py:23-39</span></td>
+</tr>
+<tr>
+  <td>A6</td>
+  <td><strong>Fill / Trade / EquitySnap / BacktestResult</strong></td>
+  <td>Fill: khớp lệnh đơn lẻ. Trade: vòng khứ hồi vào→ra (PnL, lợi nhuận, số ngày giữ). EquitySnap: NAV định kỳ. BacktestResult: gói tất cả + dict tóm tắt.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">types.py:103-204</span></td>
+</tr>
+<tr>
+  <td>A7</td>
+  <td><strong>Position Dataclass (IRONCLAD)</strong></td>
+  <td>Trạng thái theo vị thế: symbol, giá vào, khối lượng, giá stop, ATR, giá TP1, TP1 đã chạm, giá cao nhất, thời điểm mở, stop_order_id/cid, last_trail_close_ms. Phương thức: risk_amount(), days_held().</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">spot_portfolio_bot.py:628-651</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- B. EXCHANGE API -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-B">B. API sàn giao dịch & Mạng (12 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Mọi tương tác với Binance đều đi qua đây. Thử lại, ký xác thực, đồng bộ giờ, giới hạn tốc độ.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>B1</td>
+  <td><strong>REST Client + HMAC-SHA256 Signing</strong></td>
+  <td>REST đầy đủ Binance Spot. Tự động recvWindow, ký HMAC. Thông tin xác thực từ biến môi trường.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:345-537; V10 client.py:98-194</span></td>
+</tr>
+<tr>
+  <td>B2</td>
+  <td><strong>Exponential Backoff Retry</strong></td>
+  <td>Thử lại với backoff lũy thừa: IRONCLAD 6 lần (0.6s gốc, 12s tối đa, 20% nhiễu); V10 3 lần. Xử lý 429 (Retry-After), 418 (cấm), 502/503/504 (cổng).</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:362-533; V10 client.py:197-284</span></td>
+</tr>
+<tr>
+  <td>B3</td>
+  <td><strong>Time Synchronization (Server Offset)</strong></td>
+  <td>Truy vấn <span class="mono">/api/v3/time</span>, tính offset = server - local. Áp dụng cho mọi yêu cầu có chữ ký. Tự đồng bộ lại khi lỗi -1021 mốc thời gian.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:420-427; V10 client.py:155-173</span></td>
+</tr>
+<tr>
+  <td>B4</td>
+  <td><strong>-1007 TIMEOUT Resolution</strong></td>
+  <td><strong>Trạng thái chưa rõ = lệnh CÓ THỂ đã khớp.</strong> Không được coi là thất bại. Phải xác nhận qua UDS (nhanh) + truy vấn REST (dự phòng). Ném <span class="mono">BinanceStatusUnknownError</span> → gọi xác nhận.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:511-520</span></td>
+</tr>
+<tr>
+  <td>B5</td>
+  <td><strong>HTTPS Enforcement</strong></td>
+  <td>Constructor kiểm tra base_url = https://. Từ chối http://. Ngăn rò rỉ thông tin xác thực qua kết nối không mã hóa.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:401-406</span></td>
+</tr>
+<tr>
+  <td>B6</td>
+  <td><strong>Endpoint Security Allowlist</strong></td>
+  <td>Xác thực URL REST + WS đối chiếu tên miền Binance đã biết. Từ chối non-HTTPS, non-WSS, thông tin xác thực trong URL, host lạ. Ghi đè bằng <span class="mono">ALLOW_CUSTOM_ENDPOINT=YES</span>.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:4281-4342</span></td>
+</tr>
+<tr>
+  <td>B7</td>
+  <td><strong>Rate Limit Weight Tracking</strong></td>
+  <td>Phân tích <span class="mono">X-MBX-USED-WEIGHT-1M</span> từ header phản hồi. Lưu trữ cho quyết định điều tiết mềm.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:433-445</span></td>
+</tr>
+<tr>
+  <td>B8</td>
+  <td><strong>Soft Rate Limit Throttle</strong></td>
+  <td>Khi trọng số đã dùng &gt; <span class="mono">used_weight_1m_soft_limit</span> → bỏ qua tác vụ không thiết yếu (breadth, regime, vào lệnh, quét orphan). Ngăn bị cấm HTTP 429.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1604-1607, 4130-4210</span></td>
+</tr>
+<tr>
+  <td>B9</td>
+  <td><strong>User Data Stream (WebSocket)</strong></td>
+  <td>Báo cáo khớp lệnh thời gian thực qua WS. Tự kết nối lại với backoff lũy thừa (1s gốc, 30s tối đa). Xử lý eventStreamTerminated. Ping→pong server. Hàng đợi sự kiện an toàn đa luồng.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:851-1070</span></td>
+</tr>
+<tr>
+  <td>B10</td>
+  <td><strong>ExecReportTracker (Thread-Safe)</strong></td>
+  <td>Lưu executionReport mới nhất theo clientOrderId/orderId. <span class="mono">wait_for_cid()</span> chặn với timeout cho luồng chính. Theo dõi trạng thái kết thúc.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:789-848</span></td>
+</tr>
+<tr>
+  <td>B11</td>
+  <td><strong>UDS Event Drain + Readiness</strong></td>
+  <td>Xử lý tối đa 500 sự kiện/vòng lặp. Xử lý: account_dirty (hủy cache), chuyển trạng thái sẵn sàng (kết nối lại→đối soát; ngắt→tạm dừng vào lệnh + hủy lệnh chờ). Chuyển tiếp executionReport tới bộ xử lý.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1701-1799</span></td>
+</tr>
+<tr>
+  <td>B12</td>
+  <td><strong>Account Cache (1s TTL)</strong></td>
+  <td>Cache ảnh chụp tài khoản Binance 1 giây. Hủy khi có sự kiện lệnh/khớp/UDS. Giảm trọng số endpoint có chữ ký.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1515-1517, 1944-1957</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- C. FILTER COMPLIANCE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-C">C. Tuân thủ bộ lọc sàn (7 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Sai bộ lọc = lệnh bị từ chối. Đặc biệt: LOT_SIZE vs MARKET_LOT_SIZE cho lệnh stop.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>C1</td>
+  <td><strong>Decimal Arithmetic Throughout</strong></td>
+  <td>Python <span class="mono">Decimal</span> (prec=28) cho mọi khối lượng/giá. <span class="mono">ROUND_DOWN</span> cho khối lượng, <span class="mono">ROUND_CEILING</span> cho làm tròn lên. Float → Decimal trước mọi phép làm tròn. Tránh <span class="mono">0.001 * 3 = 0.0030000000000000004</span>.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:89-168; V10 filters.py:1-151</span></td>
+</tr>
+<tr>
+  <td>C2</td>
+  <td><strong>SymbolFilters / SymbolInfo Dataclass</strong></td>
+  <td>Theo từng cặp: tick_size, giá min/max (PRICE_FILTER), step_size/min_qty/max_qty (LOT_SIZE), market_step_size/min_qty/max_qty (MARKET_LOT_SIZE), min_notional.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:372-386; V10 filters.py:33-67</span></td>
+</tr>
+<tr>
+  <td>C3</td>
+  <td><strong>LOT_SIZE vs MARKET_LOT_SIZE</strong></td>
+  <td><strong>MARKET/STOP_LOSS dùng MARKET_LOT_SIZE. LIMIT/STOP_LOSS_LIMIT dùng LOT_SIZE.</strong> Sai bộ lọc = stop bị từ chối. <span class="mono">_lot_for_order()</span> chọn đúng bộ lọc theo loại lệnh.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2359-2386</span></td>
+</tr>
+<tr>
+  <td>C4</td>
+  <td><strong>Direction-Aware Price Rounding</strong></td>
+  <td>Giá BÁN: làm tròn XUỐNG (an toàn cho stop). Giá MUA: làm tròn LÊN. LIMIT MUA: làm tròn XUỐNG (không trả quá). Kẹp vào khoảng giá min/max.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2388-2411</span></td>
+</tr>
+<tr>
+  <td>C5</td>
+  <td><strong>RulesCache (exchangeInfo)</strong></td>
+  <td>Tải lười + cache exchangeInfo theo từng cặp. Phân tích PRICE_FILTER, LOT_SIZE, MARKET_LOT_SIZE, MIN_NOTIONAL, NOTIONAL. Trong bộ nhớ, tồn tại suốt đời bot.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1423-1461</span></td>
+</tr>
+<tr>
+  <td>C6</td>
+  <td><strong>Notional Validation</strong></td>
+  <td>Kiểm tra <span class="mono">price * qty >= min_notional</span> trước mọi lệnh. Binance từ chối nếu dưới min_notional.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2413-2415; V10 filters.py:118-150</span></td>
+</tr>
+<tr>
+  <td>C7</td>
+  <td><strong>Post-Rounding Safety Checks</strong></td>
+  <td>Sau khi làm tròn khối lượng xuống stepSize: kiểm tra lại qty &gt;= min_qty VÀ notional &gt;= min_notional. Trả HOLD nếu không đạt. Ngăn gửi lệnh không hợp lệ.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 order_planner.py:159-173</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- D. ORDER EXECUTION -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-D">D. Mẫu thực thi lệnh (10 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Tính bất biến, khôi phục trạng thái chưa rõ, chuỗi dự phòng stop. Mỗi mẫu ngăn chặn một kiểu lỗi cụ thể.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>D1</td>
+  <td><strong>Deterministic Client Order ID</strong></td>
+  <td>IRONCLAD: SHA1(<span class="mono">tag|symbol|ts_ms</span>)[:20]. V10: SHA256(<span class="mono">symbol|strategy|signal_close_ms|side|reason</span>)[:20]. Tất định = cùng tín hiệu → cùng ID. Ngăn gửi trùng khi khởi động lại.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2354-2357; V10 order_manager.py:75-84</span></td>
+</tr>
+<tr>
+  <td>D2</td>
+  <td><strong>Idempotent Order Placement</strong></td>
+  <td>Trước mỗi lệnh: truy vấn bằng clientOrderId. Nếu đã tồn tại → trả về lệnh hiện có, KHÔNG đặt trùng. An toàn qua thử lại + khôi phục sau sự cố.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2433-2437; V10 order_manager.py:219-220</span></td>
+</tr>
+<tr>
+  <td>D3</td>
+  <td><strong>Market Order + Trạng thái-Unknown Recovery</strong></td>
+  <td>Bắt <span class="mono">BinanceStatusUnknownError</span> (-1007) + lỗi mạng. Xác nhận qua UDS trước (nhanh, có timeout), rồi truy vấn REST dự phòng. Từ chối MUA khi UDS chưa sẵn sàng.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2417-2480</span></td>
+</tr>
+<tr>
+  <td>D4</td>
+  <td><strong>Stop Loss Fallback Chain</strong></td>
+  <td>Thử STOP_LOSS (stop thị trường, MARKET_LOT_SIZE) trước. Nếu bị từ chối → dự phòng STOP_LOSS_LIMIT (stop giới hạn, LOT_SIZE, giá = stop - offset%). Cả hai có kiểm tra trùng lặp + khôi phục trạng thái chưa rõ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2541-2662</span></td>
+</tr>
+<tr>
+  <td>D5</td>
+  <td><strong>Min Stop Gap Enforcement</strong></td>
+  <td>Giá stop phải cách giá thị trường ít nhất <span class="mono">min_stop_gap_pct</span>. Ngăn lỗi "stop quá gần" bị Binance từ chối.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2552-2557</span></td>
+</tr>
+<tr>
+  <td>D6</td>
+  <td><strong>Panic Exit on Stop Failure</strong></td>
+  <td>Nếu đặt stop thất bại sau MUA → <strong>bán thị trường TOÀN BỘ base tự do NGAY</strong>. Bất biến: KHÔNG BAO GIỜ có vị thế mà không có stop.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3368-3381</span></td>
+</tr>
+<tr>
+  <td>D7</td>
+  <td><strong>Order Confirmation via UDS + REST Fallback</strong></td>
+  <td><span class="mono">_confirm_order_by_cid()</span>: thử ExecReportTracker.wait_for_cid() (chặn có timeout) → truy vấn REST theo cid → tổng hợp từ dữ liệu UDS.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1906-1942</span></td>
+</tr>
+<tr>
+  <td>D8</td>
+  <td><strong>Target Exposure → Order Plan Conversion</strong></td>
+  <td>Hàm thuần: NAV + btc_qty + mid + mục tiêu → OrderPlan (chiều, khối lượng, giá khớp dự kiến, giá trị danh nghĩa). Áp kẹp R1, delta_value, min_notional, mô hình chi phí, làm tròn khối lượng, kiểm tra lại.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 order_planner.py:73-186</span></td>
+</tr>
+<tr>
+  <td>D9</td>
+  <td><strong>Duplicate Order Handling</strong></td>
+  <td>Sàn trả lỗi "clientOrderId trùng" → bắt và đối soát bằng cách lấy trạng thái lệnh hiện có. Chuyển tới _reconcile_duplicate() chờ đến trạng thái kết thúc.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 order_manager.py:239-245, 295-308</span></td>
+</tr>
+<tr>
+  <td>D10</td>
+  <td><strong>Cancel Order (Non-Fatal)</strong></td>
+  <td>Bọc REST hủy, tạo newClientOrderId. Im lặng bỏ qua lỗi (ghi cảnh báo). Hủy cache tài khoản. Dùng bởi trail, TP1, đóng lệnh.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:2664-2675</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- E. ORDER LIFECYCLE & CRASH RECOVERY -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-E">E. Vòng đời lệnh & Khôi phục sự cố (7 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Ghi trước, đối soát khởi động, kiểm thử điểm sự cố. Bot phải sống sót qua sự cố ở MỌI điểm trong quy trình.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>E1</td>
+  <td><strong>Write-Ahead Order Persistence</strong></td>
+  <td>Vòng đời lưu trên SQLite: INSERT PENDING trước gửi → SENT sau gửi → chờ đến trạng thái kết thúc (FILLED/CANCELED/REJECTED/EXPIRED). INSERT OR IGNORE = ghi không trùng lặp.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 order_manager.py:184-260</span></td>
+</tr>
+<tr>
+  <td>E2</td>
+  <td><strong>Startup Reconciliation (Order Manager)</strong></td>
+  <td>Khi khởi động: quét tất cả lệnh chưa kết thúc trong SQLite, truy vấn sàn từng lệnh, cập nhật trạng thái. Lệnh PENDING chưa gửi → EXPIRED. Quét myTrades gia tăng (mốc nước).</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 order_manager.py:344-431</span></td>
+</tr>
+<tr>
+  <td>E3</td>
+  <td><strong>Crash Point Testing Framework</strong></td>
+  <td>Enum CrashPoint: BEFORE_PERSIST, AFTER_DB, AFTER_SEND, AFTER_PARTIAL. Tiêm sự cố tất định → xác minh khôi phục. Kiểm thử xác nhận hành vi đúng từ MỌI điểm sự cố.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 order_manager.py:92-101</span></td>
+</tr>
+<tr>
+  <td>E4</td>
+  <td><strong>Snapshot Reconciliation (IRONCLAD)</strong></td>
+  <td>Sau khi kết nối lại UDS hoặc khởi động: với mỗi vị thế, kiểm tra số dư thực tế. Nếu ~0 → xóa. Kẹp khối lượng về thực tế. Đảm bảo stop tồn tại. Quét lệnh mồ côi.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2688-2801</span></td>
+</tr>
+<tr>
+  <td>E5</td>
+  <td><strong>Stop Watchdog (Every Loop)</strong></td>
+  <td>Mỗi vòng lặp: xác minh lệnh stop tồn tại trên sàn. Truy vấn theo orderId → dự phòng theo cid. Thiếu → sửa chữa (stop mới). Sửa thất bại → thoát thị trường khẩn cấp.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2803-2892</span></td>
+</tr>
+<tr>
+  <td>E6</td>
+  <td><strong>Orphan Holdings Detection</strong></td>
+  <td>Quét số dư khác 0 không nằm trong vị thế. Chính sách: CẢNH BÁO (mặc định, ghi log + Telegram) hoặc THANH LÝ (bán tự động, chỉ cho managed_symbols — bảo vệ tài sản giữ thủ công).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1801-1904</span></td>
+</tr>
+<tr>
+  <td>E7</td>
+  <td><strong>Incremental Trade Scan (Watermark)</strong></td>
+  <td>Tải myTrades từ last_trade_id. Khớp fill với lệnh đã biết. Bắt fill bị bỏ lỡ khi sự cố. Mốc nước lưu trong bảng kv.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 order_manager.py:395-431</span></td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-critical">
+  <strong>Bất biến Không-Vị-Thế-Trần:</strong> Được thực thi ở 5 tầng độc lập: (1) Thoát khẩn cấp nếu stop thất bại sau MUA. (2) Giám sát stop mỗi vòng lặp. (3) Bộ xử lý báo cáo khớp UDS. (4) Đối soát ảnh chụp. (5) Giải cứu stop mềm. Bất kỳ tầng nào hỏng đều được tầng khác bắt. Đây là thuộc tính an toàn quan trọng nhất.
+</div>
+
+<!-- ============================================================ -->
+<!-- F. RISK MANAGEMENT -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-F">F. Quản trị rủi ro & Ngắt mạch (12 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Ngắt mạch, khóa ngày, xử lý NaN, kẹp phơi nhiễm. Mỗi cơ chế ngăn chặn một kiểu lỗi khác nhau.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>F1</td>
+  <td><strong>Clamp Target Exposure + NaN Fail-Closed</strong></td>
+  <td>Kẹp mục tiêu vào [0, max_total_exposure]. <strong>Đầu vào NaN → ném ValueError.</strong> Ngăn lan truyền NaN qua phép min/max. Gọi trong order_planner + paper runner.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 guards.py:38-59</span></td>
+</tr>
+<tr>
+  <td>F2</td>
+  <td><strong>Kill Switch — Max Drawdown</strong></td>
+  <td>DD &gt;= ngưỡng → thanh lý TẤT CẢ + dừng. IRONCLAD: <span class="mono">max_drawdown_stop=15%</span> (an toàn live 10%), khóa <span class="mono">kill_cooldown_hours=72h</span> (an toàn live 168h). V10: <span class="mono">kill_switch_dd_total=45%</span>. Không trùng lặp, lưu peak_nav.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2267-2318; V10 guards.py:86-146</span></td>
+</tr>
+<tr>
+  <td>F3</td>
+  <td><strong>Daily Loss Lock (Circuit Breaker)</strong></td>
+  <td>IRONCLAD: DD NAV trong ngày &gt; <span class="mono">daily_loss_limit</span> → khóa vào lệnh (hoặc THANH LÝ tất cả). Reset ngày lúc nửa đêm UTC. <span class="mono">day_start_nav</span> đặt trễ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2252-2304</span></td>
+</tr>
+<tr>
+  <td>F4</td>
+  <td><strong>Daily Order Limiter</strong></td>
+  <td>V10: đếm lệnh theo ngày UTC. Chặn khi <span class="mono">orders_today &gt;= max_daily_orders (5)</span>. Reset khi chuyển ngày.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 guards.py:152-181</span></td>
+</tr>
+<tr>
+  <td>F5</td>
+  <td><strong>Min Notional Guard</strong></td>
+  <td>Chặn giao dịch khi |delta_value| &lt; min_notional_usdt ($10). Ngăn giao dịch bụi.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 guards.py:66-79</span></td>
+</tr>
+<tr>
+  <td>F6</td>
+  <td><strong>NaN NAV → Halt + Flatten</strong></td>
+  <td>Mỗi bar đóng: kiểm tra nav_mid hữu hạn. NaN/Inf → dừng + thanh lý lý do "risk_nan_nav". Tách biệt khỏi ngắt mạch — bắt lỗi hỏng dữ liệu.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 paper.py:421-434</span></td>
+</tr>
+<tr>
+  <td>F7</td>
+  <td><strong>Forced Flatten Bypass Guards</strong></td>
+  <td>Ngắt mạch + thanh lý NaN bỏ qua R2 (min_notional) + R4 (giới hạn ngày). Thoát khẩn cấp LUÔN thực thi bất kể trạng thái lá chắn.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 paper.py:562-564, 619-625</span></td>
+</tr>
+<tr>
+  <td>F8</td>
+  <td><strong>Open Risk Budget</strong></td>
+  <td>Rủi ro mở tối đa % NAV, điều chỉnh theo vol_scale + breadth_scale. Mức trần khác nhau cho RISK_ON vs CAUTION. Tổng (giá vào-stop)*khối lượng qua các vị thế.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2320-2336</span></td>
+</tr>
+<tr>
+  <td>F9</td>
+  <td><strong>Position Count Limit</strong></td>
+  <td><span class="mono">max_positions=3</span> (an toàn live 2). Giới hạn vị thế mở đồng thời.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1200, 3163</span></td>
+</tr>
+<tr>
+  <td>F10</td>
+  <td><strong>Cash Buffer</strong></td>
+  <td>Dự trữ <span class="mono">cash_buffer_pct=5%</span> (an toàn live 20%) NAV bằng tiền mặt. Giảm khối lượng vào lệnh để duy trì vùng đệm. Ngăn phân bổ quá mức.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3221-3237</span></td>
+</tr>
+<tr>
+  <td>F11</td>
+  <td><strong>RiskState (Serializable)</strong></td>
+  <td>Dataclass bất biến: equity_peak_nav/ts, kill_switch_tripped/ts, day_key, orders_today. Tuần tự hóa JSON. Lưu vào SQLite kv. Khôi phục trạng thái chính xác sau khởi động lại.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 state.py:1-44</span></td>
+</tr>
+<tr>
+  <td>F12</td>
+  <td><strong>Kill Lock Management</strong></td>
+  <td>Kiểm tra khóa ngắt mạch còn hiệu lực không. Nếu hết hạn → đặt lại regime về RISK_OFF, xóa khóa. Khi đang khóa → mọi vào lệnh bị chặn, lệnh chờ bị hủy.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2238-2250</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- G. POSITION LIFECYCLE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-G">G. Vòng đời vị thế & Quản lý (12 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Vào lệnh → stop → TP1 → trail → thoát. Vòng đời đầy đủ từ cả hai hệ thống.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>G1</td>
+  <td><strong>Market Entry (BUY + Immediate STOP)</strong></td>
+  <td>MUA thị trường → chờ 0.4s → lấy base tự do → đặt STOP_LOSS ngay. Stop thất bại → THOÁT KHẨN CẤP (bán hết). <strong>Không bao giờ trần.</strong></td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3325-3381</span></td>
+</tr>
+<tr>
+  <td>G2</td>
+  <td><strong>Limit Sniper Entry + Pending Lifecycle</strong></td>
+  <td>LIMIT MUA tại EMA_PB/LOW/MIN. Theo dõi trong <span class="mono">pending_entry</span> có thời hạn. Hủy nếu: bị khóa ngắt mạch, đổi regime, mất UDS, hết hạn, thiết lập mất hiệu lực (bid ≤ stop, spread bung). Khớp một phần → hủy phần còn → hoàn tất. Khớp đầy đủ → đặt stop.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3206-3649</span></td>
+</tr>
+<tr>
+  <td>G3</td>
+  <td><strong>TP1 Partial Take-Profit</strong></td>
+  <td>Bid &gt;= tp1_price → hủy stop cũ → bán một phần → đặt stop mới (chính sách BE hoặc ATR). Kiểm tra trước lượng bán + phần còn &gt; min_qty (chống bụi). Phần bán theo regime. TP1 thất bại → đóng toàn bộ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3695-3849</span></td>
+</tr>
+<tr>
+  <td>G4</td>
+  <td><strong>TP1 Dust Prevention</strong></td>
+  <td>Kiểm tra trước CẢ lượng bán VÀ phần còn &gt;= ngưỡng min_qty. Nếu phần còn sẽ thành bụi → đóng toàn bộ thay vì. Ngăn mảnh vị thế không quản lý được.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3710-3738</span></td>
+</tr>
+<tr>
+  <td>G5</td>
+  <td><strong>Trailing Stop (Post-TP1, H4 Candle-Based)</strong></td>
+  <td>Sau khi TP1 chạm, mỗi H4 đóng mới: ứng viên = max(stop hiện tại, EMA_PB, đỉnh - ATR × trail_mult). Nếu ứng viên &gt;= giá → đóng. Nếu quá gần thị trường → BỎ QUA (không siết). Chỉ nâng nếu có ý nghĩa (&gt; 2×tick).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3851-3943</span></td>
+</tr>
+<tr>
+  <td>G6</td>
+  <td><strong>Trail "Too Close" Skip</strong></td>
+  <td>Khi stop ứng viên &gt; bid × (1 - min_stop_gap_pct) → BỎ QUA hoàn toàn (giữ stop cũ). KHÔNG kẹp xuống. Ngăn siết vô tình.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3889-3900</span></td>
+</tr>
+<tr>
+  <td>G7</td>
+  <td><strong>Soft Stop Rescue</strong></td>
+  <td>Bid &lt; stop × (1 - 20%) → giả định stop sàn đã thất bại/bị gap → ép thoát thị trường. Bảo vệ cuối cùng.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3945-3954</span></td>
+</tr>
+<tr>
+  <td>G8</td>
+  <td><strong>Time Exit (Dead Money, 3 modes)</strong></td>
+  <td>CỨNG: ép đóng sau max_hold_days. VỐN_CHẾT_ĐƠN_GIẢN: đóng chỉ nếu TP1 chưa chạm. VỐN_CHẾT_THÔNG_MINH: đóng nếu TP1 chưa chạm HOẶC (TP1 đã chạm + mất xu hướng + bội R thấp). Tái sử dụng vốn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3956-4007</span></td>
+</tr>
+<tr>
+  <td>G9</td>
+  <td><strong>Full Position Close</strong></td>
+  <td>Hủy stop → chờ → lấy base tự do → bán thị trường. Nếu bán thất bại: ghi lỗi (can thiệp thủ công). Xóa khỏi trạng thái, đặt thời gian chờ cặp. DRY: mô phỏng khớp với trượt giá + phí.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3651-3692</span></td>
+</tr>
+<tr>
+  <td>G10</td>
+  <td><strong>Position Management Orchestration</strong></td>
+  <td>Mỗi vòng lặp mỗi vị thế: đối soát → đảm bảo stop → thoát RISK_OFF → cập nhật đỉnh → giải cứu mềm → TP1 → trail → thoát theo thời gian. Mỗi bước try/except (lỗi một vị thế không chặn các vị thế khác).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:4042-4088</span></td>
+</tr>
+<tr>
+  <td>G11</td>
+  <td><strong>Portfolio Buy/Sell (Cash-Constrained)</strong></td>
+  <td>V10 Danh mục: buy() và sell() qua ExecutionModel. Ràng buộc tiền mặt: nếu tổng chi phí &gt; tiền mặt → giảm khối lượng tỷ lệ. Theo dõi VWAP vào lệnh, trạng thái giao dịch mở, tạo Trade khi đóng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 execution.py:133-329</span></td>
+</tr>
+<tr>
+  <td>G12</td>
+  <td><strong>Symbol Cooldown (Post-Stop)</strong></td>
+  <td>Sau khi chạm stop → chặn vào lại trong thời gian cấu hình được. IRONCLAD: cố định 12h (an toàn live 24h). V10: leo thang (3 bar đơn lẻ, 12 bar chuỗi). Ngăn vào lại chuỗi thua.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:2218-2235; V10 strategy:266-314</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- H. STATE PERSISTENCE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-H">H. Lưu trạng thái & Khôi phục (7 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">SQLite WAL mode, di chuyển schema, logic reset ngày. Bot phải khôi phục chính xác sau sự cố.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>H1</td>
+  <td><strong>SQLiteKV Store (WAL Mode)</strong></td>
+  <td>Kho khóa-giá trị trên SQLite. WAL + synchronous=NORMAL. ON CONFLICT DO UPDATE (upsert). Timeout 30s. Lưu toàn bộ trạng thái bot.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:297-337; V10 paper.py:89-291</span></td>
+</tr>
+<tr>
+  <td>H2</td>
+  <td><strong>State Schema Evolution (Backward-Compatible)</strong></td>
+  <td><span class="mono">state_from_dict()</span> xử lý trường thiếu bằng giá trị mặc định. Trường mới tự có giá trị an toàn khi nâng cấp. Nâng cấp không ngừng hoạt động, không cần script di chuyển.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:726-770</span></td>
+</tr>
+<tr>
+  <td>H3</td>
+  <td><strong>State Load/Save + Day Reset</strong></td>
+  <td>Tải: đọc từ SQLite + reset bộ đếm ngày nếu ngày UTC đã đổi. Lưu: ghi toàn bộ dict trạng thái. Reset ngày: xóa entries_locked_day, đặt lại day_start_nav.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1552-1577</span></td>
+</tr>
+<tr>
+  <td>H4</td>
+  <td><strong>Peak NAV Periodic Persistence</strong></td>
+  <td>Peak NAV lưu mỗi 15 phút hoặc khi tăng đáng kể. Ngắt mạch hoạt động chính xác ngay cả sau sự cố (không mất đỉnh).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2267-2318</span></td>
+</tr>
+<tr>
+  <td>H5</td>
+  <td><strong>RiskState Persistence (V10)</strong></td>
+  <td>Lưu RiskState dạng JSON vào bảng kv sau mỗi lần đánh giá lá chắn rủi ro. Khôi phục đỉnh vốn, trạng thái ngắt mạch, số lệnh trong ngày chính xác.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 paper.py:271-282, 335-338</span></td>
+</tr>
+<tr>
+  <td>H6</td>
+  <td><strong>Managed Symbols List</strong></td>
+  <td>Theo dõi mọi cặp bot đã từng mở vị thế. Dùng để giới hạn an toàn chính sách THANH LÝ mồ côi chỉ cho cặp do bot quản lý. Không bao giờ cắt tỉa.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:671-672, 1498-1508</span></td>
+</tr>
+<tr>
+  <td>H7</td>
+  <td><strong>Planned Order Write-Ahead (V10)</strong></td>
+  <td>Trước khi thực thi tín hiệu: chèn vào bảng planned_orders. Sau thực thi: đánh dấu đã thực hiện với chi tiết khớp. Cho phép đối soát sau sự cố.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 paper.py:197-231</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- I. MARKET DATA & TIMING -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-I">I. Dữ liệu thị trường, thời gian & xử lý nến (9 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Phát hiện nến đóng, căn chỉnh đa khung thời gian, khớp tại giá mở tiếp. Chống nhìn trước.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>I1</td>
+  <td><strong>Next-Open Fill Pattern</strong></td>
+  <td>Vòng lặp cốt lõi: (1) thực thi tín hiệu chờ tại giá MỞ hiện tại, (2) vốn tại giá ĐÓNG, (3) chiến lược thấy ĐÓNG → tạo tín hiệu, (4) tín hiệu chờ cho bar TIẾP THEO. Không nhìn trước.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 backtest.py:91-186</span></td>
+</tr>
+<tr>
+  <td>I2</td>
+  <td><strong>Strict MTF Alignment (D1 Anti-Lookahead)</strong></td>
+  <td>Chỉ số D1 chỉ tiến khi <span class="mono">d1[d1_idx+1].close_time &lt; bar.close_time</span> (trước nghiêm ngặt). Ngăn chiến lược thấy bar D1 đóng tại/sau H4 hiện tại. <strong>Logic giống hệt trong backtest, paper, parity.</strong></td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 backtest.py:117-122; paper.py:367-371; live_parity.py:268-272</span></td>
+</tr>
+<tr>
+  <td>I3</td>
+  <td><strong>BarClock (H4 Close Detection)</strong></td>
+  <td>Thăm dò klines Binance, phát hiện bar H4 đóng mới. Vùng đệm an toàn (5s) sau close_time. Lưu last_processed trong SQLite. Trả BarEvent với signal_bar + fill_bar_open. Xử lý đúng một lần.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 bar_clock.py:1-234</span></td>
+</tr>
+<tr>
+  <td>I4</td>
+  <td><strong>Candle Close Deduplication</strong></td>
+  <td>So sánh close_time bar với last_processed. Bỏ qua bar đã xử lý. Lưu mốc nước TRƯỚC khi trả sự kiện — giao nhận đúng một lần an toàn sau sự cố.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2974-2987; V10 bar_clock.py:142-165</span></td>
+</tr>
+<tr>
+  <td>I5</td>
+  <td><strong>Entry Candle Grace Period</strong></td>
+  <td>Chờ <span class="mono">entry_candle_grace_sec=20s</span> sau nến đóng trước khi tải klines. Sàn cần thời gian hoàn tất. Tải sớm → dữ liệu thiếu/cũ → tín hiệu sai.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3004-3007</span></td>
+</tr>
+<tr>
+  <td>I6</td>
+  <td><strong>Kline Close-Only Filtering</strong></td>
+  <td>Lọc bỏ nến hiện tại (đang mở) bằng kiểm tra <span class="mono">close_time &lt; now_ms</span>. Chỉ dùng nến đã đóng cho chỉ báo.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1634-1664</span></td>
+</tr>
+<tr>
+  <td>I7</td>
+  <td><strong>H4 Indicator Cache</strong></td>
+  <td>Cache DataFrame kline theo khóa (symbol, last_close_time). Chỉ tải lại khi nến mới đóng. Giảm gọi API từ O(vũ trụ × thăm dò) xuống O(vũ trụ × nến).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:2895-2951</span></td>
+</tr>
+<tr>
+  <td>I8</td>
+  <td><strong>Dual NAV (Mid vs Liq)</strong></td>
+  <td>nav_mid = tiền mặt + btc × mid (theo giá thị trường). nav_liq = tiền mặt + btc × giá bán thực tế - phí (bảo thủ). nav_liq cho đường vốn, nav_mid cho chỉ số.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 execution.py:173-184</span></td>
+</tr>
+<tr>
+  <td>I9</td>
+  <td><strong>DataFeed (Multi-TF CSV Loader)</strong></td>
+  <td>Tải CSV, chia thành danh sách bar H4 + D1 sắp theo open_time. Lọc phạm vi ngày với offset warmup_days. Đặt report_start_ms.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 datafeed.py:32-94</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- J. ENTRY LOGIC -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-J">J. Chiến lược: Logic vào lệnh (10 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Tạo tín hiệu vào lệnh, phân bổ khối lượng, cổng lọc. Mỗi hệ thống có cách tiếp cận khác nhau.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>J1</td>
+  <td><strong>D1 Regime State Machine (EMA Hysteresis)</strong></td>
+  <td>RISK_ON / CAUTION / RISK_OFF. EMA50/EMA200 với confirm_bars (2) trên cho ON, off_bars (4) dưới cho OFF. Bất đối xứng: tắt rủi ro nhanh, bật rủi ro chậm. Ngăn bị quất.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2004-2103; V10 strategy:229-253</span></td>
+</tr>
+<tr>
+  <td>J2</td>
+  <td><strong>IRONCLAD Entry Signal (Multi-Filter Chain)</strong></td>
+  <td>Chuỗi bộ lọc tuần tự: chưa có vị thế → hết thời gian chờ → regime cho phép → nến H4 mới → đủ lịch sử → close &gt; EMA_TREND(89) → pullback chạm EMA_PB(34) + bật → lọc vol (1.5×MA) → chống đuổi giá → lọc spread. Stop = giá vào - ATR × sl_mult. Điểm để xếp hạng.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:2953-3142</span></td>
+</tr>
+<tr>
+  <td>J3</td>
+  <td><strong>V10 Entry Gate Chain (5 Gates + Sizing)</strong></td>
+  <td>Tuần tự: (0) thời gian chờ ED, (1) regime ≠ RISK_OFF, (2) bar chờ vào/ra, (3) VDO &gt; ngưỡng, (4) trên HMA HOẶC RSI quá bán. Sau đó: khối lượng cơ sở theo vol, phanh vol, thích ứng DD, kiểm tra gap, khối lượng tỷ lệ VDO + bộ điều chỉnh.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 strategy:404-514</span></td>
+</tr>
+<tr>
+  <td>J4</td>
+  <td><strong>Spread Filter</strong></td>
+  <td>Chặn vào lệnh khi chênh lệch bid-ask &gt; <span class="mono">max_spread_pct (0.2%)</span>. Spread rộng = chi phí thực thi 5-10×. Cũng đóng vai trò cổng vol ngầm.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3082-3087</span></td>
+</tr>
+<tr>
+  <td>J5</td>
+  <td><strong>Risk Per Trade Sizing</strong></td>
+  <td>IRONCLAD: <span class="mono">rủi ro/giao dịch = gốc × vol_scale × breadth_scale × regime_mult</span>. Vị thế = tiền rủi ro / (giá vào - stop). Giới hạn bởi max_position_value_pct + ngân sách rủi ro mở. Nhiều tầng giới hạn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:3144-3156</span></td>
+</tr>
+<tr>
+  <td>J6</td>
+  <td><strong>Max Position Value Cap</strong></td>
+  <td>Vị thế đơn ≤ <span class="mono">max_position_value_pct=12%</span> NAV (an toàn live 8%), độc lập với khoảng cách stop. Lưới an toàn khi ATR nhỏ → khối lượng lớn → ATR tăng đột biến → thua vượt dự kiến.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:3144-3156</span></td>
+</tr>
+<tr>
+  <td>J7</td>
+  <td><strong>Entry Ranking (Full Universe Scan)</strong></td>
+  <td>Quét TẤT CẢ cặp trong vũ trụ, thu thập tín hiệu hợp lệ, sắp theo điểm, thử top N. Loại bỏ thiên lệch chọn theo bảng chữ cái/thứ tự chèn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">IRONCLAD:4216-4244</span></td>
+</tr>
+<tr>
+  <td>J8</td>
+  <td><strong>VDO (Volume Delta Oscillator)</strong></td>
+  <td>EMA nhanh - EMA chậm của tỷ lệ delta khối lượng (taker_buy/tổng). Dự phòng proxy OHLCV khi thiếu dữ liệu taker. Tín hiệu vào lệnh dẫn dắt.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 strategy:198-207</span></td>
+</tr>
+<tr>
+  <td>J9</td>
+  <td><strong>Vol-Sized Position (Target Vol Annual)</strong></td>
+  <td>Phơi nhiễm cơ sở = min(max_exposure, target_vol_năm / d1_ann_vol). Co tỷ lệ nghịch với vol thực tế. CAUTION giảm mục tiêu một nửa.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 strategy:436-444</span></td>
+</tr>
+<tr>
+  <td>J10</td>
+  <td><strong>TP1 Target Modes (RR / SWING / BOLL)</strong></td>
+  <td>Ba chế độ: RR (1.5R mặc định), SWING (đỉnh cao nhất trong lookback), BOLL (Bollinger trên). Tất cả dự phòng về RR nếu không hợp lệ. Cấu hình được.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">IRONCLAD:3082-3106</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- K. EXIT LOGIC -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-K">K. Chiến lược: Logic thoát lệnh (6 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">5 tầng thoát xếp chồng, siết trailing stop, DD khẩn cấp.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>K1</td>
+  <td><strong>V10 Exit Stack (5 lớp ưu tiên)</strong></td>
+  <td>(1) DD khẩn cấp → (2) Thoát regime (tùy chọn) → (3a) Trailing stop sau ngưỡng lời → (3b) Stop cố định trước khi trail kích hoạt → (4) Phá vỡ cấu trúc (tùy chọn) → (5) Cắt HMA (tùy chọn). Trigger đầu tiên thắng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 strategy:341-400</span></td>
+</tr>
+<tr>
+  <td>K2</td>
+  <td><strong>Trailing Stop with Tightening (V10)</strong></td>
+  <td>Kích hoạt sau peak_profit &gt;= 5%. Khoảng cách: trail_atr_mult (3.5×) ATR từ đỉnh. Siết còn 2.5× sau 25% lời. Bảo vệ động.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 strategy:361-372</span></td>
+</tr>
+<tr>
+  <td>K3</td>
+  <td><strong>Emergency DD Exit</strong></td>
+  <td>V10: tham chiếu cấu hình được (peak NAV, pre_cost, post_cost). IRONCLAD: khoảng cách cố định 20% từ stop → giải cứu mềm. Cả hai: thoát thị trường tức thì.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 strategy:345-355; IRONCLAD:3945-3954</span></td>
+</tr>
+<tr>
+  <td>K4</td>
+  <td><strong>Emergency DD Cooldown (Escalating)</strong></td>
+  <td>V10: sau thoát ED → chặn vào lại. V1: 12 bar cố định. V2: 3 bar đơn lẻ, 12 bar chuỗi (≥2 ED trong cửa sổ 24 bar). Ngăn vào lại nhanh vào thị trường xấu đi.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 strategy:266-314</span></td>
+</tr>
+<tr>
+  <td>K5</td>
+  <td><strong>Peak Tracking (Price, Profit, NAV)</strong></td>
+  <td>Theo dõi peak_price (mid cao nhất), peak_profit (% lời cao nhất), position_nav_peak (NAV cao nhất trong vị thế). Dùng bởi trail + ED. Reset khi đóng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 strategy:316-322</span></td>
+</tr>
+<tr>
+  <td>K6</td>
+  <td><strong>UDS Reconnect Freeze</strong></td>
+  <td>Sau khi kết nối lại UDS: đóng băng vào lệnh ≥1 chu kỳ vòng lặp đầy đủ để cho phép đối soát ảnh chụp. Ngăn vào lệnh trên trạng thái cũ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:4155-4167</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- L. CONFIG & VALIDATION -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-L">L. Cấu hình & Kiểm định (6 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Xác thực cấu hình, mặc định an toàn live, cổng giao dịch thật.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>L1</td>
+  <td><strong>IRONCLAD Config (Frozen Dataclass, ~93 tham số)</strong></td>
+  <td>Tất cả tham số trong một dataclass bất biến. Thời gian chạy, lịch trình, tài sản, regime, chỉ báo, vào lệnh, TP, stop, phân bổ rủi ro, vol, breadth, ngắt mạch, Telegram, dry-run, orphan, an toàn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1078-1244</span></td>
+</tr>
+<tr>
+  <td>L2</td>
+  <td><strong>Config Validation (~30 checks)</strong></td>
+  <td>Kiểm tra phạm vi, xác thực enum, phân tích khung thời gian, nhất quán logic. Ném ValueError với TẤT CẢ lỗi nối nhau. Thất bại nhanh khi cấu hình sai.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1247-1359; V10 config.py:68-195</span></td>
+</tr>
+<tr>
+  <td>L3</td>
+  <td><strong>Safe Live Defaults Override</strong></td>
+  <td>Tự siết cho LIVE: rủi ro → 0.3%, vị thế → 2, giá trị vị thế → 8%, vùng đệm tiền mặt → 20%, DD → 10%, kill_cooldown → 168h, chỉ vào lệnh MARKET. Tắt trừ khi <span class="mono">SAFE_LIVE_DEFAULTS=NO</span>.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:1362-1415</span></td>
+</tr>
+<tr>
+  <td>L4</td>
+  <td><strong>Live Trading Confirmation Gate</strong></td>
+  <td>Yêu cầu biến môi trường <span class="mono">CONFIRM_LIVE_TRADING=YES</span> cho chế độ không phải dry-run. Bot từ chối khởi động nếu thiếu. Ngăn giao dịch thật vô tình.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:4362-4369</span></td>
+</tr>
+<tr>
+  <td>L5</td>
+  <td><strong>YAML Config Loader + Unknown Key Detection</strong></td>
+  <td>V10: Tải YAML vào LiveConfig có kiểu (Engine+Strategy+Risk). Cảnh báo khóa lạ ở mọi cấp. Xác thực khóa chiến lược qua registry. Ngăn lỗi chính tả im lặng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 config.py:68-195</span></td>
+</tr>
+<tr>
+  <td>L6</td>
+  <td><strong>Strategy Registry (Centralized)</strong></td>
+  <td>Nguồn duy nhất: tên → (lớp, lớp cấu hình). Tải lười, ngăn import vòng. known_strategies(), build_config(), build_strategy().</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 registry.py:1-108</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- M. MONITORING -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-M">M. Giám sát, ghi log & quan sát (7 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Nhịp tim, Telegram, dấu vết kiểm toán CSV lệnh, kiểm tra tính đồng nhất.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>M1</td>
+  <td><strong>Heartbeat + Telegram Alerts</strong></td>
+  <td>Nhịp tim 12h. Giới hạn tốc độ (tối thiểu 10s). force=True bỏ qua. Bắn-và-quên (bỏ qua lỗi gửi).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">IRONCLAD:257-289</span></td>
+</tr>
+<tr>
+  <td>M2</td>
+  <td><strong>Order Plan CSV Audit Trail</strong></td>
+  <td>Ghi thêm mọi OrderPlan (bao gồm HOLD) vào CSV: 15 trường (ts, chiều, khối lượng, giá, notional, lý do, NAV, phơi nhiễm, delta). Kiểm toán quyết định đầy đủ.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 order_planner.py:25-41, 193-220</span></td>
+</tr>
+<tr>
+  <td>M3</td>
+  <td><strong>Live Parity Checker (Shadow Replay)</strong></td>
+  <td>Với mỗi tín hiệu live: phát lại toàn bộ lịch sử bar qua chiến lược bóng + danh mục. So sánh kỳ vọng vs thực tế. Dừng giao dịch khi bất khớp. Ghi vào CSV.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 live_parity.py:96-365</span></td>
+</tr>
+<tr>
+  <td>M4</td>
+  <td><strong>Parity Shadow Replay Engine</strong></td>
+  <td>Backtest thu nhỏ trong ParityChecker: cùng căn chỉnh MTF, khớp tại giá mở tiếp, ngưỡng phơi nhiễm. Tạo tín hiệu kỳ vọng để so sánh.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 live_parity.py:250-305</span></td>
+</tr>
+<tr>
+  <td>M5</td>
+  <td><strong>Bar Event CSV Logging</strong></td>
+  <td>Mỗi BarEvent → CSV: thời gian đóng tín hiệu/mở khớp, OHLC, giá mở khớp. Dấu vết kiểm toán xử lý bar đầy đủ.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">V10 bar_clock.py:188-202</span></td>
+</tr>
+<tr>
+  <td>M6</td>
+  <td><strong>Entry Reason Tagging</strong></td>
+  <td>Gắn thẻ vào lệnh: vdo_compression, vdo_dip_buy, vdo_trend_accel, vdo_trend. Cho phép phân tích hậu kiểm loại vào lệnh nào có lợi nhuận.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">V10 strategy:500-508</span></td>
+</tr>
+<tr>
+  <td>M7</td>
+  <td><strong>Persistent Scheduler</strong></td>
+  <td>Thay thế <span class="mono">time() % N</span> mong manh. Lưu mốc thời gian chạy cuối trong trạng thái (bền vững). Trả True một lần mỗi khoảng. Ngăn kích hoạt kép qua các lần khởi động lại.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:1584-1602</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- N. PAPER & BACKTEST -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-N">N. Giao dịch giấy, backtest & kiểm thử (10 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Bộ máy giao dịch giấy, bộ máy backtest, CLI so sánh, pipeline kiểm định.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>N1</td>
+  <td><strong>BacktestEngine</strong></td>
+  <td>Khớp tại giá mở tiếp, căn chỉnh MTF nghiêm ngặt, chế độ khởi động (no_trade / allow_trade), ngưỡng phơi nhiễm, callback sau khớp. Tiêu chuẩn vàng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 backtest.py:1-329</span></td>
+</tr>
+<tr>
+  <td>N2</td>
+  <td><strong>PaperRunner (Full Risk Guards)</strong></td>
+  <td>Phản chiếu BacktestEngine chính xác + lá chắn rủi ro R1-R4 + lưu SQLite + xuất CSV. Bộ chạy giao dịch giấy/bóng chính thức.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 paper.py:298-674</span></td>
+</tr>
+<tr>
+  <td>N3</td>
+  <td><strong>DRY-RUN Simulation (IRONCLAD)</strong></td>
+  <td>Giao dịch giấy: paper_cash, mô phỏng khớp với trượt giá + phí, lệnh tổng hợp (orderId=-1), mô phỏng stop (bid ≤ stop mỗi vòng). Không UDS, không lệnh sàn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:2339-2351, 2423-2430, etc.</span></td>
+</tr>
+<tr>
+  <td>N4</td>
+  <td><strong>Execution Model (Stateless Cost)</strong></td>
+  <td>Tính chi phí thuần: bid/ask từ mid, fill_buy = ask + trượt giá, fill_sell = bid - trượt giá, phí. Không trạng thái — cùng đầu vào → cùng đầu ra.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">V10 execution.py:27-53</span></td>
+</tr>
+<tr>
+  <td>N5</td>
+  <td><strong>Compare CLI (Paper vs Backtest Parity)</strong></td>
+  <td>So sánh vốn paper vs backtest. Kiểm tra mốc thời gian, target_exposure, sự kiện vào/ra. Chẩn đoán bất khớp có cấu trúc. Mã thoát 0=đạt, 2=bất khớp.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 compare.py:1-451</span></td>
+</tr>
+<tr>
+  <td>N6</td>
+  <td><strong>Validate CLI (16-Suite Pipeline)</strong></td>
+  <td>Backtest, bootstrap, WFO, holdout, độ nhạy, thiên lệch chọn, nhìn trước, mức giao dịch, đợt DD, phủ, toàn vẹn dữ liệu, quét chi phí, bất biến, hồi quy, xoay vòng, regime. Kết luận ĐẠT/LỖI/CẢNH BÁO.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 validate.py:1-289</span></td>
+</tr>
+<tr>
+  <td>N7</td>
+  <td><strong>Research CLI (Matrix + WFO + Decision)</strong></td>
+  <td>Ma trận chiến lược qua các kịch bản chi phí, tối ưu hóa walk-forward, cổng quyết định. Ba chế độ: matrix, wfo, decision.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 research.py:1-302</span></td>
+</tr>
+<tr>
+  <td>N8</td>
+  <td><strong>Comprehensive Metrics (22 measures)</strong></td>
+  <td>Tổng lợi nhuận, CAGR, DD tối đa (mid+liq), Sharpe, Sortino, Calmar, thống kê giao dịch, thống kê phơi nhiễm, kéo phí, xoay vòng. Quy năm H4 (2190/năm). Độ lệch chuẩn tổng thể.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 metrics.py:22-190</span></td>
+</tr>
+<tr>
+  <td>N9</td>
+  <td><strong>Clean Account Gate</strong></td>
+  <td>Xác minh trước giao dịch: chỉ USDT/BTC/BNB có số dư. Không cho phép &gt; $500 → vi phạm. BTC phải bằng 0. Chỉ testnet cho dọn dẹp.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 account_sweeper.py:260-373</span></td>
+</tr>
+<tr>
+  <td>N10</td>
+  <td><strong>Main Loop Orchestration (12 Steps)</strong></td>
+  <td>Sắp theo mức ưu tiên: (1) rút cạn UDS → (2) lệnh chờ vào → (3) nhịp tim → (4) đồng bộ giờ → (5) giới hạn tốc độ → (6) vũ trụ → (7) NAV+ngắt mạch → (8) đối soát → (9) regime → (10) vị thế → (11) mồ côi → (12) vào lệnh. An toàn trước, vào lệnh sau.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">THIẾT YẾU</span></td>
+  <td><span class="mono">IRONCLAD:4091-4251</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- O. SESSION & METADATA -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-O">O. Quản lý phiên & metadata (6 cơ chế)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Tái tạo được, dấu vết kiểm toán, vòng đời phiên.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Ưu tiên</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>O1</td>
+  <td><strong>Run Metadata Stamping</strong></td>
+  <td>Ghi run_meta.json: git hash, mốc thời gian UTC, argv, ảnh chụp cấu hình, vân tay SHA-256 tệp dữ liệu. Tái tạo chính xác mọi lần chạy.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 meta.py:36-83</span></td>
+</tr>
+<tr>
+  <td>O2</td>
+  <td><strong>Session Registry (JSON + File Lock)</strong></td>
+  <td>Mọi lần chạy CLI được đăng ký: session_id, cli_type, outdir, mốc thời gian, git_hash, argv, trạng thái, TTL, thẻ. Khóa tệp tư vấn cho truy cập đồng thời.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 session.py:227-310</span></td>
+</tr>
+<tr>
+  <td>O3</td>
+  <td><strong>Atomic Registry Write</strong></td>
+  <td>Ghi .json.tmp → đổi tên nguyên tử. Ngăn ghi dở làm hỏng registry khi sự cố. Tự phát hiện + sao lưu tệp hỏng.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">V10 session.py:155-161</span></td>
+</tr>
+<tr>
+  <td>O4</td>
+  <td><strong>File Fingerprinting (SHA-256)</strong></td>
+  <td>Tính hex SHA-256 của tệp dữ liệu theo khối 1MB. Ghi vào run_meta.json cho truy nguồn dữ liệu.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">V10 meta.py:27-33</span></td>
+</tr>
+<tr>
+  <td>O5</td>
+  <td><strong>TTL-Based Session Auto-Expiry</strong></td>
+  <td>TTL mặc định: backtest 7 ngày, research 14 ngày, validate 30 ngày, paper không hết hạn. Hết hạn cơ hội khi đăng ký phiên mới.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">GIÁ TRỊ</span></td>
+  <td><span class="mono">V10 session.py:31-37, 196-219</span></td>
+</tr>
+<tr>
+  <td>O6</td>
+  <td><strong>Graceful Shutdown (Signal Handler)</strong></td>
+  <td>Xử lý SIGTERM/SIGINT → đặt cờ _stop → vòng lặp chính thoát sạch → dừng luồng UDS. Vị thế tồn tại qua trạng thái lưu + stop trên sàn.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">QUAN TRỌNG</span></td>
+  <td><span class="mono">IRONCLAD:4402-4412</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- P. STRATEGY DECISIONS -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-P">P. Quyết định chiến lược — Đã kiểm chứng / Bị bác bỏ / Chờ kiểm thử</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Kết quả pipeline kiểm định. Xác định cái gì dùng, cái gì bỏ cho rebuild.</p>
+
+<h3>Đã kiểm chứng (dùng cho tái dựng)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Bằng chứng</th><th>Nguồn</th><th>Trạng thái</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Tín hiệu xu hướng EMA</strong></td>
+  <td>Kiểm định hoán vị p=0.000 (10K hoán vị). Căn chỉnh thời gian EMA-giá có giá trị thực sự.</td>
+  <td><span class="badge badge-proven">ĐÃ KIỂM CHỨNG</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>Stop kéo theo ATR</strong></td>
+  <td>Kiểm định hoán vị p&lt;0.001. Căn chỉnh ATR-giá cục bộ có ý nghĩa cho vị trí stop.</td>
+  <td><span class="badge badge-proven">ĐÃ KIỂM CHỨNG</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>Độ phân giải H4 tối ưu</strong></td>
+  <td>Quét đa độ phân giải: H4 đỉnh Sharpe 0.442 (16 ngày), bề rộng hiệu quả 24×. H1 CHẾT (tất cả âm). D1 yếu hơn (0.419@20 ngày).</td>
+  <td><span class="badge badge-proven">ĐÃ KIỂM CHỨNG</span></td>
+  <td><span class="verdict verdict-use">ƯU TIÊN H4</span></td>
+</tr>
+<tr>
+  <td><strong>Bền vững thang thời gian (10-120 ngày)</strong></td>
+  <td>H4: bề rộng hiệu quả 24× (10-120 ngày), vùng mạnh 10-24 ngày (2.4×). Bề mặt trơn (r=0.953). Theo xu hướng tổng quát, không phải khớp đường cong.</td>
+  <td><span class="badge badge-proven">ĐÃ KIỂM CHỨNG</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>Phân bổ nhị phân cho Sharpe</strong></td>
+  <td>Tất cả biến thể phân bổ (Kelly, vol-target, DD-adaptive, f-scaling) → Sharpe bất biến. Nhị phân (0/1) là đúng cho đánh giá Sharpe.</td>
+  <td><span class="badge badge-proven">ĐÃ KIỂM CHỨNG</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Bị bác bỏ / Bất biến (loại bỏ)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Bằng chứng</th><th>Nguồn</th><th>Trạng thái</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Bộ lọc regime (EMA50/200 D1)</td>
+  <td>VTREND có lời ở mọi regime. Bộ lọc giảm cả thắng lẫn thua.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-disproven">BỊ BÁC BỎ</span></td>
+</tr>
+<tr>
+  <td>Nhắm vol mục tiêu</td>
+  <td>Sharpe bất biến (0.442 vs 0.445). Không có sự khác biệt thống kê.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-invariant">BẤT BIẾN</span></td>
+</tr>
+<tr>
+  <td>Phanh vol (tỷ lệ ATR)</td>
+  <td>Sharpe bất biến. Bộ lọc spread đã bao phủ mức thực thi.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">BẤT BIẾN</span></td>
+</tr>
+<tr>
+  <td>Phân bổ thích ứng DD</td>
+  <td>Biến thể phân bổ → Sharpe bất biến. Cùng khái niệm với f-scaling.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">BẤT BIẾN</span></td>
+</tr>
+<tr>
+  <td>Co giãn theo breadth (vũ trụ &gt; EMA200)</td>
+  <td>Biến thể bộ lọc regime → bị bác bỏ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-disproven">BỊ BÁC BỎ</span></td>
+</tr>
+<tr>
+  <td>Xác nhận khối lượng (1.5× MA20)</td>
+  <td>VDO đã bao phủ khối lượng. Bộ lọc thêm → giảm cả thắng lẫn thua.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-invariant">DƯ THỪA</span></td>
+</tr>
+<tr>
+  <td>Sức mạnh xu hướng (độ dốc EMA / ADX)</td>
+  <td>Bộ lọc vào lệnh → giống mẫu bộ lọc regime → bị bác bỏ.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-disproven">BỊ BÁC BỎ</span></td>
+</tr>
+<tr>
+  <td>Thoát cấu trúc (close &lt; EMA200)</td>
+  <td>Tắt mặc định trong V10. Dư thừa với ATR trail.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">ĐÃ TẮT</span></td>
+</tr>
+<tr>
+  <td>Thoát cắt HMA</td>
+  <td>Tắt mặc định. Cùng dữ liệu OHLC = cùng trần alpha.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">ĐÃ TẮT</span></td>
+</tr>
+<tr>
+  <td>Phân bổ RSI quá mua/quá bán</td>
+  <td>Riêng V10, biến thể phân bổ → Sharpe bất biến.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">CHỈ V10</span></td>
+</tr>
+<tr>
+  <td>Tăng nén (ATR nhanh/chậm)</td>
+  <td>Bội số mặc định = 1.0 (không tác dụng trong code). Phân bổ → bất biến.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">KHÔNG TÁC DỤNG</span></td>
+</tr>
+<tr>
+  <td>Phân bổ gia tốc (chênh lệch ROC)</td>
+  <td>Chia tỷ lệ theo xung lượng, riêng V10. Phân bổ → bất biến.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">CHỈ V10</span></td>
+</tr>
+<tr>
+  <td>VPULL (Vào lệnh thoái lui)</td>
+  <td>Kiểm định hoán vị p=1.0000 (10K hoán vị). Tệ hơn bộ lọc ngẫu nhiên. "Chờ giá tốt hơn" = thất bại trên BTC.</td>
+  <td><span class="badge badge-disproven">btc-spot-dev</span></td>
+  <td><span class="badge badge-disproven">BỊ BÁC BỎ (p=1.0)</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Chờ kiểm thử (có tiềm năng)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Tiên lượng</th><th>Lý do</th><th>Trạng thái</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Thời gian chờ leo thang (V10)</strong></td>
+  <td><span class="badge badge-important">TỐT</span></td>
+  <td>DD chuỗi = vấn đề đã chứng minh (bootstrap MDD). VPULL (p=1.0) = vào lại ngay luôn tệ. Leo thang = không phải dự đoán, chỉ là "đang bị đánh, dừng." Kiểm thử bằng bootstrap ghép cặp.</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Siết trail khi có lời (V10)</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Khóa lời trên lệnh thắng lớn. Nhưng trail chặt hơn = bị lắc ra sớm. Sharpe có thể bất biến (cùng mẫu với mọi biến thể phân bổ/stop).</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Thời gian chờ cặp (Cố định, IRONCLAD)</strong></td>
+  <td><span class="badge badge-important">TỐT</span></td>
+  <td>Giải quyết trực tiếp DD chuỗi. Đơn giản: "vừa thua, bắt buộc chờ." Chi phí: bỏ lỡ phục hồi chữ V. Nhưng VPULL thất bại gợi ý rằng chờ là tốt hơn.</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Bộ lọc chống đuổi giá</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Vấn đề chất lượng thực thi, không phải dự đoán. Mua cao = stop xa = RR xấu. Nhưng giống khái niệm VPULL → khả năng bị bác bỏ.</td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+<tr>
+  <td><strong>Thoát vốn chết (Theo thời gian)</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Hiệu quả vốn. Trail xử lý lệnh thắng, nhưng zombie trói chặt vốn. 30 ngày tùy ý.</td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- Q. REBUILD PRIORITY -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="rebuild">Q. Thứ tự ưu tiên tái dựng</h2>
+
+<div class="note note-green">
+  <strong>Nguyên tắc tái dựng:</strong> Hạ tầng/an toàn đi trước, logic chiến lược đi sau. Không chạy live trước khi đủ các lớp an toàn.
+  VTREND chỉ cần 3 tham số (slow_period, trail_mult, vdo_threshold). Toàn bộ độ phức tạp nằm ở khối thực thi + quản trị rủi ro.
+</div>
+
+<table>
+<thead>
+<tr><th>Giai đoạn</th><th>Mô tả</th><th>Các cơ chế</th><th>Ước lượng</th></tr>
+</thead>
+<tbody>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Giai đoạn 0</strong></td>
+  <td><strong>Hệ kiểu + Mô hình dữ liệu</strong><br>Nến, Cấu hình chi phí, Tín hiệu, Trạng thái thị trường, Chế độ NAV vào lệnh, Khớp/Giao dịch/Ảnh chụp vốn</td>
+  <td>A1-A7</td>
+  <td>~1 ngày</td>
+</tr>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Giai đoạn 1</strong></td>
+  <td><strong>Mô hình thực thi + Bộ máy Backtest</strong><br>Chi phí không trạng thái, Danh mục, khớp giá mở tiếp, căn chỉnh đa khung, khởi động, Nguồn dữ liệu</td>
+  <td>N1, N4, G11, I1, I2, I9</td>
+  <td>~2 ngày</td>
+</tr>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Giai đoạn 2</strong></td>
+  <td><strong>Chiến lược VTREND (3 tham số)</strong><br>Xu hướng EMA, trail ATR, bộ lọc VDO. Cổng vào, tầng thoát. H4 tối ưu. Chỉ báo: EMA, ATR, VDO.</td>
+  <td>J1-J3, K1-K3, J8</td>
+  <td>~2 ngày</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Giai đoạn 3</strong></td>
+  <td><strong>Pipeline kiểm định</strong><br>Bootstrap khối, kiểm định hoán vị (EMA/VDO/ATR), so sánh ghép cặp, hiệu chỉnh bội, bền vững thang thời gian. Methodology.md làm đặc tả.</td>
+  <td>N6, N7, N8</td>
+  <td>~3 ngày</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Giai đoạn 4</strong></td>
+  <td><strong>Lá chắn rủi ro + Trạng thái</strong><br>NaN đóng an toàn, ngắt mạch, khóa/giới hạn ngày, kẹp phơi nhiễm, giá trị tối thiểu, lưu RiskState, bỏ qua lá chắn khi thanh lý cưỡng bức.</td>
+  <td>F1-F12, H1-H5</td>
+  <td>~2 ngày</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Giai đoạn 5</strong></td>
+  <td><strong>Client sàn + Bộ lọc</strong><br>REST + ký xác thực, thử lại, đồng bộ giờ, số học Decimal, LOT/MARKET_LOT, làm tròn giá, kiểm tra giá trị danh nghĩa.</td>
+  <td>B1-B6, C1-C7</td>
+  <td>~2 ngày</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Giai đoạn 6</strong></td>
+  <td><strong>Thực thi lệnh</strong><br>clientOrderId tất định, đặt lệnh không trùng lặp, khôi phục trạng thái chưa rõ, chuỗi dự phòng stop, thoát khẩn cấp, khoảng cách stop tối thiểu.</td>
+  <td>D1-D10</td>
+  <td>~3 ngày</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Giai đoạn 7</strong></td>
+  <td><strong>Vòng đời lệnh + Khôi phục sau sự cố</strong><br>Ghi trước, đối soát khởi động, điểm sự cố, đối soát ảnh chụp, giám sát stop, phát hiện mồ côi.</td>
+  <td>E1-E7</td>
+  <td>~3 ngày</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Giai đoạn 8</strong></td>
+  <td><strong>WebSocket + Dữ liệu trực tiếp</strong><br>UDS, theo dõi báo cáo khớp, rút cạn sự kiện, giới hạn tốc độ, cache tài khoản, Đồng hồ nến, kiểm tra đồng nhất.</td>
+  <td>B7-B12, I3-I7, M3-M4</td>
+  <td>~3 ngày</td>
+</tr>
+<tr style="background: rgba(139,148,158,0.06);">
+  <td><strong>Giai đoạn 9</strong></td>
+  <td><strong>Vòng đời vị thế (đầy đủ)</strong><br>Vào lệnh thị trường, bắn tỉa giới hạn, TP1, trailing stop, giải cứu mềm, thoát theo thời gian, đóng toàn bộ, điều phối, thời gian chờ.</td>
+  <td>G1-G12</td>
+  <td>~3 ngày</td>
+</tr>
+<tr style="background: rgba(139,148,158,0.06);">
+  <td><strong>Giai đoạn 10</strong></td>
+  <td><strong>Cấu hình + An toàn</strong><br>Xác thực cấu hình, mặc định an toàn live, cổng live, nạp YAML, registry. Giám sát, phiên, siêu dữ liệu.</td>
+  <td>L1-L6, M1-M7, O1-O6</td>
+  <td>~2 ngày</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-warn">
+  <strong>Tổng ước tính: ~26 ngày cho tái dựng đầy đủ.</strong>
+  Giai đoạn 0-3 cho phép chạy backtest + pipeline kiểm định hoàn chỉnh (~8 ngày).
+  Giai đoạn 4-8 cho phép chạy giao dịch giấy an toàn (~13 ngày thêm).
+  Giai đoạn 9-10 cho phép go live (~5 ngày thêm).
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+
+<div style="margin-top: 40px; padding: 16px; background: var(--surface); border-radius: 8px; font-size: 0.85em; color: var(--dim);">
+  <strong>Phương pháp luận:</strong> Quét toàn bộ mã nguồn IRONCLAD <span class="mono">spot_portfolio_bot.py</span> (4416 dòng, ~93 tham số cấu hình)
+  + spotbot V10 <span class="mono">btc-spot/spotbot/</span> (~3500 dòng trên hơn 20 tệp: strategies/vdo_momentum.py, engine/backtest.py, engine/execution.py,
+  exchange/order_planner.py, exchange/filters.py, exchange/order_manager.py, exchange/bar_clock.py, exchange/live_parity.py, exchange/client.py,
+  risk/guards.py, risk/state.py, cli/paper.py, config.py, types.py, session.py, meta.py).
+  Đối chiếu chéo với kết quả kiểm định: kiểm định hoán vị (10K hoán vị), bootstrap khối (2K đường), quét thang thời gian (H1/H4/D1 × 16 × 2),
+  walk-forward ngoài mẫu, hiệu chỉnh so sánh bội (K=16 Bonferroni/Holm/BH).
+  <br><br>
+  <strong>Ngày tạo:</strong> 2026-02-26 &middot; <strong>Thay thế:</strong> audit.html (có 13 lỗi: 3 mục bịa đặt, 6 chi tiết sai, 3 metadata sai, 1 nguồn sai)
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+candidates:
+  - name: v12_baseline_legacy
+    strategy: v12_emdd_ref_fix
+    description: "Reference V12 config (legacy) for comparison"
+    params: {}
+
+  - name: v12_gate_focus_grid
+    strategy: v12_emdd_ref_fix
+    description: "Narrow search: VDO entry threshold + D1 regime hysteresis"
+    params:
+      emdd_ref_mode: legacy
+      rsi_method: wilder
+    param_ranges:
+      vdo_entry_threshold: [0.0025, 0.0030, 0.0035, 0.0040]
+      d1_regime_confirm_bars: [1, 2, 3]
+      d1_regime_off_bars: [3, 4, 5]

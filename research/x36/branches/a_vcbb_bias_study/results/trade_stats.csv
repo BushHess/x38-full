@@ -1,0 +1,4 @@
+strategy,trades,wins,losses,win_rate,avg_return,median_return,avg_days_held,median_days_held,best_trade,worst_trade,churn_le_12h,churn_le_24h
+V3,211,120,91,56.9%,1.71%,0.97%,4.2,5.0,21.7%,-14.0%,0,0
+V4,197,95,102,48.2%,2.44%,-0.13%,5.3,5.0,42.5%,-13.4%,0,0
+E5+EMA21D1,188,83,105,44.1%,2.65%,-0.55%,6.2,4.7,68.1%,-12.7%,1,3

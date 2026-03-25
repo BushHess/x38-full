@@ -1,0 +1,5 @@
+strategy_id,cohort,trades,wins,losses,win_rate_pct,net_pnl_usd,loser_loss_usd,median_entry_vdo,median_entry_er30,median_entry_price_to_slow_atr,median_first6_mfe_r,median_first6_mae_r,median_mfe_r,median_mae_r
+X0,blocked_by_stretch18,52,13,39,25.0,-32849.77,-158550.15,0.003527,0.079425,2.540624,0.882901,1.097463,2.305319,1.918707
+X0,kept_by_stretch18,122,57,65,46.72,269042.51,-232900.5,0.004157,0.157917,1.120578,1.037602,0.903009,3.38696,1.42737
+X0_E5EXIT,blocked_by_stretch18,56,18,38,32.14,-10549.89,-170772.89,0.003068,0.079425,2.569588,1.026255,1.036223,2.633282,1.787405
+X0_E5EXIT,kept_by_stretch18,132,61,71,46.21,308340.36,-286060.7,0.0036,0.166447,1.315999,1.051651,0.833098,3.344167,1.42737

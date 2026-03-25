@@ -1,0 +1,8 @@
+indicator,integrated_source,standalone_source,max_abs_error,mean_abs_error,max_rel_pct,verdict
+ema_fast_30,strategies/latch/strategy.py:_ema,Latch/research/Latch/indicators.py:ema,0.0,0.0,0.0,BIT_IDENTICAL
+ema_slow_120,strategies/latch/strategy.py:_ema,Latch/research/Latch/indicators.py:ema,0.0,0.0,0.0,BIT_IDENTICAL
+atr_14,strategies/latch/strategy.py:_atr,Latch/research/Latch/indicators.py:atr_wilder,0.0,0.0,0.0,BIT_IDENTICAL
+rolling_high_60,strategies/latch/strategy.py:_rolling_high_shifted,Latch/research/Latch/indicators.py:rolling_high_shifted,0.0,0.0,0.0,BIT_IDENTICAL
+rolling_low_30,strategies/latch/strategy.py:_rolling_low_shifted,Latch/research/Latch/indicators.py:rolling_low_shifted,0.0,0.0,0.0,BIT_IDENTICAL
+realized_vol_120,strategies/latch/strategy.py:_realized_vol,Latch/research/Latch/indicators.py:annualized_realized_vol,2.91e-14,6.97e-15,2.06e-11,NUMERICALLY_IDENTICAL
+slope_ref_6,strategies/latch/strategy.py:on_init shift,Latch/research/Latch/state_machine.py:ema_slow.shift,0.0,0.0,0.0,BIT_IDENTICAL

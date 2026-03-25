@@ -1,0 +1,51 @@
+candidates:
+  - name: v10_baseline
+    description: "V8 Apex current defaults"
+    params: {}
+
+  # Best so far: cycle early only, but with default trail width
+  - name: v11_cycle_early_deftrail
+    strategy: v11_hybrid
+    description: "Cycle early only, keep default trail width"
+    params:
+      enable_cycle_phase: true
+      cycle_late_aggression: 1.0
+      cycle_late_trail_mult: 3.5
+      cycle_late_max_exposure: 1.0
+      cycle_early_trail_mult: 3.5
+
+  # Same but slightly less aggressive early boost
+  - name: v11_cycle_early_mild
+    strategy: v11_hybrid
+    description: "Cycle early mild boost, default trail"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.10
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 1.0
+      cycle_late_trail_mult: 3.5
+      cycle_late_max_exposure: 1.0
+
+  # Cycle early with slightly wider late threshold
+  - name: v11_cycle_early_lat50
+    strategy: v11_hybrid
+    description: "Cycle early only, late triggers at 50% dist"
+    params:
+      enable_cycle_phase: true
+      cycle_late_min_dist: 0.50
+      cycle_late_aggression: 1.0
+      cycle_late_trail_mult: 3.5
+      cycle_late_max_exposure: 1.0
+      cycle_early_trail_mult: 3.5
+
+  # Cycle early, 3-bar hysteresis (faster phase transition)
+  - name: v11_cycle_early_fast
+    strategy: v11_hybrid
+    description: "Cycle early only, 3-bar hysteresis"
+    params:
+      enable_cycle_phase: true
+      cycle_hysteresis_bars: 3
+      cycle_late_aggression: 1.0
+      cycle_late_trail_mult: 3.5
+      cycle_late_max_exposure: 1.0
+      cycle_early_trail_mult: 3.5

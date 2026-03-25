@@ -1,0 +1,5 @@
+Loaded 372 signals
+Loaded 32,020,790 aggTrade rows for 372 signals
+
+Saved per-signal costs to /var/www/trading-bots/btc-spot-dev/research/x33/results/cost_per_signal.csv
+Saved summary report to /var/www/trading-bots/btc-spot-dev/research/x33/results/cost_summary.md

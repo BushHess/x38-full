@@ -1,0 +1,102 @@
+{
+  "observations": [
+    {
+      "id": "Obs26",
+      "phase": 4,
+      "source": "Tbl11",
+      "finding": "D1 context features carry most predictive info for forward returns. d1_ema_spread_50 leads: |r|=0.088 (p=3.6e-33) at k=60. D1 regime binary also significant: |r|=0.064 at k=40.",
+      "effect_size": "|r|=0.088",
+      "significance": "p=3.6e-33"
+    },
+    {
+      "id": "Obs27",
+      "phase": 4,
+      "source": "Tbl11",
+      "finding": "Information concentrates at longer horizons. Mean |Spearman r| across all features: k=1 (0.013) to k=60 (0.034), monotonically increasing.",
+      "effect_size": "2.6x increase k=1 to k=60",
+      "significance": "23 features consistent"
+    },
+    {
+      "id": "Obs28",
+      "phase": 4,
+      "source": "Tbl11",
+      "finding": "Volume features near-zero predictive info. VDO: |r|=0.027, MI=0.006 bits. log_volume: |r|=0.015. Confirms Obs15 and Obs23.",
+      "effect_size": "|r|<0.03",
+      "significance": "Consistent with 2 prior phases"
+    },
+    {
+      "id": "Obs29",
+      "phase": 4,
+      "source": "Tbl11",
+      "finding": "Volatility has moderate linear info (natr_14: |r|=0.040) but highest nonlinear info (rvol_60: MI=0.116 bits). Consistent with asymmetric vol regime effects (Obs13).",
+      "effect_size": "MI=0.116 bits (highest)",
+      "significance": "p=4.1e-6 (Spearman)"
+    },
+    {
+      "id": "Obs30",
+      "phase": 4,
+      "source": "Tbl11",
+      "finding": "EMA spread features > raw returns at all horizons. ema_spread_120 |r|=0.074 vs ret_20 |r|=0.015. Spread encodes smoothed trend direction and magnitude.",
+      "effect_size": "4.9x ratio",
+      "significance": "p=9.9e-24"
+    }
+  ],
+  "propositions": [
+    {
+      "id": "Prop01",
+      "based_on": ["Obs24", "Obs19", "Obs25"],
+      "statement": "Exit loss control is the primary lever for Sharpe maximization.",
+      "confidence": "HIGH",
+      "testable": "Among matched-entry configs, tighter trail -> higher Sharpe (up to premature-exit limit)"
+    },
+    {
+      "id": "Prop02",
+      "based_on": ["Obs21", "Obs25", "Obs30", "Obs27"],
+      "statement": "Dual-EMA crossover captures most exploitable trend information.",
+      "confidence": "HIGH",
+      "testable": "E1 class produces higher Sharpe than E2/E3 at matched DOF"
+    },
+    {
+      "id": "Prop03",
+      "based_on": ["Obs24", "Obs21", "Obs27"],
+      "statement": "Longer holding periods capture more alpha because information concentrates at longer horizons.",
+      "confidence": "HIGH",
+      "testable": "Wider trail multiplier -> higher Sharpe with diminishing returns"
+    },
+    {
+      "id": "Prop04",
+      "based_on": ["Obs23", "Obs16", "Obs17", "Obs26"],
+      "statement": "D1 regime filtering modestly improves Sharpe by avoiding negative-drift periods.",
+      "confidence": "MEDIUM",
+      "testable": "Adding F1 improves Sharpe by 0.02-0.10, reduces trades by 30-50%"
+    },
+    {
+      "id": "Prop05",
+      "based_on": ["Obs15", "Obs23", "Obs28"],
+      "statement": "Volume features carry zero exploitable information for BTC H4 returns.",
+      "confidence": "HIGH",
+      "testable": "VDO filter HURTS Sharpe on any admissible combination"
+    },
+    {
+      "id": "Prop06",
+      "based_on": ["Obs20", "Obs19", "Obs22"],
+      "statement": "Composite exits (trail OR reversal) provide modest, non-uniform improvement over simple trails.",
+      "confidence": "MEDIUM",
+      "testable": "X3 matches or modestly exceeds X1/X2, not dramatically"
+    },
+    {
+      "id": "Prop07",
+      "based_on": ["Obs24"],
+      "statement": "Churn is not a meaningful design criterion for this dataset.",
+      "confidence": "HIGH",
+      "testable": "Anti-churn mechanisms add no Sharpe improvement"
+    },
+    {
+      "id": "Prop08",
+      "based_on": ["Obs29", "Obs13"],
+      "statement": "Volatility carries moderate nonlinear information but is inconsistent as a filter.",
+      "confidence": "LOW",
+      "testable": "Undetermined - requires dedicated study"
+    }
+  ]
+}

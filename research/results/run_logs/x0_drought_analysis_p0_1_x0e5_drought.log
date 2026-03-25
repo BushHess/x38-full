@@ -1,0 +1,7 @@
+/var/www/trading-bots/btc-spot-dev/research/x0_drought_analysis/p0_1_x0e5_drought.py:88: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  eq["month"] = eq["dt"].dt.to_period("M").astype(str)
+/var/www/trading-bots/btc-spot-dev/research/x0_drought_analysis/p0_1_x0e5_drought.py:101: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  trades["month"] = trades["entry_dt"].dt.to_period("M").astype(str)
+Current window return pct: -0.1553
+Current underwater share: 0.9956
+Similar/worse windows: 12

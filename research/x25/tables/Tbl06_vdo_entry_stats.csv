@@ -1,0 +1,2 @@
+metric,n_winners,n_losers,median_winners,median_losers,mean_winners,mean_losers,U_statistic,MW_p_value,rank_biserial,spearman_rho_vs_return,spearman_p_vs_return,direction
+VDO at entry,79,125,0.005264,0.003123,0.007511,0.006657,5698.0,0.06425986278270787,-0.154,0.0887,0.20685703613681142,winners_higher

@@ -1,0 +1,17 @@
+{
+  "admissible_raw_inputs": [
+    "/mnt/data/RESEARCH_PROMPT_V8.md",
+    "/mnt/data/data_btcusdt_1d.csv",
+    "/mnt/data/data_btcusdt_4h.csv"
+  ],
+  "pre_freeze_disallowed_artifacts_consulted": [],
+  "benchmark_specs_consulted": [],
+  "procedural_independence_before_freeze": "YES. Before freeze, no prior reports, logs, shortlist tables, frozen candidates, system specifications, benchmark specifications, or serialized outputs from earlier sessions were consulted. All consulted non-raw artifacts before freeze were generated inside the current session from the admissible raw prompt and raw CSV data.",
+  "global_cross_session_split_independence": "NO. Discovery, candidate-selection holdout, and reserve/internal windows all come from the same historical file. They are procedurally separated within this session, but they are not globally independent across sessions or across files. Reserve/internal remains internal evidence only and is not eligible for CLEAN OOS CONFIRMED.",
+  "convergence_statement": "Prior session outputs were deliberately not consulted. Therefore no truthful convergence/divergence statement against named prior winners is made.",
+  "notes": [
+    "Prompt text and raw CSVs were the only quantitative inputs before freeze.",
+    "All non-raw artifacts consulted before freeze were created inside this session from admissible raw inputs.",
+    "Benchmark comparison was not run because no benchmark specifications were supplied after reserve/internal evaluation."
+  ]
+}

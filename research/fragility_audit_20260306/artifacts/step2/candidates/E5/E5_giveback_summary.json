@@ -1,0 +1,18 @@
+{
+  "valid_trade_count": 203,
+  "na_trade_count": 4,
+  "mean_giveback": 3.709074,
+  "median_giveback": 1.124126,
+  "p75": 2.74458,
+  "p90": 7.950922,
+  "frac_gt_050": 0.82266,
+  "frac_gt_075": 0.669951,
+  "trail_stop_median_giveback": 1.016758,
+  "trend_exit_median_giveback": 1.124126,
+  "floor_exit_median_giveback": null,
+  "hold_lt1d_mean_giveback": 13.551687,
+  "hold_1_3d_mean_giveback": 5.203639,
+  "hold_3_7d_mean_giveback": 2.581792,
+  "hold_7_14d_mean_giveback": 0.711431,
+  "hold_14d_plus_mean_giveback": 0.310877
+}

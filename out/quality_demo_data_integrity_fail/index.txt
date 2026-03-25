@@ -1,0 +1,33 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-02-24 06:32:46 UTC
+Candidate: v8_apex
+Baseline: v8_apex
+Suite: basic
+Scenarios: smart,base,harsh
+Seed: 1337
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_baseline_legacy.live.yaml
+configs/candidate_baseline_legacy.live.yaml
+
+[results]
+results/data_integrity.json
+results/data_integrity_issues.csv
+
+[reports]
+reports/decision.json
+reports/discovered_tests.md
+reports/quality_checks.md
+reports/validation_report.md
+
+[suite_status]
+data_integrity: fail
+
+[decision]
+verdict=ERROR
+exit_code=3
+- Data integrity hard-fail detected; aborting validation conclusions

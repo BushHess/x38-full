@@ -1,0 +1,416 @@
+{
+  "model": "baseline",
+  "config_path": "/var/www/trading-bots/btc-spot-dev/configs/frozen/v10_baseline.yaml",
+  "strategy_name": "v8_apex",
+  "wfo_overrides_applied": false,
+  "params": {
+    "engine.symbol": {
+      "value": "BTCUSDT",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.symbol in v10_baseline.yaml"
+    },
+    "engine.timeframe_h4": {
+      "value": "4h",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.timeframe_h4 in v10_baseline.yaml"
+    },
+    "engine.timeframe_d1": {
+      "value": "1d",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.timeframe_d1 in v10_baseline.yaml"
+    },
+    "engine.warmup_days": {
+      "value": 365,
+      "unit": "days",
+      "source": "cli",
+      "source_detail": "--warmup-days"
+    },
+    "engine.warmup_mode": {
+      "value": "no_trade",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.warmup_mode in v10_baseline.yaml"
+    },
+    "engine.scenario_eval": {
+      "value": "base",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.scenario_eval in v10_baseline.yaml"
+    },
+    "engine.initial_cash": {
+      "value": 10000.0,
+      "unit": "usd",
+      "source": "cli",
+      "source_detail": "--initial-cash"
+    },
+    "risk.max_total_exposure": {
+      "value": 1.0,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "risk.max_total_exposure in v10_baseline.yaml"
+    },
+    "risk.min_notional_usdt": {
+      "value": 10,
+      "unit": "usd",
+      "source": "yaml",
+      "source_detail": "risk.min_notional_usdt in v10_baseline.yaml"
+    },
+    "risk.kill_switch_dd_total": {
+      "value": 0.45,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "risk.kill_switch_dd_total in v10_baseline.yaml"
+    },
+    "risk.max_daily_orders": {
+      "value": 5,
+      "unit": "int",
+      "source": "yaml",
+      "source_detail": "risk.max_daily_orders in v10_baseline.yaml"
+    },
+    "strategy.name": {
+      "value": "v8_apex",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "strategy.name"
+    },
+    "strategy.d1_ema_fast": {
+      "value": 50,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.d1_ema_fast default"
+    },
+    "strategy.d1_ema_slow": {
+      "value": 200,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.d1_ema_slow default"
+    },
+    "strategy.d1_regime_confirm_bars": {
+      "value": 2,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.d1_regime_confirm_bars default"
+    },
+    "strategy.d1_regime_off_bars": {
+      "value": 4,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.d1_regime_off_bars default"
+    },
+    "strategy.regime_exit_immediate": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.regime_exit_immediate default"
+    },
+    "strategy.vdr_fast_period": {
+      "value": 12,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.vdr_fast_period default"
+    },
+    "strategy.vdr_slow_period": {
+      "value": 28,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.vdr_slow_period default"
+    },
+    "strategy.vdo_entry_threshold": {
+      "value": 0.004,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.vdo_entry_threshold default"
+    },
+    "strategy.vdo_scale": {
+      "value": 0.016,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.vdo_scale default"
+    },
+    "strategy.hma_period": {
+      "value": 55,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.hma_period default"
+    },
+    "strategy.roc_period": {
+      "value": 8,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.roc_period default"
+    },
+    "strategy.accel_smooth_period": {
+      "value": 3,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.accel_smooth_period default"
+    },
+    "strategy.atr_fast_period": {
+      "value": 14,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.atr_fast_period default"
+    },
+    "strategy.atr_slow_period": {
+      "value": 50,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.atr_slow_period default"
+    },
+    "strategy.compression_ratio": {
+      "value": 0.75,
+      "unit": "ratio",
+      "source": "default",
+      "source_detail": "strategy.compression_ratio default"
+    },
+    "strategy.rsi_period": {
+      "value": 14,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.rsi_period default"
+    },
+    "strategy.rsi_overbought": {
+      "value": 75.0,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.rsi_overbought default"
+    },
+    "strategy.rsi_oversold": {
+      "value": 30.0,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.rsi_oversold default"
+    },
+    "strategy.max_total_exposure": {
+      "value": 1.0,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.max_total_exposure default"
+    },
+    "strategy.target_vol_annual": {
+      "value": 0.85,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.target_vol_annual default"
+    },
+    "strategy.max_add_per_bar": {
+      "value": 0.35,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.max_add_per_bar default"
+    },
+    "strategy.entry_aggression": {
+      "value": 0.85,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.entry_aggression default"
+    },
+    "strategy.entry_cooldown_bars": {
+      "value": 3,
+      "unit": "bars",
+      "source": "yaml",
+      "source_detail": "strategy.entry_cooldown_bars in v10_baseline.yaml"
+    },
+    "strategy.compression_boost": {
+      "value": 1.0,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.compression_boost default"
+    },
+    "strategy.caution_mult": {
+      "value": 0.5,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.caution_mult default"
+    },
+    "strategy.min_target_to_add": {
+      "value": 0.05,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.min_target_to_add default"
+    },
+    "strategy.exit_cooldown_bars": {
+      "value": 3,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.exit_cooldown_bars default"
+    },
+    "strategy.enable_structural_exit": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_structural_exit default"
+    },
+    "strategy.structural_exit_bars": {
+      "value": 5,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.structural_exit_bars default"
+    },
+    "strategy.exit_on_hma_cross": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.exit_on_hma_cross default"
+    },
+    "strategy.hma_exit_bars": {
+      "value": 2,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.hma_exit_bars default"
+    },
+    "strategy.enable_trail": {
+      "value": true,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_trail default"
+    },
+    "strategy.trail_atr_mult": {
+      "value": 3.5,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.trail_atr_mult default"
+    },
+    "strategy.trail_activate_pct": {
+      "value": 0.05,
+      "unit": "pct",
+      "source": "default",
+      "source_detail": "strategy.trail_activate_pct default"
+    },
+    "strategy.trail_tighten_mult": {
+      "value": 2.5,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.trail_tighten_mult default"
+    },
+    "strategy.trail_tighten_profit_pct": {
+      "value": 0.25,
+      "unit": "pct",
+      "source": "default",
+      "source_detail": "strategy.trail_tighten_profit_pct default"
+    },
+    "strategy.enable_fixed_stop": {
+      "value": true,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_fixed_stop default"
+    },
+    "strategy.fixed_stop_pct": {
+      "value": 0.15,
+      "unit": "pct",
+      "source": "default",
+      "source_detail": "strategy.fixed_stop_pct default"
+    },
+    "strategy.emergency_dd_pct": {
+      "value": 0.28,
+      "unit": "pct",
+      "source": "default",
+      "source_detail": "strategy.emergency_dd_pct default"
+    },
+    "strategy.cooldown_after_emergency_dd_bars": {
+      "value": 12,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.cooldown_after_emergency_dd_bars default"
+    },
+    "strategy.escalating_cooldown": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.escalating_cooldown default"
+    },
+    "strategy.short_cooldown_bars": {
+      "value": 3,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.short_cooldown_bars default"
+    },
+    "strategy.long_cooldown_bars": {
+      "value": 12,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.long_cooldown_bars default"
+    },
+    "strategy.escalating_lookback_bars": {
+      "value": 24,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.escalating_lookback_bars default"
+    },
+    "strategy.cascade_trigger_count": {
+      "value": 2,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.cascade_trigger_count default"
+    },
+    "strategy.enable_vol_brake": {
+      "value": true,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_vol_brake default"
+    },
+    "strategy.vol_brake_atr_ratio": {
+      "value": 0.035,
+      "unit": "ratio",
+      "source": "default",
+      "source_detail": "strategy.vol_brake_atr_ratio default"
+    },
+    "strategy.vol_brake_mult": {
+      "value": 0.4,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.vol_brake_mult default"
+    },
+    "strategy.enable_dd_adaptive": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_dd_adaptive default"
+    },
+    "strategy.dd_adaptive_start": {
+      "value": 0.16,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.dd_adaptive_start default"
+    },
+    "strategy.dd_adaptive_floor": {
+      "value": 0.35,
+      "unit": "float",
+      "source": "default",
+      "source_detail": "strategy.dd_adaptive_floor default"
+    },
+    "strategy.enable_equity_brake": {
+      "value": false,
+      "unit": "bool",
+      "source": "default",
+      "source_detail": "strategy.enable_equity_brake default"
+    },
+    "strategy.brake_window_bars": {
+      "value": 90,
+      "unit": "bars",
+      "source": "default",
+      "source_detail": "strategy.brake_window_bars default"
+    },
+    "strategy.brake_dd_threshold": {
+      "value": null,
+      "unit": "none",
+      "source": "default",
+      "source_detail": "strategy.brake_dd_threshold default"
+    },
+    "strategy.rsi_method": {
+      "value": "wilder",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "strategy.rsi_method in v10_baseline.yaml"
+    },
+    "strategy.emergency_ref": {
+      "value": "pre_cost_legacy",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "strategy.emergency_ref in v10_baseline.yaml"
+    }
+  }
+}

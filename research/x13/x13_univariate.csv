@@ -1,0 +1,11 @@
+feature,U,p_raw,p_bonferroni,cliffs_delta,effect_size,mean_churn,mean_true,direction
+ema_ratio,4994.000000,0.000000,0.000000,0.578631,large,1.046965,1.020111,churn_higher
+bars_held,4836.000000,0.000000,0.000000,0.528687,large,54.486486,24.368421,churn_higher
+atr_pctl,3592.000000,0.151413,1.000000,0.135451,negligible,0.573153,0.494561,churn_higher
+bar_range_atr,2208.000000,0.001378,0.013777,-0.302039,small,1.520703,2.006109,true_higher
+dd_from_peak,3339.000000,0.557704,1.000000,0.055477,negligible,0.059754,0.056996,churn_higher
+bars_since_peak,3934.500000,0.009740,0.097400,0.243717,small,14.333333,10.403509,churn_higher
+close_position,3230.000000,0.825013,1.000000,0.021021,negligible,0.250800,0.243279,churn_higher
+vdo_at_exit,3473.000000,0.300595,1.000000,0.097835,negligible,-0.010232,-0.011853,churn_higher
+d1_regime_str,4750.000000,0.000000,0.000001,0.501502,large,0.053708,0.024057,churn_higher
+trail_tightness,3575.000000,0.168555,1.000000,0.130077,negligible,0.059323,0.053188,churn_higher

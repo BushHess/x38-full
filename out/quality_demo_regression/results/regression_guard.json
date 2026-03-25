@@ -1,0 +1,27 @@
+{
+  "enabled": true,
+  "golden_path": "/tmp/quality_golden.json",
+  "scenario": "harsh",
+  "observed": {
+    "candidate_harsh_score": 129.9087,
+    "candidate_harsh_cagr_pct": 50.89,
+    "candidate_harsh_max_drawdown_mid_pct": 28.64,
+    "candidate_harsh_sharpe": 1.3749,
+    "candidate_harsh_turnover_per_year": 40.76,
+    "baseline_harsh_score": 129.9087,
+    "delta_harsh_score": 0.0
+  },
+  "checks": [
+    {
+      "type": "threshold",
+      "metric": "delta_harsh_score",
+      "observed": 0.0,
+      "min": -999.0,
+      "max": null,
+      "passed": true
+    }
+  ],
+  "failed_checks": 0,
+  "status": "pass",
+  "note": "All checks passed."
+}

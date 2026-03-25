@@ -1,0 +1,56 @@
+{
+  "dev_20bps": {
+    "sharpe": 1.8493,
+    "cagr_pct": 73.26,
+    "max_drawdown_mid_pct": 23.87,
+    "trades": 35,
+    "profit_factor": 3.7537,
+    "avg_exposure": 0.2536,
+    "objective_score": 197.1224
+  },
+  "dev_50bps": {
+    "sharpe": 1.7683,
+    "cagr_pct": 68.78,
+    "max_drawdown_mid_pct": 24.65,
+    "trades": 35,
+    "profit_factor": 3.3764,
+    "avg_exposure": 0.2536,
+    "objective_score": 184.8064
+  },
+  "holdout_20bps": {
+    "sharpe": 1.9649,
+    "cagr_pct": 56.11,
+    "max_drawdown_mid_pct": 12.15,
+    "trades": 16,
+    "profit_factor": 11.7485,
+    "avg_exposure": 0.2464,
+    "objective_score": 160.3042
+  },
+  "holdout_50bps": {
+    "sharpe": 1.8711,
+    "cagr_pct": 52.64,
+    "max_drawdown_mid_pct": 12.94,
+    "trades": 16,
+    "profit_factor": 9.8597,
+    "avg_exposure": 0.2464,
+    "objective_score": 150.4048
+  },
+  "full_20bps": {
+    "sharpe": 1.865,
+    "cagr_pct": 67.07,
+    "max_drawdown_mid_pct": 23.87,
+    "trades": 51,
+    "profit_factor": 6.2705,
+    "avg_exposure": 0.2511,
+    "objective_score": 183.273
+  },
+  "full_50bps": {
+    "sharpe": 1.7812,
+    "cagr_pct": 62.96,
+    "max_drawdown_mid_pct": 24.65,
+    "trades": 51,
+    "profit_factor": 5.3902,
+    "avg_exposure": 0.2511,
+    "objective_score": 171.8596
+  }
+}

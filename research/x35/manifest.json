@@ -1,0 +1,234 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "created": "2026-03-14",
+  "closed_at": "2026-03-14",
+  "study_status": "STOP_WHOLE_X35_CURRENT_SCOPE",
+  "closure_verdict": "NEGATIVE",
+  "closure_reason_summary": "No actionable outer state found in BTC spot OHLCV for either entry blocking or mid-trade hazard actions within the frozen x35 scope.",
+  "origin_status": "category_hypothesis_from_x25_x26_formalized_and_resolved_negative_in_current_scope",
+  "objective": "Assess whether a slower outer regime state can improve the frozen E5+EMA21D1 baseline, beginning with entry-prevention-only as the first validation class.",
+  "protocol_version": "1.0",
+  "architecture": {
+    "master_docs": [
+      "README.md",
+      "PLAN.md",
+      "program/01_problem_statement.md",
+      "program/02_phenomenon_survey.md",
+      "program/03_formalization.md",
+      "program/04_go_no_go.md",
+      "program/05_design.md",
+      "program/06_validation.md",
+      "program/07_final_report.md",
+      "x35_RULES.md"
+    ],
+    "program_docs_dir": "program/",
+    "shared": "shared/",
+    "canonical_branch": "branches/a_state_diagnostic/",
+    "gated_branch": "branches/b_entry_overlay/",
+    "survey_branches": [
+      "branches/a_state_diagnostic/",
+      "branches/c_stress_state_diagnostic/",
+      "branches/d_multi_horizon_trend_diagnostic/",
+      "branches/e_transition_instability_diagnostic/",
+      "branches/f_price_level_state_diagnostic/",
+      "branches/g_mid_trade_hazard_diagnostic/"
+    ]
+  },
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "config": "default",
+    "cost_scenario": "harsh",
+    "cost_bps_rt": 50,
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "data": "/var/www/trading-bots/btc-spot-dev/bars_btcusdt_2016_now_h1_4h_1d.csv"
+  },
+  "constraints": {
+    "asset": "BTC spot",
+    "direction": "long-only",
+    "data_class": "existing OHLCV only",
+    "overlay_mode_phase1": "entry_prevention_only",
+    "allow_forced_exit_phase1": false,
+    "allow_state_combinations_phase1": false,
+    "allow_parameter_sweep_phase1": false
+  },
+  "pilot_probe_specs": [
+    {
+      "spec_id": "wk_close_above_ema26",
+      "timeframe": "W1",
+      "rule": "risk_on if completed W1 close > W1 EMA(26)"
+    },
+    {
+      "spec_id": "wk_ema13_above_ema26",
+      "timeframe": "W1",
+      "rule": "risk_on if completed W1 EMA(13) > EMA(26)"
+    },
+    {
+      "spec_id": "mo_close_above_ema6",
+      "timeframe": "M1",
+      "rule": "risk_on if completed M1 close > M1 EMA(6)"
+    }
+  ],
+  "state_families_under_study": [
+    "price_level_state",
+    "multi_horizon_trend_state",
+    "stress_drawdown_state",
+    "transition_instability_state"
+  ],
+  "action_classes": [
+    "entry_permission_only",
+    "risk_off_flat_if_hazard_evidence_exists",
+    "exposure_mode_only_after_prior_classes_show_value"
+  ],
+  "phases": [
+    {
+      "id": "01",
+      "name": "problem_statement",
+      "status": "DONE",
+      "artifact": "program/01_problem_statement.md"
+    },
+    {
+      "id": "02",
+      "name": "phenomenon_survey",
+      "status": "DONE",
+      "artifacts": [
+        "program/02_phenomenon_survey.md",
+        "branches/a_state_diagnostic/results/phase1_regime_decomposition.md",
+        "branches/c_stress_state_diagnostic/results/stress_state_scan.md",
+        "branches/d_multi_horizon_trend_diagnostic/results/multi_horizon_trend_scan.md",
+        "branches/e_transition_instability_diagnostic/results/transition_instability_scan.md",
+        "branches/f_price_level_state_diagnostic/results/price_level_state_scan.md",
+        "branches/g_mid_trade_hazard_diagnostic/results/mid_trade_hazard_scan.md"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "formalization",
+      "status": "DONE",
+      "artifact": "program/03_formalization.md"
+    },
+    {
+      "id": "04",
+      "name": "go_no_go_logic",
+      "status": "DONE",
+      "artifact": "program/04_go_no_go.md"
+    },
+    {
+      "id": "A0",
+      "name": "pilot_a_data_audit",
+      "status": "DONE",
+      "branch": "branches/a_state_diagnostic",
+      "artifacts": [
+        "branches/a_state_diagnostic/results/phase0_data_audit.json",
+        "branches/a_state_diagnostic/results/phase0_data_audit.md"
+      ]
+    },
+    {
+      "id": "A1",
+      "name": "pilot_a_regime_decomposition",
+      "status": "DONE",
+      "branch": "branches/a_state_diagnostic",
+      "artifacts": [
+        "branches/a_state_diagnostic/results/phase1_regime_decomposition.json",
+        "branches/a_state_diagnostic/results/phase1_regime_decomposition.md"
+      ],
+      "gate": "NO_GO_CURRENT_MENU"
+    },
+    {
+      "id": "C1",
+      "name": "stress_family_scan",
+      "status": "DONE",
+      "branch": "branches/c_stress_state_diagnostic",
+      "artifacts": [
+        "branches/c_stress_state_diagnostic/results/stress_state_scan.json",
+        "branches/c_stress_state_diagnostic/results/stress_state_scan.md"
+      ],
+      "gate": "NO_GO_STRESS_FAMILY"
+    },
+    {
+      "id": "D1",
+      "name": "multi_horizon_trend_scan",
+      "status": "DONE",
+      "branch": "branches/d_multi_horizon_trend_diagnostic",
+      "artifacts": [
+        "branches/d_multi_horizon_trend_diagnostic/results/multi_horizon_trend_scan.json",
+        "branches/d_multi_horizon_trend_diagnostic/results/multi_horizon_trend_scan.md"
+      ],
+      "gate": "NO_GO_F2_TREND_FAMILY"
+    },
+    {
+      "id": "E1",
+      "name": "transition_instability_scan",
+      "status": "DONE",
+      "branch": "branches/e_transition_instability_diagnostic",
+      "artifacts": [
+        "branches/e_transition_instability_diagnostic/results/transition_instability_scan.json",
+        "branches/e_transition_instability_diagnostic/results/transition_instability_scan.md"
+      ],
+      "gate": "NO_GO_F4_TRANSITION_FAMILY"
+    },
+    {
+      "id": "F1",
+      "name": "price_level_state_scan",
+      "status": "DONE",
+      "branch": "branches/f_price_level_state_diagnostic",
+      "artifacts": [
+        "branches/f_price_level_state_diagnostic/results/price_level_state_scan.json",
+        "branches/f_price_level_state_diagnostic/results/price_level_state_scan.md"
+      ],
+      "gate": "NO_GO_F1_PRICE_LEVEL_FAMILY"
+    },
+    {
+      "id": "05",
+      "name": "design",
+      "status": "SKIPPED_NO_CANDIDATE",
+      "artifact": "program/05_design.md"
+    },
+    {
+      "id": "06",
+      "name": "validation",
+      "status": "SKIPPED_NO_CANDIDATE",
+      "artifact": "program/06_validation.md"
+    },
+    {
+      "id": "07",
+      "name": "final_report",
+      "status": "DONE",
+      "artifact": "program/07_final_report.md"
+    },
+    {
+      "id": "G1",
+      "name": "mid_trade_hazard_scan",
+      "status": "DONE",
+      "branch": "branches/g_mid_trade_hazard_diagnostic",
+      "artifacts": [
+        "branches/g_mid_trade_hazard_diagnostic/results/mid_trade_hazard_scan.json",
+        "branches/g_mid_trade_hazard_diagnostic/results/mid_trade_hazard_scan.md"
+      ],
+      "gate": "NO_GO_MID_TRADE_HAZARD_FAMILY"
+    },
+    {
+      "id": "B",
+      "name": "b_entry_overlay",
+      "status": "ARCHIVED_UNOPENED",
+      "branch": "branches/b_entry_overlay",
+      "reason": "Program-level stop reached before candidate design"
+    }
+  ],
+  "diagnostic_gates": {
+    "D0_warmup": "warmup sufficiency = PASS",
+    "D1_persistence": "flips_per_year <= 12 AND median_spell_days >= 14",
+    "D2_trade_split": "n_risk_on >= 20 AND n_risk_off >= 20",
+    "D3_sign_separation": "mean_return_risk_on > 0 AND mean_return_risk_off < 0",
+    "D4_concentration": "profit_share_on >= 0.70 AND loss_share_off >= 0.55",
+    "D5_stability": "valid_folds >= 5 AND fold_win_rate >= 0.625"
+  },
+  "validation_gates": {
+    "V0_direction": "delta_sharpe > 0",
+    "V1_robustness": "fold_win_rate >= 0.50",
+    "V2_bootstrap": "p_delta_sharpe_gt_0 >= 0.55",
+    "V3_cagr_retention": "cagr_retained >= 0.85 OR delta_sharpe >= 0.10",
+    "V4_overblocking": "trade_retention >= 0.60"
+  }
+}

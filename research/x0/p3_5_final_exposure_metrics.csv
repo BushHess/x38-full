@@ -1,0 +1,10 @@
+metric,definition,value
+p2_avg_exposure,mean(btc_value/nav) across all bars,0.4448
+p2_time_in_market_pct,pct of bars with exposure > 1%,44.48
+p2_mean_entry_weight,Signal.target_exposure at entry (always 1.0 for binary),1.0000
+p3_avg_exposure,mean(btc_value/nav) across all bars,0.1477
+p3_time_in_market_pct,pct of bars with exposure > 1%,44.48
+p3_mean_entry_weight,"mean of target_vol/max(rv,vol_floor) at entry, clipped [0,1]",0.09066880288850801
+p3_median_entry_weight,median entry weight,0.05628281679822618
+p3_min_entry_weight,min entry weight,0.025416944866960747
+p3_max_entry_weight,max entry weight,0.6870716397714633

@@ -1,0 +1,156 @@
+/var/www/trading-bots/btc-spot-dev/research/x0/p3_5_final_benchmark.py:37: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+P3.5 — Canonical Final Benchmark (Reconciliation)
+================================================================================
+Loading data...
+  H4: 17838 bars, D1: 2973 bars
+  Warmup index: 2190
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine (canonical, no surrogates)
+================================================================================
+
+Strategy       Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%
+-------------------------------------------------------------------------------------------------
+E0             smart    1.5205    67.95    38.51   1.7646     192   42.2  1.7619   0.4682   46.82
+E0             base     1.3964    60.01    40.04   1.4989     192   40.6  1.6273   0.4682   46.82
+E0             harsh    1.2653    52.04    41.61   1.2507     192   38.0  1.5057   0.4682   46.82
+E0_EMA21       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51
+E0_EMA21       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51
+E0_EMA21       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51
+E5             smart    1.6370    74.36    36.97   2.0116     207   44.4  1.8466   0.4582   45.82
+E5             base     1.5011    65.49    38.65   1.6947     207   42.5  1.6882   0.4582   45.82
+E5             harsh    1.3573    56.62    40.37   1.4027     207   40.1  1.5479   0.4582   45.82
+E5_EMA21       smart    1.7122    78.14    35.72   2.1876     188   45.2  1.9635   0.4448   44.48
+E5_EMA21       base     1.5870    69.89    37.50   1.8636     188   43.1  1.7994   0.4448   44.48
+E5_EMA21       harsh    1.4545    61.60    40.97   1.5037     188   42.0  1.6519   0.4448   44.48
+X0             smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51
+X0             base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51
+X0             harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51
+X0_E5EXIT      smart    1.7122    78.14    35.72   2.1876     188   45.2  1.9635   0.4448   44.48
+X0_E5EXIT      base     1.5870    69.89    37.50   1.8636     188   43.1  1.7994   0.4448   44.48
+X0_E5EXIT      harsh    1.4545    61.60    40.97   1.5037     188   42.0  1.6519   0.4448   44.48
+X0_VOLSIZE     smart    1.9280    26.24    13.06   2.0084     188   45.2  2.6289   0.1476   44.48
+X0_VOLSIZE     base     1.8068    24.36    13.67   1.7824     188   43.1  2.4143   0.1477   44.48
+X0_VOLSIZE     harsh    1.6785    22.41    14.50   1.5451     188   42.0  2.2152   0.1477   44.48
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+    NOTE: Uses vectorized sims, not BacktestEngine.
+    Bootstrap distributional properties are approximate.
+================================================================================
+  Generating bootstrap paths... done (7.8s)
+  E0              Sharpe=0.3365 [-0.3806, 0.9816]  CAGR=5.44% [-19.87, 38.44]  MDD=70.49% [49.21, 89.40]  P(CAGR>0)=0.620  (17.9s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (21.8s)
+  E5              Sharpe=0.2907 [-0.4197, 0.9441]  CAGR=3.79% [-20.40, 36.12]  MDD=69.42% [49.03, 89.38]  P(CAGR>0)=0.590  (30.2s)
+  E5_EMA21        Sharpe=0.2357 [-0.4865, 0.9397]  CAGR=2.45% [-18.20, 31.21]  MDD=62.41% [43.01, 86.21]  P(CAGR>0)=0.560  (38.0s)
+  X0              Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (26.3s)
+  X0_E5EXIT       Sharpe=0.2357 [-0.4865, 0.9397]  CAGR=2.45% [-18.20, 31.21]  MDD=62.41% [43.01, 86.21]  P(CAGR>0)=0.560  (38.2s)
+  X0_VOLSIZE      Sharpe=0.3833 [-0.3796, 1.0913]  CAGR=3.32% [-3.75, 11.73]  MDD=22.16% [14.17, 38.76]  P(CAGR>0)=0.754  (303.4s)
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  E0              Engine trades= 192  Vec trades= 211  DIFFER  Sharpe eng=1.3964  vec=1.4056  diff=0.0092
+  E0_EMA21        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  E5              Engine trades= 207  Vec trades= 225  DIFFER  Sharpe eng=1.5011  vec=1.5064  diff=0.0053
+  E5_EMA21        Engine trades= 188  Vec trades= 202  DIFFER  Sharpe eng=1.5870  vec=1.5994  diff=0.0124
+  X0              Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X0_E5EXIT       Engine trades= 188  Vec trades= 202  DIFFER  Sharpe eng=1.5870  vec=1.5994  diff=0.0124
+  X0_VOLSIZE      Engine trades= 188  Vec trades= 202  DIFFER  Sharpe eng=1.8068  vec=1.8137  diff=0.0069
+
+================================================================================
+T4: PHASE 3 vs PHASE 2 ATTRIBUTION (BacktestEngine)
+================================================================================
+
+  --- Delta Table (P3 - P2) by cost scenario ---
+  Scen     dSharpe    dCAGR%     dMDD%   dCalmar  dTrades    dExpo    dTiM%
+  smart    +0.2158    -51.90    -22.66   -0.1792       +0  -0.2972    +0.00
+  base     +0.2198    -45.53    -23.83   -0.0812       +0  -0.2971    +0.00
+  harsh    +0.2240    -39.19    -26.47   +0.0414       +0  -0.2971    +0.00
+
+  Timing parity (base): P2=188 trades, P3=188 trades
+    Entry match: 188/188
+    Exit match:  188/188
+    TIMING PARITY: CONFIRMED
+
+  --- Exposure Metrics (base scenario) ---
+  Phase 2:
+    avg_exposure (mean BTC/NAV fraction): 0.4448
+    time_in_market_pct: 44.48%
+    mean_entry_weight: 1.0000 (binary: always full allocation)
+  Phase 3:
+    avg_exposure (mean BTC/NAV fraction): 0.1477
+    time_in_market_pct: 44.48%
+    mean_entry_weight: 0.0907
+    median_entry_weight: 0.0563
+    [min, max] entry weight: [0.0254, 0.6871]
+
+================================================================================
+PROMOTION DECISION (based on canonical engine results)
+================================================================================
+  G1 Sharpe > P2 (all costs):  PASS
+      smart: P3=1.9280 vs P2=1.7122 (+0.2158)
+      base: P3=1.8068 vs P2=1.5870 (+0.2198)
+      harsh: P3=1.6785 vs P2=1.4545 (+0.2240)
+  G2 MDD < P2 (all costs):     PASS
+  G3 Calmar > P2 (all costs):  FAIL
+      smart: P3=2.0084 vs P2=2.1876 (-0.1792)
+      base: P3=1.7824 vs P2=1.8636 (-0.0812)
+      harsh: P3=1.5451 vs P2=1.5037 (+0.0414)
+  G4 Boot P(CAGR>0) >= 0.70:   PASS (0.754)
+  G5 Boot P(Sharpe>0) >= 0.70: PASS (0.790)
+  G6 Trade count = P2:         PASS
+      smart: P3=188 P2=188
+      base: P3=188 P2=188
+      harsh: P3=188 P2=188
+  G7 Boot MDD med < P2:        PASS (P3=22.16% vs P2=62.41%)
+
+  ALL GATES: FAIL
+  Failed: G3_calmar_gt_p2_all_costs
+
+  VERDICT: HOLD
+
+Results saved to /var/www/trading-bots/btc-spot-dev/research/x0/
+
+================================================================================
+CANONICAL RANKINGS (harsh scenario, BacktestEngine)
+================================================================================
+
+  By Sharpe:
+    1. X0_VOLSIZE     = 1.6785
+    2. E5_EMA21       = 1.4545
+    3. X0_E5EXIT      = 1.4545
+    4. E5             = 1.3573
+    5. E0_EMA21       = 1.3536
+    6. X0             = 1.3536
+    7. E0             = 1.2653
+
+  By CAGR%:
+    1. E5_EMA21       = 61.6000
+    2. X0_E5EXIT      = 61.6000
+    3. E0_EMA21       = 56.6200
+    4. E5             = 56.6200
+    5. X0             = 56.6200
+    6. E0             = 52.0400
+    7. X0_VOLSIZE     = 22.4100
+
+  By MDD% (lower=better):
+    1. X0_VOLSIZE     = 14.5000
+    2. E0_EMA21       = 40.0100
+    3. X0             = 40.0100
+    4. E5             = 40.3700
+    5. E5_EMA21       = 40.9700
+    6. X0_E5EXIT      = 40.9700
+    7. E0             = 41.6100
+
+  By Calmar:
+    1. X0_VOLSIZE     = 1.5451
+    2. E5_EMA21       = 1.5037
+    3. X0_E5EXIT      = 1.5037
+    4. E0_EMA21       = 1.4151
+    5. X0             = 1.4151
+    6. E5             = 1.4027
+    7. E0             = 1.2507
+
+Total time: 536.0s

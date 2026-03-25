@@ -1,0 +1,28 @@
+{
+  "regression": {
+    "trade_count": false,
+    "trade_count_detail": "174 vs 172",
+    "entry_exit_timestamps": false,
+    "native_terminal_match": false,
+    "native_terminal_detail": "replay=277412.96 canonical=253441.42",
+    "all_pass": false,
+    "exit_delay_0_matches_baseline": true
+  },
+  "probe_results": {
+    "exit_delay_0": {
+      "n_trades": 174,
+      "sharpe": 1.1836613716944673,
+      "native_terminal": 277412.95684510324
+    },
+    "exit_delay_1": {
+      "n_trades": 173,
+      "sharpe": 1.0292331649125237,
+      "native_terminal": 149315.39755224055
+    },
+    "exit_delay_2": {
+      "n_trades": 170,
+      "sharpe": 1.094939003008612,
+      "native_terminal": 170602.07159762515
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "source_dir": "/var/www/trading-bots/btc-spot-dev/results/full_eval_e5_ema21d1",
+  "source_timestamp_utc": "2026-03-16T20:22:51Z",
+  "canonical_verdict": "HOLD",
+  "canonical_reasons": [
+    "WFO robustness: neither Wilcoxon nor Bootstrap CI confirms positive OOS delta"
+  ],
+  "canonical_failures": [
+    "wfo_robustness_failed"
+  ],
+  "canonical_warnings": [
+    "Holdout/WFO overlap detected: 184 days (35.3% of holdout period)"
+  ],
+  "run_config": {
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "initial_cash": 10000.0,
+    "scenario_harsh_cost_bps": 50.0,
+    "wfo_train_months": 24,
+    "wfo_test_months": 6,
+    "wfo_slide_months": 6,
+    "wfo_windows": 8,
+    "seed": 1337
+  },
+  "canonical_wfo_summary": {
+    "mode": "rolling",
+    "n_windows_total": 8,
+    "n_windows_valid": 8,
+    "n_windows_power_only": 8,
+    "n_windows": 8,
+    "positive_delta_windows": 5,
+    "win_rate": 0.625,
+    "mean_delta_score": 12.4563,
+    "median_delta_score": 12.9825,
+    "worst_delta_score": -20.788,
+    "low_trade_windows": 0,
+    "low_trade_windows_count": 0,
+    "invalid_windows_count": 0,
+    "low_trade_threshold": 5,
+    "min_trades_for_power": 5,
+    "stats_all_valid": {
+      "n_windows": 8,
+      "win_count": 5,
+      "win_rate": 0.625,
+      "mean_delta": 12.4563,
+      "median_delta": 12.9825,
+      "worst_delta": -20.788,
+      "best_delta": 54.8324
+    },
+    "stats_power_only": {
+      "n_windows": 8,
+      "win_count": 5,
+      "win_rate": 0.625,
+      "mean_delta": 12.4563,
+      "median_delta": 12.9825,
+      "worst_delta": -20.788,
+      "best_delta": 54.8324
+    },
+    "wilcoxon": {
+      "statistic": 27.0,
+      "p_value": 0.125,
+      "n_nonzero": 8,
+      "sufficient": true
+    },
+    "bootstrap_ci": {
+      "ci_lower": -3.4378,
+      "ci_upper": 29.279,
+      "mean_delta": 12.4563,
+      "excludes_zero": false,
+      "n": 8,
+      "seed": 1337
+    },
+    "warnings": []
+  },
+  "canonical_wfo_low_power": false,
+  "source_files": {
+    "run_meta": "/var/www/trading-bots/btc-spot-dev/results/full_eval_e5_ema21d1/run_meta.json",
+    "decision": "/var/www/trading-bots/btc-spot-dev/results/full_eval_e5_ema21d1/reports/decision.json",
+    "wfo_summary": "/var/www/trading-bots/btc-spot-dev/results/full_eval_e5_ema21d1/results/wfo_summary.json",
+    "validation_report": "/var/www/trading-bots/btc-spot-dev/results/full_eval_e5_ema21d1/reports/validation_report.md"
+  }
+}

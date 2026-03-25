@@ -1,0 +1,7 @@
+variable,threshold,direction,n_blocked,n_passed,blocked_losers,blocked_winners,avoided_loss_pnl,missed_win_pnl,net_pnl_effect,blocked_mean_ret,passed_mean_ret,original_total_pnl,remaining_total_pnl
+breadth_share_low,0.2222,below,18,168,10,8,-36952.0,70631.0,-33679.0,5.582,2.405,426354.0,392675.0
+breadth_share_low,0.3077,below,32,154,17,15,-71432.0,176233.0,-104801.0,3.373,2.575,426354.0,321553.0
+breadth_share_low,0.4545,below,55,131,31,24,-166107.0,332527.0,-166420.0,2.926,2.622,426354.0,259934.0
+breadth_rank_low,0.07692307692307693,below,17,168,8,9,-69159.0,78235.0,-9077.0,0.303,2.975,426408.0,417332.0
+breadth_rank_low,0.16043956043956054,below,37,148,16,21,-89207.0,217424.0,-128217.0,3.506,2.535,426408.0,298191.0
+breadth_rank_low,0.38681318681318677,below,56,129,24,32,-160706.0,284291.0,-123585.0,3.348,2.46,426408.0,302823.0

@@ -1,0 +1,54 @@
+{
+  "1": {
+    "n_trades": 185,
+    "native_terminal": 259476.96755863106,
+    "unit_terminal": 401438.945692037,
+    "sharpe": 1.2093844082469742,
+    "cagr_native": 0.6502649039471333,
+    "cagr_unit": 0.764861758612414,
+    "delta_sharpe": -0.07067393308183911,
+    "delta_cagr_native": -0.07591267206258112,
+    "delta_n_trades": -3,
+    "baseline_sharpe": 1.2800583413288134,
+    "baseline_cagr_native": 0.7261775760097144
+  },
+  "2": {
+    "n_trades": 172,
+    "native_terminal": 98529.54613586792,
+    "unit_terminal": 142408.73257192736,
+    "sharpe": 0.9557290591118734,
+    "cagr_native": 0.42185851081977854,
+    "cagr_unit": 0.5047597725605355,
+    "delta_sharpe": -0.3243292822169399,
+    "delta_cagr_native": -0.3043190651899359,
+    "delta_n_trades": -16,
+    "baseline_sharpe": 1.2800583413288134,
+    "baseline_cagr_native": 0.7261775760097144
+  },
+  "3": {
+    "n_trades": 166,
+    "native_terminal": 69998.23398071478,
+    "unit_terminal": 98697.83378050498,
+    "sharpe": 0.8628043722403297,
+    "cagr_native": 0.34900449693502544,
+    "cagr_unit": 0.42223185996808343,
+    "delta_sharpe": -0.41725396908848367,
+    "delta_cagr_native": -0.377173079074689,
+    "delta_n_trades": -22,
+    "baseline_sharpe": 1.2800583413288134,
+    "baseline_cagr_native": 0.7261775760097144
+  },
+  "4": {
+    "n_trades": 159,
+    "native_terminal": 50554.747651047146,
+    "unit_terminal": 68082.7096660043,
+    "sharpe": 0.7682100278561026,
+    "cagr_native": 0.2831312105023671,
+    "cagr_unit": 0.3432582377868092,
+    "delta_sharpe": -0.5118483134727108,
+    "delta_cagr_native": -0.44304636550734733,
+    "delta_n_trades": -29,
+    "baseline_sharpe": 1.2800583413288134,
+    "baseline_cagr_native": 0.7261775760097144
+  }
+}

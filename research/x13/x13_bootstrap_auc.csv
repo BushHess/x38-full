@@ -1,0 +1,12 @@
+metric,value
+n_valid,500
+n_skipped,0
+auc_median,0.679071
+auc_p5,0.562717
+auc_p95,0.768664
+auc_mean,0.675083
+p_auc_gt060,0.888000
+p_auc_gt055,0.964000
+best_p_median,0.000001
+p_bestp_lt005,1.000000
+v3,True

@@ -1,0 +1,39 @@
+{
+  "baseline_ed_trades": 33,
+  "baseline_ed_pnl": -91656.24,
+  "baseline_non_ed_trades": 66,
+  "baseline_non_ed_pnl": 183179.91,
+  "brake_ed_trades": 33,
+  "brake_ed_pnl": -92881.43,
+  "brake_non_ed_trades": 66,
+  "brake_non_ed_pnl": 185627.5,
+  "ed_savings": -1225.18,
+  "non_ed_cost": 2447.59,
+  "net_impact": 1222.41,
+  "bcr": 0.5006,
+  "top1_concentration_pct": 18.8,
+  "top5_concentration_pct": 50.6,
+  "winner_damage_pct": -0.31,
+  "top5_delta_trades": [
+    {
+      "trade_id": 32,
+      "delta_pnl": -1269.271992183043
+    },
+    {
+      "trade_id": 31,
+      "delta_pnl": 1113.0879249463405
+    },
+    {
+      "trade_id": 30,
+      "delta_pnl": 373.25192510880515
+    },
+    {
+      "trade_id": 5,
+      "delta_pnl": 364.0625331647316
+    },
+    {
+      "trade_id": 79,
+      "delta_pnl": 288.17102738138783
+    }
+  ]
+}

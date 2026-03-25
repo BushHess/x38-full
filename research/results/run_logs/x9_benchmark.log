@@ -1,0 +1,186 @@
+/var/www/trading-bots/btc-spot-dev/research/x9/benchmark.py:46: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X9 RESEARCH — BREAK-EVEN STOP FOR E5+EMA21D1
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  E5 params: slow=120, trail=3.0, vdo_thr=0.0, d1_ema=21
+  BE variants: 0.8R, 1.0R  |  Sweep: [np.float64(0.4), np.float64(0.6), np.float64(0.8), np.float64(1.0), np.float64(1.2), np.float64(1.4), np.float64(1.6), np.float64(1.8), np.float64(2.0), np.float64(2.2), np.float64(2.4)]
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine (3 variants × 3 scenarios)
+================================================================================
+
+Strategy   Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo
+-------------------------------------------------------------------------------------
+E5         smart    1.7122    78.14    35.72   2.1876     188   45.2  1.9635   0.4448
+E5         base     1.5870    69.89    37.50   1.8636     188   43.1  1.7994   0.4448
+E5         harsh    1.4545    61.60    40.97   1.5037     188   42.0  1.6519   0.4448
+BE_0.8     smart    1.6758    75.54    35.40   2.1338     191   44.0  1.9000   0.4425
+BE_0.8     base     1.5484    67.29    37.50   1.7942     191   41.9  1.7415   0.4425
+BE_0.8     harsh    1.4136    59.00    40.97   1.4401     191   40.8  1.6001   0.4425
+BE_1.0     smart    1.7120    78.10    35.40   2.2060     189   45.0  1.9520   0.4446
+BE_1.0     base     1.5861    69.81    37.50   1.8614     189   42.9  1.7881   0.4446
+BE_1.0     harsh    1.4529    61.48    40.97   1.5007     189   41.8  1.6413   0.4446
+
+          DELTA vs E5 baseline
+--------------------------------------------------------------------------------
+  BE_0.8 smart   dSharpe=-0.0364  dCAGR=-2.60%  dMDD=-0.32%  dTrades=+3  dWR=-1.2%
+  BE_0.8 base    dSharpe=-0.0386  dCAGR=-2.60%  dMDD=+0.00%  dTrades=+3  dWR=-1.2%
+  BE_0.8 harsh   dSharpe=-0.0409  dCAGR=-2.60%  dMDD=+0.00%  dTrades=+3  dWR=-1.2%
+  BE_1.0 smart   dSharpe=-0.0002  dCAGR=-0.04%  dMDD=-0.32%  dTrades=+1  dWR=-0.2%
+  BE_1.0 base    dSharpe=-0.0009  dCAGR=-0.08%  dMDD=+0.00%  dTrades=+1  dWR=-0.2%
+  BE_1.0 harsh   dSharpe=-0.0016  dCAGR=-0.12%  dMDD=+0.00%  dTrades=+1  dWR=-0.2%
+
+      EXIT REASON BREAKDOWN (harsh)
+  E5: {'vtrend_e5_ema21_d1_trail_stop': 173, 'vtrend_e5_ema21_d1_trend_exit': 15}
+  BE_0.8: {'e5_trail_stop': 161, 'e5_trend_exit': 15, 'e5_be_stop': 15}
+  BE_1.0: {'e5_trail_stop': 169, 'e5_trend_exit': 15, 'e5_be_stop': 5}
+
+================================================================================
+T5: TRADE ANATOMY — MFE in R units & BE impact
+================================================================================
+
+  E5: 202 trades, WR=45.5%
+    MFE (R units): mean=1.92  median=0.95  P25=0.34  P75=2.06  max=27.14
+    Reached 0.5R: 131/202 trades, 41 ended as losers (31.3%)
+    Reached 0.8R: 110/202 trades, 20 ended as losers (18.2%)
+    Reached 1.0R: 96/202 trades, 10 ended as losers (10.4%)
+    Reached 1.5R: 70/202 trades, 2 ended as losers (2.9%)
+    Reached 2.0R: 54/202 trades, 2 ended as losers (3.7%)
+    Exit reasons:
+      trail_stop            n= 183  avg_pnl=+3.05%  WR=49.2%
+      trend_exit            n=  19  avg_pnl=-1.56%  WR=10.5%
+    Bars held: mean=37.2  median=29.0  P10=8  P90=79
+    Return stats: skew=3.263  kurtosis=13.602
+
+  BE_0.8: 205 trades, WR=44.4%
+    MFE (R units): mean=1.89  median=0.92  P25=0.32  P75=2.02  max=27.14
+    Reached 0.5R: 133/205 trades, 44 ended as losers (33.1%)
+    Reached 0.8R: 111/205 trades, 22 ended as losers (19.8%)
+    Reached 1.0R: 95/205 trades, 10 ended as losers (10.5%)
+    Reached 1.5R: 69/205 trades, 2 ended as losers (2.9%)
+    Reached 2.0R: 52/205 trades, 1 ended as losers (1.9%)
+    Exit reasons:
+      be_stop               n=  16  avg_pnl=-1.19%  WR=0.0%
+      trail_stop            n= 170  avg_pnl=+3.33%  WR=52.4%
+      trend_exit            n=  19  avg_pnl=-1.56%  WR=10.5%
+    Bars held: mean=36.4  median=28.0  P10=8  P90=77
+    Return stats: skew=3.286  kurtosis=13.801
+
+  BE_1.0: 203 trades, WR=45.3%
+    MFE (R units): mean=1.91  median=0.93  P25=0.33  P75=2.06  max=27.14
+    Reached 0.5R: 132/203 trades, 42 ended as losers (31.8%)
+    Reached 0.8R: 110/203 trades, 20 ended as losers (18.2%)
+    Reached 1.0R: 96/203 trades, 10 ended as losers (10.4%)
+    Reached 1.5R: 70/203 trades, 2 ended as losers (2.9%)
+    Reached 2.0R: 54/203 trades, 2 ended as losers (3.7%)
+    Exit reasons:
+      be_stop               n=   6  avg_pnl=-0.99%  WR=0.0%
+      trail_stop            n= 178  avg_pnl=+3.16%  WR=50.6%
+      trend_exit            n=  19  avg_pnl=-1.56%  WR=10.5%
+    Bars held: mean=37.0  median=29.0  P10=8  P90=78
+    Return stats: skew=3.266  kurtosis=13.651
+
+================================================================================
+T6: ORGANIC BE ANALYSIS — does ATR trail already protect at 1R?
+================================================================================
+
+  Total trades: 202
+  Trades where trail_stop reaches entry_px (organic BE): 102/202 (50.5%)
+
+  Trades reaching ≥1.0R MFE: 96/202
+    Had organic trail BE protection: 92/96 (95.8%)
+    Ended as losers: 10/96 (10.4%)
+    → BE could save these 10 trades (total lost: -12.41%)
+      Trade bar 283-311: MFE=1.18R  PnL=-0.70%  exit=trail_stop
+      Trade bar 3984-4006: MFE=1.12R  PnL=-1.48%  exit=trail_stop
+      Trade bar 5104-5161: MFE=2.79R  PnL=-1.76%  exit=trail_stop
+      Trade bar 5839-5853: MFE=1.03R  PnL=-2.34%  exit=trail_stop
+      Trade bar 8005-8074: MFE=2.17R  PnL=-0.35%  exit=trail_stop
+      Trade bar 10555-10568: MFE=1.05R  PnL=-0.85%  exit=trail_stop
+      Trade bar 12072-12125: MFE=1.26R  PnL=-1.28%  exit=trail_stop
+      Trade bar 15373-15382: MFE=1.10R  PnL=-1.10%  exit=trail_stop
+      Trade bar 16514-16573: MFE=1.10R  PnL=-1.16%  exit=trail_stop
+      Trade bar 16684-16696: MFE=1.08R  PnL=-1.40%  exit=trail_stop
+
+  Trades reaching ≥0.8R MFE: 110/202
+    Ended as losers: 20/110 (18.2%)
+
+  Bars until organic trail BE (among protected trades):
+    mean=17.6  median=16  P10=3  P90=35
+
+  SUMMARY:
+    ATR trail provides PARTIAL BE protection at 1R (10.4% loss rate).
+    → BE stop MIGHT help. Check T2/T3 for net effect.
+
+================================================================================
+T4: BE THRESHOLD SWEEP (0.4R to 2.4R)
+================================================================================
+
+  Baseline (no BE): Sharpe=1.4690  CAGR=62.48%  MDD=40.90%  Trades=202
+
+ BE_mult   Sharpe    CAGR%     MDD%  Trades   dSharpe    dCAGR     dMDD
+------------------------------------------------------------------------
+     0.4   1.3625    55.89    37.92     224   -0.1065    -6.59    -2.99
+     0.6   1.3635    56.12    39.89     209   -0.1055    -6.36    -1.02
+     0.8   1.4215    59.47    40.90     205   -0.0475    -3.01    +0.00
+     1.0   1.4588    61.85    40.90     203   -0.0102    -0.63    +0.00
+     1.2   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     1.4   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     1.6   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     1.8   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     2.0   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     2.2   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+     2.4   1.4690    62.48    40.90     202   +0.0000    +0.00    +0.00
+
+================================================================================
+T2: TIMESCALE ROBUSTNESS (16 slow_periods)
+================================================================================
+
+  Slow    Sharpe    CAGR%     MDD%    Sharpe    CAGR%     MDD%    Sharpe    CAGR%     MDD%
+------------------------------------------------------------------------------------------
+    30    1.0830    38.34    46.80    1.0700    37.67    46.72    1.0726    37.82    46.80
+    48    0.9949    34.74    46.52    0.9691    33.46    46.19    0.9779    33.92    46.52
+    60    1.1569    43.78    41.12    1.1236    41.99    44.82    1.1283    42.27    44.82
+    72    1.2275    47.90    42.05    1.2128    47.04    43.06    1.2172    47.32    43.06
+    84    1.2478    49.55    41.24    1.2502    49.63    41.24    1.2441    49.34    41.24
+    96    1.2540    49.93    43.43    1.2552    49.94    43.43    1.2502    49.71    43.43
+   108    1.3853    57.42    39.97    1.3689    56.38    41.02    1.3750    56.80    41.02
+   120    1.4690    62.48    40.90    1.4215    59.47    40.90    1.4588    61.85    40.90
+   144    1.4497    60.72    41.11    1.4108    58.29    40.73    1.4484    60.65    40.73
+   168    1.3132    52.44    46.67    1.2754    50.22    46.10    1.3093    52.23    46.67
+   200    1.5464    64.88    36.52    1.5041    62.23    36.52    1.5425    64.65    36.52
+   240    1.4022    55.65    39.95    1.3618    53.28    39.95    1.4008    55.56    39.95
+   300    1.3000    49.62    39.19    1.2461    46.67    39.19    1.2960    49.41    39.19
+   360    1.2909    48.61    38.12    1.2470    46.22    38.12    1.2869    48.40    38.12
+   500    1.2132    43.99    45.78    1.1646    41.54    45.78    1.1926    42.98    45.78
+   720    1.0980    37.56    39.02    1.0483    35.22    41.42    1.0770    36.60    41.42
+
+  BE_0.8 vs E5:  Sharpe 2/16  CAGR 2/16  MDD 4/16
+
+  BE_1.0 vs E5:  Sharpe 0/16  CAGR 0/16  MDD 3/16
+
+================================================================================
+T3: BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (8.5s)
+  E5          Sharpe=0.5721 [-0.1320, 1.2577]  CAGR=13.99% [-8.61, 46.37]  MDD=52.20%  P(CAGR>0)=0.844  (29.9s)
+  BE_0.8      Sharpe=0.5618 [-0.1310, 1.2532]  CAGR=13.70% [-8.70, 45.23]  MDD=52.36%  P(CAGR>0)=0.842  (29.8s)
+  BE_1.0      Sharpe=0.5665 [-0.1394, 1.2577]  CAGR=14.02% [-9.19, 45.31]  MDD=52.33%  P(CAGR>0)=0.836  (20.3s)
+
+  HEAD-TO-HEAD vs E5 across 500 bootstrap paths:
+    BE_0.8: Sharpe wins 231/500 (46.2%)  CAGR wins 226/500 (45.2%)  MDD wins 225/500 (45.0%)
+    BE_1.0: Sharpe wins 144/500 (28.8%)  CAGR wins 145/500 (29.0%)  MDD wins 107/500 (21.4%)
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x9/x9_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x9/x9_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x9/x9_timescale_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x9/x9_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x9/x9_be_sweep.csv
+
+================================================================================
+X9 BENCHMARK COMPLETE — 116s total
+================================================================================

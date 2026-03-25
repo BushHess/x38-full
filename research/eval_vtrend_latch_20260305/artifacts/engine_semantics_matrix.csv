@@ -1,0 +1,22 @@
+dimension,v10_engine,standalone_engine,match,impact_notes
+fill_timing,signal at bar[i] close executed at bar[i+1] open,signal at bar[i-1] close executed at bar[i] open,YES,semantically identical
+fill_price_buy,"ask = mid*(1+spread/20000), fill = ask*(1+slip/10000)",open_price[i] directly,NO,"v10 applies spread+slip multiplicatively on price; standalone fills at raw open, cost applied separately"
+fill_price_sell,"bid = mid*(1-spread/20000), fill = bid*(1-slip/10000)",open_price[i] directly,NO,"same as buy but reversed; v10 gets worse fill price, standalone fills at raw open"
+fee_computation,"fee = qty * fill_px * (taker_fee_pct/100)",fee = notional * cost_rate where cost_rate=(fee_bps+spread_bps+slip_bps)/10000,NO,"v10 separates spread/slip (in fill price) from fee (on fill_px notional); standalone lumps all into single rate on raw notional"
+cost_model_structure,"3 independent params: spread_bps, slippage_bps, taker_fee_pct","3 independent params: fee_bps, half_spread_bps, slippage_bps",SIMILAR,different parameterization but same total cost can be achieved
+initial_capital,10000.0 USD,1.0 (normalized),NO,standalone uses normalized equity; affects absolute trade sizes but not returns
+nav_computation,cash + btc_qty * bar.close (mid),cash + units * close_price[i],YES,semantically identical
+exposure_computation,(btc_qty * mid) / nav(mid),(units * close_price) / equity,YES,semantically identical
+equity_snap_timing,at bar CLOSE within reporting window,at end of each bar (always),SIMILAR,"v10 separates warmup from reporting; standalone records all bars"
+rebalance_threshold_engine,"_EXPO_THRESHOLD = 0.005 (hardcoded in engine, applied to ALL signals)",none (engine has no threshold),NO,"v10 engine silently ignores exposure deltas < 0.5%; standalone only uses strategy-level threshold"
+rebalance_threshold_strategy,min_rebalance_weight_delta in strategy on_bar(),min_rebalance_weight_delta passed to execute_target_weights(),SIMILAR,both strategies use 0.05 (5%) but applied at different layers
+zero_crossing_detection,"engine: target < 0.005 AND btc_qty > 1e-8 → sell all",explicit: (target_w <= 1e-12) != (current_w <= 1e-12),SIMILAR,both ensure exit from flat is always allowed
+cash_constraint_buy,"max_notional = cash / (1 + fee_rate), qty reduced","buy_notional = min(trade_notional, cash / (1+cost_rate)), qty = notional/price",YES,both limit buy to available cash after cost
+sharpe_returns,"np.diff(navs) / navs[:-1]","(eq[1:] / eq[:-1]) - 1.0",YES,mathematically identical
+sharpe_annualization,sqrt(2190),sqrt(bars_per_year) where default 2190,YES,identical
+sharpe_ddof,ddof=0 (population),ddof=0 (population),YES,identical
+cagr_time_basis,real calendar time from close_time delta,(len(eq)-1) / bars_per_year,NO,"v10 uses actual time; standalone assumes uniform bar spacing. Small difference for H4 data with gaps"
+mdd_units,percent (×100),fraction (0 to 1),NO,"display difference; the scoring function uses v10's percent format"
+warmup,configurable: no_trade (default) or allow_trade; based on report_start_ms,skip bars before first all-finite indicator index,SIMILAR,"both exclude warmup from metrics but mechanisms differ"
+mtf_support,"strict D1 alignment with no-lookahead (d1.close_time < h4.close_time)",none (single timeframe only),NO,"v10 engine supports multi-timeframe; standalone is single-timeframe. VTREND E0 uses D1 data (for EMA regime in some configs); LATCH standalone does not"
+trade_recording,"Trade records with entry/exit price, PnL, days_held","TradeRecord with bar_index, timestamp, side, weight before/after",DIFFERENT,different trade semantics but both track costs

@@ -1,0 +1,31 @@
+{
+  "loocv_auc": 0.8174490279753438,
+  "best_C": 10.0,
+  "permutation_p": 0.001996007984031936,
+  "null_auc_mean": 0.4675011853959222,
+  "null_auc_std": 0.07607127454933256,
+  "null_auc_p5": 0.3333254306938518,
+  "null_auc_p95": 0.5836573415520784,
+  "coefficients": {
+    "ema_ratio": 0.4432675831396174,
+    "bars_held": 0.4596826582616002,
+    "atr_pctl": 0.12250792468147054,
+    "bar_range_atr": -0.338262768244982,
+    "dd_from_peak": -0.10694923959786978,
+    "bars_since_peak": 0.29385806279874804,
+    "close_position": -0.07193890548156642,
+    "vdo_at_exit": 0.17183198341025877,
+    "d1_regime_str": 0.36333622861897114,
+    "trail_tightness": 0.008797696358052354
+  },
+  "bias": 0.8891065980165782,
+  "n_nonzero": 9,
+  "youden_threshold": 0.73,
+  "confusion": {
+    "tp": 65,
+    "fp": 4,
+    "fn": 46,
+    "tn": 53
+  },
+  "v2": true
+}

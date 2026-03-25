@@ -1,0 +1,11 @@
+{
+  "candidate_label": "E5",
+  "trade_count_expected": 207,
+  "trade_count_observed": 207,
+  "period_expected": "2019-01-01 to 2026-02-20",
+  "period_observed": "2019-01-04 to 2026-01-21",
+  "fee_expected": "50 bps RT",
+  "fee_observed": "50 bps RT (Step 0 reconciliation)",
+  "recon_status": "PASS",
+  "notes": ""
+}

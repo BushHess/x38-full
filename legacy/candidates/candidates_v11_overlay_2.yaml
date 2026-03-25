@@ -1,0 +1,90 @@
+candidates:
+  - name: ov2_pct_5
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 5% (pct-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_pct: 0.05
+      ov2_use_pct: true
+      ov2_use_atr: false
+
+  - name: ov2_pct_8
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 8% (pct-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_pct: 0.08
+      ov2_use_pct: true
+      ov2_use_atr: false
+
+  - name: ov2_pct_12
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 12% (pct-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_pct: 0.12
+      ov2_use_pct: true
+      ov2_use_atr: false
+
+  - name: ov2_atr_2
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 2*ATR (atr-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_atr: 2.0
+      ov2_use_pct: false
+      ov2_use_atr: true
+
+  - name: ov2_atr_3
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 3*ATR (atr-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_atr: 3.0
+      ov2_use_pct: false
+      ov2_use_atr: true
+
+  - name: ov2_atr_4
+    strategy: v11_hybrid
+    description: "Overlay 2: peak-DD stop 4*ATR (atr-only)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_peak_dd_stop: true
+      ov2_max_pos_dd_atr: 4.0
+      ov2_use_pct: false
+      ov2_use_atr: true

@@ -1,0 +1,101 @@
+/var/www/trading-bots/btc-spot-dev/research/x3/benchmark.py:45: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X3 RESEARCH: Graduated Exposure Benchmark
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  Params: slow=120, trail_mult=3.0
+  Exposure tiers: core=0.4, moderate=0.7, full=1.0
+  VDO thresholds: tier2=0.0, tier3(strong)=0.02
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine
+================================================================================
+
+Strategy       Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%  AvgDays
+----------------------------------------------------------------------------------------------------------
+E0_EMA21       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51     6.82
+E0_EMA21       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51     6.82
+E0_EMA21       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51     6.82
+X3             smart    1.3107    30.61    23.13   1.3237      71   35.2  2.3507   0.2613   53.95    19.82
+X3             base     1.1509    26.05    25.02   1.0412      71   31.0  2.0314   0.2613   53.95    19.82
+X3             harsh    0.9823    21.42    28.55   0.7503      71   28.2  1.7582   0.2613   53.95    19.82
+
+         DELTA (X3 - BASELINE)
+--------------------------------------------------------------------------------
+  smart   dSharpe=-0.2770  dCAGR=-40.79%  dMDD=-14.16%  dTrades=-103  dWR=-7.9%  dExpo=-0.1938  dTiM=+8.44%
+  base    dSharpe=-0.3230  dCAGR=-38.00%  dMDD=-13.61%  dTrades=-103  dWR=-10.4%  dExpo=-0.1938  dTiM=+8.44%
+  harsh   dSharpe=-0.3713  dCAGR=-35.20%  dMDD=-11.46%  dTrades=-103  dWR=-12.1%  dExpo=-0.1938  dTiM=+8.44%
+
+         SIGNAL REASON BREAKDOWN (harsh)
+------------------------------------------------------------
+  E0_EMA21 entries: {'vtrend_ema21_d1_entry': 174}
+  E0_EMA21 exits:   {'vtrend_ema21_d1_trail_stop': 158, 'vtrend_ema21_d1_trend_exit': 16}
+  X3 entries: {'x3_entry': 71}
+  X3 exits:   {'x3_core_exit': 64, 'x3_trend_exit': 7}
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  E0_EMA21        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X3              Engine trades=  71  Vec trades=  84  DIFFER  Sharpe eng=1.1509  vec=1.1513  diff=0.0004
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (6.7s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (14.7s)
+  X3              Sharpe=0.1302 [-0.5848, 0.8347]  CAGR=0.60% [-12.45, 17.47]  MDD=47.09% [30.11, 72.97]  P(CAGR>0)=0.536  (19.0s)
+
+  HEAD-TO-HEAD (X3 - E0_EMA21) across 500 bootstrap paths:
+    Sharpe: X3 wins 132/500 (26.4%)  mean delta=-0.1518
+    CAGR:   X3 wins 195/500 (39.0%)  mean delta=-3.91%
+    MDD:    X3 wins 469/500 (93.8%)  mean delta=-14.02%
+
+================================================================================
+T4: EXPOSURE TIER STATISTICS
+================================================================================
+
+  smart scenario (84 round-trips, 1001 rebalances):
+    Tier            Bars     Pct
+    ----------------------------
+    flat            8653   48.5%
+    core(40%)       7426   41.6%
+    moderate(70%)    1569    8.8%
+    full(100%)       190    1.1%
+    Time-in-market: 51.5%
+    X3 final NAV:           63381.63  Sharpe=1.3109
+    Baseline final NAV:    393493.62  Sharpe=1.6019
+
+  base scenario (84 round-trips, 1001 rebalances):
+    Tier            Bars     Pct
+    ----------------------------
+    flat            8653   48.5%
+    core(40%)       7426   41.6%
+    moderate(70%)    1569    8.8%
+    full(100%)       190    1.1%
+    Time-in-market: 51.5%
+    X3 final NAV:           47445.94  Sharpe=1.1513
+    Baseline final NAV:    280020.95  Sharpe=1.4900
+
+  harsh scenario (84 round-trips, 1001 rebalances):
+    Tier            Bars     Pct
+    ----------------------------
+    flat            8653   48.5%
+    core(40%)       7426   41.6%
+    moderate(70%)    1569    8.8%
+    full(100%)       190    1.1%
+    Time-in-market: 51.5%
+    X3 final NAV:           34946.41  Sharpe=0.9827
+    Baseline final NAV:    195539.60  Sharpe=1.3718
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x3/x3_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x3/x3_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x3/x3_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x3/x3_delta_table.csv
+
+================================================================================
+X3 BENCHMARK COMPLETE
+================================================================================

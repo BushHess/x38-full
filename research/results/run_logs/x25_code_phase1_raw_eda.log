@@ -1,0 +1,58 @@
+Loaded 96,423 rows, columns: ['symbol', 'interval', 'open_time', 'close_time', 'open', 'high', 'low', 'close', 'volume', 'quote_volume', 'num_trades', 'taker_buy_base_vol', 'taker_buy_quote_vol']
+============================================================
+Phase 1: Raw Exploratory Reconnaissance
+============================================================
+
+[1] Data Audit
+Written: /var/www/trading-bots/btc-spot-dev/research/x25/00_data_audit.md
+Written: /var/www/trading-bots/btc-spot-dev/research/x25/tables/data_audit_summary.csv
+
+H4: 18,662 bars, D1: 3,110 bars
+
+[2] Taker Buy Ratio Plots
+Written: Fig01
+Written: Fig02
+
+[3] Volume by Bar Type
+Written: Fig03
+Written: Fig04
+Written: Tbl01 (6 rows)
+         metric      group1      group2   n1    n2          U       p_value  rank_biserial    median_g1    median_g2
+         volume   up_strong down_strong 1078  1051   546015.0  1.488185e-01         0.0361 12504.004690 13271.321660
+         volume   up_strong     sideway 1078 16532 12648777.0 3.372996e-118        -0.4195 12504.004690  5534.460535
+         volume down_strong     sideway 1051 16532 12734554.0 6.469472e-142        -0.4658 13271.321660  5534.460535
+taker_buy_ratio   up_strong down_strong 1078  1051  1023763.0 4.097280e-228        -0.8072     0.523161     0.466754
+taker_buy_ratio   up_strong     sideway 1078 16515 12817380.0 9.058261e-130        -0.4399     0.523161     0.496316
+taker_buy_ratio down_strong     sideway 1051 16515  4367532.0 4.356528e-161         0.4967     0.466754     0.496316
+
+[4] Autocorrelation
+Written: Fig05
+  taker_buy_ratio     : lag1=0.4064, lag5=0.3074, lag20=0.1932
+  volume              : lag1=0.8208, lag5=0.7416, lag20=0.6068
+  H4_return           : lag1=-0.0457, lag5=0.0004, lag20=0.0113
+
+[5] Predictive Content (raw)
+Written: Tbl02
+Written: Fig06a, Fig06b, Fig06c
+horizon  shift_bars  spearman_rho  p_value     n
+    t+1           1     -0.025758 0.000439 18621
+    t+6           6     -0.028927 0.000079 18621
+   t+24          24     -0.003889 0.595650 18621
+
+[6] Regime Dependency
+Written: Tbl03
+Written: Fig07
+regime horizon  spearman_rho  p_value    n
+  bull     t+1     -0.028384 0.004990 9783
+  bull     t+6     -0.027385 0.006753 9783
+  bull    t+24     -0.015920 0.115368 9783
+  bear     t+1     -0.024149 0.023188 8838
+  bear     t+6     -0.032943 0.001952 8838
+  bear    t+24      0.007638 0.472757 8838
+
+[7] Rolling Stationarity
+Written: Fig08
+
+============================================================
+Phase 1 script complete. All figures and tables written.
+============================================================

@@ -1,0 +1,14 @@
+rule_id,description,accepted_events,rejected_events,accepted_good,accepted_bad,accepted_neutral,accepted_net_delta_usd,accepted_avg_delta_usd,good_capture_pct,bad_capture_pct,precision_good_pct,baseline_net_delta_usd
+er20,ER30 <= 0.20,6,16,5,1,0,13808.7,2301.45,35.71,12.5,83.33,-91444.81
+peak_age_ge_3,bars_since_peak >= 3,13,9,10,3,0,12418.05,955.23,71.43,37.5,76.92,-91444.81
+combo_weak3,ER30 <= 0.20 and close <= ema_slow,4,18,3,1,0,9217.4,2304.35,21.43,12.5,75.0,-91444.81
+combo_weak1,ER30 <= 0.20 and giveback >= 0.75R,5,17,4,1,0,5133.38,1026.68,28.57,12.5,80.0,-91444.81
+peak_age_ge_6,bars_since_peak >= 6,7,15,5,2,0,1273.15,181.88,35.71,25.0,71.43,-91444.81
+spread_le_050,EMA spread <= 0.50 ATR,2,20,1,1,0,870.99,435.49,7.14,12.5,50.0,-91444.81
+er15,ER30 <= 0.15,2,20,1,1,0,269.39,134.69,7.14,12.5,50.0,-91444.81
+below_slow,close <= ema_slow,16,6,10,6,0,-25590.63,-1599.41,71.43,75.0,62.5,-91444.81
+combo_weak2,close <= ema_slow and giveback >= 0.75R,14,8,8,6,0,-35662.93,-2547.35,57.14,75.0,57.14,-91444.81
+spread_le_100,EMA spread <= 1.00 ATR,7,15,2,5,0,-44038.34,-6291.19,14.29,62.5,28.57,-91444.81
+vdo_le_0,VDO <= 0.0,19,3,13,6,0,-83285.68,-4383.46,92.86,75.0,68.42,-91444.81
+giveback_ge_125,giveback >= 1.25R,18,4,12,6,0,-100805.03,-5600.28,85.71,75.0,66.67,-91444.81
+giveback_ge_075,giveback >= 0.75R,20,2,12,8,0,-101517.1,-5075.86,85.71,100.0,60.0,-91444.81

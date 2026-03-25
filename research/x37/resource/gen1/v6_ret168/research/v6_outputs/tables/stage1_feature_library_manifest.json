@@ -1,0 +1,1383 @@
+[
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "atr_pct",
+    "family": "volatility_level",
+    "formula": "rolling_mean(true_range, L) / close",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "body_frac",
+    "family": "candle_structure",
+    "formula": "rolling_mean(abs(close - open) / (high - low), L)",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.4",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "close_in_bar",
+    "family": "candle_structure",
+    "formula": "rolling_mean((close - low) / (high - low), L)",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "dir_body",
+    "family": "candle_structure",
+    "formula": "rolling_mean((close - open) / (high - low), L)",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "drawdown",
+    "family": "drawdown_pullback",
+    "formula": "close / rolling_max(close, L) - 1",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "flow_impulse",
+    "family": "participation_flow",
+    "formula": "rolling_mean((2*taker_share_raw - 1) * (volume / rolling_mean(volume, L)), L)",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "ma_gap",
+    "family": "trend_quality",
+    "formula": "close / rolling_mean(close, L) - 1",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "range_loc",
+    "family": "location_within_range",
+    "formula": "(close - rolling_low(L)) / (rolling_high(L) - rolling_low(L))",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "ret",
+    "family": "directional_persistence",
+    "formula": "close / close.shift(L) - 1",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "taker_share",
+    "family": "participation_flow",
+    "formula": "rolling_mean(taker_buy_base_vol / volume, L)",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.45",
+      "0.5",
+      "0.55",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "trend_quality",
+    "family": "trend_quality",
+    "formula": "(close / close.shift(L) - 1) / (rolling_std(log_close_ret, L) * sqrt(L))",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "up_frac",
+    "family": "directional_persistence",
+    "formula": "rolling_mean(close.diff() > 0, L)",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.4",
+      "0.5",
+      "0.6",
+      "0.7"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "vol_cluster",
+    "family": "volatility_clustering",
+    "formula": "rolling_std(log_close_ret, short) / rolling_std(log_close_ret, long)",
+    "params": [
+      "(10, 40)",
+      "(20, 80)",
+      "(5, 20)"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "volume_ratio",
+    "family": "participation_flow",
+    "formula": "volume / rolling_mean(volume, L)",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "native_d1",
+    "timeframe": "D1",
+    "feature_name": "weekday",
+    "family": "calendar_effect",
+    "formula": "bar weekday category",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "category"
+    ],
+    "calibration_modes": [
+      "category"
+    ],
+    "threshold_params": [
+      "(0, 1, 2, 3, 4)",
+      "(5, 6)",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "atr_pct",
+    "family": "volatility_level",
+    "formula": "rolling_mean(true_range, L) / close",
+    "params": [
+      "12",
+      "24",
+      "48",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "body_frac",
+    "family": "candle_structure",
+    "formula": "rolling_mean(abs(close - open) / (high - low), L)",
+    "params": [
+      "1",
+      "12",
+      "3",
+      "6"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.4",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "close_in_bar",
+    "family": "candle_structure",
+    "formula": "rolling_mean((close - low) / (high - low), L)",
+    "params": [
+      "1",
+      "12",
+      "3",
+      "6"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "dir_body",
+    "family": "candle_structure",
+    "formula": "rolling_mean((close - open) / (high - low), L)",
+    "params": [
+      "1",
+      "12",
+      "3",
+      "6"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "drawdown",
+    "family": "drawdown_pullback",
+    "formula": "close / rolling_max(close, L) - 1",
+    "params": [
+      "12",
+      "168",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "flow_impulse",
+    "family": "participation_flow",
+    "formula": "rolling_mean((2*taker_share_raw - 1) * (volume / rolling_mean(volume, L)), L)",
+    "params": [
+      "12",
+      "24",
+      "48",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "ma_gap",
+    "family": "trend_quality",
+    "formula": "close / rolling_mean(close, L) - 1",
+    "params": [
+      "12",
+      "168",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "range_loc",
+    "family": "location_within_range",
+    "formula": "(close - rolling_low(L)) / (rolling_high(L) - rolling_low(L))",
+    "params": [
+      "12",
+      "168",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "ret",
+    "family": "directional_persistence",
+    "formula": "close / close.shift(L) - 1",
+    "params": [
+      "12",
+      "168",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "slot_hour",
+    "family": "calendar_effect",
+    "formula": "H4 bar open-hour slot category",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "category"
+    ],
+    "calibration_modes": [
+      "category"
+    ],
+    "threshold_params": [
+      "(0, 4)",
+      "(16, 20)",
+      "(20, 0)",
+      "(8, 12)",
+      "0",
+      "12",
+      "16",
+      "20",
+      "4",
+      "8"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "taker_share",
+    "family": "participation_flow",
+    "formula": "rolling_mean(taker_buy_base_vol / volume, L)",
+    "params": [
+      "12",
+      "24",
+      "48",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.45",
+      "0.5",
+      "0.55",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "trend_quality",
+    "family": "trend_quality",
+    "formula": "(close / close.shift(L) - 1) / (rolling_std(log_close_ret, L) * sqrt(L))",
+    "params": [
+      "12",
+      "168",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "up_frac",
+    "family": "directional_persistence",
+    "formula": "rolling_mean(close.diff() > 0, L)",
+    "params": [
+      "12",
+      "24",
+      "48",
+      "6",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.4",
+      "0.5",
+      "0.6",
+      "0.7"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "vol_cluster",
+    "family": "volatility_clustering",
+    "formula": "rolling_std(log_close_ret, short) / rolling_std(log_close_ret, long)",
+    "params": [
+      "(12, 48)",
+      "(24, 96)",
+      "(48, 168)",
+      "(6, 24)"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "volume_ratio",
+    "family": "participation_flow",
+    "formula": "volume / rolling_mean(volume, L)",
+    "params": [
+      "12",
+      "24",
+      "48",
+      "96"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "native_h4",
+    "timeframe": "H4",
+    "feature_name": "weekday",
+    "family": "calendar_effect",
+    "formula": "bar weekday category",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "category"
+    ],
+    "calibration_modes": [
+      "category"
+    ],
+    "threshold_params": [
+      "(0, 1, 2, 3, 4)",
+      "(5, 6)",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  },
+  {
+    "bucket": "xtf_relation",
+    "timeframe": "H4",
+    "feature_name": "h4_in_d1_range",
+    "family": "cross_timeframe_relationship",
+    "formula": "(H4 close - last_completed_D1_low) / (last_completed_D1_high - last_completed_D1_low)",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "xtf_relation",
+    "timeframe": "H4",
+    "feature_name": "h4_vs_d1_close",
+    "family": "cross_timeframe_relationship",
+    "formula": "H4 close / last_completed_D1_close - 1",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_relation",
+    "timeframe": "H4",
+    "feature_name": "h4_vs_d1_ma",
+    "family": "cross_timeframe_relationship",
+    "formula": "H4 close / last_completed_D1_MA(L) - 1",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "atr_pct",
+    "family": "volatility_level",
+    "formula": "transport(last_completed_D1 rolling_mean(true_range, L) / close) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "body_frac",
+    "family": "candle_structure",
+    "formula": "transport(last_completed_D1 rolling_mean(abs(close - open) / (high - low), L)) onto H4 by backward as-of close_time",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.4",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "close_in_bar",
+    "family": "candle_structure",
+    "formula": "transport(last_completed_D1 rolling_mean((close - low) / (high - low), L)) onto H4 by backward as-of close_time",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "dir_body",
+    "family": "candle_structure",
+    "formula": "transport(last_completed_D1 rolling_mean((close - open) / (high - low), L)) onto H4 by backward as-of close_time",
+    "params": [
+      "1",
+      "10",
+      "3",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "drawdown",
+    "family": "drawdown_pullback",
+    "formula": "transport(last_completed_D1 close / rolling_max(close, L) - 1) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "flow_impulse",
+    "family": "participation_flow",
+    "formula": "transport(last_completed_D1 rolling_mean((2*taker_share_raw - 1) * (volume / rolling_mean(volume, L)), L)) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "ma_gap",
+    "family": "trend_quality",
+    "formula": "transport(last_completed_D1 close / rolling_mean(close, L) - 1) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "range_loc",
+    "family": "location_within_range",
+    "formula": "transport(last_completed_D1 (close - rolling_low(L)) / (rolling_high(L) - rolling_low(L))) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "ret",
+    "family": "directional_persistence",
+    "formula": "transport(last_completed_D1 close / close.shift(L) - 1) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "taker_share",
+    "family": "participation_flow",
+    "formula": "transport(last_completed_D1 rolling_mean(taker_buy_base_vol / volume, L)) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.45",
+      "0.5",
+      "0.55",
+      "0.6"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "trend_quality",
+    "family": "trend_quality",
+    "formula": "transport(last_completed_D1 (close / close.shift(L) - 1) / (rolling_std(log_close_ret, L) * sqrt(L))) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5",
+      "80"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_zero",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "None"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "up_frac",
+    "family": "directional_persistence",
+    "formula": "transport(last_completed_D1 rolling_mean(close.diff() > 0, L)) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "3",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.4",
+      "0.5",
+      "0.6",
+      "0.7"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "vol_cluster",
+    "family": "volatility_clustering",
+    "formula": "transport(last_completed_D1 rolling_std(log_close_ret, short) / rolling_std(log_close_ret, long)) onto H4 by backward as-of close_time",
+    "params": [
+      "(10, 40)",
+      "(20, 80)",
+      "(5, 20)"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level",
+      "train_quantile"
+    ],
+    "threshold_params": [
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.65",
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "volume_ratio",
+    "family": "participation_flow",
+    "formula": "transport(last_completed_D1 volume / rolling_mean(volume, L)) onto H4 by backward as-of close_time",
+    "params": [
+      "10",
+      "20",
+      "40",
+      "5"
+    ],
+    "tails": [
+      "lower",
+      "upper"
+    ],
+    "calibration_modes": [
+      "fixed_level"
+    ],
+    "threshold_params": [
+      "0.8",
+      "1.0",
+      "1.2",
+      "1.5"
+    ]
+  },
+  {
+    "bucket": "xtf_transport",
+    "timeframe": "H4",
+    "feature_name": "weekday",
+    "family": "calendar_effect",
+    "formula": "transport(last_completed_D1 bar weekday category) onto H4 by backward as-of close_time",
+    "params": [
+      "None"
+    ],
+    "tails": [
+      "category"
+    ],
+    "calibration_modes": [
+      "category"
+    ],
+    "threshold_params": [
+      "(0, 1, 2, 3, 4)",
+      "(5, 6)",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  }
+]

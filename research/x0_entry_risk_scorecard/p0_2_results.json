@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS_RUNTIME_WARNING_PATH",
+  "elapsed_seconds": 12.785,
+  "parity_rows": [
+    {
+      "strategy_id": "X0",
+      "fills_parity": true,
+      "fills_detail": "ok",
+      "trades_parity": true,
+      "trades_detail": "ok",
+      "summary_parity": true,
+      "summary_detail": "ok",
+      "risk_tag_match_rate": 1.0
+    },
+    {
+      "strategy_id": "X0_E5EXIT",
+      "fills_parity": true,
+      "fills_detail": "ok",
+      "trades_parity": true,
+      "trades_detail": "ok",
+      "summary_parity": true,
+      "summary_detail": "ok",
+      "risk_tag_match_rate": 1.0
+    }
+  ]
+}

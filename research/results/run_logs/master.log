@@ -1,0 +1,112 @@
+============================================
+ RE-RUN ALL RESEARCH STUDIES
+ Started: Mon Mar 16 08:32:34 PM UTC 2026
+============================================
+
+── Batch 0: Quick scripts ──
+[20:32:34] START monthly_pnl
+[20:32:34] START benchmark_compare
+[20:32:34] START rcssb_diagnostics
+[20:32:34] START vtrend_postmortem
+[20:32:35] DONE  monthly_pnl
+[20:32:36] DONE  benchmark_compare
+[20:32:36] DONE  rcssb_diagnostics
+[20:32:38] DONE  vtrend_postmortem
+
+── Batch 1: Medium (500 paths) ──
+[20:32:38] START creative_exploration
+[20:32:38] START config_compare
+[20:32:38] START trail_sweep
+[20:32:38] START ema_ablation
+[20:34:20] DONE  config_compare
+[20:34:20] START ema_regime_fine
+[20:44:25] DONE  creative_exploration
+[20:44:25] START vtrend_param_sensitivity
+[20:49:16] DONE  ema_ablation
+[20:49:16] START multicoin_ema_regime
+[21:01:48] DONE  ema_regime_fine
+[21:01:48] START multicoin_200v120
+[21:01:55] DONE  multicoin_200v120
+[21:01:55] START multicoin_exit_variants
+[21:02:19] DONE  multicoin_exit_variants
+[21:02:19] START multicoin_diversification
+[21:04:28] DONE  multicoin_ema_regime
+[21:04:28] START e5r_test
+[21:17:22] DONE  multicoin_diversification
+[21:17:22] START e5_vcbb_test
+[21:34:56] DONE  vtrend_param_sensitivity
+[21:42:24] DONE  trail_sweep
+[22:46:11] DONE  e5r_test
+[23:27:30] DONE  e5_vcbb_test
+
+── Batch 2: Heavy (2000 paths) ──
+[23:27:30] START timescale_robustness
+[23:27:30] START v8_vs_vtrend_bootstrap
+[23:27:30] START position_sizing
+[23:27:30] START regime_sizing
+[23:32:17] DONE  v8_vs_vtrend_bootstrap
+[23:32:17] START cost_study
+[23:33:01] DONE  position_sizing
+[23:33:01] START vexit_study
+[23:34:46] DONE  regime_sizing
+[23:34:46] START pe_study
+[23:50:16] DONE  pe_study
+[23:50:16] START pe_study_v2
+[00:00:12] DONE  timescale_robustness
+[00:00:12] START e5_validation
+[00:19:40] DONE  pe_study_v2
+[00:19:40] START validate_bootstrap
+[01:01:36] DONE  vexit_study
+[01:01:36] START vcbb_vs_uniform
+[01:50:43] DONE  e5_validation
+[01:50:43] START bootstrap_regime
+[01:52:01] DONE  cost_study
+[01:52:01] START binomial_correction
+[01:59:22] DONE  bootstrap_regime
+[01:59:22] START ema_regime_sweep
+[03:08:26] DONE  binomial_correction
+[03:08:26] START d1_ema200_filter
+[03:33:35] DONE  vcbb_vs_uniform
+[03:33:35] START vdo_standalone_test
+[03:33:39] DONE  vdo_standalone_test
+[04:19:08] DONE  d1_ema200_filter
+[04:26:56] DONE  ema_regime_sweep
+[04:32:39] DONE  validate_bootstrap
+
+── Batch 3: Very heavy ──
+[04:32:39] START pullback_strategy
+[04:32:39] START vbreak_test
+[04:32:39] START vcusum_test
+[04:32:39] START vtwin_test
+[04:36:10] DONE  vcusum_test
+[04:36:10] START resolution_sweep
+[04:37:14] DONE  vbreak_test
+[04:37:14] START e6_staleness_study
+[04:38:28] DONE  vtwin_test
+[04:38:28] START e7_study
+[04:50:09] DONE  e6_staleness_study
+[05:00:25] DONE  e7_study
+[05:35:03] DONE  pullback_strategy
+[06:41:37] DONE  resolution_sweep
+
+── Batch 4: Heaviest ──
+[06:41:37] START exit_family_study
+[06:41:37] START multiple_comparison
+[06:41:37] START true_wfo_compare
+[06:42:09] DONE  exit_family_study
+[06:49:17] DONE  multiple_comparison
+[06:51:32] DONE  true_wfo_compare
+
+── Batch 5: Meta-analysis ──
+[06:51:32] START roadmap_diagnostic
+[06:51:32] START audit_phase1_3
+[06:51:32] START audit_phase4
+[06:51:33] DONE  roadmap_diagnostic
+[06:51:35] DONE  audit_phase1_3
+[06:51:37] DONE  audit_phase4
+
+============================================
+ COMPLETE: Tue Mar 17 06:51:37 AM UTC 2026
+ Passed: 45  Failed: 0
+============================================
+DONE

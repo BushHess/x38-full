@@ -1,0 +1,3 @@
+/var/www/trading-bots/btc-spot-dev/research/e0_exit_event_gate/p0_2_benchmark_event_gate.py:15: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.e0_exit_event_gate.lib import EventGateConfig, EventGatedFloorStrategy
+Saved event-gate benchmark artifacts to /var/www/trading-bots/btc-spot-dev/research/e0_exit_event_gate

@@ -1,0 +1,222 @@
+{
+  "project_status": "COMPLETE",
+  "document_version": "1.0",
+  "winner_candidate_id": "delay_H16_p70",
+  "winner_family": "DelayExit_H",
+  "winner_params": {
+    "H": 16,
+    "X": null,
+    "threshold_percentile": 70
+  },
+  "validation_summary": {
+    "aggregate_wfo_oos_sharpe_25bps": 1.1853946679308718,
+    "aggregate_wfo_oos_mdd": -0.35816839454264326,
+    "wfo_positive_folds": 3,
+    "bootstrap_p_delta_sharpe_gt_0": 0.742,
+    "cost_levels_beaten": 9,
+    "exposure_trap_passed": true,
+    "added_value_gate_passed": true
+  },
+  "deployment_fit_scope": {
+    "authoritative_fit_scope": "full_178_authoritative_score_source_episodes_only",
+    "model_reselection_forbidden": true,
+    "feature_reselection_forbidden": true,
+    "hyperparameter_tuning_forbidden": true,
+    "threshold_tuning_forbidden": true
+  },
+  "score_source": {
+    "model_family": "elastic_net_logistic_regression",
+    "label": "churn_signal20",
+    "selected_features_in_order": [
+      "d1_regime_strength",
+      "ema_gap_pct",
+      "holding_bars_to_exit_signal",
+      "return_from_entry_to_signal",
+      "peak_runup_from_entry",
+      "atr_percentile_100"
+    ],
+    "hyperparameters": {
+      "C": 0.1,
+      "l1_ratio": 0.25,
+      "solver": "saga",
+      "penalty": "elasticnet",
+      "fit_intercept": true,
+      "class_weight": null,
+      "max_iter": 5000,
+      "tol": 1e-06,
+      "random_state": 20260312
+    },
+    "scaler": {
+      "type": "StandardScaler",
+      "mean_by_feature": {
+        "d1_regime_strength": 0.04574457302763581,
+        "ema_gap_pct": 0.03978571260822296,
+        "holding_bars_to_exit_signal": 39.04494382022472,
+        "return_from_entry_to_signal": 0.030065929775626016,
+        "peak_runup_from_entry": 0.08994271712909603,
+        "atr_percentile_100": 0.551685393258427
+      },
+      "scale_by_feature": {
+        "d1_regime_strength": 0.047855193484152986,
+        "ema_gap_pct": 0.035466984237355906,
+        "holding_bars_to_exit_signal": 32.65839882420583,
+        "return_from_entry_to_signal": 0.11271589342804983,
+        "peak_runup_from_entry": 0.1279757010275843,
+        "atr_percentile_100": 0.3432961048851847
+      }
+    },
+    "frozen_linear_score": {
+      "intercept": 0.9360343802382904,
+      "coefficient_by_feature": {
+        "d1_regime_strength": 0.3979207016747118,
+        "ema_gap_pct": 0.42298292071382787,
+        "holding_bars_to_exit_signal": 0.4228286835150665,
+        "return_from_entry_to_signal": 0.19375735917007703,
+        "peak_runup_from_entry": 0.0,
+        "atr_percentile_100": 0.20891999712260087
+      },
+      "formula": "score = sigmoid(intercept + sum_i coef_i * ((x_i - mean_i) / scale_i))"
+    },
+    "authoritative_replay": {
+      "episode_n": 178,
+      "score_summary": {
+        "min": 0.28442105937193096,
+        "p10": 0.4099074560325733,
+        "p25": 0.5065633263392327,
+        "median": 0.6380565549464597,
+        "p75": 0.7910301760294538,
+        "p90": 0.9398512495704243,
+        "max": 0.9983528267048711
+      },
+      "score_vector_sha256_round15_le_float64": "b56b06459afc47c82d0726e03849bc9b425292e1f9a93746f34c89211b723c8d"
+    }
+  },
+  "threshold_freeze": {
+    "threshold_percentile": 70,
+    "percentile_method": "numpy.quantile(scores, 0.70, method='linear')",
+    "deployment_threshold_value": 0.7576656445740457,
+    "phaseB3_frozen_threshold_value": 0.7576656445740457,
+    "threshold_match_verified": true,
+    "threshold_match_tolerance_abs": 1e-12,
+    "other_frozen_percentiles": {
+      "p60": 0.6953197856660042,
+      "p80": 0.8442069218921175
+    }
+  },
+  "decision_semantics": {
+    "decision_point": "first_trail_stop_signal_close_since_most_recent_full_entry_fill",
+    "score_gte_threshold_action": "CONTINUE",
+    "score_lt_threshold_action": "EXIT_BASELINE",
+    "continuation_start": "scheduled_baseline_trail_stop_exit_fill_open_j",
+    "continuation_notional_fraction": 1.0,
+    "forced_expiry_open_offset_bars": 16,
+    "recursive_rescoring_forbidden": true,
+    "new_entry_while_any_notional_open_forbidden": true,
+    "continuation_end_reasons_allowed": [
+      "forced_expiry",
+      "trend_exit_during_continuation"
+    ],
+    "trend_exit_override_rule": "if trend_exit fill open <= forced_expiry open then full exit reason = trend_exit_during_continuation"
+  },
+  "live_feature_formulas": {
+    "d1_regime_strength": {
+      "formula": "(mapped_completed_D1_close - mapped_completed_D1_EMA21) / mapped_completed_D1_close",
+      "source_fields": [
+        "mapped_completed_D1_close",
+        "mapped_completed_D1_EMA21",
+        "decision_signal_close_time"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "latest completed D1 with d1_close_time <= decision_signal_close_time",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    },
+    "ema_gap_pct": {
+      "formula": "(ema_fast_30_H4_t - ema_slow_120_H4_t) / ema_slow_120_H4_t",
+      "source_fields": [
+        "ema_fast_30_H4_t",
+        "ema_slow_120_H4_t"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "current H4 bar only",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    },
+    "holding_bars_to_exit_signal": {
+      "formula": "decision_signal_bar_index - live_trade_full_entry_fill_bar_index + 1",
+      "source_fields": [
+        "decision_signal_bar_index",
+        "live_trade_full_entry_fill_bar_index"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "most recent full entry of current live trade",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    },
+    "return_from_entry_to_signal": {
+      "formula": "decision_signal_close / live_trade_full_entry_fill_price - 1",
+      "source_fields": [
+        "decision_signal_close",
+        "live_trade_full_entry_fill_price"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "most recent full entry of current live trade",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    },
+    "peak_runup_from_entry": {
+      "formula": "live_trade_peak_close_through_decision_signal_bar / live_trade_full_entry_fill_price - 1",
+      "source_fields": [
+        "live_trade_peak_close_through_decision_signal_bar",
+        "live_trade_full_entry_fill_price"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "peak close from full-entry fill bar through decision signal bar inclusive",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    },
+    "atr_percentile_100": {
+      "formula": "count(robust_atr_k <= robust_atr_t for k in trailing_100_observed_H4_bars_ending_at_t) / 100",
+      "source_fields": [
+        "robust_atr_t",
+        "trailing_100_observed_H4_robust_atr_values_inclusive"
+      ],
+      "time_anchor": "decision signal close",
+      "causal_constraint": "100 observed H4 bars ending at decision bar inclusive",
+      "undefined_handling": "deployment error; event must fail replay/shadow review"
+    }
+  },
+  "support_ranges_full_178_authoritative": {
+    "d1_regime_strength": {
+      "min": -0.0416753295935847,
+      "max": 0.2518045544667233,
+      "mean": 0.04574457302763581,
+      "std_ddof0": 0.047855193484152986
+    },
+    "ema_gap_pct": {
+      "min": -0.0005102824604021,
+      "max": 0.1953539703582509,
+      "mean": 0.03978571260822296,
+      "std_ddof0": 0.035466984237355906
+    },
+    "holding_bars_to_exit_signal": {
+      "min": 3.0,
+      "max": 212.0,
+      "mean": 39.04494382022472,
+      "std_ddof0": 32.65839882420583
+    },
+    "return_from_entry_to_signal": {
+      "min": -0.1246491264996842,
+      "max": 0.6345136210974822,
+      "mean": 0.030065929775626016,
+      "std_ddof0": 0.11271589342804983
+    },
+    "peak_runup_from_entry": {
+      "min": 0.0,
+      "max": 0.831724591133141,
+      "mean": 0.08994271712909603,
+      "std_ddof0": 0.1279757010275843
+    },
+    "atr_percentile_100": {
+      "min": 0.01,
+      "max": 1.0,
+      "mean": 0.551685393258427,
+      "std_ddof0": 0.3432961048851847
+    }
+  }
+}

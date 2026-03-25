@@ -1,0 +1,20 @@
+{
+  "vtrend_ema21_d1_trail_stop": {
+    "n_trades": 158,
+    "pct_of_total": 91.86046511627907,
+    "win_rate_pct": 46.20253164556962,
+    "avg_return_pct": 3.079402569620253,
+    "median_return_pct": -0.32682449999999996,
+    "total_pnl_usd": 271061.605847,
+    "avg_days_held": 7.337552727848103
+  },
+  "vtrend_ema21_d1_trend_exit": {
+    "n_trades": 14,
+    "pct_of_total": 8.13953488372093,
+    "win_rate_pct": 14.285714285714286,
+    "avg_return_pct": -1.693754357142857,
+    "median_return_pct": -1.7138835000000001,
+    "total_pnl_usd": -27620.180944999996,
+    "avg_days_held": 1.833333357142857
+  }
+}

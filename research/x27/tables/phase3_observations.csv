@@ -1,0 +1,18 @@
+id,text,evidence
+Obs40,"Target events: 28 upward moves ≥10% in 8.6yr (3.3/yr). Median dur=14 bars, median mag=11.2%.",Tbl06
+Obs41,"Entry Type A: det=0.105, FP=0.972, lag=53.3bars, slip=-1.6%, freq=16/yr",Tbl07
+Obs42,"Entry Type B: det=0.839, FP=0.873, lag=19.2bars, slip=5.5%, freq=51/yr",Tbl07
+Obs43,"Entry Type C: det=0.404, FP=0.883, lag=15.2bars, slip=5.3%, freq=26/yr",Tbl07
+Obs44,"Entry Type D: det=0.565, FP=0.922, lag=20.2bars, slip=4.5%, freq=46/yr",Tbl07
+Obs45,"Entry robustness: Type C most stable (det_std=0.082), Type D least stable (det_std=0.156).","Tbl07, robustness analysis"
+Obs46,"Exit Type V: cap=2.638, churn=0.833, hold=209bars, ret/trade=29.5%, mdd=24.2%",Tbl08
+Obs47,"Exit Type W: cap=1.904, churn=0.857, hold=97bars, ret/trade=21.5%, mdd=17.9%",Tbl08
+Obs48,"Exit Type X: cap=0.974, churn=0.940, hold=68bars, ret/trade=10.6%, mdd=12.2%",Tbl08
+Obs49,"Exit Type Y: cap=0.895, churn=0.909, hold=59bars, ret/trade=10.0%, mdd=14.8%",Tbl08
+Obs50,"Exit Type Z: cap=1.427, churn=0.926, hold=101bars, ret/trade=15.7%, mdd=18.7%",Tbl08
+Obs51,"Entry×Exit pairing: best Sharpe=1.064 (B+Y), worst=0.015. Range=1.049.","Tbl09, Fig13"
+Obs52,Regime filter (bull-only): 5/20 pairs show improved Sharpe. Average ΔSharpe=-0.0774.,Tbl10
+Obs53,H_prior_3 verification: 0 type averages achieve lag<20 & FP<50%. 0 individual combos achieve it.,Tbl07
+Obs54,H_prior_4 verification: 0 type averages achieve churn<10% & cap>60%. 0 individual combos achieve it.,Tbl08
+Obs55,H_prior_7 verification: 15 pairs have exposure>60%. Max exposure=87.9%.,Tbl09
+Obs56,"H_prior_10 verification: Sharpe range across 4×5 entry×exit pairs = 1.049, std = 0.217.",Tbl09

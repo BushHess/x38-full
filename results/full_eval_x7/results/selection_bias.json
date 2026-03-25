@@ -1,0 +1,63 @@
+{
+  "requested_method": "deflated",
+  "method": "deflated",
+  "scenario": "harsh",
+  "sr_observed": 0.8061,
+  "sr_baseline": 1.2653,
+  "T": 2607,
+  "skew": 1.238534,
+  "kurtosis": 26.105492,
+  "dsr": {
+    "27": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.080291,
+      "sr_std": 0.03956,
+      "pass": true
+    },
+    "54": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.091212,
+      "sr_std": 0.03956,
+      "pass": true
+    },
+    "100": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.100111,
+      "sr_std": 0.03956,
+      "pass": true
+    },
+    "200": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.109405,
+      "sr_std": 0.03956,
+      "pass": true
+    },
+    "500": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.120759,
+      "sr_std": 0.03956,
+      "pass": true
+    },
+    "700": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.124705,
+      "sr_std": 0.03956,
+      "pass": true
+    }
+  },
+  "psr": {
+    "psr": 0.0,
+    "sr_candidate": 0.8061,
+    "sr_benchmark": 1.2653,
+    "n_obs": 2607,
+    "se": 0.039568,
+    "z_score": -11.605389
+  },
+  "psr_pass": false,
+  "pbo_proxy": {
+    "n_windows": 8,
+    "negative_delta_ratio": 0.75
+  },
+  "dsr_advisory": "DSR robust across tested trials",
+  "risk_statement": "CAUTION \u2014 PSR=0.000 < 0.95 (insufficient evidence candidate beats baseline); DSR robust across tested trials (advisory)"
+}

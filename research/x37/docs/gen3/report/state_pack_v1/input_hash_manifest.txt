@@ -1,0 +1,17 @@
+# Input Hash Manifest
+# Generated: 2026-03-20
+# Snapshot: snapshot_20260318 (2017-08-17 to 2026-03-18 UTC)
+#
+# format:
+# sha256  file_size_bytes  line_count  relative_path
+#
+# Path convention: use the filename as uploaded to the execution chat.
+# These are upload-level identifiers, not filesystem paths within the bundle.
+
+c530dd8422a1f62352dc31204a46cb2d64969b4407f29377eb6299ec5d0dadb1     18774      412  research_constitution_v3.0.yaml
+9a2e2b03d38ca5bccb620ca6a4b28ef8fe9bf0c123777e65ec551a27dfd2ffe3      1155       36  session_manifest.json
+33d5bfb2395739ae29fdfa1f9a49a59084203fe2d6393006d098feb3146788f1      4662      164  FILE_AND_SCHEMA_CONVENTIONS_EN.md
+7c263652c6c6512fca8a375b6aa4acb1f2dc5cebf9905fdefa1f64bbcdc268d0  40037934   300480  spot_btcusdt_15m.csv
+1c9d16aa9fb55187802e5c5cba0f8f23f5ae727b5f3a79caee7e932429a333e8  10159612    75135  spot_btcusdt_1h.csv
+302ed5a57e39dabe4187ce099ed80cdd9f99c54a204c70be08cfbe0172ad8217   2598926    18800  spot_btcusdt_4h.csv
+fcab3ac7c874890d0006cd8760eea79266cee9a13245b112550fd0aab002d9a1    443848     3137  spot_btcusdt_1d.csv

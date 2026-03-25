@@ -1,0 +1,38 @@
+{
+  "git_hash": "c74c650",
+  "timestamp_utc": "2026-02-22T16:21:22Z",
+  "argv": [
+    "/var/www/trading-bots/btc-spot/v10/cli/backtest.py",
+    "--data",
+    "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "--strategy",
+    "buy_and_hold",
+    "--scenario",
+    "base",
+    "--initial-cash",
+    "10000",
+    "--start",
+    "2019-01-01",
+    "--end",
+    "2026-02-20",
+    "--warmup-days",
+    "365",
+    "--outdir",
+    "out_v10_bnh"
+  ],
+  "config": {
+    "strategy": "buy_and_hold",
+    "scenario": "base",
+    "cost": {
+      "spread_bps": 5.0,
+      "slippage_bps": 3.0,
+      "taker_fee_pct": 0.1
+    },
+    "initial_cash": 10000.0,
+    "warmup_days": 365,
+    "warmup_mode": "no_trade",
+    "rsi_method": "ewm_span",
+    "emergency_ref": "pre_cost_legacy"
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

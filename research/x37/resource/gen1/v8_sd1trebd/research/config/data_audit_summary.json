@@ -1,0 +1,154 @@
+{
+  "native_1d": {
+    "rows": 3134,
+    "extra_cols": [],
+    "symbol_unique": [
+      "BTCUSDT"
+    ],
+    "interval_unique": [
+      "1d"
+    ],
+    "start_open_dt": "2017-08-17 00:00:00+00:00",
+    "end_close_dt": "2026-03-16 23:59:59.999000+00:00",
+    "start_open_date": "2017-08-17",
+    "end_close_date": "2026-03-16",
+    "duplicates_open_time": 0,
+    "duplicates_close_time": 0,
+    "null_counts": {
+      "symbol": 0,
+      "interval": 0,
+      "open_time": 0,
+      "close_time": 0,
+      "open": 0,
+      "high": 0,
+      "low": 0,
+      "close": 0,
+      "volume": 0,
+      "quote_volume": 0,
+      "num_trades": 0,
+      "taker_buy_base_vol": 0,
+      "taker_buy_quote_vol": 0
+    },
+    "malformed_rows": 0,
+    "open_diff_unique_top": {
+      "86400000.0": 3133
+    },
+    "irregular_open_gap_rows": 0,
+    "duration_unique_top": {
+      "86400000": 3134
+    },
+    "nonstandard_duration_rows": 0,
+    "zero_activity_rows": 0,
+    "impossible_ohlc_rows": 0
+  },
+  "native_4h_raw": {
+    "rows": 18791,
+    "extra_cols": [],
+    "symbol_unique": [
+      "BTCUSDT"
+    ],
+    "interval_unique": [
+      "4h"
+    ],
+    "start_open_dt": "2017-08-17 04:00:00+00:00",
+    "end_close_dt": "2026-03-17 15:59:59.999000+00:00",
+    "start_open_date": "2017-08-17",
+    "end_close_date": "2026-03-17",
+    "duplicates_open_time": 0,
+    "duplicates_close_time": 1,
+    "null_counts": {
+      "symbol": 0,
+      "interval": 0,
+      "open_time": 0,
+      "close_time": 0,
+      "open": 0,
+      "high": 0,
+      "low": 0,
+      "close": 0,
+      "volume": 0,
+      "quote_volume": 0,
+      "num_trades": 0,
+      "taker_buy_base_vol": 0,
+      "taker_buy_quote_vol": 0
+    },
+    "malformed_rows": 1,
+    "open_diff_unique_top": {
+      "14400000.0": 18782,
+      "28800000.0": 5,
+      "43200000.0": 2,
+      "115200000.0": 1
+    },
+    "irregular_open_gap_rows": 8,
+    "duration_unique_top": {
+      "14400000": 18771,
+      "7200000": 9,
+      "10800000": 2,
+      "14400001": 1,
+      "10814839": 1,
+      "1": 1,
+      "1345552": 1,
+      "12932287": 1,
+      "6440522": 1,
+      "13254774": 1
+    },
+    "nonstandard_duration_rows": 20,
+    "zero_activity_rows": 1,
+    "impossible_ohlc_rows": 0
+  },
+  "native_4h_scoring_rows_after_deterministic_drop": 18790,
+  "deterministic_drop_rule_rows": 1,
+  "reconciliation": {
+    "overlap_days": 3134,
+    "material_ohlc_mismatches": 0,
+    "max_ohlc_abs_diff": 0.0,
+    "max_volume_abs_diff": 1.1641532182693481e-10,
+    "max_volume_pct_diff": 2.201042380231135e-16,
+    "days_with_non6_h4_bars": 11,
+    "non6_h4_bar_days_examples": [
+      {
+        "date": "2017-08-17T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2017-09-06T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2018-02-08T00:00:00+00:00",
+        "bar_count": 1
+      },
+      {
+        "date": "2018-02-09T00:00:00+00:00",
+        "bar_count": 4
+      },
+      {
+        "date": "2018-06-26T00:00:00+00:00",
+        "bar_count": 4
+      },
+      {
+        "date": "2018-07-04T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2018-11-14T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2019-03-12T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2019-05-15T00:00:00+00:00",
+        "bar_count": 4
+      },
+      {
+        "date": "2019-08-15T00:00:00+00:00",
+        "bar_count": 5
+      },
+      {
+        "date": "2020-02-19T00:00:00+00:00",
+        "bar_count": 5
+      }
+    ]
+  }
+}

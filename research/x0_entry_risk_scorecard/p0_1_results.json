@@ -1,0 +1,37 @@
+{
+  "verdict": "PROMOTE_SCORECARD_AS_DIAGNOSTIC",
+  "elapsed_seconds": 0.2581,
+  "selected_high_risk_rule": "entry_context == chop and entry_price_to_slow_atr > 1.8",
+  "stable_shared_rules": [
+    {
+      "rule_id": "stretch18",
+      "expression": "entry_context == chop and entry_price_to_slow_atr > 1.8",
+      "dof": 2,
+      "min_holdout_gap": 0.1266,
+      "avg_holdout_gap": 0.15405649999999999,
+      "min_holdout_flagged_support": 17
+    }
+  ],
+  "scorecard_spec": {
+    "scorecard_id": "x0_entry_risk_v1",
+    "target_label": "core_bad = false_breakout or trail_stop_noise",
+    "risk_levels": [
+      {
+        "risk_level": "low_non_chop",
+        "rule": "entry_context != chop"
+      },
+      {
+        "risk_level": "medium_chop",
+        "rule": "entry_context == chop and entry_price_to_slow_atr <= 1.8"
+      },
+      {
+        "risk_level": "high_chop_stretch",
+        "rule": "entry_context == chop and entry_price_to_slow_atr > 1.8"
+      }
+    ],
+    "notes": {
+      "X0": "usable as optional hard gate",
+      "X0_E5EXIT": "warning-only by default; robust exit already repairs part of this cohort"
+    }
+  }
+}

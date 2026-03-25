@@ -1,0 +1,55 @@
+{
+  "n_windows": 10,
+  "n_positive": 0,
+  "n_negative": 2,
+  "n_zero": 8,
+  "median_delta_harsh": 0.0,
+  "mean_delta_harsh": -0.5893,
+  "worst_round_delta": -4.3222,
+  "worst_round_window": 7,
+  "best_round_delta": 0.0,
+  "best_round_window": 0,
+  "sign_test_pvalue": 1.0,
+  "sign_test_note": "One-sided exact binomial test, H0: P(delta>0) = 0.5. Ties (delta=0) excluded. With 8 ties out of 10, effective n = 2.",
+  "all_deltas_score": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.5712,
+    -4.3222,
+    0.0,
+    0.0
+  ],
+  "all_deltas_cagr": [
+    6.05,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    7.14,
+    -0.63,
+    -1.59,
+    0.0,
+    0.0
+  ],
+  "all_deltas_mdd": [
+    -0.87,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "conclusion": "INCONCLUSIVE \u2014 8/10 rounds show zero delta (V11 cycle only fires in bull periods). Among 2 active rounds: 0 positive, 2 negative. Improvement NOT concentrated in 1 round but limited to few rounds.",
+  "robustness_criteria": {
+    "positive_rate_threshold": ">=60% of non-zero rounds",
+    "worst_round_threshold": "> -5.0 score points"
+  }
+}

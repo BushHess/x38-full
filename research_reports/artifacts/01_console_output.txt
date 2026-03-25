@@ -1,0 +1,70 @@
+========================================================================
+HEAVY-TAIL SIMULATION REPRODUCTION
+========================================================================
+Generator:     Student-t(df=3.0)
+n_bars:        15000
+n_reps:        200
+vol:           0.0065
+phi (AR1):     0.15
+edge:          2.5e-05 per bar
+block_sizes:   [10, 20, 40]
+n_bootstrap:   1000
+ci_level:      0.95
+
+Step 1: Estimating population truth (30 x 80000 bars)...
+  True Sharpe diff (median of 30): 0.1714
+  True Growth diff (median of 30): 0.0553
+  (took 1.9s)
+
+Step 2: Verifying tail properties...
+  Sample kurtosis (Fisher=False): 30.36
+  Sample skewness:                -0.5598
+  Hill tail index alpha (k=750): 2.67
+
+Step 3+5: Coverage + Power test (H1 scenario)...
+  rep 25/200 (17s elapsed, ETA 122s)
+  rep 50/200 (35s elapsed, ETA 106s)
+  rep 75/200 (53s elapsed, ETA 89s)
+  rep 100/200 (71s elapsed, ETA 71s)
+  rep 125/200 (89s elapsed, ETA 53s)
+  rep 150/200 (107s elapsed, ETA 36s)
+  rep 175/200 (124s elapsed, ETA 18s)
+  rep 200/200 (142s elapsed, ETA 0s)
+  (took 142.9s)
+
+COVERAGE TABLE (nominal 95%):
+Block       Bootstrap  Subsampling
+----------------------------------
+10              94.0%        96.0%
+20              95.0%        96.0%
+40              94.5%        96.5%
+
+POWER TABLE (ability to detect edge):
+Block       Bootstrap  Subsampling
+----------------------------------
+10               6.5%         6.5%
+20               7.0%         6.0%
+40               6.5%         6.5%
+
+Step 4: Type I error test (H0: no edge)...
+  rep 25/200 (17s elapsed, ETA 120s)
+  rep 50/200 (35s elapsed, ETA 105s)
+  rep 75/200 (53s elapsed, ETA 88s)
+  rep 100/200 (71s elapsed, ETA 71s)
+  rep 125/200 (88s elapsed, ETA 53s)
+  rep 150/200 (106s elapsed, ETA 35s)
+  rep 175/200 (124s elapsed, ETA 18s)
+  rep 200/200 (142s elapsed, ETA 0s)
+  (took 142.2s)
+
+TYPE I ERROR TABLE (nominal 5% or less):
+Block       Bootstrap  Subsampling
+----------------------------------
+10               2.5%         2.0%
+20               2.0%         1.5%
+40               1.5%         2.0%
+
+Edge per bar: 2.5e-05
+Annualized edge: 5.6%
+
+Saved: /var/www/trading-bots/btc-spot-dev/research_reports/artifacts/01_heavy_tail_sim_results.json

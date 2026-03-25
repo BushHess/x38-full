@@ -1,0 +1,204 @@
+================================================================================
+VDO STANDALONE RESEARCH
+================================================================================
+Taker buy volume available: True
+  Non-zero taker rows: 18645 / 18662
+Period: 2019-01-01 00:00:00+00:00 → 2026-02-21 08:00:00+00:00
+H4 bars: 15651
+
+================================================================================
+TEST 1: VDO STATISTICAL PROPERTIES
+================================================================================
+
+  VDR (raw volume delta ratio):
+    Mean: -0.014748
+    Std:  0.076464
+    Min:  -0.4897
+    Max:  0.4368
+
+  VDO (oscillator):
+    Mean: -0.000045
+    Std:  0.011622
+    Min:  -0.062302
+    Max:  0.051968
+
+  VDO Predictive Power (correlation with future returns):
+    VDO vs return(+  1 bars /   4h): +0.0168 ***
+    VDO vs return(+  3 bars /  12h): +0.0361 ***
+    VDO vs return(+  6 bars /  24h): +0.0371 ***
+    VDO vs return(+ 12 bars /   2d): +0.0451 ***
+    VDO vs return(+ 24 bars /   4d): +0.0548 ***
+    VDO vs return(+ 48 bars /   8d): +0.0210 ***
+    VDO vs return(+ 96 bars /  16d): +0.0239 ***
+
+  VDO Autocorrelation (persistence):
+    Lag   1: +0.8446
+    Lag   3: +0.5473
+    Lag   6: +0.2396
+    Lag  12: -0.0611
+    Lag  24: -0.1256
+
+================================================================================
+TEST 2: VDO AS STANDALONE SIGNAL
+================================================================================
+
+  VDO(12/28):
+    thresh=0.000: CAGR= -17.8%  MDD= 92.5%  Calmar=-0.19  Sharpe=-0.25  Trades=1422  WR=37.7%
+    thresh=0.002: CAGR= -27.1%  MDD= 93.5%  Calmar=-0.29  Sharpe=-0.64  Trades=1336  WR=37.2%
+    thresh=0.004: CAGR= -29.5%  MDD= 93.9%  Calmar=-0.31  Sharpe=-0.87  Trades=1210  WR=37.4%
+    thresh=0.006: CAGR= -34.2%  MDD= 95.5%  Calmar=-0.36  Sharpe=-1.28  Trades=1119  WR=36.2%
+    thresh=0.008: CAGR= -24.3%  MDD= 89.6%  Calmar=-0.27  Sharpe=-0.98  Trades= 921  WR=36.6%
+
+  VDO(8/20):
+    thresh=0.000: CAGR= -26.5%  MDD= 96.5%  Calmar=-0.28  Sharpe=-0.51  Trades=1711  WR=37.6%
+    thresh=0.002: CAGR= -28.4%  MDD= 96.4%  Calmar=-0.29  Sharpe=-0.66  Trades=1638  WR=37.6%
+    thresh=0.004: CAGR= -35.4%  MDD= 97.0%  Calmar=-0.36  Sharpe=-1.06  Trades=1556  WR=36.7%
+    thresh=0.006: CAGR= -40.5%  MDD= 98.2%  Calmar=-0.41  Sharpe=-1.48  Trades=1428  WR=35.9%
+    thresh=0.008: CAGR= -32.9%  MDD= 95.4%  Calmar=-0.34  Sharpe=-1.25  Trades=1285  WR=37.0%
+
+  VDO(16/40):
+    thresh=0.000: CAGR=  -5.2%  MDD= 73.4%  Calmar=-0.07  Sharpe= 0.08  Trades=1174  WR=38.0%
+    thresh=0.002: CAGR= -20.0%  MDD= 86.3%  Calmar=-0.23  Sharpe=-0.42  Trades=1108  WR=37.0%
+    thresh=0.004: CAGR= -21.2%  MDD= 89.5%  Calmar=-0.24  Sharpe=-0.56  Trades=1014  WR=36.3%
+    thresh=0.006: CAGR= -25.7%  MDD= 89.9%  Calmar=-0.29  Sharpe=-0.89  Trades= 902  WR=37.0%
+    thresh=0.008: CAGR= -20.2%  MDD= 80.6%  Calmar=-0.25  Sharpe=-0.78  Trades= 765  WR=37.0%
+
+  VDO(20/50):
+    thresh=0.000: CAGR=   1.4%  MDD= 76.2%  Calmar= 0.02  Sharpe= 0.24  Trades=1025  WR=36.7%
+    thresh=0.002: CAGR=  -3.2%  MDD= 74.4%  Calmar=-0.04  Sharpe= 0.09  Trades= 980  WR=37.7%
+    thresh=0.004: CAGR= -16.1%  MDD= 80.3%  Calmar=-0.20  Sharpe=-0.39  Trades= 857  WR=37.3%
+    thresh=0.006: CAGR= -14.9%  MDD= 76.9%  Calmar=-0.19  Sharpe=-0.45  Trades= 766  WR=36.7%
+    thresh=0.008: CAGR= -17.1%  MDD= 80.3%  Calmar=-0.21  Sharpe=-0.67  Trades= 671  WR=36.7%
+
+  VDO(6/16):
+    thresh=0.000: CAGR= -41.6%  MDD= 98.9%  Calmar=-0.42  Sharpe=-1.03  Trades=1991  WR=36.3%
+    thresh=0.002: CAGR= -38.7%  MDD= 98.0%  Calmar=-0.39  Sharpe=-1.02  Trades=1921  WR=36.9%
+    thresh=0.004: CAGR= -39.4%  MDD= 98.2%  Calmar=-0.40  Sharpe=-1.18  Trades=1808  WR=37.0%
+    thresh=0.006: CAGR= -39.1%  MDD= 98.1%  Calmar=-0.40  Sharpe=-1.31  Trades=1694  WR=35.6%
+    thresh=0.008: CAGR= -37.7%  MDD= 97.8%  Calmar=-0.39  Sharpe=-1.39  Trades=1530  WR=36.4%
+
+================================================================================
+TEST 3: EMA TREND + VDO CONFIRMATION
+================================================================================
+Hypothesis: VDO confirms genuine trend starts, filters false breakouts
+
+  Baseline EMA(30/120)+Trail(3.0):
+    CAGR=  59.4%  MDD= 46.7%  Calmar= 1.27  Sharpe= 1.32  Trades=236  WR=41.1%
+
+  EMA(30/120)+Trail(3.0) + VDO confirmation for entry:
+    VDO>0.000: CAGR=  60.2%  MDD= 40.0%  Calmar= 1.51 (Δ=+0.23)  Trades= 191  WR=41.9% <<<
+    VDO>0.001: CAGR=  56.5%  MDD= 43.0%  Calmar= 1.31 (Δ=+0.04)  Trades= 187  WR=42.2%
+    VDO>0.002: CAGR=  55.8%  MDD= 40.9%  Calmar= 1.37 (Δ=+0.09)  Trades= 179  WR=42.5% <<<
+    VDO>0.003: CAGR=  55.9%  MDD= 39.6%  Calmar= 1.41 (Δ=+0.14)  Trades= 172  WR=41.9% <<<
+    VDO>0.004: CAGR=  55.2%  MDD= 42.0%  Calmar= 1.32 (Δ=+0.04)  Trades= 165  WR=43.0%
+    VDO>0.005: CAGR=  51.5%  MDD= 42.9%  Calmar= 1.20 (Δ=-0.07)  Trades= 161  WR=42.2%
+    VDO>0.006: CAGR=  53.0%  MDD= 41.3%  Calmar= 1.28 (Δ=+0.01)  Trades= 155  WR=43.2%
+    VDO>0.008: CAGR=  55.8%  MDD= 41.9%  Calmar= 1.33 (Δ=+0.06)  Trades= 137  WR=46.0% <<<
+
+  EMA(30/120) + VDO exit enhancement (exit also if VDO < -thresh):
+    VDO<+0.000: CAGR= -45.7%  MDD= 99.1%  Calmar=-0.46 (Δ=-1.73)  Trades=2439  WR=35.2%
+    VDO<-0.001: CAGR= -43.1%  MDD= 98.9%  Calmar=-0.44 (Δ=-1.71)  Trades=2236  WR=36.7%
+    VDO<-0.002: CAGR= -37.1%  MDD= 97.6%  Calmar=-0.38 (Δ=-1.65)  Trades=2050  WR=37.3%
+    VDO<-0.003: CAGR= -32.5%  MDD= 96.5%  Calmar=-0.34 (Δ=-1.61)  Trades=1887  WR=37.1%
+    VDO<-0.004: CAGR= -31.4%  MDD= 95.8%  Calmar=-0.33 (Δ=-1.60)  Trades=1746  WR=37.0%
+    VDO<-0.005: CAGR= -29.0%  MDD= 94.9%  Calmar=-0.31 (Δ=-1.58)  Trades=1607  WR=37.5%
+
+================================================================================
+TEST 4: VDO FOR POSITION SIZING
+================================================================================
+Hypothesis: scale position size by VDO strength (stronger VDO = larger position)
+  VDO std: 0.011622
+  linear VDO exit < -0.002: CAGR=  18.8%  MDD= 47.9%  Calmar= 0.39 (Δ=-0.88)  Trades=870
+  linear VDO exit < -0.003: CAGR=  19.8%  MDD= 42.9%  Calmar= 0.46 (Δ=-0.81)  Trades=854
+  linear VDO exit < -0.004: CAGR=  19.3%  MDD= 47.4%  Calmar= 0.41 (Δ=-0.86)  Trades=837
+  capped VDO exit < -0.002: CAGR=  18.8%  MDD= 47.9%  Calmar= 0.39 (Δ=-0.88)  Trades=870
+  capped VDO exit < -0.003: CAGR=  19.8%  MDD= 42.9%  Calmar= 0.46 (Δ=-0.81)  Trades=854
+  capped VDO exit < -0.004: CAGR=  19.3%  MDD= 47.4%  Calmar= 0.41 (Δ=-0.86)  Trades=837
+
+================================================================================
+TEST 5: WALK-FORWARD OOS COMPARISON
+================================================================================
+EMA alone vs EMA+VDO (best threshold from Test 3)
+
+  --- EMA only ---
+    W 1 [2020-12-29→2021-06-28]: CAGR=+141.3%  MDD= 28.6%  Calmar=+4.95  Trades=20
+    W 2 [2021-06-29→2021-12-27]: CAGR=+137.2%  MDD= 18.7%  Calmar=+7.34  Trades=13
+    W 3 [2021-12-28→2022-06-27]: CAGR= -28.9%  MDD= 21.7%  Calmar=-1.33  Trades=9
+    W 4 [2022-06-28→2022-12-26]: CAGR= -49.1%  MDD= 35.4%  Calmar=-1.38  Trades=19
+    W 5 [2022-12-27→2023-06-26]: CAGR= +46.2%  MDD= 24.7%  Calmar=+1.87  Trades=20
+    W 6 [2023-06-27→2023-12-25]: CAGR= +92.8%  MDD=  9.8%  Calmar=+9.51  Trades=17
+    W 7 [2023-12-26→2024-06-24]: CAGR= +49.3%  MDD= 25.1%  Calmar=+1.96  Trades=19
+    W 8 [2024-06-25→2024-12-23]: CAGR= +55.4%  MDD= 23.1%  Calmar=+2.40  Trades=19
+    W 9 [2024-12-24→2025-06-23]: CAGR= +10.0%  MDD= 17.5%  Calmar=+0.57  Trades=15
+    W10 [2025-06-24→2025-12-22]: CAGR= -17.2%  MDD= 20.0%  Calmar=-0.86  Trades=16
+    SUMMARY: 7/10 positive, Mean Calmar=+2.50
+
+  --- EMA+VDO>0.002 ---
+    W 1 [2020-12-29→2021-06-28]: CAGR= +62.6%  MDD= 28.6%  Calmar=+2.19  Trades=13
+    W 2 [2021-06-29→2021-12-27]: CAGR=+143.9%  MDD= 17.9%  Calmar=+8.04  Trades=11
+    W 3 [2021-12-28→2022-06-27]: CAGR=  -5.6%  MDD= 15.5%  Calmar=-0.36  Trades=5
+    W 4 [2022-06-28→2022-12-26]: CAGR= -44.7%  MDD= 33.3%  Calmar=-1.34  Trades=11
+    W 5 [2022-12-27→2023-06-26]: CAGR= +53.1%  MDD= 28.6%  Calmar=+1.86  Trades=13
+    W 6 [2023-06-27→2023-12-25]: CAGR= +76.3%  MDD=  9.5%  Calmar=+8.02  Trades=16
+    W 7 [2023-12-26→2024-06-24]: CAGR= +17.2%  MDD= 27.6%  Calmar=+0.62  Trades=17
+    W 8 [2024-06-25→2024-12-23]: CAGR=+106.6%  MDD= 14.2%  Calmar=+7.51  Trades=15
+    W 9 [2024-12-24→2025-06-23]: CAGR= +19.1%  MDD= 15.4%  Calmar=+1.24  Trades=11
+    W10 [2025-06-24→2025-12-22]: CAGR= -10.9%  MDD= 14.5%  Calmar=-0.76  Trades=10
+    SUMMARY: 7/10 positive, Mean Calmar=+2.70
+
+  --- EMA+VDO>0.004 ---
+    W 1 [2020-12-29→2021-06-28]: CAGR= +37.4%  MDD= 32.6%  Calmar=+1.15  Trades=12
+    W 2 [2021-06-29→2021-12-27]: CAGR=+138.7%  MDD= 17.9%  Calmar=+7.75  Trades=11
+    W 3 [2021-12-28→2022-06-27]: CAGR=  -5.9%  MDD= 15.7%  Calmar=-0.38  Trades=5
+    W 4 [2022-06-28→2022-12-26]: CAGR= -33.1%  MDD= 26.6%  Calmar=-1.24  Trades=7
+    W 5 [2022-12-27→2023-06-26]: CAGR= +35.5%  MDD= 18.5%  Calmar=+1.92  Trades=10
+    W 6 [2023-06-27→2023-12-25]: CAGR= +62.8%  MDD= 11.0%  Calmar=+5.72  Trades=16
+    W 7 [2023-12-26→2024-06-24]: CAGR= +16.9%  MDD= 27.8%  Calmar=+0.61  Trades=17
+    W 8 [2024-06-25→2024-12-23]: CAGR=+116.9%  MDD= 14.2%  Calmar=+8.23  Trades=15
+    W 9 [2024-12-24→2025-06-23]: CAGR= +25.3%  MDD= 16.3%  Calmar=+1.55  Trades=10
+    W10 [2025-06-24→2025-12-22]: CAGR=  -8.7%  MDD= 13.4%  Calmar=-0.65  Trades=9
+    SUMMARY: 7/10 positive, Mean Calmar=+2.47
+
+  --- EMA+VDO_exit<-0.002 ---
+    W 1 [2020-12-29→2021-06-28]: CAGR= -53.7%  MDD= 52.5%  Calmar=-1.02  Trades=173
+    W 2 [2021-06-29→2021-12-27]: CAGR= +79.6%  MDD= 22.0%  Calmar=+3.61  Trades=137
+    W 3 [2021-12-28→2022-06-27]: CAGR= -46.8%  MDD= 27.6%  Calmar=-1.69  Trades=73
+    W 4 [2022-06-28→2022-12-26]: CAGR= -46.0%  MDD= 33.9%  Calmar=-1.35  Trades=62
+    W 5 [2022-12-27→2023-06-26]: CAGR= -45.1%  MDD= 47.8%  Calmar=-0.94  Trades=126
+    W 6 [2023-06-27→2023-12-25]: CAGR= -35.9%  MDD= 21.1%  Calmar=-1.71  Trades=166
+    W 7 [2023-12-26→2024-06-24]: CAGR= -42.0%  MDD= 39.8%  Calmar=-1.06  Trades=165
+    W 8 [2024-06-25→2024-12-23]: CAGR= -65.7%  MDD= 42.1%  Calmar=-1.56  Trades=185
+    W 9 [2024-12-24→2025-06-23]: CAGR= -54.0%  MDD= 32.0%  Calmar=-1.68  Trades=142
+    W10 [2025-06-24→2025-12-22]: CAGR= -56.3%  MDD= 36.4%  Calmar=-1.55  Trades=107
+    SUMMARY: 1/10 positive, Mean Calmar=-0.90
+
+  --- EMA+VDO>0.002+exit<-0.002 ---
+    W 1 [2020-12-29→2021-06-28]: CAGR= -50.1%  MDD= 49.5%  Calmar=-1.01  Trades=51
+    W 2 [2021-06-29→2021-12-27]: CAGR=+150.3%  MDD= 11.5%  Calmar=+13.12  Trades=30
+    W 3 [2021-12-28→2022-06-27]: CAGR= -13.8%  MDD=  9.3%  Calmar=-1.48  Trades=19
+    W 4 [2022-06-28→2022-12-26]: CAGR= -33.9%  MDD= 27.2%  Calmar=-1.25  Trades=14
+    W 5 [2022-12-27→2023-06-26]: CAGR= +10.9%  MDD= 24.8%  Calmar=+0.44  Trades=26
+    W 6 [2023-06-27→2023-12-25]: CAGR= +22.3%  MDD= 12.5%  Calmar=+1.78  Trades=47
+    W 7 [2023-12-26→2024-06-24]: CAGR=  -8.6%  MDD= 25.2%  Calmar=-0.34  Trades=48
+    W 8 [2024-06-25→2024-12-23]: CAGR= +20.0%  MDD= 16.4%  Calmar=+1.22  Trades=51
+    W 9 [2024-12-24→2025-06-23]: CAGR= +14.4%  MDD= 12.9%  Calmar=+1.12  Trades=30
+    W10 [2025-06-24→2025-12-22]: CAGR= -10.6%  MDD= 11.9%  Calmar=-0.89  Trades=25
+    SUMMARY: 5/10 positive, Mean Calmar=+1.27
+
+================================================================================
+TEST 6: HOLDOUT (2024-09-17 to end)
+================================================================================
+  EMA only                            [base]: CAGR= +25.1%  MDD= 26.7%  Calmar=+0.94  Trades=47
+  EMA only                            [harsh]: CAGR= +17.5%  MDD= 28.3%  Calmar=+0.62  Trades=47
+  EMA+VDO>0.002                       [base]: CAGR= +39.1%  MDD= 17.1%  Calmar=+2.29  Trades=35
+  EMA+VDO>0.002                       [harsh]: CAGR= +32.8%  MDD= 18.2%  Calmar=+1.80  Trades=35
+  EMA+VDO>0.004                       [base]: CAGR= +47.9%  MDD= 18.5%  Calmar=+2.59  Trades=32
+  EMA+VDO>0.004                       [harsh]: CAGR= +41.7%  MDD= 19.5%  Calmar=+2.14  Trades=32
+  EMA+VDO_exit<-0.002                 [base]: CAGR= -54.5%  MDD= 71.2%  Calmar=-0.77  Trades=414
+  EMA+VDO_exit<-0.002                 [harsh]: CAGR= -73.8%  MDD= 86.7%  Calmar=-0.85  Trades=414
+  EMA+VDO>0.002+exit<-0.002           [base]: CAGR= +11.2%  MDD= 16.4%  Calmar=+0.68  Trades=104
+  EMA+VDO>0.002+exit<-0.002           [harsh]: CAGR=  -3.2%  MDD= 21.1%  Calmar=-0.15  Trades=104
+
+================================================================================
+VERDICT: DOES VDO ADD GENUINE ALPHA?
+================================================================================

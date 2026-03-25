@@ -1,0 +1,82 @@
+{
+  "description": "DSR update: N=694\u2192699 after Overlay A cooldown grid sweep (+5 trials)",
+  "timestamp": "2026-02-24 03:25:56 UTC",
+  "context": {
+    "new_trials": 5,
+    "new_trials_source": "Overlay A cooldown grid sweep: K \u2208 {0, 3, 6, 12, 18}",
+    "n_old": 694,
+    "n_new": 699,
+    "inventory_breakdown": "89 YAML-named + 477 WFO grid + 54 sensitivity + 72 overlay + 5 overlay_A_cooldown_grid + 2 reference = 699",
+    "promoted_config": "V10+Overlay A (K=12), cooldown_after_emergency_dd_bars=12"
+  },
+  "promoted_config_stats": {
+    "sr_observed": 1.1723,
+    "T": 2607,
+    "skewness": 1.3594,
+    "kurtosis": 24.2681,
+    "note": "skew/kurt from V10 baseline (overlay changes ~4 trades, negligible effect)"
+  },
+  "dsr_at_N": {
+    "27": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1082
+    },
+    "54": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1229
+    },
+    "89": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1327
+    },
+    "200": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1474
+    },
+    "400": {
+      "dsr": 1.0,
+      "e_max_sr": 0.159
+    },
+    "694": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1678
+    },
+    "699": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1679
+    }
+  },
+  "dsr_comparison": {
+    "v10_plain_at_N699": {
+      "sr": 1.151,
+      "dsr": 1.0,
+      "pass": true
+    },
+    "v10_overlay_a_k12_at_N699": {
+      "sr": 1.1723,
+      "dsr": 1.0,
+      "pass": true
+    }
+  },
+  "delta_n_impact": {
+    "dsr_at_N694": 1.0,
+    "dsr_at_N699": 1.0,
+    "delta_dsr": 0.0,
+    "delta_e_max_sr": 0.0001,
+    "assessment": "negligible"
+  },
+  "incremental_dsr": {
+    "delta_sr": 0.0213,
+    "dsr_at_N699": 0.020183,
+    "pass": false,
+    "note": "Overlay A K=12 Sharpe improvement (+0.0213) over plain V10 does NOT survive multiple-testing at N=699. However, overlay A's value is primarily in cascade elimination and MDD reduction, not Sharpe improvement."
+  },
+  "verdict": {
+    "absolute_dsr_pass": true,
+    "absolute_dsr_value_at_N699": 1.0,
+    "incremental_dsr_pass": false,
+    "incremental_dsr_value": 0.020183,
+    "n_impact": "negligible \u2014 5 additional trials do not materially change DSR",
+    "conclusion": "PASS (absolute). V10+Overlay A (K=12) Sharpe of 1.1723 trivially survives DSR at N=699 (DSR=1.0). The N increase from 694\u2192699 has zero practical impact on any DSR result."
+  }
+}

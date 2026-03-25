@@ -1,0 +1,73 @@
+{
+  "baseline_wfo_oos": {
+    "sharpe": 0.7422209324986155,
+    "cagr": 0.20958922941176117,
+    "mdd": -0.49915883973438047,
+    "end_equity": 2.429364894786534,
+    "bar_count": 10224
+  },
+  "best_single_signal_train_threshold": {
+    "signal": "osc_12_28_imbalance_ratio_base",
+    "measurement": "imbalance_ratio_base",
+    "operator": "osc_12_28",
+    "rule_type": "fixed_natural",
+    "natural_center": 0.0,
+    "aggregate_sharpe": 1.1307597999722017,
+    "aggregate_cagr": 0.3503025443385246,
+    "aggregate_mdd": -0.37093930671517106,
+    "positive_folds_vs_baseline": 3,
+    "avg_selected_threshold": NaN
+  },
+  "best_measurement_rows": [
+    {
+      "measurement": "imbalance_ratio_base",
+      "signal": "osc_12_28_imbalance_ratio_base",
+      "operator": "osc_12_28",
+      "rule_type": "train_threshold",
+      "natural_center": 0.0,
+      "aggregate_sharpe": 1.0974448746235619,
+      "aggregate_cagr": 0.33702811931449217,
+      "aggregate_mdd": -0.3392225305551142,
+      "positive_folds_vs_baseline": 4,
+      "avg_selected_threshold": -0.000675858513
+    },
+    {
+      "measurement": "imbalance_ratio_quote",
+      "signal": "osc_12_28_imbalance_ratio_quote",
+      "operator": "osc_12_28",
+      "rule_type": "train_threshold",
+      "natural_center": 0.0,
+      "aggregate_sharpe": 1.0702664479214654,
+      "aggregate_cagr": 0.3255303004248622,
+      "aggregate_mdd": -0.3648484810818692,
+      "positive_folds_vs_baseline": 4,
+      "avg_selected_threshold": -0.0006918893122500001
+    },
+    {
+      "measurement": "net_quote_norm_28",
+      "signal": "osc_12_28_net_quote_norm_28",
+      "operator": "osc_12_28",
+      "rule_type": "train_threshold",
+      "natural_center": 0.0,
+      "aggregate_sharpe": 1.0652295822315534,
+      "aggregate_cagr": 0.3208260331616464,
+      "aggregate_mdd": -0.31195245963705565,
+      "positive_folds_vs_baseline": 3,
+      "avg_selected_threshold": -0.002626628984
+    },
+    {
+      "measurement": "vol_surprise_quote_28",
+      "signal": "ema12_vol_surprise_quote_28",
+      "operator": "ema12",
+      "rule_type": "train_threshold",
+      "natural_center": 1.0,
+      "aggregate_sharpe": 1.1015345837253034,
+      "aggregate_cagr": 0.3364036033930913,
+      "aggregate_mdd": -0.32422354982136703,
+      "positive_folds_vs_baseline": 3,
+      "avg_selected_threshold": 1.0869029644505002
+    }
+  ],
+  "vdo_threshold_selection_mean": -0.000675858513,
+  "vdo_threshold_selection_std": 0.0016576182837723804
+}

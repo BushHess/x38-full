@@ -1,0 +1,140 @@
+================================================================================
+Q4: HOLDOUT BOOTSTRAP — Sharpe Difference CI (X0 vs X2 vs X6)
+  Holdout: 2024-09-17 → 2026-02-20
+  Bootstrap: 1000 paths, block sizes: [21, 42, 84]
+  Cost: harsh (50 bps RT)
+================================================================================
+
+  Total H4 bars: 17838
+  Holdout starts at bar 14706 (2024-09-17)
+  Holdout bars: 3132 (1.43 years)
+
+  X0: Sharpe=0.8406  CAGR=21.37%  MDD=23.95%  trades_total=189  (0.06s)
+
+  X2: Sharpe=0.7047  CAGR=16.95%  MDD=24.50%  trades_total=152  (0.06s)
+
+  X6: Sharpe=0.7047  CAGR=16.95%  MDD=24.50%  trades_total=152  (0.06s)
+
+  Point estimates (holdout, harsh):
+    X2 - X0: dSharpe = -0.1359
+    X6 - X0: dSharpe = -0.1359
+    X6 - X2: dSharpe = +0.0000
+
+================================================================================
+  BLOCK SIZE = 21 bars (~3.5 days)
+================================================================================
+
+  Per-strategy Sharpe distribution (1000 paths):
+    X0: median=0.8554  mean=0.8527  95% CI=[-1.0045, 2.6283]  90% CI=[-0.6885, 2.3695]
+    X2: median=0.7284  mean=0.7168  95% CI=[-1.2444, 2.5533]  90% CI=[-0.9337, 2.3222]
+    X6: median=0.7284  mean=0.7168  95% CI=[-1.2444, 2.5533]  90% CI=[-0.9337, 2.3222]
+
+  Pairwise Sharpe difference:
+    X2 - X0:
+      mean_delta = -0.1359
+      median_delta = -0.1117
+      95% CI = [-0.5870, +0.2401]
+      90% CI = [-0.5103, +0.1911]
+      P(X2 > X0) = 26.0%  (260/1000)
+      95% CI crosses zero: YES
+    X6 - X0:
+      mean_delta = -0.1359
+      median_delta = -0.1117
+      95% CI = [-0.5870, +0.2401]
+      90% CI = [-0.5103, +0.1911]
+      P(X6 > X0) = 26.0%  (260/1000)
+      95% CI crosses zero: YES
+    X6 - X2:
+      mean_delta = +0.0000
+      median_delta = +0.0000
+      95% CI = [+0.0000, +0.0000]
+      90% CI = [+0.0000, +0.0000]
+      P(X6 > X2) = 0.0%  (0/1000)
+      95% CI crosses zero: NO
+
+================================================================================
+  BLOCK SIZE = 42 bars (~7.0 days)
+================================================================================
+
+  Per-strategy Sharpe distribution (1000 paths):
+    X0: median=0.8551  mean=0.8364  95% CI=[-1.0014, 2.5119]  90% CI=[-0.6236, 2.2376]
+    X2: median=0.7169  mean=0.6971  95% CI=[-1.2361, 2.4550]  90% CI=[-0.8454, 2.1676]
+    X6: median=0.7169  mean=0.6971  95% CI=[-1.2361, 2.4550]  90% CI=[-0.8454, 2.1676]
+
+  Pairwise Sharpe difference:
+    X2 - X0:
+      mean_delta = -0.1392
+      median_delta = -0.1301
+      95% CI = [-0.5816, +0.2454]
+      90% CI = [-0.5011, +0.1845]
+      P(X2 > X0) = 27.0%  (270/1000)
+      95% CI crosses zero: YES
+    X6 - X0:
+      mean_delta = -0.1392
+      median_delta = -0.1301
+      95% CI = [-0.5816, +0.2454]
+      90% CI = [-0.5011, +0.1845]
+      P(X6 > X0) = 27.0%  (270/1000)
+      95% CI crosses zero: YES
+    X6 - X2:
+      mean_delta = +0.0000
+      median_delta = +0.0000
+      95% CI = [+0.0000, +0.0000]
+      90% CI = [+0.0000, +0.0000]
+      P(X6 > X2) = 0.0%  (0/1000)
+      95% CI crosses zero: NO
+
+================================================================================
+  BLOCK SIZE = 84 bars (~14.0 days)
+================================================================================
+
+  Per-strategy Sharpe distribution (1000 paths):
+    X0: median=0.8014  mean=0.7821  95% CI=[-1.0464, 2.5377]  90% CI=[-0.7555, 2.3030]
+    X2: median=0.6605  mean=0.6439  95% CI=[-1.1472, 2.3796]  90% CI=[-0.9239, 2.1438]
+    X6: median=0.6605  mean=0.6439  95% CI=[-1.1472, 2.3796]  90% CI=[-0.9239, 2.1438]
+
+  Pairwise Sharpe difference:
+    X2 - X0:
+      mean_delta = -0.1382
+      median_delta = -0.1336
+      95% CI = [-0.5403, +0.2398]
+      90% CI = [-0.4756, +0.1664]
+      P(X2 > X0) = 24.8%  (248/1000)
+      95% CI crosses zero: YES
+    X6 - X0:
+      mean_delta = -0.1382
+      median_delta = -0.1336
+      95% CI = [-0.5403, +0.2398]
+      90% CI = [-0.4756, +0.1664]
+      P(X6 > X0) = 24.8%  (248/1000)
+      95% CI crosses zero: YES
+    X6 - X2:
+      mean_delta = +0.0000
+      median_delta = +0.0000
+      95% CI = [+0.0000, +0.0000]
+      90% CI = [+0.0000, +0.0000]
+      P(X6 > X2) = 0.0%  (0/1000)
+      95% CI crosses zero: NO
+
+================================================================================
+SUMMARY: HOLDOUT BOOTSTRAP RESULTS
+================================================================================
+
+  Point estimates (holdout, harsh):
+    X0 Sharpe: 0.8406
+    X2 Sharpe: 0.7047
+    X6 Sharpe: 0.7047
+
+  P(X0 > X2) across block sizes:
+    block=21: 74.0%
+    block=42: 73.0%
+    block=84: 75.2%
+
+  P(X0 > X6) across block sizes:
+    block=21: 74.0%
+    block=42: 73.0%
+    block=84: 75.2%
+
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x6/holdout_bootstrap_q4_results.json
+
+  Total time: 4.1s

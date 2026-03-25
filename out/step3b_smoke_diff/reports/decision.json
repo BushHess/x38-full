@@ -1,0 +1,30 @@
+{
+  "verdict": "ERROR",
+  "exit_code": 3,
+  "deltas": {
+    "invariant_violation_count": 200
+  },
+  "trade_level_bootstrap": {},
+  "failures": [
+    "exposure_within_max_total:200",
+    "invariants:exposure_within_max_total:200"
+  ],
+  "warnings": [],
+  "errors": [
+    "exposure_within_max_total:200",
+    "invariants:exposure_within_max_total:200"
+  ],
+  "reasons": [
+    "Invariant violations detected; logic safety checks failed",
+    "Invariant checks failed"
+  ],
+  "key_links": {
+    "invariant_violations": "results/invariant_violations.csv"
+  },
+  "gates": [],
+  "metadata": {
+    "source": "invariants",
+    "n_violations": 200,
+    "limit_reached": true
+  }
+}

@@ -1,0 +1,2091 @@
+{
+  "canonical_spec": {
+    "tag": "canonical_24_6_last8",
+    "train_months": 24,
+    "test_months": 6,
+    "slide_months": 6,
+    "max_windows": 8
+  },
+  "recomputed_summary": {
+    "n_windows_total": 8,
+    "n_windows_valid": 8,
+    "n_windows_power_only": 8,
+    "n_windows": 8,
+    "positive_delta_windows": 5,
+    "win_rate": 0.625,
+    "mean_delta_score": 12.4563,
+    "median_delta_score": 12.9825,
+    "worst_delta_score": -20.788,
+    "best_delta_score": 54.8324,
+    "invalid_windows_count": 0,
+    "low_trade_windows_count": 0,
+    "low_trade_windows": 0,
+    "min_trades_for_power": 5,
+    "low_trade_threshold": 5,
+    "stats_all_valid": {
+      "n_windows": 8,
+      "win_count": 5,
+      "win_rate": 0.625,
+      "mean_delta": 12.4563,
+      "median_delta": 12.9825,
+      "worst_delta": -20.788,
+      "best_delta": 54.8324
+    },
+    "stats_power_only": {
+      "n_windows": 8,
+      "win_count": 5,
+      "win_rate": 0.625,
+      "mean_delta": 12.4563,
+      "median_delta": 12.9825,
+      "worst_delta": -20.788,
+      "best_delta": 54.8324
+    },
+    "wilcoxon": {
+      "statistic": 27.0,
+      "p_value": 0.125,
+      "n_nonzero": 8,
+      "sufficient": true
+    },
+    "bootstrap_ci": {
+      "ci_lower": -3.4378,
+      "ci_upper": 29.279,
+      "mean_delta": 12.4563,
+      "excludes_zero": false,
+      "n": 8,
+      "seed": 1337
+    },
+    "low_trade_ratio": 0.0,
+    "wfo_low_power": false,
+    "pass": false,
+    "pass_detail": "wilcoxon_p=0.125000; bootstrap_ci_lower=-3.4378; pass=false"
+  },
+  "reproduction_comparison": [
+    {
+      "window_id": 0,
+      "source_window_id": 0,
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "source_delta": 27.662,
+      "branch_delta": 27.662,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 1,
+      "source_window_id": 1,
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "source_delta": -20.788,
+      "branch_delta": -20.788,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 2,
+      "source_window_id": 2,
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "source_delta": -4.9226,
+      "branch_delta": -4.9226,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 3,
+      "source_window_id": 3,
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "source_delta": 30.0936,
+      "branch_delta": 30.0936,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 4,
+      "source_window_id": 4,
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "source_delta": 54.8324,
+      "branch_delta": 54.8324,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 5,
+      "source_window_id": 5,
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "source_delta": 14.629,
+      "branch_delta": 14.629,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 6,
+      "source_window_id": 6,
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "source_delta": -13.192,
+      "branch_delta": -13.192,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    },
+    {
+      "window_id": 7,
+      "source_window_id": 7,
+      "test_start": "2025-07-01",
+      "test_end": "2025-12-31",
+      "source_delta": 11.336,
+      "branch_delta": 11.336,
+      "abs_diff": 0.0,
+      "source_valid_window": true,
+      "source_low_trade_window": false,
+      "branch_valid_window": true,
+      "branch_low_trade_window": false
+    }
+  ],
+  "failed_window_ids": [
+    1,
+    2,
+    6
+  ],
+  "failed_windows": [
+    {
+      "window_id": 1,
+      "train_start": "2020-07-01",
+      "train_end": "2022-06-30",
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -20.788,
+      "candidate": {
+        "score": -125.388,
+        "sharpe": -1.8526,
+        "cagr_pct": -42.74,
+        "mdd_pct": 33.23,
+        "trades": 14,
+        "trade_profile": {
+          "count": 14,
+          "win_rate_pct": 28.57,
+          "avg_return_pct": -1.9513,
+          "median_return_pct": -1.8559,
+          "avg_days_held": 3.5595,
+          "median_days_held": 3.4167,
+          "max_return_pct": 2.1877,
+          "min_return_pct": -6.8134,
+          "long_hold_count_gt30bars": 3,
+          "profit_share_long_holds_pct": 58.86
+        },
+        "top_winners": [
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1660132800000,
+            "exit_ts_ms": 1660737600000,
+            "return_pct": 2.1877,
+            "pnl_usd": 202.58,
+            "days_held": 7.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1658203200000,
+            "exit_ts_ms": 1658577600000,
+            "return_pct": 0.9855,
+            "pnl_usd": 98.55,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1667448000000,
+            "exit_ts_ms": 1667808000000,
+            "return_pct": 1.0908,
+            "pnl_usd": 82.57,
+            "days_held": 4.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1660752000000,
+            "exit_ts_ms": 1660896000000,
+            "return_pct": -6.8134,
+            "pnl_usd": -644.72,
+            "days_held": 1.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1658620800000,
+            "exit_ts_ms": 1658793600000,
+            "return_pct": -5.5414,
+            "pnl_usd": -559.6,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1662912000000,
+            "exit_ts_ms": 1663084800000,
+            "return_pct": -4.2334,
+            "pnl_usd": -373.29,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": -104.6,
+        "sharpe": -1.2702,
+        "cagr_pct": -35.82,
+        "mdd_pct": 27.75,
+        "trades": 16,
+        "trade_profile": {
+          "count": 16,
+          "win_rate_pct": 25.0,
+          "avg_return_pct": -1.3333,
+          "median_return_pct": -1.3958,
+          "avg_days_held": 3.3021,
+          "median_days_held": 2.8333,
+          "max_return_pct": 7.0025,
+          "min_return_pct": -6.9818,
+          "long_hold_count_gt30bars": 5,
+          "profit_share_long_holds_pct": 74.23
+        },
+        "top_winners": [
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1658908800000,
+            "exit_ts_ms": 1659384000000,
+            "return_pct": 7.0025,
+            "pnl_usd": 657.69,
+            "days_held": 5.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 15,
+            "entry_ts_ms": 1670846400000,
+            "exit_ts_ms": 1671120000000,
+            "return_pct": 2.0722,
+            "pnl_usd": 162.47,
+            "days_held": 3.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1667448000000,
+            "exit_ts_ms": 1667808000000,
+            "return_pct": 1.0908,
+            "pnl_usd": 88.6,
+            "days_held": 4.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1660795200000,
+            "exit_ts_ms": 1660896000000,
+            "return_pct": -6.9818,
+            "pnl_usd": -694.42,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1658620800000,
+            "exit_ts_ms": 1658793600000,
+            "return_pct": -5.5414,
+            "pnl_usd": -550.99,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1662912000000,
+            "exit_ts_ms": 1663084800000,
+            "return_pct": -4.2334,
+            "pnl_usd": -391.66,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -20.788,
+        "sharpe": -0.5824,
+        "cagr_pct": -6.92,
+        "mdd_pct": 5.48,
+        "trades": -2
+      },
+      "failure_tag": "candidate_worse_return_and_worse_drawdown"
+    },
+    {
+      "window_id": 2,
+      "train_start": "2021-01-01",
+      "train_end": "2022-12-31",
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -4.9226,
+      "candidate": {
+        "score": 28.0699,
+        "sharpe": 0.5953,
+        "cagr_pct": 16.11,
+        "mdd_pct": 32.28,
+        "trades": 17,
+        "trade_profile": {
+          "count": 17,
+          "win_rate_pct": 29.41,
+          "avg_return_pct": 0.8162,
+          "median_return_pct": -2.7918,
+          "avg_days_held": 5.3039,
+          "median_days_held": 4.0,
+          "max_return_pct": 32.3648,
+          "min_return_pct": -6.3575,
+          "long_hold_count_gt30bars": 6,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1673222400000,
+            "exit_ts_ms": 1675108800000,
+            "return_pct": 32.3648,
+            "pnl_usd": 3236.48,
+            "days_held": 21.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 17,
+            "entry_ts_ms": 1687262400000,
+            "exit_ts_ms": 1687982400000,
+            "return_pct": 11.3047,
+            "pnl_usd": 1091.61,
+            "days_held": 8.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1678924800000,
+            "exit_ts_ms": 1679515200000,
+            "return_pct": 9.2653,
+            "pnl_usd": 876.2,
+            "days_held": 6.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1676520000000,
+            "exit_ts_ms": 1676592000000,
+            "return_pct": -5.3825,
+            "pnl_usd": -672.51,
+            "days_held": 0.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1677124800000,
+            "exit_ts_ms": 1677268800000,
+            "return_pct": -5.6766,
+            "pnl_usd": -644.54,
+            "days_held": 1.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1678809600000,
+            "exit_ts_ms": 1678910400000,
+            "return_pct": -6.3575,
+            "pnl_usd": -642.03,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 32.9925,
+        "sharpe": 0.631,
+        "cagr_pct": 17.73,
+        "mdd_pct": 31.41,
+        "trades": 16,
+        "trade_profile": {
+          "count": 16,
+          "win_rate_pct": 31.25,
+          "avg_return_pct": 0.8741,
+          "median_return_pct": -3.0189,
+          "avg_days_held": 5.75,
+          "median_days_held": 4.0833,
+          "max_return_pct": 32.3648,
+          "min_return_pct": -5.6694,
+          "long_hold_count_gt30bars": 5,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1673222400000,
+            "exit_ts_ms": 1675108800000,
+            "return_pct": 32.3648,
+            "pnl_usd": 3236.48,
+            "days_held": 21.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 16,
+            "entry_ts_ms": 1687262400000,
+            "exit_ts_ms": 1687996800000,
+            "return_pct": 11.2212,
+            "pnl_usd": 1091.83,
+            "days_held": 8.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1681012800000,
+            "exit_ts_ms": 1681718400000,
+            "return_pct": 5.929,
+            "pnl_usd": 641.19,
+            "days_held": 8.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1676520000000,
+            "exit_ts_ms": 1676592000000,
+            "return_pct": -5.3825,
+            "pnl_usd": -678.51,
+            "days_held": 0.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1677124800000,
+            "exit_ts_ms": 1677283200000,
+            "return_pct": -5.6694,
+            "pnl_usd": -649.47,
+            "days_held": 1.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1677441600000,
+            "exit_ts_ms": 1677816000000,
+            "return_pct": -5.4936,
+            "pnl_usd": -593.65,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -4.9226,
+        "sharpe": -0.0357,
+        "cagr_pct": -1.62,
+        "mdd_pct": 0.87,
+        "trades": 1
+      },
+      "failure_tag": "candidate_worse_return_and_worse_drawdown"
+    },
+    {
+      "window_id": 6,
+      "train_start": "2023-01-01",
+      "train_end": "2024-12-31",
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -13.192,
+      "candidate": {
+        "score": 26.4793,
+        "sharpe": 0.5271,
+        "cagr_pct": 10.91,
+        "mdd_pct": 13.76,
+        "trades": 13,
+        "trade_profile": {
+          "count": 13,
+          "win_rate_pct": 38.46,
+          "avg_return_pct": 0.5483,
+          "median_return_pct": -0.6024,
+          "avg_days_held": 5.4615,
+          "median_days_held": 4.0,
+          "max_return_pct": 10.4616,
+          "min_return_pct": -4.6062,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 81.53
+        },
+        "top_winners": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1744660800000,
+            "exit_ts_ms": 1746403200000,
+            "return_pct": 10.4616,
+            "pnl_usd": 973.9,
+            "days_held": 20.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1746489600000,
+            "exit_ts_ms": 1747656000000,
+            "return_pct": 8.1451,
+            "pnl_usd": 837.58,
+            "days_held": 13.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1747670400000,
+            "exit_ts_ms": 1748044800000,
+            "return_pct": 1.9054,
+            "pnl_usd": 211.9,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1743048000000,
+            "exit_ts_ms": 1743177600000,
+            "return_pct": -4.6062,
+            "pnl_usd": -449.5,
+            "days_held": 1.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1748116800000,
+            "exit_ts_ms": 1748548800000,
+            "return_pct": -3.4468,
+            "pnl_usd": -390.61,
+            "days_held": 5.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1750132800000,
+            "exit_ts_ms": 1750233600000,
+            "return_pct": -2.9192,
+            "pnl_usd": -319.39,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trend_exit"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 39.6713,
+        "sharpe": 0.6956,
+        "cagr_pct": 15.96,
+        "mdd_pct": 15.84,
+        "trades": 11,
+        "trade_profile": {
+          "count": 11,
+          "win_rate_pct": 36.36,
+          "avg_return_pct": 0.8879,
+          "median_return_pct": -1.1185,
+          "avg_days_held": 6.697,
+          "median_days_held": 4.0,
+          "max_return_pct": 12.658,
+          "min_return_pct": -4.6062,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 97.39
+        },
+        "top_winners": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1746489600000,
+            "exit_ts_ms": 1748174400000,
+            "return_pct": 12.658,
+            "pnl_usd": 1283.54,
+            "days_held": 19.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1744660800000,
+            "exit_ts_ms": 1746403200000,
+            "return_pct": 10.4616,
+            "pnl_usd": 960.36,
+            "days_held": 20.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1737000000000,
+            "exit_ts_ms": 1737633600000,
+            "return_pct": 1.9683,
+            "pnl_usd": 193.7,
+            "days_held": 7.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1743048000000,
+            "exit_ts_ms": 1743177600000,
+            "return_pct": -4.6062,
+            "pnl_usd": -443.25,
+            "days_held": 1.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1748304000000,
+            "exit_ts_ms": 1748548800000,
+            "return_pct": -3.8657,
+            "pnl_usd": -441.6,
+            "days_held": 2.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1737676800000,
+            "exit_ts_ms": 1737950400000,
+            "return_pct": -2.9068,
+            "pnl_usd": -291.69,
+            "days_held": 3.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -13.192,
+        "sharpe": -0.1685,
+        "cagr_pct": -5.05,
+        "mdd_pct": -2.08,
+        "trades": 2
+      },
+      "failure_tag": "candidate_drawdown_better_but_return_weaker"
+    }
+  ],
+  "all_windows": [
+    {
+      "window_id": 0,
+      "train_start": "2020-01-01",
+      "train_end": "2021-12-31",
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": 27.662,
+      "candidate": {
+        "score": -15.788,
+        "sharpe": -0.0598,
+        "cagr_pct": -3.04,
+        "mdd_pct": 14.48,
+        "trades": 5,
+        "trade_profile": {
+          "count": 5,
+          "win_rate_pct": 40.0,
+          "avg_return_pct": -0.1251,
+          "median_return_pct": -1.9269,
+          "avg_days_held": 6.1333,
+          "median_days_held": 4.8333,
+          "max_return_pct": 11.1673,
+          "min_return_pct": -5.5002,
+          "long_hold_count_gt30bars": 2,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1647532800000,
+            "exit_ts_ms": 1648756800000,
+            "return_pct": 11.1673,
+            "pnl_usd": 1043.66,
+            "days_held": 14.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1644091200000,
+            "exit_ts_ms": 1644652800000,
+            "return_pct": 0.8402,
+            "pnl_usd": 84.02,
+            "days_held": 6.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1644883200000,
+            "exit_ts_ms": 1645113600000,
+            "return_pct": -1.9269,
+            "pnl_usd": -194.3,
+            "days_held": 2.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1646150400000,
+            "exit_ts_ms": 1646366400000,
+            "return_pct": -5.5002,
+            "pnl_usd": -543.95,
+            "days_held": 2.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1648843200000,
+            "exit_ts_ms": 1649260800000,
+            "return_pct": -5.206,
+            "pnl_usd": -540.88,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1644883200000,
+            "exit_ts_ms": 1645113600000,
+            "return_pct": -1.9269,
+            "pnl_usd": -194.3,
+            "days_held": 2.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": -43.45,
+        "sharpe": -0.6252,
+        "cagr_pct": -13.78,
+        "mdd_pct": 16.0,
+        "trades": 6,
+        "trade_profile": {
+          "count": 6,
+          "win_rate_pct": 33.33,
+          "avg_return_pct": -1.0405,
+          "median_return_pct": -2.9346,
+          "avg_days_held": 5.5,
+          "median_days_held": 3.9167,
+          "max_return_pct": 11.1673,
+          "min_return_pct": -7.2229,
+          "long_hold_count_gt30bars": 2,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1647532800000,
+            "exit_ts_ms": 1648756800000,
+            "return_pct": 11.1673,
+            "pnl_usd": 1025.13,
+            "days_held": 14.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1644091200000,
+            "exit_ts_ms": 1644681600000,
+            "return_pct": 0.888,
+            "pnl_usd": 88.8,
+            "days_held": 6.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1644883200000,
+            "exit_ts_ms": 1645113600000,
+            "return_pct": -1.9269,
+            "pnl_usd": -194.4,
+            "days_held": 2.6667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1646150400000,
+            "exit_ts_ms": 1646409600000,
+            "return_pct": -7.2229,
+            "pnl_usd": -714.66,
+            "days_held": 3.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1648843200000,
+            "exit_ts_ms": 1649260800000,
+            "return_pct": -5.206,
+            "pnl_usd": -531.27,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1649332800000,
+            "exit_ts_ms": 1649462400000,
+            "return_pct": -3.9424,
+            "pnl_usd": -381.37,
+            "days_held": 1.5,
+            "exit_reason": "vtrend_trend_exit"
+          }
+        ]
+      },
+      "delta": {
+        "score": 27.662,
+        "sharpe": 0.5654,
+        "cagr_pct": 10.74,
+        "mdd_pct": -1.52,
+        "trades": -1
+      },
+      "failure_tag": "positive_window"
+    },
+    {
+      "window_id": 1,
+      "train_start": "2020-07-01",
+      "train_end": "2022-06-30",
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -20.788,
+      "candidate": {
+        "score": -125.388,
+        "sharpe": -1.8526,
+        "cagr_pct": -42.74,
+        "mdd_pct": 33.23,
+        "trades": 14,
+        "trade_profile": {
+          "count": 14,
+          "win_rate_pct": 28.57,
+          "avg_return_pct": -1.9513,
+          "median_return_pct": -1.8559,
+          "avg_days_held": 3.5595,
+          "median_days_held": 3.4167,
+          "max_return_pct": 2.1877,
+          "min_return_pct": -6.8134,
+          "long_hold_count_gt30bars": 3,
+          "profit_share_long_holds_pct": 58.86
+        },
+        "top_winners": [
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1660132800000,
+            "exit_ts_ms": 1660737600000,
+            "return_pct": 2.1877,
+            "pnl_usd": 202.58,
+            "days_held": 7.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1658203200000,
+            "exit_ts_ms": 1658577600000,
+            "return_pct": 0.9855,
+            "pnl_usd": 98.55,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1667448000000,
+            "exit_ts_ms": 1667808000000,
+            "return_pct": 1.0908,
+            "pnl_usd": 82.57,
+            "days_held": 4.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1660752000000,
+            "exit_ts_ms": 1660896000000,
+            "return_pct": -6.8134,
+            "pnl_usd": -644.72,
+            "days_held": 1.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1658620800000,
+            "exit_ts_ms": 1658793600000,
+            "return_pct": -5.5414,
+            "pnl_usd": -559.6,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1662912000000,
+            "exit_ts_ms": 1663084800000,
+            "return_pct": -4.2334,
+            "pnl_usd": -373.29,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": -104.6,
+        "sharpe": -1.2702,
+        "cagr_pct": -35.82,
+        "mdd_pct": 27.75,
+        "trades": 16,
+        "trade_profile": {
+          "count": 16,
+          "win_rate_pct": 25.0,
+          "avg_return_pct": -1.3333,
+          "median_return_pct": -1.3958,
+          "avg_days_held": 3.3021,
+          "median_days_held": 2.8333,
+          "max_return_pct": 7.0025,
+          "min_return_pct": -6.9818,
+          "long_hold_count_gt30bars": 5,
+          "profit_share_long_holds_pct": 74.23
+        },
+        "top_winners": [
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1658908800000,
+            "exit_ts_ms": 1659384000000,
+            "return_pct": 7.0025,
+            "pnl_usd": 657.69,
+            "days_held": 5.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 15,
+            "entry_ts_ms": 1670846400000,
+            "exit_ts_ms": 1671120000000,
+            "return_pct": 2.0722,
+            "pnl_usd": 162.47,
+            "days_held": 3.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1667448000000,
+            "exit_ts_ms": 1667808000000,
+            "return_pct": 1.0908,
+            "pnl_usd": 88.6,
+            "days_held": 4.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1660795200000,
+            "exit_ts_ms": 1660896000000,
+            "return_pct": -6.9818,
+            "pnl_usd": -694.42,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1658620800000,
+            "exit_ts_ms": 1658793600000,
+            "return_pct": -5.5414,
+            "pnl_usd": -550.99,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1662912000000,
+            "exit_ts_ms": 1663084800000,
+            "return_pct": -4.2334,
+            "pnl_usd": -391.66,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -20.788,
+        "sharpe": -0.5824,
+        "cagr_pct": -6.92,
+        "mdd_pct": 5.48,
+        "trades": -2
+      },
+      "failure_tag": "candidate_worse_return_and_worse_drawdown"
+    },
+    {
+      "window_id": 2,
+      "train_start": "2021-01-01",
+      "train_end": "2022-12-31",
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -4.9226,
+      "candidate": {
+        "score": 28.0699,
+        "sharpe": 0.5953,
+        "cagr_pct": 16.11,
+        "mdd_pct": 32.28,
+        "trades": 17,
+        "trade_profile": {
+          "count": 17,
+          "win_rate_pct": 29.41,
+          "avg_return_pct": 0.8162,
+          "median_return_pct": -2.7918,
+          "avg_days_held": 5.3039,
+          "median_days_held": 4.0,
+          "max_return_pct": 32.3648,
+          "min_return_pct": -6.3575,
+          "long_hold_count_gt30bars": 6,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1673222400000,
+            "exit_ts_ms": 1675108800000,
+            "return_pct": 32.3648,
+            "pnl_usd": 3236.48,
+            "days_held": 21.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 17,
+            "entry_ts_ms": 1687262400000,
+            "exit_ts_ms": 1687982400000,
+            "return_pct": 11.3047,
+            "pnl_usd": 1091.61,
+            "days_held": 8.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1678924800000,
+            "exit_ts_ms": 1679515200000,
+            "return_pct": 9.2653,
+            "pnl_usd": 876.2,
+            "days_held": 6.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1676520000000,
+            "exit_ts_ms": 1676592000000,
+            "return_pct": -5.3825,
+            "pnl_usd": -672.51,
+            "days_held": 0.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1677124800000,
+            "exit_ts_ms": 1677268800000,
+            "return_pct": -5.6766,
+            "pnl_usd": -644.54,
+            "days_held": 1.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1678809600000,
+            "exit_ts_ms": 1678910400000,
+            "return_pct": -6.3575,
+            "pnl_usd": -642.03,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 32.9925,
+        "sharpe": 0.631,
+        "cagr_pct": 17.73,
+        "mdd_pct": 31.41,
+        "trades": 16,
+        "trade_profile": {
+          "count": 16,
+          "win_rate_pct": 31.25,
+          "avg_return_pct": 0.8741,
+          "median_return_pct": -3.0189,
+          "avg_days_held": 5.75,
+          "median_days_held": 4.0833,
+          "max_return_pct": 32.3648,
+          "min_return_pct": -5.6694,
+          "long_hold_count_gt30bars": 5,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1673222400000,
+            "exit_ts_ms": 1675108800000,
+            "return_pct": 32.3648,
+            "pnl_usd": 3236.48,
+            "days_held": 21.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 16,
+            "entry_ts_ms": 1687262400000,
+            "exit_ts_ms": 1687996800000,
+            "return_pct": 11.2212,
+            "pnl_usd": 1091.83,
+            "days_held": 8.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1681012800000,
+            "exit_ts_ms": 1681718400000,
+            "return_pct": 5.929,
+            "pnl_usd": 641.19,
+            "days_held": 8.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1676520000000,
+            "exit_ts_ms": 1676592000000,
+            "return_pct": -5.3825,
+            "pnl_usd": -678.51,
+            "days_held": 0.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1677124800000,
+            "exit_ts_ms": 1677283200000,
+            "return_pct": -5.6694,
+            "pnl_usd": -649.47,
+            "days_held": 1.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1677441600000,
+            "exit_ts_ms": 1677816000000,
+            "return_pct": -5.4936,
+            "pnl_usd": -593.65,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -4.9226,
+        "sharpe": -0.0357,
+        "cagr_pct": -1.62,
+        "mdd_pct": 0.87,
+        "trades": 1
+      },
+      "failure_tag": "candidate_worse_return_and_worse_drawdown"
+    },
+    {
+      "window_id": 3,
+      "train_start": "2021-07-01",
+      "train_end": "2023-06-30",
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": 30.0936,
+      "candidate": {
+        "score": 216.8922,
+        "sharpe": 2.1634,
+        "cagr_pct": 77.47,
+        "mdd_pct": 9.15,
+        "trades": 14,
+        "trade_profile": {
+          "count": 14,
+          "win_rate_pct": 28.57,
+          "avg_return_pct": 2.3183,
+          "median_return_pct": -0.5394,
+          "avg_days_held": 6.9881,
+          "median_days_held": 4.9167,
+          "max_return_pct": 25.1346,
+          "min_return_pct": -2.5233,
+          "long_hold_count_gt30bars": 6,
+          "profit_share_long_holds_pct": 96.83
+        },
+        "top_winners": [
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1697472000000,
+            "exit_ts_ms": 1699992000000,
+            "return_pct": 25.1346,
+            "pnl_usd": 2387.73,
+            "days_held": 29.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1701115200000,
+            "exit_ts_ms": 1702267200000,
+            "return_pct": 14.1594,
+            "pnl_usd": 1620.26,
+            "days_held": 13.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 14,
+            "entry_ts_ms": 1702915200000,
+            "exit_ts_ms": 1703606400000,
+            "return_pct": 2.2152,
+            "pnl_usd": 288.78,
+            "days_held": 8.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1700193600000,
+            "exit_ts_ms": 1700611200000,
+            "return_pct": -2.5233,
+            "pnl_usd": -299.82,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1689379200000,
+            "exit_ts_ms": 1689811200000,
+            "return_pct": -1.8209,
+            "pnl_usd": -178.87,
+            "days_held": 5.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trend_exit"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1688601600000,
+            "exit_ts_ms": 1689364800000,
+            "return_pct": -1.7696,
+            "pnl_usd": -176.96,
+            "days_held": 8.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 186.7986,
+        "sharpe": 1.9212,
+        "cagr_pct": 66.29,
+        "mdd_pct": 9.66,
+        "trades": 15,
+        "trade_profile": {
+          "count": 15,
+          "win_rate_pct": 33.33,
+          "avg_return_pct": 1.9443,
+          "median_return_pct": -0.645,
+          "avg_days_held": 6.6667,
+          "median_days_held": 4.8333,
+          "max_return_pct": 25.1346,
+          "min_return_pct": -2.8291,
+          "long_hold_count_gt30bars": 6,
+          "profit_share_long_holds_pct": 99.13
+        },
+        "top_winners": [
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1697472000000,
+            "exit_ts_ms": 1699992000000,
+            "return_pct": 25.1346,
+            "pnl_usd": 2293.86,
+            "days_held": 29.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1701115200000,
+            "exit_ts_ms": 1702281600000,
+            "return_pct": 13.6817,
+            "pnl_usd": 1521.53,
+            "days_held": 13.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 15,
+            "entry_ts_ms": 1702915200000,
+            "exit_ts_ms": 1703606400000,
+            "return_pct": 2.2152,
+            "pnl_usd": 279.48,
+            "days_held": 8.0,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 11,
+            "entry_ts_ms": 1700193600000,
+            "exit_ts_ms": 1700611200000,
+            "return_pct": -2.5233,
+            "pnl_usd": -284.2,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1689019200000,
+            "exit_ts_ms": 1689364800000,
+            "return_pct": -2.8291,
+            "pnl_usd": -277.87,
+            "days_held": 4.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1688601600000,
+            "exit_ts_ms": 1688976000000,
+            "return_pct": -1.7796,
+            "pnl_usd": -177.96,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": 30.0936,
+        "sharpe": 0.2422,
+        "cagr_pct": 11.18,
+        "mdd_pct": -0.51,
+        "trades": -1
+      },
+      "failure_tag": "positive_window"
+    },
+    {
+      "window_id": 4,
+      "train_start": "2022-01-01",
+      "train_end": "2023-12-31",
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": 54.8324,
+      "candidate": {
+        "score": 99.5279,
+        "sharpe": 1.1158,
+        "cagr_pct": 39.66,
+        "mdd_pct": 21.6,
+        "trades": 16,
+        "trade_profile": {
+          "count": 16,
+          "win_rate_pct": 50.0,
+          "avg_return_pct": 1.4853,
+          "median_return_pct": -0.0982,
+          "avg_days_held": 5.9896,
+          "median_days_held": 3.75,
+          "max_return_pct": 40.3488,
+          "min_return_pct": -6.2561,
+          "long_hold_count_gt30bars": 6,
+          "profit_share_long_holds_pct": 95.15
+        },
+        "top_winners": [
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1706616000000,
+            "exit_ts_ms": 1709668800000,
+            "return_pct": 40.3488,
+            "pnl_usd": 3872.8,
+            "days_held": 35.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1709712000000,
+            "exit_ts_ms": 1710446400000,
+            "return_pct": 3.5881,
+            "pnl_usd": 483.36,
+            "days_held": 8.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1715846400000,
+            "exit_ts_ms": 1716480000000,
+            "return_pct": 2.4097,
+            "pnl_usd": 289.49,
+            "days_held": 7.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1710676800000,
+            "exit_ts_ms": 1710849600000,
+            "return_pct": -6.2561,
+            "pnl_usd": -873.0,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1712001600000,
+            "exit_ts_ms": 1712044800000,
+            "return_pct": -5.0597,
+            "pnl_usd": -643.76,
+            "days_held": 0.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1710993600000,
+            "exit_ts_ms": 1711195200000,
+            "return_pct": -3.5214,
+            "pnl_usd": -460.66,
+            "days_held": 2.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trend_exit"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 44.6955,
+        "sharpe": 0.6945,
+        "cagr_pct": 21.0,
+        "mdd_pct": 27.35,
+        "trades": 17,
+        "trade_profile": {
+          "count": 17,
+          "win_rate_pct": 35.29,
+          "avg_return_pct": 0.9866,
+          "median_return_pct": -0.2548,
+          "avg_days_held": 6.0,
+          "median_days_held": 2.5,
+          "max_return_pct": 40.3488,
+          "min_return_pct": -6.2561,
+          "long_hold_count_gt30bars": 7,
+          "profit_share_long_holds_pct": 95.09
+        },
+        "top_winners": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1706616000000,
+            "exit_ts_ms": 1709668800000,
+            "return_pct": 40.3488,
+            "pnl_usd": 3807.16,
+            "days_held": 35.3333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 15,
+            "entry_ts_ms": 1717012800000,
+            "exit_ts_ms": 1717848000000,
+            "return_pct": 2.6063,
+            "pnl_usd": 288.64,
+            "days_held": 9.6667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1715846400000,
+            "exit_ts_ms": 1716480000000,
+            "return_pct": 2.4097,
+            "pnl_usd": 263.88,
+            "days_held": 7.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1710676800000,
+            "exit_ts_ms": 1710849600000,
+            "return_pct": -6.2561,
+            "pnl_usd": -827.25,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1712001600000,
+            "exit_ts_ms": 1712059200000,
+            "return_pct": -6.2494,
+            "pnl_usd": -740.29,
+            "days_held": 0.6667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1710979200000,
+            "exit_ts_ms": 1711195200000,
+            "return_pct": -5.2082,
+            "pnl_usd": -645.6,
+            "days_held": 2.5,
+            "exit_reason": "vtrend_trend_exit"
+          }
+        ]
+      },
+      "delta": {
+        "score": 54.8324,
+        "sharpe": 0.4213,
+        "cagr_pct": 18.66,
+        "mdd_pct": -5.75,
+        "trades": -1
+      },
+      "failure_tag": "positive_window"
+    },
+    {
+      "window_id": 5,
+      "train_start": "2022-07-01",
+      "train_end": "2024-06-30",
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": 14.629,
+      "candidate": {
+        "score": 290.9072,
+        "sharpe": 2.2339,
+        "cagr_pct": 107.48,
+        "mdd_pct": 11.94,
+        "trades": 15,
+        "trade_profile": {
+          "count": 15,
+          "win_rate_pct": 53.33,
+          "avg_return_pct": 2.7146,
+          "median_return_pct": 0.4599,
+          "avg_days_held": 6.6333,
+          "median_days_held": 7.0,
+          "max_return_pct": 25.0037,
+          "min_return_pct": -4.5453,
+          "long_hold_count_gt30bars": 8,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1730577600000,
+            "exit_ts_ms": 1731628800000,
+            "return_pct": 25.0037,
+            "pnl_usd": 2591.65,
+            "days_held": 12.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1726516800000,
+            "exit_ts_ms": 1727697600000,
+            "return_pct": 9.5906,
+            "pnl_usd": 907.25,
+            "days_held": 13.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 11,
+            "entry_ts_ms": 1731643200000,
+            "exit_ts_ms": 1732564800000,
+            "return_pct": 6.7776,
+            "pnl_usd": 878.16,
+            "days_held": 10.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1726416000000,
+            "exit_ts_ms": 1726502400000,
+            "return_pct": -4.5453,
+            "pnl_usd": -450.44,
+            "days_held": 1.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1728273600000,
+            "exit_ts_ms": 1728504000000,
+            "return_pct": -4.4119,
+            "pnl_usd": -442.69,
+            "days_held": 2.6667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1733457600000,
+            "exit_ts_ms": 1733846400000,
+            "return_pct": -2.6128,
+            "pnl_usd": -375.69,
+            "days_held": 4.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 276.2782,
+        "sharpe": 2.1329,
+        "cagr_pct": 102.65,
+        "mdd_pct": 14.85,
+        "trades": 15,
+        "trade_profile": {
+          "count": 15,
+          "win_rate_pct": 46.67,
+          "avg_return_pct": 2.7882,
+          "median_return_pct": -0.214,
+          "avg_days_held": 6.8333,
+          "median_days_held": 4.3333,
+          "max_return_pct": 35.5162,
+          "min_return_pct": -4.7038,
+          "long_hold_count_gt30bars": 7,
+          "profit_share_long_holds_pct": 100.0
+        },
+        "top_winners": [
+          {
+            "trade_id": 12,
+            "entry_ts_ms": 1730577600000,
+            "exit_ts_ms": 1732564800000,
+            "return_pct": 35.5162,
+            "pnl_usd": 3492.53,
+            "days_held": 23.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1726516800000,
+            "exit_ts_ms": 1727697600000,
+            "return_pct": 9.5906,
+            "pnl_usd": 890.08,
+            "days_held": 13.6667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1732636800000,
+            "exit_ts_ms": 1733745600000,
+            "return_pct": 5.1569,
+            "pnl_usd": 687.21,
+            "days_held": 12.8333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1727726400000,
+            "exit_ts_ms": 1727827200000,
+            "return_pct": -4.7038,
+            "pnl_usd": -478.42,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1726416000000,
+            "exit_ts_ms": 1726502400000,
+            "return_pct": -4.5453,
+            "pnl_usd": -441.92,
+            "days_held": 1.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1728273600000,
+            "exit_ts_ms": 1728504000000,
+            "return_pct": -4.4119,
+            "pnl_usd": -419.99,
+            "days_held": 2.6667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": 14.629,
+        "sharpe": 0.101,
+        "cagr_pct": 4.83,
+        "mdd_pct": -2.91,
+        "trades": 0
+      },
+      "failure_tag": "positive_window"
+    },
+    {
+      "window_id": 6,
+      "train_start": "2023-01-01",
+      "train_end": "2024-12-31",
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": -13.192,
+      "candidate": {
+        "score": 26.4793,
+        "sharpe": 0.5271,
+        "cagr_pct": 10.91,
+        "mdd_pct": 13.76,
+        "trades": 13,
+        "trade_profile": {
+          "count": 13,
+          "win_rate_pct": 38.46,
+          "avg_return_pct": 0.5483,
+          "median_return_pct": -0.6024,
+          "avg_days_held": 5.4615,
+          "median_days_held": 4.0,
+          "max_return_pct": 10.4616,
+          "min_return_pct": -4.6062,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 81.53
+        },
+        "top_winners": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1744660800000,
+            "exit_ts_ms": 1746403200000,
+            "return_pct": 10.4616,
+            "pnl_usd": 973.9,
+            "days_held": 20.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1746489600000,
+            "exit_ts_ms": 1747656000000,
+            "return_pct": 8.1451,
+            "pnl_usd": 837.58,
+            "days_held": 13.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1747670400000,
+            "exit_ts_ms": 1748044800000,
+            "return_pct": 1.9054,
+            "pnl_usd": 211.9,
+            "days_held": 4.3333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1743048000000,
+            "exit_ts_ms": 1743177600000,
+            "return_pct": -4.6062,
+            "pnl_usd": -449.5,
+            "days_held": 1.5,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 10,
+            "entry_ts_ms": 1748116800000,
+            "exit_ts_ms": 1748548800000,
+            "return_pct": -3.4468,
+            "pnl_usd": -390.61,
+            "days_held": 5.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 13,
+            "entry_ts_ms": 1750132800000,
+            "exit_ts_ms": 1750233600000,
+            "return_pct": -2.9192,
+            "pnl_usd": -319.39,
+            "days_held": 1.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trend_exit"
+          }
+        ]
+      },
+      "baseline": {
+        "score": 39.6713,
+        "sharpe": 0.6956,
+        "cagr_pct": 15.96,
+        "mdd_pct": 15.84,
+        "trades": 11,
+        "trade_profile": {
+          "count": 11,
+          "win_rate_pct": 36.36,
+          "avg_return_pct": 0.8879,
+          "median_return_pct": -1.1185,
+          "avg_days_held": 6.697,
+          "median_days_held": 4.0,
+          "max_return_pct": 12.658,
+          "min_return_pct": -4.6062,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 97.39
+        },
+        "top_winners": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1746489600000,
+            "exit_ts_ms": 1748174400000,
+            "return_pct": 12.658,
+            "pnl_usd": 1283.54,
+            "days_held": 19.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1744660800000,
+            "exit_ts_ms": 1746403200000,
+            "return_pct": 10.4616,
+            "pnl_usd": 960.36,
+            "days_held": 20.1667,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 2,
+            "entry_ts_ms": 1737000000000,
+            "exit_ts_ms": 1737633600000,
+            "return_pct": 1.9683,
+            "pnl_usd": 193.7,
+            "days_held": 7.3333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 5,
+            "entry_ts_ms": 1743048000000,
+            "exit_ts_ms": 1743177600000,
+            "return_pct": -4.6062,
+            "pnl_usd": -443.25,
+            "days_held": 1.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1748304000000,
+            "exit_ts_ms": 1748548800000,
+            "return_pct": -3.8657,
+            "pnl_usd": -441.6,
+            "days_held": 2.8333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1737676800000,
+            "exit_ts_ms": 1737950400000,
+            "return_pct": -2.9068,
+            "pnl_usd": -291.69,
+            "days_held": 3.1667,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": -13.192,
+        "sharpe": -0.1685,
+        "cagr_pct": -5.05,
+        "mdd_pct": -2.08,
+        "trades": 2
+      },
+      "failure_tag": "candidate_drawdown_better_but_return_weaker"
+    },
+    {
+      "window_id": 7,
+      "train_start": "2023-07-01",
+      "train_end": "2025-06-30",
+      "test_start": "2025-07-01",
+      "test_end": "2025-12-31",
+      "valid_window": true,
+      "invalid_reason": "none",
+      "low_trade_window": false,
+      "low_trade_reason": "none",
+      "delta_harsh_score": 11.336,
+      "candidate": {
+        "score": -19.5,
+        "sharpe": -0.229,
+        "cagr_pct": -4.92,
+        "mdd_pct": 13.5,
+        "trades": 9,
+        "trade_profile": {
+          "count": 9,
+          "win_rate_pct": 44.44,
+          "avg_return_pct": -0.2228,
+          "median_return_pct": -1.6571,
+          "avg_days_held": 5.7963,
+          "median_days_held": 4.8333,
+          "max_return_pct": 7.3056,
+          "min_return_pct": -4.2234,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 92.41
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1751515200000,
+            "exit_ts_ms": 1752552000000,
+            "return_pct": 7.3056,
+            "pnl_usd": 730.56,
+            "days_held": 12.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1759334400000,
+            "exit_ts_ms": 1759852800000,
+            "return_pct": 3.2486,
+            "pnl_usd": 332.33,
+            "days_held": 6.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1754755200000,
+            "exit_ts_ms": 1755000000000,
+            "return_pct": 0.8885,
+            "pnl_usd": 91.39,
+            "days_held": 2.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 9,
+            "entry_ts_ms": 1761595200000,
+            "exit_ts_ms": 1761768000000,
+            "return_pct": -4.2234,
+            "pnl_usd": -429.9,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1759924800000,
+            "exit_ts_ms": 1760112000000,
+            "return_pct": -3.6284,
+            "pnl_usd": -383.25,
+            "days_held": 2.1667,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          },
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1753588800000,
+            "exit_ts_ms": 1754006400000,
+            "return_pct": -2.5352,
+            "pnl_usd": -267.53,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_e5_ema21_d1_trail_stop"
+          }
+        ]
+      },
+      "baseline": {
+        "score": -30.836,
+        "sharpe": -0.4789,
+        "cagr_pct": -9.02,
+        "mdd_pct": 15.31,
+        "trades": 9,
+        "trade_profile": {
+          "count": 9,
+          "win_rate_pct": 44.44,
+          "avg_return_pct": -0.4621,
+          "median_return_pct": -1.428,
+          "avg_days_held": 5.9444,
+          "median_days_held": 5.0,
+          "max_return_pct": 7.1975,
+          "min_return_pct": -5.5373,
+          "long_hold_count_gt30bars": 4,
+          "profit_share_long_holds_pct": 94.01
+        },
+        "top_winners": [
+          {
+            "trade_id": 1,
+            "entry_ts_ms": 1751472000000,
+            "exit_ts_ms": 1752552000000,
+            "return_pct": 7.1975,
+            "pnl_usd": 719.75,
+            "days_held": 12.5,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 6,
+            "entry_ts_ms": 1759334400000,
+            "exit_ts_ms": 1759881600000,
+            "return_pct": 2.8138,
+            "pnl_usd": 292.63,
+            "days_held": 6.3333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 4,
+            "entry_ts_ms": 1754755200000,
+            "exit_ts_ms": 1755187200000,
+            "return_pct": 0.663,
+            "pnl_usd": 68.12,
+            "days_held": 5.0,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ],
+        "top_losers": [
+          {
+            "trade_id": 7,
+            "entry_ts_ms": 1759924800000,
+            "exit_ts_ms": 1760126400000,
+            "return_pct": -5.5373,
+            "pnl_usd": -592.07,
+            "days_held": 2.3333,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 8,
+            "entry_ts_ms": 1761595200000,
+            "exit_ts_ms": 1761768000000,
+            "return_pct": -4.2234,
+            "pnl_usd": -426.57,
+            "days_held": 2.0,
+            "exit_reason": "vtrend_trail_stop"
+          },
+          {
+            "trade_id": 3,
+            "entry_ts_ms": 1753588800000,
+            "exit_ts_ms": 1754006400000,
+            "return_pct": -2.5352,
+            "pnl_usd": -267.26,
+            "days_held": 4.8333,
+            "exit_reason": "vtrend_trail_stop"
+          }
+        ]
+      },
+      "delta": {
+        "score": 11.336,
+        "sharpe": 0.2499,
+        "cagr_pct": 4.1,
+        "mdd_pct": -1.81,
+        "trades": 0
+      },
+      "failure_tag": "positive_window"
+    }
+  ]
+}

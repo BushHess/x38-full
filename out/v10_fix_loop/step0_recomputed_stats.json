@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "source": "out_v10_full_validation_stepwise/v10_dd_episodes.json",
+    "scenario": "harsh",
+    "n_episodes": 10,
+    "recomputed_date": "2026-02-24",
+    "notes": "Recomputed from raw episode data to lock numbers before code changes"
+  },
+
+  "regime_distribution_per_episode": {
+    "TOPPING": [5.4, 1.8, 6.3, 0.0, 0.0, 0.0, 0.0, 1.8, 3.5, 0.0],
+    "BULL":    [25.0, 31.3, 77.4, 47.3, 36.1, 42.1, 35.1, 57.3, 69.2, 89.7],
+    "BEAR":    [50.2, 24.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "NEUTRAL": [15.2, 19.2, 16.1, 29.1, 22.2, 26.3, 14.9, 17.1, 12.7, 10.3],
+    "SHOCK":   [2.7, 6.1, 0.0, 12.7, 9.7, 7.9, 0.0, 4.9, 3.0, 0.0],
+    "CHOP":    [1.4, 17.3, 0.0, 10.9, 31.9, 23.7, 0.0, 18.3, 11.5, 0.0]
+  },
+
+  "regime_unweighted_mean_correct": {
+    "TOPPING": 1.88,
+    "BULL": 51.05,
+    "BEAR": 7.45,
+    "NEUTRAL": 18.31,
+    "SHOCK": 4.71,
+    "CHOP": 11.50,
+    "_note": "Mean over all N=10 episodes, missing keys filled with 0.0"
+  },
+
+  "regime_report_values": {
+    "TOPPING": 3.8,
+    "BULL": 51.0,
+    "_note": "From v10_topping_diagnosis.md — original script computed mean only over episodes where key exists"
+  },
+
+  "regime_discrepancy": {
+    "TOPPING_report": 3.8,
+    "TOPPING_recomputed": 1.88,
+    "TOPPING_delta_pp": -1.92,
+    "cause": "Original aggregation in v10_dd_episodes.py uses `for r, pct in d['regime_distribution'].items()` — 5/10 episodes have no TOPPING key (no TOPPING bars), so mean is computed over N=5 instead of N=10. This inflates the TOPPING mean by 2x.",
+    "BULL_report": 51.0,
+    "BULL_recomputed": 51.05,
+    "BULL_delta_pp": 0.05,
+    "BULL_status": "MATCH (within rounding)"
+  },
+
+  "emergency_dd_stats": {
+    "total_emergency_dd_exits": 46,
+    "total_trades_across_episodes": 104,
+    "emergency_dd_pct_of_trades": 44.2,
+    "total_exit_reasons": {
+      "trailing_stop": 45,
+      "emergency_dd": 46,
+      "fixed_stop": 3
+    },
+    "_note": "46 emergency_dd / 94 total exits = 48.9%; 104 trades overlap across episodes, 103 unique in backtest"
+  },
+
+  "buy_fills_stats": {
+    "per_episode": [62, 98, 32, 29, 32, 40, 32, 47, 70, 9],
+    "total": 451,
+    "mean_per_episode": 45.1,
+    "report_value": 45.1,
+    "status": "MATCH"
+  },
+
+  "emergency_dd_mechanism": {
+    "config_param": "emergency_dd_pct = 0.28",
+    "config_ref_mode": "emergency_ref = 'pre_cost_legacy'",
+    "code_file": "v10/strategies/v8_apex.py",
+    "code_lines": "324-332",
+    "dd_formula": "dd = 1.0 - state.nav / state.position_entry_nav",
+    "position_entry_nav_file": "v10/core/execution.py",
+    "position_entry_nav_line": 148,
+    "position_entry_nav_formula": "self.nav(mid) + total_cost  [where total_cost = notional + fee, AFTER cash -= total_cost and btc_qty += qty]",
+    "position_entry_nav_expanded": "position_entry_nav = (cash - total_cost + qty*mid) + total_cost = cash_before + qty*mid",
+    "inflation_factor": "At 85% exposure: position_entry_nav ≈ 1.85x actual NAV → initial DD ≈ 26%",
+    "effective_headroom": "28% threshold - 26% initial = ~2pp headroom",
+    "effective_per_trade_stop": {
+      "median_return_pct": -5.57,
+      "min_return_pct": -2.89,
+      "max_return_pct": -10.32,
+      "note": "From instrumented backtest of first 4 emergency_dd triggers"
+    },
+    "reconciliation": "Report says '~-5% per-trade hard stop' — this is approximately correct for median behavior. Config's 0.28 is a portfolio DD threshold from an inflated reference NAV, not a 28% per-trade stop."
+  },
+
+  "confirmation_summary": {
+    "BULL_pct": {"report": "~51%", "recomputed": 51.05, "status": "CONFIRMED"},
+    "TOPPING_pct": {"report": "~3.8%", "recomputed": 1.88, "status": "DISCREPANCY — report inflated 2x due to aggregation bug (N=5 vs N=10)"},
+    "emergency_dd_count": {"report": "~46", "recomputed": 46, "status": "CONFIRMED"},
+    "emergency_dd_rate": {"report": "~49%", "recomputed": 48.9, "status": "CONFIRMED"},
+    "mean_buy_fills": {"report": "~45", "recomputed": 45.1, "status": "CONFIRMED"}
+  }
+}

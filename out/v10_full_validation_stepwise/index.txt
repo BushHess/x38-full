@@ -1,0 +1,69 @@
+V10 BASELINE VALIDATION PACK — OUTPUT INDEX
+=============================================
+Generated: 2026-02-24
+Strategy: V10 = V8ApexStrategy(V8ApexConfig())
+Period: 2019-01-01 → 2026-02-20 (7.14 years)
+
+REPORTS (10 files)
+------------------
+reports/v10_baseline_validation.md       Master summary — all steps consolidated
+reports/v10_vs_v11_side_by_side.md       V10 vs V11 final comparison
+reports/v10_score_definition.md          Step 1: Score formula + cost model
+reports/v10_baseline_profile.md          Step 2: Regime decomposition + 3 scenarios
+reports/v10_wfo_round_by_round.md        Step 3: 10 OOS windows (24m/6m/6m)
+reports/v10_sensitivity_grid.md          Step 4: 27-point grid perturbation
+reports/v10_final_holdout.md             Step 5: 2024-10 → 2026-02 holdout
+reports/selection_bias_v10_v11.md        Step 6: CSCV/PBO + DSR (54 configs, N=694)
+reports/v10_lookahead_sanity.md          Step 7: 20/20 lookahead tests PASS
+reports/v10_topping_diagnosis.md         Step 8: DD episodes + root cause + overlays
+
+SCRIPTS (7 files)
+-----------------
+scripts/reproduce_v10_full_backtest.py   Repro script (deterministic)
+scripts/reproduce_v10_full_backtest.sh   Shell wrapper
+scripts/v10_regime_profile.py            Regime decomposition (3 scenarios)
+scripts/v10_wfo_round_by_round.py        WFO 10-round analysis
+scripts/v10_sensitivity_grid.py          27-point sensitivity grid
+scripts/v10_final_holdout.py             Holdout evaluation
+scripts/selection_bias_v10_v11.py        CSCV/PBO + DSR (540 backtests)
+scripts/v10_dd_episodes.py               DD episode analyzer
+
+DATA (10 files)
+---------------
+v10_full_backtest_summary.csv            3-scenario summary (score/CAGR/MDD/Sharpe)
+v10_full_backtest_detail.json            Full backtest detail (trades, equity curve)
+v10_regime_decomposition.csv             Per-regime metrics (3 scenarios × 6 regimes)
+v10_regime_decomposition.json            Per-regime detail (JSON)
+v10_per_round_metrics.csv                WFO 10-round metrics
+v10_per_round_detail.json                WFO 10-round detail (per-regime, per-trade)
+v10_sensitivity_grid.csv                 27-point grid results
+v10_holdout_metrics.csv                  Holdout 3-scenario metrics
+v10_holdout_regime.csv                   Holdout per-regime breakdown
+selection_bias_results.json              CSCV/PBO + DSR full results (54×10 matrices)
+v10_dd_episodes.csv                      Top 10 DD episodes (summary)
+v10_dd_episodes.json                     Top 10 DD episodes (full trade/indicator detail)
+
+TESTS (2 files)
+---------------
+v10/tests/test_v10_no_lookahead_htf.py   11 V10-specific lookahead tests
+v10/tests/test_mtf_alignment.py          9 engine-level MTF alignment tests
+
+LOGS (2 files)
+--------------
+v10_repro_run.log                        Reproducibility run output
+v10_lookahead_test.log                   pytest output (20/20 PASS)
+logs/v10_step0_scope.txt                 Scope lock definition
+
+VERDICT SUMMARY
+===============
+Step 0  Scope Lock          PASS
+Step 1  Repro + Score       PASS    Deterministic, formula documented
+Step 2  Baseline Profile    PASS    Score: 88.94 (harsh) / 121.37 (smart)
+Step 3  WFO Round-by-Round  COND.   4/10 scored; 6/8 active windows positive
+Step 4  Sensitivity Grid    COND.   Rank 4/27; cliff at vdo=0.006
+Step 5  Final Holdout       PASS    +24.82% return (harsh, 17 months)
+Step 6  Selection Bias      PASS    PBO=14.7%, DSR=1.0 at N=694
+Step 7  Lookahead Check     PASS    20/20 tests, zero leakage
+Step 8  DD Diagnosis        PASS    Root cause: BULL pyramiding, not TOPPING
+
+V10 vs V11: V10 WINS — V11 does not improve (Δ Sharpe = -0.004, holdout -1.23 pts)

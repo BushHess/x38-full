@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "source_trade_table": "/var/www/trading-bots/btc-spot-dev/research/e0_exit_floor/p0_1_trade_table.csv",
+    "pair_id": "x0e5_floor_latch",
+    "reference": "X0_E5EXIT",
+    "candidate": "X0E5_FLOOR_LATCH"
+  },
+  "summary": {
+    "pair_id": "x0e5_floor_latch",
+    "reference": "X0_E5EXIT",
+    "candidate": "X0E5_FLOOR_LATCH",
+    "reference_trades": 188,
+    "candidate_trades": 195,
+    "matched_trades": 187,
+    "reference_only_trades": 1,
+    "candidate_only_trades": 8,
+    "reference_total_pnl_usd": 297790.47,
+    "candidate_total_pnl_usd": 293464.54,
+    "total_delta_pnl_usd": -4325.93,
+    "matched_delta_pnl_usd": -90337.06,
+    "reference_only_delta_pnl_usd": -17.62,
+    "candidate_only_delta_pnl_usd": 86028.75,
+    "reconciliation_error_usd": 0.0,
+    "matched_improved": 88,
+    "matched_worsened": 83,
+    "matched_same": 16,
+    "matched_candidate_earlier": 23,
+    "matched_candidate_later": 0,
+    "matched_same_exit": 164,
+    "floor_exit_improved": 33,
+    "floor_exit_worsened": 19,
+    "top5_positive_matched_delta_usd": 24181.95,
+    "top5_negative_matched_delta_usd": -119646.84,
+    "top5_positive_share_of_total_pct": -559.0
+  }
+}

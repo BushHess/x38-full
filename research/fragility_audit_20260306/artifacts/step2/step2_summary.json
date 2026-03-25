@@ -1,0 +1,46 @@
+{
+  "namespace_root": "research/fragility_audit_20260306/",
+  "all_candidates_recon_pass": true,
+  "e0_step1_regression_pass": true,
+  "profile_gap_closed_for_e5_plus_ema1d21": true,
+  "candidate_labels": [
+    "E0",
+    "E5",
+    "SM",
+    "LATCH",
+    "E0_plus_EMA1D21",
+    "E5_plus_EMA1D21"
+  ],
+  "strongest_home_run_native": [
+    "E0",
+    "E0_plus_EMA1D21"
+  ],
+  "strongest_home_run_unit_size": [
+    "E0",
+    "E5",
+    "SM",
+    "LATCH",
+    "E0_plus_EMA1D21",
+    "E5_plus_EMA1D21"
+  ],
+  "smoothest_dependence_candidates": [
+    "none \u2014 all show cliff-like behavior"
+  ],
+  "most_behaviorally_fragile_candidates": [
+    "E0",
+    "E5",
+    "SM",
+    "LATCH",
+    "E0_plus_EMA1D21",
+    "E5_plus_EMA1D21"
+  ],
+  "sm_vs_latch_assessment": "near-duplicate",
+  "ema_overlay_assessment": "mainly alters selectivity, preserves structure",
+  "remaining_open_items": [
+    "Missed-entry random miss simulations (requires replay)",
+    "Outage-window miss simulations (requires replay)",
+    "Delayed-entry simulations (requires engine modification)",
+    "E5_plus_EMA1D21 canonical profile not committed to trade_profile_8x5 (computed in Step 2 only)"
+  ],
+  "recommended_next_step": "Step 3 (if needed): replay-dependent operational fragility diagnostics"
+}

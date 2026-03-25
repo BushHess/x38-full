@@ -1,0 +1,6 @@
+candidate,alternative,status,G1_absolute_dominance,G1_absolute_dominance_value,G2_state_dominance,G2_state_dominance_value,G3_fractional_loss,G3_fractional_loss_value,G4_absolute_floor,G4_absolute_floor_value,G5_infra_conditioned,G5_infra_conditioned_value
+E0,E5_plus_EMA1D21,FALLBACK,FAIL,0.8159,FAIL,0.1538,PASS,0.2830,PASS,0.8159,PASS,-0.1604
+E5,E5_plus_EMA1D21,FALLBACK,FAIL,0.8284,FAIL,0.0000,PASS,0.3264,PASS,0.8284,PASS,-0.1605
+SM,E5_plus_EMA1D21,FALLBACK,FAIL,0.7545,FAIL,0.0769,PASS,0.0755,PASS,0.7545,PASS,0.0203
+E0_plus_EMA1D21,E5_plus_EMA1D21,FALLBACK,FAIL,0.8410,FAIL,0.1538,PASS,0.2895,PASS,0.8410,PASS,-0.1684
+E5_plus_EMA1D21,E0_plus_EMA1D21,GO,PASS,0.8769,PASS,0.8462,PASS,0.3149,PASS,0.8769,PASS,-0.1662

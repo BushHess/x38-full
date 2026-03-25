@@ -1,0 +1,21 @@
+bucket,claim,why_it_belongs_here,main_supporting_step,main_supporting_artifact
+ROBUST,"Scoring formula has structural exposure bias","CAGR term = 108-182% of score delta; mathematical decomposition",Step 3,scoring_bias_audit.csv
+ROBUST,"35% of original score gap is sizing/exposure not signal","Factorial decomposition with bit-identical signals",Step 3,factorial_summary.csv
+ROBUST,"Backtest engines are functionally identical","Max divergence 7.7e-14% over 237 trades across 8.5 years",Step 2,engine_parity_summary.csv
+ROBUST,"Indicators are bit-identical across implementations","6/7 bit-identical; 1/7 within machine epsilon (2.9e-14)",Step 2,indicator_parity_matrix.csv
+ROBUST,"SM and LATCH are 99.8% concordant at default params","Only 32 of 18542 bars show different position states",Step 2,signal_concordance_matrix.csv
+ROBUST,"LATCH complexity premium over SM is absent","Sharpe +0.003; CI [-0.048 +0.055]; P(>0)=55%; coin flip",Step 5,bootstrap_sm_latch_complexity.csv
+ROBUST,"E0 has highest native risk capacity (MDD 63.3%)","Binary 100% sizing; structural property; no leverage ceiling",Step 4,frontier_grid.csv
+ROBUST,"External cash-scaling preserves Sharpe exactly","0.0% Sharpe range across k in [0 1]; mathematical property",Step 4,linearity_check.json
+ROBUST,"LATCH cannot reach E0-level risk without leverage","LATCH max MDD=11.24%; E0 max MDD=63.30%",Step 4,matched_mdd_summary.json
+ROBUST,"P is dominated by SM on all major metrics","SM Sharpe 1.31 > P 1.24; SM Calmar 0.93 > P 0.85; SM capacity higher",Steps 3-4,step3_master_results.json
+TENTATIVE,"E0 has a signal-quality edge (+0.14 Sharpe at equal sizing)","CI=[-0.27 +0.54]; P(>0)=74%; direction consistent but CI includes 0",Steps 3 and 5,bootstrap_primary_tests.csv
+TENTATIVE,"LATCH/SM produces higher CAGR at 5% MDD budget (+1.2 pp)","CI=[-2.3 +5.6] pp; P(>0)=77%; direction consistent but not significant",Steps 4 and 5,bootstrap_matched_budget_diffs.csv
+TENTATIVE,"LATCH/SM produces higher CAGR at 10% MDD budget (+2.3 pp)","CI=[-4.8 +9.7] pp; P(>0)=76%; wide CI includes zero",Steps 4 and 5,bootstrap_matched_budget_diffs.csv
+TENTATIVE,"Two-regime model holds in majority of rolling windows (64-67%)","Not overwhelmingly dominant; would need >80% for ROBUST",Step 5,rolling_window_summary.csv
+TENTATIVE,"E0 favored in bull markets; SM/LATCH in bear/sideways","Calendar analysis consistent but 2020-01 start reverses",Step 5,calendar_slice_metrics.csv
+TENTATIVE,"Start-date dependence: 2018 bear market matters","2020-01 start reverses low-risk conclusions",Step 5,start_date_sensitivity.csv
+UNSUPPORTED,"Any statistically proven pairwise Sharpe superiority","All 4 Holm-adjusted p-values = 1.000; no hypothesis significant at 95%",Step 5,holm_pvalues.json
+UNSUPPORTED,"LATCH complexity premium over SM justified","Sharpe +0.003; P(>0)=55%; neither statistical nor practical criteria met",Step 5,bootstrap_sm_latch_complexity.csv
+UNSUPPORTED,"Crossover at ~20% MDD is a stable boundary","Varies from 3% to 26.5% across rolling windows",Step 5,crossover_stability.csv
+UNSUPPORTED,"P adds unique non-dominated value","Lowest Sharpe (1.24); dominated by SM on every axis",Steps 3-4,step3_master_results.json

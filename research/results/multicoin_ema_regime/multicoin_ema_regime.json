@@ -1,0 +1,276 @@
+{
+  "config": {
+    "ema_regime_h4": 126,
+    "ema_regime_days": 21,
+    "cost_bps_rt": 50,
+    "warmup_days": 365,
+    "n_boot": 500,
+    "seed": 42
+  },
+  "phase1_per_coin": {
+    "BTCUSDT": {
+      "e0_sharpe": 1.1096988125996683,
+      "e0_cagr": 42.32193319772808,
+      "e0_mdd": 41.53306852673477,
+      "e0_trades": 223,
+      "filt_sharpe": 1.1279671313591118,
+      "filt_cagr": 42.85363918275653,
+      "filt_mdd": 42.047552365776966,
+      "filt_trades": 200,
+      "d_sharpe": 0.0183,
+      "d_cagr": 0.53,
+      "d_mdd": 0.51
+    },
+    "ETHUSDT": {
+      "e0_sharpe": 0.9468118948306029,
+      "e0_cagr": 42.39849758816987,
+      "e0_mdd": 47.88322279922519,
+      "e0_trades": 212,
+      "filt_sharpe": 1.0558366157031598,
+      "filt_cagr": 50.08628108256439,
+      "filt_mdd": 46.39467888269061,
+      "filt_trades": 187,
+      "d_sharpe": 0.109,
+      "d_cagr": 7.69,
+      "d_mdd": -1.49
+    },
+    "BNBUSDT": {
+      "e0_sharpe": 1.202981337027208,
+      "e0_cagr": 68.43378946028464,
+      "e0_mdd": 59.51041175644312,
+      "e0_trades": 222,
+      "filt_sharpe": 1.2067185355011874,
+      "filt_cagr": 68.48994262260098,
+      "filt_mdd": 58.08067682275217,
+      "filt_trades": 203,
+      "d_sharpe": 0.0037,
+      "d_cagr": 0.06,
+      "d_mdd": -1.43
+    },
+    "SOLUSDT": {
+      "e0_sharpe": 0.7522042789165995,
+      "e0_cagr": 32.10376252286955,
+      "e0_mdd": 78.08214572109343,
+      "e0_trades": 148,
+      "filt_sharpe": 0.9350888714701758,
+      "filt_cagr": 48.1542282199243,
+      "filt_mdd": 72.58580371587865,
+      "filt_trades": 129,
+      "d_sharpe": 0.1829,
+      "d_cagr": 16.05,
+      "d_mdd": -5.5
+    },
+    "XRPUSDT": {
+      "e0_sharpe": 0.3323641298176663,
+      "e0_cagr": 0.7426908814710975,
+      "e0_mdd": 92.20571708807945,
+      "e0_trades": 194,
+      "filt_sharpe": 0.4003160780925459,
+      "filt_cagr": 5.356041279862245,
+      "filt_mdd": 90.30475669491493,
+      "filt_trades": 170,
+      "d_sharpe": 0.068,
+      "d_cagr": 4.61,
+      "d_mdd": -1.9
+    },
+    "LTCUSDT": {
+      "e0_sharpe": 0.3317820246725115,
+      "e0_cagr": 0.9249807382128328,
+      "e0_mdd": 88.97240802530654,
+      "e0_trades": 217,
+      "filt_sharpe": 0.36660623637343304,
+      "filt_cagr": 3.552627410428011,
+      "filt_mdd": 87.82216724749676,
+      "filt_trades": 191,
+      "d_sharpe": 0.0348,
+      "d_cagr": 2.63,
+      "d_mdd": -1.15
+    },
+    "ADAUSDT": {
+      "e0_sharpe": 0.4953204004765145,
+      "e0_cagr": 11.591625761778058,
+      "e0_mdd": 79.08914669847528,
+      "e0_trades": 194,
+      "filt_sharpe": 0.45074400478479365,
+      "filt_cagr": 8.5708331032593,
+      "filt_mdd": 77.19050690456686,
+      "filt_trades": 179,
+      "d_sharpe": -0.0446,
+      "d_cagr": -3.02,
+      "d_mdd": -1.9
+    },
+    "DOGEUSDT": {
+      "e0_sharpe": 1.1842598464118834,
+      "e0_cagr": 120.43802106495298,
+      "e0_mdd": 79.23695920446416,
+      "e0_trades": 154,
+      "filt_sharpe": 1.1287490801695863,
+      "filt_cagr": 106.57098537468612,
+      "filt_mdd": 86.2166202609686,
+      "filt_trades": 139,
+      "d_sharpe": -0.0555,
+      "d_cagr": -13.87,
+      "d_mdd": 6.98
+    },
+    "TRXUSDT": {
+      "e0_sharpe": 0.46315909520095394,
+      "e0_cagr": 10.566752122762125,
+      "e0_mdd": 71.2399597921434,
+      "e0_trades": 245,
+      "filt_sharpe": 0.49114458577972725,
+      "filt_cagr": 12.607887829737209,
+      "filt_mdd": 74.95276966456423,
+      "filt_trades": 219,
+      "d_sharpe": 0.028,
+      "d_cagr": 2.04,
+      "d_mdd": 3.71
+    },
+    "AVAXUSDT": {
+      "e0_sharpe": 0.396906462242003,
+      "e0_cagr": 5.42428089409952,
+      "e0_mdd": 70.6134206441901,
+      "e0_trades": 137,
+      "filt_sharpe": 0.47185239801549234,
+      "filt_cagr": 10.767931345920466,
+      "filt_mdd": 64.75440771815211,
+      "filt_trades": 113,
+      "d_sharpe": 0.0749,
+      "d_cagr": 5.34,
+      "d_mdd": -5.86
+    },
+    "LINKUSDT": {
+      "e0_sharpe": 0.27758790919667087,
+      "e0_cagr": -4.831980143711679,
+      "e0_mdd": 90.72692745987514,
+      "e0_trades": 211,
+      "filt_sharpe": 0.39912173660287525,
+      "filt_cagr": 4.179370651909631,
+      "filt_mdd": 84.57735347084522,
+      "filt_trades": 177,
+      "d_sharpe": 0.1215,
+      "d_cagr": 9.01,
+      "d_mdd": -6.15
+    },
+    "BCHUSDT": {
+      "e0_sharpe": 0.30315088710277366,
+      "e0_cagr": -0.8013869471075519,
+      "e0_mdd": 81.47222707016614,
+      "e0_trades": 176,
+      "filt_sharpe": 0.3044809846114018,
+      "filt_cagr": -0.41563364410267534,
+      "filt_mdd": 76.89431962795179,
+      "filt_trades": 149,
+      "d_sharpe": 0.0013,
+      "d_cagr": 0.39,
+      "d_mdd": -4.58
+    },
+    "HBARUSDT": {
+      "e0_sharpe": 0.4001626522416878,
+      "e0_cagr": 0.7953466618075611,
+      "e0_mdd": 88.71252000241064,
+      "e0_trades": 169,
+      "filt_sharpe": 0.43332709853767,
+      "filt_cagr": 3.730178804776818,
+      "filt_mdd": 88.9214723716113,
+      "filt_trades": 143,
+      "d_sharpe": 0.0332,
+      "d_cagr": 2.93,
+      "d_mdd": 0.21
+    },
+    "XLMUSDT": {
+      "e0_sharpe": 0.7193696089579733,
+      "e0_cagr": 30.657077906283426,
+      "e0_mdd": 63.338961832664566,
+      "e0_trades": 193,
+      "filt_sharpe": 0.6476810874017284,
+      "filt_cagr": 23.88935135585477,
+      "filt_mdd": 66.733654678821,
+      "filt_trades": 160,
+      "d_sharpe": -0.0717,
+      "d_cagr": -6.77,
+      "d_mdd": 3.39
+    }
+  },
+  "phase2_timescale_wins": {
+    "BTCUSDT": 12,
+    "ETHUSDT": 15,
+    "BNBUSDT": 6,
+    "SOLUSDT": 16,
+    "XRPUSDT": 14,
+    "LTCUSDT": 8,
+    "ADAUSDT": 5,
+    "DOGEUSDT": 6,
+    "TRXUSDT": 5,
+    "AVAXUSDT": 14,
+    "LINKUSDT": 16,
+    "BCHUSDT": 9,
+    "HBARUSDT": 15,
+    "XLMUSDT": 6
+  },
+  "phase3_portfolio": {
+    "BTC-only E0": {
+      "sharpe": 0.636,
+      "cagr": 15.7989,
+      "mdd": 40.9039,
+      "calmar": 0.3862,
+      "final_nav": 1159720.9819
+    },
+    "BTC-only +EMA21": {
+      "sharpe": 0.6892,
+      "cagr": 17.3792,
+      "mdd": 41.3402,
+      "calmar": 0.4204,
+      "final_nav": 1183758.7847
+    },
+    "14-coin E0": {
+      "sharpe": 0.1694,
+      "cagr": -2.3786,
+      "mdd": 60.9442,
+      "calmar": -0.039,
+      "final_nav": 1523264.3473
+    },
+    "14-coin +EMA21": {
+      "sharpe": 0.1768,
+      "cagr": -0.9682,
+      "mdd": 61.4034,
+      "calmar": -0.0158,
+      "final_nav": 1521288.6168
+    },
+    "5-LC E0": {
+      "sharpe": 0.3074,
+      "cagr": 4.6848,
+      "mdd": 55.5159,
+      "calmar": 0.0844,
+      "final_nav": 473195.8272
+    },
+    "5-LC +EMA21": {
+      "sharpe": 0.4778,
+      "cagr": 11.5034,
+      "mdd": 53.5356,
+      "calmar": 0.2149,
+      "final_nav": 656298.8663
+    }
+  },
+  "phase4_bootstrap": {
+    "P(Sharpe+)>50%": {
+      "wins": 16,
+      "p_binom": 1.526e-05,
+      "verdict": "PROVEN ***"
+    },
+    "P(CAGR+)>50%": {
+      "wins": 16,
+      "p_binom": 1.526e-05,
+      "verdict": "PROVEN ***"
+    },
+    "P(MDD-)>50%": {
+      "wins": 16,
+      "p_binom": 1.526e-05,
+      "verdict": "PROVEN ***"
+    },
+    "P(NAV+)>50%": {
+      "wins": 16,
+      "p_binom": 1.526e-05,
+      "verdict": "PROVEN ***"
+    }
+  }
+}

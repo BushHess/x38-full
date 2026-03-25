@@ -1,0 +1,61 @@
+Total trades: 221
+Bars in position: 7964 / 18662 (42.7%)
+
+Flat periods: 222
+Flat bars: 10698 (57.3%)
+Mean flat duration: 48.2 bars (8.0 days)
+Median flat duration: 11.0 bars (1.8 days)
+Max flat duration: 621 bars (103.5 days)
+
+=== Flat Period Return Characteristics ===
+Mean return during flat: -1.04%
+Median return during flat: 0.00%
+Std return during flat: 7.64%
+% positive return: 48.6%
+Mean range (H-L)/entry: 11.16%
+
+Short (<=1d): 89 periods, mean ret 0.24%
+Medium (1-7d): 76 periods, mean ret 1.44%
+Long (>7d): 57 periods, mean ret -6.35%
+
+=== Bar-Level Return Comparison ===
+Flat bars mean ret: -8.12 bps/bar
+Active bars mean ret: 14.36 bps/bar
+Flat bars std: 162.94 bps/bar
+Active bars std: 125.19 bps/bar
+Flat bars Sharpe (per bar): -0.0498
+Active bars Sharpe (per bar): 0.1147
+Flat annualized Sharpe: -2.332
+Active annualized Sharpe: 5.367
+
+=== Flat Bar Return Autocorrelation ===
+  Lag  1 (  4h): -0.0446
+  Lag  2 (  8h): -0.0058
+  Lag  3 ( 12h): 0.0466
+  Lag  6 ( 24h): -0.0665
+  Lag 12 ( 48h): -0.0048
+  Lag 24 ( 96h): -0.0073
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/research/x26/code/phase0_state_map.py", line 288, in <module>
+    plt.savefig(FIG / "fig01_position_state_map.png", dpi=150)
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/pyplot.py", line 1250, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/figure.py", line 3490, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/backend_bases.py", line 2186, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/backend_bases.py", line 2042, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 481, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 430, in _print_pil
+    mpl.image.imsave(
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/matplotlib/image.py", line 1657, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/var/www/trading-bots/.venv/lib/python3.12/site-packages/PIL/Image.py", line 2585, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/var/www/trading-bots/btc-spot-dev/research/beyond_trend_lab/figures/fig01_position_state_map.png'

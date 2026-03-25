@@ -1,0 +1,165 @@
+============================================================
+STEP 3: Replay-Dependent Operational Fragility Audit
+============================================================
+
+Loading bar data...
+  H4 bars: 17841, D1 bars: 2973
+  Report start index: 2190
+
+──────────────────────────────────────────────────
+Candidate: E0 (variant=E0, expected=192 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 192
+  Phase A: Running baseline replay...
+    Baseline: 192 trades, Sharpe=1.1379, CAGR_native=0.6183
+    REPLAY_REGRESS: PASS
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=1.1380, p5=1.1326, p95=1.1460
+    K=2: Sharpe mean=1.1376, p5=1.1289, p95=1.1474
+    K=3: Sharpe mean=1.1374, p5=1.1270, p95=1.1487
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 1333 windows, Sharpe worst=1.1103, mean=1.1371
+    W=72h: 3502 windows, Sharpe worst=1.0960, mean=1.1369
+    W=168h: 6910 windows, Sharpe worst=1.0738, mean=1.1366
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=1.1065, delta=-0.0314, n_trades=189
+    D=2: Sharpe=0.9378, delta=-0.2001, n_trades=173
+    D=3: Sharpe=0.8873, delta=-0.2506, n_trades=167
+    D=4: Sharpe=0.8017, delta=-0.3362, n_trades=164
+  Candidate E0 done in 286.2s
+
+──────────────────────────────────────────────────
+Candidate: E5 (variant=E5, expected=207 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 207
+  Phase A: Running baseline replay...
+    Baseline: 207 trades, Sharpe=1.2299, CAGR_native=0.6723
+    REPLAY_REGRESS: PASS
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=1.2297, p5=1.2231, p95=1.2375
+    K=2: Sharpe mean=1.2294, p5=1.2193, p95=1.2391
+    K=3: Sharpe mean=1.2289, p5=1.2172, p95=1.2400
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 1439 windows, Sharpe worst=1.1922, mean=1.2288
+    W=72h: 3759 windows, Sharpe worst=1.1604, mean=1.2285
+    W=168h: 7323 windows, Sharpe worst=1.1604, mean=1.2281
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=1.1783, delta=-0.0516, n_trades=204
+    D=2: Sharpe=0.9332, delta=-0.2966, n_trades=188
+    D=3: Sharpe=0.8663, delta=-0.3635, n_trades=181
+    D=4: Sharpe=0.7764, delta=-0.4534, n_trades=174
+  Candidate E5 done in 294.6s
+
+──────────────────────────────────────────────────
+Candidate: SM (variant=SM, expected=65 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 65
+  Phase A: Running baseline replay...
+    Baseline: 65 trades, Sharpe=0.8161, CAGR_native=0.1819
+    REPLAY_REGRESS: PASS
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=0.8164, p5=0.8061, p95=0.8442
+    K=2: Sharpe mean=0.8162, p5=0.7991, p95=0.8478
+    K=3: Sharpe mean=0.8163, p5=0.7943, p95=0.8610
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 455 windows, Sharpe worst=0.7729, mean=0.8158
+    W=72h: 1235 windows, Sharpe worst=0.7620, mean=0.8152
+    W=168h: 2764 windows, Sharpe worst=0.7394, mean=0.8142
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=0.8495, delta=0.0334, n_trades=65
+    D=2: Sharpe=0.8283, delta=0.0122, n_trades=65
+    D=3: Sharpe=0.7964, delta=-0.0196, n_trades=65
+    D=4: Sharpe=0.7831, delta=-0.0330, n_trades=65
+  Candidate SM done in 1054.7s
+
+──────────────────────────────────────────────────
+Candidate: LATCH (variant=LATCH, expected=65 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 65
+  Phase A: Running baseline replay...
+    Baseline: 65 trades, Sharpe=0.8251, CAGR_native=0.1456
+    REPLAY_REGRESS: PASS
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=0.8254, p5=0.8148, p95=0.8528
+    K=2: Sharpe mean=0.8253, p5=0.8080, p95=0.8563
+    K=3: Sharpe mean=0.8254, p5=0.8032, p95=0.8697
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 455 windows, Sharpe worst=0.7826, mean=0.8249
+    W=72h: 1235 windows, Sharpe worst=0.7720, mean=0.8242
+    W=168h: 2764 windows, Sharpe worst=0.7497, mean=0.8232
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=0.8570, delta=0.0319, n_trades=65
+    D=2: Sharpe=0.8387, delta=0.0136, n_trades=65
+    D=3: Sharpe=0.8025, delta=-0.0227, n_trades=65
+    D=4: Sharpe=0.7923, delta=-0.0328, n_trades=65
+  Candidate LATCH done in 831.1s
+
+──────────────────────────────────────────────────
+Candidate: E0_plus_EMA1D21 (variant=E0_plus, expected=172 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 172
+  Phase A: Running baseline replay...
+    Baseline: 174 trades, Sharpe=1.1837, CAGR_native=0.6673
+    REPLAY_REGRESS: FAIL
+      FAIL: trade_count — 174 vs 172
+      FAIL: entry_exit_timestamps — 
+      FAIL: all_pass — 
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=1.1834, p5=1.1769, p95=1.1917
+    K=2: Sharpe mean=1.1833, p5=1.1731, p95=1.1939
+    K=3: Sharpe mean=1.1834, p5=1.1721, p95=1.1953
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 1209 windows, Sharpe worst=1.1558, mean=1.1827
+    W=72h: 3206 windows, Sharpe worst=1.1412, mean=1.1826
+    W=168h: 6567 windows, Sharpe worst=1.1189, mean=1.1821
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=1.1406, delta=-0.0431, n_trades=171
+    D=2: Sharpe=0.9458, delta=-0.2379, n_trades=160
+    D=3: Sharpe=0.8695, delta=-0.3141, n_trades=154
+    D=4: Sharpe=0.7981, delta=-0.3856, n_trades=150
+  Candidate E0_plus_EMA1D21 done in 260.4s
+
+──────────────────────────────────────────────────
+Candidate: E5_plus_EMA1D21 (variant=E5_plus, expected=186 trades)
+──────────────────────────────────────────────────
+  Precomputing indicators...
+  Canonical trades loaded: 186
+  Phase A: Running baseline replay...
+    Baseline: 188 trades, Sharpe=1.2801, CAGR_native=0.7262
+    REPLAY_REGRESS: FAIL
+      FAIL: trade_count — 188 vs 186
+      FAIL: entry_exit_timestamps — 
+      FAIL: all_pass — 
+  Phase B: Random miss Monte Carlo (K=[1, 2, 3], 2000 draws)...
+    K=1: Sharpe mean=1.2798, p5=1.2708, p95=1.2894
+    K=2: Sharpe mean=1.2795, p5=1.2684, p95=1.2901
+    K=3: Sharpe mean=1.2792, p5=1.2663, p95=1.2914
+  Phase C: Outage sweep ([24, 72, 168]h)...
+    W=24h: 1308 windows, Sharpe worst=1.2417, mean=1.2789
+    W=72h: 3451 windows, Sharpe worst=1.2095, mean=1.2785
+    W=168h: 6987 windows, Sharpe worst=1.2095, mean=1.2780
+  Phase D: Delayed entry ([1, 2, 3, 4] bars)...
+    D=1: Sharpe=1.2094, delta=-0.0707, n_trades=185
+    D=2: Sharpe=0.9557, delta=-0.3243, n_trades=172
+    D=3: Sharpe=0.8628, delta=-0.4173, n_trades=166
+    D=4: Sharpe=0.7682, delta=-0.5118, n_trades=159
+  Candidate E5_plus_EMA1D21 done in 274.6s
+
+============================================================
+Phase E: Cross-strategy synthesis
+============================================================
+
+Total elapsed: 3003.3s
+
+Artifacts written to: /var/www/trading-bots/btc-spot-dev/research/fragility_audit_20260306/artifacts/step3
+
+REPLAY_REGRESS all candidates: FAIL
+
+============================================================
+STOPPED AFTER STEP 3
+============================================================

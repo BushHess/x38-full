@@ -1,0 +1,15 @@
+# Artifact Hash Manifest
+#
+# Records hashes for frozen output artifacts (specs + implementations).
+# Separate from input_hash_manifest.txt which records admitted inputs.
+#
+# format:
+# sha256  file_size_bytes  line_count  relative_path
+#
+# Path convention: use paths relative to the state_pack_vN/ root.
+
+# --- frozen system specs ---
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  frozen_system_specs/<candidate_id>.md
+
+# --- frozen implementations ---
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  frozen_implementations/d1d_impl_<candidate_id>.py

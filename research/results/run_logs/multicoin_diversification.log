@@ -1,0 +1,238 @@
+/var/www/trading-bots/btc-spot-dev/research/multicoin_diversification.py:43: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+==========================================================================================
+MULTI-COIN DIVERSIFICATION STUDY (v2)
+VTREND E0 unchanged (N=120, trail=3.0, VDO>0.0)
+14 coins x 16 timescales x 500 bootstrap paths
+Cost: 50 bps round-trip (25 per side)
+All phases use SAME aligned time range + warmup
+==========================================================================================
+
+==========================================================================================
+PHASE 1: DATA LOADING & ALIGNMENT
+==========================================================================================
+
+  Loading raw data...
+       BTCUSDT:  18750 bars (2017-08-17 -> 2026-03-10)
+       ETHUSDT:  18690 bars (2017-08-17 -> 2026-02-28)
+       BNBUSDT:  18206 bars (2017-11-06 -> 2026-02-28)
+       SOLUSDT:  12167 bars (2020-08-11 -> 2026-02-28)
+       XRPUSDT:  17137 bars (2018-05-04 -> 2026-02-28)
+       LTCUSDT:  17984 bars (2017-12-13 -> 2026-02-28)
+       ADAUSDT:  17240 bars (2018-04-17 -> 2026-02-28)
+      DOGEUSDT:  14581 bars (2019-07-05 -> 2026-02-28)
+       TRXUSDT:  16909 bars (2018-06-11 -> 2026-02-28)
+      AVAXUSDT:  11915 bars (2020-09-22 -> 2026-02-28)
+      LINKUSDT:  15599 bars (2019-01-16 -> 2026-02-28)
+       BCHUSDT:  13707 bars (2019-11-28 -> 2026-02-28)
+      HBARUSDT:  14068 bars (2019-09-29 -> 2026-02-28)
+       XLMUSDT:  16975 bars (2018-05-31 -> 2026-02-28)
+
+  Computing indicators on full per-coin history...
+  Computing bootstrap ratios...
+
+  Common data range: 2020-09-22 -> 2026-02-28
+  Total bars: 11915
+  Warmup: 2190 bars (365 days)
+  Analysis start: ~2021-09-22
+  Analysis bars: 9725
+
+==========================================================================================
+SANITY CHECK: BTC common range vs full history
+==========================================================================================
+
+  Common range (9725 analysis bars):
+    Sharpe=0.6360  CAGR=15.80%  MDD=40.90%  Trades=138
+
+  Full history (16560 analysis bars):
+    Sharpe=1.1097  CAGR=42.32%  MDD=41.53%  Trades=223
+
+  OK: Sharpe differs by 0.474 -- alignment confirmed
+
+==========================================================================================
+PHASE 2: PER-COIN REAL DATA ANALYSIS (aligned common range)
+==========================================================================================
+
+     BTCUSDT  N=120: Sh=+0.636  CAGR=+15.8%  MDD=40.9%  Trades=138  Best@N=144(Sh=0.777)  Positive: 15/16
+
+     ETHUSDT  N=120: Sh=+0.521  CAGR=+13.6%  MDD=47.4%  Trades=130  Best@N=120(Sh=0.521)  Positive: 12/16
+
+     BNBUSDT  N=120: Sh=+0.042  CAGR=-5.6%  MDD=59.5%  Trades=147  Best@N=720(Sh=0.418)  Positive: 13/16
+
+     SOLUSDT  N=120: Sh=+0.425  CAGR=+8.2%  MDD=70.0%  Trades=145  Best@N=48(Sh=0.686)  Positive: 16/16
+
+     XRPUSDT  N=120: Sh=-0.105  CAGR=-17.4%  MDD=82.3%  Trades=140  Best@N=720(Sh=0.221)  Positive: 5/16
+
+     LTCUSDT  N=120: Sh=-0.452  CAGR=-33.0%  MDD=89.0%  Trades=155  Best@N=500(Sh=-0.139)  Positive: 0/16
+
+     ADAUSDT  N=120: Sh=-0.340  CAGR=-25.8%  MDD=77.0%  Trades=132  Best@N=300(Sh=-0.132)  Positive: 0/16
+
+    DOGEUSDT  N=120: Sh=+0.238  CAGR=-4.6%  MDD=70.5%  Trades=133  Best@N=72(Sh=0.449)  Positive: 14/16
+
+     TRXUSDT  N=120: Sh=+0.052  CAGR=-6.8%  MDD=66.0%  Trades=186  Best@N=720(Sh=0.326)  Positive: 14/16
+
+    AVAXUSDT  N=120: Sh=+0.397  CAGR=+5.4%  MDD=70.6%  Trades=137  Best@N=84(Sh=0.549)  Positive: 16/16
+
+    LINKUSDT  N=120: Sh=-0.200  CAGR=-23.9%  MDD=76.5%  Trades=163  Best@N=60(Sh=0.259)  Positive: 6/16
+
+     BCHUSDT  N=120: Sh=-0.291  CAGR=-26.2%  MDD=76.2%  Trades=154  Best@N=500(Sh=0.253)  Positive: 5/16
+
+    HBARUSDT  N=120: Sh=-0.115  CAGR=-24.7%  MDD=83.4%  Trades=141  Best@N=240(Sh=0.260)  Positive: 5/16
+
+     XLMUSDT  N=120: Sh=+0.441  CAGR=+10.0%  MDD=63.3%  Trades=141  Best@N=108(Sh=0.538)  Positive: 14/16
+
+  ________________________________________________________________________________
+  Meta-test: 8/14 coins with positive Sharpe at N=120
+  Binomial P(>=8 | p=0.5) = 0.395264
+  -> NOT significant
+
+==========================================================================================
+PHASE 3: CROSS-ASSET STRATEGY RETURN CORRELATION (N=120)
+==========================================================================================
+
+  Strategy-return correlation:
+    Mean rho  = 0.3432
+    Median    = 0.3311
+    Min       = 0.1389
+    Max       = 0.6019
+
+  Price-return correlation:
+    Mean rho  = 0.6313
+
+  Strategy rho matrix:
+            BTCUS  ETHUS  BNBUS  SOLUS  XRPUS  LTCUS  ADAUS  DOGEU  TRXUS  AVAXU  LINKU  BCHUS  HBARU  XLMUS
+  BTCUS   1.00  +0.60  +0.42  +0.48  +0.36  +0.42  +0.43  +0.39  +0.24  +0.41  +0.42  +0.39  +0.32  +0.31
+  ETHUS  +0.60   1.00  +0.48  +0.48  +0.33  +0.48  +0.46  +0.37  +0.23  +0.42  +0.48  +0.39  +0.31  +0.30
+  BNBUS  +0.42  +0.48   1.00  +0.39  +0.27  +0.38  +0.35  +0.31  +0.24  +0.39  +0.34  +0.31  +0.27  +0.25
+  SOLUS  +0.48  +0.48  +0.39   1.00  +0.28  +0.32  +0.42  +0.32  +0.21  +0.50  +0.41  +0.29  +0.29  +0.28
+  XRPUS  +0.36  +0.33  +0.27  +0.28   1.00  +0.37  +0.45  +0.28  +0.22  +0.33  +0.35  +0.27  +0.40  +0.54
+  LTCUS  +0.42  +0.48  +0.38  +0.32  +0.37   1.00  +0.41  +0.32  +0.22  +0.34  +0.39  +0.45  +0.32  +0.33
+  ADAUS  +0.43  +0.46  +0.35  +0.42  +0.45  +0.41   1.00  +0.39  +0.22  +0.44  +0.45  +0.33  +0.40  +0.44
+  DOGEU  +0.39  +0.37  +0.31  +0.32  +0.28  +0.32  +0.39   1.00  +0.14  +0.33  +0.31  +0.30  +0.28  +0.27
+  TRXUS  +0.24  +0.23  +0.24  +0.21  +0.22  +0.22  +0.22  +0.14   1.00  +0.19  +0.22  +0.20  +0.18  +0.18
+  AVAXU  +0.41  +0.42  +0.39  +0.50  +0.33  +0.34  +0.44  +0.33  +0.19   1.00  +0.43  +0.28  +0.36  +0.30
+  LINKU  +0.42  +0.48  +0.34  +0.41  +0.35  +0.39  +0.45  +0.31  +0.22  +0.43   1.00  +0.31  +0.36  +0.34
+  BCHUS  +0.39  +0.39  +0.31  +0.29  +0.27  +0.45  +0.33  +0.30  +0.20  +0.28  +0.31   1.00  +0.24  +0.27
+  HBARU  +0.32  +0.31  +0.27  +0.29  +0.40  +0.32  +0.40  +0.28  +0.18  +0.36  +0.36  +0.24   1.00  +0.35
+  XLMUS  +0.31  +0.30  +0.25  +0.28  +0.54  +0.33  +0.44  +0.27  +0.18  +0.30  +0.34  +0.27  +0.35   1.00
+
+  PSD check: min eigenvalue = 0.370393 -> OK
+
+==========================================================================================
+PHASE 4: PORTFOLIO SIMULATION (REAL DATA, aligned)
+==========================================================================================
+
+  Positive-Sharpe coins at N=120: 8
+
+  all_14 (14 coins):
+    Sharpe=0.169  CAGR=-2.4%  MDD=60.9%  Calmar=-0.039  Final NAV=108805
+
+  large_cap_5 (5 coins):
+    Sharpe=0.307  CAGR=4.7%  MDD=55.5%  Calmar=0.084  Final NAV=94639
+
+  positive_sharpe (8 coins):
+    Sharpe=0.217  CAGR=-0.6%  MDD=61.1%  Calmar=-0.010  Final NAV=184376
+
+  btc_only (1 coins):
+    Sharpe=0.636  CAGR=15.8%  MDD=40.9%  Calmar=0.386  Final NAV=82837
+
+  ________________________________________________________________________________
+  Portfolio              K   Sharpe    CAGR%     MDD%   Calmar   FinalNAV
+  ________________________________________________________________________________
+  all_14                14    0.169     -2.4     60.9   -0.039     108805
+  large_cap_5            5    0.307      4.7     55.5    0.084      94639
+  positive_sharpe        8    0.217     -0.6     61.1   -0.010     184376
+  btc_only               1    0.636     15.8     40.9    0.386      82837
+
+  Diversification vs BTC-only:
+    all_14: Sharpe x0.266  MDD x1.490
+    large_cap_5: Sharpe x0.483  MDD x1.357
+    positive_sharpe: Sharpe x0.342  MDD x1.494
+
+==========================================================================================
+PHASE 5: SYNCHRONIZED BOOTSTRAP (500 paths)
+  Same block indices for all coins -> preserves cross-asset rho
+==========================================================================================
+
+  Transitions: 11914
+  Warmup index: 2190
+  Analysis bars per path: 9725
+
+  Step 1: Per-coin quality assessment (500 paths)...
+       BTCUSDT: P(Sh>0)=88.2%  medSh=0.620  P(CAGR>0)=78.0%
+       ETHUSDT: P(Sh>0)=84.8%  medSh=0.486  P(CAGR>0)=68.6%
+       BNBUSDT: P(Sh>0)=90.8%  medSh=0.749  P(CAGR>0)=80.4%
+       SOLUSDT: P(Sh>0)=95.8%  medSh=0.832  P(CAGR>0)=81.4%
+       XRPUSDT: P(Sh>0)=86.4%  medSh=0.564  P(CAGR>0)=67.6%
+       LTCUSDT: P(Sh>0)=47.8%  medSh=-0.025  P(CAGR>0)=24.0%
+       ADAUSDT: P(Sh>0)=63.4%  medSh=0.185  P(CAGR>0)=40.0%
+      DOGEUSDT: P(Sh>0)=94.0%  medSh=0.984  P(CAGR>0)=83.0%
+       TRXUSDT: P(Sh>0)=86.6%  medSh=0.546  P(CAGR>0)=69.8%
+      AVAXUSDT: P(Sh>0)=87.8%  medSh=0.698  P(CAGR>0)=69.2%
+      LINKUSDT: P(Sh>0)=45.2%  medSh=-0.050  P(CAGR>0)=19.2%
+       BCHUSDT: P(Sh>0)=69.2%  medSh=0.200  P(CAGR>0)=40.4%
+      HBARUSDT: P(Sh>0)=75.6%  medSh=0.367  P(CAGR>0)=47.6%
+       XLMUSDT: P(Sh>0)=73.4%  medSh=0.385  P(CAGR>0)=52.4%
+  Per-coin: 560.9s
+
+  Quality coins (P(Sh>0) >= 85%): 7
+       BTCUSDT: P(Sh>0)=88.2%  medSh=0.620
+       BNBUSDT: P(Sh>0)=90.8%  medSh=0.749
+       SOLUSDT: P(Sh>0)=95.8%  medSh=0.832
+       XRPUSDT: P(Sh>0)=86.4%  medSh=0.564
+      DOGEUSDT: P(Sh>0)=94.0%  medSh=0.984
+       TRXUSDT: P(Sh>0)=86.6%  medSh=0.546
+      AVAXUSDT: P(Sh>0)=87.8%  medSh=0.698
+
+  Sharpe weights (top 5):
+      DOGEUSDT: 14.9%
+       SOLUSDT: 12.6%
+       BNBUSDT: 11.3%
+      AVAXUSDT: 10.6%
+       BTCUSDT: 9.4%
+
+  Step 2: Synchronized portfolio bootstrap (500 paths)...
+    Path 100/500...
+    Path 200/500...
+    Path 300/500...
+    Path 400/500...
+    Path 500/500...
+  Portfolio bootstrap: 324.0s
+
+  _____________________________________________________________________________________
+  Portfolio                medSh  medCAGR  medMDD  P(Sh>B)  P(MDD<B)      p(Sh)     p(MDD)
+  _____________________________________________________________________________________
+  eq_all14                 0.860    36.8%   58.0%   73.4%    41.6%   1.16e-26   1.00e+00
+  eq_quality               0.944    46.3%   59.1%   80.4%    39.6%   5.05e-45   1.00e+00
+  sharpe_wt_all14          0.929    45.2%   59.4%   79.0%    39.4%   7.30e-41   1.00e+00
+  sharpe_wt_quality        0.953    48.0%   60.5%   80.4%    35.8%   5.05e-45   1.00e+00
+  btc_only                 0.513    13.4%   53.2%       --        --         --         --
+
+==========================================================================================
+PHASE 6: DIVERSIFICATION BENEFIT QUANTIFICATION
+==========================================================================================
+
+  Mean strategy rho = 0.3432
+  K = 14 coins
+
+  Theoretical Sharpe ratio: x1.601
+  Effective K:             2.56
+
+  Empirical (real data):    x0.266 (All14=0.169 / BTC=0.636)
+  Empirical (bootstrap):   x1.676 (All14=0.860 / BTC=0.513)
+
+  MDD ratio (real data):   x1.490 (All14=60.9% / BTC=40.9%)
+
+==========================================================================================
+FINAL VERDICT
+==========================================================================================
+  * Insufficient cross-asset alpha: only 8/14 coins (p=0.3953)
+  * Bootstrap (eq_quality): PROVEN higher Sharpe *** (P=80.4%, p=5.05e-45)
+  * Bootstrap (eq_quality): MDD NOT significant (P=39.6%, p=1.0000)
+  * Real data: Portfolio LOSES to BTC (Sh 0.169 vs 0.636, MDD 60.9% vs 40.9%)
+
+  OVERALL: SHARPE PROVEN (bootstrap), MDD WORSE: Multi-coin adds Sharpe but does NOT reduce MDD. Use position sizing to control drawdown.
+
+  Total runtime: 901.6s
+
+  Results saved to: /var/www/trading-bots/btc-spot-dev/research/results/multicoin_diversification/multicoin_diversification.json

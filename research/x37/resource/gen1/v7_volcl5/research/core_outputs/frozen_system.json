@@ -1,0 +1,65 @@
+{
+  "candidate_id": "S_D1_VOLCL5_20_LOW_F1",
+  "evidence_label": "INTERNAL ROBUST CANDIDATE",
+  "market": "BTC/USDT spot",
+  "side": "long-only",
+  "native_timeframe": "1d",
+  "signal_timing": "compute signal at bar close",
+  "execution": "execute at next bar open",
+  "position_sizing": "100 percent notional when long, otherwise flat",
+  "cost_model": {
+    "cost_per_side_bps": 10,
+    "round_trip_bps": 20
+  },
+  "warmup_live_start": "2020-01-01",
+  "feature": {
+    "family": "volatility_clustering",
+    "name": "volcluster_5_20",
+    "formula": "rolling std_5 / rolling std_20 of log returns",
+    "parameters": {
+      "short_lookback_bars": 5,
+      "long_lookback_bars": 20
+    }
+  },
+  "threshold_rule": {
+    "mode": "fixed_one",
+    "threshold": 1.0,
+    "tail": "low",
+    "signal_condition_on_previous_completed_bar": "volcluster_5_20 <= 1.0"
+  },
+  "state_machine": {
+    "entry_hold": "be long on day t if volcluster_5_20 computed from completed day t-1 is <= 1.0",
+    "exit": "go flat on day t if volcluster_5_20 computed from completed day t-1 is > 1.0",
+    "no_intrabar_assumptions": true
+  },
+  "selection_notes": {
+    "why_selected": [
+      "Best simple slower-state candidate that passed discovery and holdout trade-count gates",
+      "Meaningful paired advantage over strongest genuine native faster rival S_H4_RANGE48_HI_Q60 on pre-reserve data",
+      "Nearest serious complex rival L2_VOLCL_RANGE48_Q60 did not show meaningful paired advantage despite better Sharpe; complexity rule therefore favored the simpler system",
+      "Reserve/internal slice stayed positive for the frozen leader while the main faster and layered rivals turned negative"
+    ],
+    "caveats": [
+      "Strict local 80% plateau score for the exact volcluster 5/20 cell is only 0.33 on the coarse local grid",
+      "Broader slower volatility-regime evidence is corroborated by the separate D1 ATR family, reducing the risk that the final leader is a lone accidental spike"
+    ]
+  },
+  "splits": {
+    "context_warmup": [
+      "2017-08-17",
+      "2019-12-31"
+    ],
+    "discovery": [
+      "2020-01-01",
+      "2023-06-30"
+    ],
+    "holdout": [
+      "2023-07-01",
+      "2024-09-30"
+    ],
+    "reserve_internal": [
+      "2024-10-01",
+      "2026-03-17"
+    ]
+  }
+}

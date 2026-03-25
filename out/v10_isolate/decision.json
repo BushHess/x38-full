@@ -1,0 +1,86 @@
+{
+  "selected_candidate": "baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T20:22:04.194425+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "rsi_wilder",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -22.0% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 94.81,
+        "min_cagr": 38.5,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.87,
+        "trades": 101
+      }
+    },
+    {
+      "name": "trail_atr_30",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 80.29 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 80.29,
+        "min_cagr": 34.8,
+        "max_mdd": 39.02,
+        "max_fee_drag": 3.98,
+        "trades": 102
+      }
+    },
+    {
+      "name": "fstop_018",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 86.51 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 86.51,
+        "min_cagr": 36.61,
+        "max_mdd": 37.26,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "cooldown_2",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -21.5% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 97.55,
+        "min_cagr": 40.81,
+        "max_mdd": 37.26,
+        "max_fee_drag": 4.24,
+        "trades": 104
+      }
+    }
+  ]
+}

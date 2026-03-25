@@ -1,0 +1,80 @@
+/var/www/trading-bots/btc-spot-dev/research/x19/benchmark.py:47: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X19: Alternative Actuators for Churn Score
+======================================================================
+  Branch A: Exit + contingent re-entry (f_a fraction)
+  Branch B: Partial runner (f_b fraction) + add-back on reclaim
+  One-more-round commitment: if both fail → close churn research
+
+  Bars: 17838 H4, warmup_idx=2190
+  E0: Sh=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+  Training 7-feature logistic...
+  Model: C=10.0, n=168, OK
+  Scores: n=168, median=0.6547
+
+======================================================================
+T0: CONFIGURATION SWEEP + ABORT GATE
+======================================================================
+    A α= 5% f=0.25: Sh=1.4587 d=+0.0869 MDD=37.7 armed=9 re-entry=6 expired=0
+    A α= 5% f=0.50: Sh=1.4317 d=+0.0600 MDD=38.5 armed=9 re-entry=6 expired=0
+    B α= 5% f=0.10: Sh=1.3487 d=-0.0231 MDD=40.7 partial=12 reclaim=11 runner_exit=1
+    B α= 5% f=0.25: Sh=1.3596 d=-0.0122 MDD=40.5 partial=12 reclaim=11 runner_exit=1
+    A α=10% f=0.25: Sh=1.4692 d=+0.0974 MDD=37.3 armed=17 re-entry=10 expired=0
+    A α=10% f=0.50: Sh=1.4399 d=+0.0681 MDD=38.1 armed=17 re-entry=10 expired=0
+    B α=10% f=0.10: Sh=1.2378 d=-0.1340 MDD=45.5 partial=28 reclaim=27 runner_exit=1
+    B α=10% f=0.25: Sh=1.2701 d=-0.1017 MDD=44.8 partial=28 reclaim=27 runner_exit=1
+    A α=15% f=0.25: Sh=1.5104 d=+0.1386 MDD=34.8 armed=24 re-entry=16 expired=0
+    A α=15% f=0.50: Sh=1.4640 d=+0.0922 MDD=36.5 armed=24 re-entry=16 expired=0
+    B α=15% f=0.10: Sh=1.2152 d=-0.1566 MDD=44.4 partial=47 reclaim=46 runner_exit=1
+    B α=15% f=0.25: Sh=1.2678 d=-0.1039 MDD=43.0 partial=47 reclaim=46 runner_exit=1
+    A α=20% f=0.25: Sh=1.4398 d=+0.0680 MDD=34.8 armed=29 re-entry=19 expired=0
+    A α=20% f=0.50: Sh=1.4255 d=+0.0538 MDD=36.5 armed=29 re-entry=19 expired=0
+    B α=20% f=0.10: Sh=1.2061 d=-0.1656 MDD=44.4 partial=64 reclaim=60 runner_exit=4
+    B α=20% f=0.25: Sh=1.2581 d=-0.1136 MDD=43.0 partial=64 reclaim=60 runner_exit=4
+
+  Best A: α=15% f=0.25 Sh=1.5104 d=+0.1386
+  Best B: α=5% f=0.25 Sh=1.3596 d=-0.0122
+  E0:     Sh=1.3718
+  X18 ref: Sh=1.4815 (α=40% full-sample)
+  ABORT gate (best > E0): PASS
+
+======================================================================
+T1: NESTED WALK-FORWARD VALIDATION (4 folds)
+======================================================================
+
+  --- Branch A ---
+    Fold 1 (2022): α=20% f=0.25 E0=-0.8896 X19=-0.8896 d=-0.0000 LOSE
+    Fold 2 (2023): α=20% f=0.25 E0=1.1935 X19=1.1909 d=-0.0026 LOSE
+    Fold 3 (2024): α=20% f=0.25 E0=1.7196 X19=1.7954 d=+0.0759 WIN
+    Fold 4 (2025): α=15% f=0.25 E0=0.0470 X19=0.0470 d=+0.0000 WIN
+  A: win_rate=50%, mean_d=+0.0183, G1=FAIL
+  A: consensus α=20%, f=0.25
+
+  --- Branch B ---
+    Fold 1 (2022): α=10% f=0.25 E0=-0.8896 X19=-0.8896 d=-0.0000 LOSE
+    Fold 2 (2023): α=5% f=0.25 E0=1.1935 X19=1.1935 d=+0.0000 WIN
+    Fold 3 (2024): α=5% f=0.25 E0=1.7196 X19=1.7196 d=+0.0000 WIN
+    Fold 4 (2025): α=5% f=0.25 E0=0.0470 X19=0.0470 d=-0.0000 LOSE
+  B: win_rate=50%, mean_d=-0.0000, G1=FAIL
+  B: consensus α=5%, f=0.25
+
+  Best branch: A (mean d=+0.0183)
+
+  G1 FAIL — Branch A WFO 50%
+  Both branches fail G1
+
+======================================================================
+T5: COMPARISON TABLE
+======================================================================
+
+  Strategy                             Sharpe   CAGR%    MDD% Trades   Supp
+  ----------------------------------------------------------------------
+  E0                                   1.3718   57.72   39.96    189      0
+  X19_A(α=20%,f=0.25)                  1.4398   58.95   34.82    190      0
+  X18(α=40%)                           1.5126   68.72   34.18    157    436
+  X14_D(P>0.5)                         1.4280   64.00   36.70    133    812
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x19/x19_*.{json,csv}
+
+X19 COMPLETE — 3s — VERDICT: CLOSE_WFO

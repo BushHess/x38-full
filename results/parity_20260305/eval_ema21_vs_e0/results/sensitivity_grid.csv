@@ -1,0 +1,4 @@
+trail_mult,scenario,score,delta_vs_default,cagr_pct,max_drawdown_mid_pct,sharpe,trades
+2.7,harsh,128.0886,7.5882,53.19,39.28,1.3042,187
+3.0,harsh,120.5004,0.0,51.0,42.1,1.2578,172
+3.3,harsh,102.8306,-17.6698,45.95,49.27,1.1607,156

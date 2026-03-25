@@ -1,0 +1,81 @@
+/var/www/trading-bots/btc-spot-dev/research/x22/benchmark.py:41: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+======================================================================
+X22: Cost Sensitivity Analysis — Strategy Robustness to Execution Cost
+======================================================================
+
+Loading data...
+  H4 bars: 17838, D1 bars: 2973, warmup: 2190 bars
+  Post-warmup years: 7.14
+
+Training churn model on E5+EMA1D21 trades...
+  E5+EMA1D21 @ 50 bps: 202 trades, Sh=1.4690
+  Churn model: C=10.0, n_train=183
+  X14D threshold: 0.500
+  X18 threshold (α=40%): 0.718
+
+T0: Full Metric Table (44 backtests)
+    2 bps: E0 Sh=1.602 | E5 Sh=1.798 | X14D Sh=1.621 | X18 Sh=1.772
+    5 bps: E0 Sh=1.582 | E5 Sh=1.777 | X14D Sh=1.612 | X18 Sh=1.757
+   10 bps: E0 Sh=1.548 | E5 Sh=1.743 | X14D Sh=1.595 | X18 Sh=1.731
+   15 bps: E0 Sh=1.514 | E5 Sh=1.709 | X14D Sh=1.579 | X18 Sh=1.706
+   20 bps: E0 Sh=1.480 | E5 Sh=1.675 | X14D Sh=1.563 | X18 Sh=1.680
+   25 bps: E0 Sh=1.446 | E5 Sh=1.640 | X14D Sh=1.547 | X18 Sh=1.654
+   30 bps: E0 Sh=1.412 | E5 Sh=1.606 | X14D Sh=1.530 | X18 Sh=1.629
+   40 bps: E0 Sh=1.344 | E5 Sh=1.538 | X14D Sh=1.498 | X18 Sh=1.577
+   50 bps: E0 Sh=1.276 | E5 Sh=1.469 | X14D Sh=1.465 | X18 Sh=1.526
+   75 bps: E0 Sh=1.107 | E5 Sh=1.297 | X14D Sh=1.384 | X18 Sh=1.397
+  100 bps: E0 Sh=0.937 | E5 Sh=1.125 | X14D Sh=1.302 | X18 Sh=1.268
+
+T1: Breakeven Analysis
+  E0                       : Sharpe=0 at    999 bps, CAGR=0 at    999 bps
+  E5+EMA1D21               : Sharpe=0 at    999 bps, CAGR=0 at    999 bps
+  E5+EMA1D21+X14D          : Sharpe=0 at    999 bps, CAGR=0 at    999 bps
+  E5+EMA1D21+X18           : Sharpe=0 at    999 bps, CAGR=0 at    999 bps
+
+T2: Churn Filter Marginal Value
+    2 bps: X14D Δsh=-0.1764 Δcagr=-5.91 | X18 Δsh=-0.0252 Δcagr=+3.40
+    5 bps: X14D Δsh=-0.1657 Δcagr=-5.19 | X18 Δsh=-0.0201 Δcagr=+3.68
+   10 bps: X14D Δsh=-0.1478 Δcagr=-4.00 | X18 Δsh=-0.0116 Δcagr=+4.13
+   15 bps: X14D Δsh=-0.1298 Δcagr=-2.84 | X18 Δsh=-0.0031 Δcagr=+4.58
+   20 bps: X14D Δsh=-0.1119 Δcagr=-1.70 | X18 Δsh=+0.0054 Δcagr=+5.01
+   25 bps: X14D Δsh=-0.0939 Δcagr=-0.58 | X18 Δsh=+0.0139 Δcagr=+5.44
+   30 bps: X14D Δsh=-0.0759 Δcagr=+0.52 | X18 Δsh=+0.0225 Δcagr=+5.85
+   40 bps: X14D Δsh=-0.0399 Δcagr=+2.65 | X18 Δsh=+0.0396 Δcagr=+6.64
+   50 bps: X14D Δsh=-0.0039 Δcagr=+4.70 | X18 Δsh=+0.0567 Δcagr=+7.40
+   75 bps: X14D Δsh=+0.0863 Δcagr=+9.48 | X18 Δsh=+0.0995 Δcagr=+9.12
+  100 bps: X14D Δsh=+0.1765 Δcagr=+13.80 | X18 Δsh=+0.1423 Δcagr=+10.63
+
+T3: Strategy Ranking at Realistic Costs
+  10 bps — Sharpe: E5+EMA1D21 > E5+EMA1D21+X18 > E5+EMA1D21+X14D > E0
+  15 bps — Sharpe: E5+EMA1D21 > E5+EMA1D21+X18 > E5+EMA1D21+X14D > E0
+  20 bps — Sharpe: E5+EMA1D21+X18 > E5+EMA1D21 > E5+EMA1D21+X14D > E0
+  50 bps — Sharpe: E5+EMA1D21+X18 > E5+EMA1D21 > E5+EMA1D21+X14D > E0
+
+T4: Bootstrap at 15 bps (500 VCBB)
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+  E0                       : med Sh=0.945, P(Sh>0)=99.0%, med CAGR=35.4%, P(CAGR>0)=97.2%
+  E5+EMA1D21               : med Sh=0.810, P(Sh>0)=97.4%, med CAGR=22.9%, P(CAGR>0)=93.8%
+  E5+EMA1D21+X14D          : med Sh=0.720, P(Sh>0)=95.8%, med CAGR=21.8%, P(CAGR>0)=89.6%
+  E5+EMA1D21+X18           : med Sh=0.772, P(Sh>0)=97.4%, med CAGR=22.4%, P(CAGR>0)=93.8%
+
+T5: Cost Drag Decomposition
+  E0                        @ 15 bps: gross=73.4%, net=67.5%, drag=5.9pp (8.0%)
+  E5+EMA1D21                @ 15 bps: gross=84.0%, net=77.9%, drag=6.1pp (7.3%)
+  E5+EMA1D21+X14D           @ 15 bps: gross=78.1%, net=75.1%, drag=3.0pp (3.9%)
+  E5+EMA1D21+X18            @ 15 bps: gross=87.4%, net=82.5%, drag=4.9pp (5.6%)
+  E0                        @ 50 bps: gross=73.4%, net=52.7%, drag=20.7pp (28.2%)
+  E5+EMA1D21                @ 50 bps: gross=84.0%, net=62.5%, drag=21.5pp (25.6%)
+  E5+EMA1D21+X14D           @ 50 bps: gross=78.1%, net=67.2%, drag=10.9pp (14.0%)
+  E5+EMA1D21+X18            @ 50 bps: gross=87.4%, net=69.9%, drag=17.5pp (20.0%)
+
+======================================================================
+X22 COMPLETE — Characterization study (no gates)
+Elapsed: 475.0s
+======================================================================
+
+Results written to /var/www/trading-bots/btc-spot-dev/research/x22/x22_results.json

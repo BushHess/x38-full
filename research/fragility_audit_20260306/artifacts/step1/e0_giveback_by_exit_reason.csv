@@ -1,0 +1,3 @@
+exit_reason,trade_count,mean_giveback,median_giveback,mean_realized_return_pct,mean_mfe_pct
+vtrend_trail_stop,161,3.151233,1.052437,3.094267,10.534689
+vtrend_trend_exit,31,8.955606,3.102963,-1.235933,0.982467

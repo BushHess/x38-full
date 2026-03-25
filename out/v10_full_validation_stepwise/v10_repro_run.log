@@ -1,0 +1,77 @@
+================================================================
+  V10 REPRO RUN — 2026-02-23 23:42:17 UTC
+================================================================
+Project root: /var/www/trading-bots/btc-spot
+Output dir:   /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise
+Git commit:   c74c650618852baecace9f75d95c16f491dc20e0
+
+[RUN 1] Starting...
+/var/www/trading-bots/btc-spot/v10/strategies/v8_apex.py:157: RuntimeWarning: divide by zero encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+/var/www/trading-bots/btc-spot/v10/strategies/v8_apex.py:157: RuntimeWarning: invalid value encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+======================================================================
+  V10 BASELINE — FULL BACKTEST REPRODUCTION
+======================================================================
+
+  Data:    /var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period:  2019-01-01 → 2026-02-20  (warmup=365d)
+  Cash:    $10,000
+  Strategy: V8ApexStrategy(V8ApexConfig()) — all defaults
+  Output:  /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise
+
+Loading data...
+  H4 bars: 17838
+  D1 bars: 2973
+
+Scenario        Score      CAGR%       MDD%     Sharpe    Sortino         PF   Trades
+--------------------------------------------------------------------------------
+smart          121.37      48.56      34.07     1.3856     1.3857     1.8656      100
+base           112.74      45.55      34.78     1.3219     1.3252     1.8309      100
+harsh           88.94      37.26      36.28     1.1510     1.1421     1.6693      103
+
+CSV saved: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_full_backtest_summary.csv
+JSON saved: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_full_backtest_detail.json
+
+Done in 1.4s
+
+[RUN 2] Starting (determinism check)...
+/var/www/trading-bots/btc-spot/v10/strategies/v8_apex.py:157: RuntimeWarning: divide by zero encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+/var/www/trading-bots/btc-spot/v10/strategies/v8_apex.py:157: RuntimeWarning: invalid value encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+======================================================================
+  V10 BASELINE — FULL BACKTEST REPRODUCTION
+======================================================================
+
+  Data:    /var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period:  2019-01-01 → 2026-02-20  (warmup=365d)
+  Cash:    $10,000
+  Strategy: V8ApexStrategy(V8ApexConfig()) — all defaults
+  Output:  /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise
+
+Loading data...
+  H4 bars: 17838
+  D1 bars: 2973
+
+Scenario        Score      CAGR%       MDD%     Sharpe    Sortino         PF   Trades
+--------------------------------------------------------------------------------
+smart          121.37      48.56      34.07     1.3856     1.3857     1.8656      100
+base           112.74      45.55      34.78     1.3219     1.3252     1.8309      100
+harsh           88.94      37.26      36.28     1.1510     1.1421     1.6693      103
+
+CSV saved: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_full_backtest_summary.csv
+JSON saved: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_full_backtest_detail.json
+
+Done in 1.5s
+
+================================================================
+  DETERMINISM CHECK
+================================================================
+PASS: Run 1 and Run 2 are IDENTICAL (byte-for-byte).
+
+================================================================
+  VERDICT: PASS
+  Log: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_repro_run.log
+  CSV: /var/www/trading-bots/btc-spot/out_v10_full_validation_stepwise/v10_full_backtest_summary.csv
+================================================================

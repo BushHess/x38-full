@@ -1,0 +1,37 @@
+metric,count,pct,notes
+total_decision_files,56,,All decision.json under out/
+new_format_runs,40,,Modern verdict+gates format
+old_format_runs,14,,Legacy selected_candidate format
+rules_format_runs,1,,v10_fix_loop
+overlay_format_runs,1,,overlayA_conditional
+verdict_REJECT,29,72.5%,Of 40 new-format runs
+verdict_HOLD,6,15.0%,Of 40 new-format runs
+verdict_ERROR,3,7.5%,Of 40 new-format runs
+verdict_PROMOTE,2,5.0%,Of 40 new-format runs
+gate_lookahead_appeared,30,,Out of 40 runs
+gate_lookahead_failed,26,86.7%,Of 30 appearances
+gate_full_harsh_delta_appeared,37,,Out of 40 runs
+gate_full_harsh_delta_failed,24,64.9%,Of 37 appearances
+gate_wfo_robustness_appeared,16,,Out of 40 runs
+gate_wfo_robustness_failed,13,81.2%,Of 16 appearances
+gate_bootstrap_appeared,7,,Out of 40 runs (diagnostic only)
+gate_bootstrap_failed,7,100.0%,"Of 7 appearances; NOTE: bootstrap has no veto power since Report 21"
+gate_holdout_harsh_delta_appeared,7,,Out of 40 runs
+gate_holdout_harsh_delta_failed,3,42.9%,Of 7 appearances
+gate_trade_level_bootstrap_appeared,22,,Out of 40 runs
+gate_trade_level_bootstrap_failed,1,4.5%,Of 22 appearances
+gate_trade_level_matched_delta_appeared,11,,Out of 40 runs
+gate_trade_level_matched_delta_failed,0,0.0%,Of 11 appearances
+gate_selection_bias_appeared,8,,Out of 40 runs
+gate_selection_bias_failed,0,0.0%,Of 8 appearances
+wfo_low_power_true,2,5.0%,Of 40 runs (metadata.wfo_low_power)
+trade_level_auto_enabled,6,15.0%,Of 40 runs (via low-power warning)
+selection_bias_caution_or_fallback,0,0.0%,Of 8 selection_bias appearances; all risk_statements = PASS
+quality_policy_elevated_to_ERROR,3,7.5%,"data_integrity_fail, invariants, unused_config"
+output_contract_ERROR,0,0.0%,No missing-file ERRORs in archived runs
+config_usage_policy_ERROR,1,2.5%,step3b_smoke_diff (unused_config:candidate:emdd_ref_mode)
+data_integrity_hard_fail_true,1,2.5%,quality_demo_data_integrity_fail (intentional test case)
+invariant_violations_detected,1,2.5%,exposure_within_max_total:200
+regression_guard_failed,0,0.0%,No archived runs with regression_guard failure
+v13_grid_runs,18,45.0%,"All REJECT; all fail lookahead + full_harsh_delta"
+unique_failure_strings,13,,"See report for complete list"

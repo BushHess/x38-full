@@ -1,0 +1,6 @@
+excluded_episode,excluded_date,excluded_depth_pct,excluded_n_emdd,excluded_delta_pnl,excluded_benefit,excluded_benefit_share_pct,remaining_benefit,cost,loo_net_conditional,loo_bcr,still_positive
+none,—,0,0,0,0,0,17368.33,14717.04,2651.29,1.18,True
+4,2019-06-26,35.22,12,-1810.36,0.0,0.0,17368.33,14717.04,2651.29,1.18,True
+12,2021-11-10,36.16,7,-3798.6,0.0,0.0,17368.33,14717.04,2651.29,1.18,True
+15,2024-05-21,33.35,7,3919.59,3919.59,22.6,13448.74,14717.04,-1268.3,0.914,False
+17,2025-01-20,31.56,9,13448.74,13448.74,77.4,3919.59,14717.04,-10797.45,0.266,False

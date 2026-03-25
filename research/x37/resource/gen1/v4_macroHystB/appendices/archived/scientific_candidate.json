@@ -1,0 +1,147 @@
+{
+  "name": "D1 ret_60 regime-entry gate + H4 trendq_84 hysteresis",
+  "short_name": "new_base",
+  "status": "scientific_candidate",
+  "purpose": "Best dev-only candidate from the fresh-start discovery pipeline before practical refinement.",
+  "market": "BTCUSDT spot",
+  "side": "long_only",
+  "timeframes": [
+    "4h",
+    "1d"
+  ],
+  "execution": {
+    "signal_time": "bar_close",
+    "fill_time": "next_bar_open",
+    "cost_per_side": 0.001,
+    "round_trip_cost": 0.002,
+    "trading_timeframe": "4h"
+  },
+  "raw_data_window": {
+    "d1_start": "2017-08-17",
+    "d1_end": "2026-03-10",
+    "h4_start": "2017-08-17 04:00:00 UTC",
+    "h4_end": "2026-03-11 07:59:59 UTC"
+  },
+  "locked_protocol": {
+    "warmup_years": 1,
+    "warmup_span": "2018-01-01 to 2018-12-31 (effectively 2019 used as first calibration year; live scoring reported from 2020)",
+    "development_window": "2019-01-01 to 2023-12-31",
+    "development_walkforward_reported": "2020-01-01 to 2023-12-31",
+    "diagnostic_post_dev_window": "2024-01-01 to 2026-02-20",
+    "micro_untouched_slice": "2026-02-21 to 2026-03-10",
+    "note": "The original 2024-01-01..2026-02-20 segment is contaminated by prior rounds in this chat and is not a valid untouched holdout anymore."
+  },
+  "feature_definitions": {
+    "d1_ret_60": "d1_close / d1_close.shift(60) - 1",
+    "h4_trendq_84": "(h4_close / h4_close.shift(84) - 1) / (rolling_std(h4_logret, 84) * sqrt(84))"
+  },
+  "calibration": {
+    "recalibration_frequency": "yearly",
+    "macro_threshold_mode": "expanding",
+    "micro_threshold_mode": "expanding",
+    "macro_thresholds": {
+      "entry_quantile": 0.5,
+      "hold_quantile": 0.5,
+      "tail": "high"
+    },
+    "micro_thresholds": {
+      "entry_quantile": 0.6,
+      "hold_quantile": 0.5,
+      "tail": "high"
+    },
+    "cross_timeframe_alignment": "On each H4 bar, D1 features are merged with backward as-of alignment using only the most recently completed D1 bar."
+  },
+  "logic": {
+    "entry": [
+      "Flat position",
+      "d1_ret_60 > yearly expanding q50",
+      "h4_trendq_84 > yearly expanding q60"
+    ],
+    "hold": [
+      "Once long, ignore D1 macro as an exit clause",
+      "Continue holding while h4_trendq_84 > yearly expanding q50"
+    ],
+    "exit": [
+      "Exit when h4_trendq_84 <= yearly expanding q50"
+    ]
+  },
+  "yearly_thresholds": [
+    {
+      "year": 2020,
+      "d1_ret_60_q50_expanding": 0.017331177924108765,
+      "h4_trendq_84_entry_q60_expanding": 0.44456083332901164,
+      "h4_trendq_84_hold_q50_expanding": 0.18495010546723112
+    },
+    {
+      "year": 2021,
+      "d1_ret_60_q50_expanding": 0.11701674886713587,
+      "h4_trendq_84_entry_q60_expanding": 0.5976763181047767,
+      "h4_trendq_84_hold_q50_expanding": 0.37280954220438917
+    },
+    {
+      "year": 2022,
+      "d1_ret_60_q50_expanding": 0.16551381051796077,
+      "h4_trendq_84_entry_q60_expanding": 0.5327188921296244,
+      "h4_trendq_84_hold_q50_expanding": 0.2733410988105367
+    },
+    {
+      "year": 2023,
+      "d1_ret_60_q50_expanding": 0.024763203088496333,
+      "h4_trendq_84_entry_q60_expanding": 0.3979686825003266,
+      "h4_trendq_84_hold_q50_expanding": 0.1211884305135927
+    },
+    {
+      "year": 2024,
+      "d1_ret_60_q50_expanding": 0.07826335476518742,
+      "h4_trendq_84_entry_q60_expanding": 0.4162470167531465,
+      "h4_trendq_84_hold_q50_expanding": 0.15029781084866284
+    },
+    {
+      "year": 2025,
+      "d1_ret_60_q50_expanding": 0.07915294281956675,
+      "h4_trendq_84_entry_q60_expanding": 0.4311089854478672,
+      "h4_trendq_84_hold_q50_expanding": 0.1585613219014447
+    },
+    {
+      "year": 2026,
+      "d1_ret_60_q50_expanding": 0.06139221189286537,
+      "h4_trendq_84_entry_q60_expanding": 0.391328364812821,
+      "h4_trendq_84_hold_q50_expanding": 0.1269146816344053
+    }
+  ],
+  "performance": {
+    "dev_2020_2023": {
+      "sharpe": 1.6582850250523795,
+      "cagr": 0.6880836355745343,
+      "mdd": -0.22357088540010972,
+      "trades": 53
+    },
+    "diagnostic_2024_2026_02_20": {
+      "sharpe": 1.7661413616988866,
+      "cagr": 0.5225657174602125,
+      "mdd": -0.10712199858881222,
+      "trades": 23
+    },
+    "full_2020_2026_02_20": {
+      "sharpe": 1.6901536907086565,
+      "cagr": 0.6388812632728149,
+      "mdd": -0.22357088540010972,
+      "trades": 76
+    },
+    "trade_distribution": {
+      "trades": 76,
+      "win_rate": 0.4605263157894737,
+      "avg_net_ret": 0.04946487497612213,
+      "med_net_ret": -0.0032928292493681344,
+      "avg_hold_days": 8.585526315789474,
+      "med_hold_days": 3.1666666666666665,
+      "top5_sum": 2.6394529100731035,
+      "bottom5_sum": -0.31852729626565524,
+      "total_net_factor": 20.715552514688188
+    }
+  },
+  "interpretation": {
+    "core_claim": "Slow D1 return persistence carries the regime information. H4 trend quality works best as the state / hold controller.",
+    "design_implication": "D1 should gate entry risk. H4 should manage timing and hysteresis. Using D1 as hold/exit logic is not required."
+  }
+}

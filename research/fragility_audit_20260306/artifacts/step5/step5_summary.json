@@ -1,0 +1,83 @@
+{
+  "candidates_tested": [
+    "E0",
+    "E5",
+    "SM",
+    "E0_plus_EMA1D21",
+    "E5_plus_EMA1D21"
+  ],
+  "latch_dropped": true,
+  "phases_completed": [
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "n_stochastic_draws": 1000,
+  "exit_delay_bars_tested": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "combined_scenarios_tested": 11,
+  "signoff_matrix": {
+    "E0": {
+      "status": "FALLBACK",
+      "alternative": "E5_plus_EMA1D21",
+      "gates": {
+        "G1_absolute_dominance": "False",
+        "G2_state_dominance": false,
+        "G3_fractional_loss": "True",
+        "G4_absolute_floor": "True",
+        "G5_infra_conditioned": "True"
+      }
+    },
+    "E5": {
+      "status": "FALLBACK",
+      "alternative": "E5_plus_EMA1D21",
+      "gates": {
+        "G1_absolute_dominance": "False",
+        "G2_state_dominance": false,
+        "G3_fractional_loss": "True",
+        "G4_absolute_floor": "True",
+        "G5_infra_conditioned": "True"
+      }
+    },
+    "SM": {
+      "status": "FALLBACK",
+      "alternative": "E5_plus_EMA1D21",
+      "gates": {
+        "G1_absolute_dominance": "False",
+        "G2_state_dominance": false,
+        "G3_fractional_loss": "True",
+        "G4_absolute_floor": "True",
+        "G5_infra_conditioned": "True"
+      }
+    },
+    "E0_plus_EMA1D21": {
+      "status": "FALLBACK",
+      "alternative": "E5_plus_EMA1D21",
+      "gates": {
+        "G1_absolute_dominance": "False",
+        "G2_state_dominance": false,
+        "G3_fractional_loss": "True",
+        "G4_absolute_floor": "True",
+        "G5_infra_conditioned": "True"
+      }
+    },
+    "E5_plus_EMA1D21": {
+      "status": "GO",
+      "alternative": "E0_plus_EMA1D21",
+      "gates": {
+        "G1_absolute_dominance": "True",
+        "G2_state_dominance": true,
+        "G3_fractional_loss": "True",
+        "G4_absolute_floor": "True",
+        "G5_infra_conditioned": "True"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+=== Eval & Fragility Studies ===
+Started: Mon Mar 16 08:33:04 PM UTC 2026
+[20:33:04] START eval_e5_ema1d21_src_run_factorial_7s
+[20:33:04] FAIL  eval_e5_ema1d21_src_run_factorial_7s (rc=0)
+[20:33:04] START eval_e5_ema1d21_src_run_frontier_7s
+[20:33:21] DONE  eval_e5_ema1d21_src_run_frontier_7s
+[20:33:21] START eval_e5_ema1d21_src_run_jackknife_wfo
+[20:33:32] DONE  eval_e5_ema1d21_src_run_jackknife_wfo
+[20:33:32] START eval_e5_ema1d21_src_run_robustness_7s
+[20:42:54] DONE  eval_e5_ema1d21_src_run_robustness_7s
+[20:42:55] START eval_e5_ema1d21_src_run_tier2_tier4
+[21:24:20] DONE  eval_e5_ema1d21_src_run_tier2_tier4
+[21:24:20] START eval_vtrend_latch_20260305_src_run_factorial_6s
+[21:24:21] FAIL  eval_vtrend_latch_20260305_src_run_factorial_6s (rc=0)
+[21:24:21] START eval_vtrend_latch_20260305_src_run_frontier_6s
+[21:24:33] DONE  eval_vtrend_latch_20260305_src_run_frontier_6s
+[21:24:33] START eval_vtrend_latch_20260305_src_run_robustness_6s
+[21:28:55] DONE  eval_vtrend_latch_20260305_src_run_robustness_6s
+[21:28:55] START eval_vtrend_latch_20260305_src_run_parity
+[21:28:55] FAIL  eval_vtrend_latch_20260305_src_run_parity (rc=0)
+[21:28:55] START fragility_audit_20260306_code_step1_run_step1_e0
+[21:28:58] DONE  fragility_audit_20260306_code_step1_run_step1_e0
+[21:28:58] START fragility_audit_20260306_code_step2_run_step2_track_b
+[21:29:03] DONE  fragility_audit_20260306_code_step2_run_step2_track_b
+[21:29:03] START fragility_audit_20260306_code_step3_run_step3_replay_fragility
+[22:19:07] FAIL  fragility_audit_20260306_code_step3_run_step3_replay_fragility (rc=0)
+[22:19:07] START fragility_audit_20260306_code_step4_run_step4_final_synthesis
+[22:19:08] DONE  fragility_audit_20260306_code_step4_run_step4_final_synthesis
+[22:19:08] START fragility_audit_20260306_code_step5_run_step5_live_signoff
+[22:29:13] DONE  fragility_audit_20260306_code_step5_run_step5_live_signoff
+=== Eval & Fragility COMPLETE: Mon Mar 16 10:29:13 PM UTC 2026 ===

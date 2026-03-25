@@ -1,0 +1,22 @@
+{
+  "x0_trades": 186,
+  "anchor_trades": 172,
+  "shared_entries": 157,
+  "x0_only_entries": 29,
+  "anchor_only_entries": 15,
+  "x0_only_reentry_count": 27,
+  "x0_only_pnl": 43411.0,
+  "x0_only_wr": 55.2,
+  "anchor_only_pnl": -4086.0,
+  "anchor_only_wr": 46.7,
+  "shared_same_exit": 95,
+  "shared_diff_exit": 62,
+  "shared_pnl_x0": 382943.0,
+  "shared_pnl_anchor": 330010.0,
+  "x0_total_pnl": 426354.0,
+  "anchor_total_pnl": 325924.0,
+  "total_advantage": 100431.0,
+  "advantage_from_x0_only_trades": 43411.0,
+  "advantage_from_avoided_anchor_only": 4086.0,
+  "advantage_from_shared_exit_diff": 52933.0
+}

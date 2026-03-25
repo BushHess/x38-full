@@ -1,0 +1,11 @@
+{
+  "latch_floor_exit": {
+    "n_trades": 65,
+    "pct_of_total": 100.0,
+    "win_rate_pct": 41.53846153846154,
+    "avg_return_pct": 4.791382846153846,
+    "median_return_pct": -1.991546,
+    "total_pnl_usd": 14197.254853999999,
+    "avg_days_held": 14.402564061538463
+  }
+}

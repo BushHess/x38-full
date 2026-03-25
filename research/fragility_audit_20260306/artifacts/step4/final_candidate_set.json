@@ -1,0 +1,37 @@
+{
+  "research_conclusion_ready": true,
+  "no_universal_winner_confirmed": true,
+  "minimal_nonredundant_set": ["E0", "E5", "SM", "E0_plus_EMA1D21", "E5_plus_EMA1D21"],
+  "primary_low_latency_candidate": {
+    "M1_return_seeking": "E5_plus_EMA1D21",
+    "M2_balanced": "E0_plus_EMA1D21",
+    "M3_resilience_first": "SM"
+  },
+  "secondary_low_latency_candidate": {
+    "M1_return_seeking": "E5",
+    "M2_balanced": "E5",
+    "M3_resilience_first": "LATCH"
+  },
+  "degraded_ops_candidate": "E0",
+  "manual_semi_manual_candidate": "SM",
+  "dropped_as_redundant": ["LATCH"],
+  "conditional_candidates": ["E0", "E5"],
+  "not_recommended_candidates": {
+    "LT3": ["E0", "E5", "E0_plus_EMA1D21", "E5_plus_EMA1D21"]
+  },
+  "key_operational_preconditions": {
+    "E5_plus_EMA1D21": "Requires strict LT1 (<4h automated execution). DO NOT deploy if latency cannot be guaranteed.",
+    "E0_plus_EMA1D21": "Requires LT1. Tolerates occasional LT2 better than E5_plus.",
+    "E0": "Minimum LT2. Most delay-resilient binary but still loses 29.5% Sharpe at D4.",
+    "E5": "Minimum LT2. Higher Sharpe than E0 but slightly more delay-fragile.",
+    "SM": "No latency constraint. Viable under LT1/LT2/LT3 including manual execution."
+  },
+  "step5_needed_for_research_conclusion": false,
+  "step5_needed_for_live_signoff": true,
+  "top_open_risks": [
+    "Exit delay not tested — only entry delay was simulated",
+    "Combined disruption (simultaneous miss + delay) not tested",
+    "Bootstrap Sharpe for E0_plus/E5_plus is lower than E0 (OOS consistency concern)",
+    "WFO 4/8 for E5, 5/8 for E5_plus — marginal validation confidence"
+  ]
+}

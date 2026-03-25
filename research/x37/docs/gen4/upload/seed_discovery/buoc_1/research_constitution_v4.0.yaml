@@ -1,0 +1,791 @@
+version: "4.0"
+name: "Spot BTC/USDT Mainline Constitution"
+status: "active"
+purpose: >
+  Provide a stable research charter for finding, freezing, and forward-validating deployable
+  Binance Spot BTC/USDT strategies using only spot OHLCV plus taker flow data on 15m, 1h, 4h, and 1d bars.
+
+mission_statement: >
+  The goal is not to discover a timeless global optimum.
+  The goal is to maintain a versioned system lifecycle that selects the best
+  currently deployable mechanism under a frozen charter and validates each frozen version
+  on genuinely unseen data.
+
+operating_principles:
+  - "The unit of OOS evidence is a frozen system_version_id, not the program or lineage."
+  - "Exploration is free but earns no OOS credit."
+  - "New evidence comes only from data appended after a version's freeze_cutoff_utc."
+  - "Redesign from forward results resets the evidence clock for the new version."
+  - "One execution chat must perform one mode only."
+  - "The latest state pack is the only intended machine handoff between execution sessions."
+  - "Human-only explanatory documents should not be uploaded to execution chats by default."
+
+# ── Three separated identity axes ──────────────────────────────────────
+
+identity_model:
+  constitution_version:
+    description: "The research rules (this charter). Changes here = major constitution bump."
+    current: "4.0"
+  program_lineage_id:
+    description: >
+      The research program — a series of system versions pursuing the same goal
+      under the same constitution. Persists across version resets.
+    example: "btc_spot_mainline_lineage_001"
+  system_version_id:
+    description: >
+      A specific frozen candidate lineup (one champion plus up to two challengers),
+      each with immutable signal logic. This is the unit that earns OOS evidence.
+      Promotion may change which candidate is champion, but does not change any
+      candidate's algorithm. Each freeze creates a new system_version_id.
+    example: "V1"
+    fields:
+      - "system_version_id: string (e.g. V1, V2, V3)"
+      - "parent_system_version_id: string or null"
+      - "freeze_cutoff_utc: ISO 8601 UTC timestamp"
+      - "design_inputs_end_utc: ISO 8601 UTC timestamp"
+      - "reason_for_freeze: string"
+
+# ── System versioning policy ───────────────────────────────────────────
+
+system_versioning_policy:
+  principle: >
+    OOS evidence accrues to a system_version_id, not to the program.
+    Each frozen version is immutable. Any change that could alter signal,
+    trade log, position path, or PnL path on seen data creates a new version.
+  freeze_requirements:
+    - "Assign a new system_version_id."
+    - "Record parent_system_version_id (null if first version)."
+    - "Record freeze_cutoff_utc: all data up to this timestamp is seen data for this version."
+    - "Record design_inputs_end_utc: latest data that influenced the design."
+    - "Record reason_for_freeze."
+    - "Produce a frozen_system_spec for each candidate under this version."
+  immutability_rule: >
+    After freeze, each candidate's algorithm is immutable. Promotion may change
+    which candidate is champion, but does not change any candidate's signal logic.
+    Changes to signal logic, parameters, features, entry/exit rules, sizing,
+    cost handling, or any behavior that could alter output on seen data require
+    a new system_version_id.
+
+# ── Redesign reset policy ─────────────────────────────────────────────
+
+redesign_reset_policy:
+  principle: >
+    If you use a forward window to decide what to change, that window is no longer
+    OOS for the changed version.
+  rules:
+    - >
+      When creating a new system_version_id, all data used to inform the redesign
+      becomes seen data for the new version.
+    - >
+      The new version's clean OOS starts only from the first bar after its
+      freeze_cutoff_utc.
+    - >
+      Forward evidence accumulated by the parent version does NOT transfer to
+      the new version.
+    - >
+      The evidence clock resets to zero for the new version.
+  exception: >
+    If data was reserved (never seen, never used for any decision) before the
+    redesign, it may serve as OOS for the new version — but only once. If the
+    researcher views those results and redesigns again, the reserved data is
+    consumed and no longer OOS for the next version.
+
+# ── Redesign guardrails (anti-overfix) ─────────────────────────────────
+
+redesign_guardrails:
+  purpose: >
+    Make redesign hard, rare, and conditional. Forward evaluation should be the
+    normal steady-state activity. Redesign is an exceptional event with a high
+    burden of proof. The evidence clock reset after every redesign is the
+    strongest economic deterrent: each change costs months of waiting.
+
+  allowed_triggers:
+    description: "Redesign is permitted ONLY when one of these triggers fires."
+    triggers:
+      - name: "consecutive_hard_constraint_failure"
+        rule: "Champion fails cumulative hard constraints in 2 consecutive standard reviews."
+      - name: "emergency_breach"
+        rule: "An emergency review trigger fires (data integrity, reconstruction failure, or MDD breach)."
+      - name: "proven_bug"
+        rule: "A logic bug or data bug is discovered and proven to affect trade/PnL output."
+      - name: "structural_deficiency"
+        rule: >
+          A challenger shows meaningful paired advantage over champion across multiple
+          consecutive reviews, indicating a structural deficiency in the champion design —
+          not just noise.
+    forbidden: >
+      Redesign is NOT allowed merely because:
+      one forward window underperformed,
+      Sharpe dropped in a single review,
+      the researcher feels uncomfortable,
+      or a new idea seems promising without evidence of champion failure.
+
+  cooldown:
+    minimum_days_after_freeze: 180
+    exceptions:
+      - "emergency breach (emergency_review_triggers)"
+      - "proven bug with classification_test confirmation"
+    rationale: >
+      The cooldown is the strongest guardrail against reacting to noise.
+      After freezing Vn, the researcher must wait at least 180 calendar days
+      before initiating a redesign, unless a genuine emergency or bug occurs.
+
+  single_hypothesis_rule:
+    description: >
+      Each redesign must address exactly one primary hypothesis. Do not change
+      multiple independent logic blocks simultaneously.
+    requirements:
+      - "State the specific failure claim."
+      - "State the hypothesis for why it occurs."
+      - "Make exactly one principal change to address it."
+      - "If the change requires adjusting related parameters, that is acceptable, but the core modification must be singular and testable."
+    rationale: >
+      If you change 5 things at once, you cannot attribute improvement or
+      degradation to any specific change. Single-hypothesis redesign preserves
+      the ability to learn from the outcome.
+
+  change_budget:
+    per_redesign:
+      max_logic_blocks_changed: 1
+      max_tunables_changed: 3
+      max_execution_semantics_changes: 1
+    per_180_calendar_days:
+      max_major_redesigns: 1
+    rationale: >
+      Limiting the scope of each redesign and the frequency of redesigns
+      prevents gradual overfit through accumulated small changes.
+
+  evidence_threshold_for_redesign:
+    minimum_forward_days_before_redesign_allowed: 180
+    minimum_forward_entries_before_redesign_allowed: 6
+    rule: >
+      Do not redesign before accumulating sufficient forward evidence to
+      distinguish signal from noise. A single bad quarter is not sufficient
+      evidence for redesign.
+
+  redesign_dossier_required: true
+  redesign_dossier_contents:
+    - "parent_system_version_id"
+    - "forward windows observed (with dates)"
+    - "failure claim: what went wrong and evidence"
+    - "hypothesis: why it happened"
+    - "proposed fix: exactly one principal change"
+    - "expected effect: what should improve and by how much"
+    - "do_not_touch list: what must NOT change"
+    - "evidence_clock_reset_reason: why the cost of reset is justified"
+  dossier_rule: >
+    If you cannot write a concise redesign dossier, you probably do not have
+    sufficient reason to redesign. The dossier is a gate, not just documentation.
+
+  promotion_vs_redesign_separation:
+    description: >
+      Promotion and redesign are two different operations. They must not be
+      conflated. Forward evaluation is for measuring existing frozen versions,
+      not for optimizing.
+    promotion: >
+      An existing challenger (frozen under the same system_version_id) surpasses
+      the champion on cumulative forward evidence. No algorithm change occurs.
+    redesign: >
+      A new algorithm is created because the researcher learned something from
+      forward evidence that motivates a structural change. A new system_version_id
+      is created and the evidence clock resets.
+    rule: >
+      A forward evaluation chat must NEVER trigger a redesign. If forward results
+      motivate a redesign, the researcher must close the forward evaluation chat,
+      optionally do sandbox exploration, and then open a redesign_freeze chat.
+
+# ── Complexity and DOF guardrails ──────────────────────────────────────
+
+complexity_guardrails:
+  purpose: >
+    Reset evidence clock alone is not sufficient to prevent adaptive overfitting.
+    If redesigns continuously expand the search space, the researcher can still overfit
+    by exploring too many degrees of freedom across versions. These guardrails
+    ensure that complexity growth is bounded, taxed, and audited.
+
+  complexity_budget_per_version:
+    max_logical_layers: 3
+    max_tunable_quantities: 4
+    max_feature_families: 4
+    max_configs_per_redesign: 20
+    rule: >
+      These caps apply to the FINAL frozen version, not just to the change delta.
+      A redesign that pushes any of these over the cap is automatically classified
+      as a major redesign and must go through governance escalation.
+
+  minor_vs_major_redesign:
+    minor_redesign:
+      description: >
+        Small change within the current architecture. Stays within complexity caps.
+        Permitted in mainline under standard redesign guardrails.
+      max_net_dof_increase: 1
+      examples:
+        - "adjust one threshold"
+        - "swap one feature for another"
+        - "change one exit rule"
+    major_redesign:
+      description: >
+        Expands search space significantly. Adds layers, feature families, or
+        substantially increases tunables. Must be escalated to governance.
+      trigger_conditions:
+        - "net DOF increase > 1"
+        - "new feature family added"
+        - "new logical layer added"
+        - "architecture change (e.g. single-TF to multi-TF)"
+        - "domain expansion (new data surface)"
+      escalation: >
+        A major redesign must NOT be treated as Vn+1 in the same mainline.
+        It must either:
+        (a) go through governance review and be approved as an exceptional major version, or
+        (b) be started as a new program_lineage_id (new research branch).
+        This prevents the mainline from silently accumulating complexity through
+        successive "minor" redesigns that are actually major.
+
+  complexity_tax:
+    description: >
+      Every additional degree of freedom must pay a tax in the ranking function.
+      More complexity requires stronger evidence.
+    logical_layer_penalty: 0.02
+    tunable_quantity_penalty: 0.03
+    rule: >
+      Applied to the ranking metric after hard constraints. A version with more
+      tunables must show a meaningfully higher pre-penalty metric to rank above
+      a simpler version.
+
+  search_accounting:
+    required_in_redesign_dossier: true
+    fields:
+      - "variants_tried: how many configurations were explored in sandbox"
+      - "variants_rejected: how many were discarded and why"
+      - "selection_basis: why this particular design was chosen"
+      - "total_search_dof: total degrees of freedom explored across all sandbox iterations"
+    rationale: >
+      Without search accounting, the operator will only remember "the last version
+      is good" and forget how many alternatives were tried. This creates hidden
+      multiple testing that the evidence clock reset does not capture.
+
+  dof_escalation_rule: >
+    If the cumulative DOF across all versions in a lineage exceeds 2x the
+    initial version's DOF, the next redesign must go through governance review
+    regardless of whether it is minor or major. This is a circuit-breaker
+    against gradual complexity creep.
+
+# ── Sandbox vs Mainline separation ─────────────────────────────────────
+
+sandbox_mainline_separation:
+  purpose: >
+    Sandbox is for learning. Mainline is for proving.
+    Results from sandbox may generate candidate hypotheses, but those hypotheses
+    are unproven until frozen and validated through mainline forward evidence.
+
+  sandbox:
+    modes: ["exploration", "discussion"]
+    properties:
+      - "May iterate freely on any data, any number of times."
+      - "All results are in-sample / contaminated / hypothesis."
+      - "No OOS claim is allowed."
+      - "No state pack is produced."
+      - "Not part of the formal version lineage."
+      - "Insights may inform a redesign_freeze, but do not substitute for forward evidence."
+    prompt_prefixes: ["X0", "X1"]
+
+  mainline:
+    modes: ["seed_discovery", "forward_evaluation", "redesign_freeze", "governance_review"]
+    properties:
+      - "Only frozen system_version_ids participate."
+      - "Only data after freeze_cutoff_utc counts as OOS."
+      - "State packs are produced and form the version lineage."
+      - "Redesign is gated by triggers, cooldown, and dossier."
+    prompt_prefixes: ["D", "F", "G", "R"]
+
+  boundary_rule: >
+    A candidate discovered in sandbox is only a hypothesis.
+    It becomes a mainline candidate only after being frozen as a system_version_id
+    through a seed_discovery or redesign_freeze chat.
+    Discussion/exploration chats are non-lineage.
+    Only frozen mainline versions may accumulate OOS evidence.
+
+# ── Semantic change classification ─────────────────────────────────────
+
+semantic_change_definition:
+  requires_new_version:
+    - "feature formula change"
+    - "threshold change"
+    - "lookback / window length change"
+    - "entry rule change"
+    - "exit rule change"
+    - "position sizing change"
+    - "cost handling change"
+    - "warmup semantics change"
+    - "data cleaning rule change"
+    - "tie-break logic change"
+    - "objective function change"
+    - "bugfix that changes trade log or PnL on seen data"
+  no_reset_required:
+    - "comment, docstring, rename"
+    - "formatting, packaging"
+    - "logging, export format changes"
+    - "validator or test changes"
+    - "pure refactor (provably identical output)"
+    - "bugfix proven to not change any trade or PnL on seen data"
+  classification_test: >
+    Run the frozen algorithm on all seen data before and after the change.
+    If the trade log or PnL path differs in any bit, it is a semantic change
+    requiring a new system_version_id.
+
+# ── Evidence clock definition ──────────────────────────────────────────
+
+evidence_clock_definition:
+  unit: "system_version_id"
+  start_condition: >
+    The evidence clock for a system_version_id starts at zero when
+    freeze_cutoff_utc is set. Only data with timestamps strictly after
+    freeze_cutoff_utc can contribute to clean forward evidence.
+  accumulation: >
+    Forward evidence accumulates only from bars where
+    bar.open_time > freeze_cutoff_utc. Evidence is scoped to the
+    specific system_version_id, not shared across versions.
+  reset_trigger: >
+    Creating a new system_version_id resets the evidence clock to zero.
+    No forward evidence from the parent version carries over.
+  self_check_rule: >
+    If I used this window to decide what to change, then this window
+    is no longer OOS for the changed version.
+
+# ── Research modes ─────────────────────────────────────────────────────
+
+admissible_domain:
+  venue: "Binance Spot"
+  symbol: "BTCUSDT"
+  asset_universe: ["BTCUSDT"]
+  timeframes: ["15m", "1h", "4h", "1d"]
+  data_surface:
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "quote_volume"
+    - "num_trades"
+    - "taker_buy_base_vol"
+    - "taker_buy_quote_vol"
+  excluded_from_mainline:
+    - "futures funding rate"
+    - "open interest"
+    - "basis"
+    - "long-short ratio"
+    - "liquidation feed"
+    - "order book depth"
+    - "tick or aggTrade microstructure"
+    - "options surface"
+    - "cross-asset features"
+  timezone: "UTC"
+
+canonical_input_schema:
+  columns:
+    - "symbol"
+    - "interval"
+    - "open_time"
+    - "close_time"
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "quote_volume"
+    - "num_trades"
+    - "taker_buy_base_vol"
+    - "taker_buy_quote_vol"
+  timestamp_unit: "integer milliseconds since Unix epoch"
+  timestamp_semantics: "UTC"
+  notes:
+    - "If raw Binance kline exports contain an unused final column, drop it during canonicalization."
+    - "All source files must be canonicalized into the 13-column schema before research begins."
+    - "No synthetic bar repair is allowed."
+
+research_modes:
+  # ── Sandbox modes (non-lineage) ──
+  - mode: "exploration"
+    lineage: "sandbox"
+    purpose: >
+      Iterate freely on any available data. Generate hypotheses, test designs, compare alternatives.
+      All results are in-sample / contaminated / hypothesis. No OOS claim is allowed.
+      No state pack is produced. This mode is outside the formal lineage.
+  - mode: "discussion"
+    lineage: "sandbox"
+    purpose: >
+      Philosophy, postmortem, future constitution ideas, educational explanation.
+      No outputs enter the lineage. No candidates are frozen.
+
+  # ── Mainline modes (version lineage) ──
+  - mode: "seed_discovery"
+    lineage: "mainline"
+    purpose: >
+      Mine one contaminated historical snapshot to produce candidates and freeze them
+      as a system_version_id. Each seed discovery chat freezes the algorithm at the end.
+      This mode may use the snapshot for candidate generation and internal screening,
+      but it does not create clean OOS evidence.
+  - mode: "forward_evaluation"
+    lineage: "mainline"
+    purpose: >
+      Evaluate frozen candidates on genuinely appended data (timestamps > freeze_cutoff_utc
+      of the evaluated system_version_id). This is the only mode that creates clean OOS evidence.
+      This mode must NEVER trigger or perform a redesign.
+  - mode: "redesign_freeze"
+    lineage: "mainline"
+    purpose: >
+      After learning from forward results (and optionally exploring in sandbox),
+      create a new system_version_id. Requires a valid redesign trigger, completed
+      cooldown period, and a redesign dossier. Record the parent version, set a new
+      freeze_cutoff_utc, and reset the evidence clock. All data that informed the
+      redesign becomes seen data for the new version.
+  - mode: "governance_review"
+    lineage: "mainline"
+    purpose: >
+      Decide whether the constitution itself is still fit for purpose without performing strategy search.
+
+historical_seed_protocol:
+  allowed_only_in_mode: "seed_discovery"
+  role: "candidate mining only"
+  output_contract:
+    - "Freeze exactly one champion seed and up to two challenger seeds. If no candidate survives hard constraints on both discovery and holdout, label NO_ROBUST_CANDIDATE."
+    - "Assign system_version_id to the frozen set."
+    - "Create historical_seed_audit.csv."
+    - "Initialize forward_evaluation_ledger.csv with header only."
+  warmup:
+    start: "first available bar"
+    end: "2019-12-31"
+  discovery:
+    start: "2020-01-01"
+    end: "2023-06-30"
+    walk_forward:
+      type: "quarterly_expanding"
+      unseen_test_folds: 14
+      test_folds:
+        - {fold: 1,  train_end_exclusive: "2020-01-01", test_start: "2020-01-01", test_end: "2020-03-31"}
+        - {fold: 2,  train_end_exclusive: "2020-04-01", test_start: "2020-04-01", test_end: "2020-06-30"}
+        - {fold: 3,  train_end_exclusive: "2020-07-01", test_start: "2020-07-01", test_end: "2020-09-30"}
+        - {fold: 4,  train_end_exclusive: "2020-10-01", test_start: "2020-10-01", test_end: "2020-12-31"}
+        - {fold: 5,  train_end_exclusive: "2021-01-01", test_start: "2021-01-01", test_end: "2021-03-31"}
+        - {fold: 6,  train_end_exclusive: "2021-04-01", test_start: "2021-04-01", test_end: "2021-06-30"}
+        - {fold: 7,  train_end_exclusive: "2021-07-01", test_start: "2021-07-01", test_end: "2021-09-30"}
+        - {fold: 8,  train_end_exclusive: "2021-10-01", test_start: "2021-10-01", test_end: "2021-12-31"}
+        - {fold: 9,  train_end_exclusive: "2022-01-01", test_start: "2022-01-01", test_end: "2022-03-31"}
+        - {fold: 10, train_end_exclusive: "2022-04-01", test_start: "2022-04-01", test_end: "2022-06-30"}
+        - {fold: 11, train_end_exclusive: "2022-07-01", test_start: "2022-07-01", test_end: "2022-09-30"}
+        - {fold: 12, train_end_exclusive: "2022-10-01", test_start: "2022-10-01", test_end: "2022-12-31"}
+        - {fold: 13, train_end_exclusive: "2023-01-01", test_start: "2023-01-01", test_end: "2023-03-31"}
+        - {fold: 14, train_end_exclusive: "2023-04-01", test_start: "2023-04-01", test_end: "2023-06-30"}
+  holdout:
+    start: "2023-07-01"
+    end: "2024-09-30"
+  reserve_internal:
+    start: "2024-10-01"
+    end: "snapshot_end"
+
+objective:
+  hard_constraints:
+    cagr_50bps_gt_zero: true
+    max_drawdown_50bps_lte: 0.45
+    entries_per_year_between: [6, 80]
+    exposure_between: [0.15, 0.90]
+    bootstrap_lb5_mean_daily_return_gt_zero: true
+    bootstrap_lb5_definition:
+      method: "moving block bootstrap on candidate daily returns (unpaired, single candidate)"
+      block_size: "median of paired_evaluation.bootstrap.block_sizes_days"
+      percentile: 5
+      resamples_per_block_size: "same as paired_evaluation.bootstrap.resamples_per_block_size"
+      seed: "same as paired_evaluation.bootstrap.seed"
+      note: "LB5 is the 5th percentile of resampled mean daily return at the median block size."
+    notes:
+      - "In forward evaluation, hard constraints are applied on cumulative forward metrics scoped to the evaluated system_version_id."
+      - "Before the minimum decision threshold is met, only provisional labeling is allowed unless an emergency trigger fires."
+  ranking:
+    primary_metric: "Calmar_50bps"
+    definition: "CAGR_50bps / max(abs(MDD_50bps), 0.15)"
+    tie_break_order:
+      - "meaningful paired advantage over current champion when applicable"
+      - "higher bootstrap lower bound of cumulative mean daily return"
+      - "higher cost resilience from 20bps to 50bps"
+      - "lower logical complexity"
+      - "broader parameter plateau"
+      - "higher trade count at similar utility"
+      - "lexical candidate_id"
+  evidence_labels:
+    - name: "FORWARD_CONFIRMED"
+      rule: >
+        Candidate is the active champion under a frozen system_version_id,
+        was frozen before the evaluated appended data began,
+        has at least 180 cumulative forward calendar days and at least 6 cumulative forward entries
+        (all scoped to this system_version_id),
+        and satisfies the cumulative hard constraints.
+    - name: "FORWARD_PROVISIONAL"
+      rule: >
+        Candidate has begun to accumulate forward evidence scoped to its system_version_id
+        but has not yet reached FORWARD_CONFIRMED thresholds.
+        Promote and kill decisions are permitted once the minimum decision threshold is met
+        (>= 90 days AND >= 6 entries), even while the label remains FORWARD_PROVISIONAL.
+    - name: "INTERNAL_SEED_CANDIDATE"
+      rule: >
+        Candidate was frozen under a system_version_id but has not yet started
+        a forward appended evaluation window for that version.
+    - name: "NO_ROBUST_CANDIDATE"
+      rule: "No live candidate survives the hard constraints."
+
+cost_model:
+  main_costs_bps_round_trip: [20, 50]
+  per_side_bps: [10, 25]
+  application: "Apply cost at each entry and exit execution event."
+  slippage_model: "Flat cost only in mainline research."
+
+execution_model:
+  mainline_style: "spot long-only or long-flat"
+  preferred_decision_hierarchy:
+    description: >
+      This is a suggested layering order, not a mandatory architecture.
+      Candidates may use any subset of timeframes in any causal order,
+      provided the design is justified by Phase 1 measurement.
+    typical_pattern:
+      - "slower timeframe context (D1 or H4)"
+      - "faster timeframe state or trigger (H4 or 1h)"
+      - "optional entry timing refinement (1h or 15m)"
+    notes:
+      - "Single-timeframe systems are allowed if measurement supports them."
+      - "Cross-timeframe systems are allowed if alignment is causal (no lookahead from incomplete bars)."
+  allowed_position_sizing:
+    - "binary 0 or 100% notional"
+  disallowed:
+    - "leverage"
+    - "pyramiding"
+    - "regime-specific parameter sets"
+    - "discretionary overrides"
+
+search_space:
+  philosophy: >
+    Start from raw data. Measure what exploitable structure exists before choosing
+    any mechanism family. Let the data determine the system — do not start from any
+    named indicator vocabulary or predefined architecture.
+
+    Novelty has no intrinsic value. Familiarity has no intrinsic cost.
+
+    Any mathematical function of the admitted data surface is a valid candidate feature,
+    subject only to the complexity budget and causal constraints (no lookahead).
+
+  allowed_features:
+    description: >
+      Any scalar function of the admitted data columns over a rolling window is permitted.
+      This includes but is not limited to:
+    examples:
+      - "return over N bars: close_t / close_(t-N) - 1"
+      - "volatility-normalized return: return_N / (rolling_std(log_returns, N) * sqrt(N))"
+      - "rolling quantile or percentile rank of any feature"
+      - "expanding or trailing quantile thresholds for adaptive calibration"
+      - "taker buy ratio: taker_buy_base_vol / volume over rolling window"
+      - "range position: (close - rolling_low) / (rolling_high - rolling_low)"
+      - "volume-weighted return or participation metrics"
+      - "cross-timeframe alignment or conditional features"
+      - "hysteresis: different thresholds for entry vs hold"
+      - "any arithmetic combination of the above"
+    forbidden:
+      - "features requiring data outside the admitted data surface"
+      - "features with lookahead (using future bars or incomplete higher-TF bars)"
+      - "features requiring tick-level or order-book data"
+      - "ML model weights trained on the discovery period (simple thresholds and quantiles are allowed)"
+
+  discovery_method: >
+    Phase D1b measures ALL channels of exploitable structure in the data
+    without pre-filtering by mechanism family. Candidates emerge from
+    measurement strength, not from a predefined archetype list.
+
+    Phase D1c designs candidates from the strongest measured channels.
+    The design is constrained only by the complexity budget, not by
+    an archetype ontology.
+
+  hard_caps:
+    max_candidates_after_seed: 3
+    max_challengers_after_seed: 2
+    max_logical_layers_per_candidate: 3
+    max_tunable_quantities_per_candidate: 4
+    max_discovery_configs_per_candidate: 20
+    max_total_seed_configs: 60
+    notes:
+      - "A 'logical layer' is a distinct decision function operating on a specific timeframe."
+      - "A 'tunable quantity' is any parameter whose value is selected by search, not derived from data."
+      - "Adaptive thresholds computed from expanding or trailing windows (e.g., yearly quantiles) count as ONE tunable quantity (the quantile level), not as N thresholds."
+      - "Fixed mathematical constants (e.g., sqrt, log) are not tunable quantities."
+  complexity_penalty:
+    logical_layer_penalty: 0.02
+    tunable_quantity_penalty: 0.03
+    use: "Subtract from preference only after hard constraints and primary metric are computed."
+
+seed_discovery_rules:
+  required_outputs:
+    - "one champion seed, OR NO_ROBUST_CANDIDATE label if no candidate survives hard constraints on both discovery and holdout"
+    - "up to two challenger seeds (only when a champion exists)"
+    - "system_version_id assignment"
+    - "frozen system specs (one per live candidate; none if NO_ROBUST_CANDIDATE)"
+    - "candidate registry"
+    - "meta-knowledge registry"
+    - "portfolio state (current_forward_status: governance_required if NO_ROBUST_CANDIDATE)"
+    - "historical_seed_audit.csv"
+    - "empty forward_evaluation_ledger.csv"
+    - "contamination map"
+  forbidden:
+    - "claiming clean external OOS from the historical snapshot"
+    - "iterating same-snapshot discovery in follow-up chats as if it were new evidence"
+    - "omitting system_version_id from freeze artifacts"
+
+forward_review_policy:
+  evidence_scope: >
+    All forward metrics are scoped to the system_version_id being evaluated.
+    Only data with timestamps > freeze_cutoff_utc of that version counts.
+  standard_review:
+    cadence: "quarterly"
+    minimum_appended_calendar_days: 90
+    maximum_appended_calendar_days_before_forced_review: 180
+  emergency_review_triggers:
+    - "data integrity failure in appended delta"
+    - "operational inability to reconstruct deterministic candidate state"
+    - "active champion cumulative 50bps max drawdown exceeds the hard cap"
+  decision_basis:
+    report_incremental_window_metrics: true
+    report_cumulative_forward_metrics_since_freeze_or_last_promotion: true
+    promotion_and_kill_use_cumulative_basis: true
+    minimum_cumulative_forward_calendar_days: 90
+    minimum_cumulative_forward_entries: 6
+    if_minimum_not_met: "Only provisional labeling is allowed unless an emergency trigger fires."
+  champion_retention_rule:
+    rule: >
+      The champion remains active if it satisfies cumulative hard constraints and no eligible challenger
+      both ranks higher on the cumulative forward objective and shows meaningful paired advantage over the champion.
+  challenger_promotion_rule:
+    requires_all:
+      - "minimum cumulative evidence threshold is met"
+      - "challenger satisfies cumulative hard constraints"
+      - "challenger ranks above champion on cumulative forward objective"
+      - "challenger shows meaningful paired advantage over champion on cumulative forward daily returns, OR champion fails cumulative hard constraints while challenger passes"
+  challenger_kill_rule:
+    kill_if_any:
+      - "after at least 180 cumulative forward calendar days, challenger fails cumulative hard constraints in two consecutive standard reviews"
+      - "after at least 180 cumulative forward calendar days, challenger CAGR_50bps is non-positive and shows no meaningful paired advantage over champion"
+      - "after at least 360 cumulative forward calendar days, challenger has fewer than 2 entries and no explicit low-turnover exception in its frozen spec"
+  fallback_if_no_candidate_survives: "Label NO_ROBUST_CANDIDATE and escalate governance review."
+
+paired_evaluation:
+  unit: "daily UTC returns"
+  applies_to:
+    - "promotion decisions"
+    - "governance diagnostics where candidate ranking is otherwise close"
+  bootstrap:
+    method: "moving block bootstrap"
+    block_sizes_days: [5, 10, 20]
+    resamples_per_block_size: 3000
+    seed: 20260319
+    paired_common_indices: true
+  meaningful_advantage_definition:
+    probability_threshold: 0.95
+    required_block_sizes_meeting_threshold: 2
+    pooled_resample_threshold: 0.95
+    point_estimate_minimum_mean_daily_return_diff: 0.00005
+
+contamination_firewall:
+  forbidden_cross_session_inputs_to_blind_seed_discovery:
+    - "prior reports"
+    - "prior winners"
+    - "prior shortlist tables"
+    - "prior system specs"
+    - "prior benchmark definitions"
+    - "precomputed artifacts from earlier sessions"
+    - "prior state packs"
+    - "prior contamination logs except as axioms already embedded in this constitution"
+  allowed_cross_session_inputs:
+    - "constitution"
+    - "canonical schema document"
+    - "empty templates"
+    - "hash manifests"
+    - "snapshot notes"
+  overlap_policy:
+    - "The historical seed snapshot remains contaminated for same-file out-of-sample claims."
+    - "Forward-confirmed status requires data appended after the version's freeze_cutoff_utc."
+    - "Forward data used to inform a redesign is seen data for the new version."
+    - "Tier 2 and Tier 3 meta-knowledge from overlapping data cannot narrow blind seed discovery on the same snapshot."
+
+meta_knowledge_policy:
+  tiers:
+    - tier: "Tier1_Axiom"
+      authority: "hard-lock"
+      examples:
+        - "no lookahead"
+        - "UTC alignment"
+        - "next-open execution semantics"
+        - "no synthetic bar repair"
+    - tier: "Tier2_StructuralPrior"
+      authority: "budget and burden only"
+      examples:
+        - "microstructure is not mainline for this swing horizon"
+        - "layering is a hypothesis, not a default"
+      restrictions:
+        - "must carry scope, provenance, overlap guard, challenge, and expiry"
+        - "cannot narrow blind discovery on overlapping data"
+    - tier: "Tier3_SessionNote"
+      authority: "advisory only"
+      restrictions:
+        - "expires quickly"
+        - "cannot shape search on overlapping data"
+  default_policy:
+    ai_may_propose: true
+    ai_may_self_approve_hard_power: false
+
+# ── Constitution versioning (distinct from system versioning) ──────────
+
+constitution_versioning_policy:
+  minor_version:
+    allowed_changes:
+      - "wording clarifications"
+      - "logging format"
+      - "export format"
+    forbidden_changes:
+      - "anything that could change the winner on the same data"
+  major_version:
+    trigger_examples:
+      - "objective changes"
+      - "admissible data domain changes"
+      - "execution model changes"
+      - "selection law changes"
+      - "complexity law changes"
+      - "paired evaluation semantics changes"
+
+required_artifacts_by_mode:
+  seed_discovery:
+    - "state_pack_v1 (contents defined in STATE_PACK_SPEC; includes system_version_id assignment, frozen_system_specs/ with unambiguous pseudocode, impl/, historical_seed_audit.csv, empty forward_evaluation_ledger.csv, and all other required artifacts)"
+  forward_evaluation:
+    - "updated forward_evaluation_ledger.csv (with system_version_id per row)"
+    - "updated forward_daily_returns.csv (with system_version_id per row)"
+    - "updated candidate_registry.json"
+    - "updated portfolio_state.json"
+    - "state_pack_vN+1"
+  redesign_freeze:
+    - "redesign_dossier.md (required gate — must be written before freeze)"
+    - "new system_version_id assignment"
+    - "updated frozen_system_specs/ (signal/execution/sizing logic as unambiguous pseudocode)"
+    - "updated candidate_registry.json"
+    - "updated contamination_map.md"
+    - "updated system_version_manifest.json"
+    - "appended historical_seed_audit.csv (new rows for redesigned candidates on standard segments)"
+    - "regenerated impl/ (implementation files matching new frozen specs)"
+    - "state_pack_vN+1"
+  governance_review:
+    - "governance_decision.md"
+    - "constitution_status.txt"
+    - "next_major_constitution_file if released"
+
+stop_conditions:
+  for_each_execution_chat:
+    - "After packaging the state pack or governance package, stop the chat."
+    - "Do not continue with a different mode in the same chat."
+  for_same_historical_snapshot:
+    - "Do not run repeated improved discovery sessions once seeds are frozen."
+    - "Use new appended data for future evidence."
+  for_redesign:
+    - "After creating a new system_version_id, all prior forward data is seen data for that version."
+    - "The new version's evidence clock starts at zero."

@@ -1,0 +1,50 @@
+Step 10: Lookahead Bias Re-Test After Overlay A
+================================================
+Date: 2026-02-24
+Code under test: v10/strategies/v8_apex.py (with cooldown_after_emergency_dd_bars overlay)
+
+Purpose: Confirm the ~15 lines of Overlay A cooldown logic do not introduce
+look-ahead bias. Re-run existing lookahead test suites on current code.
+
+Test Suite 1: v10/tests/test_no_lookahead_htf.py (V11 tests, 7 tests)
+----------------------------------------------------------------------
+  PASSED  TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1
+  PASSED  TestV11IndicatorIndexing::test_indicator_array_bounds
+  PASSED  TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+  PASSED  TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day
+  PASSED  TestD1IndexMonotonicity::test_d1_index_never_decreases
+  PASSED  TestCodeAuditNoBeyondD1Index::test_no_future_d1_access_pattern
+  PASSED  TestCodeAuditNoBeyondD1Index::test_all_d1_accesses_use_d1i_from_state
+
+Test Suite 2: v10/tests/test_v10_no_lookahead_htf.py (V10 tests, 11 tests)
+---------------------------------------------------------------------------
+  PASSED  TestV10RegimeNoLookahead::test_regime_uses_lagged_d1
+  PASSED  TestV10IndicatorIndexing::test_indicator_array_bounds
+  PASSED  TestV10RealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+  PASSED  TestV10RealDataTimestampAlignment::test_d1_index_tracks_correctly_real_data
+  PASSED  TestV10D1IndexMonotonicity::test_d1_index_never_decreases
+  PASSED  TestV10CodeAuditNoBeyondD1Index::test_no_future_d1_access_pattern
+  PASSED  TestV10CodeAuditNoBeyondD1Index::test_d1i_comes_from_state
+  PASSED  TestV10CodeAuditNoBeyondD1Index::test_d1_arrays_exactly_two
+  PASSED  TestV10CodeAuditNoBeyondD1Index::test_all_d1_access_is_bounds_checked
+  PASSED  TestV10BoundaryRegime::test_last_h4_uses_previous_day_regime
+  PASSED  TestV10D1LagMatters::test_removing_d1_changes_behavior
+
+Test Suite 3: v10/tests/test_overlayA_cooldown.py (Overlay A unit tests, 13 tests)
+-----------------------------------------------------------------------------------
+  PASSED  TestOverlayACooldownCycle::test_full_cycle
+  PASSED  TestOverlayACooldownCycle::test_gate0_blocks_during_cooldown
+  PASSED  TestOverlayACooldownCycle::test_gate0_passes_when_cooldown_zero
+  PASSED  TestNonEmergencyNoEffect::test_trailing_stop_no_cooldown
+  PASSED  TestNonEmergencyNoEffect::test_fixed_stop_no_cooldown
+  PASSED  TestOverlayDisabled::test_k0_no_cooldown_after_emergency_dd
+  PASSED  TestCounterDecrement::test_decrement_per_bar
+  PASSED  TestCounterDecrement::test_counter_never_negative
+  PASSED  TestConsecutiveEmergencyDD::test_reset_on_second_emergency_dd
+  PASSED  TestExitReasonCleared::test_clear_on_open
+  PASSED  TestConfigParam::test_default_value
+  PASSED  TestConfigParam::test_custom_value
+  PASSED  TestConfigParam::test_zero_disables
+
+Result: 31/31 PASSED (18 lookahead + 13 overlay unit tests)
+No lookahead bias introduced by Overlay A.

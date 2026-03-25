@@ -1,0 +1,19 @@
+{
+  "candidate": {
+    "unused_fields": [
+      "vdo_threshold_proxy"
+    ],
+    "unused_raw": [
+      "vdo_threshold_proxy"
+    ],
+    "allowlist": [],
+    "status": "FAIL"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "status": "FAIL"
+}

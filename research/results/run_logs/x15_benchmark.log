@@ -1,0 +1,115 @@
+/var/www/trading-bots/btc-spot-dev/research/x15/benchmark.py:35: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X15: Churn Filter Integration — Design D Production Pipeline
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+  E0: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+======================================================================
+T0: FEATURE FIX VALIDATION (X14 static vs X15 dynamic)
+======================================================================
+  E0             : Sharpe=1.3718, d=+0.0000, CAGR=57.72%, MDD=39.96%, trades=189
+  X14_static     : Sharpe=1.5300, d=+0.1582, CAGR=70.67%, MDD=35.87%, trades=148
+  X15_dynamic    : Sharpe=1.0298, d=-0.3420, CAGR=55.11%, MDD=77.04%, trades=6
+
+  G0 (X15 > X14): FAIL (X15=1.0298 vs X14=1.5300)
+  Model: C=10.0, n_samples=168
+  Coefficients: {'ema_ratio': 0.4432675831396174, 'bars_held': 0.4596826582616002, 'atr_pctl': 0.12250792468147054, 'bar_range_atr': -0.338262768244982, 'dd_from_peak': -0.10694923959786978, 'bars_since_peak': 0.29385806279874804, 'close_position': -0.07193890548156642, 'vdo_at_exit': 0.17183198341025877, 'd1_regime_str': 0.36333622861897114, 'trail_tightness': 0.008797696358052354}
+
+======================================================================
+T1: FEATURE ABLATION
+======================================================================
+  all_10         : Sharpe=1.0298, d=-0.3420, trades=6, supp=15055
+  7_features     : Sharpe=1.5169, d=+0.1451, trades=148, supp=605
+  top_4          : Sharpe=1.0298, d=-0.3420, trades=7, supp=15036
+  ema_only       : Sharpe=1.3218, d=-0.0499, trades=107, supp=1537
+
+======================================================================
+T2: WFO VALIDATION (dynamic filter, 4 folds)
+======================================================================
+  Fold 1: E0=-0.8896, Filt=-1.3914, d=-0.5018 LOSE (C=10.0, n=80)
+  Fold 2: E0=1.1935, Filt=2.4450, d=+1.2515 WIN (C=10.0, n=96)
+  Fold 3: E0=1.7196, Filt=1.7676, d=+0.0481 WIN (C=10.0, n=124)
+  Fold 4: E0=0.0470, Filt=-0.2803, d=-0.3273 LOSE (C=10.0, n=147)
+
+  Win rate: 50%, mean d_sharpe: +0.1176
+  G1 (>=75% AND mean_d>0): FAIL
+  Coeff drift (std/|mean|): {'ema_ratio': 0.04601449077431688, 'bars_held': 0.0703639974271254, 'atr_pctl': 0.2137732538275968, 'bar_range_atr': 0.10903783896188349, 'dd_from_peak': 0.3610980273275246, 'bars_since_peak': 0.07349129227320968, 'close_position': 0.6781032165872638, 'vdo_at_exit': 0.4423271552469216, 'd1_regime_str': 0.0916874375795328, 'trail_tightness': 1.1312894866430043}
+
+======================================================================
+T3: BOOTSTRAP VALIDATION (500 VCBB paths, dynamic filter)
+======================================================================
+    ... 100/500 paths done
+    ... 200/500 paths done
+    ... 300/500 paths done
+    ... 400/500 paths done
+    ... 500/500 paths done
+
+  d_sharpe: median=+0.2154, [-0.2587, +0.7712]
+  P(d_sharpe > 0): 76.6%
+  d_mdd: median=+11.73pp
+  G2 (P>60%): PASS
+  G3 (med_d_mdd<=5pp): FAIL
+
+======================================================================
+T4: REGIME MONITOR INTERACTION
+======================================================================
+  E0                    : Sharpe=1.3718, d=+0.0000, trades=189
+  E0+Filter             : Sharpe=1.0298, d=-0.3420, trades=6
+  E0+Monitor            : Sharpe=0.4867, d=-0.8851, trades=64
+  E0+Filter+Monitor     : Sharpe=0.3230, d=-1.0487, trades=4
+
+  Expected additive: -1.2271
+  Actual combined:   -1.0487
+  Interaction:       +0.1783
+  G4 (|interaction| < 0.05): FAIL
+
+======================================================================
+T5: RETRAINING SENSITIVITY
+======================================================================
+  Train→2021-12-31, Test 2022-01-01: d_cv=-0.5018, d_fixC=-0.5018, C=10.0
+  Train→2022-12-31, Test 2023-01-01: d_cv=+1.2515, d_fixC=+1.2515, C=10.0
+  Train→2023-12-31, Test 2024-01-01: d_cv=+0.0481, d_fixC=+0.0481, C=10.0
+  Train→2024-12-31, Test 2025-01-01: d_cv=-0.3273, d_fixC=-0.2909, C=10.0
+
+  Coefficient drift (std/|mean|):
+    ema_ratio         : 0.046
+    bars_held         : 0.070
+    atr_pctl          : 0.214
+    bar_range_atr     : 0.109
+    dd_from_peak      : 0.361
+    bars_since_peak   : 0.073
+    close_position    : 0.678
+    vdo_at_exit       : 0.442
+    d1_regime_str     : 0.092
+    trail_tightness   : 1.131
+  Max drift: 1.131
+  C values across folds: [10.0, 10.0, 10.0, 10.0]
+  G5 (max_drift < 50%): FAIL
+
+======================================================================
+T6: COMPREHENSIVE COMPARISON
+======================================================================
+
+  Strategy                 Sharpe    CAGR%     MDD%  Trades  AvgHold
+  -----------------------------------------------------------------
+  E0                       1.3718    57.72    39.96     189     40.8
+  E0+FilterD(X15)          1.0298    55.11    77.04       6   2823.7
+  E5                       1.4690    62.48    40.90     202     37.2
+  Oracle                   2.1629   120.17    29.32      81    100.7
+
+======================================================================
+VERDICT
+======================================================================
+  G0: FAIL
+  G1: FAIL
+  G2: PASS
+  G3: FAIL
+  G4: FAIL
+  G5: FAIL
+
+  VERDICT: ABORT
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x15/x15_*.{json,csv}
+
+X15 BENCHMARK COMPLETE — 94s — VERDICT: ABORT

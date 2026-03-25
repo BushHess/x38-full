@@ -1,0 +1,163 @@
+/var/www/trading-bots/btc-spot-dev/research/x12/benchmark.py:47: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X12: Why Does E5 Win If It Doesn't Fix Churn?
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+  Period: 2019-01-01 to 2026-02-20, warmup=365d
+
+  Running E0+EMA1D21 and E5+EMA1D21 ...
+
+  E0: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+  E5: Sharpe=1.4690, CAGR=62.48%, MDD=40.90%, trades=202
+
+======================================================================
+T0: CHURN AUDIT
+======================================================================
+
+  E0:
+    Trades: 189  (trail_stop: 168, trend: 21)
+    Churn: 111/168 = 66.1%
+    Churn PnL: $+347,705  Non-churn trail PnL: $-134,826
+    Short(<20): 64 trades, $-204,745
+    Medium(20-80): 102 trades, $+41,640
+    Long(>80): 23 trades, $+348,644
+
+  E5:
+    Trades: 202  (trail_stop: 183, trend: 19)
+    Churn: 123/183 = 67.2%
+    Churn PnL: $+454,637  Non-churn trail PnL: $-170,541
+    Short(<20): 68 trades, $-229,097
+    Medium(20-80): 117 trades, $+156,257
+    Long(>80): 17 trades, $+322,938
+
+  Delta churn rate: +0.0114
+  G0 (churn repair dead): YES
+
+======================================================================
+T1: DIVERGENCE CASCADE MAP
+======================================================================
+
+  Matched total: 172 (same-exit: 103, diff-exit: 69)
+  E0-only: 17  E5-only: 30
+  Headline NAV delta: $+64,558.82
+
+  Matched same-exit PnL delta: $+5,974.32 (mean: $+58.00)
+  Matched diff-exit PnL delta: $+45,625.67 (mean: $+661.24, median: $+164.02)
+  E0-only PnL: $-9,562.95
+  E5-only PnL: $+3,395.89
+
+  Cascades: 27, depth mean=1.7, max=4
+
+======================================================================
+T2: MATCHED-TRADE MECHANISM
+======================================================================
+
+  Diff-exit trades: 69
+  E5 exits first: 62  E0 exits first: 7
+  E5 wins PnL: 45/69
+  PnL delta: mean=$+661.24, median=$+164.02, sum=$+45,625.67
+
+  Duration buckets:
+    short   :  16 trades, sum=$+2,168.40, mean=$+135.53
+    medium  :  40 trades, sum=$+23,297.09, mean=$+582.43
+    long    :  13 trades, sum=$+20,160.17, mean=$+1,550.78
+
+  Winner/Loser buckets:
+    winner  :  40 trades, sum=$+36,049.74, mean=$+901.24
+    loser   :  29 trades, sum=$+9,575.93, mean=$+330.20
+
+  G2 (median PnL delta > 0): YES
+
+======================================================================
+T3: CASCADE COUNTERFACTUAL
+======================================================================
+
+  Headline delta (NAV): $+64,558.82
+  Matched delta (PnL): $+51,599.98
+  Cascade delta (PnL): $+12,958.83
+    E5-only PnL: $+3,395.89  E0-only PnL: $-9,562.95
+  Residual (compounding): $+0.00
+
+  Cascade fraction (PnL): 0.2007
+  Cascade fraction (ret): 0.4741
+
+  G1 (cf_ret > 0.5, path dominates): NO
+
+======================================================================
+T4: TIMESCALE ROBUSTNESS
+======================================================================
+
+    SP    dChurn    Headline     Matched     Cascade   cf_ret  DiffEx  E0only  E5only
+  --------------------------------------------------------------------------------
+    30   -0.0048  $   14,085  $  -15,021  $   29,106   5.7853      53       5      23
+    48   +0.0203  $   12,287  $   -3,910  $   16,197   1.5811      64      12      29
+    60   +0.0279  $   23,066  $    4,626  $   18,440   1.3716      66      14      30
+    72   +0.0272  $   26,314  $    6,964  $   19,350   1.1873      68      15      33
+    84   +0.0277  $   29,776  $    9,438  $   20,338   1.3059      69      17      33
+    96   +0.0232  $   29,255  $   11,945  $   17,310   1.1980      69      17      33
+   108   +0.0188  $   45,895  $   34,769  $   11,126   0.4337      69      17      32
+   120   +0.0114  $   64,559  $   51,600  $   12,959   0.4741      69      17      30
+   144   +0.0149  $   51,001  $   37,533  $   13,468   0.6001      65      16      30
+   168   +0.0184  $   38,246  $   25,924  $   12,322   0.6326      64      16      30
+   200   +0.0149  $   67,191  $   53,702  $   13,488   0.5268      63      15      27
+   240   +0.0158  $   48,023  $   38,360  $    9,664   0.5456      61      15      27
+   300   +0.0145  $   31,440  $   23,874  $    7,567   0.4284      59      14      26
+   360   +0.0105  $   39,267  $   19,945  $   19,322   0.8870      56      13      25
+   500   +0.0088  $   34,609  $   17,529  $   17,080   0.9002      52      13      23
+   720   +0.0070  $   29,909  $   13,432  $   16,478   0.8519      51      12      21
+
+  Churn direction (d>=0): 15/16 timescales
+  cf_ret direction (>0.5): 13/16 timescales
+  G3 (both stable >=12/16): YES
+
+======================================================================
+T5: BOOTSTRAP CONFIDENCE (500 VCBB paths)
+======================================================================
+    ... 100/500 paths done
+    ... 200/500 paths done
+    ... 300/500 paths done
+    ... 400/500 paths done
+    ... 500/500 paths done
+
+  Headline delta: median=$-362, [-30,120, +14,894]
+  P(headline > 0): 45.8%
+
+  cf_ret: median=-0.1057, [-8.3412, 9.9180]
+  P(cf_ret > 0.5): 32.2%
+
+  d_churn_rate: median=+0.0159, [-0.0171, +0.0458]
+  P(d_churn < 0): 21.6%
+
+======================================================================
+T6: COST SWEEP (reconcile vtrend 22bps vs x12 50bps)
+======================================================================
+
+   Cost   dSharpe    Headline     Matched     Cascade   cf_ret    dChurn    MedDPnL
+  -------------------------------------------------------------------------------------
+     10   +0.1226  $  167,061  $  129,294  $   37,767   0.5673   +0.0114  $     237
+     15   +0.1194  $  148,557  $  115,327  $   33,230   0.5576   +0.0114  $     237
+     22   +0.1150  $  125,962  $   98,246  $   27,715   0.5431   +0.0114  $     228 <-- vtrend
+     30   +0.1100  $  104,213  $   81,771  $   22,442   0.5253   +0.0114  $     216
+     35   +0.1068  $   92,520  $   72,895  $   19,625   0.5135   +0.0114  $     209
+     40   +0.1036  $   82,101  $   64,974  $   17,127   0.5011   +0.0114  $     202
+     50   +0.0973  $   64,559  $   51,600  $   12,959   0.4741   +0.0114  $     164 <-- x12
+     60   +0.0909  $   50,660  $   40,961  $    9,699   0.4441   +0.0114  $     140
+     75   +0.0813  $   35,063  $   28,952  $    6,111   0.3920   +0.0114  $      90
+
+  cf_ret crossover (0.5): ~40 bps RT
+  Below 40 bps: cascade dominates (vtrend finding)
+  Above 40 bps: mechanical dominates (x12 finding)
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x12/x12_*.{json,csv}
+
+======================================================================
+VERDICT
+======================================================================
+  G0: Churn repair dead (d_churn >= 0): PASS
+  G1: Path dependence dominates (cf_ret > 0.5): FAIL
+  G2: Mechanical per-trade edge (median dPnL > 0): PASS
+  G3: Findings stable (>=12/16 timescales): PASS
+
+  VERDICT: CHURN_FAILS_BUT_TAIL_WINS
+
+X12 BENCHMARK COMPLETE — 32s — VERDICT: CHURN_FAILS_BUT_TAIL_WINS

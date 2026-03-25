@@ -1,0 +1,60 @@
+candidates:
+  - name: v10_baseline
+    description: "V8 Apex current defaults"
+    params: {}
+
+  # PROMOTED winner from previous round
+  - name: v11_cycle_late_only
+    strategy: v11_hybrid
+    description: "Cycle: only mild late bull protection (PROMOTE ref)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.90
+      cycle_late_trail_mult: 3.0
+      cycle_late_max_exposure: 0.90
+
+  # Late only with even milder settings
+  - name: v11_cycle_late_milder
+    strategy: v11_hybrid
+    description: "Cycle late: 0.95 aggression, 3.2 trail, 0.95 max"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 3.2
+      cycle_late_max_exposure: 0.95
+
+  # Late only + MR ultra (conservative combo)
+  - name: v11_late_mr_ultra
+    strategy: v11_hybrid
+    description: "Cycle late + ultra MR"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.90
+      cycle_late_trail_mult: 3.0
+      cycle_late_max_exposure: 0.90
+      enable_mr_defensive: true
+      d1_rsi_extreme_high: 88.0
+      d1_rsi_entry_block: 92.0
+      d1_rsi_exit_trigger: 95.0
+      ma200_dist_reduce: 0.60
+      ma200_dist_block: 0.80
+
+  # Late only + wider late threshold
+  - name: v11_cycle_late_wide
+    strategy: v11_hybrid
+    description: "Cycle late at 50% dist, RSI 75"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_min_dist: 0.50
+      cycle_late_rsi_min: 75.0
+      cycle_late_aggression: 0.85
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.85

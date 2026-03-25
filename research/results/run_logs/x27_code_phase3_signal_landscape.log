@@ -1,0 +1,220 @@
+Loading data...
+H4: 18752 bars, 8.56yr, 2190 bars/yr
+
+Precomputing indicators...
+  D1 regime mapped: Bull=9566, Bear=7995, Undef=1191
+  Precomputation complete.
+
+======================================================================
+1. TARGET EVENT DEFINITION
+======================================================================
+Target events (≥10% upward move): 28
+  Durations: mean=29.8, median=14 bars
+  Magnitudes: mean=11.6%, median=11.2%
+  Block 1 (2017-08 → 2019-10): 15 events
+  Block 2 (2019-10 → 2021-11): 9 events
+  Block 3 (2021-11 → 2024-01): 0 events
+  Block 4 (2024-01 → 2026-03): 4 events
+  Obs40: Target events: 28 upward moves ≥10% in 8.6yr (3.3/yr). Median dur=14 bars, median mag=11.2%.
+
+======================================================================
+PART A: ENTRY SIGNAL LANDSCAPE
+======================================================================
+  Sweeping Type A (EMA crossover)...
+  Sweeping Type B (Breakout)...
+  Sweeping Type C (ROC threshold)...
+  Sweeping Type D (Volatility breakout)...
+  Type E (Volume-confirmed): SKIPPED — Phase 2 Obs30 confirmed H_prior_5
+
+  Entry summary (type averages):
+         det      fp      lag    slip     freq
+type                                          
+A     0.1053  0.9725  53.2980 -1.6210  16.1255
+B     0.8393  0.8728  19.2117  5.5500  50.6950
+C     0.4040  0.8829  15.1725  5.3150  25.6456
+D     0.5655  0.9219  20.1942  4.4975  46.2108
+  Saved: Tbl07_entry_signals.csv, Tbl07_entry_detail.csv
+  Obs41: Entry Type A: det=0.105, FP=0.972, lag=53.3bars, slip=-1.6%, freq=16/yr
+  Obs42: Entry Type B: det=0.839, FP=0.873, lag=19.2bars, slip=5.5%, freq=51/yr
+  Obs43: Entry Type C: det=0.404, FP=0.883, lag=15.2bars, slip=5.3%, freq=26/yr
+  Obs44: Entry Type D: det=0.565, FP=0.922, lag=20.2bars, slip=4.5%, freq=46/yr
+
+  Plotting Fig10: Entry efficiency frontier...
+  Saved: Fig10_entry_efficiency_frontier.png
+
+  Entry robustness (4 time blocks)...
+  Robustness (std of detection rate across 4 blocks):
+      det_std  fp_std
+type                 
+A      0.1471  0.0256
+B      0.1234  0.0284
+C      0.0820  0.0190
+D      0.1563  0.0108
+  Obs45: Entry robustness: Type C most stable (det_std=0.082), Type D least stable (det_std=0.156).
+
+======================================================================
+PART B: EXIT SIGNAL LANDSCAPE
+======================================================================
+  Exit parameter grid: 68 combos
+
+  Exit summary (type-group averages):
+             cap   churn      hold      ret      mdd
+type_grp                                            
+V         2.6380  0.8333  208.6167  29.4683  24.2333
+W         1.9037  0.8571   97.1429  21.5071  17.9114
+X         0.9740  0.9405   67.9000  10.6250  12.1733
+Y         0.8954  0.9087   58.9278   9.9844  14.7772
+Z         1.4274  0.9263  101.3903  15.7358  18.7074
+  Saved: Tbl08_exit_signals.csv, Tbl08_exit_detail.csv
+  Obs46: Exit Type V: cap=2.638, churn=0.833, hold=209bars, ret/trade=29.5%, mdd=24.2%
+  Obs47: Exit Type W: cap=1.904, churn=0.857, hold=97bars, ret/trade=21.5%, mdd=17.9%
+  Obs48: Exit Type X: cap=0.974, churn=0.940, hold=68bars, ret/trade=10.6%, mdd=12.2%
+  Obs49: Exit Type Y: cap=0.895, churn=0.909, hold=59bars, ret/trade=10.0%, mdd=14.8%
+  Obs50: Exit Type Z: cap=1.427, churn=0.926, hold=101bars, ret/trade=15.7%, mdd=18.7%
+
+  Plotting Fig11: Exit capture vs churn...
+  Plotting Fig12: Exit capture vs drawdown...
+  Saved: Fig11, Fig12
+
+======================================================================
+PART C: ENTRY × EXIT INTERACTION
+======================================================================
+  Entry rep A: f20_s50 (det=0.214, fp=0.959)
+  Entry rep B: N160 (det=0.821, fp=0.833)
+  Entry rep C: N10_t5 (det=0.750, fp=0.929)
+  Entry rep D: lb20_w1.5 (det=0.714, fp=0.937)
+  Exit rep X: X/trail15 (cap=1.406, churn=0.857)
+  Exit rep Y: Y/atr30_m5.0 (cap=1.469, churn=0.857)
+  Exit rep Z: ZB/low80 (cap=3.606, churn=0.857)
+  Exit rep W: W/hold200 (cap=2.827, churn=0.929)
+  Exit rep V: V/compress_0.3 (cap=4.079, churn=0.821)
+
+  9. Running entry × exit pairings...
+    A+X: Sharpe=0.4368, CAGR=24.22%, MDD=79.75%, N=58, Churn=0, Exp=76.49%
+    A+Y: Sharpe=0.628, CAGR=34.89%, MDD=64.98%, N=115, Churn=4, Exp=58.64%
+    A+Z: Sharpe=0.629, CAGR=41.82%, MDD=70.63%, N=71, Churn=1, Exp=72.18%
+    A+W: Sharpe=0.0151, CAGR=0.86%, MDD=86.5%, N=68, Churn=5, Exp=73.31%
+    A+V: Sharpe=0.5261, CAGR=41.9%, MDD=83.77%, N=8, Churn=1, Exp=87.51%
+    B+X: Sharpe=0.8397, CAGR=39.0%, MDD=58.04%, N=33, Churn=0, Exp=49.34%
+    B+Y: Sharpe=1.064, CAGR=47.46%, MDD=44.59%, N=50, Churn=0, Exp=30.09%
+    B+Z: Sharpe=0.8861, CAGR=51.82%, MDD=64.1%, N=35, Churn=0, Exp=44.49%
+    B+W: Sharpe=0.7401, CAGR=40.36%, MDD=65.32%, N=47, Churn=5, Exp=50.67%
+    B+V: Sharpe=0.5835, CAGR=45.67%, MDD=79.19%, N=8, Churn=1, Exp=80.51%
+    C+X: Sharpe=0.6004, CAGR=40.7%, MDD=76.33%, N=69, Churn=16, Exp=84.02%
+    C+Y: Sharpe=0.833, CAGR=57.93%, MDD=70.76%, N=105, Churn=13, Exp=62.04%
+    C+Z: Sharpe=0.7262, CAGR=54.13%, MDD=80.34%, N=69, Churn=8, Exp=74.83%
+    C+W: Sharpe=0.3942, CAGR=28.26%, MDD=81.48%, N=72, Churn=17, Exp=77.62%
+    C+V: Sharpe=0.6274, CAGR=51.35%, MDD=79.31%, N=8, Churn=1, Exp=86.21%
+    D+X: Sharpe=0.4414, CAGR=26.98%, MDD=81.76%, N=67, Churn=4, Exp=82.95%
+    D+Y: Sharpe=0.6197, CAGR=38.63%, MDD=74.32%, N=131, Churn=10, Exp=67.89%
+    D+Z: Sharpe=0.627, CAGR=44.34%, MDD=75.86%, N=81, Churn=7, Exp=79.42%
+    D+W: Sharpe=0.5108, CAGR=37.05%, MDD=77.7%, N=79, Churn=26, Exp=85.17%
+    D+V: Sharpe=0.5599, CAGR=45.15%, MDD=83.73%, N=8, Churn=1, Exp=87.88%
+  Saved: Tbl09_entry_exit_pairing.csv
+
+  Sharpe heatmap (entry × exit):
+exit       V      W      X      Y      Z
+entry                                   
+A      0.526  0.015  0.437  0.628  0.629
+B      0.584  0.740  0.840  1.064  0.886
+C      0.627  0.394  0.600  0.833  0.726
+D      0.560  0.511  0.441  0.620  0.627
+  Obs51: Entry×Exit pairing: best Sharpe=1.064 (B+Y), worst=0.015. Range=1.049.
+
+  Plotting Fig13: Entry × exit Sharpe heatmap...
+  Saved: Fig13_entry_exit_heatmap.png
+
+  CAGR heatmap:
+exit      V     W     X     Y     Z
+entry                              
+A      41.9   0.9  24.2  34.9  41.8
+B      45.7  40.4  39.0  47.5  51.8
+C      51.4  28.3  40.7  57.9  54.1
+D      45.2  37.0  27.0  38.6  44.3
+
+  MDD heatmap:
+exit      V     W     X     Y     Z
+entry                              
+A      83.8  86.5  79.8  65.0  70.6
+B      79.2  65.3  58.0  44.6  64.1
+C      79.3  81.5  76.3  70.8  80.3
+D      83.7  77.7  81.8  74.3  75.9
+
+  Exposure heatmap:
+exit      V     W     X     Y     Z
+entry                              
+A      87.5  73.3  76.5  58.6  72.2
+B      80.5  50.7  49.3  30.1  44.5
+C      86.2  77.6  84.0  62.0  74.8
+D      87.9  85.2  83.0  67.9  79.4
+
+  10. Regime conditioning (D1 SMA200)...
+  Saved: Tbl10_regime_conditioning.csv
+
+  Regime filter effect: 5/20 pairs improved Sharpe
+  Average Sharpe change: -0.0774
+  Best improvement: ('B', 'W') (+0.2344)
+  Worst change: ('A', 'X') (-0.3681)
+  Obs52: Regime filter (bull-only): 5/20 pairs show improved Sharpe. Average ΔSharpe=-0.0774.
+
+======================================================================
+HYPOTHESIS VERIFICATION
+======================================================================
+
+  H_prior_3 (entry lag):
+  Question: Any type with lag < 20 bars AND false positive < 50%?
+    Type A: lag=53.3, FP=0.972 → ✗
+    Type B: lag=19.2, FP=0.873 → ✗
+    Type C: lag=15.2, FP=0.883 → ✗
+    Type D: lag=20.2, FP=0.922 → ✗
+  Obs53: H_prior_3 verification: 0 type averages achieve lag<20 & FP<50%. 0 individual combos achieve it.
+
+  H_prior_4 (exit churn):
+  Question: Any exit type with churn < 10% AND capture > 60%?
+    Type V: churn=0.833, cap=2.638 → ✗
+    Type W: churn=0.857, cap=1.904 → ✗
+    Type X: churn=0.940, cap=0.974 → ✗
+    Type Y: churn=0.909, cap=0.895 → ✗
+    Type Z: churn=0.926, cap=1.427 → ✗
+  Obs54: H_prior_4 verification: 0 type averages achieve churn<10% & cap>60%. 0 individual combos achieve it.
+
+  H_prior_7 (low exposure):
+  Question: Any entry×exit pair with exposure > 60%?
+  Pairs with exposure > 60%: 15
+entry exit   exp
+    A    X 76.49
+    A    Z 72.18
+    A    W 73.31
+    A    V 87.51
+    B    V 80.51
+    C    X 84.02
+    C    Y 62.04
+    C    Z 74.83
+    C    W 77.62
+    C    V 86.21
+    D    X 82.95
+    D    Y 67.89
+    D    Z 79.42
+    D    W 85.17
+    D    V 87.88
+  Obs55: H_prior_7 verification: 15 pairs have exposure>60%. Max exposure=87.9%.
+
+  H_prior_10 (complexity ceiling):
+  Question: gap between simplest and most complex signals?
+  Sharpe range across all pairs: 1.049
+  Sharpe std across all pairs: 0.217
+  Obs56: H_prior_10 verification: Sharpe range across 4×5 entry×exit pairs = 1.049, std = 0.217.
+
+======================================================================
+SAVING OUTPUTS
+======================================================================
+  Saved 17 observations to phase3_observations.csv
+  Saved: manifest.json
+
+======================================================================
+PHASE 3 COMPLETE
+======================================================================
+  Observations: Obs40–Obs56 (17 total)
+  Tables: Tbl07–Tbl10 (6 files)
+  Figures: Fig10–Fig13 (4 plots)
+  Gate status: PASS_TO_NEXT_PHASE (pending report review)

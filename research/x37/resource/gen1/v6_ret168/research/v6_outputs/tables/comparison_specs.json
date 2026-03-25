@@ -1,0 +1,84 @@
+{
+  "S1_D1_RET40_Z0": {
+    "type": "single_native",
+    "timeframe": "D1",
+    "feature_name": "ret",
+    "param": 40,
+    "tail": "upper",
+    "mode": "fixed_zero",
+    "threshold": null,
+    "family_cluster": "simple_slow_trend"
+  },
+  "S2_D1_VCL5_20_LT1.0": {
+    "type": "single_native",
+    "timeframe": "D1",
+    "feature_name": "vol_cluster",
+    "param": [
+      5,
+      20
+    ],
+    "tail": "lower",
+    "mode": "fixed_level",
+    "threshold": 1.0,
+    "family_cluster": "simple_slow_vol_regime"
+  },
+  "S3_H4_RET168_Z0": {
+    "type": "single_native",
+    "timeframe": "H4",
+    "feature_name": "ret",
+    "param": 168,
+    "tail": "upper",
+    "mode": "fixed_zero",
+    "threshold": null,
+    "family_cluster": "simple_fast_trend"
+  },
+  "S4_H4_UPFR48_LT0.4": {
+    "type": "single_native",
+    "timeframe": "H4",
+    "feature_name": "up_frac",
+    "param": 48,
+    "tail": "lower",
+    "mode": "fixed_level",
+    "threshold": 0.4,
+    "family_cluster": "simple_fast_timing_sparse"
+  },
+  "L1_VCL5_20_LT1.0_AND_H4RET168_Z0": {
+    "type": "layered_and_h4",
+    "slow": {
+      "feature_name": "vol_cluster",
+      "param": [
+        5,
+        20
+      ],
+      "tail": "lower",
+      "mode": "fixed_level",
+      "threshold": 1.0
+    },
+    "fast": {
+      "feature_name": "ret",
+      "param": 168,
+      "tail": "upper",
+      "mode": "fixed_zero",
+      "threshold": null
+    },
+    "family_cluster": "layered_vol_gate_fast_trend"
+  },
+  "L2_D1RET40_Z0_AND_H4RET168_Z0": {
+    "type": "layered_and_h4",
+    "slow": {
+      "feature_name": "ret",
+      "param": 40,
+      "tail": "upper",
+      "mode": "fixed_zero",
+      "threshold": null
+    },
+    "fast": {
+      "feature_name": "ret",
+      "param": 168,
+      "tail": "upper",
+      "mode": "fixed_zero",
+      "threshold": null
+    },
+    "family_cluster": "layered_slow_trend_fast_trend"
+  }
+}

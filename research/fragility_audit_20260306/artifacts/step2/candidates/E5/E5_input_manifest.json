@@ -1,0 +1,10 @@
+{
+  "candidate_label": "E5",
+  "canonical_trade_csv": "results/parity_20260305/eval_e5_vs_e0/results/trades_candidate.csv",
+  "canonical_profile_dir": "results/trade_profile_8x5/E5",
+  "profile_source_mode": "imported",
+  "canonical_period": "2019-01-01 to 2026-02-20",
+  "canonical_fee_bps_rt": 50,
+  "initial_cash": 10000.0,
+  "expected_trade_count": 207
+}

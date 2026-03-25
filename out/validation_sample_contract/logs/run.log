@@ -1,0 +1,35 @@
+2026-02-24 06:03:13,399 INFO validation: Validation run started
+2026-02-24 06:03:13,399 INFO validation: command=python validate_strategy.py --strategy v8_apex --baseline v8_apex --config v10/configs/v10_overlayA.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --out out_validation_sample_contract --suite full --scenarios smart,base,harsh --bootstrap 100 --seed 1337 --sensitivity-grid --start 2024-01-01 --end 2024-09-01 --wfo-train-months 2 --wfo-test-months 1 --wfo-slide-months 1 --wfo-windows 2 --force
+2026-02-24 06:03:13,399 INFO validation: seed=1337
+2026-02-24 06:03:13,399 INFO validation: git_hash=c74c650
+2026-02-24 06:03:13,399 INFO validation: candidate=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/v10_overlayA.yaml
+2026-02-24 06:03:13,399 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:03:13,399 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 06:03:13,399 INFO validation: period=2024-01-01 -> 2024-09-01
+2026-02-24 06:03:13,721 INFO validation: suite lookahead started
+2026-02-24 06:03:13,722 INFO validation:   lookahead: python -m pytest -q /var/www/trading-bots/btc-spot/v10/tests/test_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_v10_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_mtf_alignment.py
+2026-02-24 06:03:13,722 INFO validation: suite lookahead finished: fail (0.00s)
+2026-02-24 06:03:13,726 INFO validation: suite backtest started
+2026-02-24 06:03:13,726 INFO validation:   backtest: candidate x smart
+2026-02-24 06:03:13,761 INFO validation:   backtest: candidate x base
+2026-02-24 06:03:13,799 INFO validation:   backtest: candidate x harsh
+2026-02-24 06:03:13,837 INFO validation:   backtest: baseline x smart
+2026-02-24 06:03:13,869 INFO validation:   backtest: baseline x base
+2026-02-24 06:03:13,900 INFO validation:   backtest: baseline x harsh
+2026-02-24 06:03:13,932 INFO validation: suite backtest finished: pass (0.21s)
+2026-02-24 06:03:13,933 INFO validation: suite regime started
+2026-02-24 06:03:13,941 INFO validation: suite regime finished: info (0.01s)
+2026-02-24 06:03:13,941 INFO validation: suite wfo started
+2026-02-24 06:03:14,474 INFO validation: suite wfo finished: fail (0.53s)
+2026-02-24 06:03:14,474 WARNING validation: Low-trade WFO detected (2 windows); trade-level suite auto-enabled
+2026-02-24 06:03:14,475 INFO validation: suite bootstrap started
+2026-02-24 06:03:14,682 INFO validation: suite bootstrap finished: fail (0.21s)
+2026-02-24 06:03:14,683 INFO validation: suite sensitivity started
+2026-02-24 06:03:15,589 INFO validation: suite sensitivity finished: info (0.91s)
+2026-02-24 06:03:15,589 INFO validation: suite holdout started
+2026-02-24 06:03:15,919 INFO validation: suite holdout finished: pass (0.33s)
+2026-02-24 06:03:15,919 INFO validation: suite selection_bias started
+2026-02-24 06:03:16,461 INFO validation: suite selection_bias finished: pass (0.54s)
+2026-02-24 06:03:16,462 INFO validation: suite trade_level started
+2026-02-24 06:03:16,475 INFO validation: suite trade_level finished: info (0.01s)
+2026-02-24 06:03:16,601 INFO validation: Validation run complete in 3.20s

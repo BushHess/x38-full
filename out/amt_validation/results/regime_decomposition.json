@@ -1,0 +1,90 @@
+{
+  "candidate": {
+    "SHOCK": {
+      "total_return_pct": -33.57,
+      "max_dd_pct": 35.22,
+      "n_bars": 534,
+      "n_days": 89.0,
+      "sharpe": -2.6774
+    },
+    "BEAR": {
+      "total_return_pct": 109.14,
+      "max_dd_pct": 32.57,
+      "n_bars": 3966,
+      "n_days": 661.0,
+      "sharpe": 1.5058
+    },
+    "CHOP": {
+      "total_return_pct": 32.3,
+      "max_dd_pct": 30.39,
+      "n_bars": 1290,
+      "n_days": 215.0,
+      "sharpe": 1.5803
+    },
+    "TOPPING": {
+      "total_return_pct": -4.58,
+      "max_dd_pct": 30.12,
+      "n_bars": 612,
+      "n_days": 102.0,
+      "sharpe": -0.8673
+    },
+    "BULL": {
+      "total_return_pct": 846.54,
+      "max_dd_pct": 40.61,
+      "n_bars": 7266,
+      "n_days": 1211.0,
+      "sharpe": 1.7119
+    },
+    "NEUTRAL": {
+      "total_return_pct": 19.97,
+      "max_dd_pct": 32.72,
+      "n_bars": 1980,
+      "n_days": 330.0,
+      "sharpe": 0.81
+    }
+  },
+  "baseline": {
+    "SHOCK": {
+      "total_return_pct": -23.27,
+      "max_dd_pct": 29.61,
+      "n_bars": 534,
+      "n_days": 89.0,
+      "sharpe": -2.1657
+    },
+    "BEAR": {
+      "total_return_pct": 0.78,
+      "max_dd_pct": 18.82,
+      "n_bars": 3966,
+      "n_days": 661.0,
+      "sharpe": 0.8486
+    },
+    "CHOP": {
+      "total_return_pct": 2.05,
+      "max_dd_pct": 32.23,
+      "n_bars": 1290,
+      "n_days": 215.0,
+      "sharpe": 0.273
+    },
+    "TOPPING": {
+      "total_return_pct": -24.08,
+      "max_dd_pct": 28.61,
+      "n_bars": 612,
+      "n_days": 102.0,
+      "sharpe": -3.644
+    },
+    "BULL": {
+      "total_return_pct": 1301.44,
+      "max_dd_pct": 35.61,
+      "n_bars": 7266,
+      "n_days": 1211.0,
+      "sharpe": 2.2403
+    },
+    "NEUTRAL": {
+      "total_return_pct": 15.41,
+      "max_dd_pct": 23.89,
+      "n_bars": 1980,
+      "n_days": 330.0,
+      "sharpe": 0.934
+    }
+  }
+}

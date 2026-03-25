@@ -1,0 +1,34 @@
+
+=== orders (first 10 rows) ===
+client_order_id | symbol | side | type | quantity | price | reason | status | exchange_order_id | created_at_ms | updated_at_ms
+------------------------------------------------------------------------------------------------------------------------
+255201f190fae87b320d | BTCUSDT | BUY | MARKET | 5.01084 | None | c4_entry_1 | FILLED | 12748193 | 1773048813558 | 1773048813701
+05158c4a77410bd86dea | BTCUSDT | BUY | MARKET | 0.00776 | None | c4_hold | FILLED | 12748207 | 1773048814620 | 1773048814761
+2156f3b25b01d12b8426 | BTCUSDT | SELL | MARKET | 5.0186 | None | c4_exit_1 | FILLED | 12748257 | 1773048815686 | 1773048815824
+99595a4f0f333f3f06da | BTCUSDT | BUY | MARKET | 5.01062 | None | c4_entry_2 | FILLED | 12748269 | 1773048816736 | 1773048816875
+0210c8d9b2057e390c60 | BTCUSDT | SELL | MARKET | 5.01062 | None | c4_exit_2 | FILLED | 12748277 | 1773048817784 | 1773048817930
+06c5b09117ec4b58539e | BTCUSDT | BUY | MARKET | 0.001 | None | crash_after_send | FILLED | 12748313 | 1773048819381 | 1773048819529
+(total rows: 6)
+
+=== fills (first 10 rows) ===
+trade_id | client_order_id | symbol | price | qty | commission | commission_asset | time_ms | is_buyer | is_maker
+------------------------------------------------------------------------------------------------------------------------
+2218200 | 255201f190fae87b320d | BTCUSDT | 68170.02 | 5.01084 | 0.0 | BTC | 1773048813600 | 1 | 0
+2218202 | 05158c4a77410bd86dea | BTCUSDT | 68170.02 | 0.00776 | 0.0 | BTC | 1773048814662 | 1 | 0
+2218203 | 2156f3b25b01d12b8426 | BTCUSDT | 68166.97 | 5.0186 | 0.0 | USDT | 1773048815727 | 0 | 0
+2218204 | 99595a4f0f333f3f06da | BTCUSDT | 68166.98 | 5.01062 | 0.0 | BTC | 1773048816777 | 1 | 0
+2218205 | 0210c8d9b2057e390c60 | BTCUSDT | 68166.97 | 1.13155 | 0.0 | USDT | 1773048817825 | 0 | 0
+2218206 | 0210c8d9b2057e390c60 | BTCUSDT | 68166.96 | 0.0016 | 0.0 | USDT | 1773048817825 | 0 | 0
+2218207 | 0210c8d9b2057e390c60 | BTCUSDT | 68166.5 | 0.00096 | 0.0 | USDT | 1773048817825 | 0 | 0
+2218208 | 0210c8d9b2057e390c60 | BTCUSDT | 68166.49 | 0.03232 | 0.0 | USDT | 1773048817825 | 0 | 0
+2218209 | 0210c8d9b2057e390c60 | BTCUSDT | 68166.0 | 0.00036 | 0.0 | USDT | 1773048817825 | 0 | 0
+2218210 | 0210c8d9b2057e390c60 | BTCUSDT | 68165.98 | 0.00036 | 0.0 | USDT | 1773048817825 | 0 | 0
+(total rows: 179)
+
+=== kv (first 10 rows) ===
+key | value
+------------------------------------------------------------------------------------------------------------------------
+last_trade_id | 2218416
+(total rows: 1)
+
+=== P1 Duplicate check: 0 duplicates ===

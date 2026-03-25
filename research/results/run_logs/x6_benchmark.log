@@ -1,0 +1,145 @@
+/var/www/trading-bots/btc-spot-dev/research/x6/benchmark.py:43: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X6 RESEARCH: Adaptive Trail + Breakeven Floor
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  X0: fixed trail 3.0×ATR
+  X2: adaptive trail 3.0/4.0/5.0×ATR (tiers: 5%/15%)
+  X6: X2 + BE floor above 5% gain
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine
+================================================================================
+
+Strategy Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%  AvgDays   T/yr
+-----------------------------------------------------------------------------------------------------------
+X0       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51     6.82   48.1
+X0       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51     6.82   48.1
+X0       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51     6.82   48.1
+X2       smart    1.6371    77.42    34.64   2.2351     139   43.2  2.0598   0.4688   46.88     8.80   40.1
+X2       base     1.5488    71.31    37.27   1.9131     139   41.7  1.9169   0.4688   46.88     8.80   40.0
+X2       harsh    1.4555    65.09    40.64   1.6017     139   41.0  1.7850   0.4688   46.88     8.80   39.9
+X6       smart    1.6465    78.08    34.64   2.2542     136   43.4  2.1204   0.4690   46.90     8.99   38.9
+X6       base     1.5602    72.08    37.56   1.9189     136   41.9  1.9711   0.4690   46.90     8.99   38.9
+X6       harsh    1.4689    65.96    40.91   1.6124     136   41.2  1.8329   0.4690   46.90     8.99   38.8
+
+                    DELTA (X2 - X0)
+----------------------------------------------------------------------------------------------------
+  smart   dSharpe=+0.0494  dCAGR=+6.02%  dMDD=-2.65%  dTrades=-35  dWR=+0.1%  dAvgDays=+2.0  dExpo=+0.0137
+  base    dSharpe=+0.0749  dCAGR=+7.26%  dMDD=-1.36%  dTrades=-35  dWR=+0.3%  dAvgDays=+2.0  dExpo=+0.0137
+  harsh   dSharpe=+0.1019  dCAGR=+8.47%  dMDD=+0.63%  dTrades=-35  dWR=+0.8%  dAvgDays=+2.0  dExpo=+0.0137
+
+                    DELTA (X6 - X0)
+----------------------------------------------------------------------------------------------------
+  smart   dSharpe=+0.0588  dCAGR=+6.68%  dMDD=-2.65%  dTrades=-38  dWR=+0.3%  dAvgDays=+2.2  dExpo=+0.0139
+  base    dSharpe=+0.0863  dCAGR=+8.03%  dMDD=-1.07%  dTrades=-38  dWR=+0.5%  dAvgDays=+2.2  dExpo=+0.0139
+  harsh   dSharpe=+0.1153  dCAGR=+9.34%  dMDD=+0.90%  dTrades=-38  dWR=+1.0%  dAvgDays=+2.2  dExpo=+0.0139
+
+         DELTA (X6 - X2) — BE floor value-add
+----------------------------------------------------------------------------------------------------
+  smart   dSharpe=+0.0094  dCAGR=+0.66%  dMDD=+0.00%  dTrades=-3
+  base    dSharpe=+0.0114  dCAGR=+0.77%  dMDD=+0.29%  dTrades=-3
+  harsh   dSharpe=+0.0134  dCAGR=+0.87%  dMDD=+0.27%  dTrades=-3
+
+           SIGNAL BREAKDOWN (harsh)
+----------------------------------------------------------------------
+  X0:
+    Entry: {'x0_entry': 174}
+    Exit:  {'x0_trail_stop': 158, 'x0_trend_exit': 16}
+  X2:
+    Entry: {'x2_entry': 139}
+    Exit:  {'x2_trail_stop': 123, 'x2_trend_exit': 16}
+  X6:
+    Entry: {'x6_entry': 136}
+    Exit:  {'x6_trail_stop': 94, 'x6_be_stop': 25, 'x6_trend_exit': 17}
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  X0        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X2        Engine trades= 139  Vec trades= 152  DIFFER  Sharpe eng=1.5488  vec=1.5568  diff=0.0080
+  X6        Engine trades= 136  Vec trades= 152  DIFFER  Sharpe eng=1.5602  vec=1.5568  diff=0.0034
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (5.5s)
+  X0        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (18.7s)
+  X2        Sharpe=0.3216 [-0.4104, 1.0566]  CAGR=5.26% [-16.38, 40.36]  MDD=63.17% [44.32, 85.35]  P(CAGR>0)=0.662  (16.2s)
+  X6        Sharpe=0.3216 [-0.4104, 1.0566]  CAGR=5.26% [-16.38, 40.36]  MDD=63.17% [44.32, 85.35]  P(CAGR>0)=0.662  (23.8s)
+
+  HEAD-TO-HEAD (X2 - X0) across 500 paths:
+    Sharpe: X2 wins 341/500 (68.2%)  mean delta=0.0593
+    CAGR:   X2 wins 337/500 (67.4%)  mean delta=2.39%
+    MDD:    X2 wins 202/500 (40.4%)  mean delta=0.49%
+
+  HEAD-TO-HEAD (X6 - X0) across 500 paths:
+    Sharpe: X6 wins 341/500 (68.2%)  mean delta=0.0593
+    CAGR:   X6 wins 337/500 (67.4%)  mean delta=2.39%
+    MDD:    X6 wins 202/500 (40.4%)  mean delta=0.49%
+
+  HEAD-TO-HEAD (X6 - X2) across 500 paths:
+    Sharpe: X6 wins 0/500 (0.0%)  mean delta=0.0000
+    CAGR:   X6 wins 0/500 (0.0%)  mean delta=0.00%
+    MDD:    X6 wins 0/500 (0.0%)  mean delta=0.00%
+
+================================================================================
+T4: EXIT REASON ANALYSIS
+================================================================================
+
+  === SMART ===
+
+  X0: 174 trades, PnL=$458,677.64
+    x0_trail_stop               158 ( 90.8%)  avgRet=+3.20%  WR=46.2%
+    x0_trend_exit                16 (  9.2%)  avgRet=-1.12%  WR=12.5%
+
+  X2: 139 trades, PnL=$589,573.74
+    x2_trail_stop               123 ( 88.5%)  avgRet=+4.38%  WR=47.2%
+    x2_trend_exit                16 ( 11.5%)  avgRet=-1.20%  WR=12.5%
+
+  X6: 136 trades, PnL=$605,721.05
+    x6_be_stop                   25 ( 18.4%)  avgRet=+26.83%  WR=100.0%
+    x6_trail_stop                94 ( 69.1%)  avgRet=-1.35%  WR=34.0%
+    x6_trend_exit                17 ( 12.5%)  avgRet=-1.31%  WR=11.8%
+
+  === BASE ===
+
+  X0: 174 trades, PnL=$332,651.90
+    x0_trail_stop               158 ( 90.8%)  avgRet=+3.01%  WR=44.3%
+    x0_trend_exit                16 (  9.2%)  avgRet=-1.30%  WR=12.5%
+
+  X2: 139 trades, PnL=$456,855.07
+    x2_trail_stop               123 ( 88.5%)  avgRet=+4.19%  WR=45.5%
+    x2_trend_exit                16 ( 11.5%)  avgRet=-1.38%  WR=12.5%
+
+  X6: 136 trades, PnL=$472,024.01
+    x6_be_stop                   25 ( 18.4%)  avgRet=+26.60%  WR=100.0%
+    x6_trail_stop                94 ( 69.1%)  avgRet=-1.53%  WR=31.9%
+    x6_trend_exit                17 ( 12.5%)  avgRet=-1.49%  WR=11.8%
+
+  === HARSH ===
+
+  X0: 174 trades, PnL=$236,192.75
+    x0_trail_stop               158 ( 90.8%)  avgRet=+2.82%  WR=43.7%
+    x0_trend_exit                16 (  9.2%)  avgRet=-1.48%  WR=6.2%
+
+  X2: 139 trades, PnL=$348,496.41
+    x2_trail_stop               123 ( 88.5%)  avgRet=+3.99%  WR=45.5%
+    x2_trend_exit                16 ( 11.5%)  avgRet=-1.57%  WR=6.2%
+
+  X6: 136 trades, PnL=$362,260.43
+    x6_be_stop                   25 ( 18.4%)  avgRet=+26.36%  WR=100.0%
+    x6_trail_stop                94 ( 69.1%)  avgRet=-1.72%  WR=31.9%
+    x6_trend_exit                17 ( 12.5%)  avgRet=-1.67%  WR=5.9%
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x6/x6_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x6/x6_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x6/x6_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x6/x6_delta_table.csv
+
+================================================================================
+X6 BENCHMARK COMPLETE
+================================================================================

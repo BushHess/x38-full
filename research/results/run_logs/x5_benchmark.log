@@ -1,0 +1,106 @@
+/var/www/trading-bots/btc-spot-dev/research/x5/benchmark.py:41: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X5 RESEARCH: Partial Profit-Taking
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  X0 baseline: slow=120, trail=3.0
+  X5 TP levels: TP1=10% (sell 25%), TP2=20% (sell 25%)
+  X5 trail post-TP2: 5.0×ATR
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine
+================================================================================
+
+Strategy Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%  AvgDays   T/yr  Fills
+------------------------------------------------------------------------------------------------------------------
+X0       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51     6.82   48.1    348
+X0       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51     6.82   48.1    348
+X0       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51     6.82   48.1    348
+X5       smart    1.5990    55.59    30.77   1.8067     141   43.3  1.8922   0.3765   46.61     8.62   40.4    330
+X5       base     1.4836    50.23    33.92   1.4807     141   41.8  1.7582   0.3766   46.61     8.62   40.3    330
+X5       harsh    1.3606    44.72    37.09   1.2058     141   41.1  1.6341   0.3769   46.61     8.62   40.1    330
+
+                    DELTA (X5 - X0)
+----------------------------------------------------------------------------------------------------
+  smart   dSharpe=+0.0113  dCAGR=-15.81%  dMDD=-6.52%  dTrades=-33  dWR=+0.2%  dAvgDays=+1.8  dExpo=-0.0786
+  base    dSharpe=+0.0097  dCAGR=-13.82%  dMDD=-4.71%  dTrades=-33  dWR=+0.5%  dAvgDays=+1.8  dExpo=-0.0785
+  harsh   dSharpe=+0.0070  dCAGR=-11.90%  dMDD=-2.92%  dTrades=-33  dWR=+0.9%  dAvgDays=+1.8  dExpo=-0.0782
+
+           SIGNAL BREAKDOWN (harsh)
+----------------------------------------------------------------------
+  X0:
+    Entry: {'x0_entry': 174}
+    Exit:  {'x0_trail_stop': 158, 'x0_trend_exit': 16}
+  X5:
+    Entry: {'x5_entry': 141}
+    Exit:  {'x5_trail_stop': 110, 'x5_be_stop': 14, 'x5_trend_exit': 17}
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  X0        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X5        Engine trades= 141  Vec trades= 158  DIFFER  Sharpe eng=1.4836  vec=1.4830  diff=0.0006
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (7.8s)
+  X0        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (26.6s)
+  X5        Sharpe=0.2340 [-0.4654, 0.9333]  CAGR=2.51% [-16.69, 26.97]  MDD=58.62% [38.72, 83.49]  P(CAGR>0)=0.600  (23.9s)
+
+  HEAD-TO-HEAD (X5 - X0) across 500 bootstrap paths:
+    Sharpe: X5 wins 188/500 (37.6%)  mean delta=-0.0264
+    CAGR:   X5 wins 196/500 (39.2%)  mean delta=-1.10%
+    MDD:    X5 wins 422/500 (84.4%)  mean delta=-3.43%
+
+================================================================================
+T4: TRADE-LEVEL ANALYSIS — PROFIT-TAKING PATTERNS
+================================================================================
+
+  === SMART ===
+
+  X0 baseline: 174 trades, 25 exit >10%, 12 exit >20%
+    Total PnL: $458,677.64  Winners: $985,955.33  Losers: $-527,277.70
+
+  X5 partial TP: 141 trades
+    Total PnL: $224,795.48  Winners: $476,746.69  Losers: $-251,951.21
+    Exit reasons:
+      x5_be_stop                   14 (  9.9%)  avgRet=+7.80%  WR=100.0%
+      x5_trail_stop               110 ( 78.0%)  avgRet=+2.64%  WR=40.9%
+      x5_trend_exit                17 ( 12.1%)  avgRet=-1.31%  WR=11.8%
+
+  === BASE ===
+
+  X0 baseline: 174 trades, 25 exit >10%, 12 exit >20%
+    Total PnL: $332,651.90  Winners: $787,880.09  Losers: $-455,228.18
+
+  X5 partial TP: 141 trades
+    Total PnL: $172,779.62  Winners: $400,674.71  Losers: $-227,895.09
+    Exit reasons:
+      x5_be_stop                   14 (  9.9%)  avgRet=+7.60%  WR=100.0%
+      x5_trail_stop               110 ( 78.0%)  avgRet=+2.46%  WR=39.1%
+      x5_trend_exit                17 ( 12.1%)  avgRet=-1.49%  WR=11.8%
+
+  === HARSH ===
+
+  X0 baseline: 174 trades, 25 exit >10%, 12 exit >20%
+    Total PnL: $236,192.75  Winners: $627,643.40  Losers: $-391,450.64
+
+  X5 partial TP: 141 trades
+    Total PnL: $130,015.98  Winners: $335,060.56  Losers: $-205,044.58
+    Exit reasons:
+      x5_be_stop                   14 (  9.9%)  avgRet=+7.40%  WR=100.0%
+      x5_trail_stop               110 ( 78.0%)  avgRet=+2.27%  WR=39.1%
+      x5_trend_exit                17 ( 12.1%)  avgRet=-1.67%  WR=5.9%
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x5/x5_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x5/x5_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x5/x5_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x5/x5_delta_table.csv
+
+================================================================================
+X5 BENCHMARK COMPLETE
+================================================================================

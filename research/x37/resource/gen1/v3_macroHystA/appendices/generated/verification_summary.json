@@ -1,0 +1,16 @@
+{
+  "data_zip_sha256": "dc6524c7935efc7f1164ba1660ef69ae953c2a3a0d87216b146a0682cf158721",
+  "root_cause_bundle_sha256": "90577e05746f9fb3cffc3e2c04fa365a34bc4316eb1a2e07bccd0d6cd88fb0b3",
+  "final_system_json_sha256": "c2dc35cd57d062de9e21864944673812b2116b25f65659dac8de593b98a76c59",
+  "environment": {
+    "python": "3.13.5",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5"
+  },
+  "verification": {
+    "all_threshold_fields_pass": true,
+    "all_path_fields_pass": true,
+    "all_trade_fields_pass": true,
+    "all_daily_fields_pass": true
+  }
+}

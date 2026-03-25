@@ -1,0 +1,44 @@
+{
+  "selected_candidate": "baseline_legacy",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-22T16:12:36.983876+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline_legacy",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 25.8x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 83.48,
+        "min_cagr": 34.35,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.9,
+        "trades": 103
+      }
+    },
+    {
+      "name": "v9_like",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 77.45 < baseline 83.5"
+      ],
+      "worst": {
+        "min_score": 77.45,
+        "min_cagr": 33.05,
+        "max_mdd": 36.3,
+        "max_fee_drag": 3.89,
+        "trades": 101
+      }
+    }
+  ]
+}

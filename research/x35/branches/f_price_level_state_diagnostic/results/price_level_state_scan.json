@@ -1,0 +1,397 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "branch": "f_price_level_state_diagnostic",
+  "branch_verdict": "NO_GO_F1_PRICE_LEVEL_FAMILY",
+  "warmup": {
+    "pre_report_weeks": 52,
+    "pre_report_months": 12,
+    "warmup_ok": true
+  },
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "trades": 188,
+    "sharpe": 1.4545,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97
+  },
+  "features": [
+    {
+      "feature": "wk_dist_to_ema26",
+      "warmup_ok": true,
+      "calendar": {
+        "flips_total": 91,
+        "flips_per_year": 12.749,
+        "median_spell_days": 17.5
+      },
+      "trade_split": {
+        "n_bottom": 47,
+        "n_top": 47,
+        "top_mean_return_pct": 3.8841,
+        "bottom_mean_return_pct": 1.6358,
+        "delta_mean_return_pct_top_minus_bottom": 2.2483,
+        "top_win_rate_pct": 42.55,
+        "bottom_win_rate_pct": 46.81,
+        "delta_win_rate_pct_top_minus_bottom": -4.26
+      },
+      "concentration": {
+        "profit_share_top": 0.2411,
+        "loss_share_bottom": 0.1993
+      },
+      "stability": {
+        "valid_folds": 3,
+        "fold_wins": 2,
+        "fold_win_rate": 0.6667,
+        "fold_details": [
+          {
+            "fold": 1,
+            "top_trades": 10,
+            "bottom_trades": 8,
+            "delta_mean_return_pct": 2.0116,
+            "top_beats_bottom": 1
+          },
+          {
+            "fold": 2,
+            "top_trades": 2,
+            "bottom_trades": 8,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 3,
+            "top_trades": 14,
+            "bottom_trades": 2,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 4,
+            "top_trades": 4,
+            "bottom_trades": 16,
+            "delta_mean_return_pct": 0.0981,
+            "top_beats_bottom": 1
+          },
+          {
+            "fold": 5,
+            "top_trades": 1,
+            "bottom_trades": 4,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 6,
+            "top_trades": 12,
+            "bottom_trades": 3,
+            "delta_mean_return_pct": -0.8727,
+            "top_beats_bottom": 0
+          },
+          {
+            "fold": 7,
+            "top_trades": 4,
+            "bottom_trades": 2,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 8,
+            "top_trades": 0,
+            "bottom_trades": 4,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          }
+        ]
+      },
+      "rho_spearman": -0.037,
+      "promising": false,
+      "buckets": [
+        {
+          "bucket": "Q1",
+          "n_trades": 47,
+          "mean_return_pct": 1.6358,
+          "median_return_pct": -0.4338,
+          "win_rate_pct": 46.81,
+          "profit_sum": 131133.22,
+          "loss_sum": 91066.76
+        },
+        {
+          "bucket": "Q2",
+          "n_trades": 47,
+          "mean_return_pct": 3.168,
+          "median_return_pct": -0.645,
+          "win_rate_pct": 44.68,
+          "profit_sum": 271895.59,
+          "loss_sum": 126344.37
+        },
+        {
+          "bucket": "Q3",
+          "n_trades": 47,
+          "mean_return_pct": 0.6684,
+          "median_return_pct": -1.1399,
+          "win_rate_pct": 34.04,
+          "profit_sum": 169677.4,
+          "loss_sum": 112236.75
+        },
+        {
+          "bucket": "Q4",
+          "n_trades": 47,
+          "mean_return_pct": 3.8841,
+          "median_return_pct": -0.8669,
+          "win_rate_pct": 42.55,
+          "profit_sum": 181917.84,
+          "loss_sum": 127185.67
+        }
+      ]
+    },
+    {
+      "feature": "wk_dist_to_ema52",
+      "warmup_ok": true,
+      "calendar": {
+        "flips_total": 77,
+        "flips_per_year": 10.788,
+        "median_spell_days": 21.0
+      },
+      "trade_split": {
+        "n_bottom": 47,
+        "n_top": 47,
+        "top_mean_return_pct": 2.0623,
+        "bottom_mean_return_pct": 1.8064,
+        "delta_mean_return_pct_top_minus_bottom": 0.2559,
+        "top_win_rate_pct": 36.17,
+        "bottom_win_rate_pct": 46.81,
+        "delta_win_rate_pct_top_minus_bottom": -10.64
+      },
+      "concentration": {
+        "profit_share_top": 0.2201,
+        "loss_share_bottom": 0.2408
+      },
+      "stability": {
+        "valid_folds": 2,
+        "fold_wins": 1,
+        "fold_win_rate": 0.5,
+        "fold_details": [
+          {
+            "fold": 1,
+            "top_trades": 5,
+            "bottom_trades": 9,
+            "delta_mean_return_pct": -12.1288,
+            "top_beats_bottom": 0
+          },
+          {
+            "fold": 2,
+            "top_trades": 0,
+            "bottom_trades": 7,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 3,
+            "top_trades": 15,
+            "bottom_trades": 1,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 4,
+            "top_trades": 5,
+            "bottom_trades": 15,
+            "delta_mean_return_pct": 0.1147,
+            "top_beats_bottom": 1
+          },
+          {
+            "fold": 5,
+            "top_trades": 0,
+            "bottom_trades": 11,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 6,
+            "top_trades": 10,
+            "bottom_trades": 1,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 7,
+            "top_trades": 10,
+            "bottom_trades": 0,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 8,
+            "top_trades": 2,
+            "bottom_trades": 3,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          }
+        ]
+      },
+      "rho_spearman": -0.0247,
+      "promising": false,
+      "buckets": [
+        {
+          "bucket": "Q1",
+          "n_trades": 47,
+          "mean_return_pct": 1.8064,
+          "median_return_pct": -1.2164,
+          "win_rate_pct": 46.81,
+          "profit_sum": 106023.8,
+          "loss_sum": 110002.71
+        },
+        {
+          "bucket": "Q2",
+          "n_trades": 47,
+          "mean_return_pct": 2.3441,
+          "median_return_pct": -1.0419,
+          "win_rate_pct": 36.17,
+          "profit_sum": 193898.3,
+          "loss_sum": 100343.82
+        },
+        {
+          "bucket": "Q3",
+          "n_trades": 47,
+          "mean_return_pct": 3.1434,
+          "median_return_pct": -0.0456,
+          "win_rate_pct": 48.94,
+          "profit_sum": 288616.63,
+          "loss_sum": 99951.61
+        },
+        {
+          "bucket": "Q4",
+          "n_trades": 47,
+          "mean_return_pct": 2.0623,
+          "median_return_pct": -0.8519,
+          "win_rate_pct": 36.17,
+          "profit_sum": 166085.31,
+          "loss_sum": 146535.41
+        }
+      ]
+    },
+    {
+      "feature": "mo_dist_to_ema6",
+      "warmup_ok": true,
+      "calendar": {
+        "flips_total": 43,
+        "flips_per_year": 6.024,
+        "median_spell_days": 31.0
+      },
+      "trade_split": {
+        "n_bottom": 47,
+        "n_top": 45,
+        "top_mean_return_pct": 4.563,
+        "bottom_mean_return_pct": 2.526,
+        "delta_mean_return_pct_top_minus_bottom": 2.037,
+        "top_win_rate_pct": 46.67,
+        "bottom_win_rate_pct": 51.06,
+        "delta_win_rate_pct_top_minus_bottom": -4.39
+      },
+      "concentration": {
+        "profit_share_top": 0.319,
+        "loss_share_bottom": 0.1713
+      },
+      "stability": {
+        "valid_folds": 4,
+        "fold_wins": 1,
+        "fold_win_rate": 0.25,
+        "fold_details": [
+          {
+            "fold": 1,
+            "top_trades": 8,
+            "bottom_trades": 9,
+            "delta_mean_return_pct": -1.7121,
+            "top_beats_bottom": 0
+          },
+          {
+            "fold": 2,
+            "top_trades": 3,
+            "bottom_trades": 10,
+            "delta_mean_return_pct": -4.2763,
+            "top_beats_bottom": 0
+          },
+          {
+            "fold": 3,
+            "top_trades": 16,
+            "bottom_trades": 2,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 4,
+            "top_trades": 2,
+            "bottom_trades": 15,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 5,
+            "top_trades": 3,
+            "bottom_trades": 5,
+            "delta_mean_return_pct": -6.1318,
+            "top_beats_bottom": 0
+          },
+          {
+            "fold": 6,
+            "top_trades": 10,
+            "bottom_trades": 3,
+            "delta_mean_return_pct": 2.9604,
+            "top_beats_bottom": 1
+          },
+          {
+            "fold": 7,
+            "top_trades": 3,
+            "bottom_trades": 0,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          },
+          {
+            "fold": 8,
+            "top_trades": 0,
+            "bottom_trades": 3,
+            "delta_mean_return_pct": null,
+            "top_beats_bottom": null
+          }
+        ]
+      },
+      "rho_spearman": -0.0721,
+      "promising": false,
+      "buckets": [
+        {
+          "bucket": "Q1",
+          "n_trades": 47,
+          "mean_return_pct": 2.526,
+          "median_return_pct": 0.0768,
+          "win_rate_pct": 51.06,
+          "profit_sum": 108700.94,
+          "loss_sum": 78245.51
+        },
+        {
+          "bucket": "Q2",
+          "n_trades": 51,
+          "mean_return_pct": 1.9619,
+          "median_return_pct": -0.645,
+          "win_rate_pct": 39.22,
+          "profit_sum": 248346.18,
+          "loss_sum": 152324.65
+        },
+        {
+          "bucket": "Q3",
+          "n_trades": 45,
+          "mean_return_pct": 0.3474,
+          "median_return_pct": -1.5891,
+          "win_rate_pct": 31.11,
+          "profit_sum": 156837.14,
+          "loss_sum": 98544.33
+        },
+        {
+          "bucket": "Q4",
+          "n_trades": 45,
+          "mean_return_pct": 4.563,
+          "median_return_pct": -0.8669,
+          "win_rate_pct": 46.67,
+          "profit_sum": 240739.78,
+          "loss_sum": 127719.07
+        }
+      ]
+    }
+  ]
+}

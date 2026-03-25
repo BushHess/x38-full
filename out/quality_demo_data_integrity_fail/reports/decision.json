@@ -1,0 +1,27 @@
+{
+  "verdict": "ERROR",
+  "exit_code": 3,
+  "deltas": {
+    "data_integrity_max_missing_bars_pct": 40.0,
+    "data_integrity_duplicates": 1.0,
+    "data_integrity_ohlc_invalid_rows": 1.0
+  },
+  "failures": [
+    "duplicate_timestamps",
+    "ohlc_invalid_rows",
+    "missing_bars_pct_exceeds_threshold",
+    "warmup_missing_severe"
+  ],
+  "reasons": [
+    "Data integrity hard-fail detected; aborting validation conclusions"
+  ],
+  "key_links": {
+    "data_integrity_json": "results/data_integrity.json",
+    "data_integrity_issues": "results/data_integrity_issues.csv"
+  },
+  "gates": [],
+  "metadata": {
+    "source": "data_integrity",
+    "n_hard_reasons": 4
+  }
+}

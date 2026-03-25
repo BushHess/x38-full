@@ -1,0 +1,59 @@
+2026-03-05 18:15:55,248 INFO validation: Validation run started
+2026-03-05 18:15:55,248 INFO validation: command=python validate_strategy.py --strategy vtrend_e5 --baseline vtrend --config configs/vtrend_e5/vtrend_e5_default.yaml --baseline-config configs/vtrend/vtrend_default.yaml --out results/parity_20260305/eval_e5_vs_e0 --suite all --bootstrap 2000 --force --trade-level on --dd-episodes on --overlay-test on --selection-bias deflated --sensitivity-grid
+2026-03-05 18:15:55,248 INFO validation: seed=1337
+2026-03-05 18:15:55,248 INFO validation: git_hash=unknown
+2026-03-05 18:15:55,248 INFO validation: candidate=vtrend_e5 config=/var/www/trading-bots/btc-spot-dev/configs/vtrend_e5/vtrend_e5_default.yaml
+2026-03-05 18:15:55,248 INFO validation: baseline=vtrend config=/var/www/trading-bots/btc-spot-dev/configs/vtrend/vtrend_default.yaml
+2026-03-05 18:15:55,248 INFO validation: dataset=/var/www/trading-bots/btc-spot-dev/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-03-05 18:15:55,249 INFO validation: period=2019-01-01 -> 2026-02-20
+2026-03-05 18:15:56,228 INFO validation: suite lookahead started
+2026-03-05 18:15:56,228 INFO validation:   lookahead: python -m pytest -q /var/www/trading-bots/btc-spot-dev/v10/tests/test_no_lookahead_htf.py /var/www/trading-bots/btc-spot-dev/v10/tests/test_v10_no_lookahead_htf.py /var/www/trading-bots/btc-spot-dev/v10/tests/test_mtf_alignment.py
+2026-03-05 18:15:59,155 INFO validation: suite lookahead finished: pass (2.93s)
+2026-03-05 18:15:59,155 INFO validation: suite data_integrity started
+2026-03-05 18:15:59,390 INFO validation: suite data_integrity finished: pass (0.23s)
+2026-03-05 18:15:59,390 INFO validation: suite backtest started
+2026-03-05 18:15:59,390 INFO validation:   backtest: candidate x smart
+2026-03-05 18:16:00,318 INFO validation:   backtest: candidate x base
+2026-03-05 18:16:01,248 INFO validation:   backtest: candidate x harsh
+2026-03-05 18:16:02,168 INFO validation:   backtest: baseline x smart
+2026-03-05 18:16:02,250 INFO validation:   backtest: baseline x base
+2026-03-05 18:16:02,353 INFO validation:   backtest: baseline x harsh
+2026-03-05 18:16:02,438 INFO validation: suite backtest finished: pass (3.05s)
+2026-03-05 18:16:02,438 INFO validation: suite cost_sweep started
+2026-03-05 18:16:02,440 INFO validation:   cost_sweep: candidate @ 0.00 bps (quick)
+2026-03-05 18:16:02,896 INFO validation:   cost_sweep: baseline @ 0.00 bps (quick)
+2026-03-05 18:16:02,935 INFO validation:   cost_sweep: candidate @ 10.00 bps (quick)
+2026-03-05 18:16:03,435 INFO validation:   cost_sweep: baseline @ 10.00 bps (quick)
+2026-03-05 18:16:03,475 INFO validation:   cost_sweep: candidate @ 25.00 bps (quick)
+2026-03-05 18:16:03,926 INFO validation:   cost_sweep: baseline @ 25.00 bps (quick)
+2026-03-05 18:16:03,967 INFO validation:   cost_sweep: candidate @ 50.00 bps (quick)
+2026-03-05 18:16:04,422 INFO validation:   cost_sweep: baseline @ 50.00 bps (quick)
+2026-03-05 18:16:04,461 INFO validation:   cost_sweep: candidate @ 75.00 bps (quick)
+2026-03-05 18:16:04,952 INFO validation:   cost_sweep: baseline @ 75.00 bps (quick)
+2026-03-05 18:16:05,031 INFO validation:   cost_sweep: candidate @ 100.00 bps (quick)
+2026-03-05 18:16:05,518 INFO validation:   cost_sweep: baseline @ 100.00 bps (quick)
+2026-03-05 18:16:05,585 INFO validation: suite cost_sweep finished: pass (3.15s)
+2026-03-05 18:16:05,585 INFO validation: suite invariants started
+2026-03-05 18:16:06,616 INFO validation: suite invariants finished: pass (1.03s)
+2026-03-05 18:16:06,618 INFO validation: suite churn_metrics started
+2026-03-05 18:16:06,626 INFO validation: suite churn_metrics finished: pass (0.01s)
+2026-03-05 18:16:06,627 INFO validation: suite regime started
+2026-03-05 18:16:06,697 INFO validation: suite regime finished: info (0.07s)
+2026-03-05 18:16:06,697 INFO validation: suite wfo started
+2026-03-05 18:16:10,970 INFO validation: suite wfo finished: fail (4.27s)
+2026-03-05 18:16:10,972 INFO validation: suite bootstrap started
+2026-03-05 18:17:14,663 INFO validation: suite bootstrap finished: info (63.69s)
+2026-03-05 18:17:14,665 INFO validation: suite subsampling started
+2026-03-05 18:17:14,842 INFO validation: suite subsampling finished: info (0.18s)
+2026-03-05 18:17:14,842 INFO validation: suite sensitivity started
+2026-03-05 18:17:18,607 INFO validation: suite sensitivity finished: info (3.76s)
+2026-03-05 18:17:18,607 INFO validation: suite holdout started
+2026-03-05 18:17:19,880 INFO validation: suite holdout finished: pass (1.27s)
+2026-03-05 18:17:19,880 INFO validation: suite selection_bias started
+2026-03-05 18:17:24,732 INFO validation: suite selection_bias finished: pass (4.85s)
+2026-03-05 18:17:24,733 INFO validation: suite trade_level started
+2026-03-05 18:17:42,025 INFO validation: suite trade_level finished: info (17.29s)
+2026-03-05 18:17:42,025 INFO validation: suite dd_episodes started
+2026-03-05 18:17:42,029 INFO validation: suite dd_episodes finished: info (0.00s)
+2026-03-05 18:17:42,029 INFO validation: suite overlay skipped: candidate has no overlay-like parameters enabled
+2026-03-05 18:17:42,261 INFO validation: Validation run complete in 107.01s

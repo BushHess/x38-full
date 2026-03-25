@@ -1,0 +1,36 @@
+{
+  "_schema_notes": {
+    "mode_variants": "Set mode to one of: exploration, discussion, seed_discovery, forward_evaluation, redesign_freeze, governance_review.",
+    "lineage_type": "Set to 'mainline' for seed_discovery, forward_evaluation, redesign_freeze, governance_review. Set to 'sandbox' for exploration, discussion.",
+    "state_pack_input": "null for seed_discovery and sandbox modes. Required (e.g. 'state_pack_v2') for forward_evaluation, redesign_freeze, governance_review.",
+    "system_version_id": "null for seed_discovery (assigned during session) and sandbox. Inherited from state pack for forward_evaluation. New version id for redesign_freeze.",
+    "redesign_fields": "Required for redesign_freeze mode only. Set all sub-fields to null for other modes.",
+    "input_isolation_checks": "For seed_discovery: list all prior artifacts confirmed absent (blind discovery). For forward_evaluation/redesign_freeze: set to [] (state pack IS a required input). For sandbox: set to [].",
+    "hash_manifest_file": "Set to null for governance_review mode and sandbox modes."
+  },
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "session_id": "session_YYYYMMDD_mode_seq",
+  "mode": "__FILL__",
+  "lineage_type": "__FILL__",
+  "constitution_file": "research_constitution_v4.0.yaml",
+  "constitution_version": "4.0",
+  "system_version_id": null,
+  "parent_system_version_id": null,
+  "snapshot_id": null,
+  "state_pack_input": null,
+  "input_files": [],
+  "warmup_buffer_files": [],
+  "appended_delta_window": {
+    "start_utc": null,
+    "end_utc": null
+  },
+  "redesign_fields": {
+    "redesign_trigger": null,
+    "redesign_dossier_file": null,
+    "cooldown_satisfied": null,
+    "evidence_threshold_met": null
+  },
+  "input_isolation_checks": [],
+  "hash_manifest_file": null,
+  "notes": "Fill all __FILL__ fields before each execution chat. See _schema_notes for per-mode guidance."
+}

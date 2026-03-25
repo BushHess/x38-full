@@ -1,0 +1,254 @@
+{
+  "config": {
+    "sp": 120,
+    "trail": 3.0,
+    "atr_period": 14,
+    "cost_rt_bps": 50.0,
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "n_bars": 17838,
+    "warmup_idx": 2190
+  },
+  "strategy_metrics": {
+    "VTREND_A0": {
+      "sharpe": 1.27647,
+      "cagr": 52.67921,
+      "mdd": 41.533069,
+      "approx_trades": 189,
+      "in_position_rate": 0.4686
+    },
+    "VTREND_A1": {
+      "sharpe": 1.282946,
+      "cagr": 52.572138,
+      "mdd": 41.741703,
+      "approx_trades": 188,
+      "in_position_rate": 0.465
+    },
+    "VBREAK": {
+      "sharpe": 1.178908,
+      "cagr": 35.185892,
+      "mdd": 33.9913,
+      "approx_trades": 69,
+      "in_position_rate": 0.2199
+    },
+    "VCUSUM": {
+      "sharpe": 0.933863,
+      "cagr": 25.192963,
+      "mdd": 28.480226,
+      "approx_trades": 73,
+      "in_position_rate": 0.2071
+    },
+    "VTWIN": {
+      "sharpe": 1.243564,
+      "cagr": 37.489742,
+      "mdd": 29.910041,
+      "approx_trades": 67,
+      "in_position_rate": 0.2164
+    },
+    "BUY_HOLD": {
+      "sharpe": 0.97219,
+      "cagr": 50.281026,
+      "mdd": 77.043393,
+      "approx_trades": 1,
+      "in_position_rate": 0.9999
+    }
+  },
+  "pair_diagnostics": {
+    "VTREND_A0 vs VTREND_A1": {
+      "corr": 0.987252,
+      "same_dir_rate": 0.995718,
+      "exact_eq_rate": 0.988496,
+      "within_1bp_rate": 0.988688,
+      "within_10bp_rate": 0.989135,
+      "within_50bp_rate": 0.995079,
+      "exposure_agree_rate": 0.991628,
+      "both_in_rate": 0.462645,
+      "d_sharpe": -0.006477,
+      "d_cagr": 0.107072,
+      "d_mdd": -0.208634
+    },
+    "VTREND_A0 vs VBREAK": {
+      "corr": 0.735317,
+      "same_dir_rate": 0.869368,
+      "exact_eq_rate": 0.731834,
+      "within_1bp_rate": 0.735157,
+      "within_10bp_rate": 0.765322,
+      "within_50bp_rate": 0.878251,
+      "exposure_agree_rate": 0.743849,
+      "both_in_rate": 0.216208,
+      "d_sharpe": 0.097561,
+      "d_cagr": 17.493318,
+      "d_mdd": 7.541768
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "corr": 0.524624,
+      "same_dir_rate": 0.815108,
+      "exact_eq_rate": 0.627213,
+      "within_1bp_rate": 0.631942,
+      "within_10bp_rate": 0.672269,
+      "within_50bp_rate": 0.822458,
+      "exposure_agree_rate": 0.640634,
+      "both_in_rate": 0.158177,
+      "d_sharpe": 0.342607,
+      "d_cagr": 27.486247,
+      "d_mdd": 13.052842
+    },
+    "VTREND_A0 vs VTWIN": {
+      "corr": 0.734879,
+      "same_dir_rate": 0.869176,
+      "exact_eq_rate": 0.731514,
+      "within_1bp_rate": 0.734837,
+      "within_10bp_rate": 0.765131,
+      "within_50bp_rate": 0.87774,
+      "exposure_agree_rate": 0.743401,
+      "both_in_rate": 0.214226,
+      "d_sharpe": 0.032906,
+      "d_cagr": 15.189468,
+      "d_mdd": 11.623027
+    },
+    "VTREND_A0 vs BUY_HOLD": {
+      "corr": 0.638204,
+      "same_dir_rate": 0.726849,
+      "exact_eq_rate": 0.456637,
+      "within_1bp_rate": 0.462836,
+      "within_10bp_rate": 0.527066,
+      "within_50bp_rate": 0.74404,
+      "exposure_agree_rate": 0.468716,
+      "both_in_rate": 0.468652,
+      "d_sharpe": 0.304279,
+      "d_cagr": 2.398184,
+      "d_mdd": -35.510325
+    },
+    "VTREND_A1 vs VBREAK": {
+      "corr": 0.723462,
+      "same_dir_rate": 0.867131,
+      "exact_eq_rate": 0.726337,
+      "within_1bp_rate": 0.729852,
+      "within_10bp_rate": 0.760529,
+      "within_50bp_rate": 0.874992,
+      "exposure_agree_rate": 0.739183,
+      "both_in_rate": 0.212053,
+      "d_sharpe": 0.104038,
+      "d_cagr": 17.386246,
+      "d_mdd": 7.750403
+    },
+    "VTREND_A1 vs VCUSUM": {
+      "corr": 0.524048,
+      "same_dir_rate": 0.815556,
+      "exact_eq_rate": 0.627596,
+      "within_1bp_rate": 0.632134,
+      "within_10bp_rate": 0.672589,
+      "within_50bp_rate": 0.82265,
+      "exposure_agree_rate": 0.641209,
+      "both_in_rate": 0.156643,
+      "d_sharpe": 0.349083,
+      "d_cagr": 27.379175,
+      "d_mdd": 13.261477
+    },
+    "VTREND_A1 vs VTWIN": {
+      "corr": 0.722907,
+      "same_dir_rate": 0.866939,
+      "exact_eq_rate": 0.726082,
+      "within_1bp_rate": 0.729597,
+      "within_10bp_rate": 0.760401,
+      "within_50bp_rate": 0.874545,
+      "exposure_agree_rate": 0.738736,
+      "both_in_rate": 0.210072,
+      "d_sharpe": 0.039382,
+      "d_cagr": 15.082395,
+      "d_mdd": 11.831662
+    },
+    "VTREND_A1 vs BUY_HOLD": {
+      "corr": 0.631912,
+      "same_dir_rate": 0.724867,
+      "exact_eq_rate": 0.453058,
+      "within_1bp_rate": 0.459449,
+      "within_10bp_rate": 0.52387,
+      "within_50bp_rate": 0.741676,
+      "exposure_agree_rate": 0.465073,
+      "both_in_rate": 0.465009,
+      "d_sharpe": 0.310756,
+      "d_cagr": 2.291112,
+      "d_mdd": -35.30169
+    },
+    "VBREAK vs VCUSUM": {
+      "corr": 0.639126,
+      "same_dir_rate": 0.914041,
+      "exact_eq_rate": 0.830063,
+      "within_1bp_rate": 0.832492,
+      "within_10bp_rate": 0.850067,
+      "within_50bp_rate": 0.918195,
+      "exposure_agree_rate": 0.836071,
+      "both_in_rate": 0.131527,
+      "d_sharpe": 0.245045,
+      "d_cagr": 9.992929,
+      "d_mdd": 5.511074
+    },
+    "VBREAK vs VTWIN": {
+      "corr": 0.992939,
+      "same_dir_rate": 0.998658,
+      "exact_eq_rate": 0.996293,
+      "within_1bp_rate": 0.996293,
+      "within_10bp_rate": 0.996677,
+      "within_50bp_rate": 0.997699,
+      "exposure_agree_rate": 0.996485,
+      "both_in_rate": 0.216399,
+      "d_sharpe": -0.064656,
+      "d_cagr": -2.30385,
+      "d_mdd": 4.081259
+    },
+    "VBREAK vs BUY_HOLD": {
+      "corr": 0.475359,
+      "same_dir_rate": 0.59954,
+      "exact_eq_rate": 0.21576,
+      "within_1bp_rate": 0.225475,
+      "within_10bp_rate": 0.319167,
+      "within_50bp_rate": 0.627596,
+      "exposure_agree_rate": 0.219978,
+      "both_in_rate": 0.219914,
+      "d_sharpe": 0.206718,
+      "d_cagr": -15.095134,
+      "d_mdd": -43.052093
+    },
+    "VCUSUM vs VTWIN": {
+      "corr": 0.632136,
+      "same_dir_rate": 0.913594,
+      "exact_eq_rate": 0.828913,
+      "within_1bp_rate": 0.831341,
+      "within_10bp_rate": 0.849045,
+      "within_50bp_rate": 0.917045,
+      "exposure_agree_rate": 0.834857,
+      "both_in_rate": 0.129162,
+      "d_sharpe": -0.309701,
+      "d_cagr": -12.29678,
+      "d_mdd": -1.429815
+    },
+    "VCUSUM vs BUY_HOLD": {
+      "corr": 0.46195,
+      "same_dir_rate": 0.592574,
+      "exact_eq_rate": 0.202723,
+      "within_1bp_rate": 0.212948,
+      "within_10bp_rate": 0.305937,
+      "within_50bp_rate": 0.620247,
+      "exposure_agree_rate": 0.207132,
+      "both_in_rate": 0.207068,
+      "d_sharpe": -0.038327,
+      "d_cagr": -25.088063,
+      "d_mdd": -48.563167
+    },
+    "VTWIN vs BUY_HOLD": {
+      "corr": 0.472017,
+      "same_dir_rate": 0.598198,
+      "exact_eq_rate": 0.212373,
+      "within_1bp_rate": 0.222087,
+      "within_10bp_rate": 0.316163,
+      "within_50bp_rate": 0.625359,
+      "exposure_agree_rate": 0.216463,
+      "both_in_rate": 0.216399,
+      "d_sharpe": 0.271374,
+      "d_cagr": -12.791284,
+      "d_mdd": -47.133352
+    }
+  }
+}

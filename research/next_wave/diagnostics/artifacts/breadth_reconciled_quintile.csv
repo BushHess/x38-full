@@ -1,0 +1,6 @@
+variable,quintile,range_lo,range_hi,n_trades,win_rate,mean_return_pct,total_pnl_usd
+breadth_d1_exact,0,0.0,0.3846,52,48.1,3.242,168462.0
+breadth_d1_exact,1,0.4545,0.5385,26,50.0,2.704,40944.0
+breadth_d1_exact,2,0.5455,0.7692,38,52.6,2.421,160381.0
+breadth_d1_exact,3,0.8182,0.9231,38,34.2,3.994,31792.0
+breadth_d1_exact,4,1.0,1.0,32,43.8,0.681,24775.0

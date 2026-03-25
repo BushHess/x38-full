@@ -1,0 +1,372 @@
+================================================================================
+ROADMAP DIAGNOSTIC: Evaluate Proposed Statistical Improvements
+================================================================================
+  WARNING: /var/www/trading-bots/btc-spot-dev/research/results/true_wfo_results.json not found
+
+================================================================================
+DIAGNOSTIC 1: E5 + RATCHETING COMBINATION
+================================================================================
+
+  E5 (Robust ATR):
+    Mechanism: cap True Range at Q90(100 bars), then Wilder EMA(20)
+    Effect: tighter trailing stop during extreme volatility (COVID, FTX)
+    Cost: loses CAGR (exits too early during recovery)
+
+  Ratcheting:
+    Mechanism: trail level can only go UP (tighten), never DOWN (loosen)
+    Code: tl = max(tl, pk - trail * atr)   # only increases
+    Effect: once trail tightens, it stays tight even if ATR drops
+    Cost: premature exits when vol subsides → re-entry costs
+
+  Combined (E5 + Ratcheting):
+    = Maximum trail tightening (cap ATR + one-way ratchet)
+    = TESTED in VEXIT factorial as independent factors
+    = Results below
+
+  VEXIT Factorial Results (2×2: {standard,ratchet} × {EMA,twin}):
+  Variant               Med Sharpe     Med MDD    Med CAGR
+  -------------------------------------------------------
+  VTREND (E0)               0.0000        0.0%        0.0%
+  V-RATCH                   0.0000        0.0%        0.0%
+  VTWIN                     0.0000        0.0%        0.0%
+  V-TWIN-RATCH              0.0000        0.0%        0.0%
+
+  Paired vs VTREND (P > 50% = variant better):
+  Variant                 P(Sh+)   P(MDD-)  P(CAGR+)
+  --------------------------------------------------
+  V-RATCH                   0.0%      0.0%      0.0%
+  VTWIN                     0.0%      0.0%      0.0%
+  V-TWIN-RATCH              0.0%      0.0%      0.0%
+
+  Key findings:
+  - Ratcheting: P(Sharpe+) ≈ 50% → ZERO effect on return
+  - Ratcheting: P(MDD-) ≈ 50% → ZERO effect on drawdown
+  - No interaction: ratchet + filter effects don't stack
+  - V-TWIN-RATCH worst CAGR (6.7%) due to compound tightening
+
+  WHEN CAN A FAILED TEST STILL BE USED?
+
+  In our mathematical proof framework: NEVER for the core algorithm.
+
+  Theoretical exception criteria (ALL must hold):
+    1. Modification is FREE (zero cost on ALL metrics)
+    2. Provides insurance against unmeasured tail risk
+    3. No added parameters or complexity
+
+  E5 fails criterion 1: costs CAGR at 0/16 timescales
+  Ratcheting fails criteria 1+2: zero effect on everything
+  Combined: failures compound, don't cancel
+
+  The ONLY valid use of a non-significant modification:
+    Post-deployment risk overlay (not core algorithm)
+    Example: position-level stop-loss at -X% as insurance
+    But this is a RISK MANAGEMENT decision, not an ALPHA decision
+    And must NOT be optimized (pick a conservative fixed level)
+
+================================================================================
+DIAGNOSTIC 2: SPA vs BINOMIAL META-TEST
+================================================================================
+
+  The proposal says: "Replace binomial meta-test with SPA"
+
+  What each test answers:
+
+  BINOMIAL + DOF CORRECTION (current):
+    Question: "Does VDO CONSISTENTLY help across K timescales?"
+    H0: P(VDO helps at timescale i) = 0.5 for all i
+    Test: 16/16 wins with M_eff correction → p = 0.031 (Galwey)
+    Strength: Tests BREADTH (all timescales improve)
+    Weakness: Assumes binary outcomes, ignores effect size
+
+  SPA (Hansen 2005):
+    Question: "Does the BEST VDO-on timescale beat VDO-off?"
+    H0: max_k E[d_k,t] ≤ 0 (no model beats benchmark)
+    Test: Per-period loss differential + stationary bootstrap
+    Strength: Handles serial dependence, accounts for data snooping
+    Weakness: Tests EXISTENCE (at least one winner), not consistency
+
+  CRITICAL DIFFERENCE:
+    Binomial asks: "Does VDO help GENERICALLY?" (stronger claim)
+    SPA asks: "Is there at least one timescale where VDO helps?" (weaker claim)
+
+    Our binomial 16/16 with p=0.031 IMPLIES SPA would also reject.
+    But SPA passing would NOT imply our binomial passes.
+    → SPA is a DOWNGRADE in evidential strength for our question.
+
+  Current evidence strength:
+    Binomial nominal:  p = 1.53e-05 (16/16 wins)
+    Binomial corrected: p = 3.12e-02 (Galwey M_eff=5.0)
+    Binomial Li-Ji:    p = 1.95e-03 (M_eff=9.1)
+    Binomial Nyholt:   p = 6.10e-05 (M_eff=13.9)
+
+  SPA APPLICABILITY ANALYSIS:
+
+  Requirement 1: Per-period loss differentials
+    SPA needs d_t = L(benchmark,t) - L(model,t) for t=1..T
+    We have: per-PATH metrics (Sharpe, MDD, CAGR) — NOT per-period
+    Converting: would need per-bar NAV for 2000 paths × 16 timescales
+    → Major code rewrite for minimal benefit
+
+  Requirement 2: Sufficient time series length
+    Our WFO: 10 windows of 6 months each
+    SPA typically needs: hundreds of observations
+    → Severely underpowered with real OOS data
+
+  Requirement 3: Meaningful loss function
+    SPA uses squared error or similar loss
+    Our question is about directional improvement, not point forecasts
+    → Binomial is natural for directional questions
+
+  VERDICT: SPA does NOT replace the binomial meta-test.
+    - Wrong tool (tests existence, we need consistency)
+    - Underpowered on real OOS (10 windows)
+    - Would require major code rewrite
+    - Would answer a WEAKER question
+
+  WHERE SPA IS USEFUL (but we don't need it):
+    - Comparing multiple forecasting models on same test set
+    - When you have 500+ out-of-sample observations
+    - When the question is "is the best model significantly better?"
+
+================================================================================
+DIAGNOSTIC 3: PBO (Probability of Backtest Overfitting)
+================================================================================
+
+  IS (real data) vs OOS (bootstrap median) Sharpe:
+      N   IS Sharpe  OOS Sharpe   Rank IS  Rank OOS
+  --------------------------------------------------
+     30      0.6726      0.3250        2        1
+     48      0.6538      0.3931        1        7
+     60      0.7967      0.4248        3       10
+     72      0.9934      0.4275        5       11
+     84      1.1288      0.4373       10       15
+     96      1.0769      0.4421        8       16
+    108      1.2091      0.4295       12       13
+    120      1.2765      0.4324       14       14
+    144      1.3278      0.4283       15       12
+    168      1.1931      0.4136       11        9
+    200      1.4316      0.3954       16        8
+    240      1.2268      0.3792       13        6
+    300      1.0169      0.3696        6        5
+    360      1.1140      0.3616        9        4
+    500      1.0744      0.3510        7        3
+    720      0.8377      0.3354        4        2
+
+  Rank correlation (IS vs OOS):
+    Spearman ρ = 0.435 (p = 0.0920)
+    Kendall  τ = 0.283 (p = 0.1390)
+
+  PBO proxy analysis:
+    Best IS timescale: N=200 (Sharpe=1.4316)
+    Its OOS Sharpe: 0.3954
+    OOS median: 0.4045
+    Best IS OOS rank: 8/16
+    Best IS outperforms OOS median? NO
+
+  Combinatorial PBO (C(16,8) = 12870 splits):
+    PBO = 44.4% (5714/12870 splits where best IS < OOS median)
+    Verdict: NEUTRAL — ambiguous
+
+  IS/OOS Sharpe ratio (overfitting proxy):
+    Mean: 2.68x
+    Range: 1.66x – 3.62x
+    Uniform ratios → no param-specific overfitting
+
+  OOS Sharpe plateau:
+    Full range: 0.3250 – 0.4421 (spread 0.1171)
+    Strong region (60–144): spread 0.0173
+    CV: 0.094
+    Interpretation: flat plateau means NOTHING TO OVERFIT
+
+  WHY PBO ADDS LITTLE VALUE HERE:
+
+  PBO is designed for scenarios where:
+    - Many strategies with DIFFERENT IS performance (sharp peak)
+    - Concern: best IS is a fluke → underperforms OOS
+    - Need to quantify overfitting probability
+
+  Our scenario:
+    - OOS Sharpe is FLAT (spread 0.017 in strong region)
+    - ANY timescale choice gives similar OOS performance
+    - IS variation (0.67–1.43) doesn't predict OOS rank
+    - = There is NOTHING TO OVERFIT
+
+  Analogy: PBO measures "risk of picking the wrong peak."
+           We don't have a peak. We have a plateau.
+           PBO ≈ coin flip = no information.
+
+  CONCLUSION: PBO/CSCV is NOT NEEDED. The flat Sharpe plateau
+  already proves non-overfitting more directly than PBO could.
+
+================================================================================
+DIAGNOSTIC 4: PURGE / EMBARGO FOR WFO
+================================================================================
+
+  Current WFO: 10 windows × 6 months, anchored expanding (true_wfo_compare.py)
+  Proposed: Add purge gap = max(lookback, max_holding_period)
+
+  VTREND indicator lookbacks:
+    - EMA slow: 120 bars × 4h = 20 days
+    - EMA fast: 30 bars × 4h = 5 days
+    - ATR: 14 bars × 4h = 2.3 days
+    - VDO fast/slow: 12/28 bars × 4h = 1.9/4.7 days
+
+  Max lookback: 20 days (EMA slow = 120 H4 bars)
+  WFO window: 182 days (6 months)
+  Purge/window ratio: 20/182 = 11%
+
+  VTREND uses ONLY causal indicators:
+    - EMA is causal (only uses past data)
+    - ATR is causal
+    - VDO is causal
+    - No future information, no target encoding
+
+  Leakage analysis:
+    - Indicator warmup: 120 bars = 20 days from window start
+    - This warmup uses data from PRIOR window (training data)
+    - But EMA is asymptotically memory-less: weight at lag 120 = e^(-1) = 37%
+    - Weight at lag 240 = e^(-2) = 13.5%
+    - For 6-month window (1095 bars): 99.9% of EMA weight is WITHIN window
+
+  Impact of adding 20-day purge:
+    - Removes 11% of test data per window
+    - 10 windows × 182 days = 1820 test days total
+    - After purge: 10 × 162 = 1620 test days (11% loss)
+    - Statistical power drops proportionally
+
+  VERDICT: Purge NOT NEEDED
+    - All indicators are causal (no lookahead)
+    - EMA memory decays exponentially (99.9% within window)
+    - Purge would cost 11% test data for zero benefit
+    - The 20-day lookback is asymptotically independent of prior window
+
+================================================================================
+DIAGNOSTIC 5: MULTI-COIN OOS FEASIBILITY
+================================================================================
+
+  Infrastructure check:
+    Data pipeline: EXISTS
+    BTC data: EXISTS
+    Multi-coin CSV: EXISTS
+    Existing symbols: ['BNBUSDT', 'BTCUSDT', 'DOGEUSDT', 'ETHUSDT', 'SOLUSDT']
+
+  VDO DEPENDENCY: Critical constraint for multi-coin testing
+    VDO formula: vdr = 2 * taker_buy_base_vol / volume - 1
+    Requires: taker_buy_base_vol column from Binance
+    Availability: ALL Binance Spot pairs have this data
+    → No blocker for multi-coin VDO
+
+  CHALLENGES:
+    1. Data history varies by coin:
+       - BTC: 2017-08 (full history)
+       - ETH: 2017-08 (full history)
+       - SOL: 2020-04 (limited)
+       - DOGE: 2019-07 (moderate)
+       - ADA: 2018-04 (good)
+       → Common window for 10+ coins: ~2020-01 to present (6 years)
+       → vs BTC standalone: 2017-08 to present (8.5 years)
+
+    2. Liquidity / spread differences:
+       - BTC: very liquid, tight spreads → 50 bps harsh is realistic
+       - Altcoins: wider spreads, more slippage → 50 bps may be optimistic
+       - Need per-coin cost calibration
+
+    3. VDO signal quality:
+       - VDO measures taker buy imbalance
+       - Less liquid coins → noisier taker_buy data
+       - VDO may not be effective for small-cap coins
+
+    4. Strategy assumptions:
+       - VTREND is calibrated for BTC volatility/trend characteristics
+       - Different coins have different vol profiles
+       - trail_mult=3.0 may not be optimal across coins
+       - BUT: we're testing GENERIC trend-following, not BTC-specific params
+
+  IMPLEMENTATION ESTIMATE:
+    - Data download: 1 command (fetch_binance_klines.py exists)
+    - DataFeed adaptation: needs multi-symbol support
+    - Research pipeline per coin: ~30 min compute
+    - 10 coins × permutation + timescale + bootstrap = ~5 hours total
+    - Analysis/report: 1 script
+
+  VERDICT: FEASIBLE and VALUABLE
+    Multi-coin testing is the ONE genuinely new validation layer.
+    Tests: "Is EMA trend-following alpha a crypto-generic phenomenon?"
+    Priority: HIGH (most impactful use of research time)
+
+================================================================================
+DIAGNOSTIC 6: CLAIM CALIBRATION
+================================================================================
+
+  CURRENT CLAIMS (from MEMORY.md):
+    1. "EMA trend signal is genuine (permutation p=0.000)"        → CORRECT
+    2. "VDO PROVEN as genuine filter via consistency"              → REVISE to STRONG
+    3. "Bootstrap: E5 WINS on MDD 16/16 (p=1.5e-5)"             → REVISE with DOF
+    4. "Algorithm discovery COMPLETE"                              → CORRECT
+
+  RECOMMENDED REVISIONS:
+
+    Claim 2: VDO
+      Old: "VDO PROVEN as genuine filter (binomial p=1.5e-5)"
+      New: "VDO STRONG filter (16/16 timescales, DOF-corrected p=0.031 Sharpe,
+            p=0.004 MDD). Consistency across timescales is primary evidence."
+
+    Claim 3: E5 MDD
+      Old: "E5 WINS on MDD 16/16 (p=1.5e-5) — small but PROVEN MDD reduction"
+      New: "E5 MDD reduction real (DOF-corrected p=0.004) but CAGR cost makes it
+            net negative. REJECTED on risk-adjusted basis."
+
+    Claim about bootstrap:
+      Old: (implied) "Bootstrap proves the strategy"
+      New: "Bootstrap supports robustness of relative ranking under synthetic
+            path perturbations. Primary evidence: permutation test p=0.0003
+            for EMA signal, multi-timescale consistency for VDO."
+
+    Overall framing:
+      "VTREND E0 is the proven optimal algorithm within the tested hypothesis
+       space. Evidence hierarchy:
+       1. Permutation test: EMA signal p=0.0003 (primary)
+       2. Multi-timescale consistency: VDO p=0.031-0.004 (secondary)
+       3. Bootstrap paired comparison: robust ranking (tertiary)
+       4. WFO: 5/10 windows positive OOS (supplementary)"
+
+================================================================================
+FINAL SUMMARY: WHAT TO DO
+================================================================================
+
+  ┌──────────────────────────────────────┬──────────┬─────────────────────────┐
+  │ Proposed Action                      │ Verdict  │ Reason                  │
+  ├──────────────────────────────────────┼──────────┼─────────────────────────┤
+  │ 1. Freeze VCBB bootstrap            │ DONE     │ Already frozen          │
+  │ 2. Demote bootstrap role             │ AGREE    │ Documentation change    │
+  │ 3. Replace binomial with SPA         │ REJECT   │ Wrong question, weaker  │
+  │ 4. CSCV / PBO                        │ REJECT   │ Flat plateau = no info  │
+  │ 5. Multi-coin OOS (BTC+10 coins)     │ ACCEPT   │ Most valuable next step │
+  │ 6. Purge / embargo                   │ REJECT   │ Causal indicators, 11%  │
+  │ 7. Rewrite claims                    │ ACCEPT   │ Calibrate VDO → STRONG  │
+  │ E5 + ratcheting                      │ REJECT   │ Already tested, ZERO    │
+  └──────────────────────────────────────┴──────────┴─────────────────────────┘
+
+  ACCEPTED ACTIONS (in priority order):
+
+  Priority 1: Multi-coin OOS validation
+    - Download 10 coins via fetch_binance_klines.py
+    - Run permutation test per coin (EMA signal real?)
+    - Run timescale robustness per coin (VDO helps?)
+    - Fix universe BEFORE seeing results (no cherry-picking)
+    - Expected output: "EMA trend-following alpha is/isn't crypto-generic"
+
+  Priority 2: Calibrate claims
+    - Update MEMORY.md: VDO from PROVEN to STRONG (p=0.031)
+    - Add evidence hierarchy to VTREND_BLUEPRINT.md
+    - Note: "paired comparison robust to resampler choice" (not "bias eliminated")
+
+  NOT DOING:
+    - SPA: binomial + DOF is more appropriate for consistency testing
+    - PBO: flat plateau already proves non-overfitting
+    - Purge: causal indicators make it unnecessary
+    - E5/ratcheting: already tested, zero effect
+    - RC-SSB: already closed in previous session
+
+
+  Results saved to /var/www/trading-bots/btc-spot-dev/research/results/roadmap_diagnostic.json

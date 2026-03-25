@@ -1,0 +1,3 @@
+ledger_view,tested_window_max_removal_pct,base_terminal_value,base_cagr,base_sharpe,max_cliff_score_terminal,first_terminal_cliff_index,cliff_flag_terminal,max_cliff_score_cagr,first_cagr_cliff_index,cliff_flag_cagr,max_cliff_score_sharpe,first_sharpe_cliff_index,cliff_flag_sharpe,interpretation
+native,19.81,282869.38,67.232589,1.229858,4.02,1,True,25.293,7,True,3.6943,17,True,single-point collapse
+unit_size,19.81,458108.0,80.108214,1.229858,16.6303,1,True,4.9673,1,True,1.1436,0,False,single-point collapse

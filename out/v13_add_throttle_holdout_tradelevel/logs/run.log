@@ -1,0 +1,38 @@
+2026-02-24 16:53:55,704 INFO validation: Validation run started
+2026-02-24 16:53:55,704 INFO validation: command=python validate_strategy.py --strategy v13_add_throttle --baseline v8_apex --config configs/v13/v13_add_throttle_default.yaml --baseline-config configs/frozen/v10_baseline.yaml --out out_v13_add_throttle_holdout_tradelevel --suite trade --scenarios harsh --start 2024-09-17 --end 2026-02-20 --bootstrap 0 --force
+2026-02-24 16:53:55,704 INFO validation: seed=1337
+2026-02-24 16:53:55,704 INFO validation: git_hash=82e6f13
+2026-02-24 16:53:55,704 INFO validation: candidate=v13_add_throttle config=/var/www/trading-bots/btc-spot/configs/v13/v13_add_throttle_default.yaml
+2026-02-24 16:53:55,704 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/configs/frozen/v10_baseline.yaml
+2026-02-24 16:53:55,704 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 16:53:55,704 INFO validation: period=2024-09-17 -> 2026-02-20
+2026-02-24 16:53:56,077 INFO validation: suite lookahead started
+2026-02-24 16:53:56,077 INFO validation:   lookahead: python -m pytest -q /var/www/trading-bots/btc-spot/v10/tests/test_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_v10_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_mtf_alignment.py
+2026-02-24 16:53:56,078 INFO validation: suite lookahead finished: fail (0.00s)
+2026-02-24 16:53:56,078 INFO validation: suite data_integrity started
+2026-02-24 16:53:56,225 INFO validation: suite data_integrity finished: pass (0.15s)
+2026-02-24 16:53:56,225 INFO validation: suite backtest started
+2026-02-24 16:53:56,226 INFO validation:   backtest: candidate x harsh
+2026-02-24 16:53:56,291 INFO validation:   backtest: baseline x harsh
+2026-02-24 16:53:56,356 INFO validation: suite backtest finished: fail (0.13s)
+2026-02-24 16:53:56,356 INFO validation: suite cost_sweep started
+2026-02-24 16:53:56,356 INFO validation:   cost_sweep: candidate @ 0.00 bps (full_fallback)
+2026-02-24 16:53:56,422 INFO validation:   cost_sweep: baseline @ 0.00 bps (full_fallback)
+2026-02-24 16:53:56,485 INFO validation:   cost_sweep: candidate @ 10.00 bps (full_fallback)
+2026-02-24 16:53:56,549 INFO validation:   cost_sweep: baseline @ 10.00 bps (full_fallback)
+2026-02-24 16:53:56,613 INFO validation:   cost_sweep: candidate @ 25.00 bps (full_fallback)
+2026-02-24 16:53:56,681 INFO validation:   cost_sweep: baseline @ 25.00 bps (full_fallback)
+2026-02-24 16:53:56,747 INFO validation:   cost_sweep: candidate @ 50.00 bps (full_fallback)
+2026-02-24 16:53:56,811 INFO validation:   cost_sweep: baseline @ 50.00 bps (full_fallback)
+2026-02-24 16:53:56,871 INFO validation:   cost_sweep: candidate @ 75.00 bps (full_fallback)
+2026-02-24 16:53:56,932 INFO validation:   cost_sweep: baseline @ 75.00 bps (full_fallback)
+2026-02-24 16:53:56,995 INFO validation:   cost_sweep: candidate @ 100.00 bps (full_fallback)
+2026-02-24 16:53:57,058 INFO validation:   cost_sweep: baseline @ 100.00 bps (full_fallback)
+2026-02-24 16:53:57,120 INFO validation: suite cost_sweep finished: pass (0.76s)
+2026-02-24 16:53:57,120 INFO validation: suite invariants started
+2026-02-24 16:53:57,235 INFO validation: suite invariants finished: pass (0.11s)
+2026-02-24 16:53:57,237 INFO validation: suite churn_metrics started
+2026-02-24 16:53:57,238 INFO validation: suite churn_metrics finished: pass (0.00s)
+2026-02-24 16:53:57,239 INFO validation: suite trade_level started
+2026-02-24 16:54:00,802 INFO validation: suite trade_level finished: info (3.56s)
+2026-02-24 16:54:00,954 INFO validation: Validation run complete in 5.25s

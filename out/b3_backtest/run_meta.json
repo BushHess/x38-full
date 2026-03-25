@@ -1,0 +1,107 @@
+{
+  "git_hash": "c74c650",
+  "timestamp_utc": "2026-02-22T11:17:52Z",
+  "argv": [
+    "/var/www/trading-bots/btc-spot/v10/cli/backtest.py",
+    "--data",
+    "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "--config",
+    "v10/configs/baseline_legacy.live.yaml",
+    "--start",
+    "2023-01-01",
+    "--end",
+    "2025-12-31",
+    "--outdir",
+    "out_b3_backtest"
+  ],
+  "config": {
+    "strategy": "v8_apex",
+    "scenario": "base",
+    "cost": {
+      "spread_bps": 5.0,
+      "slippage_bps": 3.0,
+      "taker_fee_pct": 0.1
+    },
+    "initial_cash": 10000.0,
+    "warmup_days": 365,
+    "warmup_mode": "no_trade",
+    "rsi_method": "wilder",
+    "emergency_ref": "pre_cost_legacy",
+    "config_file": "v10/configs/baseline_legacy.live.yaml",
+    "config": {
+      "engine": {
+        "symbol": "BTCUSDT",
+        "timeframe_h4": "4h",
+        "timeframe_d1": "1d",
+        "warmup_days": 365,
+        "warmup_mode": "no_trade",
+        "scenario_eval": "base",
+        "initial_cash": 10000.0
+      },
+      "strategy": {
+        "name": "v8_apex",
+        "params": {
+          "emergency_ref": "pre_cost_legacy",
+          "rsi_method": "wilder",
+          "entry_cooldown_bars": 3
+        }
+      },
+      "risk": {
+        "max_total_exposure": 1.0,
+        "min_notional_usdt": 10,
+        "kill_switch_dd_total": 0.45,
+        "max_daily_orders": 5
+      }
+    },
+    "v8_apex": {
+      "d1_ema_fast": 50,
+      "d1_ema_slow": 200,
+      "d1_regime_confirm_bars": 2,
+      "d1_regime_off_bars": 4,
+      "regime_exit_immediate": false,
+      "vdr_fast_period": 12,
+      "vdr_slow_period": 28,
+      "vdo_entry_threshold": 0.004,
+      "vdo_scale": 0.016,
+      "hma_period": 55,
+      "roc_period": 8,
+      "accel_smooth_period": 3,
+      "atr_fast_period": 14,
+      "atr_slow_period": 50,
+      "compression_ratio": 0.75,
+      "rsi_period": 14,
+      "rsi_overbought": 75.0,
+      "rsi_oversold": 30.0,
+      "max_total_exposure": 1.0,
+      "target_vol_annual": 0.85,
+      "max_add_per_bar": 0.35,
+      "entry_aggression": 0.85,
+      "entry_cooldown_bars": 3,
+      "compression_boost": 1.0,
+      "caution_mult": 0.5,
+      "min_target_to_add": 0.05,
+      "exit_cooldown_bars": 3,
+      "enable_structural_exit": false,
+      "structural_exit_bars": 5,
+      "exit_on_hma_cross": false,
+      "hma_exit_bars": 2,
+      "enable_trail": true,
+      "trail_atr_mult": 3.5,
+      "trail_activate_pct": 0.05,
+      "trail_tighten_mult": 2.5,
+      "trail_tighten_profit_pct": 0.2,
+      "enable_fixed_stop": true,
+      "fixed_stop_pct": 0.15,
+      "emergency_dd_pct": 0.28,
+      "enable_vol_brake": true,
+      "vol_brake_atr_ratio": 0.035,
+      "vol_brake_mult": 0.4,
+      "enable_dd_adaptive": false,
+      "dd_adaptive_start": 0.16,
+      "dd_adaptive_floor": 0.35,
+      "rsi_method": "wilder",
+      "emergency_ref": "pre_cost_legacy"
+    }
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

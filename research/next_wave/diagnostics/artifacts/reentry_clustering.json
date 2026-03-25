@@ -1,0 +1,92 @@
+{
+  "breadth": {
+    "thresholds": {
+      "q20": 0.3077,
+      "q80": 0.9231
+    },
+    "losers_n": 43,
+    "losers_in_low_breadth": 8,
+    "losers_in_high_breadth": 18,
+    "winners_n": 37,
+    "winners_in_low_breadth": 10,
+    "winners_in_high_breadth": 6,
+    "losers_mean_breadth": 0.6862,
+    "winners_mean_breadth": 0.5652
+  },
+  "breadth_pct_rank": {
+    "thresholds": {
+      "q20": 0.0945,
+      "q80": 0.9736
+    },
+    "losers_in_high_rank": 10,
+    "losers_in_low_rank": 6,
+    "winners_in_high_rank": 6,
+    "winners_in_low_rank": 10,
+    "losers_mean": 0.575,
+    "winners_mean": 0.3742
+  },
+  "funding": {
+    "threshold_q80": 1.0,
+    "losers_in_high_funding": 13,
+    "losers_total": 39,
+    "winners_in_high_funding": 2,
+    "winners_total": 32,
+    "losers_mean_funding": 0.6875,
+    "winners_mean_funding": 0.6068
+  },
+  "vdo": {
+    "thresholds": {
+      "q20": 0.001042,
+      "q80": 0.008677
+    },
+    "losers_low_vdo": 12,
+    "losers_high_vdo": 6,
+    "winners_low_vdo": 11,
+    "winners_high_vdo": 2,
+    "losers_mean_vdo": 0.003949,
+    "winners_mean_vdo": 0.003004
+  },
+  "bse_granularity": [
+    {
+      "within_bars": 1,
+      "n": 30,
+      "win_rate": 50.0,
+      "mean_ret": 1.001,
+      "pnl": 72658.0
+    },
+    {
+      "within_bars": 2,
+      "n": 47,
+      "win_rate": 46.8,
+      "mean_ret": 1.256,
+      "pnl": 51947.0
+    },
+    {
+      "within_bars": 3,
+      "n": 56,
+      "win_rate": 48.2,
+      "mean_ret": 1.302,
+      "pnl": 55716.0
+    },
+    {
+      "within_bars": 4,
+      "n": 66,
+      "win_rate": 50.0,
+      "mean_ret": 1.18,
+      "pnl": 45842.0
+    },
+    {
+      "within_bars": 6,
+      "n": 80,
+      "win_rate": 46.2,
+      "mean_ret": 1.215,
+      "pnl": 57188.0
+    }
+  ],
+  "exit_reason": {
+    "post_stop_n": 78,
+    "post_stop_wr": 46.2,
+    "post_trend_n": 2,
+    "post_trend_wr": 50.0
+  }
+}

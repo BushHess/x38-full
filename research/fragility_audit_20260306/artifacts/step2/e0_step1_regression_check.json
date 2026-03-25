@@ -1,0 +1,19 @@
+{
+  "e0_step1_regression_status": "PASS",
+  "checks": {
+    "trade_count": true,
+    "giveback_valid_count": true,
+    "giveback_median": true,
+    "native_zero_cross_index": true,
+    "unit_size_zero_cross_index": true,
+    "native_cliff_terminal": true,
+    "native_cliff_cagr": true,
+    "unit_cliff_terminal": true,
+    "unit_cliff_cagr": true,
+    "skip_n2_delta_sharpe": true,
+    "skip_n3_delta_sharpe": true,
+    "skip_n4_delta_sharpe": true,
+    "skip_n5_delta_sharpe": true
+  },
+  "all_pass": true
+}

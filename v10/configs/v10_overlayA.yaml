@@ -1,0 +1,22 @@
+# v10_overlayA — Overlay A: post-emergency-DD cooldown
+#
+# Extends baseline_legacy with a single parameter that blocks
+# entries/adds for K H4 bars after an emergency_dd exit.
+#
+# All entry alpha logic (VDO/HMA/accel/RSI) is unchanged.
+# Only the cooldown gate is added.
+#
+# See: reports/step3_overlayA_spec.md for full specification.
+
+strategy:
+  name: v8_apex
+  cooldown_after_emergency_dd_bars: 12   # H4 bars (12 = 48h = 2 days)
+
+# Sweep candidates for backtesting:
+#   cooldown_after_emergency_dd_bars: [0, 6, 12, 18, 24, 36]
+#     0  = disabled (baseline)
+#     6  = 1 day   — blocks 20% of cascade re-entries
+#     12 = 2 days  — blocks 60% (default, matches median reentry latency)
+#     18 = 3 days  — blocks 80%
+#     24 = 4 days  — aggressive
+#     36 = 6 days  — very aggressive

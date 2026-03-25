@@ -1,0 +1,20 @@
+{
+  "vtrend_trail_stop": {
+    "n_trades": 161,
+    "pct_of_total": 83.85416666666667,
+    "win_rate_pct": 45.3416149068323,
+    "avg_return_pct": 3.0942671242236024,
+    "median_return_pct": -0.351217,
+    "total_pnl_usd": 261709.95664500003,
+    "avg_days_held": 7.319875763975156
+  },
+  "vtrend_trend_exit": {
+    "n_trades": 31,
+    "pct_of_total": 16.145833333333332,
+    "win_rate_pct": 22.580645161290324,
+    "avg_return_pct": -1.2359331290322586,
+    "median_return_pct": -1.130283,
+    "total_pnl_usd": -43230.17025,
+    "avg_days_held": 1.3763440967741938
+  }
+}

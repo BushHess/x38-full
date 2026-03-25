@@ -1,0 +1,5 @@
+native_id,transport_id,daily_corr_full_internal,mean_abs_daily_diff,max_abs_daily_diff,same_trade_count_full_internal,native_total_return_full_internal,transport_total_return_full_internal
+native_d1|volcluster_5_20|low|fixed|1,transported_d1_on_h4|volcluster_5_20|low|fixed|1,0.999637671491829,1.9365026724946402e-05,0.028420145505234196,1,11.647595236567048,11.852840069398049
+native_d1|atrpct_10|high|q|0.60,transported_d1_on_h4|atrpct_10|high|q|0.60,0.9999999697455703,5.270339981742247e-07,0.0001004601633549651,1,4.877528498799007,4.873947049602074
+native_d1|ret_40|high|q|0.75,transported_d1_on_h4|ret_40|high|q|0.75,0.9997171772518991,9.049686987610537e-06,0.01739168101326305,0,5.4414200021963035,5.327962476778181
+native_d1|takeratio_10|low|abs|0.480,transported_d1_on_h4|takeratio_10|low|abs|0.480,0.9999999543269816,3.8902090932787734e-07,9.658949955415608e-05,1,1.2018992191401328,1.2023017718981466

@@ -1,0 +1,152 @@
+{
+  "execution_model": {
+    "market": "BTC/USDT spot",
+    "direction": "long_only",
+    "signal_timing": "signal computed at bar close",
+    "fill_model": "execute at next bar open",
+    "costs": {
+      "side_bps": 10,
+      "round_trip_bps": 20,
+      "stress_round_trip_bps": 50
+    },
+    "warmup_live_start": "2020-01-01",
+    "cross_timeframe_alignment": "backward as-of on slower bar close; only most recently completed slower bar visible",
+    "resampling_rule": "native raw bars only; no synthetic OHLCV resampling"
+  },
+  "admissible_inputs_before_freeze": [
+    "RESEARCH_PROMPT_V6.md",
+    "data_btcusdt_1d.csv",
+    "data_btcusdt_4h.csv"
+  ],
+  "data_splits": {
+    "context_warmup_only": [
+      "2017-08-17",
+      "2019-12-31"
+    ],
+    "discovery": [
+      "2020-01-01",
+      "2022-12-31"
+    ],
+    "candidate_selection_holdout": [
+      "2023-01-01",
+      "2024-06-30"
+    ],
+    "reserve_internal_only": [
+      "2024-07-01",
+      "2026-03-17"
+    ]
+  },
+  "discovery_folds": [
+    {
+      "train_end_exclusive": "2020-01-01",
+      "test_start": "2020-01-01",
+      "test_end": "2020-06-30"
+    },
+    {
+      "train_end_exclusive": "2020-07-01",
+      "test_start": "2020-07-01",
+      "test_end": "2020-12-31"
+    },
+    {
+      "train_end_exclusive": "2021-01-01",
+      "test_start": "2021-01-01",
+      "test_end": "2021-06-30"
+    },
+    {
+      "train_end_exclusive": "2021-07-01",
+      "test_start": "2021-07-01",
+      "test_end": "2021-12-31"
+    },
+    {
+      "train_end_exclusive": "2022-01-01",
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30"
+    },
+    {
+      "train_end_exclusive": "2022-07-01",
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31"
+    }
+  ],
+  "evaluation_metrics": [
+    "daily_return_sharpe",
+    "CAGR",
+    "max_drawdown",
+    "trade_count",
+    "exposure",
+    "win_rate",
+    "mean_trade_return",
+    "median_trade_return",
+    "mean_holding_period",
+    "median_holding_period",
+    "top_winner_concentration",
+    "bottom_tail_damage"
+  ],
+  "bootstrap": {
+    "method": "moving_block_bootstrap_on_daily_returns",
+    "block_sizes_days": [
+      5,
+      10,
+      20
+    ],
+    "resamples": 2000,
+    "paired_paths_for_paired_tests": true
+  },
+  "plateau_perturbation_spec": "at least +/-20% perturbation or nearest tested grid equivalent on each tunable quantity",
+  "complexity_budget": {
+    "max_layers": 3,
+    "max_slower_contextual_layers": 1,
+    "max_faster_state_layers": 1,
+    "max_optional_entry_only_confirmation_layers": 1,
+    "max_tunable_quantities_final_candidate": 6,
+    "regime_specific_params": false,
+    "leverage": false,
+    "pyramiding": false,
+    "discretionary_overrides": false
+  },
+  "candidate_progression_gates": {
+    "discovery_positive_after_20bps": true,
+    "holdout_positive_after_20bps": true,
+    "min_discovery_trades": 20,
+    "min_holdout_trades": 10,
+    "broad_plateau_required": true,
+    "all_layers_must_earn_place_by_ablation": true,
+    "if_complex_not_meaningfully_better_than_simple_on_paired_tests_simple_wins": true
+  },
+  "evidence_labels": [
+    "CLEAN OOS CONFIRMED",
+    "INTERNAL ROBUST CANDIDATE",
+    "NO ROBUST IMPROVEMENT"
+  ],
+  "benchmark_access_rule": "No benchmark specs were supplied after reserve; benchmark comparison not performed",
+  "feature_library_manifest_format": {
+    "fields": [
+      "bucket",
+      "timeframe",
+      "feature_name",
+      "family",
+      "formula",
+      "params",
+      "tails",
+      "calibration_modes",
+      "threshold_params"
+    ]
+  },
+  "candidate_ledger_format": {
+    "fields": [
+      "candidate",
+      "cluster",
+      "stage",
+      "status",
+      "type",
+      "spec_summary",
+      "reason"
+    ]
+  },
+  "allowed_threshold_calibration_modes": [
+    "fixed_zero",
+    "fixed_level",
+    "train_quantile",
+    "category"
+  ]
+}

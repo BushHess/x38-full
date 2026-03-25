@@ -1,0 +1,48 @@
+{
+  "project_status": "COMPLETE",
+  "master_spec_created": true,
+  "legacy_branch_verdict": "REJECT",
+  "winning_branch_verdict": "PROMOTE_GATED",
+  "winner_candidate_id": "delay_H16_p70",
+  "winner_family": "DelayExit_H",
+  "winner_params": {
+    "H": 16,
+    "X": null,
+    "threshold_percentile": 70
+  },
+  "deployment_score_source": {
+    "model_family": "elastic_net_logistic_regression",
+    "label": "churn_signal20",
+    "selected_features": [
+      "d1_regime_strength",
+      "ema_gap_pct",
+      "holding_bars_to_exit_signal",
+      "return_from_entry_to_signal",
+      "peak_runup_from_entry",
+      "atr_percentile_100"
+    ]
+  },
+  "deployment_threshold_value": 0.7576656445740457,
+  "validation_summary": {
+    "aggregate_wfo_oos_sharpe_25bps": 1.1853946679308718,
+    "aggregate_wfo_oos_mdd": -0.35816839454264326,
+    "wfo_positive_folds": 3,
+    "bootstrap_p_delta_sharpe_gt_0": 0.742,
+    "cost_levels_beaten": 9,
+    "exposure_trap_passed": true,
+    "added_value_gate_passed": true
+  },
+  "deliverables": [
+    "master_reproducibility_spec.md",
+    "research_protocol_appendix.md",
+    "deployment_freeze_spec.json",
+    "implementation_spec.md",
+    "acceptance_test_plan.md",
+    "shadow_mode_plan.md",
+    "artifact_manifest.csv",
+    "final_verdict_summary.json"
+  ],
+  "research_complete": true,
+  "implementation_mode_next": "replay_tests_then_shadow_mode",
+  "blocking_issues": []
+}

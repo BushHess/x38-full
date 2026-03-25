@@ -1,0 +1,50 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-02-24 06:19:38 UTC
+Candidate: v10_baseline
+Baseline: v10_baseline
+Suite: basic
+Scenarios: smart,base,harsh
+Seed: 1337
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_baseline_legacy.live.yaml
+configs/candidate_baseline_legacy.live.yaml
+
+[results]
+results/churn_metrics.csv
+results/cost_sweep.csv
+results/data_integrity.json
+results/data_integrity_issues.csv
+results/full_backtest_detail.json
+results/full_backtest_summary.csv
+results/invariant_violations.csv
+results/regime_decomposition.csv
+results/regime_decomposition.json
+results/regression_guard.json
+results/wfo_per_round_metrics.csv
+results/wfo_summary.json
+
+[reports]
+reports/decision.json
+reports/discovered_tests.md
+reports/quality_checks.md
+reports/validation_report.md
+
+[suite_status]
+backtest: pass
+data_integrity: pass
+cost_sweep: info
+invariants: pass
+churn_metrics: info
+regime: info
+wfo: info
+regression_guard: pass
+
+[decision]
+verdict=HOLD
+exit_code=1
+- WFO robustness did not meet threshold

@@ -1,0 +1,26 @@
+
+========================================================================
+VERDICT: PROMOTE (exit code 0)
+========================================================================
+lookahead          PASS
+data_integrity     PASS
+backtest           PASS
+cost_sweep         PASS
+invariants         PASS
+churn_metrics      PASS
+regime             INFO
+wfo                PASS
+bootstrap          INFO
+subsampling        INFO
+sensitivity        INFO
+holdout            PASS
+selection_bias     PASS
+trade_level        INFO
+dd_episodes        INFO
+overlay            SKIP
+
+Reasons:
+- All configured decision gates passed
+
+Output: /var/www/trading-bots/btc-spot-dev/results/parity_20260305/eval_ema21d1_vs_e0
+EMA21-D1 exit code: 0

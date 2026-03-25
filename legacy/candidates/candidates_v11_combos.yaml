@@ -1,0 +1,38 @@
+candidates:
+  # V10 baseline reference
+  - name: v10_baseline
+    description: "V8 Apex current defaults"
+    params: {}
+
+  # MR + Cycle
+  - name: v11_mr_cycle
+    strategy: v11_hybrid
+    description: "MR defensive + cycle phase"
+    params:
+      enable_mr_defensive: true
+      enable_cycle_phase: true
+
+  # MR + ADX
+  - name: v11_mr_adx
+    strategy: v11_hybrid
+    description: "MR defensive + ADX gating"
+    params:
+      enable_mr_defensive: true
+      enable_adx_gating: true
+
+  # Cycle + ADX
+  - name: v11_cycle_adx
+    strategy: v11_hybrid
+    description: "Cycle phase + ADX gating"
+    params:
+      enable_cycle_phase: true
+      enable_adx_gating: true
+
+  # Full V11 (all three features)
+  - name: v11_full
+    strategy: v11_hybrid
+    description: "All three V11 features enabled"
+    params:
+      enable_mr_defensive: true
+      enable_cycle_phase: true
+      enable_adx_gating: true

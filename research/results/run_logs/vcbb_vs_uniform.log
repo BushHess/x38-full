@@ -1,0 +1,92 @@
+/var/www/trading-bots/btc-spot-dev/research/vcbb_vs_uniform.py:29: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import (
+================================================================================
+VCBB vs UNIFORM: Do Research Conclusions Change?
+================================================================================
+VDO on/off paired comparison × 16 timescales × 2000 paths × 2 bootstrap methods
+
+Loading data...
+  H4 bars: 17838, transitions: 17837, warmup: 2190
+Precomputing VCBB state...
+  ... 100/2000 (441s, ETA 8376s)
+  ... 200/2000 (890s, ETA 8011s)
+  ... 300/2000 (1338s, ETA 7583s)
+  ... 400/2000 (1789s, ETA 7157s)
+  ... 500/2000 (2241s, ETA 6723s)
+  ... 600/2000 (2694s, ETA 6286s)
+  ... 700/2000 (3147s, ETA 5845s)
+  ... 800/2000 (3603s, ETA 5404s)
+  ... 900/2000 (4063s, ETA 4966s)
+  ... 1000/2000 (4529s, ETA 4529s)
+  ... 1100/2000 (4988s, ETA 4081s)
+  ... 1200/2000 (5447s, ETA 3632s)
+  ... 1300/2000 (5901s, ETA 3177s)
+  ... 1400/2000 (6360s, ETA 2726s)
+  ... 1500/2000 (6819s, ETA 2273s)
+  ... 1600/2000 (7279s, ETA 1820s)
+  ... 1700/2000 (7740s, ETA 1366s)
+  ... 1800/2000 (8195s, ETA 911s)
+  ... 1900/2000 (8658s, ETA 456s)
+  ... 2000/2000 (9115s, ETA 0s)
+
+  Bootstrap complete in 9115s
+
+================================================================================
+RESULTS: VDO Contribution — Uniform vs VCBB
+================================================================================
+
+    N   days  │ Uni Sh+ VCB Sh+  │ Uni ΔSh VCB ΔSh  │ Uni MDD- VCB MDD-  │ Uni ΔMD VCB ΔMD
+---------------------------------------------------------------------------------------------------------
+    30     5d  │   69.2%   69.2%  │ +0.042 +0.042  │    73.3%    73.3%  │   -3.3   -3.3
+    48     8d  │   89.0%   89.0%  │ +0.168 +0.168  │    86.6%    86.6%  │   -6.9   -6.9
+    60    10d  │   89.5%   89.5%  │ +0.171 +0.171  │    88.1%    88.1%  │   -7.6   -7.6
+    72    12d  │   88.8%   88.8%  │ +0.175 +0.175  │    87.2%    87.2%  │   -8.4   -8.4
+    84    14d  │   90.1%   90.1%  │ +0.191 +0.191  │    87.7%    87.7%  │   -8.7   -8.7
+    96    16d  │   89.5%   89.5%  │ +0.189 +0.189  │    88.6%    88.6%  │   -9.3   -9.3
+   108    18d  │   89.0%   89.0%  │ +0.196 +0.196  │    88.1%    88.1%  │   -9.5   -9.5
+   120    20d  │   89.1%   89.1%  │ +0.183 +0.183  │    88.8%    88.8%  │   -9.4   -9.4
+   144    24d  │   87.9%   87.9%  │ +0.183 +0.183  │    87.5%    87.5%  │   -9.5   -9.5
+   168    28d  │   87.5%   87.5%  │ +0.182 +0.182  │    87.3%    87.3%  │   -9.3   -9.3
+   200    33d  │   86.4%   86.4%  │ +0.165 +0.165  │    87.2%    87.2%  │   -9.0   -9.0
+   240    40d  │   85.7%   85.7%  │ +0.164 +0.164  │    87.1%    87.1%  │   -9.9   -9.9
+   300    50d  │   84.1%   84.1%  │ +0.156 +0.156  │    86.2%    86.2%  │   -9.0   -9.0
+   360    60d  │   84.5%   84.5%  │ +0.165 +0.165  │    86.4%    86.4%  │   -9.1   -9.1
+   500    83d  │   84.2%   84.2%  │ +0.163 +0.163  │    86.5%    86.5%  │   -9.1   -9.1
+   720   120d  │   83.9%   83.9%  │ +0.159 +0.159  │    86.0%    86.0%  │   -8.9   -8.9
+
+--------------------------------------------------------------------------------
+BINOMIAL META-TEST: VDO helps at how many timescales?
+--------------------------------------------------------------------------------
+  P(Sharpe+) > 50%:  Uniform 16/16 (p=1.53e-05)  VCBB 16/16 (p=1.53e-05)
+  P(MDD-)   > 50%:  Uniform 16/16 (p=1.53e-05)  VCBB 16/16 (p=1.53e-05)
+
+--------------------------------------------------------------------------------
+AGGREGATE EFFECT SIZES (median across timescales)
+--------------------------------------------------------------------------------
+
+  SHARPE:
+    Uniform VDO delta: median +0.1695, range [+0.0418, +0.1958]
+    VCBB    VDO delta: median +0.1695, range [+0.0418, +0.1958]
+    Median ON  — Uniform: 0.5136, VCBB: 0.5136
+    Median OFF — Uniform: 0.3468, VCBB: 0.3468
+
+  CAGR:
+    Uniform VDO delta: median +7.6374, range [+1.9645, +8.5571]
+    VCBB    VDO delta: median +7.6374, range [+1.9645, +8.5571]
+    Median ON  — Uniform: 13.1766, VCBB: 13.1766
+    Median OFF — Uniform: 5.7751, VCBB: 5.7751
+
+  MDD:
+    Uniform VDO delta: median -9.0295, range [-9.8966, -3.3498]
+    VCBB    VDO delta: median -9.0295, range [-9.8966, -3.3498]
+    Median ON  — Uniform: 62.0866, VCBB: 62.0866
+    Median OFF — Uniform: 70.7696, VCBB: 70.7696
+
+================================================================================
+CONCLUSION
+================================================================================
+  QUALITATIVE AGREEMENT: Uniform and VCBB give same VDO conclusion.
+  → VCBB improves accuracy but does NOT change research findings.
+
+  Results saved to /var/www/trading-bots/btc-spot-dev/research/results/vcbb_vs_uniform.json
+  Total time: 9115s

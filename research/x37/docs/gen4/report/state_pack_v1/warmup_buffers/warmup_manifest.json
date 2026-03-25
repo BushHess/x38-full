@@ -1,0 +1,58 @@
+{
+  "forward_boundary_utc": "2026-03-18T23:59:59.999000+00:00",
+  "source_snapshot_id": "snapshot_20260318",
+  "constitution_version": "4.0",
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "system_version_id": "V1",
+  "inclusion_rule": "Include sufficient pre-forward bars per portfolio_state.json warmup_requirements; 1d carries full prior history because full_prior_history_required=true.",
+  "omitted_timeframes": {
+    "1h": {
+      "included": false,
+      "minimum_closed_bars": 0,
+      "reason": "No live V1 candidate consumes 1h bars directly."
+    }
+  },
+  "buffers": {
+    "15m": {
+      "file": "raw/spot_btcusdt_15m.csv",
+      "rows": 168,
+      "first_open_time_ms": 1773727200000,
+      "last_close_time_ms": 1773878399999,
+      "mode": "tail",
+      "requested_bars": 168,
+      "full_prior_history_required": false,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "M15 relative-volume timing window for btcsd_20260318_c3_trade4h15m."
+    },
+    "4h": {
+      "file": "raw/spot_btcusdt_4h.csv",
+      "rows": 168,
+      "first_open_time_ms": 1771459200000,
+      "last_close_time_ms": 1773878399999,
+      "mode": "tail",
+      "requested_bars": 168,
+      "full_prior_history_required": false,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c1_av4h",
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "H4 range-position windows for both live candidates."
+    },
+    "1d": {
+      "file": "raw/spot_btcusdt_1d.csv",
+      "rows": 3136,
+      "first_open_time_ms": 1502928000000,
+      "last_close_time_ms": 1773878399999,
+      "mode": "full_prior_history",
+      "requested_bars": "all_closed_bars_through_forward_boundary",
+      "full_prior_history_required": true,
+      "required_by_candidate_ids": [
+        "btcsd_20260318_c1_av4h",
+        "btcsd_20260318_c3_trade4h15m"
+      ],
+      "note": "btcsd_20260318_c1_av4h needs 448 closed D1 bars for rangevol84 + rank365. btcsd_20260318_c3_trade4h15m uses a D1 trade-surprise model whose deterministic replay should refit on all prior closed D1 bars before the forward boundary."
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "selected_candidate": "v11_cycle_late_only",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T21:27:40.420511+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "v10_baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_cycle_neutral",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_cycle_boost_only",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.9% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 109.23,
+        "min_cagr": 44.67,
+        "max_mdd": 36.71,
+        "max_fee_drag": 4.1,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_cycle_late_only",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 90.52,
+        "min_cagr": 37.83,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.95,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_cycle_early_fast_ref",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.9% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 109.23,
+        "min_cagr": 44.67,
+        "max_mdd": 36.71,
+        "max_fee_drag": 4.1,
+        "trades": 102
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+timeframe,row_count,start_open_time,end_close_time,extra_cols,missing_cols,duplicate_rows,duplicate_open_time,duplicate_close_time,missing_values_total,bar_len_nonstandard_count,irregular_gap_rows,zero_activity_rows,impossible_ohlc_rows,close_before_open_rows,taker_base_gt_volume_rows,taker_quote_gt_quote_rows
+4h,18791,2017-08-17 04:00:00+00:00,2026-03-17 15:59:59.999000+00:00,[],[],0,0,1,0,19,8,1,0,0,0,0
+1d,3134,2017-08-17 00:00:00+00:00,2026-03-16 23:59:59.999000+00:00,[],[],0,0,0,0,0,0,0,0,0,0,0

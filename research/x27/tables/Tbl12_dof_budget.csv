@@ -1,0 +1,8 @@
+component,description,n_params,params
+Entry: Breakout (B),"close > max(close, N bars)",1,N
+Entry: ROC threshold (C),ROC(N) > tau,2,"N, tau"
+Exit: ATR trail (Y),trail = max_price - m*ATR(p),2,"period, multiplier"
+Exit: Time-based (W),exit after H bars,1,H
+Exit: Signal reversal (Z),reverse of entry signal,2,"type, param"
+Filter: Price-level regime,D1_close > MA_D1(K),1,K
+Filter: None,no filter,0,-

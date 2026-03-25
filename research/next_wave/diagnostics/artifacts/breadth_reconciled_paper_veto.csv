@@ -1,0 +1,4 @@
+variable,threshold,direction,n_blocked,n_passed,blocked_losers,blocked_winners,net_pnl_effect,remaining_pnl
+breadth_d1_exact_low,0.23076923076923078,below,17,169,9,8,-57279.0,369075.0
+breadth_d1_exact_low,0.38461538461538464,below,35,151,20,15,-18572.0,407782.0
+breadth_d1_exact_low,0.46153846153846156,below,53,133,27,26,-169062.0,257292.0

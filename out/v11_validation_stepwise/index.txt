@@ -1,0 +1,59 @@
+V11 cycle_late_only Validation — Output File Index
+===================================================
+Generated: 2026-02-23
+
+FINAL REPORT
+  reports/v11_cycle_late_only_validation.md   — Synthesis report (A-F) + HOLD decision
+
+STEP REPORTS
+  reports/score_definition.md                 — A: Score formula definition
+  reports/wfo_round_by_round.md               — B1: WFO score-based analysis
+  reports/wfo_round_return_based.md            — B1b: WFO return-based analysis
+  reports/sensitivity_grid.md                  — B2: 27-point sensitivity grid
+  reports/final_holdout.md                     — B3: Final holdout evaluation
+  reports/selection_bias.md                    — C: PBO + Deflated Sharpe
+  reports/lookahead_sanity.md                  — D: Lookahead bias tests
+  reports/topping_vs_latebull.md               — E: TOPPING/LATE_BULL alignment
+  reports/topping_solution_overlays.md         — F: Risk overlay analysis
+
+DATA — CSV
+  summary_full_backtest.csv                   — A: Full-period V10 vs V11 (3 scenarios)
+  per_round_metrics.csv                       — B1: WFO round-by-round score metrics
+  per_round_return_metrics.csv                — B1b: WFO round-by-round return metrics
+  paired_bootstrap.csv                        — B1b: Paired bootstrap Sharpe CI
+  sensitivity_grid.csv                        — B2: 27-point grid summary
+  sensitivity_grid_full.csv                   — B2: Full grid with all scenarios
+  final_holdout_metrics.csv                   — B3: Holdout V10 vs V11 (3 scenarios)
+  overlap_topping_latebull.csv                — E: Daily TOPPING/LATE_BULL labels (2608 rows)
+  overlay_results.csv                         — F: 16 overlay variants × 3 scenarios
+  overlay_wfo.csv                             — F: 16 overlay variants × 10 WFO windows
+  ov3_refined_grid.csv                        — F: 72-point OV3 regularization grid
+
+DATA — JSON
+  sign_test.json                              — B1: Sign test results (score-based)
+  sign_test_returns.json                      — B1b: Sign test + Wilcoxon results
+  sensitivity_grid.json                       — B2: Grid summary + cliff risk analysis
+  final_holdout.json                          — B3: Holdout results + regime decomposition
+  selection_bias_results.json                 — C: CSCV/PBO + DSR results
+  topping_vs_latebull.json                    — E: Overlap statistics + cross-tabulation
+  overlay_results.json                        — F: Overlay promotion verdicts
+  ov3_refined_grid.json                       — F: OV3 regularization + promoted variants
+
+SCRIPTS
+  scripts/reproduce_v10_vs_v11.py             — A: Reproducibility + full backtest
+  scripts/wfo_round_by_round.py               — B1: WFO round-by-round (score)
+  scripts/wfo_round_return_based.py           — B1b: WFO round-by-round (return)
+  scripts/sensitivity_grid.py                 — B2: 27-point parameter grid
+  scripts/final_holdout.py                    — B3: Final holdout evaluation
+  scripts/selection_bias.py                   — C: CSCV/PBO + DSR analysis
+  scripts/topping_vs_latebull.py              — E: TOPPING/LATE_BULL overlap
+  scripts/overlay_test.py                     — F: 16-variant overlay test
+  scripts/overlay_ov3_refined.py              — F: 72-point OV3 regularization
+
+LOGS
+  repro_run.log                               — Backtest run log
+  repro_run_1.log                             — Reproducibility run 1
+  repro_run_2.log                             — Reproducibility run 2
+  holdout_run.log                             — Holdout test log
+  lookahead_test.log                          — Lookahead test log
+  logs/step0_environment.txt                  — Environment snapshot

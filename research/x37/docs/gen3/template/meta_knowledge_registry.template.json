@@ -1,0 +1,32 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "3.0",
+  "entries": [
+    {
+      "rule_id": "AXIOM_001",
+      "statement": "No lookahead. Signals may only use information visible at the decision timestamp.",
+      "tier": "Tier1_Axiom",
+      "basis": "axiomatic",
+      "scope": "global_within_lineage",
+      "authority": "hard-lock",
+      "provenance": "research_constitution_v3.0",
+      "overlap_guard": "always_applicable",
+      "challenge_rule": "not_challengeable_by_empirical_session_results",
+      "expiry": "none",
+      "status": "active"
+    },
+    {
+      "rule_id": "PRIOR_001",
+      "statement": "Microstructure data is excluded from the mainline for this swing-horizon lineage.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "operational",
+      "scope": "btc_spot_mainline_current_constitution",
+      "authority": "budget_and_burden_only",
+      "provenance": "constitution design choice",
+      "overlap_guard": "cannot_narrow_blind_discovery_on_overlapping_data",
+      "challenge_rule": "may_trigger_governance_review_but_not_same-session_override",
+      "expiry": "review_on_next_governance_release",
+      "status": "active"
+    }
+  ]
+}

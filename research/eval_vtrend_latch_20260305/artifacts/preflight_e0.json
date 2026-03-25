@@ -1,0 +1,11 @@
+{
+  "entries": 226,
+  "exits": 226,
+  "signal_match": true,
+  "equity_match": true,
+  "sharpe": 1.0773365733395108,
+  "cagr": 0.4504450324904763,
+  "mdd": 0.6330351775051166,
+  "trades": 504,
+  "score": 88.6625821024542
+}

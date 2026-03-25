@@ -1,0 +1,22 @@
+2026-02-24 07:19:35,771 INFO validation: Validation run started
+2026-02-24 07:19:35,771 INFO validation: command=python validate_strategy.py --strategy v8_apex --baseline v8_apex --config v10/configs/baseline_legacy.live.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --out out_validation_churn_impl --suite basic --scenarios base --start 2024-01-01 --end 2024-03-01 --warmup-days 60 --bootstrap 0 --lookahead-check off --selection-bias none --data-integrity-check off --cost-sweep-bps  --invariant-check off --churn-metrics on --wfo-windows 2 --wfo-train-months 1 --wfo-test-months 1 --wfo-slide-months 1
+2026-02-24 07:19:35,771 INFO validation: seed=1337
+2026-02-24 07:19:35,771 INFO validation: git_hash=c74c650
+2026-02-24 07:19:35,771 INFO validation: candidate=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 07:19:35,771 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 07:19:35,771 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 07:19:35,771 INFO validation: period=2024-01-01 -> 2024-03-01
+2026-02-24 07:19:35,961 INFO validation: suite backtest started
+2026-02-24 07:19:35,961 INFO validation:   backtest: candidate x base
+2026-02-24 07:19:35,968 INFO validation:   backtest: baseline x base
+2026-02-24 07:19:35,976 INFO validation: suite backtest finished: pass (0.02s)
+2026-02-24 07:19:35,978 INFO validation: suite churn_metrics started
+2026-02-24 07:19:35,978 INFO validation: suite churn_metrics finished: pass (0.00s)
+2026-02-24 07:19:35,978 INFO validation: suite regime started
+2026-02-24 07:19:35,981 INFO validation: suite regime finished: info (0.00s)
+2026-02-24 07:19:35,981 INFO validation: suite wfo started
+2026-02-24 07:19:36,134 INFO validation: suite wfo finished: pass (0.15s)
+2026-02-24 07:19:36,134 WARNING validation: Low-trade WFO detected (1 windows); trade-level suite auto-enabled
+2026-02-24 07:19:36,135 INFO validation: suite trade_level started
+2026-02-24 07:19:36,152 INFO validation: suite trade_level finished: info (0.02s)
+2026-02-24 07:19:36,279 INFO validation: Validation run complete in 0.51s

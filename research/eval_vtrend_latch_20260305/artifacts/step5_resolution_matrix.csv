@@ -1,0 +1,8 @@
+id,question,status,evidence,conclusion,next_action
+S1,Is E0's equal-sizing Sharpe edge over LATCH statistically supported?,UNSUPPORTED,"Bootstrap CI=[-0.2636, +0.5422], P(>0)=0.740",No — E0 signal-quality edge UNSUPPORTED,More data or bootstrap with longer series
+S2,Is LATCH's low-risk matched-MDD CAGR advantage over E0 statistically supported at 5% budget?,UNSUPPORTED,"Bootstrap CI=[-0.0225, +0.0555], P(>0)=0.766",LATCH low-risk advantage UNSUPPORTED,More data
+S3,Is LATCH's low-risk matched-MDD CAGR advantage over E0 statistically supported at 10% budget?,UNSUPPORTED,"Bootstrap CI=[-0.0481, +0.0973], P(>0)=0.760",LATCH low-risk advantage UNSUPPORTED,More data
+S4,Is the approximate low-risk / high-risk two-regime model temporally stable?,TENTATIVE,"LATCH wins at 5% MDD in 64% of 24-month windows, 10% in 57%",Two-regime model TENTATIVE,Investigate unstable windows
+S5,Do the main conclusions materially depend on starting the sample in 2017-08 instead of 2019-01?,TENTATIVE,Conclusions vary across start dates,Start-date independence TENTATIVE,None
+S6,Is LATCH's edge over SM robust enough to justify its added complexity?,UNSUPPORTED,"Sharpe diff mean=+0.0031, CI excl 0 at all blocks=False",Complexity premium NOT_JUSTIFIED_BY_CURRENT_EVIDENCE,"Prefer SM over LATCH (fewer params, similar performance)"
+S7,Is the evidence base strong enough to proceed to the final synthesis memo without more technical work?,TENTATIVE,"S1=UNSUPPORTED, S2=UNSUPPORTED, S3=UNSUPPORTED, S4=TENTATIVE, S5=TENTATIVE, S6=UNSUPPORTED",Evidence base TENTATIVE — proceed to final synthesis,Write final synthesis memo

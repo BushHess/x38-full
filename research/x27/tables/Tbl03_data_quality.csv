@@ -1,0 +1,5 @@
+file,rows,missing_total,zero_vol_bars,close>high,close<low,open<=0,high<low,extreme_15pct,tbv_missing,tbv_zero,tbv_ratio_mean
+15m,299754,0,60,0,0,0,0,1,0,241,0.4954
+1h,74952,0,4,0,0,0,0,3,0,4,0.4952
+4h,18752,0,0,0,0,0,0,3,0,0,0.495
+1d,3128,0,0,0,0,0,0,14,0,0,0.4953

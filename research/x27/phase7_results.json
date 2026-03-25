@@ -1,0 +1,122 @@
+{
+  "benchmark_binary_sharpe": 1.0836,
+  "candidates": {
+    "Cand01": {
+      "metrics": {
+        "sharpe": 0.9073,
+        "cagr": 38.62,
+        "mdd": 41.38,
+        "calmar": 0.9333,
+        "n_trades": 70,
+        "win_rate": 45.7,
+        "exposure": 28.4,
+        "avg_hold": 75.2,
+        "max_consec_loss": 6,
+        "profit_factor": 2.742,
+        "avg_winner": 17.95,
+        "avg_loser": -5.51
+      },
+      "wfo_win_rate": 0.5,
+      "bootstrap": {
+        "p_cand_pos": 0.992,
+        "p_d_pos": 0.192,
+        "median_d": -0.18377525318272425,
+        "p5_d": -0.5459405966891425,
+        "p95_d": 0.15968541082835055
+      },
+      "churn": {
+        "churn_events": 0,
+        "churn_rate": 0.0,
+        "churn_cost_pct": 0.0,
+        "n_trades": 70
+      },
+      "verdict": "PROMOTE",
+      "rejection_criteria": {
+        "R1": "PASS",
+        "R2": "PASS",
+        "R3": "PASS",
+        "R4": "PASS",
+        "R5": "PASS",
+        "R6": "PASS"
+      }
+    },
+    "Cand02": {
+      "metrics": {
+        "sharpe": 0.9197,
+        "cagr": 38.95,
+        "mdd": 42.42,
+        "calmar": 0.9182,
+        "n_trades": 68,
+        "win_rate": 45.6,
+        "exposure": 27.8,
+        "avg_hold": 75.9,
+        "max_consec_loss": 6,
+        "profit_factor": 2.796,
+        "avg_winner": 18.43,
+        "avg_loser": -5.52
+      },
+      "wfo_win_rate": 0.5,
+      "bootstrap": {
+        "p_cand_pos": 0.9925,
+        "p_d_pos": 0.2055,
+        "median_d": -0.17031758407841957,
+        "p5_d": -0.5424753033612667,
+        "p95_d": 0.17605492792311786
+      },
+      "churn": {
+        "churn_events": 0,
+        "churn_rate": 0.0,
+        "churn_cost_pct": 0.0,
+        "n_trades": 68
+      },
+      "verdict": "PROMOTE",
+      "rejection_criteria": {
+        "R1": "PASS",
+        "R2": "PASS",
+        "R3": "PASS",
+        "R4": "PASS",
+        "R5": "PASS",
+        "R6": "PASS"
+      }
+    },
+    "Cand03": {
+      "metrics": {
+        "sharpe": 0.4495,
+        "cagr": 17.58,
+        "mdd": 54.23,
+        "calmar": 0.3242,
+        "n_trades": 55,
+        "win_rate": 45.5,
+        "exposure": 21.3,
+        "avg_hold": 72.0,
+        "max_consec_loss": 7,
+        "profit_factor": 1.907,
+        "avg_winner": 17.7,
+        "avg_loser": -7.74
+      },
+      "wfo_win_rate": 0.0,
+      "bootstrap": {
+        "p_cand_pos": 0.8825,
+        "p_d_pos": 0.0065,
+        "median_d": -0.6437309247772367,
+        "p5_d": -1.1158138207854507,
+        "p95_d": -0.1897061658884121
+      },
+      "churn": {
+        "churn_events": 1,
+        "churn_rate": 1.9,
+        "churn_cost_pct": 0.5,
+        "n_trades": 55
+      },
+      "verdict": "HOLD",
+      "rejection_criteria": {
+        "R1": "PASS",
+        "R2": "FAIL (0.450<0.867)",
+        "R3": "PASS",
+        "R4": "PASS",
+        "R5": "FAIL (WR=0%)",
+        "R6": "PASS"
+      }
+    }
+  }
+}

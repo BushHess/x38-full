@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "trial_id": 1,
+    "metric_name": "final_equity_mid",
+    "metric_value": 34310.507306889675,
+    "final_equity_mid": 34310.507306889675,
+    "total_return_pct_mid": 243.10507306889676,
+    "cagr_pct_mid": 22.240043179981694,
+    "max_drawdown_mid_pct": 20.945488672947132,
+    "params": {
+      "add_cooldown_bars": 1,
+      "breakdown_exit_to_target_mult": 0.5,
+      "breakout_add_inc": 0.2,
+      "breakout_lookback": 20,
+      "crash_atr_mult": 8.0,
+      "enable_breakdown_exit": false,
+      "enable_breakout_entry": true,
+      "enable_crash_stop": true,
+      "enable_momentum_add": false,
+      "enable_rebound_entry": true,
+      "enable_trailing_stop": false,
+      "enable_trend_strength_scale": true,
+      "kill_dd": 0.12,
+      "max_add_per_signal": 0.2,
+      "max_total_exposure": 1.0,
+      "momentum_add_inc": 0.15,
+      "rebound_add_inc": 0.06,
+      "rebound_touch_atr": 0.35,
+      "target_vol_annual": 0.5,
+      "trend_scale_max": 1.0,
+      "trend_scale_min": 0.85
+    }
+  }
+]

@@ -1,0 +1,3 @@
+ledger_view,tested_window_max_removal_pct,base_terminal_value,base_cagr,base_sharpe,max_cliff_score_terminal,first_terminal_cliff_index,cliff_flag_terminal,max_cliff_score_cagr,first_cagr_cliff_index,cliff_flag_cagr,max_cliff_score_sharpe,first_sharpe_cliff_index,cliff_flag_sharpe,interpretation
+native,20.0,29640.67,18.194741,0.820877,1.8179,0,False,1.1902,0,False,1.8467,0,False,smooth decay
+unit_size,20.0,90430.03,40.32176,0.820877,6.2095,1,True,2.7602,0,False,1.3981,0,False,single-point collapse

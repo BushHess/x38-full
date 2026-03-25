@@ -1,0 +1,54 @@
+/var/www/trading-bots/btc-spot-dev/research/x29/code/x29_monitor_diagnostic.py:28: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+======================================================================
+X29 Monitor Diagnostic — Conditional Bootstrap Analysis
+======================================================================
+
+Real data: 1392 RED H4 bars (8.9%)
+Real: Base Sh=1.640, Mon Sh=1.770, Δ=+0.130, blocks=268
+
+Running 500 VCBB paths with H4-level Monitor computation...
+  ... 100/500
+  ... 200/500
+  ... 300/500
+  ... 400/500
+  ... 500/500
+
+======================================================================
+RESULTS
+======================================================================
+
+1. RED bar frequency on bootstrap paths:
+   Paths with ANY RED bars:    442 / 500 (88.4%)
+   Paths with zero RED bars:    58 / 500 (11.6%)
+   Mean RED bars per path:    1428.3 (real data: 1392)
+   Median RED bars per path:  1220
+   Percentiles: {0: 0, 10: 0, 25: 553, 50: 1219, 75: 2069, 90: 2943, 100: 5659}
+
+2. Monitor blocks on bootstrap paths:
+   Paths with ANY blocks:      427 / 500 (85.4%)
+   Mean blocks per path:      175.4 (real data: 268)
+
+3. Unconditional ΔSharpe (all 500 paths):
+   P(ΔSh > 0):  40.0%
+   Median:       +0.0000
+   Mean:         -0.0266
+
+4. CONDITIONAL ΔSharpe (427 paths where Monitor blocked >= 1 entry):
+   P(ΔSh > 0):  46.8%
+   Median:       -0.0125
+   Mean:         -0.0312
+
+5. NULL paths (73 paths where Monitor blocked 0 entries):
+   P(ΔSh > 0):  0.0%
+   Median:       +0.0000
+   (Expected: ~50% / ~0.0 since Monitor is a no-op on these paths)
+
+======================================================================
+INTERPRETATION
+======================================================================
+
+  Monitor is active on 85% of paths — NOT sparse.
+  Unconditional P(ΔSh>0) = 40.0% is a fair test.
+
+Done in 983.0s

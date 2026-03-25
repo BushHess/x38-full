@@ -1,0 +1,42 @@
+2026-03-09 09:33:32,495 smoke_c4 INFO === C4 Smoke Test ===
+2026-03-09 09:33:32,495 smoke_c4 INFO Phase 0: Reset to cash
+2026-03-09 09:33:33,114 smoke_c4 INFO Cancelled 0 orders, sold 0.00000000 BTC
+2026-03-09 09:33:33,242 smoke_c4 INFO SymbolInfo: step=0.00001000 tick=0.01000000 minQty=0.00001000 minNotional=5.00000000
+2026-03-09 09:33:33,292 smoke_c4 INFO === Phase 1: Planner-driven BUY/SELL cycles (6 cycles) ===
+2026-03-09 09:33:33,557 v10.exchange.order_planner INFO OrderPlan: BUY 5.01084 @ 68275.68 (notional=342118.53) exposure 0.0000→1.0000
+2026-03-09 09:33:33,558 smoke_c4 INFO Cycle 0: target=1.00 plan=BUY qty=5.01084 reason=buy
+2026-03-09 09:33:33,853 smoke_c4 INFO Cycle 0 done in 0.56s | NAV=342118.91 exposure=0.0000 action=BUY
+2026-03-09 09:33:34,620 v10.exchange.order_planner INFO OrderPlan: BUY 0.00776 @ 68275.67 (notional=529.82) exposure 0.9985→1.0000
+2026-03-09 09:33:34,620 smoke_c4 INFO Cycle 1: target=1.00 plan=BUY qty=0.00776 reason=buy
+2026-03-09 09:33:34,911 smoke_c4 INFO Cycle 1 done in 0.56s | NAV=342118.86 exposure=0.9985 action=BUY
+2026-03-09 09:33:35,686 v10.exchange.order_planner INFO OrderPlan: SELL 5.01860 @ 68064.35 (notional=341587.73) exposure 1.0000→0.0000
+2026-03-09 09:33:35,686 smoke_c4 INFO Cycle 2: target=0.00 plan=SELL qty=5.01860 reason=sell
+2026-03-09 09:33:35,968 smoke_c4 INFO Cycle 2 done in 0.56s | NAV=342118.86 exposure=1.0000 action=SELL
+2026-03-09 09:33:36,736 v10.exchange.order_planner INFO OrderPlan: BUY 5.01062 @ 68275.68 (notional=342103.51) exposure 0.0000→1.0000
+2026-03-09 09:33:36,736 smoke_c4 INFO Cycle 3: target=1.00 plan=BUY qty=5.01062 reason=buy
+2026-03-09 09:33:37,021 smoke_c4 INFO Cycle 3 done in 0.55s | NAV=342103.60 exposure=0.0000 action=BUY
+2026-03-09 09:33:37,784 v10.exchange.order_planner INFO OrderPlan: SELL 5.01062 @ 68064.36 (notional=341044.63) exposure 0.9984→0.0000
+2026-03-09 09:33:37,784 smoke_c4 INFO Cycle 4: target=0.00 plan=SELL qty=5.01062 reason=sell
+2026-03-09 09:33:38,097 smoke_c4 INFO Cycle 4 done in 0.58s | NAV=342118.84 exposure=0.9984 action=SELL
+2026-03-09 09:33:38,866 smoke_c4 INFO Cycle 5: target=0.00 plan=HOLD qty=0.00000 reason=below_min_notional
+2026-03-09 09:33:38,866 smoke_c4 INFO Cycle 5 done in 0.27s | NAV=338355.21 exposure=0.0000 action=HOLD
+2026-03-09 09:33:39,366 smoke_c4 INFO === Phase 2: Crash at BEFORE_PERSIST ===
+2026-03-09 09:33:39,378 smoke_c4 WARNING CrashSimulation at BEFORE_PERSIST (order never reached DB)
+2026-03-09 09:33:39,379 smoke_c4 INFO === Phase 3: Crash at AFTER_SEND ===
+2026-03-09 09:33:39,537 smoke_c4 WARNING CrashSimulation at AFTER_SEND (order sent but not polled)
+2026-03-09 09:33:39,544 smoke_c4 INFO === Phase 4: Restart + Reconcile ===
+2026-03-09 09:33:39,704 smoke_c4 INFO Reconcile updated 0 order(s)
+2026-03-09 09:33:39,984 smoke_c4 INFO Wrote run_meta.json
+2026-03-09 09:33:39,985 smoke_c4 INFO Wrote live_cycles.csv (7 rows)
+2026-03-09 09:33:39,985 smoke_c4 INFO Wrote live_plan.csv (6 rows)
+2026-03-09 09:33:39,989 smoke_c4 INFO Wrote live_slippage.csv (178 rows)
+2026-03-09 09:33:39,993 smoke_c4 INFO Wrote sqlite_dump.txt
+2026-03-09 09:33:39,994 smoke_c4 INFO Wrote crash_report.json
+2026-03-09 09:33:40,389 v10.exchange.account_scope INFO Selling 0.00100000 BTC (rounded from 0.00100000)
+2026-03-09 09:33:40,518 smoke_c4 INFO Final cleanup: sold 0.00100000 BTC
+2026-03-09 09:33:40,527 smoke_c4 INFO === Verification ===
+2026-03-09 09:33:40,527 smoke_c4 INFO PASS P1: 0 duplicate clientOrderIds
+2026-03-09 09:33:40,527 smoke_c4 INFO PASS: BEFORE_PERSIST order not in DB (as expected)
+2026-03-09 09:33:40,527 smoke_c4 INFO PASS: AFTER_SEND order reconciled to FILLED
+2026-03-09 09:33:40,528 smoke_c4 INFO PASS: 5 orders placed (≥2 required)
+2026-03-09 09:33:40,528 smoke_c4 INFO === C4 Smoke Test PASSED ===

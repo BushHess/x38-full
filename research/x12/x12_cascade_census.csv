@@ -1,0 +1,5 @@
+category,count,pnl_sum,pnl_mean,pnl_median
+matched_same_exit,103,5974.32,58.00,-92.63
+matched_diff_exit,69,45625.67,661.24,164.02
+e0_only,17,-9562.95,-562.53,-206.78
+e5_only,30,3395.89,113.20,-221.71

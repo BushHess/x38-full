@@ -1,0 +1,145 @@
+/var/www/trading-bots/btc-spot-dev/research/x14/benchmark.py:50: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X14: Trail-Stop Churn Filter — Design & Validation
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+  Period: 2019-01-01 to 2026-02-20, warmup=365d
+
+======================================================================
+T0: FULL-SAMPLE SCREENING
+======================================================================
+
+  E0 baseline: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+  Design A: Sharpe=1.3231, d=-0.0487, trades=185, trail_supp=39/204, G0=FAIL
+  Design B: best tau=1.035, Sharpe=1.5269, d=+0.1552, trades=150, G0=PASS
+  Design C: best tau_ema=1.04, tau_d1=0.0, Sharpe=1.4934, d=+0.1216, trades=158, G0=PASS
+  Design D: Sharpe=1.5300, d=+0.1582, trades=148, G0=PASS
+
+  T0 Summary: 3/4 designs pass G0 screen
+
+======================================================================
+FIXED-SEQUENCE TESTING
+======================================================================
+
+======================================================================
+T1: WALK-FORWARD VALIDATION
+======================================================================
+  Designs to validate: ['B', 'C', 'D']
+  Fold: train=[2190..8760], test=[8766..10950]
+  Fold: train=[2190..10950], test=[10956..13140]
+  Fold: train=[2190..13140], test=[13146..15336]
+  Fold: train=[2190..15336], test=[15342..17832]
+
+  --- Design B WFO ---
+    Fold 1: param=tau=1.035, E0=-0.8896, Filt=-0.5410, d=+0.3486 WIN
+    Fold 2: param=tau=1.035, E0=1.1935, Filt=1.5052, d=+0.3117 WIN
+    Fold 3: param=tau=1.035, E0=1.7196, Filt=1.7165, d=-0.0031 LOSE
+    Fold 4: param=tau=1.035, E0=0.0470, Filt=0.2083, d=+0.1613 WIN
+    Design B: win_rate=75%, mean_d=+0.2046, G1=PASS
+
+  --- Design C WFO ---
+    Fold 1: param=tau_ema=1.04,tau_d1=0.01, E0=-0.8896, Filt=-0.6579, d=+0.2318 WIN
+    Fold 2: param=tau_ema=1.04,tau_d1=0.01, E0=1.1935, Filt=1.3662, d=+0.1728 WIN
+    Fold 3: param=tau_ema=1.04,tau_d1=0.01, E0=1.7196, Filt=1.6562, d=-0.0634 LOSE
+    Fold 4: param=tau_ema=1.04,tau_d1=0.0, E0=0.0470, Filt=-0.0123, d=-0.0594 LOSE
+    Design C: win_rate=50%, mean_d=+0.0704, G1=FAIL
+
+  --- Design D WFO ---
+    Fold 1: param=logistic, E0=-0.8896, Filt=-0.6926, d=+0.1971 WIN
+    Fold 2: param=logistic, E0=1.1935, Filt=1.2400, d=+0.0465 WIN
+    Fold 3: param=logistic, E0=1.7196, Filt=1.5621, d=-0.1574 LOSE
+    Fold 4: param=logistic, E0=0.0470, Filt=0.1039, d=+0.0569 WIN
+    Design D: win_rate=75%, mean_d=+0.0358, G1=PASS
+
+  T1 Summary: passing designs = ['B', 'D']
+
+  ========== Testing Design A ==========
+  Design A: FAIL G0 (d_sharpe=-0.0487)
+
+  ========== Testing Design B ==========
+  Design B: WFO consensus tau=1.035
+
+======================================================================
+T2: BOOTSTRAP VALIDATION (design=B, 500 paths)
+======================================================================
+    ... 100/500 paths done
+    ... 200/500 paths done
+    ... 300/500 paths done
+    ... 400/500 paths done
+    ... 500/500 paths done
+
+  d_sharpe: median=+0.0275, [-0.1982, +0.2695]
+  P(d_sharpe > 0): 57.8%
+  d_mdd: median=+2.15pp, [-7.99, +11.28]
+  P(d_mdd < 0): 36.8%
+  G2 (P(d_sharpe>0) > 60%): FAIL
+  G3 (median d_mdd <= +5pp): PASS
+  Design B: FAIL G2 (P(d_sharpe>0)=57.8%)
+
+  ========== Testing Design C ==========
+  Design C: FAIL G1 (win_rate=50%)
+
+  ========== Testing Design D ==========
+
+======================================================================
+T2: BOOTSTRAP VALIDATION (design=D, 500 paths)
+======================================================================
+    ... 100/500 paths done
+    ... 200/500 paths done
+    ... 300/500 paths done
+    ... 400/500 paths done
+    ... 500/500 paths done
+
+  d_sharpe: median=+0.0681, [-0.2087, +0.4319]
+  P(d_sharpe > 0): 66.2%
+  d_mdd: median=+2.45pp, [-11.35, +19.28]
+  P(d_mdd < 0): 37.0%
+  G2 (P(d_sharpe>0) > 60%): PASS
+  G3 (median d_mdd <= +5pp): PASS
+
+======================================================================
+T3: JACKKNIFE LEAVE-YEAR-OUT (design=D)
+======================================================================
+    Drop 2020: E0=0.7743, Filt=0.8188, d=+0.0445
+    Drop 2021: E0=1.1851, Filt=1.2581, d=+0.0730
+    Drop 2022: E0=1.4863, Filt=1.6664, d=+0.1801
+    Drop 2023: E0=1.4432, Filt=1.5663, d=+0.1232
+    Drop 2024: E0=1.2877, Filt=1.4321, d=+0.1444
+    Drop 2025: E0=1.5034, Filt=1.6729, d=+0.1696
+
+  Negative folds: 0/6
+  Mean d_sharpe: +0.1225 ± 0.0220
+  G4 (≤ 2 negative): PASS
+
+======================================================================
+T4: DOF CORRECTION / PSR (design=D)
+======================================================================
+  E0: Sharpe=1.3718, PSR=1.0000
+  Filter: Sharpe=1.5300, PSR(DOF-corrected)=1.0000
+  DOF: base=4.35 + 10 = 14.35
+  n_returns=15647, n_eff=4743
+  G5 (PSR > 0.95): PASS
+
+  *** Design D PASSES ALL GATES ***
+
+======================================================================
+T5: COMPREHENSIVE COMPARISON
+======================================================================
+
+  Strategy               Sharpe    CAGR%     MDD%  Trades  AvgHold  TrailEx   Supp    WFO   Boot     PSR
+  ---------------------------------------------------------------------------------------------------------
+  E0                     1.3718    57.72    39.96     189     40.8      168      0                1.0000
+  E0+Filter(D)           1.5300    70.67    35.87     148     53.9      127    594    75%  66.2%  1.0000
+  E5                     1.4690    62.48    40.90     202     37.2      183      0                      
+  Oracle                 2.1629   120.17    29.32      81    100.7       71   1662                      
+
+======================================================================
+VERDICT
+======================================================================
+  Design D passes all 6 gates (G0-G5)
+  VERDICT: PROMOTE_D
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x14/x14_*.{json,csv}
+
+X14 BENCHMARK COMPLETE — 248s — VERDICT: PROMOTE_D

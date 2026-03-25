@@ -1,0 +1,5 @@
+relationship,spearman_rho,p_value,n,significant_05
+flat_duration vs flat_total_return,-0.0457,0.501786,218,False
+flat_duration vs next_trade_return,-0.0211,0.757683,217,False
+flat_total_return vs next_trade_return,-0.0614,0.36793,217,False
+flat_volatility vs next_trade_return,-0.0573,0.400578,217,False

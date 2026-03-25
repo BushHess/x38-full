@@ -1,0 +1,9 @@
+pair_id,entry_ts,channel,reference_in_position,pnl_usd,return_pct,bars_held,entry_context,failure_mode,is_winner
+x0e5_floor_latch,2020-02-18T08:00:00Z,candidate_only,True,-658.74,-2.2002,10,chop,late_exit_giveback,False
+x0e5_floor_latch,2020-04-15T08:00:00Z,candidate_only,True,-454.86,-1.5541,33,chop,late_exit_giveback,False
+x0e5_floor_latch,2020-08-22T12:00:00Z,candidate_only,True,-831.38,-2.5047,20,chop,trail_stop_noise,False
+x0e5_floor_latch,2020-12-13T04:00:00Z,candidate_only,True,26965.24,63.334,134,chop,winner,True
+x0e5_floor_latch,2021-08-19T08:00:00Z,candidate_only,True,7980.76,6.5355,34,chop,winner,True
+x0e5_floor_latch,2022-08-05T08:00:00Z,candidate_only,True,-1324.26,-0.6736,26,chop,late_exit_giveback,False
+x0e5_floor_latch,2024-10-01T20:00:00Z,candidate_only,False,-4555.01,-1.7368,1,transition,false_breakout,False
+x0e5_floor_latch,2024-11-03T20:00:00Z,candidate_only,True,58907.0,26.8963,67,transition,winner,True

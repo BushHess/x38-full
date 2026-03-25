@@ -1,0 +1,81 @@
+{
+  "tests": [
+    {
+      "name": "fast_period == 35",
+      "status": "PASS",
+      "detail": "got 35"
+    },
+    {
+      "name": "warmup_days == 365",
+      "status": "PASS",
+      "detail": "got 365"
+    },
+    {
+      "name": "ema_fast == ema_slow \u2192 no entry (by design: strict >)",
+      "status": "PASS",
+      "detail": "Implemented: trend_up = ema_f > ema_s"
+    },
+    {
+      "name": "VDO == 0.0 \u2192 no entry (by design: strict >)",
+      "status": "PASS",
+      "detail": "Implemented: vdo_val > vdo_threshold"
+    },
+    {
+      "name": "close == trail_stop \u2192 no exit (by design: strict <)",
+      "status": "PASS",
+      "detail": "Implemented: price < trail_stop"
+    },
+    {
+      "name": "Tier-2 trade count == 43",
+      "status": "PASS",
+      "detail": "got 43"
+    },
+    {
+      "name": "Entry fill #1 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-09-15 16:00:00+00:00, got 2024-09-15 16:00:00+00:00"
+    },
+    {
+      "name": "Entry fill #2 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-09-16 20:00:00+00:00, got 2024-09-16 20:00:00+00:00"
+    },
+    {
+      "name": "Entry fill #3 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-09-30 20:00:00+00:00, got 2024-09-30 20:00:00+00:00"
+    },
+    {
+      "name": "Exit fill #1 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-09-16 16:00:00+00:00, got 2024-09-16 16:00:00+00:00"
+    },
+    {
+      "name": "Exit fill #2 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-09-30 12:00:00+00:00, got 2024-09-30 12:00:00+00:00"
+    },
+    {
+      "name": "Exit fill #3 timestamp",
+      "status": "PASS",
+      "detail": "expected 2024-10-01 20:00:00+00:00, got 2024-10-01 20:00:00+00:00"
+    },
+    {
+      "name": "First trade entry price (raw open)",
+      "status": "PASS",
+      "detail": "expected 60335.41, got 60335.41 (engine fill: 60395.76, cost-adjusted)"
+    },
+    {
+      "name": "First trade exit price (raw open)",
+      "status": "PASS",
+      "detail": "expected 57881.7, got 57881.70 (engine fill: 57823.83, cost-adjusted)"
+    },
+    {
+      "name": "First trade exit reason == trailing_stop",
+      "status": "PASS",
+      "detail": "got vp1_trailing_stop"
+    }
+  ],
+  "pass_count": 15,
+  "fail_count": 0
+}

@@ -1,0 +1,23 @@
+{
+  "worst10_pnl": -112340.0,
+  "worst10_mean_breadth": 0.6231,
+  "worst10_mean_bse": 2.2,
+  "worst10_years": {
+    "2024": 3,
+    "2022": 3,
+    "2025": 2,
+    "2026": 1,
+    "2023": 1
+  },
+  "best10_pnl": 182321.0,
+  "best10_mean_breadth": 0.6077,
+  "best10_mean_bse": 1.7,
+  "best10_years": {
+    "2024": 5,
+    "2021": 2,
+    "2023": 2,
+    "2025": 1
+  },
+  "total_re_pnl": 57188.0,
+  "worst10_as_pct_of_total": -196.4
+}

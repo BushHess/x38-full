@@ -1,0 +1,12 @@
+{
+  "new_base": {
+    "signal_practical_exact": true,
+    "daily_practical_exact": true,
+    "trades_practical_exact": true
+  },
+  "new_final_flow": {
+    "signal_practical_exact": true,
+    "daily_practical_exact": true,
+    "trades_practical_exact": true
+  }
+}

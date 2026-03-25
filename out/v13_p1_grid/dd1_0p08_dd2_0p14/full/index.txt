@@ -1,0 +1,53 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-02-24 17:18:54 UTC
+Candidate: v13_add_throttle
+Baseline: v8_apex
+Suite: trade
+Scenarios: harsh
+Seed: 1505
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_v10_baseline.yaml
+configs/candidate_p1_dd1_dd2_0p08_0p14.yaml
+
+[results]
+results/add_throttle_stats.json
+results/bootstrap_return_diff.json
+results/config_unused_fields.json
+results/config_used_fields.json
+results/effective_config_baseline.json
+results/effective_config_candidate.json
+results/full_backtest_detail.json
+results/full_backtest_summary.csv
+results/lookahead_check.txt
+results/matched_trades.csv
+results/regime_trade_summary.csv
+results/score_breakdown_full.csv
+results/trade_level_summary.json
+results/trades_baseline.csv
+results/trades_candidate.csv
+results/window_trade_counts.csv
+
+[reports]
+reports/audit_effective_config.md
+reports/audit_score_decomposition.md
+reports/decision.json
+reports/discovered_tests.md
+reports/quality_checks.md
+reports/trade_level_analysis.md
+reports/validation_report.md
+
+[suite_status]
+lookahead: fail
+backtest: fail
+trade_level: info
+
+[decision]
+verdict=REJECT
+exit_code=2
+- Lookahead sanity failed
+- Candidate harsh score delta too low (-75.9803)

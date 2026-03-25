@@ -1,0 +1,3 @@
+strategy,total_trades,trail_stop_exits,trend_exits,churn_count,churn_rate,churn_pnl,non_churn_trail_pnl,short_count,short_pnl,medium_count,medium_pnl,long_count,long_pnl
+E0,189,168,21,111,0.660714,347704.68,-134825.73,64,-204745.13,102,41640.24,23,348644.50
+E5,202,183,19,123,0.672131,454637.33,-170541.02,68,-229097.20,117,156257.34,17,322938.27

@@ -1,0 +1,31 @@
+{
+  "verdict": "PROMOTE",
+  "exit_code": 0,
+  "deltas": {
+    "full_harsh_score_delta": 65.6481
+  },
+  "failures": [],
+  "reasons": [
+    "All configured decision gates passed"
+  ],
+  "key_links": {
+    "backtest": "results/full_backtest_summary.csv",
+    "wfo": "results/wfo_per_round_metrics.csv",
+    "holdout": "results/final_holdout_metrics.csv",
+    "bootstrap": "results/bootstrap_paired_test.csv",
+    "trade_level": "results/matched_trades.csv"
+  },
+  "gates": [
+    {
+      "name": "full_harsh_delta",
+      "passed": true,
+      "severity": "hard",
+      "detail": "delta=65.6481, min=-0.2000"
+    }
+  ],
+  "metadata": {
+    "n_gates": 1,
+    "n_hard_fail": 0,
+    "n_soft_fail": 0
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "system_id": "SF_EFF40_Q70_STATIC",
+  "reconstruction_status": "reconstructed_from_prompt_and_report_artifacts",
+  "market": "BTCUSDT_spot",
+  "direction": "long_only",
+  "base_timeframe": "1d",
+  "signal_timing": {
+    "compute_on": "D1_close",
+    "execute_on": "next_D1_open",
+    "timezone": "UTC"
+  },
+  "cost_model": {
+    "per_side_bps": 10,
+    "round_trip_bps": 20
+  },
+  "warmup_and_live_bounds": {
+    "raw_context_start": "2017-08-17T00:00:00Z",
+    "no_live_before": "2019-01-01T00:00:00Z",
+    "validation_live_metrics_start": "2020-01-01T00:00:00Z"
+  },
+  "position_sizing": {
+    "type": "binary_notional",
+    "long_size": 1.0,
+    "flat_size": 0.0,
+    "leverage": 1.0,
+    "pyramiding": false,
+    "partial_positions": false
+  },
+  "feature": {
+    "name": "d1_eff_40",
+    "family": "Kaufman_efficiency_ratio",
+    "source_series": "D1.close",
+    "lookback_bars": 40,
+    "formula": "abs(close_t - close_t-40) / sum_{i=t-39..t} abs(close_i - close_i-1)"
+  },
+  "threshold_calibration": {
+    "quantile": 0.7,
+    "quantile_method": "linear_type7",
+    "mode": "calendar_year_static_expanding_history",
+    "recompute_time": "00:00:00 UTC on January 1 each year",
+    "history_visibility_rule": "use only feature values from rows with close_time < year_start",
+    "within_year_threshold_constant": true,
+    "thresholds_by_year": {
+      "2018": 0.414047393230044,
+      "2019": 0.271546675746471,
+      "2020": 0.276491163806202,
+      "2021": 0.290809063586932,
+      "2022": 0.282524032890244,
+      "2023": 0.273229571849102,
+      "2024": 0.276921292380782,
+      "2025": 0.271403540648469,
+      "2026": 0.264156443160826
+    }
+  },
+  "signal_logic": {
+    "long_if": "d1_eff_40 >= threshold_for_open_time_year",
+    "flat_if": "otherwise_or_when_feature_or_threshold_is_nan"
+  },
+  "regime_gate": {
+    "type": "implicit",
+    "description": "No separate external regime model; the efficiency threshold itself is the regime gate."
+  }
+}

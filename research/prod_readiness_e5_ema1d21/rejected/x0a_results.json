@@ -1,0 +1,193 @@
+{
+  "monitor_params": {
+    "roll_window": 180,
+    "atr_period": 14,
+    "atr_percentile": 90,
+    "train_days": 365,
+    "amber_mdd": 0.55,
+    "amber_atr_ratio": 1.4,
+    "red_mdd": 0.65,
+    "red_atr_ratio": 1.6
+  },
+  "training": {
+    "atr_q90_mean": 535.7677829559802,
+    "train_start_bar": 179,
+    "train_end_bar": 544
+  },
+  "alert_counts": {
+    "total_bars": 2973,
+    "normal": 739,
+    "amber": 104,
+    "red": 2130
+  },
+  "episodes": {
+    "AMBER": {
+      "count": 4,
+      "total_days": 2234,
+      "mean_duration": 558.5,
+      "episodes": [
+        {
+          "idx": 1,
+          "start_bar": 179,
+          "end_bar": 245,
+          "start_date": "2018-06-29",
+          "end_date": "2018-09-03",
+          "duration_days": 67,
+          "btc_return_pct": 17.184797480445056
+        },
+        {
+          "idx": 2,
+          "start_bar": 338,
+          "end_bar": 425,
+          "start_date": "2018-12-05",
+          "end_date": "2019-03-02",
+          "duration_days": 88,
+          "btc_return_pct": 1.328703605458048
+        },
+        {
+          "idx": 3,
+          "start_bar": 560,
+          "end_bar": 735,
+          "start_date": "2019-07-15",
+          "end_date": "2020-01-06",
+          "duration_days": 176,
+          "btc_return_pct": -28.423282454016707
+        },
+        {
+          "idx": 4,
+          "start_bar": 1070,
+          "end_bar": 2972,
+          "start_date": "2020-12-06",
+          "end_date": "2026-02-20",
+          "duration_days": 1903,
+          "btc_return_pct": 251.35391592714646
+        }
+      ]
+    },
+    "RED": {
+      "count": 3,
+      "total_days": 2130,
+      "mean_duration": 710.0,
+      "episodes": [
+        {
+          "idx": 1,
+          "start_bar": 179,
+          "end_bar": 240,
+          "start_date": "2018-06-29",
+          "end_date": "2018-08-29",
+          "duration_days": 62,
+          "btc_return_pct": 13.444833105299846
+        },
+        {
+          "idx": 2,
+          "start_bar": 561,
+          "end_bar": 731,
+          "start_date": "2019-07-16",
+          "end_date": "2020-01-02",
+          "duration_days": 171,
+          "btc_return_pct": -26.20749418142102
+        },
+        {
+          "idx": 3,
+          "start_bar": 1076,
+          "end_bar": 2972,
+          "start_date": "2020-12-12",
+          "end_date": "2026-02-20",
+          "duration_days": 1897,
+          "btc_return_pct": 261.6414008631117
+        }
+      ]
+    }
+  },
+  "false_positive_analysis": {
+    "n_red_episodes": 2,
+    "true_positives": 1,
+    "false_positives": 1,
+    "fp_rate": 0.5,
+    "details": [
+      {
+        "start_date": "2019-07-16",
+        "end_date": "2020-01-02",
+        "duration": 171,
+        "btc_during_pct": -26.20749418142102,
+        "is_false_positive": "False",
+        "fwd_30d_pct": 9.050604952121866,
+        "fwd_90d_pct": -11.561836901814582,
+        "fwd_180d_pct": -13.290937424188975
+      },
+      {
+        "start_date": "2020-12-12",
+        "end_date": "2026-02-20",
+        "duration": 1897,
+        "btc_during_pct": 261.6414008631117,
+        "is_false_positive": "True",
+        "fwd_30d_pct": 88.23464047735384,
+        "fwd_90d_pct": 204.23022549683157,
+        "fwd_180d_pct": 94.9934843947133
+      }
+    ]
+  },
+  "backtest_comparison": {
+    "vanilla": {
+      "sharpe": 1.0269170380367705,
+      "cagr": 37.98815315136008,
+      "mdd": 46.734177690846735,
+      "trades": 186,
+      "final_nav": 73041.92974947592
+    },
+    "monitored": {
+      "sharpe": 0.9300194952339532,
+      "cagr": 20.299630183040307,
+      "mdd": 32.44670000517327,
+      "trades": 54,
+      "final_nav": 27995.651905100523,
+      "monitor_exits": 0
+    },
+    "delta": {
+      "sharpe": -0.09689754280281726,
+      "cagr": -17.688522968319774,
+      "mdd": -14.287477685673466,
+      "trades": -132
+    }
+  },
+  "corrected_atr_pct": {
+    "training_atr_pct_q90_mean": 8.413047350903144,
+    "alert_counts": {
+      "total_bars": 2973,
+      "normal": 2727,
+      "amber": 220,
+      "red": 26
+    },
+    "red_breakdown": {
+      "mdd_only": 0,
+      "atr_pct_only": 20,
+      "both": 6
+    },
+    "false_positive": {
+      "n_red_episodes": 0
+    },
+    "backtest": {
+      "vanilla": {
+        "sharpe": 1.0269170380367705,
+        "cagr": 37.98815315136008,
+        "mdd": 46.734177690846735,
+        "trades": 186,
+        "final_nav": 73041.92974947592
+      },
+      "monitored": {
+        "sharpe": 1.0269170380367694,
+        "cagr": 37.98815315136012,
+        "mdd": 46.7341776908467,
+        "trades": 184,
+        "final_nav": 65552.19458550104,
+        "monitor_exits": 0
+      },
+      "delta": {
+        "sharpe": -1.1102230246251565e-15,
+        "cagr": 4.263256414560601e-14,
+        "mdd": -3.552713678800501e-14,
+        "trades": -2
+      }
+    }
+  }
+}

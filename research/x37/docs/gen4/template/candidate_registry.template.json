@@ -1,0 +1,107 @@
+{
+  "_schema_notes": {
+    "system_version_id": "The frozen algorithm version these candidates belong to. Evidence accrues per version.",
+    "parent_system_version_id": "null for the first version. Points to predecessor for redesign lineage.",
+    "freeze_cutoff_utc": "All data up to this timestamp is seen data for this version. OOS starts after.",
+    "evidence_clean_since_utc": "First bar after freeze_cutoff_utc. Clean OOS evidence starts here.",
+    "no_robust_candidate": "If no candidate survives: set active_champion_id to NO_ROBUST_CANDIDATE and live_candidates to [].",
+    "origin_snapshot_id": "The data snapshot on which this candidate was discovered or created. For seed discovery (V1): the D1 session snapshot. For redesign (V2+): the redesign session snapshot. Replaces former seed_snapshot_id to avoid seed-only naming bias.",
+    "holdout_flag": "PASS if candidate passes holdout hard constraints, FAIL if not.",
+    "cumulative_anchor": "cumulative_anchor_utc marks when cumulative forward metrics were last reset (scope 2: candidate-scoped metrics for ranking/decisions). Format: date-only YYYY-MM-DD to match date_utc in forward_daily_returns.csv. On version creation, set to the date component of evidence_clean_since_utc (i.e. the calendar date of the first bar after freeze). On promotion, set to the calendar date AFTER the promotion window's last date (i.e. the first date of the new cumulative scope). Filtering rule: date_utc >= cumulative_anchor_utc uses date-to-date comparison with no timestamp ambiguity. Note: FORWARD_CONFIRMED label eligibility uses version-scoped days since freeze_cutoff_utc (scope 1), not cumulative_anchor_utc.",
+    "retired_candidate_schema": {
+      "candidate_id": "string",
+      "mechanism_type": "string",
+      "system_version_id": "string",
+      "status": "eliminated",
+      "elimination_reason": "string",
+      "eliminated_at_stage": "string",
+      "origin_snapshot_id": "string"
+    }
+  },
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "parent_system_version_id": null,
+  "freeze_cutoff_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "design_inputs_end_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "evidence_clean_since_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "registry_created_in_session": "session_YYYYMMDD_mode_seq",
+  "active_champion_id": "CHAMPION_PLACEHOLDER",
+  "live_candidates": [
+    {
+      "candidate_id": "CHAMPION_PLACEHOLDER",
+      "role": "champion",
+      "status": "active",
+      "mechanism_type": "MECHANISM_PLACEHOLDER",
+      "system_version_id": "V1",
+      "frozen_spec_file": "frozen_system_specs/CHAMPION_PLACEHOLDER.md",
+      "origin_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 2,
+      "tunable_quantities": 3,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "PASS",
+      "cumulative_anchor_utc": "YYYY-MM-DD",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "retention_rule_ref": "research_constitution_v4.0.yaml#forward_review_policy.champion_retention_rule"
+    },
+    {
+      "candidate_id": "CHALLENGER_1_PLACEHOLDER",
+      "role": "challenger",
+      "status": "active",
+      "mechanism_type": "MECHANISM_PLACEHOLDER",
+      "system_version_id": "V1",
+      "frozen_spec_file": "frozen_system_specs/CHALLENGER_1_PLACEHOLDER.md",
+      "origin_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 3,
+      "tunable_quantities": 4,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "PASS",
+      "cumulative_anchor_utc": "YYYY-MM-DD",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "promotion_rule_ref": "research_constitution_v4.0.yaml#forward_review_policy.challenger_promotion_rule",
+      "kill_rule_ref": "research_constitution_v4.0.yaml#forward_review_policy.challenger_kill_rule"
+    }
+  ],
+  "retired_candidates": [],
+  "version_lineage_summary": [
+    {
+      "system_version_id": "V1",
+      "parent_system_version_id": null,
+      "freeze_cutoff_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "evidence_days_accumulated": 0,
+      "status": "active"
+    }
+  ]
+}

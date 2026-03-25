@@ -1,0 +1,9 @@
+strategy_id,period,gap_name,left_trades,right_trades,observed_mean_gap,ci95_low,ci95_high,p_gt_0
+X0,full,low_non_chop_minus_high_chop_stretch,43,53,2832.294181,-896.363755,6935.720459,0.9268
+X0,full,medium_chop_minus_high_chop_stretch,76,53,2487.800269,-655.31195,5569.504086,0.9364
+X0,holdout,low_non_chop_minus_high_chop_stretch,12,17,408.91975,-258.342675,1244.859364,0.8598
+X0,holdout,medium_chop_minus_high_chop_stretch,22,17,268.394024,-318.428674,882.446251,0.8218
+X0_E5EXIT,full,low_non_chop_minus_high_chop_stretch,51,57,2788.032988,-951.306301,7123.667196,0.928
+X0_E5EXIT,full,medium_chop_minus_high_chop_stretch,78,57,2038.98534,-1185.673173,5257.469441,0.8974
+X0_E5EXIT,holdout,low_non_chop_minus_high_chop_stretch,13,19,409.708856,-188.365357,1188.766084,0.8974
+X0_E5EXIT,holdout,medium_chop_minus_high_chop_stretch,23,19,158.449119,-272.462162,636.403668,0.7436

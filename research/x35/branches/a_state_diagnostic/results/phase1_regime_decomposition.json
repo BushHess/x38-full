@@ -1,0 +1,311 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "sharpe": 1.4545,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97,
+    "trades": 188
+  },
+  "candidate_count": 3,
+  "study_verdict": "NO_GO_CURRENT_MENU",
+  "candidates": [
+    {
+      "spec_id": "wk_ema13_above_ema26",
+      "calendar": {
+        "risk_on_fraction": 0.6898,
+        "risk_on_fraction_pct": 68.98,
+        "flips_total": 10,
+        "flips_per_year": 1.401,
+        "median_spell_days": 131.0
+      },
+      "trade_split": {
+        "risk_on_trades": 133,
+        "risk_off_trades": 55,
+        "risk_on_mean_return_pct": 2.5062,
+        "risk_off_mean_return_pct": 1.9348,
+        "risk_on_median_return_pct": -0.8042,
+        "risk_off_median_return_pct": -1.2647,
+        "risk_on_win_rate_pct": 39.85,
+        "risk_off_win_rate_pct": 47.27
+      },
+      "concentration": {
+        "profit_share_on": 0.8157,
+        "profit_share_on_pct": 81.57,
+        "loss_share_off": 0.2825,
+        "loss_share_off_pct": 28.25
+      },
+      "stability": {
+        "valid_folds": 6,
+        "fold_wins": 2,
+        "fold_win_rate": 0.3333,
+        "fold_win_rate_pct": 33.33,
+        "fold_details": [
+          {
+            "fold": 1,
+            "risk_on_trades": 15,
+            "risk_off_trades": 9,
+            "delta_mean_return_pct": -3.455,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 2,
+            "risk_on_trades": 12,
+            "risk_off_trades": 12,
+            "delta_mean_return_pct": -3.4743,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 3,
+            "risk_on_trades": 21,
+            "risk_off_trades": 3,
+            "delta_mean_return_pct": -2.6403,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 4,
+            "risk_on_trades": 8,
+            "risk_off_trades": 16,
+            "delta_mean_return_pct": 3.519,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 5,
+            "risk_on_trades": 11,
+            "risk_off_trades": 12,
+            "delta_mean_return_pct": -0.6385,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 6,
+            "risk_on_trades": 23,
+            "risk_off_trades": 0,
+            "delta_mean_return_pct": null,
+            "risk_on_wins": null
+          },
+          {
+            "fold": 7,
+            "risk_on_trades": 23,
+            "risk_off_trades": 0,
+            "delta_mean_return_pct": null,
+            "risk_on_wins": null
+          },
+          {
+            "fold": 8,
+            "risk_on_trades": 20,
+            "risk_off_trades": 3,
+            "delta_mean_return_pct": 0.5801,
+            "risk_on_wins": 1
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "advance_to_overlay": false
+    },
+    {
+      "spec_id": "wk_close_above_ema26",
+      "calendar": {
+        "risk_on_fraction": 0.6334,
+        "risk_on_fraction_pct": 63.34,
+        "flips_total": 28,
+        "flips_per_year": 3.923,
+        "median_spell_days": 49.0
+      },
+      "trade_split": {
+        "risk_on_trades": 139,
+        "risk_off_trades": 49,
+        "risk_on_mean_return_pct": 2.5747,
+        "risk_off_mean_return_pct": 1.6707,
+        "risk_on_median_return_pct": -0.8519,
+        "risk_off_median_return_pct": -0.4338,
+        "risk_on_win_rate_pct": 40.29,
+        "risk_off_win_rate_pct": 46.94
+      },
+      "concentration": {
+        "profit_share_on": 0.8006,
+        "profit_share_on_pct": 80.06,
+        "loss_share_off": 0.2297,
+        "loss_share_off_pct": 22.97
+      },
+      "stability": {
+        "valid_folds": 7,
+        "fold_wins": 4,
+        "fold_win_rate": 0.5714,
+        "fold_win_rate_pct": 57.14,
+        "fold_details": [
+          {
+            "fold": 1,
+            "risk_on_trades": 16,
+            "risk_off_trades": 8,
+            "delta_mean_return_pct": 1.8374,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 2,
+            "risk_on_trades": 16,
+            "risk_off_trades": 8,
+            "delta_mean_return_pct": -3.2453,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 3,
+            "risk_on_trades": 22,
+            "risk_off_trades": 2,
+            "delta_mean_return_pct": null,
+            "risk_on_wins": null
+          },
+          {
+            "fold": 4,
+            "risk_on_trades": 8,
+            "risk_off_trades": 16,
+            "delta_mean_return_pct": 3.1776,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 5,
+            "risk_on_trades": 19,
+            "risk_off_trades": 4,
+            "delta_mean_return_pct": -9.2307,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 6,
+            "risk_on_trades": 20,
+            "risk_off_trades": 3,
+            "delta_mean_return_pct": 3.4446,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 7,
+            "risk_on_trades": 20,
+            "risk_off_trades": 3,
+            "delta_mean_return_pct": 0.0835,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 8,
+            "risk_on_trades": 18,
+            "risk_off_trades": 5,
+            "delta_mean_return_pct": -1.0654,
+            "risk_on_wins": 0
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "advance_to_overlay": false
+    },
+    {
+      "spec_id": "mo_close_above_ema6",
+      "calendar": {
+        "risk_on_fraction": 0.6534,
+        "risk_on_fraction_pct": 65.34,
+        "flips_total": 20,
+        "flips_per_year": 2.802,
+        "median_spell_days": 83.0
+      },
+      "trade_split": {
+        "risk_on_trades": 131,
+        "risk_off_trades": 57,
+        "risk_on_mean_return_pct": 2.2579,
+        "risk_off_mean_return_pct": 2.5257,
+        "risk_on_median_return_pct": -0.8669,
+        "risk_off_median_return_pct": -0.645,
+        "risk_on_win_rate_pct": 39.69,
+        "risk_off_win_rate_pct": 47.37
+      },
+      "concentration": {
+        "profit_share_on": 0.7507,
+        "profit_share_on_pct": 75.07,
+        "loss_share_off": 0.245,
+        "loss_share_off_pct": 24.5
+      },
+      "stability": {
+        "valid_folds": 7,
+        "fold_wins": 2,
+        "fold_win_rate": 0.2857,
+        "fold_win_rate_pct": 28.57,
+        "fold_details": [
+          {
+            "fold": 1,
+            "risk_on_trades": 13,
+            "risk_off_trades": 11,
+            "delta_mean_return_pct": -0.9146,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 2,
+            "risk_on_trades": 14,
+            "risk_off_trades": 10,
+            "delta_mean_return_pct": -4.5668,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 3,
+            "risk_on_trades": 22,
+            "risk_off_trades": 2,
+            "delta_mean_return_pct": null,
+            "risk_on_wins": null
+          },
+          {
+            "fold": 4,
+            "risk_on_trades": 9,
+            "risk_off_trades": 15,
+            "delta_mean_return_pct": 2.5109,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 5,
+            "risk_on_trades": 18,
+            "risk_off_trades": 5,
+            "delta_mean_return_pct": -7.3081,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 6,
+            "risk_on_trades": 17,
+            "risk_off_trades": 6,
+            "delta_mean_return_pct": -1.2776,
+            "risk_on_wins": 0
+          },
+          {
+            "fold": 7,
+            "risk_on_trades": 20,
+            "risk_off_trades": 3,
+            "delta_mean_return_pct": 1.2332,
+            "risk_on_wins": 1
+          },
+          {
+            "fold": 8,
+            "risk_on_trades": 18,
+            "risk_off_trades": 5,
+            "delta_mean_return_pct": -1.0654,
+            "risk_on_wins": 0
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "advance_to_overlay": false
+    }
+  ]
+}

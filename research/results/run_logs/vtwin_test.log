@@ -1,0 +1,45 @@
+======================================================================
+VTWIN — TWIN-CONFIRMED TREND: FULL VALIDATION PIPELINE
+======================================================================
+  Entry: EMA crossover AND Donchian breakout AND VDO > 0
+  Exit:  ATR trailing stop OR EMA cross-down
+  Params: 2 (slow_period=Donchian lookback, trail_mult)
+  Period: 2019-01-01 -> 2026-02-20   Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 2000 paths, block=60, seed=42
+  Permutation: 10000 shuffles
+  Timescales: 16 (30-720 H4 bars)
+  Pipeline: 4 phases with early stopping
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+======================================================================
+PHASE 1a: PERMUTATION TEST — TWIN SIGNAL (DONCHIAN CONFIRMATION)
+======================================================================
+  Real score: 98.59  (CAGR=+37.5%, Sharpe=1.244, MDD=29.9%, trades=73)
+      2000/10000  (34s, ~135s left)
+      4000/10000  (68s, ~102s left)
+      6000/10000  (102s, ~68s left)
+      8000/10000  (136s, ~34s left)
+     10000/10000  (170s, ~0s left)
+
+  Done: 169.7s (59 perms/sec)
+  Null: mean=30.43, std=37.18
+  p-value: 0.017700
+  Gate: FAIL (threshold: p < 0.001)
+
+======================================================================
+PHASE 1b: PERMUTATION TEST — ATR TRAILING STOP
+======================================================================
+      2000/10000  (35s, ~139s left)
+      4000/10000  (71s, ~106s left)
+      6000/10000  (106s, ~71s left)
+      8000/10000  (142s, ~35s left)
+     10000/10000  (177s, ~0s left)
+
+  Done: 177.0s
+  p-value: 0.055400
+  Gate: FAIL
+
+EARLY STOP at Phase 1. Results -> /var/www/trading-bots/btc-spot-dev/research/results/vtwin_test.json

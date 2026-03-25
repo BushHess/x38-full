@@ -1,0 +1,11 @@
+regime,regime_type,n_matched,delta_total_pnl,delta_mean_pnl,delta_median_pnl,delta_mean_return_pct,p_v11_wins,n_v11_wins,n_v10_wins,n_zero,pct_of_total_delta,sum_exit_effect,sum_size_effect,sum_fee_effect,sum_interaction,mean_size_ratio,delta_mean_mfe,delta_mean_mae,low_confidence
+BULL,entry_regime,55,2439.49,44.35,-12.37,-0.0706,45.5,25,30,0,-9.8,-3448.52,4373.81,-404.46,1918.67,1.042,0.0876,0.0345,False
+NEUTRAL,entry_regime,20,-28497.49,-1424.87,6.72,-2.0016,50.0,10,8,2,114.2,-28701.56,-1672.87,-97.13,1974.08,1.056,-2.4554,-0.4788,False
+CHOP,entry_regime,14,-1062.17,-75.87,1.95,-0.1028,64.3,9,5,0,4.3,-1517.4,601.84,-152.39,5.79,1.05,0.0072,-0.0048,False
+TOPPING,entry_regime,4,683.26,170.82,12.86,0.449,50.0,2,2,0,-2.7,717.78,-417.13,-31.19,413.81,1.035,0.0659,-0.0867,True
+SHOCK,entry_regime,2,1492.32,746.16,746.16,1.2959,50.0,1,1,0,-6.0,1470.35,-19.44,-6.45,47.85,1.042,0.0,0.0,True
+BULL,holding_regime_mode,63,-25321.19,-401.92,0.71,-0.8085,50.8,32,30,1,101.5,-34152.58,6264.03,-408.07,2975.44,1.039,-0.7111,0.0348,False
+NEUTRAL,holding_regime_mode,17,-239.35,-14.08,0.0,0.461,47.1,8,8,1,1.0,1183.22,-2522.08,-175.1,1274.63,1.073,0.0477,-0.5645,False
+CHOP,holding_regime_mode,11,-669.25,-60.84,-2.72,0.0,45.5,5,6,0,2.7,0.0,-624.85,-89.46,45.06,1.038,0.0,0.0,False
+TOPPING,holding_regime_mode,3,1402.63,467.54,213.73,0.7112,66.7,2,1,0,-5.6,1490.01,-134.07,-17.65,64.34,1.049,0.0201,-0.228,True
+SHOCK,holding_regime_mode,1,-117.43,-117.43,-117.43,0.0,0.0,0,1,0,0.5,0.0,-116.82,-1.34,0.73,1.053,0.0,0.0,True

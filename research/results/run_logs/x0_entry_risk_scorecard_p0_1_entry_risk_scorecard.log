@@ -1,0 +1,2 @@
+Verdict: PROMOTE_SCORECARD_AS_DIAGNOSTIC
+Selected high-risk rule: entry_context == chop and entry_price_to_slow_atr > 1.8

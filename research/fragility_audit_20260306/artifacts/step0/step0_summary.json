@@ -1,0 +1,56 @@
+{
+  "namespace_root": "research/fragility_audit_20260306/",
+  "repo_root": "/var/www/trading-bots/btc-spot-dev",
+  "git_hash": "NOT_A_GIT_REPO",
+  "run_timestamp": "2026-03-06T05:55:55Z",
+  "canonical_period_start": "2019-01-01",
+  "canonical_period_end": "2026-02-20",
+  "canonical_fee_bps_round_trip": 50,
+  "canonical_initial_cash": 10000.0,
+  "candidate_labels": ["E0", "E5", "SM", "LATCH", "E0_plus_EMA1D21", "E5_plus_EMA1D21"],
+  "source_of_truth_artifacts": [
+    "results/parity_20260305/PARITY_REPORT.md",
+    "results/parity_20260305/eval_e0_vs_e0/results/full_backtest_detail.json",
+    "results/parity_20260305/eval_e5_vs_e0/results/full_backtest_detail.json",
+    "results/parity_20260305/eval_sm_vs_e0/results/full_backtest_detail.json",
+    "results/parity_20260305/eval_latch_vs_e0/results/full_backtest_detail.json",
+    "results/parity_20260305/eval_ema21d1_vs_e0/results/full_backtest_detail.json",
+    "results/parity_20260306/eval_e5_ema21d1_vs_e0/results/full_backtest_detail.json",
+    "results/trade_profile_8x5/summary_8x5.csv"
+  ],
+  "track_a_go": true,
+  "track_b_go": true,
+  "track_a_primary_blockers": [
+    "Sensitivity curve not yet implemented",
+    "Cliff-edge detection not yet implemented",
+    "Giveback ratio not in canonical tooling",
+    "Skip-after-N-losses not yet implemented"
+  ],
+  "track_b_primary_blockers": [
+    "E5_plus_EMA1D21 not in trade_profile_8x5 (T1-T8 metrics missing)",
+    "Sensitivity curve not yet implemented for any candidate",
+    "Cliff-edge detection not yet implemented for any candidate",
+    "Signal-replay fragility diagnostics require backtest engine modification"
+  ],
+  "recommended_next_track": "Track_A_first",
+  "key_risks": [
+    "E5_plus_EMA1D21 profile gap is low-risk (same script, just needs 6th path added)",
+    "Giveback requires MFE peak price which is already computed in trade_profile_8x5",
+    "Signal-replay fragility (delayed-entry, missed-entry) may be deferred if ledger-only approximation suffices",
+    "trade_profile_8x5 Sharpe differs from equity-curve Sharpe (per-trade vs bar-level); both valid but must document which is used"
+  ],
+  "reconciliation_summary": {
+    "total_attempted": 8,
+    "recon_pass": 7,
+    "recon_fail": 1,
+    "fail_details": "research/results/vtrend_postmortem_trades.csv: 189 vs 192 trades for E0 SP=120; 3 trades missing; uses research sim not validation framework"
+  },
+  "coverage_summary": {
+    "total_metric_candidate_cells": 192,
+    "ready": 115,
+    "missing": 77,
+    "partial": 0,
+    "e0_only": 0,
+    "non_canonical": 0
+  }
+}

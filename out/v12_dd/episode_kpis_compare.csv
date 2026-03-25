@@ -1,0 +1,11 @@
+metric,v10_baseline,v12_candidate,delta_v12_minus_v10
+episodes_count,15.0,14.0,-1.0
+mean_buy_fills_per_episode,32.8,34.785714,1.985714
+mean_max_exposure,0.970359,0.97474,0.004381
+exit_count_emergency_dd,33.0,39.0,6.0
+exit_count_trailing_stop,59.0,59.0,0.0
+exit_mix_emergency_dd_pct,34.736842,39.393939,4.657097
+exit_mix_trailing_stop_pct,62.105263,59.59596,-2.509304
+cascade_episodes_count,4.0,4.0,0.0
+cascade_episodes_pct,26.666667,28.571429,1.904762
+dd_min_pct_used,8.0,8.0,0.0

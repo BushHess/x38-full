@@ -1,0 +1,5 @@
+{
+  "emergency_ref": "pre_cost_legacy",
+  "rsi_method": "wilder",
+  "trail_tighten_profit_pct": 0.18
+}

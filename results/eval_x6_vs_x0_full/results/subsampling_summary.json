@@ -1,0 +1,102 @@
+{
+  "method": "paired_block_subsampling",
+  "n_rows": 9,
+  "ci_level": 0.95,
+  "max_subsamples": null,
+  "scenario_summaries": {
+    "smart": {
+      "method": "paired_block_subsampling",
+      "statistic_name": "annualized_excess_geometric_growth",
+      "gate_mode": "median_and_support_over_block_sizes",
+      "n_block_sizes": 3,
+      "block_sizes": [
+        10,
+        20,
+        40
+      ],
+      "median_observed_delta": 0.036799153703644914,
+      "median_ci_lower": -0.027192076876095466,
+      "median_ci_upper": 0.07593342334856241,
+      "min_ci_lower": -0.042892877825837346,
+      "max_ci_upper": 0.09329004300438067,
+      "median_p_a_better": 0.96736626567699,
+      "min_p_a_better": 0.9504100461301896,
+      "support_ratio": 0.3333333333333333,
+      "p_threshold": 0.8,
+      "ci_lower_threshold": 0.0,
+      "support_ratio_threshold": 0.6,
+      "decision_pass": false
+    },
+    "base": {
+      "method": "paired_block_subsampling",
+      "statistic_name": "annualized_excess_geometric_growth",
+      "gate_mode": "median_and_support_over_block_sizes",
+      "n_block_sizes": 3,
+      "block_sizes": [
+        10,
+        20,
+        40
+      ],
+      "median_observed_delta": 0.04650889755430277,
+      "median_ci_lower": -0.022267575777404854,
+      "median_ci_upper": 0.08582467055573227,
+      "min_ci_lower": -0.03612599954986141,
+      "max_ci_upper": 0.10162928728877565,
+      "median_p_a_better": 0.9708216022523676,
+      "min_p_a_better": 0.9532291132752435,
+      "support_ratio": 0.3333333333333333,
+      "p_threshold": 0.8,
+      "ci_lower_threshold": 0.0,
+      "support_ratio_threshold": 0.6,
+      "decision_pass": false
+    },
+    "harsh": {
+      "method": "paired_block_subsampling",
+      "statistic_name": "annualized_excess_geometric_growth",
+      "gate_mode": "median_and_support_over_block_sizes",
+      "n_block_sizes": 3,
+      "block_sizes": [
+        10,
+        20,
+        40
+      ],
+      "median_observed_delta": 0.056856745228723166,
+      "median_ci_lower": -0.01957218411681614,
+      "median_ci_upper": 0.09694708495143864,
+      "min_ci_lower": -0.030035293409825355,
+      "max_ci_upper": 0.11302974305624433,
+      "median_p_a_better": 0.9726132582544151,
+      "min_p_a_better": 0.9566888774987186,
+      "support_ratio": 0.3333333333333333,
+      "p_threshold": 0.8,
+      "ci_lower_threshold": 0.0,
+      "support_ratio_threshold": 0.6,
+      "decision_pass": false
+    }
+  },
+  "gate": {
+    "method": "paired_block_subsampling",
+    "statistic_name": "annualized_excess_geometric_growth",
+    "scenario": "harsh",
+    "gate_mode": "median_and_support_over_block_sizes",
+    "block_sizes": [
+      10,
+      20,
+      40
+    ],
+    "n_block_sizes": 3,
+    "p_candidate_better": 0.9726132582544151,
+    "ci_lower": -0.01957218411681614,
+    "ci_upper": 0.09694708495143864,
+    "observed_delta": 0.056856745228723166,
+    "support_ratio": 0.3333333333333333,
+    "min_ci_lower": -0.030035293409825355,
+    "min_p_candidate_better": 0.9566888774987186,
+    "decision_pass": false,
+    "thresholds": {
+      "p_threshold": 0.8,
+      "ci_lower_threshold": 0.0,
+      "support_ratio_threshold": 0.6
+    }
+  }
+}

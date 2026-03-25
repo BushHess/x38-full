@@ -1,0 +1,452 @@
+{
+  "config": {
+    "ema_sweep_h4": [
+      90,
+      120,
+      150,
+      168,
+      180,
+      200,
+      216,
+      240,
+      270,
+      300,
+      330,
+      360,
+      420,
+      480,
+      534,
+      600,
+      720,
+      900
+    ],
+    "ema_sweep_days": [
+      15.0,
+      20.0,
+      25.0,
+      28.0,
+      30.0,
+      33.3,
+      36.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      70.0,
+      80.0,
+      89.0,
+      100.0,
+      120.0,
+      150.0
+    ],
+    "cost_bps_rt": 50,
+    "warmup_days": 365,
+    "n_boot": 500,
+    "seed": 42,
+    "blksz": 60
+  },
+  "phase3_bootstrap": {
+    "90": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "120": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "150": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "168": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "180": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 14,
+        "p_binom": 0.00209045,
+        "verdict": "PROVEN **"
+      }
+    },
+    "200": {
+      "P(Sharpe+)>50%": {
+        "wins": 14,
+        "p_binom": 0.00209045,
+        "verdict": "PROVEN **"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 14,
+        "p_binom": 0.00209045,
+        "verdict": "PROVEN **"
+      }
+    },
+    "216": {
+      "P(Sharpe+)>50%": {
+        "wins": 15,
+        "p_binom": 0.0002594,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 15,
+        "p_binom": 0.0002594,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 15,
+        "p_binom": 0.0002594,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "240": {
+      "P(Sharpe+)>50%": {
+        "wins": 13,
+        "p_binom": 0.01063538,
+        "verdict": "PROVEN *"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 14,
+        "p_binom": 0.00209045,
+        "verdict": "PROVEN **"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 14,
+        "p_binom": 0.00209045,
+        "verdict": "PROVEN **"
+      }
+    },
+    "270": {
+      "P(Sharpe+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 12,
+        "p_binom": 0.03840637,
+        "verdict": "STRONG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 12,
+        "p_binom": 0.03840637,
+        "verdict": "STRONG"
+      }
+    },
+    "300": {
+      "P(Sharpe+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      }
+    },
+    "330": {
+      "P(Sharpe+)>50%": {
+        "wins": 10,
+        "p_binom": 0.22724915,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 10,
+        "p_binom": 0.22724915,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      }
+    },
+    "360": {
+      "P(Sharpe+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 10,
+        "p_binom": 0.22724915,
+        "verdict": "NOT SIG"
+      }
+    },
+    "420": {
+      "P(Sharpe+)>50%": {
+        "wins": 10,
+        "p_binom": 0.22724915,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 9,
+        "p_binom": 0.40180969,
+        "verdict": "NOT SIG"
+      }
+    },
+    "480": {
+      "P(Sharpe+)>50%": {
+        "wins": 9,
+        "p_binom": 0.40180969,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 8,
+        "p_binom": 0.59819031,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 9,
+        "p_binom": 0.40180969,
+        "verdict": "NOT SIG"
+      }
+    },
+    "534": {
+      "P(Sharpe+)>50%": {
+        "wins": 8,
+        "p_binom": 0.59819031,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 8,
+        "p_binom": 0.59819031,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 7,
+        "p_binom": 0.77275085,
+        "verdict": "NOT SIG"
+      }
+    },
+    "600": {
+      "P(Sharpe+)>50%": {
+        "wins": 5,
+        "p_binom": 0.96159363,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 6,
+        "p_binom": 0.89494324,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 7,
+        "p_binom": 0.77275085,
+        "verdict": "NOT SIG"
+      }
+    },
+    "720": {
+      "P(Sharpe+)>50%": {
+        "wins": 4,
+        "p_binom": 0.98936462,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 5,
+        "p_binom": 0.96159363,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 5,
+        "p_binom": 0.96159363,
+        "verdict": "NOT SIG"
+      }
+    },
+    "900": {
+      "P(Sharpe+)>50%": {
+        "wins": 1,
+        "p_binom": 0.99998474,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 3,
+        "p_binom": 0.99790955,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 2,
+        "p_binom": 0.9997406,
+        "verdict": "NOT SIG"
+      }
+    }
+  },
+  "proven_range_days": [
+    15.0,
+    40.0
+  ],
+  "proven_count": 8
+}

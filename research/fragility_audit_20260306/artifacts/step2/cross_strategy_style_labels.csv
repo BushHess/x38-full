@@ -1,0 +1,7 @@
+candidate_label,native_style_label,unit_size_style_label,overall_style_label,native_dependence_shape,unit_size_dependence_shape,behavioral_fragility_label,evidence_note
+E0,home-run,home-run,home-run,cliff-like,cliff-like,high,"top5=90.2%, native_zc=3.1%, unit_zc=5.7%, worst_skip_dS=-0.263"
+E5,hybrid,home-run,hybrid,cliff-like,cliff-like,high,"top5=79.0%, native_zc=3.9%, unit_zc=6.3%, worst_skip_dS=-0.213"
+SM,hybrid,home-run,hybrid,smooth,cliff-like,high,"top5=81.9%, native_zc=10.8%, unit_zc=9.2%, worst_skip_dS=-0.175"
+LATCH,hybrid,home-run,hybrid,smooth,cliff-like,high,"top5=81.5%, native_zc=10.8%, unit_zc=9.2%, worst_skip_dS=-0.159"
+E0_plus_EMA1D21,home-run,home-run,home-run,cliff-like,cliff-like,high,"top5=83.4%, native_zc=4.1%, unit_zc=7.0%, worst_skip_dS=-0.195"
+E5_plus_EMA1D21,hybrid,home-run,hybrid,cliff-like,cliff-like,high,"top5=73.8%, native_zc=4.3%, unit_zc=7.5%, worst_skip_dS=-0.252"

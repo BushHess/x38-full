@@ -1,0 +1,193 @@
+metric_family,metric_name,ledger_view,candidate_label,status,source_paths,code_paths,scope_support,reconciliation_dependency,blocker_note
+trade_structure,win_rate,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,win_rate,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,win_rate,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,win_rate,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,win_rate,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,win_rate,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,wins_losses,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,wins_losses,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,wins_losses,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,wins_losses,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,wins_losses,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,wins_losses,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,avg_win_avg_loss,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,avg_win_avg_loss,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,avg_win_avg_loss,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,avg_win_avg_loss,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,avg_win_avg_loss,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,avg_win_avg_loss,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,profit_factor,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,profit_factor,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,profit_factor,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,profit_factor,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,profit_factor,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,profit_factor,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,losing_streaks,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,losing_streaks,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,losing_streaks,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,losing_streaks,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,losing_streaks,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,losing_streaks,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,winning_streaks,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,winning_streaks,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,winning_streaks,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,winning_streaks,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,winning_streaks,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,winning_streaks,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,holding_time,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,holding_time,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,holding_time,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,holding_time,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,holding_time,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,holding_time,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,exit_reason_taxonomy,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,exit_reason_taxonomy,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,exit_reason_taxonomy,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,exit_reason_taxonomy,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,exit_reason_taxonomy,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,exit_reason_taxonomy,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus_EMA1D21 not in trade_profile_8x5; rerun needed
+trade_structure,MFE,fill_ledger,E0,READY,results/trade_profile_8x5/E0/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,MAE,fill_ledger,E0,READY,results/trade_profile_8x5/E0/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,giveback_ratio,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,giveback not computed by trade_profile_8x5; old postmortem has it for E0 only (NON_CANONICAL)
+trade_structure,MFE,fill_ledger,E5,READY,results/trade_profile_8x5/E5/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,MAE,fill_ledger,E5,READY,results/trade_profile_8x5/E5/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,giveback_ratio,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,giveback not computed by trade_profile_8x5; old postmortem has it for E0 only (NON_CANONICAL)
+trade_structure,MFE,fill_ledger,SM,READY,results/trade_profile_8x5/SM/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,MAE,fill_ledger,SM,READY,results/trade_profile_8x5/SM/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,giveback_ratio,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,giveback not computed by trade_profile_8x5; old postmortem has it for E0 only (NON_CANONICAL)
+trade_structure,MFE,fill_ledger,LATCH,READY,results/trade_profile_8x5/LATCH/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,MAE,fill_ledger,LATCH,READY,results/trade_profile_8x5/LATCH/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,giveback_ratio,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,giveback not computed by trade_profile_8x5; old postmortem has it for E0 only (NON_CANONICAL)
+trade_structure,MFE,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/E0_plus_EMA1D21/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,MAE,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/E0_plus_EMA1D21/mfe_mae_per_trade.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+trade_structure,giveback_ratio,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,giveback not computed by trade_profile_8x5; old postmortem has it for E0 only (NON_CANONICAL)
+trade_structure,MFE,fill_ledger,E5_plus_EMA1D21,MISSING,,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+trade_structure,MAE,fill_ledger,E5_plus_EMA1D21,MISSING,,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+trade_structure,giveback_ratio,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,Not computed for any candidate in canonical tooling
+home_run_dependence,top_1_trade_contribution,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_1_trade_contribution,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_1_trade_contribution,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_1_trade_contribution,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_1_trade_contribution,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_1_trade_contribution,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,top_3_trade_contribution,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_3_trade_contribution,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_3_trade_contribution,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_3_trade_contribution,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_3_trade_contribution,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_3_trade_contribution,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,top_5_trade_contribution,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_5_trade_contribution,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_5_trade_contribution,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_5_trade_contribution,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_5_trade_contribution,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_5_trade_contribution,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,top_10_trade_contribution,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_10_trade_contribution,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_10_trade_contribution,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_10_trade_contribution,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_10_trade_contribution,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,top_10_trade_contribution,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,jackknife_remove_top_1,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_1,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_1,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_1,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_1,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_1,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,jackknife_remove_top_3,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_3,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_3,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_3,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_3,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_3,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,jackknife_remove_top_5,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_5,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_5,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_5,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_5,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_5,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,jackknife_remove_top_10,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_10,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_10,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_10,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_10,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jackknife_remove_top_10,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,skewness_per_trade_pnl,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,kurtosis_per_trade_pnl,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,jarque_bera_per_trade_pnl,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,gini_concentration,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,gini_concentration,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,gini_concentration,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,gini_concentration,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,gini_concentration,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,gini_concentration,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,hhi_concentration,fill_ledger,E0,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,hhi_concentration,fill_ledger,E5,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,hhi_concentration,fill_ledger,SM,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,hhi_concentration,fill_ledger,LATCH,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,hhi_concentration,fill_ledger,E0_plus_EMA1D21,READY,results/trade_profile_8x5/summary_8x5.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,
+home_run_dependence,hhi_concentration,fill_ledger,E5_plus_EMA1D21,MISSING,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,research/trade_profile_8x5.py,full_backtest,RECON_PASS,E5_plus not in trade_profile_8x5
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,sensitivity_curve_top_removal,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+home_run_dependence,cliff_edge_detection,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,Not implemented in any existing tooling; requires new diagnostic
+operational_fragility,missed_entry_1,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_1,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_1,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_1,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_1,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_1,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate random entry miss
+operational_fragility,missed_entry_2,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_2,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_2,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_2,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_2,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_2,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,missed_entry_3,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed
+operational_fragility,outage_window_miss,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,outage_window_miss,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,outage_window_miss,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,outage_window_miss,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,outage_window_miss,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,outage_window_miss,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate exchange outage windows
+operational_fragility,skip_after_N_losses,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,skip_after_N_losses,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,skip_after_N_losses,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,skip_after_N_losses,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,skip_after_N_losses,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,skip_after_N_losses,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,feasible_from_ledger; Feasible from episode ledger once built; no replay needed
+operational_fragility,delayed_entry,fill_ledger,E0,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution
+operational_fragility,delayed_entry,fill_ledger,E5,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution
+operational_fragility,delayed_entry,fill_ledger,SM,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution
+operational_fragility,delayed_entry,fill_ledger,LATCH,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution
+operational_fragility,delayed_entry,fill_ledger,E0_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution
+operational_fragility,delayed_entry,fill_ledger,E5_plus_EMA1D21,MISSING,,,full_backtest,RECON_PASS,requires_replay; Signal/bar replay needed to simulate delayed entry execution

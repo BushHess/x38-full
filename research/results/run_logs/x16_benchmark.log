@@ -1,0 +1,90 @@
+/var/www/trading-bots/btc-spot-dev/research/x16/benchmark.py:55: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X16: Stateful Exit — WATCH State & Adaptive Trail
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+
+======================================================================
+T0: POST-TRIGGER MFE/MAE ANALYSIS (GO/NO-GO)
+======================================================================
+  Trail stop exits: 168 (111 churn, 57 non-churn)
+  G= 2: churn MFE=   326.7 MAE=   240.9 reclaim=50% | non-churn deeper_hit=51%
+  G= 4: churn MFE=   584.6 MAE=   372.8 reclaim=65% | non-churn deeper_hit=68%
+  G= 6: churn MFE=   824.0 MAE=   427.8 reclaim=76% | non-churn deeper_hit=74%
+  G= 8: churn MFE=   985.0 MAE=   501.7 reclaim=84% | non-churn deeper_hit=79%
+  G=12: churn MFE=  1251.8 MAE=   553.0 reclaim=91% | non-churn deeper_hit=88%
+  G=16: churn MFE=  1481.9 MAE=   711.3 reclaim=93% | non-churn deeper_hit=91%
+  G=20: churn MFE=  1640.8 MAE=   859.5 reclaim=94% | non-churn deeper_hit=95%
+
+  GO/NO-GO: GO
+
+  Training logistic model on E0 trail stops...
+  Model: C=10.0, n_samples=168, OK
+
+======================================================================
+T1: RISK-COVERAGE CURVE (160 configurations)
+======================================================================
+  160 configs evaluated, 13 Pareto points
+    tau=0.70 G=8 delta=1.5: Sh=1.4686 d=+0.0968 MDD=36.6% supp=69%
+    tau=0.85 G=8 delta=2.0: Sh=1.4626 d=+0.0908 MDD=37.8% supp=49%
+    tau=0.90 G=8 delta=2.0: Sh=1.4546 d=+0.0828 MDD=37.8% supp=33%
+    tau=0.70 G=6 delta=1.5: Sh=1.4509 d=+0.0791 MDD=36.8% supp=67%
+    tau=0.75 G=8 delta=1.5: Sh=1.4501 d=+0.0783 MDD=37.6% supp=63%
+
+======================================================================
+T2: IN-SAMPLE SCREENING
+======================================================================
+  Design F: delta=2.0, Sharpe=1.4158, d=+0.0441, G0=PASS
+  Design E: tau=0.7, G=8, delta=1.5, Sharpe=1.4686, d=+0.0968, watch=169, G0=PASS
+
+  ========== Testing Design F ==========
+
+======================================================================
+T3: WALK-FORWARD VALIDATION (design=F)
+======================================================================
+    Fold 1: delta=2.0, E0=-0.8896, Filt=-1.0214, d=-0.1318 LOSE
+    Fold 2: delta=2.0, E0=1.1935, Filt=1.8141, d=+0.6207 WIN
+    Fold 3: delta=2.0, E0=1.7196, Filt=1.5846, d=-0.1349 LOSE
+    Fold 4: delta=2.0, E0=0.0470, Filt=-0.0308, d=-0.0779 LOSE
+  Win rate: 25%, mean d_sharpe: +0.0690, G1: FAIL
+
+  ========== Testing Design E ==========
+
+======================================================================
+T3: WALK-FORWARD VALIDATION (design=E)
+======================================================================
+    Fold 1: tau=0.8,G=8,delta=2.0,C=10.0, E0=-0.8896, Filt=-0.8223, d=+0.0673 WIN
+    Fold 2: tau=0.8,G=8,delta=2.0,C=10.0, E0=1.1935, Filt=1.5385, d=+0.3451 WIN
+    Fold 3: tau=0.85,G=8,delta=2.0,C=10.0, E0=1.7196, Filt=1.6170, d=-0.1026 LOSE
+    Fold 4: tau=0.9,G=8,delta=2.0,C=10.0, E0=0.0470, Filt=0.0470, d=+0.0000 WIN
+  Win rate: 75%, mean d_sharpe: +0.0774, G1: PASS
+
+======================================================================
+T4: BOOTSTRAP VALIDATION (design=E, 500 paths)
+======================================================================
+    ... 100/500 paths done
+    ... 200/500 paths done
+    ... 300/500 paths done
+    ... 400/500 paths done
+    ... 500/500 paths done
+
+  d_sharpe: median=+0.0197, [-0.1150, +0.1608]
+  P(d_sharpe > 0): 59.0%
+  d_mdd: median=+0.04pp
+  G2: FAIL, G3: PASS
+
+======================================================================
+T7: COMPARISON TABLE
+======================================================================
+
+  Strategy          Sharpe    CAGR%     MDD%  Trades  AvgHold  Oracle%
+  ----------------------------------------------------------------------
+  E0                1.3718    57.72    39.96     189     40.8      0.0
+  X16_F             1.4158    63.52    40.40     118     70.1      5.2
+  X14_D             1.4280    64.00    36.70     133     60.3     10.9
+
+  VERDICT: NOT_TEMPORAL
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x16/x16_*.{json,csv}
+
+X16 BENCHMARK COMPLETE — 51s — VERDICT: NOT_TEMPORAL

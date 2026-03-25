@@ -1,0 +1,23 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "3.0",
+  "state_pack_version": "v1",
+  "state_pack_status": "draft",
+  "active_champion_id": "NO_ROBUST_CANDIDATE",
+  "active_challenger_ids": [],
+  "current_forward_status": "not_started",
+  "reserve_internal_end_utc": "2026-03-18T23:59:59.999Z",
+  "last_evaluated_timestamp_by_timeframe_utc": {
+    "15m": null,
+    "1h": null,
+    "4h": null,
+    "1d": null
+  },
+  "warmup_requirements": {
+    "15m": 0,
+    "1h": 0,
+    "4h": 0,
+    "1d": 0
+  },
+  "candidate_states": {}
+}

@@ -1,0 +1,7 @@
+{
+  "d1_regime_confirm_bars": 3,
+  "d1_regime_off_bars": 3,
+  "emdd_ref_mode": "legacy",
+  "rsi_method": "wilder",
+  "vdo_entry_threshold": 0.004
+}

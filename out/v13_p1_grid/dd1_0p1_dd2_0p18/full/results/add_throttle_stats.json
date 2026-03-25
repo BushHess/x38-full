@@ -1,0 +1,28 @@
+{
+  "candidate": {
+    "harsh": {
+      "add_throttle_dd1": 0.1,
+      "add_throttle_dd2": 0.18,
+      "add_throttle_mult": 0.2,
+      "add_attempt_count": 1238,
+      "add_allowed_count": 206,
+      "add_blocked_count": 1032,
+      "throttle_activation_rate": 0.8336025848142165,
+      "mean_dd_depth_when_blocked": 0.26891714816290596,
+      "p90_dd_depth_when_blocked": 0.3682797716902678
+    }
+  },
+  "baseline": {
+    "harsh": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    }
+  }
+}

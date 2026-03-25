@@ -1,0 +1,9 @@
+criterion,description,value,threshold,pass
+SOFT_LL_GAIN,Best compact soft model must improve median OOS logloss by at least 3% vs PRIOR,2.364828,3.0,False
+SOFT_AUC,Best compact soft model must reach median OOS AUC >= 0.57,0.65976,0.57,True
+SOFT_POS_CLUSTERS,Median positive cluster count per train fold must be >= 60,123.0,60.0,True
+SOFT_ESS_PC1,Median thin3 ESS of feature PC1 must be >= 200,54.151884,200.0,False
+HARD_LL_GAIN,Best compact hard model must improve median OOS logloss by at least 3% vs PRIOR,2.204338,3.0,False
+HARD_AUC,Best compact hard model must reach median OOS AUC >= 0.56,0.563443,0.56,True
+HARD_POS_CLUSTERS,Median positive cluster count per train fold must be >= 45,49.5,45.0,True
+HARD_ESS_PC1,Median thin3 ESS of feature PC1 must be >= 180,44.309478,180.0,False

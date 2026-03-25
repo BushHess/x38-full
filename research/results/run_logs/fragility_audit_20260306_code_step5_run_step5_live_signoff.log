@@ -1,0 +1,219 @@
+======================================================================
+STEP 5 — Live Sign-Off Hardening
+======================================================================
+
+[1/7] Loading bar data...
+  H4 bars: 17841, D1 bars: 2973
+  Report start index: 2190
+
+============================================================
+  Candidate: E0 (E0)
+============================================================
+  [B] Precomputing indicators...
+  [B] Running harness validation...
+    REPLAY_REGRESS: PASS
+    Trade count: 192 vs 192
+    Baseline Sharpe: 1.1379, CAGR: 0.6183
+    Exit delay=0 matches baseline: True
+  [C] Running exit delay grid (4 levels)...
+    D1: Sharpe=0.9696 delta=-0.1683 MDD=0.3855 suppressed=0
+    D2: Sharpe=1.0470 delta=-0.0909 MDD=0.4357 suppressed=0
+    D3: Sharpe=0.9621 delta=-0.1758 MDD=0.4038 suppressed=0
+    D4: Sharpe=0.8953 delta=-0.2426 MDD=0.4349 suppressed=0
+  [D] Running combined disruptions (11 scenarios)...
+    baseline: Sharpe=1.1379 delta=+0.0000
+    entry_only_D1: Sharpe=1.1065 delta=-0.0314
+    entry_only_D2: Sharpe=0.9378 delta=-0.2001
+    exit_only_D1: Sharpe=0.9696 delta=-0.1683
+    exit_only_D2: Sharpe=1.0470 delta=-0.0909
+    entry_D1_exit_D1: Sharpe=0.9775 delta=-0.1604
+    entry_D1_exit_D2: Sharpe=1.0079 delta=-0.1299
+    entry_D2_exit_D1: Sharpe=0.8159 delta=-0.3220
+    entry_D2_exit_D2: Sharpe=0.8512 delta=-0.2867
+    entry_D4_exit_D2: Sharpe=0.7726 delta=-0.3653
+    full_LT2_sim: Sharpe=0.8159 delta=-0.3220
+  [E] Running stochastic delay MC (1000 draws x 3 tiers)...
+    LT1: Sharpe p50=1.1098 p5=1.0672 P(CAGR<=0)=0.000
+    LT2: Sharpe p50=0.9804 p5=0.9047 P(CAGR<=0)=0.000
+    LT3: Sharpe p50=0.7953 p5=0.6785 P(CAGR<=0)=0.000
+  Candidate E0 complete in 76.3s
+
+============================================================
+  Candidate: E5 (E5)
+============================================================
+  [B] Precomputing indicators...
+  [B] Running harness validation...
+    REPLAY_REGRESS: PASS
+    Trade count: 207 vs 207
+    Baseline Sharpe: 1.2299, CAGR: 0.6723
+    Exit delay=0 matches baseline: True
+  [C] Running exit delay grid (4 levels)...
+    D1: Sharpe=1.1171 delta=-0.1128 MDD=0.3725 suppressed=0
+    D2: Sharpe=1.1045 delta=-0.1253 MDD=0.4134 suppressed=0
+    D3: Sharpe=1.0813 delta=-0.1485 MDD=0.3728 suppressed=0
+    D4: Sharpe=0.9785 delta=-0.2513 MDD=0.4356 suppressed=0
+  [D] Running combined disruptions (11 scenarios)...
+    baseline: Sharpe=1.2299 delta=+0.0000
+    entry_only_D1: Sharpe=1.1783 delta=-0.0516
+    entry_only_D2: Sharpe=0.9332 delta=-0.2966
+    exit_only_D1: Sharpe=1.1171 delta=-0.1128
+    exit_only_D2: Sharpe=1.1045 delta=-0.1253
+    entry_D1_exit_D1: Sharpe=1.0694 delta=-0.1605
+    entry_D1_exit_D2: Sharpe=1.0827 delta=-0.1471
+    entry_D2_exit_D1: Sharpe=0.8284 delta=-0.4015
+    entry_D2_exit_D2: Sharpe=0.8357 delta=-0.3941
+    entry_D4_exit_D2: Sharpe=0.7071 delta=-0.5227
+    full_LT2_sim: Sharpe=0.8284 delta=-0.4015
+  [E] Running stochastic delay MC (1000 draws x 3 tiers)...
+    LT1: Sharpe p50=1.2031 p5=1.1553 P(CAGR<=0)=0.000
+    LT2: Sharpe p50=1.0426 p5=0.9611 P(CAGR<=0)=0.000
+    LT3: Sharpe p50=0.7356 p5=0.6256 P(CAGR<=0)=0.000
+  Candidate E5 complete in 80.5s
+
+============================================================
+  Candidate: SM (SM)
+============================================================
+  [B] Precomputing indicators...
+  [B] Running harness validation...
+    REPLAY_REGRESS: PASS
+    Trade count: 65 vs 65
+    Baseline Sharpe: 0.8161, CAGR: 0.1819
+    Exit delay=0 matches baseline: True
+  [C] Running exit delay grid (4 levels)...
+    D1: Sharpe=0.8040 delta=-0.0121 MDD=0.1153 suppressed=0
+    D2: Sharpe=0.7545 delta=-0.0616 MDD=0.1365 suppressed=0
+    D3: Sharpe=0.7418 delta=-0.0743 MDD=0.1504 suppressed=0
+    D4: Sharpe=0.7424 delta=-0.0736 MDD=0.1441 suppressed=0
+  [D] Running combined disruptions (11 scenarios)...
+    baseline: Sharpe=0.8161 delta=+0.0000
+    entry_only_D1: Sharpe=0.8495 delta=+0.0334
+    entry_only_D2: Sharpe=0.8283 delta=+0.0122
+    exit_only_D1: Sharpe=0.8040 delta=-0.0121
+    exit_only_D2: Sharpe=0.7545 delta=-0.0616
+    entry_D1_exit_D1: Sharpe=0.8364 delta=+0.0203
+    entry_D1_exit_D2: Sharpe=0.7845 delta=-0.0316
+    entry_D2_exit_D1: Sharpe=0.8160 delta=-0.0001
+    entry_D2_exit_D2: Sharpe=0.7650 delta=-0.0511
+    entry_D4_exit_D2: Sharpe=0.7191 delta=-0.0969
+    full_LT2_sim: Sharpe=0.8151 delta=-0.0010
+  [E] Running stochastic delay MC (1000 draws x 3 tiers)...
+    LT1: Sharpe p50=0.8201 p5=0.7977 P(CAGR<=0)=0.000
+    LT2: Sharpe p50=0.7969 p5=0.7456 P(CAGR<=0)=0.000
+    LT3: Sharpe p50=0.7145 p5=0.6529 P(CAGR<=0)=0.000
+  Candidate SM complete in 292.6s
+
+============================================================
+  Candidate: E0_plus_EMA1D21 (E0_plus)
+============================================================
+  [B] Precomputing indicators...
+  [B] Running harness validation...
+    REPLAY_REGRESS: FAIL
+    Trade count: 174 vs 172
+    Baseline Sharpe: 1.1837, CAGR: 0.6673
+    Exit delay=0 matches baseline: True
+  [C] Running exit delay grid (4 levels)...
+    D1: Sharpe=1.0292 delta=-0.1544 MDD=0.3414 suppressed=0
+    D2: Sharpe=1.0949 delta=-0.0887 MDD=0.3847 suppressed=0
+    D3: Sharpe=1.0290 delta=-0.1546 MDD=0.3507 suppressed=0
+    D4: Sharpe=0.9604 delta=-0.2233 MDD=0.3838 suppressed=0
+  [D] Running combined disruptions (11 scenarios)...
+    baseline: Sharpe=1.1837 delta=+0.0000
+    entry_only_D1: Sharpe=1.1406 delta=-0.0431
+    entry_only_D2: Sharpe=0.9458 delta=-0.2379
+    exit_only_D1: Sharpe=1.0292 delta=-0.1544
+    exit_only_D2: Sharpe=1.0949 delta=-0.0887
+    entry_D1_exit_D1: Sharpe=1.0153 delta=-0.1684
+    entry_D1_exit_D2: Sharpe=1.0613 delta=-0.1223
+    entry_D2_exit_D1: Sharpe=0.8410 delta=-0.3427
+    entry_D2_exit_D2: Sharpe=0.8753 delta=-0.3084
+    entry_D4_exit_D2: Sharpe=0.7635 delta=-0.4202
+    full_LT2_sim: Sharpe=0.8410 delta=-0.3427
+  [E] Running stochastic delay MC (1000 draws x 3 tiers)...
+    LT1: Sharpe p50=1.1542 p5=1.1099 P(CAGR<=0)=0.000
+    LT2: Sharpe p50=1.0161 p5=0.9421 P(CAGR<=0)=0.000
+    LT3: Sharpe p50=0.7919 p5=0.6785 P(CAGR<=0)=0.000
+  Candidate E0_plus_EMA1D21 complete in 75.0s
+
+============================================================
+  Candidate: E5_plus_EMA1D21 (E5_plus)
+============================================================
+  [B] Precomputing indicators...
+  [B] Running harness validation...
+    REPLAY_REGRESS: FAIL
+    Trade count: 188 vs 186
+    Baseline Sharpe: 1.2801, CAGR: 0.7262
+    Exit delay=0 matches baseline: True
+  [C] Running exit delay grid (4 levels)...
+    D1: Sharpe=1.1785 delta=-0.1016 MDD=0.3313 suppressed=0
+    D2: Sharpe=1.1631 delta=-0.1170 MDD=0.3464 suppressed=0
+    D3: Sharpe=1.1321 delta=-0.1479 MDD=0.3431 suppressed=0
+    D4: Sharpe=1.0494 delta=-0.2307 MDD=0.3757 suppressed=0
+  [D] Running combined disruptions (11 scenarios)...
+    baseline: Sharpe=1.2801 delta=+0.0000
+    entry_only_D1: Sharpe=1.2094 delta=-0.0707
+    entry_only_D2: Sharpe=0.9557 delta=-0.3243
+    exit_only_D1: Sharpe=1.1785 delta=-0.1016
+    exit_only_D2: Sharpe=1.1631 delta=-0.1170
+    entry_D1_exit_D1: Sharpe=1.1139 delta=-0.1662
+    entry_D1_exit_D2: Sharpe=1.1351 delta=-0.1450
+    entry_D2_exit_D1: Sharpe=0.8769 delta=-0.4031
+    entry_D2_exit_D2: Sharpe=0.8837 delta=-0.3963
+    entry_D4_exit_D2: Sharpe=0.7110 delta=-0.5690
+    full_LT2_sim: Sharpe=0.8769 delta=-0.4031
+  [E] Running stochastic delay MC (1000 draws x 3 tiers)...
+    LT1: Sharpe p50=1.2483 p5=1.1997 P(CAGR<=0)=0.000
+    LT2: Sharpe p50=1.0910 p5=1.0042 P(CAGR<=0)=0.000
+    LT3: Sharpe p50=0.7502 p5=0.6418 P(CAGR<=0)=0.000
+  Candidate E5_plus_EMA1D21 complete in 79.2s
+
+[F] Evaluating 5-gate comparative sign-off...
+  E0 vs E5_plus_EMA1D21: FALLBACK
+    G1_absolute_dominance: FAIL (candidate_worst=0.8159 <= alternative_worst=0.8769)
+    G2_state_dominance: FAIL (wins=2/13 (15.4%), threshold>50%)
+    G3_fractional_loss: PASS (loss=28.3% (baseline=1.1379, worst=0.8159))
+    G4_absolute_floor: PASS (worst_sharpe=0.8159, floor=0.50)
+    G5_infra_conditioned: PASS (d1_d1_delta=-0.1604, threshold=-0.20)
+  E5 vs E5_plus_EMA1D21: FALLBACK
+    G1_absolute_dominance: FAIL (candidate_worst=0.8284 <= alternative_worst=0.8769)
+    G2_state_dominance: FAIL (wins=0/13 (0.0%), threshold>50%)
+    G3_fractional_loss: PASS (loss=32.6% (baseline=1.2299, worst=0.8284))
+    G4_absolute_floor: PASS (worst_sharpe=0.8284, floor=0.50)
+    G5_infra_conditioned: PASS (d1_d1_delta=-0.1605, threshold=-0.20)
+  SM vs E5_plus_EMA1D21: FALLBACK
+    G1_absolute_dominance: FAIL (candidate_worst=0.7545 <= alternative_worst=0.8769)
+    G2_state_dominance: FAIL (wins=1/13 (7.7%), threshold>50%)
+    G3_fractional_loss: PASS (loss=7.6% (baseline=0.8161, worst=0.7545))
+    G4_absolute_floor: PASS (worst_sharpe=0.7545, floor=0.50)
+    G5_infra_conditioned: PASS (d1_d1_delta=0.0203, threshold=-0.20)
+  E0_plus_EMA1D21 vs E5_plus_EMA1D21: FALLBACK
+    G1_absolute_dominance: FAIL (candidate_worst=0.8410 <= alternative_worst=0.8769)
+    G2_state_dominance: FAIL (wins=2/13 (15.4%), threshold>50%)
+    G3_fractional_loss: PASS (loss=29.0% (baseline=1.1837, worst=0.8410))
+    G4_absolute_floor: PASS (worst_sharpe=0.8410, floor=0.50)
+    G5_infra_conditioned: PASS (d1_d1_delta=-0.1684, threshold=-0.20)
+  E5_plus_EMA1D21 vs E0_plus_EMA1D21: GO
+    G1_absolute_dominance: PASS (candidate_worst=0.8769 > alternative_worst=0.8410)
+    G2_state_dominance: PASS (wins=11/13 (84.6%), threshold>50%)
+    G3_fractional_loss: PASS (loss=31.5% (baseline=1.2801, worst=0.8769))
+    G4_absolute_floor: PASS (worst_sharpe=0.8769, floor=0.50)
+    G5_infra_conditioned: PASS (d1_d1_delta=-0.1662, threshold=-0.20)
+
+[G] Writing root artifacts...
+
+[G] Generating figures...
+  Figures saved to /var/www/trading-bots/btc-spot-dev/research/fragility_audit_20260306/artifacts/step5
+
+======================================================================
+FINAL SIGN-OFF MATRIX (5-Gate Comparative)
+======================================================================
+Candidate                 vs Alternative            G1     G2     G3     G4     G5     Status      
+-------------------------------------------------------------------------------------------
+E0                        E5_plus_EMA1D21           FAIL   FAIL   PASS   PASS   PASS   FALLBACK    
+E5                        E5_plus_EMA1D21           FAIL   FAIL   PASS   PASS   PASS   FALLBACK    
+SM                        E5_plus_EMA1D21           FAIL   FAIL   PASS   PASS   PASS   FALLBACK    
+E0_plus_EMA1D21           E5_plus_EMA1D21           FAIL   FAIL   PASS   PASS   PASS   FALLBACK    
+E5_plus_EMA1D21           E0_plus_EMA1D21           PASS   PASS   PASS   PASS   PASS   GO          
+
+Total elapsed: 605.1s (10.1min)
+
+Step 5 complete. All artifacts written.

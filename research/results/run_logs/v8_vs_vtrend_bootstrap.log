@@ -1,0 +1,126 @@
+======================================================================
+V8 APEX vs VTREND: PAIRED BOOTSTRAP COMPARISON
+======================================================================
+  Period : 2019-01-01 → 2026-02-20   Warmup: 365d
+  V8 cost: ~5015 bps RT (spread=5, slip=3, fee=0.10%)
+  V8 effective round-trip: 31.0 bps
+  VT cost: 50 bps RT (harsh)
+  Bootstrap: 2000 paths, block=60, seed=42
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+======================================================================
+REAL DATA PERFORMANCE
+======================================================================
+/var/www/trading-bots/btc-spot-dev/research/v8_vs_vtrend_bootstrap.py:221: RuntimeWarning: divide by zero encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+/var/www/trading-bots/btc-spot-dev/research/v8_vs_vtrend_bootstrap.py:221: RuntimeWarning: invalid value encountered in divide
+  rs = np.where(al > 1e-12, ag / al, 100.0)
+
+  V8 Apex (original cost):  CAGR=+29.7%  MDD=51.3%  Sharpe=0.934  Calmar=0.580  Trades=76
+  VTREND f=1.0 (harsh):     CAGR=+52.7%  MDD=41.5%  Sharpe=1.276  Calmar=1.268  Trades=211
+  VTREND f=0.30 (harsh):    CAGR=+16.7%  MDD=16.1%  Sharpe=1.264  Calmar=1.041  Trades=211
+
+======================================================================
+BOOTSTRAP: 2000 PATHS
+======================================================================
+        1/2000  (0s, ~0s left)
+      100/2000  (13s, ~245s left)
+      200/2000  (26s, ~236s left)
+      300/2000  (40s, ~226s left)
+      400/2000  (54s, ~215s left)
+      500/2000  (68s, ~204s left)
+      600/2000  (82s, ~192s left)
+      700/2000  (97s, ~179s left)
+      800/2000  (111s, ~166s left)
+      900/2000  (125s, ~153s left)
+     1000/2000  (140s, ~140s left)
+     1100/2000  (154s, ~126s left)
+     1200/2000  (169s, ~113s left)
+     1300/2000  (183s, ~99s left)
+     1400/2000  (198s, ~85s left)
+     1500/2000  (212s, ~71s left)
+     1600/2000  (227s, ~57s left)
+     1700/2000  (241s, ~43s left)
+     1800/2000  (256s, ~28s left)
+     1900/2000  (270s, ~14s left)
+     2000/2000  (285s, ~0s left)
+
+  Done: 285.2s (7.0 paths/sec)
+
+----------------------------------------------------------------------
+BOOTSTRAP DISTRIBUTIONS
+----------------------------------------------------------------------
+
+  ── V8_Apex ──
+    cagr     med=   +7.55  [p5= -12.83, p95= +40.17]  P(>0)=69.7%
+    mdd      med=  +58.05  [p5= +40.42, p95= +79.14]
+    sharpe   med=   +0.39  [p5=  -0.34, p95=  +1.09]  P(>0)=81.9%
+    calmar   med=   +0.13  [p5=  -0.18, p95=  +0.88]  P(>0)=69.7%
+
+  ── VT_f1.0 ──
+    cagr     med=   +9.70  [p5= -15.32, p95= +45.47]  P(>0)=70.9%
+    mdd      med=  +64.35  [p5= +45.48, p95= +86.77]
+    sharpe   med=   +0.43  [p5=  -0.24, p95=  +1.10]  P(>0)=85.5%
+    calmar   med=   +0.16  [p5=  -0.19, p95=  +0.88]  P(>0)=70.9%
+
+  ── VT_f0.3 ──
+    cagr     med=   +4.92  [p5=  -3.44, p95= +14.94]  P(>0)=82.1%
+    mdd      med=  +25.15  [p5= +16.18, p95= +42.53]
+    sharpe   med=   +0.45  [p5=  -0.22, p95=  +1.11]  P(>0)=86.2%
+    calmar   med=   +0.20  [p5=  -0.09, p95=  +0.80]  P(>0)=82.1%
+
+----------------------------------------------------------------------
+V8 APEX BOOTSTRAP SUMMARY
+----------------------------------------------------------------------
+  Median cagr    = +7.6    P(CAGR > 0) = 69.7%
+  Median mdd     = 58.0    P(MDD < 30%) = 0.0%
+  Median sharpe  = 0.387
+  Median calmar  = 0.134
+
+----------------------------------------------------------------------
+PAIRED COMPARISONS (same 2000 paths)
+----------------------------------------------------------------------
+  P(V8 better) > 97.5% ≈ significant at α=0.05 (one-sided).
+
+  ── V8 Apex vs VT_f1.0 ──
+    Δcagr     mean=  -1.952  P(V8 higher)= 45.8%  95%CI=[-34.728, +28.156]
+    Δmdd      mean=  +6.306  P(V8 lower )= 66.2%  95%CI=[-26.047, +37.213]
+    Δsharpe   mean=  -0.049  P(V8 higher)= 44.8%  95%CI=[-0.843, +0.707]
+    Δcalmar   mean=  -0.020  P(V8 higher)= 47.9%  95%CI=[-0.720, +0.682]
+
+  ── V8 Apex vs VT_f0.3 ──
+    Δcagr     mean=  +4.333  P(V8 higher)= 58.6%  95%CI=[-18.039, +36.231]
+    Δmdd      mean= -32.096  P(V8 lower )=  0.4%  95%CI=[-58.301, -5.573]
+    Δsharpe   mean=  -0.061  P(V8 higher)= 42.9%  95%CI=[-0.838, +0.672]
+    Δcalmar   mean=  -0.051  P(V8 higher)= 39.3%  95%CI=[-0.663, +0.657]
+
+----------------------------------------------------------------------
+REAL PERFORMANCE PERCENTILE IN BOOTSTRAP
+----------------------------------------------------------------------
+  (percentile = % of bootstrap paths with worse performance)
+
+  ── V8_Apex ──
+    cagr     real=  +29.74  percentile=88.8%
+    mdd      real=  +51.28  percentile=71.3%
+    sharpe   real=   +0.93  percentile=90.8%
+    calmar   real=   +0.58  percentile=88.2%
+
+  ── VT_f1.0 ──
+    cagr     real=  +52.68  percentile=97.5%
+    mdd      real=  +41.53  percentile=98.0%
+    sharpe   real=   +1.28  percentile=98.3%
+    calmar   real=   +1.27  percentile=98.6%
+
+  ── VT_f0.3 ──
+    cagr     real=  +16.73  percentile=97.2%
+    mdd      real=  +16.06  percentile=95.3%
+    sharpe   real=   +1.26  percentile=97.9%
+    calmar   real=   +1.04  percentile=98.4%
+
+Results saved → /var/www/trading-bots/btc-spot-dev/research/results/v8_vs_vtrend_bootstrap.json
+
+======================================================================
+DONE
+======================================================================

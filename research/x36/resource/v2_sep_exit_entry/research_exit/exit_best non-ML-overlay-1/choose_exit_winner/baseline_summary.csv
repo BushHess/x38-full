@@ -1,0 +1,3 @@
+strategy,aggregate_sharpe,aggregate_cagr,aggregate_mdd,reference
+base_exit_locked_entry_core,1.1307597999722026,0.3503025443385246,-0.37093930671517117,baseline
+price_only_churn_model,1.194132786443324,0.3848313860503805,-0.35816839454264293,incumbent_hold_model

@@ -1,0 +1,105 @@
+================================================================================
+STEP 0: ENVIRONMENT & SCOPE LOCK
+================================================================================
+Date: 2026-02-23
+Workspace: /var/www/trading-bots/btc-spot
+Commit: c74c650618852baecace9f75d95c16f491dc20e0
+  (Note: V11 files are uncommitted modifications on top of this commit)
+
+================================================================================
+KEY FILES (all exist, verified)
+================================================================================
+
+Strategy files:
+  v10/strategies/v8_apex.py          16915 bytes  2026-02-23 20:21  (V10 baseline strategy)
+  v10/strategies/v11_hybrid.py       28315 bytes  2026-02-23 21:21  (V11 candidate strategy)
+  v10/strategies/__init__.py         (modified, exports V11HybridStrategy)
+  v10/strategies/base.py             (Strategy ABC - unchanged)
+  v10/strategies/buy_and_hold.py     (BuyAndHold - unchanged)
+
+Infrastructure (modified for V11 polymorphism):
+  v10/research/candidates.py          9953 bytes  2026-02-23 21:23  (build_strategy factory)
+  v10/research/wfo.py                 8529 bytes  2026-02-23 21:23  (uses build_strategy)
+  v10/cli/backtest.py                11564 bytes  2026-02-23 21:24  (V11 in STRATEGY_REGISTRY)
+  v10/core/config.py                  6192 bytes  2026-02-23 21:23  (V11 validation)
+
+Research modules (unchanged):
+  v10/research/bootstrap.py          (block bootstrap)
+  v10/research/objective.py          (scoring formula)
+  v10/research/regime.py             (6-class regime classifier)
+  v10/research/decision.py           (PROMOTE/HOLD/REJECT gate)
+  v10/research/drawdown.py           (DD episode detection)
+
+Data:
+  bars_btcusdt_2016_now_h1_4h_1d.csv (multi-TF OHLCV, H1+H4+D1)
+
+================================================================================
+YAML CONFIGS
+================================================================================
+
+Testing YAMLs (chronological):
+  candidates_v11_baseline.yaml       Parity test: V10 vs V11-disabled
+  candidates_v11_isolate.yaml        Isolated: MR-only, Cycle-only, ADX-only
+  candidates_v11_refined.yaml        Refined cycle + MR variants
+  candidates_v11_final.yaml          Cycle early tuning
+  candidates_v11_final2.yaml         Cycle late-only + neutral + boost
+  candidates_v11_combos.yaml         Feature combinations (round 1)
+  candidates_v11_combos2.yaml        Late+MR, late+milder combos
+  candidates_v11_wfo.yaml            WFO grid search (27 combos)
+  candidates_v11_wfo_fixed.yaml      Fixed winner params (no grid)
+  candidates_v11_wfo_optimal.yaml    Fixed WFO-optimal params (no grid)
+
+Validation scripts:
+  run_v11_validation.py              Full backtest + bootstrap + regime + DD
+  run_v11_wfo_bootstrap.py           Fixed-param WFO + enhanced bootstrap
+
+================================================================================
+BASELINE CONFIG
+================================================================================
+Strategy: V8ApexStrategy (v10/strategies/v8_apex.py)
+Config: V8ApexConfig() — all defaults
+Key defaults:
+  trail_tighten_profit_pct: 0.25  (applied 2026-02-23, P=99.6%)
+  rsi_method: ewm_span
+  emergency_dd_ref: pre_cost_legacy
+  No cycle, no MR, no ADX
+
+================================================================================
+CANDIDATE CONFIG (most recent validation)
+================================================================================
+Strategy: V11HybridStrategy (v10/strategies/v11_hybrid.py)
+Config: V11HybridConfig with WFO-optimal params
+
+  enable_cycle_phase: true
+  cycle_early_aggression: 1.0
+  cycle_early_trail_mult: 3.5
+  cycle_late_aggression: 0.95
+  cycle_late_trail_mult: 2.8
+  cycle_late_max_exposure: 0.90
+
+  (All other V11 features disabled: enable_mr_defensive=false, enable_adx_gating=false)
+
+Source YAML: candidates_v11_wfo_optimal.yaml
+
+================================================================================
+MOST RECENT OUTPUT DIRECTORIES (newest first)
+================================================================================
+  out_v11_wfo_extended/       2026-02-23 21:56  Fixed-param WFO + enhanced bootstrap
+  out_v11_full_validation/    2026-02-23 21:45  Full backtest + paired bootstrap
+  out_v11_wfo/                2026-02-23 21:42  WFO grid search (27 combos)
+  out_v11_combos2/            2026-02-23 21:28  Combination testing round 2
+  out_v11_final2/             2026-02-23 21:27  Final tuning round 2
+
+================================================================================
+MOST RECENT RESULTS SUMMARY
+================================================================================
+From out_v11_wfo_extended/ (enhanced bootstrap, 5000 resamples × 3 block sizes):
+
+  P(V11 WFO-opt > V10)  = 91.6% mean across block sizes [10,20,40]
+  P(V11 winner > V10)   = 87.7% mean
+  P(V11 winner > WFO-opt) = 17.9% (winner is WORSE than WFO-opt)
+
+  WFO fixed-param pass rate: 9/10 for ALL configs (V10, V11 winner, V11 WFO-opt)
+  V11 cycle fires in 4/10 windows only (bull periods)
+
+Status: CONDITIONAL PROMOTE — P=91.6% < 95% bar

@@ -1,0 +1,11 @@
+{
+  "trade_count": true,
+  "trade_count_detail": "65 vs 65",
+  "entry_exit_timestamps": true,
+  "native_terminal_match": "True",
+  "native_terminal_detail": "replay=24197.25 canonical=24197.25 diff=0.00",
+  "unit_terminal_match": "False",
+  "unit_terminal_detail": "replay=86374.66 canonical=93096.81 diff=6722.15",
+  "all_pass": true,
+  "note": "vol_target: unit_terminal informational (per-trade VWAP splits differ for rebalancing trades)"
+}

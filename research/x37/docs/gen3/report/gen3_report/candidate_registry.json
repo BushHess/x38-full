@@ -1,0 +1,42 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "3.0",
+  "registry_created_in_session": "session_20260319_seed_001",
+  "active_champion_id": "NO_ROBUST_CANDIDATE",
+  "live_candidates": [],
+  "retired_candidates": [
+    {
+      "candidate_id": "D1Range_H4Flow",
+      "status": "eliminated_pre_freeze",
+      "mechanism_type": "cross_tf_range_flow",
+      "seed_snapshot_id": "snapshot_20260318",
+      "retired_in_session": "session_20260319_seed_001",
+      "retired_at_utc": "2026-03-20T16:30:03Z",
+      "logical_layers": 2,
+      "tunable_quantities": 3,
+      "retirement_reason": "CAGR<=0;entries_per_year_out_of_[6,80];exposure_out_of_[0.15,0.90]"
+    },
+    {
+      "candidate_id": "H4Trend_H1Flow",
+      "status": "eliminated_pre_freeze",
+      "mechanism_type": "cross_tf_trend_flow",
+      "seed_snapshot_id": "snapshot_20260318",
+      "retired_in_session": "session_20260319_seed_001",
+      "retired_at_utc": "2026-03-20T16:30:03Z",
+      "logical_layers": 2,
+      "tunable_quantities": 2,
+      "retirement_reason": "CAGR<=0;entries_per_year_out_of_[6,80];exposure_out_of_[0.15,0.90]"
+    },
+    {
+      "candidate_id": "M15ZRetTrail",
+      "status": "eliminated_pre_freeze",
+      "mechanism_type": "single_tf_zret_trailing",
+      "seed_snapshot_id": "snapshot_20260318",
+      "retired_in_session": "session_20260319_seed_001",
+      "retired_at_utc": "2026-03-20T16:30:03Z",
+      "logical_layers": 1,
+      "tunable_quantities": 2,
+      "retirement_reason": "CAGR<=0;MDD>0.45;entries_per_year_out_of_[6,80]"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+dataset_id: default
+period:
+  start: "2019-01-01"
+  end: "2026-02-20"
+scenario: harsh
+strategy_id: vtrend_x0_e5exit
+
+metrics_expected:
+  harsh_score: 144.9640
+  CAGR: 59.85
+  MDD: 41.64
+  trades: 186
+  turnover: 50.52
+  fees: 72869.55
+
+tolerances:
+  harsh_score: 0.25
+  CAGR: 0.50
+  MDD: 0.75
+  trades: 1
+  turnover: 1.0
+  fees: 500.0
+  default: 0.0

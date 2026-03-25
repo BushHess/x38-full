@@ -1,0 +1,16 @@
+================================================================================
+P0.1 E0 FORENSICS
+================================================================================
+
+Running current-engine E0 backtest...
+  Trades: 192
+  Sharpe: 1.2653
+  CAGR:   52.04%
+  MDD:    41.61%
+
+Enriching trade table...
+Building failure summaries...
+
+Primary failure mode: false_breakout
+Artifacts written to /var/www/trading-bots/btc-spot-dev/research/e0_forensics
+Elapsed: 2.7s

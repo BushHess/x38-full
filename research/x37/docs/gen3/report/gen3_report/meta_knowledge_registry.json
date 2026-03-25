@@ -1,0 +1,291 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "3.0",
+  "registry_created_in_session": "session_20260319_seed_001",
+  "entries": [
+    {
+      "rule_id": "AXIOM_NO_LOOKAHEAD",
+      "statement": "All signal construction and execution must use only information available no later than the decision bar close; future bars are inadmissible.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v3.0.yaml execution invariants and meta_knowledge_policy Tier1 examples",
+      "scope": "All discovery, evaluation, packaging, and forward review work in this lineage",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Not derived from overlapping historical results and cannot be weakened by same-snapshot findings.",
+      "challenge_rule": "May change only through a major constitution revision.",
+      "expiry": "none",
+      "status": "active"
+    },
+    {
+      "rule_id": "AXIOM_UTC_ALIGNMENT",
+      "statement": "All timestamps, folds, daily returns, and cross-timeframe joins are defined in UTC.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v3.0.yaml and TIMEFRAME_ALIGNMENT_SPEC_EN.md",
+      "scope": "All lineage artifacts and execution logic",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Operational invariant; not inferable from snapshot performance.",
+      "challenge_rule": "May change only through a major constitution revision.",
+      "expiry": "none",
+      "status": "active"
+    },
+    {
+      "rule_id": "AXIOM_NEXT_OPEN_EXECUTION",
+      "statement": "Signals are generated at bar close and filled at the next bar open; same-bar execution is forbidden.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v3.0.yaml execution model",
+      "scope": "All candidate implementations and forward reviews",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Execution semantics are fixed ex ante and cannot be tuned from overlapping data.",
+      "challenge_rule": "May change only through a major constitution revision.",
+      "expiry": "none",
+      "status": "active"
+    },
+    {
+      "rule_id": "AXIOM_NO_SYNTHETIC_BAR_REPAIR",
+      "statement": "Missing bars may be logged but must not be repaired or imputed with synthetic data.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v3.0.yaml and FILE_AND_SCHEMA_CONVENTIONS_EN.md",
+      "scope": "Raw data ingestion, validation, and all downstream evaluations",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Data-integrity invariant; not subject to empirical override.",
+      "challenge_rule": "May change only through a major constitution revision.",
+      "expiry": "none",
+      "status": "active"
+    },
+    {
+      "rule_id": "PRIOR_LAYERING_IS_HYPOTHESIS",
+      "statement": "Layering is a hypothesis to be justified by measurement and ablation, not a default system design choice.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "research_constitution_v3.0.yaml meta_knowledge_policy Tier2 example and candidate design philosophy",
+      "scope": "Future candidate design and review burden only",
+      "authority": "budget and burden only",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Cannot be used to forbid blind discovery on overlapping data; it only raises the evidence burden for added layers.",
+      "challenge_rule": "May be challenged by constitution amendment or by broader non-overlapping evidence on design complexity.",
+      "expiry": "until_major_constitution_revision",
+      "status": "active"
+    },
+    {
+      "rule_id": "PRIOR_MICROSTRUCTURE_NOT_MAINLINE_SWING",
+      "statement": "Microstructure-heavy effects are not presumed to be mainline for this swing-horizon lineage unless broader evidence later elevates them.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "research_constitution_v3.0.yaml meta_knowledge_policy Tier2 example",
+      "scope": "Budgeting and burden of proof for future designs in this lineage",
+      "authority": "budget and burden only",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Cannot exclude measurement of microstructure on overlapping data; it only prevents treating it as the default design center.",
+      "challenge_rule": "May be challenged by non-overlapping forward evidence or a major constitution revision.",
+      "expiry": "until_major_constitution_revision",
+      "status": "active"
+    },
+    {
+      "rule_id": "PRIOR_SMALLEST_DEFENSIBLE_DESIGN",
+      "statement": "Prefer the smallest defensible design; additional tunables or layers must earn their place via measured signal and later ablation.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "research_constitution_v3.0.yaml complexity law and D1c design philosophy",
+      "scope": "Design and governance preference only",
+      "authority": "budget and burden only",
+      "provenance": {
+        "constitution_version": "3.0",
+        "session_id": "session_20260319_seed_001",
+        "source": "constitution"
+      },
+      "overlap_guard": "Cannot be used to suppress blind measurement; it only affects preference when signal quality is otherwise close.",
+      "challenge_rule": "May be challenged by constitution amendment or by durable forward evidence showing justified complexity.",
+      "expiry": "until_major_constitution_revision",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_MULTI_BAR_CONTINUATION_DOMINANT",
+      "statement": "Within snapshot_20260318 discovery, dominant price structure was multi-bar continuation rather than next-bar persistence; next-bar persistence was weak.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b1 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_file": "d1b1_measurements_price_momentum.md"
+      },
+      "overlap_guard": "May not narrow blind discovery on the same historical snapshot in a future seed session.",
+      "challenge_rule": "Re-measure on appended forward data or on a non-overlapping seed snapshot before reuse as an empirical prior.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_RANGE_AND_ZRET_CLEANER_THAN_RAW",
+      "statement": "Range position and volatility-normalized return states were generally cleaner than raw signed momentum in fast and slow channels within discovery.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b1 and D1b2 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_files": [
+          "d1b1_measurements_price_momentum.md",
+          "d1b2_measurements_volatility_regime.md"
+        ]
+      },
+      "overlap_guard": "Cannot be elevated to a Tier2 design prior on overlapping data.",
+      "challenge_rule": "Must be revalidated on appended forward data or a distinct seed snapshot.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_ORDER_FLOW_MOST_INDEPENDENT",
+      "statement": "Order-flow channels were the least redundant family measured; the strongest cross-timeframe interaction was slow trend permission combined with faster order-flow.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b3 and D1b4 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_files": [
+          "d1b3_measurements_volume_flow.md",
+          "d1b4_measurements_cross_tf_ranking.md"
+        ]
+      },
+      "overlap_guard": "Cannot narrow blind rediscovery on the same snapshot; this is an overlapping empirical finding.",
+      "challenge_rule": "Must be rechecked on appended forward data before influencing governance beyond advisory weight.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_VOLUME_PREDICTS_MAGNITUDE_MORE_THAN_DIRECTION",
+      "statement": "Volume level was primarily a future-magnitude state variable; directional content was weaker than magnitude content across measured timeframes.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b3 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_file": "d1b3_measurements_volume_flow.md"
+      },
+      "overlap_guard": "Cannot be used as a hard exclusion or search restriction on overlapping data.",
+      "challenge_rule": "Re-test on appended forward data or a non-overlapping seed snapshot.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_CALENDAR_EFFECTS_WEAK",
+      "statement": "Calendar day-of-week and weekend effects were weak; intraday UTC-session timing effects were stronger but still secondary.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b3 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_file": "d1b3_measurements_volume_flow.md"
+      },
+      "overlap_guard": "Cannot be elevated into a structural prior on overlapping data.",
+      "challenge_rule": "Re-measure on appended data before reuse.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_INTRADAY_TAIL_REBOUND_SPARSE",
+      "statement": "Intraday downside-tail and crisis rebound effects were measurable but sparse and event-driven rather than broad baseline structure.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1b2 measurements",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_file": "d1b2_measurements_volatility_regime.md"
+      },
+      "overlap_guard": "Cannot be used to pre-approve event-driven designs on overlapping data.",
+      "challenge_rule": "Must be retested on fresh appended data before operational use.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_NO_MAIN_CONFIG_SURVIVED_DISCOVERY_50BPS",
+      "statement": "No main candidate configuration survived the 50 bps discovery hard-constraint filter in this seed session.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1d3 aggregate and D1e1 hard-constraint filter",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_files": [
+          "d1d_wfo_aggregate.csv",
+          "d1e_hard_constraint_filter.csv"
+        ]
+      },
+      "overlap_guard": "Cannot be used to skip blind discovery on the same snapshot; it only records the outcome of this session.",
+      "challenge_rule": "A new conclusion requires non-overlapping data or a constitution-approved methodology change.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_MULTI_LAYER_ABLATION_FAILURES",
+      "statement": "Both tested multi-layer candidates failed ablation review in discovery: removing the faster flow layer improved Calmar, so added complexity did not earn its place.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1d3 ablation results",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_file": "d1d_wfo_aggregate.csv"
+      },
+      "overlap_guard": "Cannot be generalized into a permanent ban on layering; this note applies only to the tested designs on overlapping data.",
+      "challenge_rule": "Future layered designs must be re-tested and can overturn this note on fresh data.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    },
+    {
+      "rule_id": "NOTE_FAST_15M_CONTINUATION_TOO_COST_SENSITIVE",
+      "statement": "The fast 15m normalized-continuation design was too turnover-heavy and cost-sensitive to survive discovery hard constraints at 50 bps.",
+      "tier": "Tier3_SessionNote",
+      "basis": "D1d3 aggregate and D1e1 hard-constraint filter",
+      "scope": "Advisory note for this session only",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "source_files": [
+          "d1d_wfo_aggregate.csv",
+          "d1e_hard_constraint_filter.csv"
+        ]
+      },
+      "overlap_guard": "Cannot be used as a permanent exclusion of 15m designs on overlapping data.",
+      "challenge_rule": "Retest on appended forward data or a distinct snapshot before reuse as a design veto.",
+      "expiry": "next_non_overlapping_seed_or_forward_review",
+      "status": "active"
+    }
+  ]
+}

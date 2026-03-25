@@ -1,0 +1,30 @@
+/var/www/trading-bots/btc-spot-dev/research/x21/benchmark.py:56: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+======================================================================
+X21: Conviction-Based Position Sizing — Entry Feature Scoring
+======================================================================
+
+Loading data...
+  H4 bars: 17838, D1 bars: 2973, warmup: 2190 bars
+
+Running E5+EMA1D21 baseline...
+  Baseline: Sh=1.4699, CAGR=18.76%, MDD=13.93%, trades=202
+T-1: IC Measurement
+  Trades with features: 202
+  Full-sample IC: 0.0770 (p=0.2762)
+    vdo_value: IC=0.0842 (p=0.2337)
+    ema_spread: IC=-0.0817 (p=0.2480)
+    atr_pctl: IC=-0.0139 (p=0.8446)
+    d1_regime_str: IC=-0.0162 (p=0.8194)
+  Top 2 by |IC|: ['vdo_value', 'ema_spread']
+  Cross-validated IC (5-fold): -0.1345
+  ABORT: CV IC -0.1345 < 0.05
+
+======================================================================
+VERDICT: CLOSE
+Reason:  ABORT: CV IC = -0.1345 < 0.05
+Gates:   {'ABORT': True}
+Elapsed: 2.2s
+======================================================================
+
+Results written to /var/www/trading-bots/btc-spot-dev/research/x21/x21_results.json

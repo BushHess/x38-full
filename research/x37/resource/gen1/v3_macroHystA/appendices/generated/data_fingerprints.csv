@@ -1,0 +1,3 @@
+file,sha256,rows,first_open_time,last_close_time,columns
+data/btcusdt_1d.csv,d8a4a7127fb0cb43bf9bb5e3b486c1ddc63bf72f50325e2764b56914abcaf3c1,3128,1502928000000,1773187199999,symbol|interval|open_time|close_time|open|high|low|close|volume|quote_volume|num_trades|taker_buy_base_vol|taker_buy_quote_vol
+data/btcusdt_4h.csv,e6bc6ef0e32b48bb77db9ea4af8249b4410c0661432ef5e0c71f8efcdfe44b03,18752,1502942400000,1773215999999,symbol|interval|open_time|close_time|open|high|low|close|volume|quote_volume|num_trades|taker_buy_base_vol|taker_buy_quote_vol

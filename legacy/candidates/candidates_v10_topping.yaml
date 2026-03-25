@@ -1,0 +1,35 @@
+candidates:
+  # Baseline: current defaults
+  - name: baseline
+    description: "Current V10 defaults"
+    params: {}
+
+  # --- Target TOPPING regime specifically ---
+
+  # Test 1: Faster regime off-switch (V9 MDD analysis Candidate 3: 4->2 bars)
+  # Idea: detect RISK_OFF faster during topping → reduce exposure earlier
+  - name: fast_regime_off
+    description: "d1_regime_off_bars 4->2 (faster RISK_OFF detection)"
+    params:
+      d1_regime_off_bars: 2
+
+  # Test 2: More conservative in CAUTION regime
+  # Idea: TOPPING often coincides with CAUTION — reduce sizing more aggressively
+  - name: cautious_030
+    description: "caution_mult 0.50->0.30 (smaller positions in CAUTION)"
+    params:
+      caution_mult: 0.30
+
+  # Test 3: Tighter RSI overbought (prevent entries near tops)
+  - name: rsi_ob_70
+    description: "rsi_overbought 75->70 (reject more signals at tops)"
+    params:
+      rsi_overbought: 70.0
+
+  # Test 4: Combined TOPPING defense
+  - name: topping_defense
+    description: "fast_regime_off + cautious_030 + rsi_ob_70"
+    params:
+      d1_regime_off_bars: 2
+      caution_mult: 0.30
+      rsi_overbought: 70.0

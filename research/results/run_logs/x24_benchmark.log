@@ -1,0 +1,120 @@
+/var/www/trading-bots/btc-spot-dev/research/x24/benchmark.py:44: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X24: Trail Arming Isolation
+======================================================================
+  Bars: 17838 H4, warmup_idx=2190
+  rATR first valid: 119
+
+======================================================================
+T0: PHASE DIAGNOSTIC
+======================================================================
+
+  Phase        N  Churn    Rate     AvgPnL  AvgBars
+  ----------------------------------------------
+  Early       53     22   41.5%   -4758.93     18.5
+  Late       130    101   77.7%    4125.54     48.2
+  All        183    123   67.2%    1552.44     39.6
+
+  MFE at trail exit: {'Q10': 0.511238166956925, 'Q25': 1.3418875654548383, 'Q50': 3.292086043183945, 'Q75': 6.545890912109453, 'Q90': 14.588353826098675}
+  ARM_K=1.5 would prevent 53/183 trail stops (29.0%)
+  Churn rate delta (early - late): -36.2pp → DRIFT_DRIVEN
+
+======================================================================
+T1: FULL-SAMPLE COMPARISON
+======================================================================
+
+  Strategy       Sharpe    CAGR%     MDD%  Trades    Exp%
+  ----------------------------------------------------
+  E5             1.4690    62.48    40.90     202    48.0
+  E5+ARM(1.5)    1.4071    60.52    44.45     183    50.4
+
+  d_sharpe(ARM vs E5) = -0.0619
+  G0: FAIL
+
+  Strategy      Total  Trail  Trend  NvrArm  Ch/Tr%
+  --------------------------------------------------
+  E5              202    183     19       -   67.2%
+  E5+ARM(1.5)     183    128     55      55   78.9%
+
+======================================================================
+T2: k-SWEEP CHARACTERIZATION
+======================================================================
+
+  k        Sharpe    CAGR%     MDD%  Trades  NvrArm%  Ch/Tr%
+  ----------------------------------------------------------
+  0.5      1.4085    59.00    42.05     197    15.7%   71.8%
+  1.0      1.4208    60.68    43.82     189    21.7%   73.5%
+  1.5      1.4071    60.52    44.45     183    30.1%   78.9%
+  2.0      1.4255    62.02    44.05     176    33.5%   80.3%
+  2.5      1.3706    58.98    44.05     172    36.0%   81.8%
+  3.0      1.3151    55.87    47.80     163    41.1%   84.4%
+  E5       1.4690    62.48    40.90     202      0.0%   67.2%
+
+  Sharpe curve has peak at k=2.0
+
+======================================================================
+T3: WALK-FORWARD OPTIMIZATION (4 folds)
+======================================================================
+    Fold 1: E5=-1.1070, ARM=-1.1863 (d=-0.0794) LOSE
+    Fold 2: E5=1.2602, ARM=1.4790 (d=+0.2187) WIN
+    Fold 3: E5=1.8919, ARM=1.9224 (d=+0.0305) WIN
+    Fold 4: E5=0.0998, ARM=-0.2399 (d=-0.3397) LOSE
+
+  win_rate=50%, mean_d=-0.0425, G1: FAIL
+
+======================================================================
+T4: BOOTSTRAP (500 paths)
+======================================================================
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+
+  d_sharpe: median=-0.0029, [-0.1870, +0.1989]
+  P(d_sharpe > 0): 49.0%
+  d_mdd: median=+1.63pp
+  G2: FAIL, G3: PASS
+
+======================================================================
+T5: JACKKNIFE (leave-year-out)
+======================================================================
+    Drop 2020: E5=0.7696, ARM=0.7496, d=-0.0199
+    Drop 2021: E5=1.1075, ARM=1.2004, d=+0.0929
+    Drop 2022: E5=1.5824, ARM=1.5130, d=-0.0694
+    Drop 2023: E5=1.5292, ARM=1.4173, d=-0.1119
+    Drop 2024: E5=1.3169, ARM=1.2516, d=-0.0653
+    Drop 2025: E5=1.6118, ARM=1.5406, d=-0.0712
+  Negative: 5/6, mean d=-0.0408, G4: FAIL
+
+======================================================================
+T6: PSR WITH DOF CORRECTION
+======================================================================
+  E5+ARM Sharpe (ann): 1.4071
+  SR0 (DOF=4): 0.3938
+  PSR: 1.0000
+  G5: PASS
+
+======================================================================
+T7: SUMMARY TABLE & VERDICT
+======================================================================
+
+  Gate  Test  Criterion                 Value                Pass? 
+  ---------------------------------------------------------------
+  G0    T1    d_sharpe > 0 vs E5        -0.0619              FAIL  
+  G1    T3    WFO >= 3/4, mean d > 0    wr=50%, d=-0.0425    FAIL  
+  G2    T4    P(d_sh > 0) > 0.55        0.4900               FAIL  
+  G3    T4    med d_mdd <= +5pp         1.6335               PASS  
+  G4    T5    JK neg <= 2/6             5.0000               FAIL  
+  G5    T6    PSR > 0.95                1.0000               PASS  
+
+  Gates passed: 2/6
+  VERDICT: REJECT
+/var/www/trading-bots/btc-spot-dev/research/x24/benchmark.py:1184: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  json_data["timestamp"] = datetime.datetime.utcnow().isoformat() + "Z"
+/var/www/trading-bots/btc-spot-dev/research/x24/benchmark.py:1024: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  lines.append(f"Generated: {datetime.datetime.utcnow().isoformat()}Z\n")
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x24/x24_*.{json,csv,md}
+
+  Total time: 468.4s (7.8m)

@@ -1,0 +1,646 @@
+================================================================================
+SECTION 1 — EXECUTIVE SUMMARY
+================================================================================
+1. Primary loss driver (N=120): False breakout accounts for 26% of total net loss, Exit lag 19%, Other 55%.
+2. Market context: Chop regime contributes 74% of total net loss (N=120).
+3. Win rate range: 60=33% / 84=35% / 120=38% / 144=39%
+4. Sharpe (N=120): 1.276. Trade count scales inversely with slow_period: 231 → 180.
+5. Failure mode is STABLE across configs: FB%=[60:30%, 84:28%, 120:26%, 144:23%], EL%=[60:15%, 84:16%, 120:19%, 144:19%].
+
+================================================================================
+SECTION 2 — PERFORMANCE BY SLOW_PERIOD
+================================================================================
+  slow trades winners    WR%   CAGR%    MDD%  Sharpe  Calmar    netPnL$ exposure%
+---------------------------------------------------------------------------------
+    60    231      76  32.9%   26.69   54.06   0.797   0.494     39,905     49.3%
+    84    197      69  35.0%   43.94   47.94   1.129   0.916     99,160     47.8%
+   120    189      72  38.1%   52.68   41.53   1.276   1.268    131,296     46.9%
+   144    180      70  38.9%   55.87   42.33   1.328   1.320    134,359     47.1%
+
+================================================================================
+SECTION 3A — LOSS DECOMPOSITION BY PROXIMATE CAUSE
+================================================================================
+
+── slow_period = 60 ──
+  Total losing trades: 155 / 231
+  Total gross loss: $-163,544
+  Total net loss:   $-193,229
+  Cause            #trades %trades  %gross    %net      med$     mean$ medBars medMFE_R medMAE_R  medGBr
+  ------------------------------------------------------------------------------------------------------
+  Exit_lag              43   27.7%   12.1%   14.5%      -500      -652      27     3.11     1.21    1.27
+  False_breakout        38   24.5%   31.1%   30.1%    -1,319    -1,531       6     0.31     2.20   10.15
+  Other_loss            74   47.7%   56.8%   55.4%    -1,206    -1,446      14     1.10     2.26    2.88
+
+── slow_period = 84 ──
+  Total losing trades: 128 / 197
+  Total gross loss: $-203,023
+  Total net loss:   $-240,052
+  Cause            #trades %trades  %gross    %net      med$     mean$ medBars medMFE_R medMAE_R  medGBr
+  ------------------------------------------------------------------------------------------------------
+  Exit_lag              40   31.2%   12.6%   15.9%      -849      -956      28     2.88     1.20    1.30
+  False_breakout        25   19.5%   29.7%   28.3%    -2,201    -2,718       7     0.29     2.89    9.15
+  Other_loss            63   49.2%   57.7%   55.8%    -1,732    -2,125      16     1.20     2.27    2.70
+
+── slow_period = 120 ──
+  Total losing trades: 117 / 189
+  Total gross loss: $-208,909
+  Total net loss:   $-248,321
+  Cause            #trades %trades  %gross    %net      med$     mean$ medBars medMFE_R medMAE_R  medGBr
+  ------------------------------------------------------------------------------------------------------
+  Exit_lag              42   35.9%   14.9%   18.5%      -685    -1,095      28     2.86     1.29    1.30
+  False_breakout        23   19.7%   27.7%   26.5%    -2,284    -2,861       9     0.26     2.76   10.84
+  Other_loss            52   44.4%   57.4%   55.0%    -1,913    -2,626      15     1.07     2.30    3.16
+
+── slow_period = 144 ──
+  Total losing trades: 110 / 180
+  Total gross loss: $-187,083
+  Total net loss:   $-224,100
+  Cause            #trades %trades  %gross    %net      med$     mean$ medBars medMFE_R medMAE_R  medGBr
+  ------------------------------------------------------------------------------------------------------
+  Exit_lag              42   38.2%   14.3%   18.5%      -817      -988      29     2.84     1.21    1.29
+  False_breakout        21   19.1%   23.7%   22.9%    -1,321    -2,439       9     0.27     2.23   10.59
+  Other_loss            47   42.7%   62.0%   58.6%    -2,622    -2,795      16     1.04     2.41    3.26
+
+================================================================================
+SECTION 3B — LOSS DECOMPOSITION BY MARKET CONTEXT
+================================================================================
+
+── slow_period = 60 ──
+  Context      #trades %trades    WR%  E[pnl%]   netLoss$ %netLoss turnover
+  -------------------------------------------------------------------------
+  Chop             193   83.5%  31.6%    0.86%   -160,003    82.8%     5991
+  Transition        33   14.3%  36.4%    1.00%    -31,515    16.3%     1251
+  Trend              5    2.2%  60.0%   12.94%     -1,711     0.9%      476
+
+── slow_period = 84 ──
+  Context      #trades %trades    WR%  E[pnl%]   netLoss$ %netLoss turnover
+  -------------------------------------------------------------------------
+  Chop             153   77.7%  34.0%    1.20%   -192,150    80.0%     5585
+  Transition        35   17.8%  37.1%    3.62%    -35,473    14.8%     1320
+  Trend              9    4.6%  44.4%    5.13%    -12,430     5.2%      581
+
+── slow_period = 120 ──
+  Context      #trades %trades    WR%  E[pnl%]   netLoss$ %netLoss turnover
+  -------------------------------------------------------------------------
+  Chop             133   70.4%  35.3%    1.96%   -183,251    73.8%     5055
+  Transition        41   21.7%  36.6%    1.26%    -46,243    18.6%     1460
+  Trend             15    7.9%  66.7%    6.09%    -18,828     7.6%      818
+
+── slow_period = 144 ──
+  Context      #trades %trades    WR%  E[pnl%]   netLoss$ %netLoss turnover
+  -------------------------------------------------------------------------
+  Chop             124   68.9%  35.5%    2.17%   -173,315    77.3%     5062
+  Transition        46   25.6%  41.3%    3.09%    -45,291    20.2%     1994
+  Trend             10    5.6%  70.0%    0.83%     -5,494     2.5%      312
+
+================================================================================
+SECTION 3C — CAUSE × CONTEXT MATRIX
+================================================================================
+
+── slow_period = 60  (% of total net loss / % of losing trades) ──
+                                 Chop         Transition              Trend              TOTAL
+  --------------------------------------------------------------------------------------------
+  Exit_lag            13.0% /  25.2%     1.3% /   1.9%     0.1% /   0.6%    14.5% /  27.7%
+  False_breakout      25.3% /  21.3%     4.8% /   3.2%    -0.0% /   0.0%    30.1% /  24.5%
+  Other_loss          44.5% /  38.7%    10.2% /   8.4%     0.7% /   0.6%    55.4% /  47.7%
+
+── slow_period = 84  (% of total net loss / % of losing trades) ──
+                                 Chop         Transition              Trend              TOTAL
+  --------------------------------------------------------------------------------------------
+  Exit_lag            14.9% /  28.1%     1.1% /   3.1%    -0.0% /   0.0%    15.9% /  31.2%
+  False_breakout      20.9% /  14.1%     7.4% /   5.5%    -0.0% /   0.0%    28.3% /  19.5%
+  Other_loss          44.2% /  36.7%     6.3% /   8.6%     5.2% /   3.9%    55.8% /  49.2%
+
+── slow_period = 120  (% of total net loss / % of losing trades) ──
+                                 Chop         Transition              Trend              TOTAL
+  --------------------------------------------------------------------------------------------
+  Exit_lag            14.6% /  29.1%     3.6% /   6.0%     0.3% /   0.9%    18.5% /  35.9%
+  False_breakout      18.4% /  12.0%     8.1% /   7.7%    -0.0% /   0.0%    26.5% /  19.7%
+  Other_loss          40.8% /  32.5%     6.9% /   8.5%     7.3% /   3.4%    55.0% /  44.4%
+
+── slow_period = 144  (% of total net loss / % of losing trades) ──
+                                 Chop         Transition              Trend              TOTAL
+  --------------------------------------------------------------------------------------------
+  Exit_lag            13.1% /  26.4%     5.0% /  10.9%     0.4% /   0.9%    18.5% /  38.2%
+  False_breakout      17.3% /  11.8%     5.5% /   7.3%    -0.0% /   0.0%    22.9% /  19.1%
+  Other_loss          46.9% /  34.5%     9.7% /   6.4%     2.0% /   1.8%    58.6% /  42.7%
+
+================================================================================
+SECTION 4 — LOSING STREAKS
+================================================================================
+
+── slow_period = 60 ──
+  Total streaks: 47
+  Longest streak: 10 trades
+  Streaks >= 5 trades: 12
+
+  Streak #1: 10 trades, 2019-08-11 12:00 → 2019-12-10 08:00
+    Calendar H4 bars: 725 (~121 days)
+    Cumulative loss: -33.0% (mean -3.30%)
+    Cause mix: {'Other_loss': 6, 'Exit_lag': 2, 'False_breakout': 2}
+    Context mix: {'Chop': 5, 'Transition': 4, 'Trend': 1}
+    Avg MAE_R: 1.94, Avg bars held: 20
+
+  Streak #2: 10 trades, 2021-04-30 16:00 → 2021-07-08 04:00
+    Calendar H4 bars: 411 (~68 days)
+    Cumulative loss: -44.9% (mean -4.49%)
+    Cause mix: {'Other_loss': 5, 'False_breakout': 4, 'Exit_lag': 1}
+    Context mix: {'Chop': 7, 'Transition': 3}
+    Avg MAE_R: 2.06, Avg bars held: 13
+
+  Streak #3: 9 trades, 2025-10-08 12:00 → 2026-01-01 08:00
+    Calendar H4 bars: 509 (~85 days)
+    Cumulative loss: -29.6% (mean -3.29%)
+    Cause mix: {'Other_loss': 6, 'Exit_lag': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 8, 'Transition': 1}
+    Avg MAE_R: 2.90, Avg bars held: 14
+
+── slow_period = 84 ──
+  Total streaks: 43
+  Longest streak: 10 trades
+  Streaks >= 5 trades: 10
+
+  Streak #1: 10 trades, 2019-08-11 12:00 → 2020-01-01 20:00
+    Calendar H4 bars: 860 (~143 days)
+    Cumulative loss: -23.1% (mean -2.31%)
+    Cause mix: {'Other_loss': 7, 'Exit_lag': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 7, 'Trend': 2, 'Transition': 1}
+    Avg MAE_R: 1.60, Avg bars held: 20
+
+  Streak #2: 8 trades, 2023-06-29 08:00 → 2023-09-25 08:00
+    Calendar H4 bars: 528 (~88 days)
+    Cumulative loss: -10.4% (mean -1.30%)
+    Cause mix: {'Exit_lag': 5, 'Other_loss': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 6, 'Transition': 2}
+    Avg MAE_R: 2.30, Avg bars held: 23
+
+  Streak #3: 7 trades, 2023-04-18 08:00 → 2023-06-05 04:00
+    Calendar H4 bars: 287 (~48 days)
+    Cumulative loss: -18.6% (mean -2.66%)
+    Cause mix: {'Other_loss': 5, 'Exit_lag': 1, 'False_breakout': 1}
+    Context mix: {'Chop': 7}
+    Avg MAE_R: 2.13, Avg bars held: 11
+
+── slow_period = 120 ──
+  Total streaks: 46
+  Longest streak: 9 trades
+  Streaks >= 5 trades: 7
+
+  Streak #1: 9 trades, 2019-08-11 12:00 → 2019-12-31 16:00
+    Calendar H4 bars: 853 (~142 days)
+    Cumulative loss: -20.8% (mean -2.31%)
+    Cause mix: {'Other_loss': 5, 'Exit_lag': 3, 'False_breakout': 1}
+    Context mix: {'Chop': 7, 'Trend': 1, 'Transition': 1}
+    Avg MAE_R: 1.51, Avg bars held: 17
+
+  Streak #2: 8 trades, 2020-05-22 12:00 → 2020-07-11 12:00
+    Calendar H4 bars: 300 (~50 days)
+    Cumulative loss: -22.1% (mean -2.76%)
+    Cause mix: {'Other_loss': 4, 'False_breakout': 3, 'Exit_lag': 1}
+    Context mix: {'Chop': 6, 'Transition': 2}
+    Avg MAE_R: 2.24, Avg bars held: 15
+
+  Streak #3: 6 trades, 2022-08-18 04:00 → 2022-11-03 00:00
+    Calendar H4 bars: 461 (~77 days)
+    Cumulative loss: -19.7% (mean -3.29%)
+    Cause mix: {'False_breakout': 3, 'Other_loss': 2, 'Exit_lag': 1}
+    Context mix: {'Chop': 3, 'Transition': 2, 'Trend': 1}
+    Avg MAE_R: 2.26, Avg bars held: 16
+
+── slow_period = 144 ──
+  Total streaks: 46
+  Longest streak: 6 trades
+  Streaks >= 5 trades: 5
+
+  Streak #1: 6 trades, 2019-08-11 12:00 → 2019-11-13 12:00
+    Calendar H4 bars: 564 (~94 days)
+    Cumulative loss: -13.9% (mean -2.32%)
+    Cause mix: {'Exit_lag': 3, 'Other_loss': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 5, 'Trend': 1}
+    Avg MAE_R: 1.66, Avg bars held: 21
+
+  Streak #2: 6 trades, 2023-06-29 08:00 → 2023-09-26 00:00
+    Calendar H4 bars: 532 (~89 days)
+    Cumulative loss: -11.1% (mean -1.85%)
+    Cause mix: {'Exit_lag': 3, 'Other_loss': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 4, 'Transition': 2}
+    Avg MAE_R: 2.85, Avg bars held: 27
+
+  Streak #3: 5 trades, 2020-02-11 16:00 → 2020-04-20 20:00
+    Calendar H4 bars: 415 (~69 days)
+    Cumulative loss: -16.3% (mean -3.26%)
+    Cause mix: {'Exit_lag': 4, 'Other_loss': 1}
+    Context mix: {'Chop': 4, 'Transition': 1}
+    Avg MAE_R: 2.48, Avg bars held: 29
+
+================================================================================
+SECTION 5 — DRAWDOWN ANATOMY (MDD > 20%)
+================================================================================
+
+── slow_period = 60: 6 drawdown(s) > 20% ──
+
+  DD #1: 54.1%
+    Start: 2019-06-26 → Trough: 2020-04-20 → Recovery: 2020-12-17
+    Peak→Trough: 1794 bars (~299d), Full recovery: ~539d
+    Trades in DD: 49, turnover: 1785 bars
+    Cause mix: {'Other_loss': 17, 'Winner': 16, 'Exit_lag': 8, 'False_breakout': 8}
+    Context mix: {'Chop': 38, 'Transition': 10, 'Trend': 1}
+    Exit reason mix: {'ATR_trail': 35, 'EMA_cross_down': 14}
+    Market during DD: BTC return +78.2%, avg ER30 0.212, avg annualized vol 0.6%
+    → Driven by large giveback on exit-lag trades
+
+  DD #2: 36.6%
+    Start: 2021-01-08 → Trough: 2021-01-31 → Recovery: 2021-02-17
+    Peak→Trough: 139 bars (~23d), Full recovery: ~40d
+    Trades in DD: 5, turnover: 190 bars
+    Cause mix: {'Other_loss': 4, 'Winner': 1}
+    Context mix: {'Chop': 5}
+    Exit reason mix: {'EMA_cross_down': 3, 'ATR_trail': 2}
+    Market during DD: BTC return +27.7%, avg ER30 0.183, avg annualized vol 1.2%
+    → Prolonged chop market structure
+
+  DD #3: 53.7%
+    Start: 2021-02-21 → Trough: 2022-12-12 → Recovery: 2024-03-04
+    Peak→Trough: 3952 bars (~659d), Full recovery: ~1106d
+    Trades in DD: 103, turnover: 3036 bars
+    Cause mix: {'Winner': 31, 'Other_loss': 30, 'Exit_lag': 25, 'False_breakout': 17}
+    Context mix: {'Chop': 85, 'Transition': 15, 'Trend': 3}
+    Exit reason mix: {'ATR_trail': 65, 'EMA_cross_down': 38}
+    Market during DD: BTC return +13.6%, avg ER30 0.206, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #4: 32.8%
+    Start: 2024-03-05 → Trough: 2024-07-02 → Recovery: 2024-11-22
+    Peak→Trough: 718 bars (~120d), Full recovery: ~262d
+    Trades in DD: 27, turnover: 791 bars
+    Cause mix: {'Winner': 8, 'Other_loss': 7, 'False_breakout': 7, 'Exit_lag': 5}
+    Context mix: {'Chop': 23, 'Transition': 3, 'Trend': 1}
+    Exit reason mix: {'ATR_trail': 16, 'EMA_cross_down': 11}
+    Market during DD: BTC return +45.6%, avg ER30 0.213, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #5: 24.6%
+    Start: 2025-01-20 → Trough: 2025-04-12 → Recovery: 2025-05-22
+    Peak→Trough: 489 bars (~82d), Full recovery: ~121d
+    Trades in DD: 8, turnover: 358 bars
+    Cause mix: {'Other_loss': 5, 'Winner': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 8}
+    Exit reason mix: {'ATR_trail': 4, 'EMA_cross_down': 4}
+    Market during DD: BTC return +6.5%, avg ER30 0.159, avg annualized vol 0.5%
+    → Prolonged chop market structure
+
+  DD #6: 29.8%
+    Start: 2025-05-22 → Trough: 2026-01-02 → Recovery: Not recovered
+    Peak→Trough: 1350 bars (~225d), Full recovery: N/A
+    Trades in DD: 24, turnover: 648 bars
+    Cause mix: {'Other_loss': 9, 'Winner': 8, 'False_breakout': 4, 'Exit_lag': 3}
+    Context mix: {'Chop': 21, 'Transition': 3}
+    Exit reason mix: {'ATR_trail': 15, 'EMA_cross_down': 9}
+    Market during DD: BTC return -38.7%, avg ER30 0.195, avg annualized vol 0.4%
+    → Driven by large giveback on exit-lag trades
+
+── slow_period = 84: 6 drawdown(s) > 20% ──
+
+  DD #1: 43.8%
+    Start: 2019-06-26 → Trough: 2020-04-20 → Recovery: 2020-11-17
+    Peak→Trough: 1794 bars (~299d), Full recovery: ~509d
+    Trades in DD: 43, turnover: 1507 bars
+    Cause mix: {'Other_loss': 18, 'Winner': 13, 'False_breakout': 6, 'Exit_lag': 6}
+    Context mix: {'Chop': 35, 'Transition': 6, 'Trend': 2}
+    Exit reason mix: {'ATR_trail': 32, 'EMA_cross_down': 11}
+    Market during DD: BTC return +35.1%, avg ER30 0.211, avg annualized vol 0.6%
+    → Driven by large giveback on exit-lag trades
+
+  DD #2: 32.0%
+    Start: 2021-01-08 → Trough: 2021-02-01 → Recovery: 2021-02-14
+    Peak→Trough: 144 bars (~24d), Full recovery: ~36d
+    Trades in DD: 4, turnover: 190 bars
+    Cause mix: {'Exit_lag': 1, 'Other_loss': 1, 'False_breakout': 1, 'Winner': 1}
+    Context mix: {'Chop': 4}
+    Exit reason mix: {'ATR_trail': 3, 'EMA_cross_down': 1}
+    Market during DD: BTC return +20.1%, avg ER30 0.184, avg annualized vol 1.2%
+    → Prolonged chop market structure
+
+  DD #3: 35.7%
+    Start: 2021-02-21 → Trough: 2021-07-24 → Recovery: 2021-09-06
+    Peak→Trough: 917 bars (~153d), Full recovery: ~197d
+    Trades in DD: 14, turnover: 551 bars
+    Cause mix: {'Other_loss': 7, 'Winner': 5, 'False_breakout': 1, 'Exit_lag': 1}
+    Context mix: {'Chop': 10, 'Transition': 4}
+    Exit reason mix: {'ATR_trail': 11, 'EMA_cross_down': 3}
+    Market during DD: BTC return -8.3%, avg ER30 0.173, avg annualized vol 0.8%
+    → Driven by large giveback on exit-lag trades
+
+  DD #4: 47.9%
+    Start: 2021-11-09 → Trough: 2022-10-25 → Recovery: 2024-02-27
+    Peak→Trough: 2101 bars (~350d), Full recovery: ~840d
+    Trades in DD: 66, turnover: 2161 bars
+    Cause mix: {'Other_loss': 21, 'Exit_lag': 19, 'Winner': 18, 'False_breakout': 8}
+    Context mix: {'Chop': 49, 'Transition': 12, 'Trend': 5}
+    Exit reason mix: {'ATR_trail': 52, 'EMA_cross_down': 14}
+    Market during DD: BTC return -16.7%, avg ER30 0.211, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #5: 33.0%
+    Start: 2024-03-05 → Trough: 2024-09-17 → Recovery: 2024-11-13
+    Peak→Trough: 1176 bars (~196d), Full recovery: ~253d
+    Trades in DD: 22, turnover: 771 bars
+    Cause mix: {'Winner': 9, 'Other_loss': 5, 'Exit_lag': 4, 'False_breakout': 4}
+    Context mix: {'Chop': 14, 'Transition': 6, 'Trend': 2}
+    Exit reason mix: {'ATR_trail': 18, 'EMA_cross_down': 4}
+    Market during DD: BTC return +35.9%, avg ER30 0.213, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #6: 22.3%
+    Start: 2025-05-22 → Trough: 2026-01-02 → Recovery: Not recovered
+    Peak→Trough: 1350 bars (~225d), Full recovery: N/A
+    Trades in DD: 20, turnover: 563 bars
+    Cause mix: {'Other_loss': 7, 'Winner': 6, 'False_breakout': 4, 'Exit_lag': 3}
+    Context mix: {'Chop': 19, 'Transition': 1}
+    Exit reason mix: {'ATR_trail': 16, 'EMA_cross_down': 4}
+    Market during DD: BTC return -38.7%, avg ER30 0.195, avg annualized vol 0.4%
+    → Driven by large giveback on exit-lag trades
+
+── slow_period = 120: 5 drawdown(s) > 20% ──
+
+  DD #1: 41.5%
+    Start: 2019-06-26 → Trough: 2020-01-05 → Recovery: 2020-11-17
+    Peak→Trough: 1158 bars (~193d), Full recovery: ~509d
+    Trades in DD: 42, turnover: 1454 bars
+    Cause mix: {'Other_loss': 15, 'Winner': 13, 'Exit_lag': 8, 'False_breakout': 6}
+    Context mix: {'Chop': 30, 'Transition': 9, 'Trend': 3}
+    Exit reason mix: {'ATR_trail': 33, 'EMA_cross_down': 9}
+    Market during DD: BTC return +32.3%, avg ER30 0.211, avg annualized vol 0.6%
+    → Driven by large giveback on exit-lag trades
+
+  DD #2: 28.7%
+    Start: 2021-01-08 → Trough: 2021-02-01 → Recovery: 2021-02-09
+    Peak→Trough: 145 bars (~24d), Full recovery: ~31d
+    Trades in DD: 4, turnover: 181 bars
+    Cause mix: {'Other_loss': 2, 'Exit_lag': 1, 'Winner': 1}
+    Context mix: {'Chop': 4}
+    Exit reason mix: {'ATR_trail': 3, 'EMA_cross_down': 1}
+    Market during DD: BTC return +16.4%, avg ER30 0.166, avg annualized vol 1.2%
+    → Prolonged chop market structure
+
+  DD #3: 26.7%
+    Start: 2021-02-21 → Trough: 2021-07-25 → Recovery: 2021-08-09
+    Peak→Trough: 922 bars (~154d), Full recovery: ~168d
+    Trades in DD: 10, turnover: 449 bars
+    Cause mix: {'Winner': 4, 'Other_loss': 3, 'Exit_lag': 3}
+    Context mix: {'Chop': 8, 'Transition': 1, 'Trend': 1}
+    Exit reason mix: {'ATR_trail': 10}
+    Market during DD: BTC return -20.0%, avg ER30 0.176, avg annualized vol 0.9%
+    → Driven by large giveback on exit-lag trades
+
+  DD #4: 40.9%
+    Start: 2021-11-09 → Trough: 2023-03-16 → Recovery: 2024-02-26
+    Peak→Trough: 2951 bars (~492d), Full recovery: ~839d
+    Trades in DD: 60, turnover: 2033 bars
+    Cause mix: {'Winner': 18, 'Exit_lag': 17, 'Other_loss': 16, 'False_breakout': 9}
+    Context mix: {'Chop': 36, 'Transition': 18, 'Trend': 6}
+    Exit reason mix: {'ATR_trail': 50, 'EMA_cross_down': 10}
+    Market during DD: BTC return -19.7%, avg ER30 0.210, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #5: 32.6%
+    Start: 2024-03-05 → Trough: 2024-10-13 → Recovery: 2024-11-20
+    Peak→Trough: 1335 bars (~222d), Full recovery: ~260d
+    Trades in DD: 24, turnover: 809 bars
+    Cause mix: {'Winner': 10, 'Exit_lag': 5, 'Other_loss': 5, 'False_breakout': 4}
+    Context mix: {'Chop': 16, 'Transition': 6, 'Trend': 2}
+    Exit reason mix: {'ATR_trail': 18, 'EMA_cross_down': 6}
+    Market during DD: BTC return +39.1%, avg ER30 0.213, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+── slow_period = 144: 7 drawdown(s) > 20% ──
+
+  DD #1: 42.3%
+    Start: 2019-06-26 → Trough: 2020-01-05 → Recovery: 2020-11-05
+    Peak→Trough: 1158 bars (~193d), Full recovery: ~498d
+    Trades in DD: 36, turnover: 1430 bars
+    Cause mix: {'Winner': 13, 'Other_loss': 9, 'Exit_lag': 9, 'False_breakout': 5}
+    Context mix: {'Chop': 27, 'Transition': 6, 'Trend': 3}
+    Exit reason mix: {'ATR_trail': 31, 'EMA_cross_down': 5}
+    Market during DD: BTC return +19.1%, avg ER30 0.211, avg annualized vol 0.6%
+    → Driven by large giveback on exit-lag trades
+
+  DD #2: 37.1%
+    Start: 2021-01-08 → Trough: 2021-01-31 → Recovery: 2021-02-19
+    Peak→Trough: 139 bars (~23d), Full recovery: ~41d
+    Trades in DD: 5, turnover: 210 bars
+    Cause mix: {'False_breakout': 2, 'Exit_lag': 1, 'Other_loss': 1, 'Winner': 1}
+    Context mix: {'Chop': 5}
+    Exit reason mix: {'ATR_trail': 3, 'EMA_cross_down': 2}
+    Market during DD: BTC return +29.1%, avg ER30 0.187, avg annualized vol 1.1%
+    → Dominated by repeated false breakouts
+
+  DD #3: 22.8%
+    Start: 2021-02-21 → Trough: 2021-03-01 → Recovery: 2021-03-13
+    Peak→Trough: 44 bars (~7d), Full recovery: ~19d
+    Trades in DD: 2, turnover: 114 bars
+    Cause mix: {'Other_loss': 1, 'Winner': 1}
+    Context mix: {'Chop': 2}
+    Exit reason mix: {'ATR_trail': 2}
+    Market during DD: BTC return +5.9%, avg ER30 0.188, avg annualized vol 1.0%
+    → Prolonged chop market structure
+
+  DD #4: 25.2%
+    Start: 2021-03-14 → Trough: 2021-07-27 → Recovery: 2021-08-20
+    Peak→Trough: 809 bars (~135d), Full recovery: ~159d
+    Trades in DD: 10, turnover: 389 bars
+    Cause mix: {'Winner': 5, 'Other_loss': 4, 'Exit_lag': 1}
+    Context mix: {'Chop': 7, 'Transition': 2, 'Trend': 1}
+    Exit reason mix: {'ATR_trail': 9, 'EMA_cross_down': 1}
+    Market during DD: BTC return -18.5%, avg ER30 0.173, avg annualized vol 0.8%
+    → Driven by large giveback on exit-lag trades
+
+  DD #5: 39.8%
+    Start: 2021-11-09 → Trough: 2022-11-03 → Recovery: 2024-01-02
+    Peak→Trough: 2155 bars (~359d), Full recovery: ~783d
+    Trades in DD: 55, turnover: 1745 bars
+    Cause mix: {'Winner': 17, 'Exit_lag': 16, 'Other_loss': 15, 'False_breakout': 7}
+    Context mix: {'Chop': 34, 'Transition': 19, 'Trend': 2}
+    Exit reason mix: {'ATR_trail': 45, 'EMA_cross_down': 10}
+    Market during DD: BTC return -33.1%, avg ER30 0.209, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #6: 27.1%
+    Start: 2024-03-05 → Trough: 2024-09-16 → Recovery: 2024-11-11
+    Peak→Trough: 1173 bars (~196d), Full recovery: ~251d
+    Trades in DD: 21, turnover: 843 bars
+    Cause mix: {'Winner': 9, 'Other_loss': 6, 'Exit_lag': 5, 'False_breakout': 1}
+    Context mix: {'Chop': 13, 'Transition': 6, 'Trend': 2}
+    Exit reason mix: {'ATR_trail': 19, 'EMA_cross_down': 2}
+    Market during DD: BTC return +30.1%, avg ER30 0.211, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+  DD #7: 21.0%
+    Start: 2024-12-17 → Trough: 2025-04-16 → Recovery: 2025-05-20
+    Peak→Trough: 720 bars (~120d), Full recovery: ~154d
+    Trades in DD: 8, turnover: 361 bars
+    Cause mix: {'Winner': 3, 'Other_loss': 2, 'Exit_lag': 2, 'False_breakout': 1}
+    Context mix: {'Chop': 6, 'Transition': 2}
+    Exit reason mix: {'ATR_trail': 7, 'EMA_cross_down': 1}
+    Market during DD: BTC return +0.2%, avg ER30 0.170, avg annualized vol 0.5%
+    → Driven by large giveback on exit-lag trades
+
+================================================================================
+SECTION 6 — COUNTERFACTUAL DIAGNOSTICS
+================================================================================
+
+── slow_period = 60 ──
+
+  A. Perfect entry filter (remove 38 false breakouts):
+    Trades: 231 → 193
+    Final equity: $54,143 → $250,590 (+$196,447)
+    MDD: 48.5% → 32.0% (-16.5pp)
+    Upper bound net PnL improvement: $58,166
+
+  B. Perfect exit (exit at MFE peak for 43 exit-lag trades):
+    Final equity: $54,143 → $846,787 (+$792,644)
+    MDD: 48.5% → 31.7% (-16.9pp)
+    Cumulative saved return: +280.2pp
+
+  C. Chop gate (remove 193 chop trades):
+    Trades: 231 → 38
+    Final equity: $54,143 → $21,081 (+$-33,062)
+    MDD: 48.5% → 29.3% (-19.2pp)
+    Exposure bars: 7718 → 1727 (-77.6%)
+
+  → Highest EV lever: Faster exit (+$792,644)
+
+── slow_period = 84 ──
+
+  A. Perfect entry filter (remove 25 false breakouts):
+    Trades: 197 → 172
+    Final equity: $135,013 → $383,302 (+$248,290)
+    MDD: 44.3% → 29.6% (-14.7pp)
+    Upper bound net PnL improvement: $67,945
+
+  B. Perfect exit (exit at MFE peak for 40 exit-lag trades):
+    Final equity: $135,013 → $1,385,841 (+$1,250,829)
+    MDD: 44.3% → 32.9% (-11.4pp)
+    Cumulative saved return: +237.4pp
+
+  C. Chop gate (remove 153 chop trades):
+    Trades: 197 → 44
+    Final equity: $135,013 → $40,493 (+$-94,520)
+    MDD: 44.3% → 21.2% (-23.1pp)
+    Exposure bars: 7486 → 1901 (-74.6%)
+
+  → Highest EV lever: Faster exit (+$1,250,829)
+
+── slow_period = 120 ──
+
+  A. Perfect entry filter (remove 23 false breakouts):
+    Trades: 189 → 166
+    Final equity: $205,193 → $492,432 (+$287,239)
+    MDD: 35.9% → 30.2% (-5.7pp)
+    Upper bound net PnL improvement: $65,803
+
+  B. Perfect exit (exit at MFE peak for 42 exit-lag trades):
+    Final equity: $205,193 → $2,771,839 (+$2,566,646)
+    MDD: 35.9% → 26.7% (-9.2pp)
+    Cumulative saved return: +265.3pp
+
+  C. Chop gate (remove 133 chop trades):
+    Trades: 189 → 56
+    Final equity: $205,193 → $32,722 (+$-172,471)
+    MDD: 35.9% → 24.1% (-11.7pp)
+    Exposure bars: 7333 → 2278 (-68.9%)
+
+  → Highest EV lever: Faster exit (+$2,566,646)
+
+── slow_period = 144 ──
+
+  A. Perfect entry filter (remove 21 false breakouts):
+    Trades: 180 → 159
+    Final equity: $237,800 → $506,073 (+$268,273)
+    MDD: 35.1% → 30.5% (-4.7pp)
+    Upper bound net PnL improvement: $51,226
+
+  B. Perfect exit (exit at MFE peak for 42 exit-lag trades):
+    Final equity: $237,800 → $3,255,357 (+$3,017,557)
+    MDD: 35.1% → 21.9% (-13.3pp)
+    Cumulative saved return: +266.7pp
+
+  C. Chop gate (remove 124 chop trades):
+    Trades: 180 → 56
+    Final equity: $237,800 → $35,340 (+$-202,460)
+    MDD: 35.1% → 18.6% (-16.6pp)
+    Exposure bars: 7368 → 2306 (-68.7%)
+
+  → Highest EV lever: Faster exit (+$3,017,557)
+
+================================================================================
+SECTION 7 — CROSS-CONFIG COMPARISON
+================================================================================
+  slow trades    WR%  Sharpe    MDD%    %FB    %EL %Other %Chop_loss %Trend_loss
+--------------------------------------------------------------------------------
+    60    231  32.9%   0.797   54.06  30.1%  14.5%  55.4%      82.8%        0.9%
+    84    197  35.0%   1.129   47.94  28.3%  15.9%  55.8%      80.0%        5.2%
+   120    189  38.1%   1.276   41.53  26.5%  18.5%  55.0%      73.8%        7.6%
+   144    180  38.9%   1.328   42.33  22.9%  18.5%  58.6%      77.3%        2.5%
+
+Key observations:
+  Trade count: 231 → 197 → 189 → 180 (slow=60→144)
+  slow=60: FB=38 trades, EL=43 trades (FB count as slow↑: —)
+  slow=84: FB=25 trades, EL=40 trades (FB count as slow↑: ↓)
+  slow=120: FB=23 trades, EL=42 trades (FB count as slow↑: ↓)
+  slow=144: FB=21 trades, EL=42 trades (FB count as slow↑: ↓)
+
+================================================================================
+SECTION 9 — BOOTSTRAP VALIDATION
+================================================================================
+
+Bootstrap Sharpe 90% CI (2000 samples, block=20d):
+    slow   Sharpe     2.5%      50%    97.5%
+  ------------------------------------------
+      60    0.778   -0.066    0.769    1.558
+      84    1.098    0.248    1.097    1.884
+     120    1.239    0.410    1.221    2.011
+     144    1.283    0.505    1.298    2.064
+
+Paired comparison (P that row > column on Sharpe):
+  P(slow=60 > slow=84) = 0.296
+  P(slow=60 > slow=120) = 0.223
+  P(slow=60 > slow=144) = 0.189
+  P(slow=84 > slow=120) = 0.403
+  P(slow=84 > slow=144) = 0.354
+  P(slow=120 > slow=144) = 0.444
+
+  Note: * = significant at 95% level (P > 0.975 or P < 0.025)
+  Block bootstrap preserves autocorrelation but may understate
+  uncertainty for non-stationary returns. Interpret with caution.
+
+================================================================================
+SECTION 8 — FINAL DIAGNOSIS
+================================================================================
+
+slow=60:
+  Largest net loss cause: Other_loss (55% of total net loss, $-107,040)
+
+slow=84:
+  Largest net loss cause: Other_loss (56% of total net loss, $-133,861)
+
+slow=120:
+  Largest net loss cause: Other_loss (55% of total net loss, $-136,547)
+
+slow=144:
+  Largest net loss cause: Other_loss (59% of total net loss, $-131,386)
+
+------------------------------------------------------------
+OVERALL CONCLUSIONS:
+
+1. LARGEST NET LOSS CAUSE: Other (FB: 27%, EL: 17%, Other: 56% of total net loss)
+
+2. LARGEST MDD CAUSE: Determined by drawdown anatomy above.
+
+3. HIGHEST EV CHANGE: See counterfactual analysis (Section 6).
+
+4. LEAST TOXIC FAILURE PROFILE:
+  slow=60: max single-mode concentration = 30%
+  slow=84: max single-mode concentration = 28%
+  slow=120: max single-mode concentration = 26%
+  slow=144: max single-mode concentration = 23%

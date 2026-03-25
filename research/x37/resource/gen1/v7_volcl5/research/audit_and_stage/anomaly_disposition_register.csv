@@ -1,0 +1,11 @@
+anomaly_class,deterministic_rule,rule_details,impact_on_scoring
+extra_columns,retained_not_used,No extra columns present in either raw file. Feature surface locked to prompt schema only.,none
+missing_values,retained_exactly_as_supplied,No missing values detected.,none
+duplicate_rows,retained_exactly_as_supplied,No fully duplicated rows detected.,none
+duplicate_open_time,retained_exactly_as_supplied,No duplicate open_time rows detected.,none
+duplicate_close_time_4h,retained_exactly_as_supplied,One duplicated H4 close_time pair on 2017-09-06; both rows retained because no duplicate open_time and no synthetic repair allowed. This affects warmup only.,warmup_only_context
+nonstandard_bar_length_4h,retained_exactly_as_supplied,19 H4 rows have close_time not exactly 4 hours after open_time; rows retained and supplied close_time governs slower-feature visibility. No bar repair or synthetic normalization performed.,included_in_scoring_and_audit
+irregular_open_time_gaps_4h,retained_exactly_as_supplied,8 H4 rows precede gaps >4h. Missing bars are not invented. Execution uses actual next available open as supplied.,included_in_scoring_and_audit
+zero_activity_row_4h,retained_exactly_as_supplied,One H4 zero-activity row at 2017-09-06 16:00 UTC retained; it lies in warmup only and is logged.,warmup_only_context
+impossible_ohlc,retained_exactly_as_supplied,No impossible OHLC rows detected.,none
+native_d1_vs_aggregated_h4_reconciliation,complete_days_match,"On overlapping complete UTC days with six H4 bars, native D1 and aggregated native H4 match exactly within floating-point tolerance for OHLCV and trade fields. Incomplete H4 days are logged separately, not repaired.",reconciliation_pass

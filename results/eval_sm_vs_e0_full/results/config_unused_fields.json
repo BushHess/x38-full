@@ -1,0 +1,49 @@
+{
+  "candidate": {
+    "unused_fields": [],
+    "unused_raw": [
+      "atr_mult",
+      "atr_period",
+      "entry_n",
+      "exit_n",
+      "exit_on_regime_break",
+      "fast_period",
+      "min_rebalance_weight_delta",
+      "min_weight",
+      "slope_lookback",
+      "slow_period",
+      "target_vol",
+      "use_vdo_filter",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold",
+      "vol_lookback"
+    ],
+    "allowlist": [
+      "atr_mult",
+      "atr_period",
+      "entry_n",
+      "exit_n",
+      "exit_on_regime_break",
+      "fast_period",
+      "min_rebalance_weight_delta",
+      "min_weight",
+      "slope_lookback",
+      "slow_period",
+      "target_vol",
+      "use_vdo_filter",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold",
+      "vol_lookback"
+    ],
+    "status": "PASS"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

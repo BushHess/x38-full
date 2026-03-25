@@ -1,0 +1,12 @@
+{
+  "seasonality_vol_significant": "True",
+  "seasonality_vol_magnitude": "1.52x",
+  "seasonality_buy_share_significant": "True",
+  "weekend_effect": "0.692x",
+  "clamp_frequency_pct": 0.03,
+  "volume_cross_year_ratio": 7.1,
+  "regime_persistence_excess": "253%",
+  "calendar_affects_vtrend": "True",
+  "data_param_ratio_rcssb": 76.0,
+  "data_param_ratio_current": 3130.0
+}

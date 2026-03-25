@@ -1,0 +1,89 @@
+{
+  "selected_candidate": "baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T20:23:21.579974+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "combo_wilder_trail30",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 84.61 < baseline 88.9",
+        "TOPPING return -20.7% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 84.61,
+        "min_cagr": 35.69,
+        "max_mdd": 36.44,
+        "max_fee_drag": 3.91,
+        "trades": 103
+      }
+    },
+    {
+      "name": "combo_cd2_trail30",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 86.11 < baseline 88.9",
+        "TOPPING return -20.0% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 86.11,
+        "min_cagr": 37.07,
+        "max_mdd": 39.02,
+        "max_fee_drag": 4.28,
+        "trades": 107
+      }
+    },
+    {
+      "name": "combo_wilder_cd2",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -25.7% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 92.91,
+        "min_cagr": 39.27,
+        "max_mdd": 38.4,
+        "max_fee_drag": 4.11,
+        "trades": 105
+      }
+    },
+    {
+      "name": "combo_triple",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 82.41 < baseline 88.9",
+        "TOPPING return -24.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 82.41,
+        "min_cagr": 35.42,
+        "max_mdd": 37.83,
+        "max_fee_drag": 4.15,
+        "trades": 108
+      }
+    }
+  ]
+}

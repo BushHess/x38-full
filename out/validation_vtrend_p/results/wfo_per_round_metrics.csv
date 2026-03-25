@@ -1,0 +1,9 @@
+window_id,test_start,test_end,candidate_score,baseline_score,delta_harsh_score,candidate_cagr_pct,baseline_cagr_pct,candidate_max_dd_pct,baseline_max_dd_pct,candidate_sharpe,baseline_sharpe,candidate_trades,baseline_trades,trade_count_candidate,trade_count_baseline,valid_window,invalid_reason,low_trade_window,low_trade_reason
+0,2022-01-01,2022-07-01,-19.213,nan,nan,-6.71,0.0,4.73,0.0,-1.7049,nan,4,0,4,0,False,baseline_zero_trade_count,False,none
+1,2022-07-01,2023-01-01,-28.747,nan,nan,-10.39,0.0,5.62,0.0,-1.7625,nan,6,0,6,0,False,baseline_zero_trade_count,False,none
+2,2023-01-01,2023-07-01,146.1616,-11.7634,157.925,43.76,-1.45,2.72,14.68,3.4992,0.0337,4,4,4,4,True,none,True,both_below_min_trades_for_power
+3,2023-07-01,2024-01-01,33.0934,173.594,-140.5006,8.43,61.88,5.43,11.85,1.0533,1.9255,5,6,5,6,True,none,False,none
+4,2024-01-01,2024-07-01,78.202,56.8469,21.3551,21.68,24.56,5.01,23.08,2.0635,0.8118,5,11,5,11,True,none,False,none
+5,2024-07-01,2025-01-01,41.9416,243.6548,-201.7132,10.8,88.78,4.61,10.52,1.3277,2.1271,8,10,8,10,True,none,False,none
+6,2025-01-01,2025-07-01,5.0079,-33.434,38.4419,1.52,-7.64,4.06,25.39,0.2448,-0.0883,6,9,6,9,True,none,False,none
+7,2025-07-01,2026-01-01,-7.465,-3.1321,-4.3329,-2.11,1.17,4.65,14.73,-0.2856,0.1628,6,9,6,9,True,none,False,none

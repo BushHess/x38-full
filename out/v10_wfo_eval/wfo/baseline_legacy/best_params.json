@@ -1,0 +1,8 @@
+{
+  "emergency_dd_pct": 0.28,
+  "emergency_ref": "pre_cost_legacy",
+  "entry_cooldown_bars": 2,
+  "fixed_stop_pct": 0.18,
+  "rsi_method": "wilder",
+  "trail_atr_mult": 3.0
+}

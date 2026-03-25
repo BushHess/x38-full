@@ -1,0 +1,4 @@
+Loading data...
+Traceback (most recent call last):
+  File "<string>", line 115, in <module>
+AttributeError: 'DataFeed' object has no attribute 'warmup_idx'

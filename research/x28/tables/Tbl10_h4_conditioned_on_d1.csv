@@ -1,0 +1,4 @@
+d1_regime,h4_above_bars,h4_below_bars,h4_mean_ret_above,h4_mean_ret_below,h4_sharpe_above,h4_sharpe_below,welch_p,mann_whitney_p
+D1 EMA(21),9861,8886,3.67 bps,-0.93 bps,1.250,-0.272,0.0356,0.0979
+D1 EMA(50),9805,8942,3.71 bps,-0.95 bps,1.224,-0.287,0.0324,0.0295
+D1 SMA(200),9566,9181,2.02 bps,0.93 bps,0.735,0.262,0.6175,0.4783

@@ -1,0 +1,48 @@
+{
+  "config": {
+    "n_boot": 2000,
+    "n_perm": 10000,
+    "block_size": 60,
+    "seed": 42,
+    "n_grid": [
+      30,
+      48,
+      60,
+      72,
+      84,
+      96,
+      108,
+      120,
+      144,
+      168,
+      200,
+      240,
+      300,
+      360,
+      500,
+      720
+    ],
+    "trail": 3.0,
+    "atr_period": 14,
+    "cost_rt_bps": 50.0,
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup": 365
+  },
+  "phase_reached": 1,
+  "determination": "FAIL",
+  "fail_reason": "Phase 1: twin signal not significant (p=0.017700)",
+  "phase_1_permutation": {
+    "twin_signal": {
+      "p_value": 0.0177,
+      "real_score": 98.5857,
+      "null_mean": 30.4331,
+      "null_std": 37.1838
+    },
+    "atr": {
+      "p_value": 0.0554,
+      "null_mean": 65.2973,
+      "null_std": 20.3023
+    }
+  }
+}

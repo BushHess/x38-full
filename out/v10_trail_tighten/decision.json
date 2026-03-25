@@ -1,0 +1,78 @@
+{
+  "selected_candidate": "tighten_030",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-22T20:37:42.301795+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline_legacy",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 25.8x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 83.48,
+        "min_cagr": 34.35,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.9,
+        "trades": 103
+      }
+    },
+    {
+      "name": "tighten_025",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 25.7x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 94.81,
+        "min_cagr": 38.5,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.87,
+        "trades": 101
+      }
+    },
+    {
+      "name": "tighten_030",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.0x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 96.39,
+        "min_cagr": 38.93,
+        "max_mdd": 33.31,
+        "max_fee_drag": 3.93,
+        "trades": 101
+      }
+    },
+    {
+      "name": "tighten_wfo",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 25.8x <= 1.2 * baseline 25.8x"
+      ],
+      "worst": {
+        "min_score": 83.48,
+        "min_cagr": 34.35,
+        "max_mdd": 33.88,
+        "max_fee_drag": 3.9,
+        "trades": 103
+      }
+    }
+  ]
+}

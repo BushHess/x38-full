@@ -1,0 +1,213 @@
+================================================================================
+RC-SSB DIAGNOSTICS: Empirical Analysis of BTC H4 Data
+================================================================================
+  H4 bars: 17838, warmup: 2190, eval: 15648
+
+================================================================================
+TEST 1: SEASONALITY (hour-of-day, day-of-week)
+================================================================================
+
+  1a. Volatility (|return|) by H4 slot:
+    00:00  0.000000  0.00x  
+    01:00  0.000000  0.00x  
+    02:00  0.000000  0.00x  
+    03:00  0.008047  0.99x  █████████████████████████████
+    04:00  0.000000  0.00x  
+    05:00  0.000000  0.00x  
+    06:00  0.000000  0.00x  
+    07:00  0.006606  0.81x  ████████████████████████
+    11:00  0.007389  0.91x  ███████████████████████████
+    13:00  0.000000  0.00x  
+    15:00  0.010044  1.23x  ████████████████████████████████████
+    19:00  0.008778  1.08x  ████████████████████████████████
+    23:00  0.008101  0.99x  █████████████████████████████
+    Max/Min ratio: 1.52x
+
+  1b. Volatility by day-of-week:
+    Mon  0.009732  1.19x  ███████████████████████████████████
+    Tue  0.008635  1.06x  ███████████████████████████████
+    Wed  0.008927  1.09x  ████████████████████████████████
+    Thu  0.008675  1.06x  ███████████████████████████████
+    Fri  0.008760  1.07x  ████████████████████████████████
+    Sat  0.005474  0.67x  ████████████████████
+    Sun  0.006905  0.85x  █████████████████████████
+    Max/Min ratio: 1.78x
+
+  1c. Volume by H4 slot:
+    00:00             0  0.00x  
+    01:00             0  0.00x  
+    02:00             0  0.00x  
+    03:00        10,119  0.89x  █████████████████
+    04:00             0  0.00x  
+    05:00             0  0.00x  
+    06:00             0  0.00x  
+    07:00         9,258  0.81x  ████████████████
+    11:00        10,917  0.96x  ███████████████████
+    13:00             0  0.00x  
+    15:00        15,486  1.36x  ███████████████████████████
+    19:00        12,987  1.14x  ██████████████████████
+    23:00         9,678  0.85x  ████████████████
+    Max/Min ratio: 1.67x
+
+  1d. Weekend vs Weekday:
+    Weekday vol: 0.008946
+    Weekend vol: 0.006190
+    Weekend/Weekday: 0.692x
+
+  1e. ANOVA F-test (vol across hours): F=34.56, p=2.9346e-35
+      SIGNIFICANT at 1%
+
+  1f. Taker buy share (tb/vol) by H4 slot:
+    03:00  mean=0.4924  std=0.0398
+    07:00  mean=0.4888  std=0.0448
+    11:00  mean=0.4921  std=0.0394
+    15:00  mean=0.4949  std=0.0356
+    19:00  mean=0.4938  std=0.0357
+    23:00  mean=0.4951  std=0.0393
+    ANOVA (buy_share across hours): F=9.27, p=7.8562e-09
+    SIGNIFICANT at 1%
+
+================================================================================
+TEST 2: INVARIANT REPRESENTATION
+================================================================================
+
+  2a. Wick non-negativity:
+    u_t < 0: 31/17837 (0.17%)
+    d_t < 0: 35/17837 (0.20%)
+
+  2b. Current system clamp frequency:
+    high < close (needs clamp): 6/17837 (0.03%)
+    low > close (needs clamp): 0/17837 (0.00%)
+
+  2c. Reconstruction equivalence (max abs diff):
+    Close: 1.11e-09
+    High:  1.12e-09 (after warmup)
+    Low:   1.09e-09 (after warmup)
+
+================================================================================
+TEST 3: VOLUME SCALE MISMATCH — Impact on VDO
+================================================================================
+
+  3a. Raw volume by year:
+    2018: median vol =        5,240 BTC
+    2019: median vol =        5,391 BTC
+    2020: median vol =        9,344 BTC
+    2021: median vol =        9,617 BTC
+    2022: median vol =       18,220 BTC
+    2023: median vol =        6,440 BTC
+    2024: median vol =        4,385 BTC
+    2025: median vol =        2,578 BTC
+    2026: median vol =        2,566 BTC
+    Max/Min ratio across years: 7.1x
+
+  3b. Buy share (tb/vol) by year:
+    2018: mean=0.5153  std=0.0581  range=[0.442, 0.592]
+    2019: mean=0.5150  std=0.0466  range=[0.446, 0.579]
+    2020: mean=0.4870  std=0.0345  range=[0.436, 0.544]
+    2021: mean=0.4930  std=0.0260  range=[0.454, 0.538]
+    2022: mean=0.4959  std=0.0211  range=[0.458, 0.529]
+    2023: mean=0.4862  std=0.0315  range=[0.433, 0.533]
+    2024: mean=0.4933  std=0.0384  range=[0.430, 0.555]
+    2025: mean=0.4804  std=0.0536  range=[0.392, 0.567]
+    2026: mean=0.4879  std=0.0585  range=[0.396, 0.583]
+
+  3c. Quote turnover (price × volume) by year:
+    2018: median quote turnover = $      38,074,729
+    2019: median quote turnover = $      39,150,245
+    2020: median quote turnover = $      93,574,341
+    2021: median quote turnover = $     453,962,798
+    2022: median quote turnover = $     431,953,048
+    2023: median quote turnover = $     203,461,873
+    2024: median quote turnover = $     282,018,780
+    2025: median quote turnover = $     264,409,542
+    2026: median quote turnover = $     216,516,923
+
+================================================================================
+TEST 4: REGIME STRUCTURE
+================================================================================
+
+  4a. Regime distribution:
+    calm-up     :  4761 bars (26.7%)
+    calm-down   :  4146 bars (23.3%)
+    storm-up    :  4543 bars (25.5%)
+    storm-down  :  4363 bars (24.5%)
+
+  4b. Regime persistence (average run length):
+    calm-up     : mean=8.0 bars (1.3 days), median=4, max=66
+    calm-down   : mean=7.2 bars (1.2 days), median=3, max=63
+    storm-up    : mean=9.7 bars (1.6 days), median=4, max=100
+    storm-down  : mean=9.4 bars (1.6 days), median=4, max=89
+
+  4c. Transition matrix P(next | current):
+                    calm-up   calm-dn  storm-up  storm-dn
+    calm-up       0.875  0.097  0.023  0.005
+    calm-down     0.109  0.862  0.003  0.026
+    storm-up      0.024  0.006  0.897  0.073
+    storm-down    0.008  0.019  0.079  0.893
+
+    Self-transition (persistence): ['0.875', '0.862', '0.897', '0.893']
+    Mean persistence: 0.882
+    If independent (25%): 0.250
+    Persistence excess over random: 253%
+
+================================================================================
+TEST 5: VCBB SEAM QUALITY (already implemented)
+================================================================================
+
+  VCBB vol clustering recovery (from validation):
+    abs_acf_60               : recovery=76%, pass=True
+    abs_acf_120              : recovery=60%, pass=True
+    abs_acf_180              : recovery=47%, pass=True
+    cond_vol_ratio           : recovery=81%, pass=True
+    rolling_vol_acf_60       : recovery=100%, pass=True
+
+================================================================================
+TEST 6: VTREND SENSITIVITY TO CALENDAR FEATURES
+================================================================================
+
+  6a. VTREND per-bar return while in position, by day:
+    Mon: n=1075, mean=+10.9 bps, std=144.2 bps, Sharpe_contrib=3.528
+    Tue: n=1059, mean= +4.2 bps, std=130.7 bps, Sharpe_contrib=1.496
+    Wed: n=1042, mean=+13.9 bps, std=130.3 bps, Sharpe_contrib=5.006
+    Thu: n=1040, mean= -4.0 bps, std=119.2 bps, Sharpe_contrib=-1.552
+    Fri: n= 995, mean= +8.3 bps, std=119.2 bps, Sharpe_contrib=3.268
+    Sat: n=1038, mean= +6.8 bps, std= 87.3 bps, Sharpe_contrib=3.643
+    Sun: n=1084, mean= +3.0 bps, std=113.3 bps, Sharpe_contrib=1.251
+
+  6b. ANOVA (in-position returns by day): F=2.39, p=0.0263
+      SIGNIFICANT at 5%
+
+================================================================================
+TEST 7: DATA BUDGET
+================================================================================
+
+  Total eval bars: 15648
+  Seasonality slots (6 hours × 7 days): 42 = 42 slots
+  Bars per slot: 373
+  RC-SSB parameters estimate:
+    Seasonal: 42 slots × 3 = 126
+    Regime: 5 eras × 4×4 transition = 80
+    Total: ~206
+    Data/param ratio: 76:1
+
+  Current system parameters:
+    VTREND: 3 (slow, trail, vdo_threshold)
+    VCBB: 2 (blksz=60, ctx=90)
+    Total: 5
+    Data/param ratio: 3130:1
+
+================================================================================
+SUMMARY: Which RC-SSB claims are empirically supported?
+================================================================================
+  seasonality_vol_significant: True
+  seasonality_vol_magnitude: 1.52x
+  seasonality_buy_share_significant: True
+  weekend_effect: 0.692x
+  clamp_frequency_pct: 0.03
+  volume_cross_year_ratio: 7.1
+  regime_persistence_excess: 253%
+  calendar_affects_vtrend: True
+  data_param_ratio_rcssb: 76.0
+  data_param_ratio_current: 3130.0
+
+  Results saved to /var/www/trading-bots/btc-spot-dev/research/results/rcssb_diagnostics.json

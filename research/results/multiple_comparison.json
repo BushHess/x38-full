@@ -1,0 +1,31 @@
+{
+  "n_perm": 10000,
+  "alpha": 0.05,
+  "K_total_hypotheses": 16,
+  "component_pvalues": {
+    "EMA": 0.0013,
+    "VDO": 0.0034,
+    "ATR": 0.0003
+  },
+  "bonferroni_threshold": 0.003125,
+  "corrections": {
+    "EMA trend signal": {
+      "p_value": 0.0003,
+      "bonferroni": true,
+      "holm": true,
+      "bh": true
+    },
+    "VDO filter": {
+      "p_value": 0.0003,
+      "bonferroni": false,
+      "holm": true,
+      "bh": true
+    },
+    "ATR trail scaling": {
+      "p_value": 0.0003,
+      "bonferroni": true,
+      "holm": true,
+      "bh": true
+    }
+  }
+}

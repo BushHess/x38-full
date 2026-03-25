@@ -1,0 +1,4 @@
+label,trade_id,entry_time,exit_time,entry_price,exit_price,qty,pnl,return_pct,days_held,entry_reason,exit_reason,regime
+baseline,1,1704153600000,1705118400000,44656.15658,42586.507729,0.18771039,-396.488525,-4.634633,11.166667,vdo_trend_accel,trailing_stop,AnalyticalRegime.BULL
+baseline,2,1705420800000,1705953600000,43276.242091,39798.411816,0.07764404,-273.12292,-8.03635,6.166667,vdo_trend_accel,emergency_dd,AnalyticalRegime.CHOP
+baseline,3,1706126400000,1708732800000,41117.550608,50716.244523,0.21496496,2052.480621,23.344518,30.166667,vdo_trend_accel,trailing_stop,AnalyticalRegime.BULL

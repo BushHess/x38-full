@@ -1,0 +1,43 @@
+{
+  "candidate": "E5_plus_EMA1D21",
+  "alternative": "E0_plus_EMA1D21",
+  "status": "GO",
+  "all_pass": true,
+  "gates": [
+    {
+      "gate": "G1_absolute_dominance",
+      "passed": "True",
+      "value": 0.876926,
+      "threshold": 0.840962,
+      "detail": "candidate_worst=0.8769 > alternative_worst=0.8410"
+    },
+    {
+      "gate": "G2_state_dominance",
+      "passed": true,
+      "value": 0.846154,
+      "threshold": 0.5,
+      "detail": "wins=11/13 (84.6%), threshold>50%"
+    },
+    {
+      "gate": "G3_fractional_loss",
+      "passed": "True",
+      "value": 0.314933,
+      "threshold": 0.35,
+      "detail": "loss=31.5% (baseline=1.2801, worst=0.8769)"
+    },
+    {
+      "gate": "G4_absolute_floor",
+      "passed": "True",
+      "value": 0.876926,
+      "threshold": 0.5,
+      "detail": "worst_sharpe=0.8769, floor=0.50"
+    },
+    {
+      "gate": "G5_infra_conditioned",
+      "passed": "True",
+      "value": -0.166152,
+      "threshold": -0.2,
+      "detail": "d1_d1_delta=-0.1662, threshold=-0.20"
+    }
+  ]
+}

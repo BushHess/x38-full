@@ -1,0 +1,87 @@
+{
+  "protocol_file": "/mnt/data/RESEARCH_PROMPT_V4.md",
+  "raw_zip": "/mnt/data/data.zip",
+  "files": {
+    "d1_csv": "/mnt/data/rawdata/data/btcusdt_1d.csv",
+    "h4_csv": "/mnt/data/rawdata/data/btcusdt_4h.csv"
+  },
+  "D1": {
+    "rows": 3128,
+    "start_open_time_utc": "2017-08-17 00:00:00+00:00",
+    "end_close_time_utc": "2026-03-10 23:59:59.999000+00:00",
+    "duplicate_open_time_rows": 0,
+    "non_24h_gaps": 0
+  },
+  "H4": {
+    "rows": 18752,
+    "start_open_time_utc": "2017-08-17 04:00:00+00:00",
+    "end_close_time_utc": "2026-03-11 07:59:59.999000+00:00",
+    "duplicate_open_time_rows": 0,
+    "non_4h_gaps": 9
+  },
+  "h4_gap_rows": [
+    {
+      "open_dt": "2017-09-06 20:00:00+00:00",
+      "close_dt": "2017-09-06 23:59:59.999000+00:00",
+      "gap_hours": 8.0
+    },
+    {
+      "open_dt": "2018-02-09 08:00:00+00:00",
+      "close_dt": "2018-02-09 11:59:59.999000+00:00",
+      "gap_hours": 32.0
+    },
+    {
+      "open_dt": "2018-06-26 12:00:00+00:00",
+      "close_dt": "2018-06-26 15:59:59.999000+00:00",
+      "gap_hours": 12.0
+    },
+    {
+      "open_dt": "2018-07-04 08:00:00+00:00",
+      "close_dt": "2018-07-04 11:59:59.999000+00:00",
+      "gap_hours": 8.0
+    },
+    {
+      "open_dt": "2018-11-14 08:00:00+00:00",
+      "close_dt": "2018-11-14 11:59:59.999000+00:00",
+      "gap_hours": 8.0
+    },
+    {
+      "open_dt": "2019-03-12 08:00:00+00:00",
+      "close_dt": "2019-03-12 11:59:59.999000+00:00",
+      "gap_hours": 8.0
+    },
+    {
+      "open_dt": "2019-05-15 12:00:00+00:00",
+      "close_dt": "2019-05-15 15:59:59.999000+00:00",
+      "gap_hours": 12.0
+    },
+    {
+      "open_dt": "2019-08-15 08:00:00+00:00",
+      "close_dt": "2019-08-15 11:59:59.999000+00:00",
+      "gap_hours": 8.0
+    },
+    {
+      "open_dt": "2020-02-19 16:00:00+00:00",
+      "close_dt": "2020-02-19 19:59:59.999000+00:00",
+      "gap_hours": 8.0
+    }
+  ],
+  "missing_core_ohlcv_counts": {
+    "d1": {
+      "open": 0,
+      "high": 0,
+      "low": 0,
+      "close": 0,
+      "volume": 0,
+      "taker_buy_base_vol": 0
+    },
+    "h4": {
+      "open": 0,
+      "high": 0,
+      "low": 0,
+      "close": 0,
+      "volume": 0,
+      "taker_buy_base_vol": 0
+    }
+  }
+}

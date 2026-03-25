@@ -1,0 +1,104 @@
+{
+  "H1": {
+    "raw_p": 0.096,
+    "holm_p": 0.5760000000000001,
+    "evidence": "TENTATIVE"
+  },
+  "H2": {
+    "raw_p": 0.2332,
+    "holm_p": 1.0,
+    "evidence": "TENTATIVE"
+  },
+  "H3": {
+    "raw_p": 0.29679999999999995,
+    "holm_p": 1.0,
+    "evidence": "TENTATIVE"
+  },
+  "H4": {
+    "raw_p": 0.3036000000000001,
+    "holm_p": 1.0,
+    "evidence": "TENTATIVE"
+  },
+  "H5": {
+    "raw_p": 0.22720000000000007,
+    "holm_p": 1.0,
+    "evidence": "TENTATIVE"
+  },
+  "H6": {
+    "raw_p": 0.0815999999999999,
+    "holm_p": 0.5711999999999993,
+    "evidence": "TENTATIVE"
+  },
+  "H7": {
+    "raw_p": 0.06479999999999997,
+    "holm_p": 0.5183999999999997,
+    "evidence": "TENTATIVE"
+  },
+  "H8": {
+    "raw_p": 0.9024000000000001,
+    "holm_p": 1.0,
+    "evidence": "UNSUPPORTED"
+  },
+  "_all_pairs": {
+    "E0 - E5": {
+      "raw_p": 0.1156,
+      "holm_p": 1.0
+    },
+    "E0 - SM": {
+      "raw_p": 0.38159999999999994,
+      "holm_p": 1.0
+    },
+    "E0 - LATCH": {
+      "raw_p": 0.4263999999999999,
+      "holm_p": 1.0
+    },
+    "E0 - E0_plus_EMA1D21": {
+      "raw_p": 0.106,
+      "holm_p": 1.0
+    },
+    "E0 - E5_plus_EMA1D21": {
+      "raw_p": 0.0168,
+      "holm_p": 0.252
+    },
+    "E5 - SM": {
+      "raw_p": 0.1484000000000001,
+      "holm_p": 1.0
+    },
+    "E5 - LATCH": {
+      "raw_p": 0.1644000000000001,
+      "holm_p": 1.0
+    },
+    "E5 - E0_plus_EMA1D21": {
+      "raw_p": 0.7088000000000001,
+      "holm_p": 1.0
+    },
+    "E5 - E5_plus_EMA1D21": {
+      "raw_p": 0.0744,
+      "holm_p": 0.9672
+    },
+    "SM - LATCH": {
+      "raw_p": 0.472,
+      "holm_p": 1.0
+    },
+    "SM - E0_plus_EMA1D21": {
+      "raw_p": 0.2288,
+      "holm_p": 1.0
+    },
+    "SM - E5_plus_EMA1D21": {
+      "raw_p": 0.062,
+      "holm_p": 0.868
+    },
+    "LATCH - E0_plus_EMA1D21": {
+      "raw_p": 0.26,
+      "holm_p": 1.0
+    },
+    "LATCH - E5_plus_EMA1D21": {
+      "raw_p": 0.0744,
+      "holm_p": 0.9672
+    },
+    "E0_plus_EMA1D21 - E5_plus_EMA1D21": {
+      "raw_p": 0.1308,
+      "holm_p": 1.0
+    }
+  }
+}

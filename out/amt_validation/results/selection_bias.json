@@ -1,0 +1,44 @@
+{
+  "sr_observed": 1.2653,
+  "T": 2607,
+  "skewness": 0.8741,
+  "kurtosis": 14.9107,
+  "dsr_at_N": {
+    "27": {
+      "dsr": 1.0,
+      "e_max_sr": 0.0929,
+      "pass": true
+    },
+    "54": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1056,
+      "pass": true
+    },
+    "100": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1158,
+      "pass": true
+    },
+    "200": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1266,
+      "pass": true
+    },
+    "500": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1397,
+      "pass": true
+    },
+    "700": {
+      "dsr": 1.0,
+      "e_max_sr": 0.1443,
+      "pass": true
+    }
+  },
+  "method": "deflated",
+  "pbo": {
+    "pbo": 1.0,
+    "mean_oos_rank": 1.0
+  },
+  "risk_statement": "PASS \u2014 Observed Sharpe survives DSR at all tested N"
+}

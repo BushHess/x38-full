@@ -1,0 +1,2259 @@
+{
+  "scenario": "harsh",
+  "period": "2019-01-01 \u2192 2026-02-20",
+  "warmup_days": 365,
+  "total_trades": 103,
+  "final_nav": 95968.45,
+  "mdd_pct": 36.28,
+  "episodes": [
+    {
+      "rank": 1,
+      "peak_date": "2021-11-09",
+      "trough_date": "2023-10-12",
+      "depth_pct": 36.28,
+      "duration_days": 702.5,
+      "recovery_days": 123.0,
+      "peak_nav": 78202.1,
+      "trough_nav": 49828.82,
+      "btc_peak_price": 68490.0,
+      "btc_trough_price": 26675.0,
+      "btc_dd_pct": 61.1,
+      "dominant_regime": "BEAR",
+      "regime_distribution": {
+        "BULL": 25.0,
+        "TOPPING": 5.4,
+        "SHOCK": 2.7,
+        "NEUTRAL": 15.2,
+        "BEAR": 50.2,
+        "CHOP": 1.4
+      },
+      "exposure_at_peak": 0.958,
+      "exposure_at_trough": 0.683,
+      "max_exposure_during": 1.0,
+      "n_trades_overlapping": 14,
+      "n_buy_fills": 62,
+      "n_sell_fills": 13,
+      "entry_reasons": {
+        "vdo_trend": 11,
+        "vdo_trend_accel": 45,
+        "vdo_dip_buy": 6
+      },
+      "exit_reasons": {
+        "trailing_stop": 6,
+        "emergency_dd": 6,
+        "fixed_stop": 1
+      },
+      "trade_details": [
+        {
+          "id": 45,
+          "entry_date": "2021-10-25",
+          "exit_date": "2021-11-12",
+          "entry_price": 62640.0,
+          "exit_price": 63689.0,
+          "return_pct": 1.68,
+          "pnl": 1043.16,
+          "days_held": 18.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 46,
+          "entry_date": "2021-11-15",
+          "exit_date": "2021-12-04",
+          "entry_price": 59642.0,
+          "exit_price": 53547.0,
+          "return_pct": -10.22,
+          "pnl": -7080.0,
+          "days_held": 18.7,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 47,
+          "entry_date": "2021-12-12",
+          "exit_date": "2021-12-13",
+          "entry_price": 49476.0,
+          "exit_price": 47205.0,
+          "return_pct": -4.59,
+          "pnl": -2409.5,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 48,
+          "entry_date": "2021-12-15",
+          "exit_date": "2021-12-28",
+          "entry_price": 48810.0,
+          "exit_price": 47642.0,
+          "return_pct": -2.39,
+          "pnl": -1015.06,
+          "days_held": 13.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 49,
+          "entry_date": "2021-12-31",
+          "exit_date": "2022-01-08",
+          "entry_price": 48053.0,
+          "exit_price": 40790.0,
+          "return_pct": -15.11,
+          "pnl": -2816.78,
+          "days_held": 8.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "fixed_stop"
+        },
+        {
+          "id": 50,
+          "entry_date": "2023-03-30",
+          "exit_date": "2023-04-17",
+          "entry_price": 28415.0,
+          "exit_price": 29808.0,
+          "return_pct": 4.9,
+          "pnl": 2691.89,
+          "days_held": 18.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 51,
+          "entry_date": "2023-04-18",
+          "exit_date": "2023-04-20",
+          "entry_price": 30411.0,
+          "exit_price": 28768.0,
+          "return_pct": -5.4,
+          "pnl": -1854.82,
+          "days_held": 1.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 52,
+          "entry_date": "2023-04-22",
+          "exit_date": "2023-05-01",
+          "entry_price": 27734.0,
+          "exit_price": 28142.0,
+          "return_pct": 1.47,
+          "pnl": 644.61,
+          "days_held": 8.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 53,
+          "entry_date": "2023-05-04",
+          "exit_date": "2023-06-15",
+          "entry_price": 27685.0,
+          "exit_price": 24935.0,
+          "return_pct": -9.93,
+          "pnl": -5883.65,
+          "days_held": 42.3,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 54,
+          "entry_date": "2023-06-20",
+          "exit_date": "2023-07-08",
+          "entry_price": 28958.0,
+          "exit_price": 30163.0,
+          "return_pct": 4.16,
+          "pnl": 2094.77,
+          "days_held": 18.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 55,
+          "entry_date": "2023-07-09",
+          "exit_date": "2023-07-24",
+          "entry_price": 30591.0,
+          "exit_price": 29241.0,
+          "return_pct": -4.41,
+          "pnl": -2489.38,
+          "days_held": 14.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 56,
+          "entry_date": "2023-07-28",
+          "exit_date": "2023-08-17",
+          "entry_price": 29394.0,
+          "exit_price": 27906.0,
+          "return_pct": -5.06,
+          "pnl": -2679.6,
+          "days_held": 20.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 57,
+          "entry_date": "2023-08-18",
+          "exit_date": "2023-08-31",
+          "entry_price": 26240.0,
+          "exit_price": 26137.0,
+          "return_pct": -0.39,
+          "pnl": -278.56,
+          "days_held": 13.5,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 58,
+          "entry_date": "2023-10-02",
+          "exit_date": "2023-10-29",
+          "entry_price": 27847.0,
+          "exit_price": 33937.0,
+          "return_pct": 21.87,
+          "pnl": 10219.27,
+          "days_held": 27.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 87.42372989227076,
+        "vdo": 0.010935348946452872,
+        "hma": 63691.94797207621,
+        "atr_f": 1244.7826230443525,
+        "atr_s": 1114.0768912588446,
+        "accel": 0.010955959177525947,
+        "price": 68490.0
+      },
+      "indicators_at_trough": {
+        "rsi": 24.323844789459216,
+        "vdo": -0.002571200233097426,
+        "hma": 27020.868641835015,
+        "atr_f": 242.88928158260887,
+        "atr_s": 247.73283212969764,
+        "accel": 0.0005340224153293576,
+        "price": 26675.0
+      },
+      "trailing_stop_analysis": {
+        "45": {
+          "atr_f": 1267.77,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.03,
+          "return_pct": 1.68,
+          "peak_profit_at_exit_est": 8.7
+        },
+        "48": {
+          "atr_f": 953.54,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.02,
+          "return_pct": -2.39,
+          "peak_profit_at_exit_est": 4.63
+        },
+        "50": {
+          "atr_f": 296.82,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.51,
+          "return_pct": 4.9,
+          "peak_profit_at_exit_est": 8.42
+        },
+        "52": {
+          "atr_f": 456.94,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 5.74,
+          "return_pct": 1.47,
+          "peak_profit_at_exit_est": 7.22
+        },
+        "54": {
+          "atr_f": 281.19,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.26,
+          "return_pct": 4.16,
+          "peak_profit_at_exit_est": 7.42
+        },
+        "57": {
+          "atr_f": 423.83,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 5.72,
+          "return_pct": -0.39,
+          "peak_profit_at_exit_est": 5.32
+        },
+        "58": {
+          "atr_f": 299.11,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.07,
+          "return_pct": 21.87,
+          "peak_profit_at_exit_est": 24.94
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "peak_date": "2019-06-26",
+      "trough_date": "2020-07-05",
+      "depth_pct": 35.22,
+      "duration_days": 374.8,
+      "recovery_days": 134.2,
+      "peak_nav": 24885.7,
+      "trough_nav": 16121.24,
+      "btc_peak_price": 13961.0,
+      "btc_trough_price": 9028.0,
+      "btc_dd_pct": 35.3,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "BULL": 31.3,
+        "SHOCK": 6.1,
+        "CHOP": 17.3,
+        "NEUTRAL": 19.2,
+        "BEAR": 24.3,
+        "TOPPING": 1.8
+      },
+      "exposure_at_peak": 0.982,
+      "exposure_at_trough": 0.779,
+      "max_exposure_during": 1.0,
+      "n_trades_overlapping": 21,
+      "n_buy_fills": 98,
+      "n_sell_fills": 20,
+      "entry_reasons": {
+        "vdo_trend_accel": 82,
+        "vdo_trend": 12,
+        "vdo_dip_buy": 4
+      },
+      "exit_reasons": {
+        "trailing_stop": 10,
+        "emergency_dd": 10
+      },
+      "trade_details": [
+        {
+          "id": 4,
+          "entry_date": "2019-06-06",
+          "exit_date": "2019-06-27",
+          "entry_price": 7887.0,
+          "exit_price": 11818.0,
+          "return_pct": 49.84,
+          "pnl": 6849.47,
+          "days_held": 21.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 5,
+          "entry_date": "2019-07-03",
+          "exit_date": "2019-07-12",
+          "entry_price": 11442.0,
+          "exit_price": 11178.0,
+          "return_pct": -2.3,
+          "pnl": -389.91,
+          "days_held": 9.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 6,
+          "entry_date": "2019-07-18",
+          "exit_date": "2019-07-23",
+          "entry_price": 10499.0,
+          "exit_price": 9921.0,
+          "return_pct": -5.51,
+          "pnl": -677.77,
+          "days_held": 5.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 7,
+          "entry_date": "2019-07-25",
+          "exit_date": "2019-08-11",
+          "entry_price": 9886.0,
+          "exit_price": 11298.0,
+          "return_pct": 14.28,
+          "pnl": 2633.2,
+          "days_held": 16.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 8,
+          "entry_date": "2019-08-16",
+          "exit_date": "2019-08-21",
+          "entry_price": 10333.0,
+          "exit_price": 9977.0,
+          "return_pct": -3.45,
+          "pnl": -771.2,
+          "days_held": 5.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 9,
+          "entry_date": "2019-08-23",
+          "exit_date": "2019-08-28",
+          "entry_price": 10272.0,
+          "exit_price": 9676.0,
+          "return_pct": -5.8,
+          "pnl": -1097.65,
+          "days_held": 5.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 10,
+          "entry_date": "2019-08-31",
+          "exit_date": "2019-09-09",
+          "entry_price": 9642.0,
+          "exit_price": 10290.0,
+          "return_pct": 6.72,
+          "pnl": 1354.6,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 11,
+          "entry_date": "2019-09-12",
+          "exit_date": "2019-09-19",
+          "entry_price": 10245.0,
+          "exit_price": 9813.0,
+          "return_pct": -4.22,
+          "pnl": -940.63,
+          "days_held": 7.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 12,
+          "entry_date": "2019-09-20",
+          "exit_date": "2019-09-24",
+          "entry_price": 10156.0,
+          "exit_price": 9693.0,
+          "return_pct": -4.56,
+          "pnl": -629.93,
+          "days_held": 4.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 13,
+          "entry_date": "2019-09-26",
+          "exit_date": "2019-11-01",
+          "entry_price": 8263.0,
+          "exit_price": 9055.0,
+          "return_pct": 9.59,
+          "pnl": 1859.64,
+          "days_held": 36.2,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 14,
+          "entry_date": "2019-11-02",
+          "exit_date": "2019-11-15",
+          "entry_price": 9276.0,
+          "exit_price": 8471.0,
+          "return_pct": -8.68,
+          "pnl": -1706.93,
+          "days_held": 13.7,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 15,
+          "entry_date": "2019-11-17",
+          "exit_date": "2019-11-21",
+          "entry_price": 8490.0,
+          "exit_price": 7624.0,
+          "return_pct": -10.21,
+          "pnl": -741.59,
+          "days_held": 4.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 16,
+          "entry_date": "2020-01-17",
+          "exit_date": "2020-02-16",
+          "entry_price": 9172.0,
+          "exit_price": 9736.0,
+          "return_pct": 6.16,
+          "pnl": 1074.32,
+          "days_held": 30.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 17,
+          "entry_date": "2020-02-18",
+          "exit_date": "2020-02-26",
+          "entry_price": 9830.0,
+          "exit_price": 9139.0,
+          "return_pct": -7.03,
+          "pnl": -1485.73,
+          "days_held": 7.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 18,
+          "entry_date": "2020-02-29",
+          "exit_date": "2020-03-08",
+          "entry_price": 8703.0,
+          "exit_price": 8733.0,
+          "return_pct": 0.34,
+          "pnl": 35.52,
+          "days_held": 8.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 19,
+          "entry_date": "2020-03-11",
+          "exit_date": "2020-03-12",
+          "entry_price": 7936.0,
+          "exit_price": 7385.0,
+          "return_pct": -6.94,
+          "pnl": -737.32,
+          "days_held": 1.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 20,
+          "entry_date": "2020-05-01",
+          "exit_date": "2020-05-10",
+          "entry_price": 9182.0,
+          "exit_price": 8614.0,
+          "return_pct": -6.19,
+          "pnl": -104.13,
+          "days_held": 8.8,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 21,
+          "entry_date": "2020-05-17",
+          "exit_date": "2020-05-25",
+          "entry_price": 9712.0,
+          "exit_price": 8709.0,
+          "return_pct": -10.32,
+          "pnl": -1598.6,
+          "days_held": 7.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 22,
+          "entry_date": "2020-05-26",
+          "exit_date": "2020-06-04",
+          "entry_price": 9122.0,
+          "exit_price": 9640.0,
+          "return_pct": 5.68,
+          "pnl": 892.77,
+          "days_held": 9.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 23,
+          "entry_date": "2020-06-05",
+          "exit_date": "2020-06-27",
+          "entry_price": 9632.0,
+          "exit_price": 8929.0,
+          "return_pct": -7.31,
+          "pnl": -1277.54,
+          "days_held": 22.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 24,
+          "entry_date": "2020-06-29",
+          "exit_date": "2020-08-03",
+          "entry_price": 9186.0,
+          "exit_price": 11060.0,
+          "return_pct": 20.41,
+          "pnl": 3138.57,
+          "days_held": 34.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 97.39463595876967,
+        "vdo": -0.009806524737294597,
+        "hma": 12076.721480811519,
+        "atr_f": 498.56470821789605,
+        "atr_s": 347.1319528795231,
+        "accel": 0.046892492027780786,
+        "price": 13960.76
+      },
+      "indicators_at_trough": {
+        "rsi": 32.24958739393949,
+        "vdo": 0.0011846665100359588,
+        "hma": 9088.161413540163,
+        "atr_f": 69.27380348776146,
+        "atr_s": 81.6681540242073,
+        "accel": -0.0015955275788551845,
+        "price": 9028.0
+      },
+      "trailing_stop_analysis": {
+        "4": {
+          "atr_f": 884.47,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 28.09,
+          "return_pct": 49.84,
+          "peak_profit_at_exit_est": 77.93
+        },
+        "5": {
+          "atr_f": 490.17,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 14.72,
+          "return_pct": -2.3,
+          "peak_profit_at_exit_est": 12.42
+        },
+        "6": {
+          "atr_f": 251.44,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 8.67,
+          "return_pct": -5.51,
+          "peak_profit_at_exit_est": 3.16
+        },
+        "7": {
+          "atr_f": 225.95,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 6.94,
+          "return_pct": 14.28,
+          "peak_profit_at_exit_est": 21.22
+        },
+        "10": {
+          "atr_f": 160.99,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 5.55,
+          "return_pct": 6.72,
+          "peak_profit_at_exit_est": 12.28
+        },
+        "13": {
+          "atr_f": 174.51,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 6.71,
+          "return_pct": 9.59,
+          "peak_profit_at_exit_est": 16.3
+        },
+        "16": {
+          "atr_f": 186.85,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 6.59,
+          "return_pct": 6.16,
+          "peak_profit_at_exit_est": 12.75
+        },
+        "18": {
+          "atr_f": 154.61,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 6.44,
+          "return_pct": 0.34,
+          "peak_profit_at_exit_est": 6.79
+        },
+        "20": {
+          "atr_f": 372.02,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 14.78,
+          "return_pct": -6.19,
+          "peak_profit_at_exit_est": 8.59
+        },
+        "22": {
+          "atr_f": 156.25,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 5.68,
+          "return_pct": 5.68,
+          "peak_profit_at_exit_est": 11.37
+        },
+        "24": {
+          "atr_f": 335.0,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.53,
+          "return_pct": 20.41,
+          "peak_profit_at_exit_est": 30.93
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "peak_date": "2024-05-20",
+      "trough_date": "2024-08-07",
+      "depth_pct": 33.5,
+      "duration_days": 78.8,
+      "recovery_days": 105.7,
+      "peak_nav": 105592.96,
+      "trough_nav": 70216.85,
+      "btc_peak_price": 71447.0,
+      "btc_trough_price": 54759.0,
+      "btc_dd_pct": 23.4,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "BULL": 77.4,
+        "CHOP": 1.3,
+        "TOPPING": 6.3,
+        "NEUTRAL": 15.0
+      },
+      "exposure_at_peak": 0.972,
+      "exposure_at_trough": 0.75,
+      "max_exposure_during": 0.972,
+      "n_trades_overlapping": 8,
+      "n_buy_fills": 32,
+      "n_sell_fills": 7,
+      "entry_reasons": {
+        "vdo_trend_accel": 23,
+        "vdo_trend": 9
+      },
+      "exit_reasons": {
+        "trailing_stop": 1,
+        "emergency_dd": 6
+      },
+      "trade_details": [
+        {
+          "id": 68,
+          "entry_date": "2024-04-30",
+          "exit_date": "2024-05-23",
+          "entry_price": 62476.0,
+          "exit_price": 67133.0,
+          "return_pct": 7.45,
+          "pnl": 6544.46,
+          "days_held": 23.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 69,
+          "entry_date": "2024-05-27",
+          "exit_date": "2024-06-11",
+          "entry_price": 69616.0,
+          "exit_price": 66823.0,
+          "return_pct": -4.01,
+          "pnl": -3515.94,
+          "days_held": 14.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 70,
+          "entry_date": "2024-06-12",
+          "exit_date": "2024-06-17",
+          "entry_price": 68589.0,
+          "exit_price": 65303.0,
+          "return_pct": -4.79,
+          "pnl": -3142.41,
+          "days_held": 5.0,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 71,
+          "entry_date": "2024-06-20",
+          "exit_date": "2024-06-24",
+          "entry_price": 64964.0,
+          "exit_price": 61231.0,
+          "return_pct": -5.75,
+          "pnl": -4984.18,
+          "days_held": 4.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 72,
+          "entry_date": "2024-06-26",
+          "exit_date": "2024-07-05",
+          "entry_price": 61425.0,
+          "exit_price": 56993.0,
+          "return_pct": -7.22,
+          "pnl": -6100.15,
+          "days_held": 8.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 73,
+          "entry_date": "2024-07-06",
+          "exit_date": "2024-07-08",
+          "entry_price": 57483.0,
+          "exit_price": 55105.0,
+          "return_pct": -4.14,
+          "pnl": -2688.63,
+          "days_held": 1.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 74,
+          "entry_date": "2024-07-16",
+          "exit_date": "2024-08-03",
+          "entry_price": 66440.0,
+          "exit_price": 60818.0,
+          "return_pct": -8.46,
+          "pnl": -6255.07,
+          "days_held": 18.0,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 75,
+          "entry_date": "2024-08-06",
+          "exit_date": "2024-08-19",
+          "entry_price": 57037.0,
+          "exit_price": 58369.0,
+          "return_pct": 2.34,
+          "pnl": 1497.34,
+          "days_held": 12.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 89.20858018780169,
+        "vdo": 0.00804357785130233,
+        "hma": 68167.46503256202,
+        "atr_f": 1174.504768583182,
+        "atr_s": 916.4052144090475,
+        "accel": 0.024353668464401068,
+        "price": 71446.62
+      },
+      "indicators_at_trough": {
+        "rsi": 36.681725917678726,
+        "vdo": 0.0030174787222306265,
+        "hma": 53584.11084631175,
+        "atr_f": 1679.6872592601123,
+        "atr_s": 1673.7779255719051,
+        "accel": -0.014282195743547695,
+        "price": 54759.22
+      },
+      "trailing_stop_analysis": {
+        "68": {
+          "atr_f": 1254.9,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 6.46,
+          "return_pct": 7.45,
+          "peak_profit_at_exit_est": 13.92
+        },
+        "75": {
+          "atr_f": 785.62,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.68,
+          "return_pct": 2.34,
+          "peak_profit_at_exit_est": 7.02
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "peak_date": "2025-01-20",
+      "trough_date": "2025-03-31",
+      "depth_pct": 31.56,
+      "duration_days": 69.7,
+      "recovery_days": "no_recovery",
+      "peak_nav": 118846.15,
+      "trough_nav": 81339.7,
+      "btc_peak_price": 108239.0,
+      "btc_trough_price": 81530.0,
+      "btc_dd_pct": 24.7,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "CHOP": 23.9,
+        "BULL": 47.3,
+        "NEUTRAL": 26.0,
+        "SHOCK": 2.9
+      },
+      "exposure_at_peak": 0.961,
+      "exposure_at_trough": 0.699,
+      "max_exposure_during": 0.969,
+      "n_trades_overlapping": 7,
+      "n_buy_fills": 29,
+      "n_sell_fills": 6,
+      "entry_reasons": {
+        "vdo_trend_accel": 13,
+        "vdo_trend": 10,
+        "vdo_dip_buy": 6
+      },
+      "exit_reasons": {
+        "trailing_stop": 2,
+        "emergency_dd": 4
+      },
+      "trade_details": [
+        {
+          "id": 85,
+          "entry_date": "2025-01-10",
+          "exit_date": "2025-01-23",
+          "entry_price": 96043.0,
+          "exit_price": 101843.0,
+          "return_pct": 6.04,
+          "pnl": 5958.87,
+          "days_held": 12.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 86,
+          "entry_date": "2025-01-24",
+          "exit_date": "2025-02-02",
+          "entry_price": 105225.0,
+          "exit_price": 98175.0,
+          "return_pct": -6.7,
+          "pnl": -7350.35,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 87,
+          "entry_date": "2025-02-04",
+          "exit_date": "2025-02-25",
+          "entry_price": 97948.0,
+          "exit_price": 89231.0,
+          "return_pct": -8.9,
+          "pnl": -9126.55,
+          "days_held": 20.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 88,
+          "entry_date": "2025-02-26",
+          "exit_date": "2025-02-28",
+          "entry_price": 86187.0,
+          "exit_price": 80372.0,
+          "return_pct": -6.75,
+          "pnl": -5211.87,
+          "days_held": 1.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 89,
+          "entry_date": "2025-02-28",
+          "exit_date": "2025-03-04",
+          "entry_price": 87780.0,
+          "exit_price": 83103.0,
+          "return_pct": -5.33,
+          "pnl": -4305.94,
+          "days_held": 3.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 90,
+          "entry_date": "2025-03-05",
+          "exit_date": "2025-03-07",
+          "entry_price": 90493.0,
+          "exit_price": 86904.0,
+          "return_pct": -3.97,
+          "pnl": -3135.06,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 91,
+          "entry_date": "2025-03-29",
+          "exit_date": "2025-04-06",
+          "entry_price": 82583.0,
+          "exit_price": 82942.0,
+          "return_pct": 0.43,
+          "pnl": 227.03,
+          "days_held": 7.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 67.32716855711678,
+        "vdo": 0.005224200560645154,
+        "hma": 106399.09952883425,
+        "atr_f": 2959.928191419342,
+        "atr_s": 2011.4610039707181,
+        "accel": 0.013063483671567322,
+        "price": 108239.19
+      },
+      "indicators_at_trough": {
+        "rsi": 18.895370885246393,
+        "vdo": 0.001364426028369503,
+        "hma": 82702.58553681371,
+        "atr_f": 924.8814892306985,
+        "atr_s": 967.1015225771907,
+        "accel": -0.006083883854876247,
+        "price": 81530.0
+      },
+      "trailing_stop_analysis": {
+        "85": {
+          "atr_f": 2191.89,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.29,
+          "return_pct": 6.04,
+          "peak_profit_at_exit_est": 13.33
+        },
+        "89": {
+          "atr_f": 2594.34,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.82,
+          "return_pct": -5.33,
+          "peak_profit_at_exit_est": 5.49
+        },
+        "91": {
+          "atr_f": 924.73,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.91,
+          "return_pct": 0.43,
+          "peak_profit_at_exit_est": 4.34
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "peak_date": "2025-01-20",
+      "trough_date": "2025-04-21",
+      "depth_pct": 30.92,
+      "duration_days": 91.3,
+      "recovery_days": "no_recovery",
+      "peak_nav": 118846.15,
+      "trough_nav": 82096.4,
+      "btc_peak_price": 108239.0,
+      "btc_trough_price": 87415.0,
+      "btc_dd_pct": 19.2,
+      "dominant_regime": "CHOP",
+      "regime_distribution": {
+        "CHOP": 36.6,
+        "BULL": 36.1,
+        "NEUTRAL": 24.0,
+        "SHOCK": 3.3
+      },
+      "exposure_at_peak": 0.961,
+      "exposure_at_trough": 0.385,
+      "max_exposure_during": 0.976,
+      "n_trades_overlapping": 8,
+      "n_buy_fills": 32,
+      "n_sell_fills": 7,
+      "entry_reasons": {
+        "vdo_trend_accel": 16,
+        "vdo_trend": 10,
+        "vdo_dip_buy": 6
+      },
+      "exit_reasons": {
+        "trailing_stop": 3,
+        "emergency_dd": 4
+      },
+      "trade_details": [
+        {
+          "id": 85,
+          "entry_date": "2025-01-10",
+          "exit_date": "2025-01-23",
+          "entry_price": 96043.0,
+          "exit_price": 101843.0,
+          "return_pct": 6.04,
+          "pnl": 5958.87,
+          "days_held": 12.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 86,
+          "entry_date": "2025-01-24",
+          "exit_date": "2025-02-02",
+          "entry_price": 105225.0,
+          "exit_price": 98175.0,
+          "return_pct": -6.7,
+          "pnl": -7350.35,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 87,
+          "entry_date": "2025-02-04",
+          "exit_date": "2025-02-25",
+          "entry_price": 97948.0,
+          "exit_price": 89231.0,
+          "return_pct": -8.9,
+          "pnl": -9126.55,
+          "days_held": 20.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 88,
+          "entry_date": "2025-02-26",
+          "exit_date": "2025-02-28",
+          "entry_price": 86187.0,
+          "exit_price": 80372.0,
+          "return_pct": -6.75,
+          "pnl": -5211.87,
+          "days_held": 1.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 89,
+          "entry_date": "2025-02-28",
+          "exit_date": "2025-03-04",
+          "entry_price": 87780.0,
+          "exit_price": 83103.0,
+          "return_pct": -5.33,
+          "pnl": -4305.94,
+          "days_held": 3.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 90,
+          "entry_date": "2025-03-05",
+          "exit_date": "2025-03-07",
+          "entry_price": 90493.0,
+          "exit_price": 86904.0,
+          "return_pct": -3.97,
+          "pnl": -3135.06,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 91,
+          "entry_date": "2025-03-29",
+          "exit_date": "2025-04-06",
+          "entry_price": 82583.0,
+          "exit_price": 82942.0,
+          "return_pct": 0.43,
+          "pnl": 227.03,
+          "days_held": 7.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 92,
+          "entry_date": "2025-04-21",
+          "exit_date": "2025-05-05",
+          "entry_price": 89442.0,
+          "exit_price": 94183.0,
+          "return_pct": 5.3,
+          "pnl": 4023.35,
+          "days_held": 13.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 67.32716855711678,
+        "vdo": 0.005224200560645154,
+        "hma": 106399.09952883425,
+        "atr_f": 2959.928191419342,
+        "atr_s": 2011.4610039707181,
+        "accel": 0.013063483671567322,
+        "price": 108239.19
+      },
+      "indicators_at_trough": {
+        "rsi": 67.26082764365901,
+        "vdo": 0.006173327700370934,
+        "hma": 85708.2405477393,
+        "atr_f": 1081.8186122523255,
+        "atr_s": 988.2324051578765,
+        "accel": 0.004854041847165549,
+        "price": 87415.1
+      },
+      "trailing_stop_analysis": {
+        "85": {
+          "atr_f": 2191.89,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.29,
+          "return_pct": 6.04,
+          "peak_profit_at_exit_est": 13.33
+        },
+        "89": {
+          "atr_f": 2594.34,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.82,
+          "return_pct": -5.33,
+          "peak_profit_at_exit_est": 5.49
+        },
+        "91": {
+          "atr_f": 924.73,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.91,
+          "return_pct": 0.43,
+          "peak_profit_at_exit_est": 4.34
+        },
+        "92": {
+          "atr_f": 831.77,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.1,
+          "return_pct": 5.3,
+          "peak_profit_at_exit_est": 8.4
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "peak_date": "2025-01-20",
+      "trough_date": "2025-05-08",
+      "depth_pct": 25.41,
+      "duration_days": 108.0,
+      "recovery_days": "no_recovery",
+      "peak_nav": 118846.15,
+      "trough_nav": 88641.98,
+      "btc_peak_price": 108239.0,
+      "btc_trough_price": 99409.0,
+      "btc_dd_pct": 8.2,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "CHOP": 34.8,
+        "BULL": 42.1,
+        "NEUTRAL": 20.3,
+        "SHOCK": 2.8
+      },
+      "exposure_at_peak": 0.961,
+      "exposure_at_trough": 0.946,
+      "max_exposure_during": 0.976,
+      "n_trades_overlapping": 9,
+      "n_buy_fills": 40,
+      "n_sell_fills": 8,
+      "entry_reasons": {
+        "vdo_trend_accel": 21,
+        "vdo_trend": 13,
+        "vdo_dip_buy": 6
+      },
+      "exit_reasons": {
+        "trailing_stop": 4,
+        "emergency_dd": 4
+      },
+      "trade_details": [
+        {
+          "id": 85,
+          "entry_date": "2025-01-10",
+          "exit_date": "2025-01-23",
+          "entry_price": 96043.0,
+          "exit_price": 101843.0,
+          "return_pct": 6.04,
+          "pnl": 5958.87,
+          "days_held": 12.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 86,
+          "entry_date": "2025-01-24",
+          "exit_date": "2025-02-02",
+          "entry_price": 105225.0,
+          "exit_price": 98175.0,
+          "return_pct": -6.7,
+          "pnl": -7350.35,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 87,
+          "entry_date": "2025-02-04",
+          "exit_date": "2025-02-25",
+          "entry_price": 97948.0,
+          "exit_price": 89231.0,
+          "return_pct": -8.9,
+          "pnl": -9126.55,
+          "days_held": 20.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 88,
+          "entry_date": "2025-02-26",
+          "exit_date": "2025-02-28",
+          "entry_price": 86187.0,
+          "exit_price": 80372.0,
+          "return_pct": -6.75,
+          "pnl": -5211.87,
+          "days_held": 1.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 89,
+          "entry_date": "2025-02-28",
+          "exit_date": "2025-03-04",
+          "entry_price": 87780.0,
+          "exit_price": 83103.0,
+          "return_pct": -5.33,
+          "pnl": -4305.94,
+          "days_held": 3.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 90,
+          "entry_date": "2025-03-05",
+          "exit_date": "2025-03-07",
+          "entry_price": 90493.0,
+          "exit_price": 86904.0,
+          "return_pct": -3.97,
+          "pnl": -3135.06,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 91,
+          "entry_date": "2025-03-29",
+          "exit_date": "2025-04-06",
+          "entry_price": 82583.0,
+          "exit_price": 82942.0,
+          "return_pct": 0.43,
+          "pnl": 227.03,
+          "days_held": 7.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 92,
+          "entry_date": "2025-04-21",
+          "exit_date": "2025-05-05",
+          "entry_price": 89442.0,
+          "exit_price": 94183.0,
+          "return_pct": 5.3,
+          "pnl": 4023.35,
+          "days_held": 13.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 93,
+          "entry_date": "2025-05-06",
+          "exit_date": "2025-05-25",
+          "entry_price": 96445.0,
+          "exit_price": 107153.0,
+          "return_pct": 11.1,
+          "pnl": 9118.4,
+          "days_held": 18.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 67.32716855711678,
+        "vdo": 0.005224200560645154,
+        "hma": 106399.09952883425,
+        "atr_f": 2959.928191419342,
+        "atr_s": 2011.4610039707181,
+        "accel": 0.013063483671567322,
+        "price": 108239.19
+      },
+      "indicators_at_trough": {
+        "rsi": 78.95661278599005,
+        "vdo": 0.013267843123090262,
+        "hma": 96014.82456959048,
+        "atr_f": 1081.3925589000107,
+        "atr_s": 993.9515804101723,
+        "accel": 5.108083770098476e-05,
+        "price": 99409.14
+      },
+      "trailing_stop_analysis": {
+        "85": {
+          "atr_f": 2191.89,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.29,
+          "return_pct": 6.04,
+          "peak_profit_at_exit_est": 13.33
+        },
+        "89": {
+          "atr_f": 2594.34,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.82,
+          "return_pct": -5.33,
+          "peak_profit_at_exit_est": 5.49
+        },
+        "91": {
+          "atr_f": 924.73,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.91,
+          "return_pct": 0.43,
+          "peak_profit_at_exit_est": 4.34
+        },
+        "92": {
+          "atr_f": 831.77,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.1,
+          "return_pct": 5.3,
+          "peak_profit_at_exit_est": 8.4
+        },
+        "93": {
+          "atr_f": 1244.79,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.07,
+          "return_pct": 11.1,
+          "peak_profit_at_exit_est": 15.18
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "peak_date": "2021-05-03",
+      "trough_date": "2021-10-01",
+      "depth_pct": 25.34,
+      "duration_days": 150.8,
+      "recovery_days": 18.7,
+      "peak_nav": 73647.12,
+      "trough_nav": 54984.42,
+      "btc_peak_price": 58788.0,
+      "btc_trough_price": 43636.0,
+      "btc_dd_pct": 25.8,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "BULL": 35.1,
+        "CHOP": 3.3,
+        "SHOCK": 7.3,
+        "NEUTRAL": 31.8,
+        "BEAR": 22.5
+      },
+      "exposure_at_peak": 0.873,
+      "exposure_at_trough": 0.294,
+      "max_exposure_during": 0.963,
+      "n_trades_overlapping": 9,
+      "n_buy_fills": 32,
+      "n_sell_fills": 8,
+      "entry_reasons": {
+        "vdo_trend_accel": 24,
+        "vdo_trend": 8
+      },
+      "exit_reasons": {
+        "trailing_stop": 5,
+        "fixed_stop": 2,
+        "emergency_dd": 1
+      },
+      "trade_details": [
+        {
+          "id": 36,
+          "entry_date": "2021-04-25",
+          "exit_date": "2021-05-05",
+          "entry_price": 51116.0,
+          "exit_price": 53152.0,
+          "return_pct": 3.98,
+          "pnl": 2138.79,
+          "days_held": 9.8,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 37,
+          "entry_date": "2021-05-06",
+          "exit_date": "2021-05-13",
+          "entry_price": 58046.0,
+          "exit_price": 48521.0,
+          "return_pct": -16.41,
+          "pnl": -3383.62,
+          "days_held": 7.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "fixed_stop"
+        },
+        {
+          "id": 38,
+          "entry_date": "2021-05-20",
+          "exit_date": "2021-05-23",
+          "entry_price": 39661.0,
+          "exit_price": 33283.0,
+          "return_pct": -16.08,
+          "pnl": -2090.16,
+          "days_held": 3.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "fixed_stop"
+        },
+        {
+          "id": 39,
+          "entry_date": "2021-07-31",
+          "exit_date": "2021-08-19",
+          "entry_price": 42512.0,
+          "exit_price": 44003.0,
+          "return_pct": 3.51,
+          "pnl": 720.97,
+          "days_held": 19.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 40,
+          "entry_date": "2021-08-19",
+          "exit_date": "2021-08-26",
+          "entry_price": 47458.0,
+          "exit_price": 46789.0,
+          "return_pct": -1.41,
+          "pnl": -751.38,
+          "days_held": 6.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 41,
+          "entry_date": "2021-08-27",
+          "exit_date": "2021-09-08",
+          "entry_price": 48723.0,
+          "exit_price": 46404.0,
+          "return_pct": -4.76,
+          "pnl": -2900.1,
+          "days_held": 11.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 42,
+          "entry_date": "2021-09-11",
+          "exit_date": "2021-09-20",
+          "entry_price": 45089.0,
+          "exit_price": 44785.0,
+          "return_pct": -0.67,
+          "pnl": -148.35,
+          "days_held": 9.0,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 43,
+          "entry_date": "2021-09-22",
+          "exit_date": "2021-09-29",
+          "entry_price": 43683.0,
+          "exit_price": 40984.0,
+          "return_pct": -6.18,
+          "pnl": -3503.89,
+          "days_held": 6.3,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 44,
+          "entry_date": "2021-09-30",
+          "exit_date": "2021-10-22",
+          "entry_price": 46835.0,
+          "exit_price": 62131.0,
+          "return_pct": 32.66,
+          "pnl": 16999.53,
+          "days_held": 21.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 71.12001174292101,
+        "vdo": 0.00370314483718015,
+        "hma": 57800.66883438982,
+        "atr_f": 1128.316484822222,
+        "atr_s": 1249.3557817158082,
+        "accel": 0.0115618699269975,
+        "price": 58787.87
+      },
+      "indicators_at_trough": {
+        "rsi": 62.53576721953609,
+        "vdo": 0.0005860231112947423,
+        "hma": 42375.12259657802,
+        "atr_f": 957.1744571702824,
+        "atr_s": 1018.3985620923463,
+        "accel": 0.010515604072853034,
+        "price": 43635.79
+      },
+      "trailing_stop_analysis": {
+        "36": {
+          "atr_f": 1658.53,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.59,
+          "return_pct": 3.98,
+          "peak_profit_at_exit_est": 14.58
+        },
+        "39": {
+          "atr_f": 989.8,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.76,
+          "return_pct": 3.51,
+          "peak_profit_at_exit_est": 11.27
+        },
+        "40": {
+          "atr_f": 986.01,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.37,
+          "return_pct": -1.41,
+          "peak_profit_at_exit_est": 5.96
+        },
+        "41": {
+          "atr_f": 1681.76,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 13.06,
+          "return_pct": -4.76,
+          "peak_profit_at_exit_est": 8.3
+        },
+        "42": {
+          "atr_f": 1124.01,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 8.99,
+          "return_pct": -0.67,
+          "peak_profit_at_exit_est": 8.32
+        },
+        "44": {
+          "atr_f": 1612.99,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 8.93,
+          "return_pct": 32.66,
+          "peak_profit_at_exit_est": 41.59
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "peak_date": "2025-01-20",
+      "trough_date": "2025-06-22",
+      "depth_pct": 24.86,
+      "duration_days": 153.3,
+      "recovery_days": "no_recovery",
+      "peak_nav": 118846.15,
+      "trough_nav": 89302.14,
+      "btc_peak_price": 108239.0,
+      "btc_trough_price": 98883.0,
+      "btc_dd_pct": 8.6,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "CHOP": 24.5,
+        "BULL": 57.3,
+        "NEUTRAL": 14.3,
+        "SHOCK": 2.0,
+        "TOPPING": 1.8
+      },
+      "exposure_at_peak": 0.961,
+      "exposure_at_trough": 1.0,
+      "max_exposure_during": 1.0,
+      "n_trades_overlapping": 10,
+      "n_buy_fills": 47,
+      "n_sell_fills": 9,
+      "entry_reasons": {
+        "vdo_trend_accel": 24,
+        "vdo_trend": 16,
+        "vdo_dip_buy": 6,
+        "vdo_compression": 1
+      },
+      "exit_reasons": {
+        "trailing_stop": 5,
+        "emergency_dd": 4
+      },
+      "trade_details": [
+        {
+          "id": 85,
+          "entry_date": "2025-01-10",
+          "exit_date": "2025-01-23",
+          "entry_price": 96043.0,
+          "exit_price": 101843.0,
+          "return_pct": 6.04,
+          "pnl": 5958.87,
+          "days_held": 12.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 86,
+          "entry_date": "2025-01-24",
+          "exit_date": "2025-02-02",
+          "entry_price": 105225.0,
+          "exit_price": 98175.0,
+          "return_pct": -6.7,
+          "pnl": -7350.35,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 87,
+          "entry_date": "2025-02-04",
+          "exit_date": "2025-02-25",
+          "entry_price": 97948.0,
+          "exit_price": 89231.0,
+          "return_pct": -8.9,
+          "pnl": -9126.55,
+          "days_held": 20.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 88,
+          "entry_date": "2025-02-26",
+          "exit_date": "2025-02-28",
+          "entry_price": 86187.0,
+          "exit_price": 80372.0,
+          "return_pct": -6.75,
+          "pnl": -5211.87,
+          "days_held": 1.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 89,
+          "entry_date": "2025-02-28",
+          "exit_date": "2025-03-04",
+          "entry_price": 87780.0,
+          "exit_price": 83103.0,
+          "return_pct": -5.33,
+          "pnl": -4305.94,
+          "days_held": 3.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 90,
+          "entry_date": "2025-03-05",
+          "exit_date": "2025-03-07",
+          "entry_price": 90493.0,
+          "exit_price": 86904.0,
+          "return_pct": -3.97,
+          "pnl": -3135.06,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 91,
+          "entry_date": "2025-03-29",
+          "exit_date": "2025-04-06",
+          "entry_price": 82583.0,
+          "exit_price": 82942.0,
+          "return_pct": 0.43,
+          "pnl": 227.03,
+          "days_held": 7.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 92,
+          "entry_date": "2025-04-21",
+          "exit_date": "2025-05-05",
+          "entry_price": 89442.0,
+          "exit_price": 94183.0,
+          "return_pct": 5.3,
+          "pnl": 4023.35,
+          "days_held": 13.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 93,
+          "entry_date": "2025-05-06",
+          "exit_date": "2025-05-25",
+          "entry_price": 96445.0,
+          "exit_price": 107153.0,
+          "return_pct": 11.1,
+          "pnl": 9118.4,
+          "days_held": 18.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 94,
+          "entry_date": "2025-06-02",
+          "exit_date": "2025-07-15",
+          "entry_price": 105204.0,
+          "exit_price": 116662.0,
+          "return_pct": 10.89,
+          "pnl": 10190.41,
+          "days_held": 42.7,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 67.32716855711678,
+        "vdo": 0.005224200560645154,
+        "hma": 106399.09952883425,
+        "atr_f": 2959.928191419342,
+        "atr_s": 2011.4610039707181,
+        "accel": 0.013063483671567322,
+        "price": 108239.19
+      },
+      "indicators_at_trough": {
+        "rsi": 16.14138691043685,
+        "vdo": -0.0034821286556420694,
+        "hma": 102523.6959984539,
+        "atr_f": 1475.693764340687,
+        "atr_s": 1210.1521523288393,
+        "accel": -0.010599432593861778,
+        "price": 98882.84
+      },
+      "trailing_stop_analysis": {
+        "85": {
+          "atr_f": 2191.89,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.29,
+          "return_pct": 6.04,
+          "peak_profit_at_exit_est": 13.33
+        },
+        "89": {
+          "atr_f": 2594.34,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.82,
+          "return_pct": -5.33,
+          "peak_profit_at_exit_est": 5.49
+        },
+        "91": {
+          "atr_f": 924.73,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.91,
+          "return_pct": 0.43,
+          "peak_profit_at_exit_est": 4.34
+        },
+        "92": {
+          "atr_f": 831.77,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.1,
+          "return_pct": 5.3,
+          "peak_profit_at_exit_est": 8.4
+        },
+        "93": {
+          "atr_f": 1244.79,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.07,
+          "return_pct": 11.1,
+          "peak_profit_at_exit_est": 15.18
+        },
+        "94": {
+          "atr_f": 1531.0,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.58,
+          "return_pct": 10.89,
+          "peak_profit_at_exit_est": 15.47
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "peak_date": "2025-01-20",
+      "trough_date": "2025-09-06",
+      "depth_pct": 21.25,
+      "duration_days": 229.3,
+      "recovery_days": "no_recovery",
+      "peak_nav": 118846.15,
+      "trough_nav": 93588.33,
+      "btc_peak_price": 108239.0,
+      "btc_trough_price": 110038.0,
+      "btc_dd_pct": -1.7,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "CHOP": 16.4,
+        "BULL": 69.2,
+        "NEUTRAL": 9.6,
+        "SHOCK": 1.3,
+        "TOPPING": 3.5
+      },
+      "exposure_at_peak": 0.961,
+      "exposure_at_trough": 0.792,
+      "max_exposure_during": 1.0,
+      "n_trades_overlapping": 15,
+      "n_buy_fills": 70,
+      "n_sell_fills": 14,
+      "entry_reasons": {
+        "vdo_trend_accel": 40,
+        "vdo_trend": 20,
+        "vdo_dip_buy": 9,
+        "vdo_compression": 1
+      },
+      "exit_reasons": {
+        "trailing_stop": 7,
+        "emergency_dd": 7
+      },
+      "trade_details": [
+        {
+          "id": 85,
+          "entry_date": "2025-01-10",
+          "exit_date": "2025-01-23",
+          "entry_price": 96043.0,
+          "exit_price": 101843.0,
+          "return_pct": 6.04,
+          "pnl": 5958.87,
+          "days_held": 12.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 86,
+          "entry_date": "2025-01-24",
+          "exit_date": "2025-02-02",
+          "entry_price": 105225.0,
+          "exit_price": 98175.0,
+          "return_pct": -6.7,
+          "pnl": -7350.35,
+          "days_held": 9.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 87,
+          "entry_date": "2025-02-04",
+          "exit_date": "2025-02-25",
+          "entry_price": 97948.0,
+          "exit_price": 89231.0,
+          "return_pct": -8.9,
+          "pnl": -9126.55,
+          "days_held": 20.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 88,
+          "entry_date": "2025-02-26",
+          "exit_date": "2025-02-28",
+          "entry_price": 86187.0,
+          "exit_price": 80372.0,
+          "return_pct": -6.75,
+          "pnl": -5211.87,
+          "days_held": 1.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 89,
+          "entry_date": "2025-02-28",
+          "exit_date": "2025-03-04",
+          "entry_price": 87780.0,
+          "exit_price": 83103.0,
+          "return_pct": -5.33,
+          "pnl": -4305.94,
+          "days_held": 3.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 90,
+          "entry_date": "2025-03-05",
+          "exit_date": "2025-03-07",
+          "entry_price": 90493.0,
+          "exit_price": 86904.0,
+          "return_pct": -3.97,
+          "pnl": -3135.06,
+          "days_held": 1.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 91,
+          "entry_date": "2025-03-29",
+          "exit_date": "2025-04-06",
+          "entry_price": 82583.0,
+          "exit_price": 82942.0,
+          "return_pct": 0.43,
+          "pnl": 227.03,
+          "days_held": 7.7,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 92,
+          "entry_date": "2025-04-21",
+          "exit_date": "2025-05-05",
+          "entry_price": 89442.0,
+          "exit_price": 94183.0,
+          "return_pct": 5.3,
+          "pnl": 4023.35,
+          "days_held": 13.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 93,
+          "entry_date": "2025-05-06",
+          "exit_date": "2025-05-25",
+          "entry_price": 96445.0,
+          "exit_price": 107153.0,
+          "return_pct": 11.1,
+          "pnl": 9118.4,
+          "days_held": 18.7,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 94,
+          "entry_date": "2025-06-02",
+          "exit_date": "2025-07-15",
+          "entry_price": 105204.0,
+          "exit_price": 116662.0,
+          "return_pct": 10.89,
+          "pnl": 10190.41,
+          "days_held": 42.7,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 95,
+          "entry_date": "2025-07-21",
+          "exit_date": "2025-08-01",
+          "entry_price": 118895.0,
+          "exit_price": 113215.0,
+          "return_pct": -4.78,
+          "pnl": -5009.15,
+          "days_held": 11.5,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 96,
+          "entry_date": "2025-08-03",
+          "exit_date": "2025-08-15",
+          "entry_price": 116110.0,
+          "exit_price": 117158.0,
+          "return_pct": 0.9,
+          "pnl": 748.64,
+          "days_held": 11.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 97,
+          "entry_date": "2025-08-21",
+          "exit_date": "2025-08-25",
+          "entry_price": 113933.0,
+          "exit_price": 110605.0,
+          "return_pct": -2.92,
+          "pnl": -3081.29,
+          "days_held": 4.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 98,
+          "entry_date": "2025-08-26",
+          "exit_date": "2025-09-01",
+          "entry_price": 110753.0,
+          "exit_price": 107552.0,
+          "return_pct": -2.89,
+          "pnl": -2872.26,
+          "days_held": 5.5,
+          "entry_reason": "vdo_dip_buy",
+          "exit_reason": "emergency_dd"
+        },
+        {
+          "id": 99,
+          "entry_date": "2025-09-02",
+          "exit_date": "2025-09-21",
+          "entry_price": 111334.0,
+          "exit_price": 115554.0,
+          "return_pct": 3.79,
+          "pnl": 3268.43,
+          "days_held": 18.8,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 67.32716855711678,
+        "vdo": 0.005224200560645154,
+        "hma": 106399.09952883425,
+        "atr_f": 2959.928191419342,
+        "atr_s": 2011.4610039707181,
+        "accel": 0.013063483671567322,
+        "price": 108239.19
+      },
+      "indicators_at_trough": {
+        "rsi": 39.30918741816148,
+        "vdo": -0.006508773507484578,
+        "hma": 111666.7028140933,
+        "atr_f": 958.2246067178398,
+        "atr_s": 1125.0014808605476,
+        "accel": -0.004690768516410386,
+        "price": 110038.41
+      },
+      "trailing_stop_analysis": {
+        "85": {
+          "atr_f": 2191.89,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 7.29,
+          "return_pct": 6.04,
+          "peak_profit_at_exit_est": 13.33
+        },
+        "89": {
+          "atr_f": 2594.34,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 10.82,
+          "return_pct": -5.33,
+          "peak_profit_at_exit_est": 5.49
+        },
+        "91": {
+          "atr_f": 924.73,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.91,
+          "return_pct": 0.43,
+          "peak_profit_at_exit_est": 4.34
+        },
+        "92": {
+          "atr_f": 831.77,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 3.1,
+          "return_pct": 5.3,
+          "peak_profit_at_exit_est": 8.4
+        },
+        "93": {
+          "atr_f": 1244.79,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.07,
+          "return_pct": 11.1,
+          "peak_profit_at_exit_est": 15.18
+        },
+        "94": {
+          "atr_f": 1531.0,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.58,
+          "return_pct": 10.89,
+          "peak_profit_at_exit_est": 15.47
+        },
+        "96": {
+          "atr_f": 1377.01,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 4.12,
+          "return_pct": 0.9,
+          "peak_profit_at_exit_est": 5.02
+        },
+        "99": {
+          "atr_f": 509.66,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 1.54,
+          "return_pct": 3.79,
+          "peak_profit_at_exit_est": 5.33
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "peak_date": "2021-01-08",
+      "trough_date": "2021-01-27",
+      "depth_pct": 20.88,
+      "duration_days": 19.2,
+      "recovery_days": 17.7,
+      "peak_nav": 57739.62,
+      "trough_nav": 45685.82,
+      "btc_peak_price": 41287.0,
+      "btc_trough_price": 30323.0,
+      "btc_dd_pct": 26.6,
+      "dominant_regime": "BULL",
+      "regime_distribution": {
+        "BULL": 89.7,
+        "SHOCK": 10.3
+      },
+      "exposure_at_peak": 0.978,
+      "exposure_at_trough": 0.364,
+      "max_exposure_during": 0.978,
+      "n_trades_overlapping": 3,
+      "n_buy_fills": 9,
+      "n_sell_fills": 2,
+      "entry_reasons": {
+        "vdo_trend": 4,
+        "vdo_trend_accel": 5
+      },
+      "exit_reasons": {
+        "trailing_stop": 2
+      },
+      "trade_details": [
+        {
+          "id": 31,
+          "entry_date": "2020-12-12",
+          "exit_date": "2021-01-11",
+          "entry_price": 18473.0,
+          "exit_price": 34338.0,
+          "return_pct": 85.88,
+          "pnl": 21618.01,
+          "days_held": 30.2,
+          "entry_reason": "vdo_trend_accel",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 32,
+          "entry_date": "2021-01-13",
+          "exit_date": "2021-01-20",
+          "entry_price": 36372.0,
+          "exit_price": 35027.0,
+          "return_pct": -3.7,
+          "pnl": -1158.08,
+          "days_held": 6.5,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        },
+        {
+          "id": 33,
+          "entry_date": "2021-01-23",
+          "exit_date": "2021-02-23",
+          "entry_price": 37628.0,
+          "exit_price": 51849.0,
+          "return_pct": 37.79,
+          "pnl": 13844.54,
+          "days_held": 31.0,
+          "entry_reason": "vdo_trend",
+          "exit_reason": "trailing_stop"
+        }
+      ],
+      "indicators_at_peak": {
+        "rsi": 80.90465216818905,
+        "vdo": -0.005008330664468985,
+        "hma": 37694.94155023879,
+        "atr_f": 2107.4202460134834,
+        "atr_s": 1587.1074127929317,
+        "accel": 0.007704363490035249,
+        "price": 41286.67
+      },
+      "indicators_at_trough": {
+        "rsi": 28.082821067696514,
+        "vdo": -0.0010338966944426486,
+        "hma": 31893.297799714837,
+        "atr_f": 1192.8539445542272,
+        "atr_s": 1274.2745053085937,
+        "accel": -0.006045427292900833,
+        "price": 30322.61
+      },
+      "trailing_stop_analysis": {
+        "31": {
+          "atr_f": 2503.31,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 25.62,
+          "return_pct": 85.88,
+          "peak_profit_at_exit_est": 111.5
+        },
+        "32": {
+          "atr_f": 1209.75,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 11.87,
+          "return_pct": -3.7,
+          "peak_profit_at_exit_est": 8.17
+        },
+        "33": {
+          "atr_f": 2629.54,
+          "trail_mult": 3.5,
+          "trail_distance_pct": 18.54,
+          "return_pct": 37.79,
+          "peak_profit_at_exit_est": 56.33
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "regime_distribution": {
+      "BULL": 51.0,
+      "TOPPING": 3.8,
+      "SHOCK": 4.3,
+      "NEUTRAL": 19.5,
+      "BEAR": 32.3,
+      "CHOP": 17.7
+    },
+    "entry_reasons_total": {
+      "vdo_trend": 113,
+      "vdo_trend_accel": 293,
+      "vdo_dip_buy": 43,
+      "vdo_compression": 2
+    },
+    "exit_reasons_total": {
+      "trailing_stop": 45,
+      "emergency_dd": 46,
+      "fixed_stop": 3
+    },
+    "trail_count": 37,
+    "trail_mean_distance_pct": 8.47,
+    "mean_max_exposure": 0.983,
+    "mean_buy_fills_per_episode": 45.1,
+    "topping_episodes_count": 0
+  },
+  "v10_config": {
+    "trail_atr_mult": 3.5,
+    "trail_activate_pct": 0.05,
+    "trail_tighten_mult": 2.5,
+    "trail_tighten_profit_pct": 0.25,
+    "fixed_stop_pct": 0.15,
+    "emergency_dd_pct": 0.28,
+    "entry_aggression": 0.85,
+    "max_add_per_bar": 0.35,
+    "max_total_exposure": 1.0,
+    "entry_cooldown_bars": 3,
+    "rsi_overbought": 75.0,
+    "rsi_oversold": 30.0,
+    "vdo_entry_threshold": 0.004
+  }
+}

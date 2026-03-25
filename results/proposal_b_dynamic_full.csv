@@ -1,0 +1,5 @@
+label,scenario,period,final_nav,total_return_pct,cagr_pct,mdd_pct,sharpe,sortino,calmar,trades,wins,win_rate_pct,profit_factor,avg_trade_pnl,fees_total
+baseline,harsh,full,94552.53,845.53,36.98,39.92,1.1723,1.1299,0.9263,99,52,52.53,1.8046,924.48,14090.26
+V10+B,harsh,full,95739.03,857.39,37.22,38.8,1.1862,1.1402,0.9591,99,53,53.54,1.815,936.83,14163.95
+baseline,base,full,149703.47,1397.03,46.08,38.17,1.3659,1.3289,1.2072,97,52,53.61,2.0141,1506.4,12986.72
+V10+B,base,full,151244.4,1412.44,46.29,37.1,1.3803,1.3395,1.2477,97,53,54.64,2.0241,1522.6,13050.65

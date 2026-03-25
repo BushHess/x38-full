@@ -1,0 +1,258 @@
+[
+  {
+    "params": {
+      "cycle_early_aggression": 1.0,
+      "cycle_early_trail_mult": 3.5,
+      "cycle_late_aggression": 0.95,
+      "cycle_late_max_exposure": 0.9,
+      "cycle_late_trail_mult": 2.8,
+      "enable_cycle_phase": true
+    },
+    "windows_tested": 4,
+    "windows_passed": 4,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 1,
+        "train_score": 200.61,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.66,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 243.77,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 278.1,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 60.23,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.93,
+        "test_mdd_pct": 14.08,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "cycle_early_aggression": 1.0,
+      "cycle_early_trail_mult": 3.5,
+      "cycle_late_aggression": 0.95,
+      "cycle_late_max_exposure": 0.95,
+      "cycle_late_trail_mult": 2.8,
+      "enable_cycle_phase": true
+    },
+    "windows_tested": 8,
+    "windows_passed": 7,
+    "pass_rate": 0.875,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 276.18,
+        "test_score": -1000000.0,
+        "test_return_pct": 45.1,
+        "test_mdd_pct": 17.11,
+        "passed": true
+      },
+      {
+        "window_id": 1,
+        "train_score": 200.69,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.66,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 243.84,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 278.19,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 60.61,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.93,
+        "test_mdd_pct": 14.08,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 99.32,
+        "test_score": 171.88,
+        "test_return_pct": 27.96,
+        "test_mdd_pct": 15.12,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 115.31,
+        "test_score": -64.87,
+        "test_return_pct": -9.93,
+        "test_mdd_pct": 30.86,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 115.09,
+        "test_score": -1000000.0,
+        "test_return_pct": 2.03,
+        "test_mdd_pct": 13.99,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "cycle_early_aggression": 1.0,
+      "cycle_early_trail_mult": 3.5,
+      "cycle_late_aggression": 0.95,
+      "cycle_late_max_exposure": 0.95,
+      "cycle_late_trail_mult": 3.0,
+      "enable_cycle_phase": true
+    },
+    "windows_tested": 8,
+    "windows_passed": 7,
+    "pass_rate": 0.875,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 276.18,
+        "test_score": -1000000.0,
+        "test_return_pct": 45.1,
+        "test_mdd_pct": 17.11,
+        "passed": true
+      },
+      {
+        "window_id": 1,
+        "train_score": 200.69,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.66,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 243.84,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 278.19,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 60.61,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.93,
+        "test_mdd_pct": 14.08,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 99.32,
+        "test_score": 171.88,
+        "test_return_pct": 27.96,
+        "test_mdd_pct": 15.12,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 115.31,
+        "test_score": -64.87,
+        "test_return_pct": -9.93,
+        "test_mdd_pct": 30.86,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 115.09,
+        "test_score": -1000000.0,
+        "test_return_pct": 2.03,
+        "test_mdd_pct": 13.99,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "cycle_early_aggression": 1.0,
+      "cycle_early_trail_mult": 3.5,
+      "cycle_late_aggression": 0.95,
+      "cycle_late_max_exposure": 0.95,
+      "cycle_late_trail_mult": 3.2,
+      "enable_cycle_phase": true
+    },
+    "windows_tested": 4,
+    "windows_passed": 3,
+    "pass_rate": 0.75,
+    "median_test_score": -64.87,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 276.18,
+        "test_score": -1000000.0,
+        "test_return_pct": 41.99,
+        "test_mdd_pct": 17.11,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 99.32,
+        "test_score": 171.88,
+        "test_return_pct": 27.96,
+        "test_mdd_pct": 15.12,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 115.31,
+        "test_score": -64.87,
+        "test_return_pct": -9.93,
+        "test_mdd_pct": 30.86,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 115.09,
+        "test_score": -1000000.0,
+        "test_return_pct": 2.03,
+        "test_mdd_pct": 13.99,
+        "passed": true
+      }
+    ]
+  }
+]

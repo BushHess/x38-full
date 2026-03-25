@@ -1,0 +1,155 @@
+{
+  "churn_audit": {
+    "E0": {
+      "total_trades": 189,
+      "trail_stop_exits": 168,
+      "trend_exits": 21,
+      "churn_count": 111,
+      "churn_rate": 0.6607142857142857,
+      "churn_pnl": 347704.683641118,
+      "non_churn_trail_pnl": -134825.7306326941,
+      "short_count": 64,
+      "short_pnl": -204745.13395855945,
+      "short_mean_pnl": -3199.1427181024915,
+      "medium_count": 102,
+      "medium_pnl": 41640.236593706984,
+      "medium_mean_pnl": 408.237613663794,
+      "long_count": 23,
+      "long_pnl": 348644.49743486615,
+      "long_mean_pnl": 15158.456410211571
+    },
+    "E5": {
+      "total_trades": 202,
+      "trail_stop_exits": 183,
+      "trend_exits": 19,
+      "churn_count": 123,
+      "churn_rate": 0.6721311475409836,
+      "churn_pnl": 454637.32633894397,
+      "non_churn_trail_pnl": -170541.0165642005,
+      "short_count": 68,
+      "short_pnl": -229097.1969423003,
+      "short_mean_pnl": -3369.076425622063,
+      "medium_count": 117,
+      "medium_pnl": 156257.3384860255,
+      "medium_mean_pnl": 1335.5328075728673,
+      "long_count": 17,
+      "long_pnl": 322938.27422076016,
+      "long_mean_pnl": 18996.36907180942
+    },
+    "delta": {
+      "d_churn_rate": 0.011416861826697877,
+      "d_churn_pnl": 106932.64269782597,
+      "d_short_pnl": -24352.06298374085,
+      "d_medium_pnl": 114617.1018923185,
+      "d_long_pnl": -25706.223214105994
+    }
+  },
+  "cascade_map": {
+    "matched_total": 172,
+    "matched_same_exit": {
+      "count": 103,
+      "sum": 5974.317793735279,
+      "mean": 58.00308537607069,
+      "median": -92.63447348824775
+    },
+    "matched_diff_exit": {
+      "count": 69,
+      "sum": 45625.66552593485,
+      "mean": 661.2415293613747,
+      "median": 164.01849879094516
+    },
+    "e0_only": {
+      "count": 17,
+      "sum": -9562.945760203562,
+      "mean": -562.5262211884448,
+      "median": -206.77777338208398
+    },
+    "e5_only": {
+      "count": 30,
+      "sum": 3395.886614597999,
+      "mean": 113.19622048659997,
+      "median": -221.70739975483775
+    },
+    "headline_nav_delta": 64558.81569447179,
+    "n_cascades": 27,
+    "cascade_depth_mean": 1.7407407407407407,
+    "cascade_depth_median": 1.0,
+    "cascade_depth_max": 4
+  },
+  "matched_mechanism": {
+    "diff_exit_count": 69,
+    "e5_exits_first": 62,
+    "e0_exits_first": 7,
+    "e5_wins_pnl": 45,
+    "mean_d_pnl": 661.2415293613747,
+    "median_d_pnl": 164.01849879094516,
+    "sum_d_pnl": 45625.66552593485,
+    "duration_buckets": {
+      "short": {
+        "count": 16,
+        "sum_d_pnl": 2168.402112438176,
+        "mean_d_pnl": 135.525132027386,
+        "median_d_pnl": 15.814619777922417
+      },
+      "medium": {
+        "count": 40,
+        "sum_d_pnl": 23297.089101913632,
+        "mean_d_pnl": 582.4272275478409,
+        "median_d_pnl": 230.36153248391383
+      },
+      "long": {
+        "count": 13,
+        "sum_d_pnl": 20160.174311583032,
+        "mean_d_pnl": 1550.7826393525409,
+        "median_d_pnl": 706.9851645056915
+      }
+    },
+    "winner_loser_buckets": {
+      "winner": {
+        "count": 40,
+        "sum_d_pnl": 36049.73871459937,
+        "mean_d_pnl": 901.2434678649843
+      },
+      "loser": {
+        "count": 29,
+        "sum_d_pnl": 9575.926811335474,
+        "mean_d_pnl": 330.2043728046715
+      }
+    }
+  },
+  "decomposition": {
+    "headline_delta": 64558.81569447179,
+    "matched_delta": 51599.98331967012,
+    "cascade_delta": 12958.832374801561,
+    "residual": 1.0913936421275139e-10,
+    "e5_only_pnl": 3395.886614597999,
+    "e0_only_pnl": -9562.945760203562,
+    "matched_ret_delta": 12.66841433395151,
+    "cascade_ret_delta": 11.422741268556774,
+    "cf_pnl": 0.20072909075857215,
+    "cf_ret": 0.4741466726223577
+  },
+  "timescale": {
+    "churn_stable_count": 15,
+    "cf_stable_count": 13,
+    "g3": true
+  },
+  "bootstrap": {
+    "headline_median": -362.4282769727979,
+    "headline_p5": -30120.327298824042,
+    "headline_p95": 14894.170201211611,
+    "headline_mean": -2600.1746010629076,
+    "p_headline_gt0": 0.458,
+    "cf_ret_median": -0.1056651889261595,
+    "cf_ret_p5": -8.341202675010559,
+    "cf_ret_p95": 9.918029410859951,
+    "p_cf_ret_gt05": 0.322,
+    "d_churn_median": 0.015930380371732555,
+    "d_churn_p5": -0.017144903589619166,
+    "d_churn_p95": 0.04579951390636796,
+    "p_d_churn_lt0": 0.216
+  },
+  "cost_sweep": {
+    "crossover_bps": 40.39284372248304
+  }
+}

@@ -1,0 +1,5 @@
+System,Scope,Sharpe,CAGR,MDD,Trades,Bootstrap_median_Sharpe,Bootstrap_median_CAGR,P_Sharpe_gt_0,Notes
+E5+EMA21D1,Provided benchmark,1.638,0.728,-0.385,186,0.766,0.244,0.968,Robustness leader in prompt context
+V4,Provided benchmark,1.83,0.804,-0.336,196,0.733,0.217,0.966,Best full-sample variant; fragile in 2025+ per prompt
+V3,Provided comparator,1.533,0.578,-0.373,211,0.516,0.122,0.894,Diagnostic comparator only
+B2 pullback (this study),Fixed-rule full sample 2019-2026,1.3447,0.3606,-0.3527,87,1.3431115273643661,0.3567923108935239,1.0,Daily-block bootstrap; method may differ from benchmark bootstrap

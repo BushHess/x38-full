@@ -1,0 +1,5 @@
+candidates:
+  # V10 baseline — fixed params, no grid search
+  - name: v10_baseline_fixed
+    description: "V10 baseline exact defaults"
+    params: {}

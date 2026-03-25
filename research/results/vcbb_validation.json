@@ -1,0 +1,158 @@
+{
+  "test1_vol_clustering": {
+    "abs_acf_60": {
+      "real": 0.11141571130646051,
+      "uniform_median": 0.08261637973857239,
+      "vcbb_median": 0.08470097707568217,
+      "recovery": 0.7602247123182054,
+      "pass": true
+    },
+    "abs_acf_120": {
+      "real": 0.10766476694736749,
+      "uniform_median": 0.06498237894563448,
+      "vcbb_median": 0.06458440537775093,
+      "recovery": 0.5998657426094032,
+      "pass": true
+    },
+    "abs_acf_180": {
+      "real": 0.0885201404775193,
+      "uniform_median": 0.040720062961574655,
+      "vcbb_median": 0.04120990973679832,
+      "recovery": 0.4655427512257964,
+      "pass": true
+    },
+    "cond_vol_ratio": {
+      "real": 1.6859386865331245,
+      "uniform_median": 1.539491305959605,
+      "vcbb_median": 1.553420496585518,
+      "recovery": 0.8068075287933085,
+      "pass": true
+    },
+    "rolling_vol_acf_60": {
+      "real": 0.8616995107891624,
+      "uniform_median": 0.8652832736548572,
+      "vcbb_median": 0.8656107612054823,
+      "recovery": 0.9954610042510783,
+      "pass": false
+    }
+  },
+  "test2_soundness": {
+    "marginal_mean": {
+      "real": 9.103543152812003e-05,
+      "vcbb": 0.00010286056224495762,
+      "rel_err": 0.12989591545117157,
+      "pass": true
+    },
+    "marginal_std": {
+      "real": 0.013959047735716162,
+      "vcbb": 0.013609357281607035,
+      "rel_err": 0.025051168298135064,
+      "pass": true
+    },
+    "marginal_skew": {
+      "real": -0.4977049920989432,
+      "vcbb": -0.4639537151754512,
+      "rel_err": 0.06781382035401061,
+      "pass": true
+    },
+    "marginal_kurt": {
+      "real": 15.68696435528448,
+      "vcbb": 15.098166058184221,
+      "rel_err": 0.037534240772460904,
+      "pass": true
+    },
+    "block_ret_acf1": {
+      "median": -0.005844085374615797,
+      "pass": true
+    },
+    "vol_coverage": {
+      "bins_visited": 20,
+      "coverage": 1.0,
+      "pass": true
+    },
+    "block_diversity": {
+      "vcbb_unique": 16969,
+      "uniform_unique": 17197,
+      "ratio": 0.9867418735826016,
+      "pass": true
+    }
+  },
+  "test3_vtrend_impact": {
+    "sharpe": {
+      "real": 1.2764696186786848,
+      "uniform_median": 0.5380805755858813,
+      "vcbb_median": 0.5380805755858813,
+      "real_pctile_uniform": 96.65,
+      "real_pctile_vcbb": 96.65
+    },
+    "cagr": {
+      "real": 52.67921028833984,
+      "uniform_median": 14.182780820323304,
+      "vcbb_median": 14.182780820323304,
+      "real_pctile_uniform": 96.05,
+      "real_pctile_vcbb": 96.05
+    },
+    "mdd": {
+      "real": 41.53306852673476,
+      "uniform_median": 60.98355142861216,
+      "vcbb_median": 60.98355142861216,
+      "real_pctile_uniform": 4.0,
+      "real_pctile_vcbb": 4.0
+    },
+    "calmar": {
+      "real": 1.2683678850848772,
+      "uniform_median": 0.2293656039359037,
+      "vcbb_median": 0.2293656039359037,
+      "real_pctile_uniform": 97.45,
+      "real_pctile_vcbb": 97.45
+    },
+    "p_mdd_gt_50": {
+      "uniform": 81.2,
+      "vcbb": 81.2
+    },
+    "p_mdd_gt_60": {
+      "uniform": 52.65,
+      "vcbb": 52.65
+    },
+    "p_mdd_gt_70": {
+      "uniform": 25.05,
+      "vcbb": 25.05
+    },
+    "p_mdd_gt_80": {
+      "uniform": 8.05,
+      "vcbb": 8.05
+    },
+    "trades": {
+      "uniform": 229.0,
+      "vcbb": 229.0,
+      "real": 211.0
+    }
+  },
+  "test4_k_sensitivity": {
+    "20": {
+      "abs_acf_60": 0.08132403727503162,
+      "cond_vol_ratio": 1.5463875456474736,
+      "rolling_vol_acf_60": 0.8664481781714966
+    },
+    "50": {
+      "abs_acf_60": 0.08422040510857456,
+      "cond_vol_ratio": 1.5490133822246923,
+      "rolling_vol_acf_60": 0.8641997112085102
+    },
+    "100": {
+      "abs_acf_60": 0.07989147238485766,
+      "cond_vol_ratio": 1.5353407686788196,
+      "rolling_vol_acf_60": 0.8622878048872209
+    },
+    "200": {
+      "abs_acf_60": 0.08584995056434619,
+      "cond_vol_ratio": 1.532738568833378,
+      "rolling_vol_acf_60": 0.8654499699555976
+    },
+    "uniform": {
+      "abs_acf_60": 0.08422040510857456,
+      "cond_vol_ratio": 1.5490133822246923,
+      "rolling_vol_acf_60": 0.8641997112085102
+    }
+  }
+}

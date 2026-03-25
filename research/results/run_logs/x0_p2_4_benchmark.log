@@ -1,0 +1,147 @@
+/var/www/trading-bots/btc-spot-dev/research/x0/p2_4_benchmark.py:37: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+P2.4 — X0 Phase 2 Full Benchmark + Attribution
+================================================================================
+Loading data...
+  H4: 17838 bars, D1: 2973 bars
+  Warmup index: 2190 (reporting from bar 2190 onwards)
+
+================================================================================
+T1: FULL BACKTEST (3 cost scenarios)
+================================================================================
+
+Strategy       Scenario   Sharpe    CAGR%     MDD%   Calmar  Trades   TotRet%
+-----------------------------------------------------------------------------
+E0             smart      1.5277    68.39    38.42   1.7798     211   4029.20
+E0             base       1.4056    60.55    39.96   1.5155     211   2838.45
+E0             harsh      1.2765    52.68    41.53   1.2684     211   1951.93
+E0_EMA21       smart      1.6019    72.33    37.23   1.9427     189   4770.66
+E0_EMA21       base       1.4900    65.06    38.57   1.6867     189   3480.24
+E0_EMA21       harsh      1.3718    57.72    39.96   1.4445     189   2487.08
+E5             smart      1.6404    74.55    36.85   2.0228     225   5236.33
+E5             base       1.5064    65.80    38.54   1.7075     225   3596.32
+E5             harsh      1.3647    57.04    40.26   1.4166     225   2408.63
+E5_EMA21       smart      1.7226    78.83    35.63   2.2125     202   6244.35
+E5_EMA21       base       1.5994    70.68    37.56   1.8820     202   4447.44
+E5_EMA21       harsh      1.4690    62.48    40.90   1.5275     202   3099.72
+X0             smart      1.6019    72.33    37.23   1.9427     189   4770.66
+X0             base       1.4900    65.06    38.57   1.6867     189   3480.24
+X0             harsh      1.3718    57.72    39.96   1.4445     189   2487.08
+X0_E5EXIT      smart      1.7226    78.83    35.63   2.2125     202   6244.35
+X0_E5EXIT      base       1.5994    70.68    37.56   1.8820     202   4447.44
+X0_E5EXIT      harsh      1.4690    62.48    40.90   1.5275     202   3099.72
+
+  Parity checks:
+    X0 vs E0_EMA21 (smart): BIT-IDENTICAL
+    X0 vs E0_EMA21 (base): BIT-IDENTICAL
+    X0 vs E0_EMA21 (harsh): BIT-IDENTICAL
+    X0_E5EXIT vs E5_EMA21 (smart): BIT-IDENTICAL
+    X0_E5EXIT vs E5_EMA21 (base): BIT-IDENTICAL
+    X0_E5EXIT vs E5_EMA21 (harsh): BIT-IDENTICAL
+
+================================================================================
+T2: BOOTSTRAP VCBB (500 paths, slow=120, block=60)
+================================================================================
+  Generating bootstrap paths... done (7.8s)
+  E0              Sharpe=0.3365 [-0.3806, 0.9816]  CAGR=5.44% [-19.87, 38.44]  MDD=70.49% [49.21, 89.40]  P(CAGR>0)=0.620  (17.3s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (27.3s)
+  E5              Sharpe=0.2907 [-0.4197, 0.9441]  CAGR=3.79% [-20.40, 36.12]  MDD=69.42% [49.03, 89.38]  P(CAGR>0)=0.590  (33.9s)
+  E5_EMA21        Sharpe=0.2357 [-0.4865, 0.9397]  CAGR=2.45% [-18.20, 31.21]  MDD=62.41% [43.01, 86.21]  P(CAGR>0)=0.560  (40.4s)
+  X0              Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (28.4s)
+  X0_E5EXIT       Sharpe=0.2357 [-0.4865, 0.9397]  CAGR=2.45% [-18.20, 31.21]  MDD=62.41% [43.01, 86.21]  P(CAGR>0)=0.560  (41.3s)
+
+  Bootstrap parity:
+    X0 vs E0_EMA21: BIT-IDENTICAL
+    X0_E5EXIT vs E5_EMA21: BIT-IDENTICAL
+
+================================================================================
+T3: ATTRIBUTION (X0 Phase 2 vs X0 Phase 1)
+================================================================================
+
+  --- A. Delta Table (P2 - P1) by cost scenario ---
+  Scenario   dSharpe    dCAGR%     dMDD%   dCalmar  dTrades     dWR%      dPF
+  smart      +0.1245     +6.74     -1.57   +0.2728      +14    +2.11  +0.0936
+  base       +0.1131     +5.84     -1.13   +0.2056      +14    +1.71  +0.0687
+  harsh      +0.1009     +4.98     +0.96   +0.0886      +14    +1.79  +0.0485
+
+  --- B. Matched-entry analysis (base scenario) ---
+  P1 trades: 174
+  P2 trades: 188
+  Matched: 159
+  P1-only: 15
+  P2-only: 29
+  Same exit: 97/159
+  Improved (P2 PnL > P1): 70
+  Worsened (P2 PnL < P1): 86
+  Mean PnL delta:  $+301.90
+  Median PnL delta: $-14.98
+  Mean return delta: +0.011%
+  Median return delta: +0.000%
+  Mean hold delta: -16.5h
+  Median hold delta: +0.0h
+
+  --- C. Unmatched-trade analysis ---
+  P1-only trades: 15, total PnL: $-7192.69
+  P2-only trades: 29, total PnL: $+42084.45
+  State divergence cause: different exit timing → different
+    re-entry timing → some entries unique to each version
+
+  --- D. Top 10 PnL delta contributors ---
+    #         EntryTS       P1_ExitTS       P2_ExitTS    P1_Ret%    P2_Ret%         dPnL    dHold
+    1   1706616000000   1709668800000   1709668800000     +40.62     +40.62 $  +17281.32      +0h
+    2   1678809600000   1679932800000   1678910400000      +3.57      -6.18 $  -13502.02    -284h
+    3   1709712000000   1710619200000   1710446400000      +0.04      +3.79 $  +11784.60     -48h
+    4   1612238400000   1614067200000   1614009600000     +47.49     +58.17 $  +11409.85     -16h
+    5   1633176000000   1634860800000   1634832000000     +30.03     +31.65 $  +10066.77      -8h
+    6   1744660800000   1746403200000   1746403200000     +10.67     +10.67 $   +8783.76      +0h
+    7   1746489600000   1748174400000   1747656000000     +12.87      +8.35 $   -8034.09    -144h
+    8   1730577600000   1732564800000   1731628800000     +35.77     +25.24 $   -7396.87    -260h
+    9   1607644800000   1610352000000   1609761600000     +87.71     +67.89 $   -7057.73    -164h
+   10   1751515200000   1752552000000   1752552000000      +7.51      +7.51 $   +6577.39      +0h
+
+  --- E. Mechanism conclusion ---
+  Hold period: shorter=56, same=97, longer=6
+  Winners improved: 33
+  Losers improved (cut better): 58
+  Winners worsened: 30
+  Losers worsened: 32
+
+  Total matched PnL delta: $+48002.72
+  Top 3 contribution: $+15563.90 (32.4% of total)
+  Unmatched PnL delta: P2-only $+42084.45 vs P1-only $-7192.69
+
+  Primary mechanism: robust ATR exits FASTER (tighter stop)
+    → cuts losers more aggressively (58 losers improved)
+    → 56/159 trades exit sooner
+
+Results saved to /var/www/trading-bots/btc-spot-dev/research/x0/
+
+================================================================================
+RANKINGS (harsh scenario)
+================================================================================
+
+  By Sharpe:
+    1. E5_EMA21       = 1.4690
+    2. X0_E5EXIT      = 1.4690
+    3. E0_EMA21       = 1.3718
+    4. X0             = 1.3718
+    5. E5             = 1.3647
+    6. E0             = 1.2765
+
+  By CAGR%:
+    1. E5_EMA21       = 62.4816
+    2. X0_E5EXIT      = 62.4816
+    3. E0_EMA21       = 57.7162
+    4. X0             = 57.7162
+    5. E5             = 57.0375
+    6. E0             = 52.6792
+
+  By MDD% (lower=better):
+    1. E0_EMA21       = 39.9571
+    2. X0             = 39.9571
+    3. E5             = 40.2624
+    4. E5_EMA21       = 40.9045
+    5. X0_E5EXIT      = 40.9045
+    6. E0             = 41.5331
+
+Total time: 211.8s

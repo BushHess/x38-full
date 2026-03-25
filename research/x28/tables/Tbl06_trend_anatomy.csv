@@ -1,0 +1,3 @@
+threshold,count,mean_duration_bars,median_duration_bars,std_duration_bars,mean_magnitude_pct,median_magnitude_pct,max_magnitude_pct
+>=10%,175,52.7,39,53.2,21.5,17.8,85.4
+>=20%,61,149.7,110,158.0,45.2,38.2,124.4

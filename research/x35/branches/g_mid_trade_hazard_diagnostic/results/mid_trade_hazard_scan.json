@@ -1,0 +1,221 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "branch": "g_mid_trade_hazard_diagnostic",
+  "branch_verdict": "NO_GO_MID_TRADE_HAZARD_FAMILY",
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "trades": 188,
+    "sharpe": 1.4545,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97
+  },
+  "specs": [
+    {
+      "spec_id": "wk_mixed_structure_flag",
+      "eligible_trades": 133,
+      "entry_unstable_skipped": 55,
+      "hazard_hit_trades": 3,
+      "coverage_pct": 1.6,
+      "median_bars_saved": 37.0,
+      "n_losers_with_hit": 1,
+      "n_winners_with_hit": 2,
+      "loser_mean_edge_pct": 3.251,
+      "winner_mean_edge_pct": -2.4057,
+      "selectivity_ratio": 1.3514,
+      "top20_hit_count": 1,
+      "gates": {
+        "G1_coverage": false,
+        "G2_timing": true,
+        "G3_loser_benefit": true,
+        "G4_winner_cost": true,
+        "G5_selectivity": false,
+        "G6_top20_damage": true
+      },
+      "promising": false,
+      "events": [
+        {
+          "trade_id": 7,
+          "final_return_pct": 0.1926,
+          "winner": true,
+          "force_flat_edge_pct": 3.488,
+          "bars_saved": 21,
+          "hit_ts_ms": 1554681599999,
+          "force_flat_ts_ms": 1554681600000,
+          "force_flat_price": 5170.27,
+          "actual_exit_price": 4996.0102,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 37,
+          "final_return_pct": -2.247,
+          "winner": false,
+          "force_flat_edge_pct": 3.251,
+          "bars_saved": 37,
+          "hit_ts_ms": 1588550399999,
+          "force_flat_ts_ms": 1588550400000,
+          "force_flat_price": 8894.15,
+          "actual_exit_price": 8614.1094,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 100,
+          "final_return_pct": 32.3648,
+          "winner": true,
+          "force_flat_edge_pct": -8.2993,
+          "bars_saved": 89,
+          "hit_ts_ms": 1673827199999,
+          "force_flat_ts_ms": 1673827200000,
+          "force_flat_price": 20872.99,
+          "actual_exit_price": 22762.0808,
+          "top20_trade": true
+        }
+      ]
+    },
+    {
+      "spec_id": "wk_flip_count_8w_ge_2",
+      "eligible_trades": 145,
+      "entry_unstable_skipped": 43,
+      "hazard_hit_trades": 5,
+      "coverage_pct": 2.66,
+      "median_bars_saved": 10.0,
+      "n_losers_with_hit": 2,
+      "n_winners_with_hit": 3,
+      "loser_mean_edge_pct": 4.3713,
+      "winner_mean_edge_pct": 0.7773,
+      "selectivity_ratio": 0.0,
+      "top20_hit_count": 1,
+      "gates": {
+        "G1_coverage": false,
+        "G2_timing": true,
+        "G3_loser_benefit": true,
+        "G4_winner_cost": false,
+        "G5_selectivity": false,
+        "G6_top20_damage": true
+      },
+      "promising": false,
+      "events": [
+        {
+          "trade_id": 23,
+          "final_return_pct": -1.9679,
+          "winner": false,
+          "force_flat_edge_pct": 4.883,
+          "bars_saved": 16,
+          "hit_ts_ms": 1572220799999,
+          "force_flat_ts_ms": 1572220800000,
+          "force_flat_price": 9528.23,
+          "actual_exit_price": 9084.6286,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 70,
+          "final_return_pct": 6.8472,
+          "winner": true,
+          "force_flat_edge_pct": 0.8794,
+          "bars_saved": 3,
+          "hit_ts_ms": 1627862399999,
+          "force_flat_ts_ms": 1627862400000,
+          "force_flat_price": 39850.27,
+          "actual_exit_price": 39502.8975,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 80,
+          "final_return_pct": -3.3855,
+          "winner": false,
+          "force_flat_edge_pct": 3.8597,
+          "bars_saved": 10,
+          "hit_ts_ms": 1640563199999,
+          "force_flat_ts_ms": 1640563200000,
+          "force_flat_price": 50775.48,
+          "actual_exit_price": 48888.5448,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 122,
+          "final_return_pct": 1.4815,
+          "winner": true,
+          "force_flat_edge_pct": 1.9134,
+          "bars_saved": 6,
+          "hit_ts_ms": 1696204799999,
+          "force_flat_ts_ms": 1696204800000,
+          "force_flat_price": 27992.58,
+          "actual_exit_price": 27467.0224,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 169,
+          "final_return_pct": 10.4616,
+          "winner": true,
+          "force_flat_edge_pct": -0.4609,
+          "bars_saved": 42,
+          "hit_ts_ms": 1745798399999,
+          "force_flat_ts_ms": 1745798400000,
+          "force_flat_price": 93749.29,
+          "actual_exit_price": 94183.356,
+          "top20_trade": true
+        }
+      ]
+    },
+    {
+      "spec_id": "wk_score_range_8w_ge_2",
+      "eligible_trades": 168,
+      "entry_unstable_skipped": 20,
+      "hazard_hit_trades": 3,
+      "coverage_pct": 1.6,
+      "median_bars_saved": 12.0,
+      "n_losers_with_hit": 0,
+      "n_winners_with_hit": 3,
+      "loser_mean_edge_pct": 0.0,
+      "winner_mean_edge_pct": 5.4336,
+      "selectivity_ratio": 0.0,
+      "top20_hit_count": 1,
+      "gates": {
+        "G1_coverage": false,
+        "G2_timing": true,
+        "G3_loser_benefit": false,
+        "G4_winner_cost": false,
+        "G5_selectivity": false,
+        "G6_top20_damage": true
+      },
+      "promising": false,
+      "events": [
+        {
+          "trade_id": 30,
+          "final_return_pct": 16.3966,
+          "winner": true,
+          "force_flat_edge_pct": 4.4018,
+          "bars_saved": 7,
+          "hit_ts_ms": 1581292799999,
+          "force_flat_ts_ms": 1581292800000,
+          "force_flat_price": 10151.72,
+          "actual_exit_price": 9723.699,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 38,
+          "final_return_pct": 3.9208,
+          "winner": true,
+          "force_flat_edge_pct": 6.6975,
+          "bars_saved": 22,
+          "hit_ts_ms": 1589759999999,
+          "force_flat_ts_ms": 1589760000000,
+          "force_flat_price": 9681.11,
+          "actual_exit_price": 9073.4198,
+          "top20_trade": false
+        },
+        {
+          "trade_id": 71,
+          "final_return_pct": 17.5638,
+          "winner": true,
+          "force_flat_edge_pct": 5.2015,
+          "bars_saved": 12,
+          "hit_ts_ms": 1629071999999,
+          "force_flat_ts_ms": 1629072000000,
+          "force_flat_price": 46973.82,
+          "actual_exit_price": 44651.2652,
+          "top20_trade": true
+        }
+      ]
+    }
+  ]
+}

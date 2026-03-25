@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/research/eval_vtrend_latch_20260305/src/run_parity.py", line 44, in <module>
+    from Latch.config import LatchParams, CostModel, BARS_PER_YEAR_4H
+ModuleNotFoundError: No module named 'Latch'

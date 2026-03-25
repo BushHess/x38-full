@@ -1,0 +1,27 @@
+artifact_role,source_branch_or_step,relative_path,used_for,artifact_level,status,notes
+canonical_period_and_fee,step0,research/fragility_audit_20260306/artifacts/step0/step0_summary.json,canonical parameters and candidate list,summary,available,
+candidate_mapping,step0,research/fragility_audit_20260306/artifacts/step0/canonical_baseline_manifest.csv,source-of-truth artifact paths,summary,available,
+e0_portfolio_metrics,old_branch,results/parity_20260305/eval_e0_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+e5_portfolio_metrics,old_branch,results/parity_20260305/eval_e5_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+sm_portfolio_metrics,old_branch,results/parity_20260305/eval_sm_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+latch_portfolio_metrics,old_branch,results/parity_20260305/eval_latch_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+e0_plus_portfolio_metrics,old_branch,results/parity_20260305/eval_ema21d1_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+e5_plus_portfolio_metrics,old_branch,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/full_backtest_detail.json,Layer A portfolio snapshot,raw,available,harsh scenario used
+parity_report,old_branch,results/parity_20260305/PARITY_REPORT.md,Layer A old-branch verdicts and WFO/bootstrap,summary,available,Study #41
+e5_plus_eval_report,old_branch,results/parity_20260306/E5_PLUS_EMA1D21_EVALUATION_REPORT.md,Layer A E5_plus verdict,summary,available,Study #43
+e0_track_a_summary,step1,research/fragility_audit_20260306/artifacts/step1/e0_track_a_summary.json,Layer B E0 home-run audit,summary,available,
+step1_report,step1,research/fragility_audit_20260306/reports/step1_report.md,Layer B methodology and findings,summary,available,
+cross_strategy_trade_structure,step2,research/fragility_audit_20260306/artifacts/step2/cross_strategy_trade_structure_summary.csv,Layer B cross-strategy structure,raw,available,
+cross_strategy_style_labels,step2,research/fragility_audit_20260306/artifacts/step2/cross_strategy_style_labels.csv,Layer B style classifications,summary,available,
+cross_strategy_home_run,step2,research/fragility_audit_20260306/artifacts/step2/cross_strategy_home_run_summary.csv,Layer B concentration,raw,available,
+cross_strategy_skip_after_n,step2,research/fragility_audit_20260306/artifacts/step2/cross_strategy_skip_after_n_summary.csv,Layer B behavioral fragility,raw,available,
+pairwise_structure_deltas,step2,research/fragility_audit_20260306/artifacts/step2/pairwise_structure_deltas.csv,Layer B pairwise comparisons,raw,available,
+step2_summary,step2,research/fragility_audit_20260306/artifacts/step2/step2_summary.json,Layer B summary and verdicts,summary,available,
+replay_regress_summary,step3,research/fragility_audit_20260306/artifacts/step3/replay_regress_summary.csv,Layer C replay validation,summary,available,
+fragility_cross_summary,step3,research/fragility_audit_20260306/artifacts/step3/fragility_cross_summary.csv,Layer C composite fragility,summary,available,
+delay_cross_summary,step3,research/fragility_audit_20260306/artifacts/step3/delay_cross_summary.csv,Layer C delay sensitivity,raw,available,
+outage_cross_summary,step3,research/fragility_audit_20260306/artifacts/step3/outage_cross_summary.csv,Layer C outage robustness,raw,available,
+random_miss_cross_summary,step3,research/fragility_audit_20260306/artifacts/step3/random_miss_cross_summary.csv,Layer C random miss MC,raw,available,
+pairwise_replay_comparisons,step3,research/fragility_audit_20260306/artifacts/step3/pairwise_replay_comparisons.csv,Layer C pairwise replay,summary,available,
+step3_summary,step3,research/fragility_audit_20260306/artifacts/step3/step3_summary.json,Layer C summary,summary,available,
+step3_report,step3,research/fragility_audit_20260306/reports/step3_report.md,Layer C full report,summary,available,

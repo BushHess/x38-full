@@ -1,0 +1,44 @@
+{
+  "candidate": {
+    "known_fields": [
+      "atr_period",
+      "ema_regime_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_fields": [
+      "atr_period",
+      "ema_regime_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_count": 7,
+    "known_count": 7
+  },
+  "baseline": {
+    "known_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_count": 6,
+    "known_count": 6
+  }
+}

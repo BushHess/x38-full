@@ -1,0 +1,18 @@
+2026-02-24 17:16:17,489 INFO validation: Validation run started
+2026-02-24 17:16:17,489 INFO validation: command=python validate_strategy.py --strategy v13_add_throttle --baseline v8_apex --config configs/v13/v13_add_throttle_default.yaml --baseline-config configs/frozen/v10_baseline.yaml --out out_step3b2_smoke --suite trade --scenarios harsh --seed 1505 --trade-level on --bootstrap 0 --selection-bias none --data-integrity-check off --cost-sweep-bps  --invariant-check off --churn-metrics off --force
+2026-02-24 17:16:17,489 INFO validation: seed=1505
+2026-02-24 17:16:17,489 INFO validation: git_hash=82e6f13
+2026-02-24 17:16:17,489 INFO validation: candidate=v13_add_throttle config=/var/www/trading-bots/btc-spot/configs/v13/v13_add_throttle_default.yaml
+2026-02-24 17:16:17,489 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/configs/frozen/v10_baseline.yaml
+2026-02-24 17:16:17,489 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 17:16:17,489 INFO validation: period=2019-01-01 -> 2026-02-20
+2026-02-24 17:16:18,445 INFO validation: suite lookahead started
+2026-02-24 17:16:18,445 INFO validation:   lookahead: python -m pytest -q /var/www/trading-bots/btc-spot/v10/tests/test_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_v10_no_lookahead_htf.py /var/www/trading-bots/btc-spot/v10/tests/test_mtf_alignment.py
+2026-02-24 17:16:18,446 INFO validation: suite lookahead finished: fail (0.00s)
+2026-02-24 17:16:18,447 INFO validation: suite backtest started
+2026-02-24 17:16:18,447 INFO validation:   backtest: candidate x harsh
+2026-02-24 17:16:18,678 INFO validation:   backtest: baseline x harsh
+2026-02-24 17:16:18,895 INFO validation: suite backtest finished: fail (0.45s)
+2026-02-24 17:16:18,901 INFO validation: suite trade_level started
+2026-02-24 17:16:34,612 INFO validation: suite trade_level finished: info (15.71s)
+2026-02-24 17:16:34,771 INFO validation: Validation run complete in 17.28s

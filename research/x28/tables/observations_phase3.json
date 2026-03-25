@@ -1,0 +1,64 @@
+[
+  {
+    "id": "Obs18",
+    "text": "Entry detection rates range from 0.09 (A_ema30_120) to 0.88 (D_vb20_1.0). Lag-FP tradeoff: lower lag \u2192 higher FP rate.",
+    "refs": [
+      "Fig10",
+      "Tbl07"
+    ]
+  },
+  {
+    "id": "Obs19",
+    "text": "Exit sweep (fixed entry A_1_120): best Sharpe 0.681 (Y_atr14_5.0). Composite exits occupy distinct region in capture-churn space.",
+    "refs": [
+      "Fig11",
+      "Fig12",
+      "Tbl08"
+    ]
+  },
+  {
+    "id": "Obs20",
+    "text": "Composite exits: mean Sharpe 0.351 (n=7) vs simple exits: mean Sharpe 0.276 (n=19). Composites higher.",
+    "refs": [
+      "Tbl08"
+    ]
+  },
+  {
+    "id": "Obs21",
+    "text": "Grid best: A_20_90+XZ_trail8_rev Sharpe=1.053. Sharpe range across grid: [0.017, 1.053].",
+    "refs": [
+      "Fig13",
+      "Tbl09"
+    ]
+  },
+  {
+    "id": "Obs22",
+    "text": "Best-known decomposition: full Sharpe=-0.424. D1 regime contributes \u0394=-0.592, VDO filter \u0394=-0.448, dual exit (vs trail) \u0394=-0.553.",
+    "refs": [
+      "Tbl_decomposition",
+      "Fig_decomposition"
+    ]
+  },
+  {
+    "id": "Obs23",
+    "text": "Filter impact on top-10 pairs: F2_d1ema50 has largest mean \u0394Sharpe (+0.045). {'F1_d1ema21': np.float64(-0.06631927039005528), 'F2_d1ema50': np.float64(0.04475788109662895), 'F3_vdo_pos': np.float64(-0.10497497798803083), 'F4_vol_low': np.float64(-0.05837627462154379)}",
+    "refs": [
+      "Tbl10"
+    ]
+  },
+  {
+    "id": "Obs24",
+    "text": "OLS regression R\u00b2=0.557. Top predictor: avg_loser (|\u03b2\u00b7\u03c3|=0.7087, p=0.0000). Second: avg_hold (|\u03b2\u00b7\u03c3|=0.3936).",
+    "refs": [
+      "Tbl_sharpe_drivers",
+      "Fig_impact"
+    ]
+  },
+  {
+    "id": "Obs25",
+    "text": "Top-5 Sharpe configs: dominant entry type = A_20_90 (appears 5/5 times). Mean exposure=0.291, mean avg_loser=-0.0503.",
+    "refs": [
+      "Tbl_top20_sharpe"
+    ]
+  }
+]

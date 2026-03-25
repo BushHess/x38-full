@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-03-14T05:51:34Z",
+  "data_path": "/var/www/trading-bots/btc-spot-dev/bars_btcusdt_2016_now_h1_4h_1d.csv",
+  "scenario": "harsh",
+  "start": "2019-01-01",
+  "end": "2026-02-20",
+  "warmup_days": 365,
+  "initial_cash": 10000.0,
+  "root": "/var/www/trading-bots/btc-spot-dev"
+}

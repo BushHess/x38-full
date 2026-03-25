@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "script": "07b_reconciliation.py",
+    "timestamp_utc": "2026-03-03T13:03:41.587632+00:00",
+    "csv_source": "/var/www/trading-bots/btc-spot-dev/research_reports/artifacts/07_bar_level_paired_returns.csv",
+    "json_source": "/var/www/trading-bots/btc-spot-dev/research_reports/artifacts/07_exact_series_tail_sanity.json"
+  },
+  "csv_vs_json": {
+    "candidate_simple_ret": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 0.00017362554416671153,
+      "csv_mean": 0.00017362554416635776,
+      "mean_diff": 3.537751688820201e-16,
+      "json_std": 0.006607375672803481,
+      "csv_std": 0.006607375672804259,
+      "std_diff": 7.78023478975598e-16,
+      "json_n_zero": 7270,
+      "csv_n_zero": 7270,
+      "n_zero_match": true,
+      "json_skew": 0.2591624436581892,
+      "csv_skew": 0.2591624436598794,
+      "skew_diff": 1.6902035326893383e-12,
+      "json_kurt": 26.25979086371851,
+      "csv_kurt": 26.259790863693297,
+      "kurt_diff": 2.5213608978447155e-11
+    },
+    "baseline_simple_ret": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 0.00016673386260622906,
+      "csv_mean": 0.00016673386260401355,
+      "mean_diff": 2.215512929365504e-15,
+      "json_std": 0.006572265600760378,
+      "csv_std": 0.00657226560075992,
+      "std_diff": 4.579669976578771e-16,
+      "json_n_zero": 7193,
+      "csv_n_zero": 7193,
+      "n_zero_match": true,
+      "json_skew": 0.3583170755361575,
+      "csv_skew": 0.35831707553333414,
+      "skew_diff": 2.8233526627730043e-12,
+      "json_kurt": 23.473226770055383,
+      "csv_kurt": 23.473226770070635,
+      "kurt_diff": 1.525179982309055e-11
+    },
+    "candidate_log_ret": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 0.00015180025058210008,
+      "csv_mean": 0.00015180025058298714,
+      "mean_diff": 8.870671124733276e-16,
+      "json_std": 0.006604426117828581,
+      "csv_std": 0.0066044261178259695,
+      "std_diff": 2.611626193083083e-15,
+      "json_n_zero": 7270,
+      "csv_n_zero": 7270,
+      "n_zero_match": true,
+      "json_skew": -0.023265082570866725,
+      "csv_skew": -0.023265082562779562,
+      "skew_diff": 8.087162883807508e-12,
+      "json_kurt": 26.776752009421283,
+      "csv_kurt": 26.776752009399257,
+      "kurt_diff": 2.2026824808563106e-11
+    },
+    "baseline_log_ret": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 0.0001451513932483751,
+      "csv_mean": 0.00014515139324733175,
+      "mean_diff": 1.043354855637113e-15,
+      "json_std": 0.0065668354239633,
+      "csv_std": 0.006566835423958607,
+      "std_diff": 4.6932943642552516e-15,
+      "json_n_zero": 7193,
+      "csv_n_zero": 7193,
+      "n_zero_match": true,
+      "json_skew": 0.10770882695463371,
+      "csv_skew": 0.10770882696488088,
+      "skew_diff": 1.0247164228260885e-11,
+      "json_kurt": 23.550716444677217,
+      "csv_kurt": 23.55071644461603,
+      "kurt_diff": 6.118838768998103e-11
+    },
+    "simple_differential": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 6.891681560482508e-06,
+      "csv_mean": 6.891681560235188e-06,
+      "mean_diff": 2.4732006807109963e-16,
+      "json_std": 0.001774175402087266,
+      "csv_std": 0.0017741754020872541,
+      "std_diff": 1.1926223897340549e-17,
+      "json_n_zero": 7217,
+      "csv_n_zero": 13695,
+      "n_zero_match": false,
+      "json_skew": -8.639116572446241,
+      "csv_skew": -8.639116572445053,
+      "skew_diff": 1.1883827255587676e-12,
+      "json_kurt": 616.3265650877134,
+      "csv_kurt": 616.3265650919251,
+      "kurt_diff": 4.2116425902349874e-09
+    },
+    "log_differential": {
+      "json_n": 15647,
+      "csv_n": 15647,
+      "n_match": true,
+      "json_mean": 6.6488573337249765e-06,
+      "csv_mean": 6.648857334505017e-06,
+      "mean_diff": 7.800402644230105e-16,
+      "json_std": 0.0017870044854881957,
+      "csv_std": 0.0017870044854813127,
+      "std_diff": 6.882949071806976e-15,
+      "json_n_zero": 10561,
+      "csv_n_zero": 13695,
+      "n_zero_match": false,
+      "json_skew": -9.725462428831488,
+      "csv_skew": -9.7254624287695,
+      "skew_diff": 6.198774826771114e-11,
+      "json_kurt": 697.4249587345894,
+      "csv_kurt": 697.4249587343314,
+      "kurt_diff": 2.5795543479034677e-10
+    }
+  },
+  "zero_analysis_from_csv": {
+    "candidate_simple_ret": {
+      "n": 15647,
+      "n_exact_zero": 7270,
+      "frac_exact_zero": 0.46462580686393556,
+      "n_near_zero_1e15": 7270,
+      "frac_near_zero_1e15": 0.46462580686393556
+    },
+    "baseline_simple_ret": {
+      "n": 15647,
+      "n_exact_zero": 7193,
+      "frac_exact_zero": 0.4597047357320892,
+      "n_near_zero_1e15": 7193,
+      "frac_near_zero_1e15": 0.4597047357320892
+    },
+    "candidate_log_ret": {
+      "n": 15647,
+      "n_exact_zero": 7270,
+      "frac_exact_zero": 0.46462580686393556,
+      "n_near_zero_1e15": 7270,
+      "frac_near_zero_1e15": 0.46462580686393556
+    },
+    "baseline_log_ret": {
+      "n": 15647,
+      "n_exact_zero": 7193,
+      "frac_exact_zero": 0.4597047357320892,
+      "n_near_zero_1e15": 7193,
+      "frac_near_zero_1e15": 0.4597047357320892
+    },
+    "simple_differential": {
+      "n": 15647,
+      "n_exact_zero": 13695,
+      "frac_exact_zero": 0.8752476513069598,
+      "n_near_zero_1e15": 13695,
+      "frac_near_zero_1e15": 0.8752476513069598
+    },
+    "log_differential": {
+      "n": 15647,
+      "n_exact_zero": 13695,
+      "frac_exact_zero": 0.8752476513069598,
+      "n_near_zero_1e15": 13695,
+      "frac_near_zero_1e15": 0.8752476513069598
+    }
+  },
+  "zero_discrepancy": {
+    "n_both_zero": 13695,
+    "n_simple_zero_only": 0,
+    "n_log_zero_only": 0,
+    "n_neither_zero": 1952,
+    "discrepancy_log_zero_simp_not": {
+      "count": 0
+    },
+    "n_log_nearfloatzero_5e13": 13695,
+    "n_simp_nearfloatzero_5e13": 13695,
+    "discrepancy_exposure_states": {
+      "both_flat": 0,
+      "both_in_market": 0,
+      "mixed": 0
+    }
+  },
+  "exposure_analysis": {
+    "n_bars": 15647,
+    "n_exposure_exactly_equal": 13727,
+    "frac_exposure_exactly_equal": 0.8772927717773376,
+    "n_both_flat": 7044,
+    "frac_both_flat": 0.450182143541893,
+    "n_both_in_market": 8036,
+    "frac_both_in_market": 0.513580878123602,
+    "n_candidate_only_in_market": 243,
+    "n_baseline_only_in_market": 324,
+    "n_disagree_direction": 567,
+    "frac_disagree_direction": 0.03623697833450502,
+    "frac_agree_direction": 0.963763021665495,
+    "n_both_market_exposure_identical": 6683,
+    "n_both_market_exposure_close_1pct": 6743
+  },
+  "identical_decisions": {
+    "n_bars": 15647,
+    "def1_same_direction": {
+      "count": 15080,
+      "frac": 0.963763021665495,
+      "definition": "both flat OR both in market"
+    },
+    "def2_same_dir_and_close_returns": {
+      "count": 14713,
+      "frac": 0.9403080462708506,
+      "definition": "same direction AND |ret_diff| < 10bps"
+    },
+    "def3_exact_zero_differential": {
+      "count": 13695,
+      "frac": 0.8752476513069598,
+      "definition": "simple_differential == 0.0 (float exact)"
+    },
+    "def4_returns_within_1bps": {
+      "count": 14029,
+      "frac": 0.8965935962165271,
+      "definition": "|candidate_ret - baseline_ret| < 0.0001"
+    },
+    "def5_exact_same_return": {
+      "count": 13695,
+      "frac": 0.8752476513069598,
+      "definition": "candidate_ret == baseline_ret (float exact)"
+    }
+  },
+  "correlations": {
+    "corr_simple_full": 0.9637716218779986,
+    "corr_log_full": 0.9632008442653686,
+    "n_nonzero_bars": 8690,
+    "corr_simple_nonzero_only": 0.9637525950972868,
+    "corr_log_nonzero_only": 0.9631861703449605
+  },
+  "hill_from_csv": {
+    "simple_differential": [
+      {
+        "frac": 0.005,
+        "k": 78,
+        "alpha": 2.2442721005493893
+      },
+      {
+        "frac": 0.01,
+        "k": 156,
+        "alpha": 1.8147360327514224
+      },
+      {
+        "frac": 0.02,
+        "k": 312,
+        "alpha": 1.44838441498029
+      },
+      {
+        "frac": 0.05,
+        "k": 782,
+        "alpha": 0.8531299028452995
+      },
+      {
+        "frac": 0.1,
+        "k": 1564,
+        "alpha": 0.4444220965107263
+      },
+      {
+        "frac": 0.2,
+        "k": 3129,
+        "alpha": NaN
+      }
+    ],
+    "log_differential": [
+      {
+        "frac": 0.005,
+        "k": 78,
+        "alpha": 2.24247916133003
+      },
+      {
+        "frac": 0.01,
+        "k": 156,
+        "alpha": 1.8160016326304507
+      },
+      {
+        "frac": 0.02,
+        "k": 312,
+        "alpha": 1.4465831324344616
+      },
+      {
+        "frac": 0.05,
+        "k": 782,
+        "alpha": 0.8566787269681486
+      },
+      {
+        "frac": 0.1,
+        "k": 1564,
+        "alpha": 0.44358012556122883
+      },
+      {
+        "frac": 0.2,
+        "k": 3129,
+        "alpha": NaN
+      }
+    ],
+    "candidate_simple_ret": [
+      {
+        "frac": 0.005,
+        "k": 78,
+        "alpha": 3.5774143251762913
+      },
+      {
+        "frac": 0.01,
+        "k": 156,
+        "alpha": 2.998208266197354
+      },
+      {
+        "frac": 0.02,
+        "k": 312,
+        "alpha": 2.724706014887349
+      },
+      {
+        "frac": 0.05,
+        "k": 782,
+        "alpha": 2.2218687755462203
+      },
+      {
+        "frac": 0.1,
+        "k": 1564,
+        "alpha": 1.8250523376309278
+      },
+      {
+        "frac": 0.2,
+        "k": 3129,
+        "alpha": 1.3559257140722294
+      }
+    ],
+    "baseline_simple_ret": [
+      {
+        "frac": 0.005,
+        "k": 78,
+        "alpha": 3.851815244538043
+      },
+      {
+        "frac": 0.01,
+        "k": 156,
+        "alpha": 3.1227916122530623
+      },
+      {
+        "frac": 0.02,
+        "k": 312,
+        "alpha": 2.7551941366067836
+      },
+      {
+        "frac": 0.05,
+        "k": 782,
+        "alpha": 2.255636589412841
+      },
+      {
+        "frac": 0.1,
+        "k": 1564,
+        "alpha": 1.8355470296954568
+      },
+      {
+        "frac": 0.2,
+        "k": 3129,
+        "alpha": 1.3577290540184828
+      }
+    ]
+  },
+  "p_a_better_meaning": {
+    "value": 0.6485,
+    "source": "out/validate/v12_vs_v10/2026-02-24/results/bootstrap_summary.json",
+    "computation": "float((deltas > 0).mean()) where deltas[i] = Sharpe(resampled_A[i]) - Sharpe(resampled_B[i])",
+    "source_file": "v10/research/bootstrap.py",
+    "source_line": 216,
+    "metric": "sharpe",
+    "scenario": "harsh",
+    "block_size": 10,
+    "n_bootstrap": 2000,
+    "is_proper_p_value": false,
+    "explanation": "This is the fraction of 2000 bootstrap replicates where Sharpe(resampled_candidate) > Sharpe(resampled_baseline), using identical block indices for both curves. It is NOT a p-value in the hypothesis-testing sense. A proper bootstrap p-value would test H0: delta <= 0 using a centered or pivotal statistic. This is a heuristic probability estimate P(Sharpe_A > Sharpe_B | bootstrap distribution).",
+    "gate_rule": "pass if p_a_better >= 0.80 AND ci_lower > -0.01 (source: validation/suites/bootstrap.py line 104)",
+    "gate_is_calibrated": false,
+    "gate_explanation": "The 0.80 threshold was chosen heuristically, not derived from any formal Type-I error control or power analysis."
+  }
+}

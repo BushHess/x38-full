@@ -1,0 +1,1388 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>BTC Spot Long-Only Research Report</title>
+<style>
+body { font-family: Arial, Helvetica, sans-serif; margin: 32px; line-height: 1.35; color: #111; }
+h1, h2, h3 { margin-top: 28px; }
+table { border-collapse: collapse; margin: 12px 0 24px 0; font-size: 14px; width: 100%; }
+th, td { border: 1px solid #ccc; padding: 6px 8px; vertical-align: top; }
+th { background: #f3f3f3; text-align: left; }
+code { background: #f5f5f5; padding: 2px 4px; }
+.small { font-size: 13px; color: #444; }
+img { max-width: 100%; height: auto; border: 1px solid #ddd; margin: 8px 0 18px 0; }
+.section-note { background: #fafafa; border-left: 4px solid #999; padding: 10px 12px; }
+.good { color: #0a6; }
+.warn { color: #b65; }
+.bad { color: #b00; }
+</style>
+</head>
+<body>
+
+<h1>BTC Spot Long-Only Trading System Discovery</h1>
+<div class='section-note'>This report follows the uploaded protocol: lock the evaluation first, measure raw structure, generate hypotheses from the measurements, freeze the candidate, then evaluate the untouched holdout. Benchmark comparison is limited by the fact that Appendix A provides only summary statistics, not benchmark rules or return paths.</div>
+<h2>Executive verdict</h2>
+
+<p><strong>Verdict: COMPETITIVE.</strong> The frozen candidate passes the hard criteria on this dataset: aggregate walk-forward performance is positive with all 4 yearly unseen development windows positive; the final holdout is also positive after costs; holdout trade count is 30; and the parameter surface is broad enough in development to avoid a spike-driven result. The weak point is recent performance: holdout Sharpe is only 0.21, with 2025 negative, and holdout bootstrap is only mildly better than a coin flip. That is not strong enough to claim a robust frontier improvement.</p>
+<p>On raw full-sample metrics, the candidate is below the benchmark frontier in Sharpe/CAGR. On bootstrap medians, it looks stronger than the benchmark summaries provided in Appendix A, but a fair paired comparison is impossible without benchmark implementations or path-level returns. Because the SUPERIOR definition explicitly requires paired bootstrap against the benchmark path, that claim cannot be made here.</p>
+
+<h2>Phase 0 — locked protocol</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Item</th>
+      <th>Locked choice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Warmup</td>
+      <td>2017-08-17 to 2018-12-31, no trading</td>
+    </tr>
+    <tr>
+      <td>Development</td>
+      <td>2019-01-01 to 2023-12-31</td>
+    </tr>
+    <tr>
+      <td>Walk-forward windows</td>
+      <td>2020, 2021, 2022, 2023 (annual, non-overlapping)</td>
+    </tr>
+    <tr>
+      <td>Final holdout</td>
+      <td>2024-01-01 to 2026-02-20</td>
+    </tr>
+    <tr>
+      <td>Primary performance metrics</td>
+      <td>Daily Sharpe (365.25 annualization), CAGR, MDD, trade count, exposure</td>
+    </tr>
+    <tr>
+      <td>Bootstrap</td>
+      <td>Circular block bootstrap on daily returns; 2,000 resamples; block sizes 5/10/20/40 days</td>
+    </tr>
+    <tr>
+      <td>Plateau test</td>
+      <td>One-at-a-time ±20% perturbation at 0.8x/0.9x/1.0x/1.1x/1.2x</td>
+    </tr>
+    <tr>
+      <td>Complexity budget</td>
+      <td>Max 4 tunables; binary 0/1 position; no leverage; no regime-specific parameter sets; annual threshold refit only</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Phase 1 — data decomposition</h2>
+<p>Two points mattered immediately. First, raw one-bar autocorrelation is basically useless: H4 lag-1 autocorrelation is -0.045 and D1 lag-1 is -0.051. Second, the exploitable structure appears only after state conditioning: medium-horizon daily trend strength, especially when price stays close to a 60-day high, carries the only durable cost-resilient long edge.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Channel</th>
+      <th>Measured fact</th>
+      <th>Representative feature</th>
+      <th>Decay horizon</th>
+      <th>Regime dependence</th>
+      <th>Redundancy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Autocorrelation / persistence</td>
+      <td>H4 and D1 one-bar autocorrelation are near zero to slightly negative (H4 lag1 -0.045, D1 lag1 -0.051), so raw bar-to-bar continuation is not the edge.</td>
+      <td>Raw returns</td>
+      <td>Mostly noise / slight short-term reversal</td>
+      <td>Low</td>
+      <td>High redundancy among raw returns</td>
+    </tr>
+    <tr>
+      <td>Medium-horizon trend strength</td>
+      <td>D1 trendvol_10 was the strongest standalone measured channel. OOS 24-bar conditional return for top train-quantile states: 2.29% vs 1.22% base; positive edge in all 4 WF test years.</td>
+      <td>D1 trendvol_10</td>
+      <td>2–4 days</td>
+      <td>Best in 2020/2021/2023, still positive in 2022</td>
+      <td>Moderately redundant with D1 ret_20 (phi 0.47)</td>
+    </tr>
+    <tr>
+      <td>Near-high state</td>
+      <td>Distance to 60-day high was not a reliable standalone alpha source, but as a filter it materially improved consistency and drawdown when paired with trend strength.</td>
+      <td>D1 dist_high_60</td>
+      <td>Acts more as state filter than trigger</td>
+      <td>Suppresses 2022 damage by keeping exposure low</td>
+      <td>Moderate overlap with trendvol_10 (phi 0.36)</td>
+    </tr>
+    <tr>
+      <td>Volatility / range</td>
+      <td>H4 volatility/range features showed some conditional edge, but sign stability was poor across folds; better as diagnostics than production filters.</td>
+      <td>H4 vol/range</td>
+      <td>1–4 days</td>
+      <td>Mixed</td>
+      <td>Redundant with trend state</td>
+    </tr>
+    <tr>
+      <td>Volume / order flow</td>
+      <td>Pure flow features were weak standalone. Best flow-related signal was a breakout-flow interaction; still weaker than price-state channels.</td>
+      <td>x_breakout_flow</td>
+      <td>2–4 days</td>
+      <td>Mixed; 3/4 positive WF windows</td>
+      <td>Secondary / complementary</td>
+    </tr>
+    <tr>
+      <td>Seasonality</td>
+      <td>Hour-of-day was effectively flat. Day-of-week had some drift but looked too small and too unstable relative to cost to treat as real edge.</td>
+      <td>Hour, DOW</td>
+      <td>N/A</td>
+      <td>Likely spurious</td>
+      <td>Not used</td>
+    </tr>
+    <tr>
+      <td>Pullback / mean reversion</td>
+      <td>Deep dip-buying was not supported. The best “pullback” features were actually shallow-pullback / near-high states, which are trend continuation in disguise.</td>
+      <td>D1 draw/pullback features</td>
+      <td>1–4 days</td>
+      <td>Works only when pullback stays shallow</td>
+      <td>Mostly absorbed by near-high filter</td>
+    </tr>
+  </tbody>
+</table>
+<p class='small'>Phase-1 measurement universe: 65 engineered H4/D1/cross-timeframe features × 5 forward horizons = 325 univariate OOS probes, followed by shortlisted state/hold-rule tests.</p>
+<h3>Most informative Phase-1 measurements</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Channel</th>
+      <th>Feature</th>
+      <th>Forward horizon (bars)</th>
+      <th>Selected-state mean fwd return</th>
+      <th>Base mean fwd return</th>
+      <th>Spread vs base</th>
+      <th>Net per-trade edge at 20 bps</th>
+      <th>Positive test-window fraction</th>
+      <th>State frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>trend</td>
+      <td>d1_trendvol_10</td>
+      <td>24.000</td>
+      <td>2.3%</td>
+      <td>1.2%</td>
+      <td>0.011</td>
+      <td>0.021</td>
+      <td>1.000</td>
+      <td>0.198</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>h4_trendvol_24</td>
+      <td>24.000</td>
+      <td>1.7%</td>
+      <td>1.1%</td>
+      <td>0.006</td>
+      <td>0.015</td>
+      <td>0.750</td>
+      <td>0.186</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_pullback_20</td>
+      <td>24.000</td>
+      <td>1.6%</td>
+      <td>1.0%</td>
+      <td>0.006</td>
+      <td>0.014</td>
+      <td>0.750</td>
+      <td>0.221</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_draw_20</td>
+      <td>24.000</td>
+      <td>1.6%</td>
+      <td>1.0%</td>
+      <td>0.006</td>
+      <td>0.014</td>
+      <td>0.750</td>
+      <td>0.221</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_ret_10</td>
+      <td>24.000</td>
+      <td>1.6%</td>
+      <td>0.9%</td>
+      <td>0.006</td>
+      <td>0.014</td>
+      <td>0.500</td>
+      <td>0.137</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_trendvol_20</td>
+      <td>24.000</td>
+      <td>1.5%</td>
+      <td>1.3%</td>
+      <td>0.003</td>
+      <td>0.013</td>
+      <td>0.750</td>
+      <td>0.196</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_pullback_10</td>
+      <td>24.000</td>
+      <td>1.5%</td>
+      <td>1.0%</td>
+      <td>0.005</td>
+      <td>0.013</td>
+      <td>0.750</td>
+      <td>0.208</td>
+    </tr>
+    <tr>
+      <td>trend</td>
+      <td>d1_draw_10</td>
+      <td>24.000</td>
+      <td>1.5%</td>
+      <td>1.0%</td>
+      <td>0.005</td>
+      <td>0.013</td>
+      <td>0.750</td>
+      <td>0.208</td>
+    </tr>
+    <tr>
+      <td>vol_range</td>
+      <td>x_exhaustion</td>
+      <td>24.000</td>
+      <td>1.3%</td>
+      <td>1.1%</td>
+      <td>0.002</td>
+      <td>0.011</td>
+      <td>0.500</td>
+      <td>0.180</td>
+    </tr>
+    <tr>
+      <td>vol_range</td>
+      <td>h4_vol_24</td>
+      <td>24.000</td>
+      <td>1.3%</td>
+      <td>0.7%</td>
+      <td>0.006</td>
+      <td>0.011</td>
+      <td>1.000</td>
+      <td>0.195</td>
+    </tr>
+    <tr>
+      <td>vol_range</td>
+      <td>h4_rng_24</td>
+      <td>24.000</td>
+      <td>1.2%</td>
+      <td>0.8%</td>
+      <td>0.004</td>
+      <td>0.010</td>
+      <td>0.750</td>
+      <td>0.199</td>
+    </tr>
+    <tr>
+      <td>vol_range</td>
+      <td>h4_vol_6</td>
+      <td>24.000</td>
+      <td>1.2%</td>
+      <td>0.7%</td>
+      <td>0.005</td>
+      <td>0.010</td>
+      <td>1.000</td>
+      <td>0.183</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Phase 2 — candidate hypotheses</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Hypothesis</th>
+      <th>Mechanism</th>
+      <th>What it exploits</th>
+      <th>Minimal expression tested</th>
+      <th>Expected failure mode</th>
+      <th>Falsification test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>H1 (finalist)</td>
+      <td>Trend strength + long-term near-high</td>
+      <td>Daily trend persistence in strong BTC impulse regimes</td>
+      <td>trendvol_10 >= q0.8 AND dist_high_60 >= q0.6</td>
+      <td>Sharp reversals from elevated highs / non-trending years</td>
+      <td>Holdout negative or parameter plateau collapses</td>
+    </tr>
+    <tr>
+      <td>H2</td>
+      <td>Momentum + near-high</td>
+      <td>Medium-horizon momentum continuation once regime already strong</td>
+      <td>ret_20 >= q0.8 AND dist_high_40 >= q0.7</td>
+      <td>Momentum slows earlier than trend-strength signal</td>
+      <td>WF or holdout deterioration despite positive trend regime</td>
+    </tr>
+    <tr>
+      <td>H3</td>
+      <td>Long-term momentum regime only</td>
+      <td>Engage only when 60-day drift is already strong</td>
+      <td>ret_60 >= q0.6</td>
+      <td>Too slow; can give back on reversals</td>
+      <td>Persistent underperformance vs H1 on unseen data</td>
+    </tr>
+    <tr>
+      <td>H4</td>
+      <td>Flow breakout pulse</td>
+      <td>Buyer aggression confirms breakouts</td>
+      <td>breakout-flow interaction high</td>
+      <td>Late breakout chasing in mature moves</td>
+      <td>Edge disappears after cost / turnover</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Best family by unseen development data</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>family</th>
+      <th>features</th>
+      <th>quantiles</th>
+      <th>sharpe</th>
+      <th>cagr</th>
+      <th>mdd</th>
+      <th>trade_entries</th>
+      <th>wf_pos_windows</th>
+      <th>wf_min_window_return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ret_nearhigh</td>
+      <td>('ret_20', 'dist_high_40')</td>
+      <td>(0.8, 0.7)</td>
+      <td>1.515</td>
+      <td>0.388</td>
+      <td>-0.130</td>
+      <td>36.000</td>
+      <td>4.000</td>
+      <td>0.4%</td>
+    </tr>
+    <tr>
+      <td>single_nearhigh</td>
+      <td>('dist_high_40',)</td>
+      <td>(0.7,)</td>
+      <td>1.525</td>
+      <td>0.623</td>
+      <td>-0.333</td>
+      <td>61.000</td>
+      <td>3.000</td>
+      <td>-23.8%</td>
+    </tr>
+    <tr>
+      <td>single_ret</td>
+      <td>('ret_20',)</td>
+      <td>(0.8,)</td>
+      <td>1.213</td>
+      <td>0.345</td>
+      <td>-0.287</td>
+      <td>34.000</td>
+      <td>4.000</td>
+      <td>0.4%</td>
+    </tr>
+    <tr>
+      <td>single_trendvol</td>
+      <td>('trendvol_5',)</td>
+      <td>(0.7,)</td>
+      <td>1.368</td>
+      <td>0.514</td>
+      <td>-0.384</td>
+      <td>127.000</td>
+      <td>3.000</td>
+      <td>-27.8%</td>
+    </tr>
+    <tr>
+      <td>trendvol_nearhigh</td>
+      <td>('trendvol_10', 'dist_high_60')</td>
+      <td>(0.8, 0.6)</td>
+      <td>1.696</td>
+      <td>0.534</td>
+      <td>-0.159</td>
+      <td>50.000</td>
+      <td>4.000</td>
+      <td>6.6%</td>
+    </tr>
+  </tbody>
+</table>
+<p>The winning family was <code>trendvol + near-high</code>. The best coarse configuration inside that family was <code>(trendvol_10, dist_high_60, q1=0.8, q2=0.6)</code>, which produced a development walk-forward Sharpe of 1.70 with all 4 test years positive and materially lower drawdown than the simpler single-filter variants.</p>
+<h2>Phase 3–5 — minimal system design, parameter search, and freeze</h2>
+<p>I kept the design deliberately small. The data did not justify H4 timing overlays, volume add-ons, or path-dependent exits. Triplet extensions were tested and did not beat the simple pair once complexity was penalized.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Component</th>
+      <th>Frozen specification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Timeframe</td>
+      <td>D1</td>
+    </tr>
+    <tr>
+      <td>Feature 1</td>
+      <td>trendvol_10 = 10-day return / (10-day stdev(daily returns) * sqrt(10))</td>
+    </tr>
+    <tr>
+      <td>Feature 2</td>
+      <td>dist_high_60 = close / rolling 60-day high - 1</td>
+    </tr>
+    <tr>
+      <td>Calibration procedure</td>
+      <td>At each Jan 1, estimate q0.8(trendvol_10) and q0.6(dist_high_60) from all completed data up to Dec 31 of prior year</td>
+    </tr>
+    <tr>
+      <td>Entry rule</td>
+      <td>At daily close, set desired long for next day if trendvol_10 >= threshold_1 AND dist_high_60 >= threshold_2</td>
+    </tr>
+    <tr>
+      <td>Exit rule</td>
+      <td>Go to cash when either condition fails</td>
+    </tr>
+    <tr>
+      <td>Position sizing</td>
+      <td>100% long or 0% cash</td>
+    </tr>
+    <tr>
+      <td>Execution</td>
+      <td>Signal on daily close, fill next day open, 10 bps per side</td>
+    </tr>
+    <tr>
+      <td>Tunables</td>
+      <td>trend lookback 10, near-high lookback 60, quantiles 0.8 and 0.6</td>
+    </tr>
+    <tr>
+      <td>Actual holdout thresholds</td>
+      <td>2024: (1.0641, -0.1101); 2025: (1.0867, -0.0981); 2026: (1.0772, -0.0938)</td>
+    </tr>
+  </tbody>
+</table>
+<p class='small'>Search accounting: 246 family-level D1 configurations across five mechanism families, 108 coarse configurations inside the winning family, and 540 three-filter extensions to test whether extra complexity earned its place. It did not.</p>
+<h2>Validation results</h2>
+<h3>Walk-forward (unseen development windows)</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Test year</th>
+      <th>Total return</th>
+      <th>CAGR</th>
+      <th>MDD</th>
+      <th>Sharpe</th>
+      <th>Trades</th>
+      <th>Exposure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020</td>
+      <td>95.6%</td>
+      <td>95.4%</td>
+      <td>-12.0%</td>
+      <td>2.245</td>
+      <td>19</td>
+      <td>27.9%</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>100.5%</td>
+      <td>100.6%</td>
+      <td>-13.8%</td>
+      <td>2.025</td>
+      <td>13</td>
+      <td>18.6%</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>2.2%</td>
+      <td>2.2%</td>
+      <td>-7.6%</td>
+      <td>0.320</td>
+      <td>3</td>
+      <td>3.6%</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>48.5%</td>
+      <td>48.6%</td>
+      <td>-11.8%</td>
+      <td>1.757</td>
+      <td>17</td>
+      <td>23.6%</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/walkforward_returns.png' alt='Walk-forward returns chart'>
+<h3>Final holdout</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Year</th>
+      <th>Total return</th>
+      <th>CAGR</th>
+      <th>MDD</th>
+      <th>Sharpe</th>
+      <th>Trades</th>
+      <th>Exposure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2024</td>
+      <td>19.7%</td>
+      <td>19.7%</td>
+      <td>-26.4%</td>
+      <td>0.823</td>
+      <td>18</td>
+      <td>21.9%</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>-12.5%</td>
+      <td>-12.5%</td>
+      <td>-12.5%</td>
+      <td>-0.872</td>
+      <td>12</td>
+      <td>16.2%</td>
+    </tr>
+    <tr>
+      <td>2026</td>
+      <td>0.0%</td>
+      <td>0.0%</td>
+      <td>0.0%</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>0.0%</td>
+    </tr>
+  </tbody>
+</table>
+<p>The holdout is positive overall, but the shape is mediocre rather than dominant: 2024 carried the gains, 2025 gave back part of them, and early 2026 stayed in cash. That keeps the candidate alive under the hard criteria, but it is the main reason the final verdict stops at COMPETITIVE.</p>
+<h3>Aggregate summary</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Slice</th>
+      <th>Total return</th>
+      <th>CAGR</th>
+      <th>MDD</th>
+      <th>Sharpe</th>
+      <th>Trades</th>
+      <th>Exposure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Development WF aggregate (2020-2023)</td>
+      <td>495.3%</td>
+      <td>56.2%</td>
+      <td>-13.8%</td>
+      <td>1.735</td>
+      <td>51</td>
+      <td>18.4%</td>
+    </tr>
+    <tr>
+      <td>Final holdout (2024-2026-02-20)</td>
+      <td>4.7%</td>
+      <td>2.2%</td>
+      <td>-26.9%</td>
+      <td>0.207</td>
+      <td>30</td>
+      <td>17.8%</td>
+    </tr>
+    <tr>
+      <td>Full sample descriptive (2019-2026-02-20)</td>
+      <td>912.6%</td>
+      <td>38.3%</td>
+      <td>-31.4%</td>
+      <td>1.291</td>
+      <td>93</td>
+      <td>18.0%</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Equity and drawdown</h3>
+<img src='charts/equity_curve.png' alt='Equity curve'>
+<img src='charts/drawdown_curve.png' alt='Drawdown curve'>
+<h3>Regime decomposition</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Regime</th>
+      <th>Year</th>
+      <th>Total return</th>
+      <th>CAGR</th>
+      <th>MDD</th>
+      <th>Sharpe</th>
+      <th>Trades</th>
+      <th>Exposure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2019 recovery</td>
+      <td>2019</td>
+      <td>62.4%</td>
+      <td>62.5%</td>
+      <td>-29.5%</td>
+      <td>1.394</td>
+      <td>12</td>
+      <td>17.0%</td>
+    </tr>
+    <tr>
+      <td>2020 shock-to-bull</td>
+      <td>2020</td>
+      <td>95.6%</td>
+      <td>95.4%</td>
+      <td>-12.0%</td>
+      <td>2.245</td>
+      <td>19</td>
+      <td>27.9%</td>
+    </tr>
+    <tr>
+      <td>2021 cycle advance</td>
+      <td>2021</td>
+      <td>100.5%</td>
+      <td>100.6%</td>
+      <td>-13.8%</td>
+      <td>2.025</td>
+      <td>13</td>
+      <td>18.6%</td>
+    </tr>
+    <tr>
+      <td>2022 bear</td>
+      <td>2022</td>
+      <td>2.2%</td>
+      <td>2.2%</td>
+      <td>-7.6%</td>
+      <td>0.320</td>
+      <td>3</td>
+      <td>3.6%</td>
+    </tr>
+    <tr>
+      <td>2023 recovery</td>
+      <td>2023</td>
+      <td>48.5%</td>
+      <td>48.6%</td>
+      <td>-11.8%</td>
+      <td>1.757</td>
+      <td>17</td>
+      <td>23.6%</td>
+    </tr>
+    <tr>
+      <td>2024 breakout bull</td>
+      <td>2024</td>
+      <td>19.7%</td>
+      <td>19.7%</td>
+      <td>-26.4%</td>
+      <td>0.823</td>
+      <td>18</td>
+      <td>21.9%</td>
+    </tr>
+    <tr>
+      <td>2025 range/down</td>
+      <td>2025</td>
+      <td>-12.5%</td>
+      <td>-12.5%</td>
+      <td>-12.5%</td>
+      <td>-0.872</td>
+      <td>12</td>
+      <td>16.2%</td>
+    </tr>
+    <tr>
+      <td>2026 early pullback</td>
+      <td>2026</td>
+      <td>0.0%</td>
+      <td>0.0%</td>
+      <td>0.0%</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>0.0%</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/regime_breakdown.png' alt='Regime breakdown'>
+<h3>Cost sensitivity</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>roundtrip_cost_bps</th>
+      <th>dev_sharpe</th>
+      <th>dev_cagr</th>
+      <th>dev_mdd</th>
+      <th>dev_total_return</th>
+      <th>hold_sharpe</th>
+      <th>hold_cagr</th>
+      <th>hold_mdd</th>
+      <th>hold_total_return</th>
+      <th>full_sharpe</th>
+      <th>full_cagr</th>
+      <th>full_mdd</th>
+      <th>full_total_return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.000</td>
+      <td>1.826</td>
+      <td>0.602</td>
+      <td>-0.136</td>
+      <td>559.1%</td>
+      <td>0.346</td>
+      <td>0.051</td>
+      <td>-0.250</td>
+      <td>11.2%</td>
+      <td>1.384</td>
+      <td>0.419</td>
+      <td>-0.304</td>
+      <td>1119.3%</td>
+    </tr>
+    <tr>
+      <td>20.000</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>495.3%</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+      <td>4.7%</td>
+      <td>1.291</td>
+      <td>0.383</td>
+      <td>-0.314</td>
+      <td>912.6%</td>
+    </tr>
+    <tr>
+      <td>50.000</td>
+      <td>1.598</td>
+      <td>0.503</td>
+      <td>-0.140</td>
+      <td>410.9%</td>
+      <td>-0.002</td>
+      <td>-0.020</td>
+      <td>-0.325</td>
+      <td>-4.3%</td>
+      <td>1.152</td>
+      <td>0.330</td>
+      <td>-0.329</td>
+      <td>666.1%</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/cost_sensitivity_sharpe.png' alt='Cost sensitivity'>
+<p>Development performance survives 50 bps round-trip stress, but the holdout does not. That is another caution sign: the system is cost-resilient in the discovery years, not in the recent regime.</p>
+<h3>Component ablation</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variant</th>
+      <th>dev_sharpe</th>
+      <th>dev_cagr</th>
+      <th>dev_mdd</th>
+      <th>dev_trades</th>
+      <th>hold_sharpe</th>
+      <th>hold_cagr</th>
+      <th>hold_mdd</th>
+      <th>hold_trades</th>
+      <th>full_sharpe</th>
+      <th>full_cagr</th>
+      <th>full_mdd</th>
+      <th>full_trades</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Full system</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>51.000</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+      <td>30.000</td>
+      <td>1.291</td>
+      <td>0.383</td>
+      <td>-0.314</td>
+      <td>93.000</td>
+    </tr>
+    <tr>
+      <td>Ablate near-high (trendvol only)</td>
+      <td>1.449</td>
+      <td>0.454</td>
+      <td>-0.196</td>
+      <td>60.000</td>
+      <td>0.592</td>
+      <td>0.110</td>
+      <td>-0.220</td>
+      <td>32.000</td>
+      <td>1.253</td>
+      <td>0.379</td>
+      <td>-0.305</td>
+      <td>104.000</td>
+    </tr>
+    <tr>
+      <td>Ablate trend strength (near-high only)</td>
+      <td>1.406</td>
+      <td>0.688</td>
+      <td>-0.478</td>
+      <td>34.000</td>
+      <td>0.220</td>
+      <td>0.018</td>
+      <td>-0.481</td>
+      <td>28.000</td>
+      <td>1.133</td>
+      <td>0.480</td>
+      <td>-0.481</td>
+      <td>69.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>On development walk-forward data, both modules earn their place: the pair improves Sharpe and sharply compresses drawdown relative to either single module. On holdout, the near-high filter did <em>not</em> help. That is a genuine out-of-sample warning and should not be hand-waved away.</p>
+<h3>Plateau test</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis</th>
+      <th>value</th>
+      <th>dev_sharpe</th>
+      <th>dev_cagr</th>
+      <th>dev_mdd</th>
+      <th>hold_sharpe</th>
+      <th>hold_cagr</th>
+      <th>hold_mdd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>L1</td>
+      <td>8.000</td>
+      <td>1.226</td>
+      <td>0.364</td>
+      <td>-0.268</td>
+      <td>0.134</td>
+      <td>0.008</td>
+      <td>-0.263</td>
+    </tr>
+    <tr>
+      <td>L1</td>
+      <td>9.000</td>
+      <td>1.553</td>
+      <td>0.505</td>
+      <td>-0.198</td>
+      <td>0.281</td>
+      <td>0.036</td>
+      <td>-0.202</td>
+    </tr>
+    <tr>
+      <td>L1</td>
+      <td>10.000</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+    </tr>
+    <tr>
+      <td>L1</td>
+      <td>11.000</td>
+      <td>1.521</td>
+      <td>0.506</td>
+      <td>-0.207</td>
+      <td>-0.006</td>
+      <td>-0.017</td>
+      <td>-0.316</td>
+    </tr>
+    <tr>
+      <td>L1</td>
+      <td>12.000</td>
+      <td>1.703</td>
+      <td>0.596</td>
+      <td>-0.225</td>
+      <td>0.168</td>
+      <td>0.014</td>
+      <td>-0.289</td>
+    </tr>
+    <tr>
+      <td>q1</td>
+      <td>0.640</td>
+      <td>1.350</td>
+      <td>0.522</td>
+      <td>-0.314</td>
+      <td>0.497</td>
+      <td>0.100</td>
+      <td>-0.292</td>
+    </tr>
+    <tr>
+      <td>q1</td>
+      <td>0.720</td>
+      <td>1.501</td>
+      <td>0.565</td>
+      <td>-0.259</td>
+      <td>0.076</td>
+      <td>-0.007</td>
+      <td>-0.334</td>
+    </tr>
+    <tr>
+      <td>q1</td>
+      <td>0.800</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+    </tr>
+    <tr>
+      <td>q1</td>
+      <td>0.880</td>
+      <td>1.249</td>
+      <td>0.307</td>
+      <td>-0.139</td>
+      <td>-0.391</td>
+      <td>-0.058</td>
+      <td>-0.266</td>
+    </tr>
+    <tr>
+      <td>q1</td>
+      <td>0.950</td>
+      <td>0.639</td>
+      <td>0.090</td>
+      <td>-0.256</td>
+      <td>-0.648</td>
+      <td>-0.050</td>
+      <td>-0.178</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>48.000</td>
+      <td>1.751</td>
+      <td>0.569</td>
+      <td>-0.138</td>
+      <td>0.551</td>
+      <td>0.098</td>
+      <td>-0.256</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>54.000</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.333</td>
+      <td>0.049</td>
+      <td>-0.262</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>60.000</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>66.000</td>
+      <td>1.654</td>
+      <td>0.524</td>
+      <td>-0.138</td>
+      <td>0.275</td>
+      <td>0.036</td>
+      <td>-0.242</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>72.000</td>
+      <td>1.620</td>
+      <td>0.506</td>
+      <td>-0.162</td>
+      <td>0.243</td>
+      <td>0.029</td>
+      <td>-0.247</td>
+    </tr>
+    <tr>
+      <td>q2</td>
+      <td>0.480</td>
+      <td>1.741</td>
+      <td>0.565</td>
+      <td>-0.138</td>
+      <td>0.381</td>
+      <td>0.060</td>
+      <td>-0.220</td>
+    </tr>
+    <tr>
+      <td>q2</td>
+      <td>0.540</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.394</td>
+      <td>0.063</td>
+      <td>-0.220</td>
+    </tr>
+    <tr>
+      <td>q2</td>
+      <td>0.600</td>
+      <td>1.735</td>
+      <td>0.562</td>
+      <td>-0.138</td>
+      <td>0.207</td>
+      <td>0.022</td>
+      <td>-0.269</td>
+    </tr>
+    <tr>
+      <td>q2</td>
+      <td>0.660</td>
+      <td>1.703</td>
+      <td>0.545</td>
+      <td>-0.150</td>
+      <td>0.108</td>
+      <td>0.002</td>
+      <td>-0.284</td>
+    </tr>
+    <tr>
+      <td>q2</td>
+      <td>0.720</td>
+      <td>1.779</td>
+      <td>0.564</td>
+      <td>-0.159</td>
+      <td>-0.165</td>
+      <td>-0.049</td>
+      <td>-0.307</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/plateau_dev.png' alt='Plateau chart'>
+<p>Development plateau verdict: acceptable, not perfect. Lookback parameters are broad. The <code>q2</code> near-high threshold is also broad. The sharpest axis is <code>q1</code>: pushing the trend-strength threshold too high (>0.88) degrades quickly. So this is not a knife-edge result, but it is also not infinitely forgiving.</p>
+<h3>Bootstrap robustness</h3>
+<p>Primary bootstrap view below is on fully unseen returns from 2020-01-01 to 2026-02-20. The holdout-only bootstrap is much weaker, which is exactly what the raw holdout equity already hinted.</p>
+<h4>OOS bootstrap summary</h4>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>block_size</th>
+      <th>median_sharpe</th>
+      <th>p_sharpe_gt_0</th>
+      <th>median_cagr</th>
+      <th>p_cagr_gt_0</th>
+      <th>median_mdd</th>
+      <th>sharpe_p05</th>
+      <th>sharpe_p95</th>
+      <th>cagr_p05</th>
+      <th>cagr_p95</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5.000</td>
+      <td>1.273</td>
+      <td>1.000</td>
+      <td>0.338</td>
+      <td>0.999</td>
+      <td>-0.250</td>
+      <td>0.650</td>
+      <td>1.885</td>
+      <td>0.134</td>
+      <td>0.607</td>
+    </tr>
+    <tr>
+      <td>10.000</td>
+      <td>1.266</td>
+      <td>0.998</td>
+      <td>0.337</td>
+      <td>0.996</td>
+      <td>-0.246</td>
+      <td>0.645</td>
+      <td>1.875</td>
+      <td>0.133</td>
+      <td>0.616</td>
+    </tr>
+    <tr>
+      <td>20.000</td>
+      <td>1.287</td>
+      <td>0.999</td>
+      <td>0.344</td>
+      <td>0.998</td>
+      <td>-0.250</td>
+      <td>0.605</td>
+      <td>1.939</td>
+      <td>0.122</td>
+      <td>0.662</td>
+    </tr>
+    <tr>
+      <td>40.000</td>
+      <td>1.284</td>
+      <td>0.999</td>
+      <td>0.339</td>
+      <td>0.998</td>
+      <td>-0.243</td>
+      <td>0.614</td>
+      <td>1.908</td>
+      <td>0.120</td>
+      <td>0.658</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Holdout bootstrap summary</h4>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>block_size</th>
+      <th>median_sharpe</th>
+      <th>p_sharpe_gt_0</th>
+      <th>median_cagr</th>
+      <th>p_cagr_gt_0</th>
+      <th>median_mdd</th>
+      <th>sharpe_p05</th>
+      <th>sharpe_p95</th>
+      <th>cagr_p05</th>
+      <th>cagr_p95</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5.000</td>
+      <td>0.198</td>
+      <td>0.604</td>
+      <td>0.020</td>
+      <td>0.547</td>
+      <td>-0.243</td>
+      <td>-0.980</td>
+      <td>1.283</td>
+      <td>-0.179</td>
+      <td>0.278</td>
+    </tr>
+    <tr>
+      <td>10.000</td>
+      <td>0.176</td>
+      <td>0.600</td>
+      <td>0.015</td>
+      <td>0.549</td>
+      <td>-0.249</td>
+      <td>-1.113</td>
+      <td>1.286</td>
+      <td>-0.189</td>
+      <td>0.298</td>
+    </tr>
+    <tr>
+      <td>20.000</td>
+      <td>0.180</td>
+      <td>0.587</td>
+      <td>0.016</td>
+      <td>0.536</td>
+      <td>-0.257</td>
+      <td>-1.192</td>
+      <td>1.381</td>
+      <td>-0.193</td>
+      <td>0.338</td>
+    </tr>
+    <tr>
+      <td>40.000</td>
+      <td>0.142</td>
+      <td>0.560</td>
+      <td>0.007</td>
+      <td>0.522</td>
+      <td>-0.262</td>
+      <td>-1.294</td>
+      <td>1.357</td>
+      <td>-0.197</td>
+      <td>0.339</td>
+    </tr>
+  </tbody>
+</table>
+<h4>Full-sample descriptive bootstrap summary</h4>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>block_size</th>
+      <th>median_sharpe</th>
+      <th>p_sharpe_gt_0</th>
+      <th>median_cagr</th>
+      <th>p_cagr_gt_0</th>
+      <th>median_mdd</th>
+      <th>sharpe_p05</th>
+      <th>sharpe_p95</th>
+      <th>cagr_p05</th>
+      <th>cagr_p95</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5.000</td>
+      <td>1.285</td>
+      <td>1.000</td>
+      <td>0.377</td>
+      <td>0.998</td>
+      <td>-0.298</td>
+      <td>0.715</td>
+      <td>1.843</td>
+      <td>0.165</td>
+      <td>0.644</td>
+    </tr>
+    <tr>
+      <td>10.000</td>
+      <td>1.266</td>
+      <td>1.000</td>
+      <td>0.369</td>
+      <td>0.999</td>
+      <td>-0.298</td>
+      <td>0.626</td>
+      <td>1.858</td>
+      <td>0.139</td>
+      <td>0.671</td>
+    </tr>
+    <tr>
+      <td>20.000</td>
+      <td>1.272</td>
+      <td>0.999</td>
+      <td>0.373</td>
+      <td>0.999</td>
+      <td>-0.293</td>
+      <td>0.692</td>
+      <td>1.870</td>
+      <td>0.151</td>
+      <td>0.697</td>
+    </tr>
+    <tr>
+      <td>40.000</td>
+      <td>1.261</td>
+      <td>1.000</td>
+      <td>0.365</td>
+      <td>1.000</td>
+      <td>-0.289</td>
+      <td>0.684</td>
+      <td>1.848</td>
+      <td>0.145</td>
+      <td>0.700</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/bootstrap_sensitivity.png' alt='Bootstrap sensitivity'>
+<img src='charts/bootstrap_hist_oos_b20.png' alt='Bootstrap histogram'>
+<h3>Trade-distribution analysis</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Slice</th>
+      <th>Trades</th>
+      <th>Win rate</th>
+      <th>Avg trade</th>
+      <th>Avg win</th>
+      <th>Avg loss</th>
+      <th>Profit factor</th>
+      <th>Median holding days</th>
+      <th>Top-5 winners share of gross profits</th>
+      <th>Churn <=2 days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OOS 2020-2026</td>
+      <td>81</td>
+      <td>44.4%</td>
+      <td>2.7%</td>
+      <td>9.1%</td>
+      <td>-2.4%</td>
+      <td>3.017</td>
+      <td>3.000</td>
+      <td>50.3%</td>
+      <td>0.444</td>
+    </tr>
+    <tr>
+      <td>Holdout 2024-2026</td>
+      <td>30</td>
+      <td>40.0%</td>
+      <td>0.4%</td>
+      <td>5.6%</td>
+      <td>-3.1%</td>
+      <td>1.193</td>
+      <td>3.000</td>
+      <td>91.6%</td>
+      <td>0.433</td>
+    </tr>
+  </tbody>
+</table>
+<img src='charts/trade_return_distribution.png' alt='Trade distribution'>
+<p>There is no obvious winner truncation in the long OOS record: profit factor is ~3.0 and gross profits are not dominated by just one or two trades. Holdout is weaker and more fragile: roughly 92% of holdout gross profits came from its top 5 winners.</p>
+<h2>Phase 6 — benchmark comparison</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>System</th>
+      <th>Sharpe</th>
+      <th>CAGR</th>
+      <th>MDD</th>
+      <th>Trades</th>
+      <th>Bootstrap median Sharpe (b20)</th>
+      <th>Bootstrap median CAGR (b20)</th>
+      <th>P(Sharpe>0) (b20)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Our candidate (full sample, annual refit)</td>
+      <td>1.291</td>
+      <td>38.3%</td>
+      <td>-31.4%</td>
+      <td>93</td>
+      <td>1.272</td>
+      <td>37.3%</td>
+      <td>99.9%</td>
+    </tr>
+    <tr>
+      <td>Benchmark A</td>
+      <td>1.638</td>
+      <td>72.8%</td>
+      <td>-38.5%</td>
+      <td>186</td>
+      <td>0.766</td>
+      <td>24.4%</td>
+      <td>96.8%</td>
+    </tr>
+    <tr>
+      <td>Benchmark B</td>
+      <td>1.830</td>
+      <td>80.4%</td>
+      <td>-33.6%</td>
+      <td>196</td>
+      <td>0.733</td>
+      <td>21.7%</td>
+      <td>96.6%</td>
+    </tr>
+    <tr>
+      <td>Benchmark C</td>
+      <td>1.533</td>
+      <td>57.8%</td>
+      <td>-37.3%</td>
+      <td>211</td>
+      <td>0.516</td>
+      <td>12.2%</td>
+      <td>89.4%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Comparison conclusion.</strong> Against the benchmark summaries from Appendix A, this candidate is not the raw-performance leader: its full-sample Sharpe and CAGR are lower than A/B/C. Its bootstrap medians are stronger than the benchmark summaries provided, but that comparison is unpaired and therefore insufficient to claim superiority. Because Appendix A does not provide benchmark rules or path-level returns, the paired bootstrap required by the protocol cannot be executed. So the honest ranking is: robust enough to be <strong>COMPETITIVE</strong>, not strong enough to prove <strong>SUPERIOR</strong>.</p>
+
+<h2>Bottom line</h2>
+
+<ul>
+<li>The strongest structure in this dataset was <strong>not</strong> deep dip-buying or flow-chasing. It was medium-horizon daily trend persistence, especially when BTC stayed close to a 60-day high.</li>
+<li>The best minimal system was a two-filter D1 state model: <code>trendvol_10 >= q0.8</code> and <code>dist_high_60 >= q0.6</code>, re-estimated once per calendar year from prior data only.</li>
+<li>Discovery quality on 2020-2023 was excellent: Sharpe 1.74, CAGR 56.2%, MDD -13.8%, 51 trades, all 4 WF years positive.</li>
+<li>Holdout quality was merely acceptable: Sharpe 0.21, CAGR 2.2%, MDD -26.9%, 30 trades, positive overall but weak and with 2025 negative.</li>
+<li>That is good enough for <strong>COMPETITIVE</strong>. It is not good enough to claim a robust frontier improvement over the benchmark set.</li>
+</ul>
+
+</body></html>

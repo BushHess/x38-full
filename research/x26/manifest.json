@@ -1,0 +1,157 @@
+{
+  "project": "beyond_trend_lab",
+  "research_question": "BTC spot alpha beyond VTREND trend-following?",
+  "data": "/var/www/trading-bots/btc-spot-dev/bars_btcusdt_2016_now_h1_4h_1d.csv",
+  "incumbent": "VTREND E5+EMA21D1 (full-range: Sh 1.30, 217 trades; eval-window: Sh 1.43, 186 trades)",
+  "phases": {
+    "0_audit": {"status": "SUPERSEDED_BY_PHASE_1", "date": "2026-03-11"},
+    "1_audit_state_map": {
+      "status": "COMPLETE",
+      "gate": "PASS_TO_NEXT_PHASE",
+      "date": "2026-03-11",
+      "method": "v10 BacktestEngine (next-bar-open fills, harsh cost 50 bps RT)",
+      "deliverables": [
+        "01_audit_state_map.md",
+        "code/phase1_state_map.py",
+        "tables/state_classification.csv",
+        "tables/Tbl01_state_summary.csv",
+        "tables/Tbl02_flat_durations.csv",
+        "tables/yearly_state_fraction.csv",
+        "tables/trades.csv",
+        "tables/trade_gaps.csv",
+        "tables/in_trade_periods.csv",
+        "tables/in_position.npy",
+        "figures/Fig01_price_state_overlay.png",
+        "figures/Fig02_flat_duration_hist.png",
+        "figures/Fig03_yearly_state_fraction.png"
+      ]
+    },
+    "2_flat_eda": {
+      "status": "COMPLETE",
+      "gate": "PASS_TO_NEXT_PHASE",
+      "date": "2026-03-11",
+      "method": "H4/H1/D1 conditional analysis, gapped ACF, per-period VR, R/S Hurst, Spearman, Kruskal-Wallis",
+      "deliverables": [
+        "02_flat_period_eda.md",
+        "code/phase2_flat_eda.py",
+        "tables/Tbl03_return_distribution.csv",
+        "tables/Tbl04_variance_ratio.csv",
+        "tables/Tbl05_predictive_relationships.csv",
+        "tables/Tbl06_calendar_effects.csv",
+        "tables/flat_period_characteristics.csv",
+        "figures/Fig04_flat_return_distribution.png",
+        "figures/Fig05_acf_comparison.png",
+        "figures/Fig06_variance_ratio_hurst.png",
+        "figures/Fig07_vol_structure.png",
+        "figures/Fig08_scatter_matrix.png",
+        "figures/Fig09_transition_dynamics.png",
+        "figures/Fig10_calendar_effects.png",
+        "figures/Fig11_cross_timeframe_acf.png"
+      ]
+    },
+    "3_phenomenon_survey": {
+      "status": "COMPLETE",
+      "gate": "PASS_TO_NEXT_PHASE",
+      "date": "2026-03-11",
+      "method": "5-criterion scoring (S1-S5), 4-block stability, rolling stability",
+      "deliverables": [
+        "03_phenomenon_survey.md",
+        "code/phase3_scoring.py",
+        "tables/Tbl_scoring_matrix.csv",
+        "tables/Tbl_stability_blocks.csv",
+        "figures/Fig12_rolling_stability.png"
+      ]
+    },
+    "4_formalization": {
+      "status": "COMPLETE",
+      "gate": "STOP_FLAT_PERIODS_ARE_NOISE",
+      "date": "2026-03-11",
+      "method": "Decision-theoretic formalization, bar-level conditional returns, power analysis, MI estimation",
+      "key_finding": "Bar-level ρ(1) = -0.054 (vs per-period VR-implied -0.238). Gross 2.9 bps/trade, 17x below 50 bps cost. All 3 classes UNDERPOWERED. MI ≈ 2 millibits.",
+      "deliverables": [
+        "04_formalization.md",
+        "code/phase4_formalization.py",
+        "tables/Tbl07_conditional_returns.csv",
+        "tables/Tbl09_power_analysis.csv",
+        "tables/Tbl10_complementarity.csv"
+      ]
+    },
+    "5_go_no_go": {"status": "PENDING"},
+    "6_design": {"status": "PENDING"},
+    "7_validation": {"status": "PENDING"},
+    "8_final_report": {"status": "PENDING"}
+  },
+  "observations": {
+    "Obs01": "VTREND flat 57.4% of time (10,721/18,662 bars)",
+    "Obs02": "Flat duration right-skewed: median 1.8d, mean 8.2d, max 103d",
+    "Obs03": "Longer flat periods tend to have more negative returns (Phase 0 finding)",
+    "Obs04": "Flat bars: mean -8.15 bps, vol 163 bps; active: +14.47 bps, vol 125 bps (Phase 0)",
+    "Obs05": "Flat bar autocorrelation negligible (max |rho|=0.063) (Phase 0)",
+    "Obs06": "Flat returns year-dependent; medians near zero, means pulled by drawdowns (Phase 0)",
+    "Obs07": "IN_TRADE median 28 bars (4.7d), IQR 14-50 bars; consistent with known ~29 bars",
+    "Obs08": "Bear years ~23-25% exposure, bull years ~54-58%; D1 EMA(21) filter is primary driver",
+    "Obs09": "49.5% of trades begin within 10 bars (40h) of previous exit",
+    "Obs10": "12.5% immediate re-entry (gap <=1 bar); quick-flips 16.7% (gap <=2 bars)",
+    "Obs11": "FLAT mean -2.05 bps, IN_TRADE +6.23 bps; extreme tails in FLAT",
+    "Obs12": "FLAT kurtosis 22.49 >> IN_TRADE 13.97; strongly non-normal",
+    "Obs13": "FLAT skew -0.126, less negative than IN_TRADE -0.322",
+    "Obs14": "FLAT return ACF: lag 1 = -0.052, lag 6 = -0.076 (24h cycle); 15/50 lags sig",
+    "Obs15": "FLAT |return| ACF: lag 1 = 0.278, all 50 lags significant (strong vol clustering)",
+    "Obs16": "FLAT PACF: lag 6 = -0.071 (distinct 24h periodicity)",
+    "Obs17": "Per-period VR << 1 (VR(2)=0.82, VR(20)=0.72, all p<0.0001) — mean-reversion",
+    "Obs18": "Hurst mixed (0.51 concat, 0.62 longest); VR per-period more informative",
+    "Obs19": "FLAT vol HIGHER than IN_TRADE (62.5% vs 53.0%)",
+    "Obs20": "Vol within flat: elevated mid-period (68.7%), lower at boundaries (54-56%)",
+    "Obs21": "No predictive power: flat characteristics → next trade return (all |ρ|<0.07, p>0.35)",
+    "Obs22": "Pre-entry drift +1.03% (expected for trend entry); no win/loss distinction",
+    "Obs23": "Post-exit: +0.81% after winners (trend continues), -0.02% after losers",
+    "Obs24": "Post-exit vol elevated at exit, decays over ~5 bars",
+    "Obs25": "H1 reproduces H4: lag-24 ACF = -0.041, |ret| ACF 0.321, VR confirms mean-reversion",
+    "Obs26": "D1 FLAT: Hurst 0.467, mean -18.43 bps, skew -1.586 (mean-reverting at daily)",
+    "Obs27": "Mean-reversion consistent across H1/H4/D1 — not timeframe-specific",
+    "Obs28": "3 calendar effects significant + STABLE: hourly return, intraday vol, weekend vol",
+    "Obs29": "All 3 stable across half-sample splits; intraday vol pattern is strongest"
+  },
+  "propositions": {
+    "Prop01": "Mean-reversion exists but is economically negligible (bar-level ρ=-0.054, gross +2.9 bps, p=0.216) [HIGH]",
+    "Prop02": "No function class can overcome cost barrier (gross 3-9 bps vs 15-50 bps cost) [HIGH]",
+    "Prop03": "Preceding flat-period VR has zero predictive power for trade quality (ρ=0.053, p=0.515) [HIGH]",
+    "Prop04": "Mean-reversion weakens/reverses at longer horizons (k=20: -27.9 bps, p=0.010) [MEDIUM]",
+    "Prop05": "All three admissible classes are UNDERPOWERED (|d|/MDE = 0.23 to 0.92) [HIGH]"
+  },
+  "figures": {
+    "Fig01": "figures/Fig01_price_state_overlay.png — Price + IN_TRADE green overlay",
+    "Fig02": "figures/Fig02_flat_duration_hist.png — Flat duration distribution (linear + log-x)",
+    "Fig03": "figures/Fig03_yearly_state_fraction.png — Yearly state fraction stacked bar",
+    "Fig04": "figures/Fig04_flat_return_distribution.png — Return histograms + Q-Q plot",
+    "Fig05": "figures/Fig05_acf_comparison.png — ACF/PACF: FLAT vs FULL",
+    "Fig06": "figures/Fig06_variance_ratio_hurst.png — VR test + R/S Hurst",
+    "Fig07": "figures/Fig07_vol_structure.png — Vol by position, FLAT vs IN_TRADE boxplot",
+    "Fig08": "figures/Fig08_scatter_matrix.png — Flat characteristics vs next trade return",
+    "Fig09": "figures/Fig09_transition_dynamics.png — Pre-entry/post-exit profiles",
+    "Fig10": "figures/Fig10_calendar_effects.png — Hour × DoW heatmaps",
+    "Fig11": "figures/Fig11_cross_timeframe_acf.png — H1 vs H4 ACF comparison",
+    "Fig12": "figures/Fig12_rolling_stability.png — Rolling VR(2), ACF(6), η² stability"
+  },
+  "tables": {
+    "state_classification": "tables/state_classification.csv — 18,662 rows, bar-level state + trade_id",
+    "Tbl01": "tables/Tbl01_state_summary.csv — Summary statistics",
+    "Tbl02": "tables/Tbl02_flat_durations.csv — All 218 flat period durations",
+    "Tbl03": "tables/Tbl03_return_distribution.csv — FLAT/IN_TRADE/FULL distribution stats",
+    "Tbl04": "tables/Tbl04_variance_ratio.csv — VR tests (3 methods) + Hurst",
+    "Tbl05": "tables/Tbl05_predictive_relationships.csv — Spearman correlations",
+    "Tbl06": "tables/Tbl06_calendar_effects.csv — Calendar KW tests + stability",
+    "Tbl07": "tables/Tbl07_conditional_returns.csv — Bar-level conditional returns by threshold",
+    "Tbl09": "tables/Tbl09_power_analysis.csv — Power analysis summary for 3 classes",
+    "Tbl10": "tables/Tbl10_complementarity.csv — Complementarity metrics",
+    "scoring_matrix": "tables/Tbl_scoring_matrix.csv — 4×7 scoring matrix",
+    "stability_blocks": "tables/Tbl_stability_blocks.csv — 4-block temporal stability"
+  },
+  "prior_ruled_out": [
+    "H1 timeframe (zero alpha, Study #26)",
+    "Volume/TBR entry filters (IC~0, entry_filter_lab)",
+    "Short BTC (negative EV, X11)",
+    "Cross-asset (dilutes alpha, X20)",
+    "Entry sizing features (IC=0, X21)"
+  ]
+}

@@ -1,0 +1,20 @@
+# v10_overlayA_v2 — Escalating Cooldown
+#
+# Replaces the flat K=12 cooldown with a two-tier system:
+#   - Isolated ED exit → short cooldown (3 bars = 12h)
+#   - Cascade (2+ ED exits within lookback window) → long cooldown (12 bars = 2d)
+#
+# Motivation: C7 diagnosis showed the flat cooldown blocks 5 isolated-recovery
+# winners ($+38,709) while correctly blocking 8 cascade re-entry losers ($-25,307).
+# This config unblocks isolated recoveries while preserving cascade protection.
+#
+# See: reports/overlayA_v2_spec.md for state machine and edge cases.
+
+strategy:
+  name: v8_apex
+  escalating_cooldown: true
+  short_cooldown_bars: 3              # after isolated ED exit (12h)
+  long_cooldown_bars: 12              # after cascade detected (48h)
+  escalating_lookback_bars: 24        # window to count ED exits (96h = 4 days)
+  cascade_trigger_count: 2            # ED exits needed to trigger long cooldown
+  cooldown_after_emergency_dd_bars: 0 # v1 disabled (v2 takes over)

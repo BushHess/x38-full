@@ -1,0 +1,21 @@
+=== X6 Analysis Scripts ===
+Started: Mon Mar 16 08:32:46 PM UTC 2026
+[20:32:46] START bootstrap_excl_holdout_q5
+[20:38:53] DONE  bootstrap_excl_holdout_q5
+[20:38:53] START direct_compare_q9
+[20:39:06] DONE  direct_compare_q9
+[20:39:06] START dsr_analysis_q12
+[20:39:06] DONE  dsr_analysis_q12
+[20:39:06] START holdout_bootstrap_q4
+[20:39:12] DONE  holdout_bootstrap_q4
+[20:39:12] START holdout_cost_sweep_q8
+[20:39:19] DONE  holdout_cost_sweep_q8
+[20:39:19] START hybrid_fallback_q15
+[20:39:19] DONE  hybrid_fallback_q15
+[20:39:19] START infrastructure_mitigation_q14
+[20:39:24] DONE  infrastructure_mitigation_q14
+[20:39:24] START multicoin_e5_ema21_q16
+[20:39:24] DONE  multicoin_e5_ema21_q16
+[20:39:24] START threshold_sensitivity_q13
+[20:39:25] DONE  threshold_sensitivity_q13
+=== X6 Analysis COMPLETE: Mon Mar 16 08:39:25 PM UTC 2026 ===

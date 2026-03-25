@@ -1,0 +1,342 @@
+========================================================================
+PHASE 2: FLAT-PERIOD RAW EDA
+========================================================================
+
+Data loaded: H4=18662, H1=74651, D1=3110
+FLAT bars: 10698 (57.3%)
+IN_TRADE bars: 7964 (42.7%)
+Trades: 221, Flat periods: 222
+
+────────────────────────────────────────────────────────────────────────
+SECTION 1: FLAT-Period Return Distribution (H4)
+────────────────────────────────────────────────────────────────────────
+
+  FLAT (n=10697):
+    Mean:     -2.07 bps
+    Median:   1.22 bps
+    Std:      157.21 bps
+    Skew:     -0.1230
+    Kurtosis: 22.6172 (excess)
+    JB stat:  228023.0  p=0.00e+00
+    [Q1, Q3]: [-50.95, 52.28] bps
+    [Min,Max]: [-2293.66, 2716.24] bps
+
+  IN_TRADE (n=7964):
+    Mean:     6.23 bps
+    Median:   3.51 bps
+    Std:      135.60 bps
+    Skew:     -0.3273
+    Kurtosis: 13.8399 (excess)
+    JB stat:  63702.9  p=0.00e+00
+    [Q1, Q3]: [-44.99, 54.35] bps
+    [Min,Max]: [-1474.29, 1272.03] bps
+
+  FULL sample (n=18661):
+    Mean:     1.47 bps
+    Median:   2.10 bps
+    Std:      148.43 bps
+    Skew:     -0.2021
+    Kurtosis: 20.4850 (excess)
+    JB stat:  326411.2  p=0.00e+00
+    [Q1, Q3]: [-48.31, 53.29] bps
+    [Min,Max]: [-2293.66, 2716.24] bps
+
+  Saved: Tbl03_return_distribution.csv
+  Saved: Fig04_flat_return_distribution.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 2: Autocorrelation Structure
+────────────────────────────────────────────────────────────────────────
+
+  ACF significance bounds: FLAT ±0.0190, FULL ±0.0143
+
+  Significant FLAT return ACF lags (|acf| > 0.0190):
+    Lag  1: -0.0528
+    Lag  3: +0.0429
+    Lag  6: -0.0753
+    Lag  7: -0.0439
+    Lag 11: +0.0194
+    Lag 14: -0.0202
+    Lag 19: -0.0318
+    Lag 22: -0.0272
+    Lag 30: +0.0313
+    Lag 32: -0.0243
+    Lag 36: -0.0304
+    Lag 50: -0.0218
+
+  Significant FLAT |return| ACF lags (|acf| > 0.0190):
+    Lag  1: +0.2787
+    Lag  2: +0.2606
+    Lag  3: +0.2682
+    Lag  4: +0.2366
+    Lag  5: +0.2462
+    Lag  6: +0.2233
+    Lag  7: +0.1971
+    Lag  8: +0.1836
+    Lag  9: +0.1735
+    Lag 10: +0.1813
+    Lag 11: +0.1859
+    Lag 12: +0.1866
+    Lag 13: +0.1770
+    Lag 14: +0.1563
+    Lag 15: +0.1769
+    ... and 35 more lags
+
+  Variance Ratio Tests — FULL sample (n=18661):
+    VR( 2) = 0.9551  z_homo=-6.138 p=0.0000  z_het=-0.000 p=0.9999
+    VR( 5) = 0.9741  z_homo=-1.613 p=0.1067  z_het=-0.000 p=1.0000
+    VR(10) = 0.9475  z_homo=-2.125 p=0.0336  z_het=-0.000 p=1.0000
+    VR(20) = 0.9516  z_homo=-1.330 p=0.1836  z_het=-0.000 p=1.0000
+
+  Variance Ratio Tests — Per flat period (correct method):
+    VR( 2): n_periods=158, mean=0.8208, median=0.8714, t=-8.791, p=0.0000
+    VR( 5): n_periods=113, mean=0.7734, median=0.7975, t=-7.925, p=0.0000
+    VR(10): n_periods=78, mean=0.7518, median=0.7530, t=-6.980, p=0.0000
+    VR(20): n_periods=59, mean=0.7193, median=0.6838, t=-6.314, p=0.0000
+
+  Variance Ratio Tests — FLAT concatenated (n=10697, caveat: artificial joins):
+    VR( 2) = 0.9514  z_homo=-5.025 p=0.0000  z_het=-0.000 p=0.9998
+    VR( 5) = 0.9471  z_homo=-2.496 p=0.0126  z_het=-0.000 p=0.9999
+    VR(10) = 0.8746  z_homo=-3.842 p=0.0001  z_het=-0.000 p=0.9999
+    VR(20) = 0.8298  z_homo=-3.542 p=0.0004  z_het=-0.000 p=0.9999
+
+  Hurst Exponent (R/S method):
+    FULL sample:        H = 0.5759
+    FLAT concatenated:  H = 0.5148
+    Longest flat period (621 bars): H = 0.6211
+    (H=0.5: random walk, <0.5: mean-reverting, >0.5: persistent)
+
+  Saved: Tbl04_variance_ratio.csv
+  Saved: Fig05_acf_comparison.png
+  Saved: Fig06_variance_ratio_hurst.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 3: Volatility Structure
+────────────────────────────────────────────────────────────────────────
+
+  Realized Vol (20-bar rolling std, annualized x46.8):
+    FLAT:     mean=62.4%, median=52.9%
+    IN_TRADE: mean=53.2%, median=46.0%
+    FULL:     mean=58.5%, median=49.9%
+
+  Vol-of-Vol (rolling std of rvol, annualized):
+    FLAT:     mean=10.19%
+    IN_TRADE: mean=8.98%
+
+  Vol clustering (ACF of |returns|, FLAT-only, key lags):
+    Lag  1: 0.2787 *
+    Lag  2: 0.2606 *
+    Lag  5: 0.2462 *
+    Lag 10: 0.1813 *
+    Lag 20: 0.1813 *
+
+  Volatility by position within flat period (min 5 bars):
+    [0.0-0.1]: mean vol=61.1%, median=51.9%, n=1099
+    [0.1-0.2]: mean vol=62.7%, median=50.3%, n=1022
+    [0.2-0.3]: mean vol=66.7%, median=53.4%, n=1056
+    [0.3-0.4]: mean vol=67.3%, median=59.8%, n=1028
+    [0.4-0.5]: mean vol=59.7%, median=53.0%, n=1014
+    [0.5-0.6]: mean vol=65.7%, median=53.0%, n=1065
+    [0.6-0.7]: mean vol=66.8%, median=59.2%, n=1048
+    [0.7-0.8]: mean vol=64.7%, median=56.6%, n=1036
+    [0.8-0.9]: mean vol=54.2%, median=47.1%, n=1049
+    [0.9-1.0]: mean vol=56.0%, median=49.6%, n=1127
+/var/www/trading-bots/btc-spot-dev/research/x26/code/phase2_flat_eda.py:701: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data_box, labels=["FLAT", "IN_TRADE"], patch_artist=True,
+
+  Saved: Fig07_vol_structure.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 4: Flat-Period Internal Structure
+────────────────────────────────────────────────────────────────────────
+  Flat→trade alternation verified (all gaps ≤5 bars)
+
+  Flat periods: 222
+  Duration (bars): mean=48.2, median=11
+  Total return: mean=-0.84%, median=0.55%
+  Max drawdown: mean=-6.05%, median=-1.77%
+  Max runup: mean=6.63%, median=3.71%
+  Volatility: mean=96.58 bps/bar, median=82.54 bps/bar
+
+  Spearman correlations:
+    flat_duration vs flat_total_return: ρ=-0.0144  p=0.8315 
+    flat_duration vs next_trade_return: ρ=-0.0090  p=0.8943 
+    flat_total_return vs next_trade_return: ρ=-0.0496  p=0.4634 
+    flat_volatility vs next_trade_return: ρ=-0.0467  p=0.4898 
+
+  Saved: Tbl05_predictive_relationships.csv
+  Saved: flat_period_characteristics.csv
+  Saved: Fig08_scatter_matrix.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 5: Transition Dynamics
+────────────────────────────────────────────────────────────────────────
+
+  Pre-entry profiles: 221 (win=91, lose=130)
+  Post-exit profiles: 221 (win=91, lose=130)
+
+  Pre-entry cumulative return (bar -20 to bar -1):
+    All:     +0.847%
+    Winners: +1.136%
+    Losers:  +0.644%
+
+  Post-exit cumulative return (bar 0 to bar +19):
+    All:          +0.422%
+    After winners: +0.603%
+    After losers:  +0.296%
+
+  Saved: Fig09_transition_dynamics.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 6: Cross-Timeframe Check
+────────────────────────────────────────────────────────────────────────
+
+  H1 bars: 74651 total, 42792 FLAT (57.3%), 3 UNKNOWN
+
+  H1 FLAT (n=42791):
+    Mean:     -0.52 bps
+    Median:   0.18 bps
+    Std:      84.40 bps
+    Skew:     -0.3090
+    Kurtosis: 38.3344 (excess)
+    JB stat:  2620780.8  p=0.00e+00
+    [Q1, Q3]: [-26.25, 26.30] bps
+    [Min,Max]: [-2010.33, 1602.80] bps
+
+  H1 FULL (n=74650):
+    Mean:     0.37 bps
+    Median:   0.68 bps
+    Std:      78.28 bps
+    Skew:     -0.4675
+    Kurtosis: 35.7561 (excess)
+    JB stat:  3979388.0  p=0.00e+00
+    [Q1, Q3]: [-24.70, 26.57] bps
+    [Min,Max]: [-2010.33, 1602.80] bps
+
+  H1 ACF significance bound: ±0.0095
+  Significant H1 FLAT return ACF lags:
+    Lag 1: -0.0505
+    Lag 2: -0.0380
+    Lag 6: -0.0182
+    Lag 10: +0.0181
+    Lag 11: -0.0098
+    Lag 13: +0.0220
+    Lag 17: +0.0160
+    Lag 18: +0.0124
+    Lag 19: -0.0149
+    Lag 24: -0.0411
+    ... and 9 more
+
+  Significant H1 FLAT |return| ACF lags:
+    Lag 1: +0.3218
+    Lag 2: +0.2963
+    Lag 3: +0.2750
+    Lag 4: +0.2667
+    Lag 5: +0.2643
+    Lag 6: +0.2466
+    Lag 7: +0.2442
+    Lag 8: +0.2486
+    Lag 9: +0.2274
+    Lag 10: +0.2422
+    ... and 40 more
+
+  H1 Variance Ratio (FLAT concatenated):
+    VR( 2) = 0.9482  z_het=-0.000 p=0.9999
+    VR( 5) = 0.8708  z_het=-0.000 p=0.9999
+    VR(10) = 0.8236  z_het=-0.000 p=0.9999
+    VR(20) = 0.8296  z_het=-0.000 p=0.9999
+
+  H1 Hurst: FLAT=0.5129, FULL=0.5565
+
+  D1 check:
+    Days with ≥75% FLAT H4: 1690 / 3110
+    D1 FLAT: mean=-18.68 bps, std=386.48 bps
+    D1 FULL: mean=8.89 bps, std=361.44 bps
+    D1 FLAT VR(2): 0.8476  z_het=-0.002 p=0.9984
+    D1 FLAT VR(5): 0.7884  z_het=-0.002 p=0.9988
+    D1 FLAT Hurst: 0.4687
+
+  Cross-timeframe summary:
+    Metric                            H1         H4         D1
+    ———————————————————————————————————————————————————————
+    Mean return (bps)              -0.52      -2.07     -18.68
+    Std (bps)                      84.40     157.21     386.48
+    Skew                          -0.309     -0.123     -1.584
+    Kurtosis (excess)              38.33      22.62      19.50
+    Hurst                         0.5129     0.5148     0.4687
+
+  Saved: Fig11_cross_timeframe_acf.png
+
+────────────────────────────────────────────────────────────────────────
+SECTION 7: Calendar Effects (H1 data, FLAT periods only)
+────────────────────────────────────────────────────────────────────────
+
+  FLAT H1 bars for calendar analysis: 42791
+
+  Mean return by hour (bps):
+    00:00  mean=-0.05 bps  |ret|=53.35 bps  n=1799
+    01:00  mean=-5.72 bps  |ret|=49.96 bps  n=1799
+    02:00  mean=-1.07 bps  |ret|=44.11 bps  n=1799
+    03:00  mean=-5.62 bps  |ret|=39.01 bps  n=1799
+    04:00  mean=-1.92 bps  |ret|=40.25 bps  n=1760
+    05:00  mean=+0.66 bps  |ret|=38.76 bps  n=1761
+    06:00  mean=-0.34 bps  |ret|=41.36 bps  n=1761
+    07:00  mean=+1.12 bps  |ret|=42.69 bps  n=1761
+    08:00  mean=-0.02 bps  |ret|=44.85 bps  n=1764
+    09:00  mean=-2.96 bps  |ret|=42.76 bps  n=1764
+    10:00  mean=-1.31 bps  |ret|=44.50 bps  n=1764
+    11:00  mean=+3.37 bps  |ret|=42.76 bps  n=1764
+    12:00  mean=+1.26 bps  |ret|=50.31 bps  n=1774
+    13:00  mean=+1.76 bps  |ret|=54.14 bps  n=1774
+    14:00  mean=-3.89 bps  |ret|=62.17 bps  n=1774
+    15:00  mean=+1.27 bps  |ret|=57.96 bps  n=1774
+    16:00  mean=-1.91 bps  |ret|=57.25 bps  n=1799
+    17:00  mean=-3.21 bps  |ret|=50.78 bps  n=1799
+    18:00  mean=-0.64 bps  |ret|=47.57 bps  n=1799
+    19:00  mean=+1.01 bps  |ret|=47.87 bps  n=1799
+    20:00  mean=-0.23 bps  |ret|=50.00 bps  n=1801
+    21:00  mean=+5.28 bps  |ret|=47.24 bps  n=1801
+    22:00  mean=+3.61 bps  |ret|=48.15 bps  n=1801
+    23:00  mean=-2.73 bps  |ret|=46.08 bps  n=1801
+
+  Mean return by day of week (bps):
+    Mon  mean=+0.27 bps  |ret|=52.46 bps  n=5904
+    Tue  mean=-0.83 bps  |ret|=51.31 bps  n=6020
+    Wed  mean=+0.49 bps  |ret|=50.30 bps  n=6228
+    Thu  mean=-2.57 bps  |ret|=50.01 bps  n=6263
+    Fri  mean=+0.09 bps  |ret|=51.69 bps  n=6428
+    Sat  mean=-0.82 bps  |ret|=35.94 bps  n=6100
+    Sun  mean=-0.20 bps  |ret|=41.67 bps  n=5848
+
+  Kruskal-Wallis tests:
+    Return by hour:   KW=57.43  p=0.0001  *
+    |Return| by hour: KW=594.99  p=0.0000  *
+    Return by DoW:    KW=4.47  p=0.6137  
+    |Return| by DoW:  KW=771.82  p=0.0000  *
+
+  Half-sample stability check for 3 significant effect(s):
+    Return by hour: half1 p=0.0001, half2 p=0.0140 → STABLE
+    |Return| by hour: half1 p=0.0000, half2 p=0.0000 → STABLE
+    |Return| by DoW: half1 p=0.0000, half2 p=0.0000 → STABLE
+
+  Saved: Tbl06_calendar_effects.csv
+  Saved: Fig10_calendar_effects.png
+
+========================================================================
+PHASE 2 COMPLETE — ALL SECTIONS DONE
+========================================================================
+
+Figures: Fig04–Fig11 (8 figures)
+Tables:  Tbl03–Tbl06 + flat_period_characteristics.csv
+
+Key numbers for report:
+  FLAT mean return:  -2.07 bps (H4)
+  FLAT std:          157.21 bps
+  FLAT skew:         -0.1230
+  FLAT kurtosis:     22.6172
+  IN_TRADE mean:     6.23 bps
+  Hurst (FLAT):      0.5148
+  Hurst (FULL):      0.5759
+  VR(2) per-period:  0.8208
+  ACF ret sig lags:  [1, 3, 6, 7, 11, 14, 19, 22, 30, 32, 36, 50]
+  ACF |ret| sig:     50 lags

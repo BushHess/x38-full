@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "key": "e0",
+    "label": "E0 VTREND baseline",
+    "config": {
+      "slow_period": 120.0,
+      "trail_mult": 3.0,
+      "vdo_threshold": 0.0,
+      "atr_period": 14,
+      "vdo_fast": 12,
+      "vdo_slow": 28
+    },
+    "scenario": "harsh",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "initial_cash": 10000.0,
+    "runtime_sec": 0.07559585571289062
+  },
+  "summary": {
+    "initial_cash": 10000.0,
+    "report_start_nav": 10000.0,
+    "final_nav_mid": 199173.14,
+    "total_return_pct": 1891.73,
+    "cagr_pct": 52.04,
+    "max_drawdown_mid_pct": 41.61,
+    "max_drawdown_liq_pct": 41.61,
+    "sharpe": 1.2653,
+    "sortino": 1.1952,
+    "calmar": 1.2507,
+    "trades": 192,
+    "wins": 77,
+    "losses": 115,
+    "win_rate_pct": 40.1,
+    "profit_factor": 1.6137,
+    "avg_trade_pnl": 1137.92,
+    "avg_win": 7460.65,
+    "avg_loss": -3095.57,
+    "avg_days_held": 6.36,
+    "avg_exposure": 0.4682,
+    "time_in_market_pct": 46.82,
+    "fees_total": 58985.54,
+    "turnover_notional": 39323690.15,
+    "fee_drag_pct_per_year": 7.84,
+    "turnover_per_year": 52.28,
+    "fills": 384,
+    "years": 7.14
+  }
+}

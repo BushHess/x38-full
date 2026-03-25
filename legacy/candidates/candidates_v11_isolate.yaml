@@ -1,0 +1,54 @@
+candidates:
+  # V10 baseline reference
+  - name: v10_baseline
+    description: "V8 Apex current defaults"
+    params: {}
+
+  # Feature A: MR Defensive only
+  - name: v11_mr_default
+    strategy: v11_hybrid
+    description: "MR defensive with default thresholds"
+    params:
+      enable_mr_defensive: true
+
+  # Feature A variant: gentler MR (wider thresholds, safe for parabolic runs)
+  - name: v11_mr_gentle
+    strategy: v11_hybrid
+    description: "MR defensive with higher thresholds"
+    params:
+      enable_mr_defensive: true
+      d1_rsi_entry_block: 90.0
+      d1_rsi_exit_trigger: 92.0
+      ma200_dist_reduce: 0.50
+      ma200_dist_block: 0.70
+
+  # Feature B: Cycle Phase only
+  - name: v11_cycle_default
+    strategy: v11_hybrid
+    description: "Cycle phase detection with defaults"
+    params:
+      enable_cycle_phase: true
+
+  # Feature B variant: more aggressive early bull
+  - name: v11_cycle_aggressive_early
+    strategy: v11_hybrid
+    description: "Cycle with stronger early bull boost"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.30
+      cycle_early_trail_mult: 4.5
+
+  # Feature C: ADX Gating only (D1)
+  - name: v11_adx_d1
+    strategy: v11_hybrid
+    description: "ADX gating on D1 timeframe"
+    params:
+      enable_adx_gating: true
+
+  # Feature C variant: ADX on H4
+  - name: v11_adx_h4
+    strategy: v11_hybrid
+    description: "ADX gating on H4 timeframe"
+    params:
+      enable_adx_gating: true
+      adx_source: h4

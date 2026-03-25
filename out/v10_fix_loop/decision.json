@@ -1,0 +1,104 @@
+{
+  "verdict": "PROMOTE",
+  "reason": "Holdout passes all rules (6/6). Full backtest has 3 soft-fail(s): R1_score, R2_mdd, R3_ed_reduction. Out-of-sample evidence outweighs in-sample minor cost.",
+  "candidate": "cooldown_after_emergency_dd_bars = 12",
+  "date": "2026-02-24",
+  "rules": {
+    "R1_score": {
+      "label": "Harsh score delta",
+      "threshold": ">= -0.2 pts",
+      "full_backtest": {
+        "value": -2.0371,
+        "passed": false
+      },
+      "holdout": {
+        "value": 30.9895,
+        "passed": true
+      }
+    },
+    "R2_mdd": {
+      "label": "Harsh MDD delta",
+      "threshold": "<= 0.5 pp",
+      "full_backtest": {
+        "value": 3.64,
+        "passed": false
+      },
+      "holdout": {
+        "value": -5.8,
+        "passed": true
+      }
+    },
+    "R3_ed_reduction": {
+      "label": "ED exits reduction",
+      "threshold": ">= 20.0 % relative",
+      "full_backtest": {
+        "value": 8.333333333333334,
+        "passed": false
+      },
+      "holdout": {
+        "value": 20.0,
+        "passed": true
+      }
+    },
+    "R4_cascade_le6": {
+      "label": "Cascade \u22646 bars decrease",
+      "threshold": "> 0.0 pp",
+      "full_backtest": {
+        "value": 19.4,
+        "passed": true
+      },
+      "holdout": {
+        "value": 30.0,
+        "passed": true
+      }
+    },
+    "R5_blocked_expectancy": {
+      "label": "Blocked trades median PnL",
+      "threshold": "<= 0.0 $",
+      "full_backtest": {
+        "value": -741.59,
+        "passed": true
+      },
+      "holdout": {
+        "value": -373.57,
+        "passed": true
+      }
+    },
+    "R6_fees": {
+      "label": "Total fees decrease",
+      "threshold": "<= 0.0 $",
+      "full_backtest": {
+        "value": -2177.89,
+        "passed": true
+      },
+      "holdout": {
+        "value": -24.23,
+        "passed": true
+      }
+    },
+    "grid": {
+      "label": "Plateau score range",
+      "threshold": "< 5 pts",
+      "value": 2.73,
+      "passed": true
+    }
+  },
+  "scores": {
+    "full_backtest": "3/6",
+    "holdout": "6/6",
+    "grid": "PASS"
+  },
+  "failed_rules": {
+    "full_backtest": [
+      "R1_score",
+      "R2_mdd",
+      "R3_ed_reduction"
+    ],
+    "holdout": []
+  },
+  "caveats": [
+    "R1_score",
+    "R2_mdd",
+    "R3_ed_reduction"
+  ]
+}

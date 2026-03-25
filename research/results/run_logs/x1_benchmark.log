@@ -1,0 +1,79 @@
+/var/www/trading-bots/btc-spot-dev/research/x1/benchmark.py:37: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X1 RESEARCH: Re-entry Separation Benchmark
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  Params: slow=120, trail=3.0
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine
+================================================================================
+
+Strategy       Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%
+-------------------------------------------------------------------------------------------------
+E0_EMA21       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51
+E0_EMA21       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51
+E0_EMA21       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51
+X1             smart    1.4933    67.73    39.43   1.7178     204   43.6  1.6120   0.4896   48.96
+X1             base     1.3641    59.32    42.51   1.3955     204   42.2  1.5002   0.4896   48.96
+X1             harsh    1.2277    50.90    45.59   1.1165     204   40.7  1.3999   0.4896   48.96
+
+         DELTA (X1 - BASELINE)
+------------------------------------------------------------
+  smart   dSharpe=-0.0944  dCAGR=-3.67%  dMDD=+2.14%  dTrades=+30  dWR=+0.5%
+  base    dSharpe=-0.1098  dCAGR=-4.73%  dMDD=+3.88%  dTrades=+30  dWR=+0.8%
+  harsh   dSharpe=-0.1259  dCAGR=-5.72%  dMDD=+5.58%  dTrades=+30  dWR=+0.5%
+
+   ENTRY/EXIT REASON BREAKDOWN
+------------------------------------------------------------
+  E0_EMA21 (harsh):
+    Entry reasons: {'vtrend_ema21_d1_entry': 174}
+    Exit reasons:  {'vtrend_ema21_d1_trail_stop': 158, 'vtrend_ema21_d1_trend_exit': 16}
+  X1 (harsh):
+    Entry reasons: {'x1_entry': 35, 'x1_reentry': 169}
+    Exit reasons:  {'x1_trail_stop': 169, 'x1_trend_exit': 35}
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  E0_EMA21        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X1              Engine trades= 204  Vec trades= 226  DIFFER  Sharpe eng=1.3641  vec=1.3620  diff=0.0021
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (5.2s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (23.3s)
+  X1              Sharpe=0.2730 [-0.4528, 0.9492]  CAGR=3.06% [-21.16, 36.15]  MDD=69.27% [48.74, 90.74]  P(CAGR>0)=0.562  (22.0s)
+
+  HEAD-TO-HEAD (X1 - E0_EMA21) across 500 bootstrap paths:
+    Sharpe: X1 wins 231/500 (46.2%)  mean delta=-0.0100
+    CAGR:   X1 wins 214/500 (42.8%)  mean delta=-0.43%
+    MDD:    X1 wins 102/500 (20.4%)  mean delta=6.39%
+
+================================================================================
+T4: RE-ENTRY STATISTICS
+================================================================================
+
+  smart scenario (204 total trades):
+    Fresh entries:    35 (17.2%)  WR=51.4%  AvgRet=5.91%  AvgDays=7.5  PnL=$239389.03
+    Re-entries:      169 (82.8%)  WR=42.0%  AvgRet=1.59%  AvgDays=6.0  PnL=$152072.11
+
+  base scenario (204 total trades):
+    Fresh entries:    35 (17.2%)  WR=48.6%  AvgRet=5.71%  AvgDays=7.5  PnL=$188974.19
+    Re-entries:      169 (82.8%)  WR=40.8%  AvgRet=1.41%  AvgDays=6.0  PnL=$79106.30
+
+  harsh scenario (204 total trades):
+    Fresh entries:    35 (17.2%)  WR=48.6%  AvgRet=5.51%  AvgDays=7.5  PnL=$148596.10
+    Re-entries:      169 (82.8%)  WR=39.1%  AvgRet=1.22%  AvgDays=6.0  PnL=$30132.54
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x1/x1_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x1/x1_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x1/x1_bootstrap_table.csv
+
+================================================================================
+X1 BENCHMARK COMPLETE
+================================================================================

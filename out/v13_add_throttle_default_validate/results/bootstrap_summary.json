@@ -1,0 +1,13 @@
+{
+  "n_rows": 9,
+  "bootstrap": 2000,
+  "seed": 1337,
+  "gate": {
+    "scenario": "harsh",
+    "block_size": 10,
+    "p_candidate_better": 0.004,
+    "ci_lower": -0.8958718554168783,
+    "ci_upper": -0.13120034601592626,
+    "observed_delta": -0.4958949765564886
+  }
+}

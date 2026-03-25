@@ -1,0 +1,19 @@
+candidate_label,ledger_view,source_path,source_type,granularity,can_build_native_episode,can_build_unit_size_episode,canonical_status,notes
+E0,fill_ledger,results/parity_20260305/eval_e0_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,22 columns; 192 trades; all-in-one-buy/one-sell so fill_ledger = episode_ledger for this strategy; pnl_usd/return_pct/fees_usd/days_held/entry_price/exit_price/qty present
+E0,native_episode,results/parity_20260305/eval_e0_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,Each trade is already flat->long->flat (n_buy_fills=1 n_sell_fills=1 for all 192); native episode = trade row; PnL in USD includes sizing effects
+E0,unit_size_episode,results/parity_20260305/eval_e0_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct column provides unit-size return; but Sharpe/CAGR recomputation from unit returns requires reconstruction; trade_profile_8x5 already does this for E0
+E5,fill_ledger,results/parity_20260305/eval_e5_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,207 trades; same 22-column format; n_buy_fills=1 n_sell_fills=1 for all
+E5,native_episode,results/parity_20260305/eval_e5_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,Same as fill_ledger; each trade = one episode
+E5,unit_size_episode,results/parity_20260305/eval_e5_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct available; recomputation needed for derived metrics
+SM,fill_ledger,results/parity_20260305/eval_sm_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,65 trades; same 22-column format
+SM,native_episode,results/parity_20260305/eval_sm_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,SM uses vol-targeted sizing so pnl_usd reflects actual position; each trade = one episode
+SM,unit_size_episode,results/parity_20260305/eval_sm_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct available; note SM has variable exposure so unit-size return_pct IS the normalized view
+LATCH,fill_ledger,results/parity_20260305/eval_latch_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,65 trades; same 22-column format
+LATCH,native_episode,results/parity_20260305/eval_latch_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,Same structure as SM; vol-targeted sizing
+LATCH,unit_size_episode,results/parity_20260305/eval_latch_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct available
+E0_plus_EMA1D21,fill_ledger,results/parity_20260305/eval_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,172 trades; same 22-column format
+E0_plus_EMA1D21,native_episode,results/parity_20260305/eval_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,Each trade = one episode
+E0_plus_EMA1D21,unit_size_episode,results/parity_20260305/eval_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct available
+E5_plus_EMA1D21,fill_ledger,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,yes,READY,186 trades; same 22-column format
+E5_plus_EMA1D21,native_episode,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,yes,n/a,READY,Each trade = one episode
+E5_plus_EMA1D21,unit_size_episode,results/parity_20260306/eval_e5_ema21d1_vs_e0/results/trades_candidate.csv,csv,per_trade,n/a,yes,PARTIAL,return_pct available; MFE/MAE not yet computed (not in trade_profile_8x5)

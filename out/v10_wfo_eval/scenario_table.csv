@@ -1,0 +1,7 @@
+candidate,scenario,score,cagr_pct,max_drawdown_mid_pct,sharpe,sortino,profit_factor,win_rate_pct,avg_trade_pnl,fees_total,trades,turnover_per_year,fee_drag_pct_per_year
+baseline_legacy,smart,103.32,41.5,32.7,1.2553,1.2356,1.8291,49.51,1079.56,3981.38,103,26.01,0.91
+baseline_legacy,base,94.5,38.55,33.88,1.1884,1.1726,1.7888,49.51,948.09,10282.42,103,25.84,2.58
+baseline_legacy,harsh,83.48,34.35,33.07,1.0967,1.0765,1.7347,49.04,758.63,13254.98,104,25.99,3.9
+v9_like,smart,108.5,44.04,35.17,1.3035,1.2895,1.8145,52.48,1263.64,4564.11,101,25.9,0.91
+v9_like,base,99.78,41.1,36.3,1.2385,1.2281,1.7796,52.48,1115.58,11814.55,101,25.72,2.57
+v9_like,harsh,77.45,33.05,36.28,1.0639,1.0438,1.6168,50.96,708.43,13865.63,104,25.94,3.89

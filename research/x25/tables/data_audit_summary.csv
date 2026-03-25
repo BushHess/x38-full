@@ -1,0 +1,14 @@
+column,dtype,nulls,unique
+symbol,str,0,1
+interval,str,0,3
+open_time,int64,0,74652
+close_time,int64,0,74651
+open,float64,0,72803
+high,float64,0,66726
+low,float64,0,67363
+close,float64,0,72627
+volume,float64,0,96267
+quote_volume,float64,0,96269
+num_trades,int64,0,74993
+taker_buy_base_vol,float64,0,96259
+taker_buy_quote_vol,float64,0,96269

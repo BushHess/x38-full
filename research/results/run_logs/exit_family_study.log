@@ -1,0 +1,103 @@
+======================================================================
+EXIT FAMILY STUDY — 6 Exit Branches × 2 Slow Periods
+======================================================================
+  Branches: ['E0', 'E1', 'E2', 'E3', 'E4', 'E5']
+  Slow periods: [120, 144]
+  Period: 2019-01-01 → 2026-02-20  Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 10000 resamples, block=10d
+  WFO: train=24mo, test=6mo, step=3mo
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+Running all branches on real data...
+  E0 N=120: 189 trades, final NAV=138022.86
+  E1 N=120: 285 trades, final NAV=154234.79
+  E2 N=120: 295 trades, final NAV=162065.90
+  E3 N=120: 189 trades, final NAV=77805.62
+  E4 N=120: 285 trades, final NAV=75638.91
+  E5 N=120: 204 trades, final NAV=181478.65
+  E0 N=144: 180 trades, final NAV=140257.38
+  E1 N=144: 275 trades, final NAV=128403.51
+  E2 N=144: 281 trades, final NAV=154654.05
+  E3 N=144: 180 trades, final NAV=68653.00
+  E4 N=144: 275 trades, final NAV=59206.89
+  E5 N=144: 194 trades, final NAV=193345.02
+
+Defining WFO folds...
+  20 folds defined
+    Fold 0: 2021-01-01 → 2021-07-01
+    Fold 1: 2021-04-01 → 2021-10-01
+    Fold 2: 2021-07-01 → 2022-01-01
+    Fold 3: 2021-10-01 → 2022-04-01
+    Fold 4: 2022-01-01 → 2022-07-01
+    Fold 5: 2022-04-01 → 2022-10-01
+    Fold 6: 2022-07-01 → 2023-01-01
+    Fold 7: 2022-10-01 → 2023-04-01
+    Fold 8: 2023-01-01 → 2023-07-01
+    Fold 9: 2023-04-01 → 2023-10-01
+    Fold 10: 2023-07-01 → 2024-01-01
+    Fold 11: 2023-10-01 → 2024-04-01
+    Fold 12: 2024-01-01 → 2024-07-01
+    Fold 13: 2024-04-01 → 2024-10-01
+    Fold 14: 2024-07-01 → 2025-01-01
+    Fold 15: 2024-10-01 → 2025-04-01
+    Fold 16: 2025-01-01 → 2025-07-01
+    Fold 17: 2025-04-01 → 2025-10-01
+    Fold 18: 2025-07-01 → 2026-01-01
+    Fold 19: 2025-10-01 → 2026-02-20
+
+Extracting fold metrics...
+
+Running matched-trade exit analysis...
+  sp=120: 1134 matched-trade records (189 E0 entries × 6 branches)
+  sp=144: 1080 matched-trade records (180 E0 entries × 6 branches)
+
+Running stationary bootstrap comparison...
+
+  Bootstrap comparison (N=10000, block=10d, sp=120)
+    E1 vs E0: dSharpe=+0.0058 P=51.8%  dMDD=+1.67 P=61.2%  dCAGR=-1.73 P=42.8%  dMAR=+0.0152 P=51.5%
+    E2 vs E0: dSharpe=+0.0100 P=52.9%  dMDD=+2.14 P=63.7%  dCAGR=-1.85 P=43.2%  dMAR=+0.0270 P=53.4%
+    E3 vs E0: dSharpe=-0.0064 P=45.5%  dMDD=+9.90 P=100.0%  dCAGR=-15.26 P=2.1%  dMAR=-0.0993 P=28.5%
+    E4 vs E0: dSharpe=-0.0942 P=28.9%  dMDD=+7.16 P=84.1%  dCAGR=-18.18 P=4.5%  dMAR=-0.2465 P=25.3%
+    E5 vs E0: dSharpe=+0.0825 P=87.6%  dMDD=+2.42 P=77.0%  dCAGR=+4.48 P=84.6%  dMAR=+0.1774 P=85.2%
+
+  Bootstrap comparison (N=10000, block=10d, sp=144)
+    E1 vs E0: dSharpe=-0.0646 P=33.7%  dMDD=-0.00 P=52.0%  dCAGR=-5.90 P=26.8%  dMAR=-0.1219 P=36.2%
+    E2 vs E0: dSharpe=+0.0170 P=54.8%  dMDD=+2.97 P=67.6%  dCAGR=-1.43 P=45.2%  dMAR=+0.0706 P=57.2%
+    E3 vs E0: dSharpe=-0.0388 P=22.8%  dMDD=+9.25 P=100.0%  dCAGR=-17.52 P=0.9%  dMAR=-0.1623 P=16.4%
+    E4 vs E0: dSharpe=-0.1864 P=14.8%  dMDD=+4.62 P=73.6%  dCAGR=-22.77 P=1.9%  dMAR=-0.4126 P=13.0%
+    E5 vs E0: dSharpe=+0.0971 P=91.6%  dMDD=+2.65 P=79.9%  dCAGR=+5.65 P=89.3%  dMAR=+0.2219 P=89.6%
+
+Running matched-trade bootstrap...
+
+Holm adjustment for multiple comparisons...
+  sp=120 E1: raw p=0.3877 → Holm adj=0.7268 
+  sp=120 E2: raw p=0.3634 → Holm adj=0.7268 
+  sp=120 E3: raw p=0.0004 → Holm adj=0.0020 ***
+  sp=120 E4: raw p=0.1590 → Holm adj=0.4944 
+  sp=120 E5: raw p=0.1236 → Holm adj=0.4944 
+  sp=144 E1: raw p=0.4800 → Holm adj=0.7923 
+  sp=144 E2: raw p=0.3238 → Holm adj=0.7923 
+  sp=144 E3: raw p=0.0003 → Holm adj=0.0015 ***
+  sp=144 E4: raw p=0.2641 → Holm adj=0.7923 
+  sp=144 E5: raw p=0.0841 → Holm adj=0.3364 
+
+Checking acceptance criteria for sensitivity...
+
+Running sensitivity for: {'E3', 'E2', 'E5'}
+
+Computing context stratification...
+
+Exporting CSVs...
+  All CSVs exported to /var/www/trading-bots/btc-spot-dev/research/results/exit_family/
+
+Generating report...
+  Report written to /var/www/trading-bots/btc-spot-dev/research/results/exit_family/exit_family_report.md
+
+======================================================================
+STUDY COMPLETE in 30.8s
+Winners: ['E5']
+Output: /var/www/trading-bots/btc-spot-dev/research/results/exit_family/
+======================================================================

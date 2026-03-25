@@ -1,0 +1,10 @@
+variable,quintile,range_lo,range_hi,n_trades,win_rate,mean_return_pct,median_return_pct,total_pnl_usd
+breadth_share,0,0.0,0.3077,39,48.7,3.408,-0.045,145223.0
+breadth_share,1,0.3333,0.5385,40,47.5,2.274,-0.116,40420.0
+breadth_share,2,0.5833,0.7692,37,45.9,2.502,-0.401,143523.0
+breadth_share,3,0.8182,0.9231,33,45.5,3.483,-1.273,93222.0
+breadth_share,4,1.0,1.0,37,40.5,1.975,-1.056,3966.0
+breadth_pct_rank,0,0.011,0.1429,37,56.8,3.506,0.244,128217.0
+breadth_pct_rank,1,0.1648,0.5714,38,47.4,1.909,-0.116,31044.0
+breadth_pct_rank,2,0.5824,0.9121,37,29.7,1.493,-1.591,49701.0
+breadth_pct_rank,3,0.9341,1.0,73,47.9,3.389,-0.105,217446.0

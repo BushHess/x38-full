@@ -1,0 +1,62 @@
+======================================================================
+Step 2: Track B — Cross-Strategy Comparative Audit
+======================================================================
+Phase 1: Load all candidates, RECON_ASSERT, profile coverage
+  E0: RECON_PASS (192 trades), profile=imported
+  E5: RECON_PASS (207 trades), profile=imported
+  SM: RECON_PASS (65 trades), profile=imported
+  LATCH: RECON_PASS (65 trades), profile=imported
+  E0_plus_EMA1D21: RECON_PASS (172 trades), profile=imported
+  Computing profile for E5_plus_EMA1D21 (gap closure)...
+  E5_plus_EMA1D21: RECON_PASS (186 trades), profile=computed_step2
+
+Phase 2: Full diagnostics for all 6 candidates
+
+  === E0 ===
+    Giveback: 188 valid, median=1.206
+    Cliff(native): terminal=True, cagr=True, interp=single-point collapse
+    Cliff(unit_size): terminal=True, cagr=True, interp=single-point collapse
+
+  === E5 ===
+    Giveback: 203 valid, median=1.124
+    Cliff(native): terminal=True, cagr=True, interp=single-point collapse
+    Cliff(unit_size): terminal=True, cagr=True, interp=single-point collapse
+
+  === SM ===
+    Giveback: 65 valid, median=1.313
+    Cliff(native): terminal=False, cagr=False, interp=smooth decay
+    Cliff(unit_size): terminal=True, cagr=False, interp=single-point collapse
+
+  === LATCH ===
+    Giveback: 65 valid, median=1.313
+    Cliff(native): terminal=False, cagr=False, interp=smooth decay
+    Cliff(unit_size): terminal=True, cagr=False, interp=single-point collapse
+
+  === E0_plus_EMA1D21 ===
+    Giveback: 168 valid, median=1.093
+    Cliff(native): terminal=True, cagr=True, interp=single-point collapse
+    Cliff(unit_size): terminal=True, cagr=True, interp=single-point collapse
+
+  === E5_plus_EMA1D21 ===
+    Giveback: 182 valid, median=1.051
+    Cliff(native): terminal=True, cagr=True, interp=single-point collapse
+    Cliff(unit_size): terminal=True, cagr=True, interp=single-point collapse
+
+Phase 3: E0 Step 1 regression check
+  E0 regression: PASS (13/13 checks)
+
+Phase 4: Cross-strategy comparison tables
+  All cross-strategy CSVs written
+
+Phase 5: Style labels and pairwise deltas
+  Style labels and pairwise deltas written
+
+Phase 6: Figures
+  All figures saved
+
+Phase 7: Summary JSON
+  step2_summary.json written
+
+======================================================================
+All Step 2 artifacts written successfully.
+======================================================================

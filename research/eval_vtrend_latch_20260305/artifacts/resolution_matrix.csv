@@ -1,0 +1,7 @@
+id,question,verdict
+R1,Signal quality at identical sizing,See factorial table
+R2,Sizing impact on score,See sizing table
+R3,Scoring formula exposure bias,CAGR term dominates
+R4,LATCH signal at E0-like sizing,See decomposition
+R5,Complexity premium,None observed
+R6,Overall,"Alternative profile, not inferior"

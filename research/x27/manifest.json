@@ -1,0 +1,62 @@
+{
+  "study": "X27",
+  "phase": 3,
+  "phase_name": "Signal Landscape EDA",
+  "date": "2026-03-11",
+  "artifacts": {
+    "reports": [
+      "01_data_audit.md",
+      "02_price_behavior_eda.md",
+      "03_signal_landscape_eda.md"
+    ],
+    "tables": [
+      "tables/Tbl01_h4_descriptive.csv",
+      "tables/Tbl02_d1_descriptive.csv",
+      "tables/Tbl03_data_quality.csv",
+      "tables/Tbl04_ret_dist.csv",
+      "tables/Tbl04_variance_ratio.csv",
+      "tables/Tbl05_hurst.csv",
+      "tables/Tbl06_trend_anatomy.csv",
+      "tables/Tbl07_vol_regimes.csv",
+      "tables/Tbl08_volume_corrs.csv",
+      "tables/Tbl09_d1_returns.csv",
+      "tables/Tbl10_cross_timeframe.csv",
+      "tables/phase2_observations.csv",
+      "tables/Tbl07_entry_signals.csv",
+      "tables/Tbl07_entry_detail.csv",
+      "tables/Tbl08_exit_signals.csv",
+      "tables/Tbl08_exit_detail.csv",
+      "tables/Tbl09_entry_exit_pairing.csv",
+      "tables/Tbl10_regime_conditioning.csv",
+      "tables/phase3_observations.csv"
+    ],
+    "code": [
+      "code/phase1_audit.py",
+      "code/phase2_eda.py",
+      "code/phase3_signal_landscape.py"
+    ],
+    "figures": [
+      "figures/Fig01_return_distribution.png",
+      "figures/Fig02_acf_returns.png",
+      "figures/Fig03_acf_abs_returns.png",
+      "figures/Fig04_pacf_returns.png",
+      "figures/Fig05_rolling_hurst.png",
+      "figures/Fig06_trend_profiles.png",
+      "figures/Fig07_volatility_timeseries.png",
+      "figures/Fig08_vol_return_scatter.png",
+      "figures/Fig09_volume_distribution.png",
+      "figures/Fig10_entry_efficiency_frontier.png",
+      "figures/Fig11_exit_capture_vs_churn.png",
+      "figures/Fig12_exit_capture_vs_drawdown.png",
+      "figures/Fig13_entry_exit_heatmap.png"
+    ]
+  },
+  "observations": "Obs40-Obs56",
+  "hypothesis_verification": {
+    "H_prior_3_entry_lag": "see Obs",
+    "H_prior_4_exit_churn": "see Obs",
+    "H_prior_7_low_exposure": "see Obs",
+    "H_prior_10_complexity_ceiling": "see Obs"
+  },
+  "gate_status": "PASS_TO_NEXT_PHASE"
+}

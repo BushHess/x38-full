@@ -1,0 +1,8 @@
+{
+  "emergency_dd_pct": 0.28,
+  "emergency_ref": "post_cost",
+  "entry_cooldown_bars": 3,
+  "fixed_stop_pct": 0.12,
+  "rsi_method": "ewm_span",
+  "trail_atr_mult": 3.0
+}

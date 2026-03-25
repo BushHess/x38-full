@@ -1,0 +1,89 @@
+/var/www/trading-bots/btc-spot-dev/research/x2/benchmark.py:42: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X2 RESEARCH: Adaptive Trailing Stop Benchmark
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  Params: slow=120, trail_tight=3.0, trail_mid=4.0, trail_wide=5.0
+  Gain tiers: <5%=tight, <15%=mid, >=15%=wide
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: FULL BACKTEST via BacktestEngine
+================================================================================
+
+Strategy       Scen     Sharpe    CAGR%     MDD%   Calmar  Trades    WR%      PF  AvgExpo    TiM%  AvgDays
+----------------------------------------------------------------------------------------------------------
+E0_EMA21       smart    1.5877    71.40    37.29   1.9148     174   43.1  1.8699   0.4551   45.51     6.82
+E0_EMA21       base     1.4739    64.05    38.63   1.6580     174   41.4  1.7307   0.4551   45.51     6.82
+E0_EMA21       harsh    1.3536    56.62    40.01   1.4151     174   40.2  1.6034   0.4551   45.51     6.82
+X2             smart    1.6371    77.42    34.64   2.2351     139   43.2  2.0598   0.4688   46.88     8.80
+X2             base     1.5488    71.31    37.27   1.9131     139   41.7  1.9169   0.4688   46.88     8.80
+X2             harsh    1.4555    65.09    40.64   1.6017     139   41.0  1.7850   0.4688   46.88     8.80
+
+         DELTA (X2 - BASELINE)
+--------------------------------------------------------------------------------
+  smart   dSharpe=+0.0494  dCAGR=+6.02%  dMDD=-2.65%  dTrades=-35  dWR=+0.1%  dAvgDays=+2.0
+  base    dSharpe=+0.0749  dCAGR=+7.26%  dMDD=-1.36%  dTrades=-35  dWR=+0.3%  dAvgDays=+2.0
+  harsh   dSharpe=+0.1019  dCAGR=+8.47%  dMDD=+0.63%  dTrades=-35  dWR=+0.8%  dAvgDays=+2.0
+
+         EXIT REASON BREAKDOWN
+------------------------------------------------------------
+  E0_EMA21 (harsh): {'vtrend_ema21_d1_trail_stop': 158, 'vtrend_ema21_d1_trend_exit': 16}
+  X2 (harsh): {'x2_trail_stop': 123, 'x2_trend_exit': 16}
+
+================================================================================
+T3: ENGINE vs VECTORIZED SURROGATE PARITY CHECK
+================================================================================
+  E0_EMA21        Engine trades= 174  Vec trades= 189  DIFFER  Sharpe eng=1.4739  vec=1.4900  diff=0.0161
+  X2              Engine trades= 139  Vec trades= 152  DIFFER  Sharpe eng=1.5488  vec=1.5568  diff=0.0080
+
+================================================================================
+T2: SURROGATE BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (5.1s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (19.7s)
+  X2              Sharpe=0.3216 [-0.4104, 1.0566]  CAGR=5.26% [-16.38, 40.36]  MDD=63.17% [44.32, 85.35]  P(CAGR>0)=0.662  (24.9s)
+
+  HEAD-TO-HEAD (X2 - E0_EMA21) across 500 bootstrap paths:
+    Sharpe: X2 wins 341/500 (68.2%)  mean delta=0.0593
+    CAGR:   X2 wins 337/500 (67.4%)  mean delta=2.39%
+    MDD:    X2 wins 202/500 (40.4%)  mean delta=0.49%
+
+================================================================================
+T4: ADAPTIVE TRAIL TIER STATISTICS
+================================================================================
+
+  smart scenario (139 total trades, 123 trail stops, 16 trend exits):
+    Tier      Count    Pct  AvgRet%  AvgDays   TotalPnL    WR%
+    ------------------------------------------------------
+    tight       113  81.3%    -1.42      4.4 -373736.46  30.1%
+    mid          12   8.6%    10.78     17.4  329905.79 100.0%
+    wide         14  10.1%    39.31     37.0  633404.40 100.0%
+
+  base scenario (139 total trades, 123 trail stops, 16 trend exits):
+    Tier      Count    Pct  AvgRet%  AvgDays   TotalPnL    WR%
+    ------------------------------------------------------
+    tight       113  81.3%    -1.60      4.4 -361588.18  28.3%
+    mid          12   8.6%    10.58     17.4  269818.98 100.0%
+    wide         14  10.1%    39.06     37.0  548624.27 100.0%
+
+  harsh scenario (139 total trades, 123 trail stops, 16 trend exits):
+    Tier      Count    Pct  AvgRet%  AvgDays   TotalPnL    WR%
+    ------------------------------------------------------
+    tight       114  82.0%    -1.73      4.4 -336396.89  28.1%
+    mid          11   7.9%    10.86     18.3  211765.35 100.0%
+    wide         14  10.1%    38.80     37.0  473127.94 100.0%
+
+  BASELINE (E0+EMA21) harsh scenario:
+    174 trades, 158 trail stops, 174 trend exits, avg days held: 6.8
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x2/x2_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x2/x2_backtest_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x2/x2_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x2/x2_delta_table.csv
+
+================================================================================
+X2 BENCHMARK COMPLETE
+================================================================================

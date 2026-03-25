@@ -1,0 +1,75 @@
+{
+  "selected_candidate": "baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T20:46:42.839727+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "dd_adaptive_only",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 60.9 < baseline 88.9",
+        "TOPPING return -22.0% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 60.9,
+        "min_cagr": 26.56,
+        "max_mdd": 36.51,
+        "max_fee_drag": 2.55,
+        "trades": 84
+      }
+    },
+    {
+      "name": "dd_adaptive_gentle",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 81.72 < baseline 88.9",
+        "TOPPING return -17.7% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 58.1,
+        "min_cagr": 25.44,
+        "max_mdd": 35.3,
+        "max_fee_drag": 3.01,
+        "trades": 84
+      }
+    },
+    {
+      "name": "dd_adaptive_mild",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 72.01 < baseline 88.9",
+        "TOPPING return -21.5% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 70.26,
+        "min_cagr": 30.74,
+        "max_mdd": 39.68,
+        "max_fee_drag": 2.9,
+        "trades": 88
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "candidates_tested": [
+    "discrete_pf90",
+    "B2_mf60",
+    "B2_mf80"
+  ],
+  "wfo_results": {
+    "discrete_pf90": {
+      "wins": 2,
+      "total": 4,
+      "mean_delta_sh": 0.1388
+    },
+    "B2_mf60": {
+      "wins": 2,
+      "total": 4,
+      "mean_delta_sh": 0.2495
+    },
+    "B2_mf80": {
+      "wins": 2,
+      "total": 4,
+      "mean_delta_sh": 0.0491
+    }
+  },
+  "bootstrap_results": {
+    "discrete_pf90": {
+      "p_delta_sh_pos": 0.436,
+      "median_delta_sh": -0.0168,
+      "mean_delta_sh": -0.0284,
+      "p_delta_mdd_neg": 0.572,
+      "median_delta_mdd": -0.8
+    },
+    "B2_mf60": {
+      "p_delta_sh_pos": 0.308,
+      "median_delta_sh": -0.1278,
+      "mean_delta_sh": -0.1357,
+      "p_delta_mdd_neg": 0.744,
+      "median_delta_mdd": -4.89
+    },
+    "B2_mf80": {
+      "p_delta_sh_pos": 0.34,
+      "median_delta_sh": -0.1165,
+      "mean_delta_sh": -0.1235,
+      "p_delta_mdd_neg": 0.744,
+      "median_delta_mdd": -5.31
+    }
+  },
+  "gate_G2": false,
+  "gate_G3": false,
+  "best_candidate": "discrete_pf90",
+  "verdict": "REJECT",
+  "diagnostics": {
+    "signal_preserved": true,
+    "ks_pvalue": 0.2957,
+    "conditional_p_high_activity": 0.436,
+    "conditional_p_low_activity": 0.0,
+    "n_high_activity": 500,
+    "n_low_activity": 0,
+    "permutation_pvalue": 1.0,
+    "effect_d": -0.2068,
+    "years_needed_for_55pct": null
+  }
+}

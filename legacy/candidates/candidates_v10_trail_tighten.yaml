@@ -1,0 +1,28 @@
+candidates:
+  - name: baseline_legacy
+    description: "Current default trail_tighten_profit_pct=0.20 (baseline for decision gate)"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+
+  - name: tighten_025
+    description: "trail_tighten_profit_pct raised to 0.25"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+      trail_tighten_profit_pct: 0.25
+
+  - name: tighten_030
+    description: "trail_tighten_profit_pct raised to 0.30"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+      trail_tighten_profit_pct: 0.30
+
+  - name: tighten_wfo
+    description: "WFO search over trail_tighten_profit_pct values"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+    param_ranges:
+      trail_tighten_profit_pct: [0.15, 0.18, 0.20, 0.22, 0.25, 0.28, 0.30, 0.35]

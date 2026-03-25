@@ -1,0 +1,27 @@
+candidates:
+  # Baseline: current defaults
+  - name: baseline
+    description: "Current V10 defaults"
+    params: {}
+
+  # Test DD-adaptive ISOLATED (keep emergency_ref=pre_cost_legacy)
+  # Previous test was confounded: dd_adaptive + emergency_ref=peak → REJECT
+  # This isolates just the dd_adaptive effect
+  - name: dd_adaptive_only
+    description: "enable_dd_adaptive=True only, keep pre_cost_legacy emergency"
+    params:
+      enable_dd_adaptive: true
+
+  # Variant with gentler start threshold
+  - name: dd_adaptive_gentle
+    description: "DD-adaptive starting later (20% instead of 16%)"
+    params:
+      enable_dd_adaptive: true
+      dd_adaptive_start: 0.20
+
+  # Variant with higher floor (less aggressive reduction)
+  - name: dd_adaptive_mild
+    description: "DD-adaptive with higher floor (50% min instead of 35%)"
+    params:
+      enable_dd_adaptive: true
+      dd_adaptive_floor: 0.50

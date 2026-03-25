@@ -1,0 +1,170 @@
+{
+  "spec_version": "v1.1",
+  "strategy_name": "VP1",
+  "strategy_name_long": "VTREND-P1",
+  "legacy_candidate_id": "Phase1ParentCore_ATRstandard_REVon_D1ON",
+  "legacy_aliases": [
+    "Phase1ParentCore_ATRstandard_REVon_D1on"
+  ],
+  "provenance": "performance-dominant leader",
+  "research_status": {
+    "lead_hypothesis": true,
+    "proven_winner": false,
+    "best_current_provisional_system": false
+  },
+  "frozen_facts": {
+    "market": "BTC spot only",
+    "symbol_assumption": "BTCUSDT",
+    "timeframe_main": "4h",
+    "timeframe_context": "1d",
+    "long_only": true,
+    "binary_sizing": true,
+    "slow_period": 140,
+    "fast_period": 35,
+    "atr_type": "standard",
+    "atr_period": 20,
+    "atr_smoothing": "wilder",
+    "trail_mult": 2.5,
+    "use_trend_reversal_exit": true,
+    "use_d1_regime": true,
+    "use_vdo": true,
+    "vdo_threshold": 0.0,
+    "d1_ema_period": 28,
+    "headline_fill_price": "next_open",
+    "headline_d1_policy": "prevday",
+    "headline_accounting": "cash_shares_event",
+    "headline_round_trip_bps": 50.0,
+    "warmup_days": 365
+  },
+  "data_contract": {
+    "required_h4_columns": [
+      "open_time",
+      "close_time",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "num_trades",
+      "taker_buy_base_vol"
+    ],
+    "required_d1_columns": [
+      "open_time",
+      "close_time",
+      "close"
+    ],
+    "timezone": "UTC",
+    "primary_bar_key": "open_time",
+    "sort_order": "ascending_unique_open_time",
+    "dirty_data_policy": {
+      "duplicate_timestamps": "hard_fail",
+      "non_monotonic_timestamps": "hard_fail",
+      "structural_missing_bars": "hard_fail",
+      "non_positive_prices": "hard_fail"
+    }
+  },
+  "clock_contract": {
+    "decision_timestamp": "H4 close of bar i",
+    "fill_timestamp": "H4 open of bar i+1",
+    "fill_price": "open[i+1]",
+    "valuation_timestamp": "H4 open post-fill",
+    "d1_policy": "prevday_only"
+  },
+  "feature_definitions": {
+    "ema": {
+      "fast_period": 35,
+      "slow_period": 140,
+      "seed": "ema[0]=close[0]",
+      "alpha_formula": "2/(period+1)"
+    },
+    "atr": {
+      "type": "standard_wilder",
+      "period": 20,
+      "tr_formula": "max(high-low, abs(high-prev_close), abs(low-prev_close))",
+      "seed": "ATR[19]=nanmean(TR[:20])",
+      "update": "(ATR_prev*19 + TR)/20"
+    },
+    "vdo": {
+      "mode": "auto",
+      "primary_vdr": "(2*taker_buy_base_vol - volume)/volume when taker finite and volume>0",
+      "fallback_vdr": "((close-low)/(high-low))*2 - 1 when high>low else NaN",
+      "ema_fast": 12,
+      "ema_slow": 28,
+      "ema_nan_carry": true,
+      "threshold_rule": "VDO > 0.0"
+    },
+    "d1_regime": {
+      "ema_period": 28,
+      "regime_rule": "d1_close > d1_ema_28",
+      "mapping": "all H4 bars on UTC date d use D1 date d-1"
+    }
+  },
+  "state_machine": {
+    "states": [
+      "FLAT",
+      "LONG"
+    ],
+    "persistent_fields": [
+      "cash",
+      "shares",
+      "peak_price",
+      "pending_order"
+    ],
+    "entry_peak_seed": "decision_bar_close",
+    "anomaly_bar_behavior": "no decisions, no peak update, carry state"
+  },
+  "entry_logic": [
+    "state == FLAT",
+    "next bar exists",
+    "open_time >= warmup_cut",
+    "anomaly_flag == False",
+    "ema_fast and ema_slow finite",
+    "VDO finite",
+    "regime == True",
+    "ema_fast > ema_slow",
+    "VDO > 0.0"
+  ],
+  "exit_logic": {
+    "peak_update": "peak_price = max(peak_price, close[i])",
+    "trailing_stop": "close[i] < peak_price - 2.5*ATR[i]",
+    "reversal": "ema_fast[i] < ema_slow[i]",
+    "priority": [
+      "trailing_stop",
+      "trend_reversal"
+    ],
+    "entry_only_features_excluded_from_exit": [
+      "VDO",
+      "D1 regime"
+    ]
+  },
+  "accounting": {
+    "buy": "shares = cash / (fill_price * (1 + 0.0025)); cash = 0",
+    "sell": "cash = shares * fill_price * (1 - 0.0025); shares = 0",
+    "valuation": "NAV = cash + shares * open_price",
+    "fractional_shares": true,
+    "lot_rounding": false,
+    "intrinsic_kill_switch": false,
+    "intrinsic_overlay": false
+  },
+  "acceptance_tests": {
+    "tier2_trade_count": 43,
+    "tier2_first_three_entry_fills": [
+      "2024-09-15 16:00:00+00:00",
+      "2024-09-16 20:00:00+00:00",
+      "2024-09-30 20:00:00+00:00"
+    ],
+    "tier2_first_three_exit_fills": [
+      "2024-09-16 16:00:00+00:00",
+      "2024-09-30 12:00:00+00:00",
+      "2024-10-01 20:00:00+00:00"
+    ],
+    "first_trade_cycle": {
+      "signal_time": "2024-09-15 15:59:59.999000+00:00",
+      "entry_time": "2024-09-15 16:00:00+00:00",
+      "entry_price": 60335.41,
+      "exit_time": "2024-09-16 16:00:00+00:00",
+      "exit_price": 57881.7,
+      "exit_reason": "trailing_stop"
+    }
+  }
+}

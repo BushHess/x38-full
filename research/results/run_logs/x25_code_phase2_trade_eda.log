@@ -1,0 +1,66 @@
+======================================================================
+Phase 2: Conditional Analysis Around Actual Trades
+======================================================================
+Loaded: H4=18,662 bars, D1=3,110 bars
+/var/www/trading-bots/btc-spot-dev/research/x25/code/phase2_trade_eda.py:119: RuntimeWarning: invalid value encountered in divide
+  tbr_h4 = np.where(volume_h4 > 0, taker_buy_h4 / volume_h4, 0.5)
+
+[0] Reproducing trades...
+  Trades reproduced: 204
+  Written: tables/trade_list.csv
+  Written: tables/trade_repro_check.csv
+  Trail stops: 183, Trend exits: 21
+  Median hold: 29 bars (116h)
+  Win rate (net): 38.7%
+
+[1] Winner / Loser split...
+  Winners: 79  |  Losers: 125
+  Winner median net return: 0.0450
+  Loser  median net return: -0.0332
+  Winner median hold: 58 bars
+  Loser  median hold: 17 bars
+  Written: tables/Tbl04_trade_groups.csv
+
+[2] Volume / TBR profiles around entry...
+  Written: figures/Fig09_volume_profile.png
+  Written: figures/Fig10_tbr_profile.png
+
+[3] Volatility profile around entry...
+  Written: figures/Fig11_volatility_profile.png
+
+[4] Statistical separation at entry bar...
+  Written: tables/Tbl05_entry_separation.csv
+                           feature  median_winners  median_losers  p_value  rank_biserial      direction
+      taker_buy_ratio (single bar)        0.519281       0.520309 0.709514         0.0311  losers_higher
+      mean TBR 5 bars before entry        0.495763       0.494138 0.398200        -0.0704 winners_higher
+     mean TBR 10 bars before entry        0.491982       0.492115 0.857021         0.0151  losers_higher
+volume / rolling_median_volume(20)        1.036008       1.015370 0.951465        -0.0052 winners_higher
+                   ATR(20) / price        0.017098       0.016016 0.775752         0.0238 winners_higher
+
+[5] VDO at entry...
+  Written: figures/Fig12_vdo_histogram.png
+  Written: figures/Fig13_vdo_scatter.png
+  Written: tables/Tbl06_vdo_entry_stats.csv
+  VDO MW: U=5698, p=0.0643, r_rb=-0.1540
+  VDO vs return: Spearman r=0.0887, p=0.2069
+  Median VDO — winners: 0.0053, losers: 0.0031
+
+[6] False entries — 5 worst losers...
+  Written: figures/Fig14a_worst_loser_1.png
+    Trade #10: entry=2017-12-21, net_ret=-0.2581, hold=6 bars, reason=trail_stop
+  Written: figures/Fig14b_worst_loser_2.png
+    Trade #42: entry=2019-06-29, net_ret=-0.1294, hold=14 bars, reason=trail_stop
+  Written: figures/Fig14c_worst_loser_3.png
+    Trade #7: entry=2017-11-08, net_ret=-0.1114, hold=11 bars, reason=trail_stop
+  Written: figures/Fig14d_worst_loser_4.png
+    Trade #82: entry=2021-01-17, net_ret=-0.1011, hold=22 bars, reason=trail_stop
+  Written: figures/Fig14e_worst_loser_5.png
+    Trade #84: entry=2021-02-23, net_ret=-0.0922, hold=25 bars, reason=trail_stop
+
+======================================================================
+Phase 2 script complete.
+  Trades: 204
+  Winners: 79 | Losers: 125
+  Figures: Fig09..Fig14e
+  Tables: trade_list.csv, trade_repro_check.csv, Tbl04..Tbl06
+======================================================================

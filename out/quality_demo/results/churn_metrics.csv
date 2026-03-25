@@ -1,0 +1,3 @@
+label,scenario,trades,trades_per_year,turnover_per_year,avg_days_held,median_days_held,pct_held_lt_3d,pct_held_lt_7d,avg_reentry_days,median_reentry_days,pct_reentry_le_7d,avg_trade_return_pct,win_rate,churn_score
+candidate,harsh,98,13.724885,24.65,14.217687,12.0,0.071429,0.214286,24.752577,17.166667,0.103093,2.796286,0.5,338.318414
+baseline,harsh,98,13.724885,24.65,14.217687,12.0,0.071429,0.214286,24.752577,17.166667,0.103093,2.796286,0.5,338.318414

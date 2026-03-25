@@ -1,0 +1,15 @@
+{
+  "run_id": "smoke_c4_1773048813",
+  "started_at": "2026-03-09T09:33:33Z",
+  "config_fingerprint": "10dc24fe41bc",
+  "symbol": "BTCUSDT",
+  "env": "testnet",
+  "exchange_info": {
+    "step_size": "0.00001000",
+    "tick_size": "0.01000000",
+    "min_qty": "0.00001000",
+    "min_notional": "5.00000000"
+  },
+  "finished_at": "2026-03-09T09:33:39Z",
+  "total_cycles": 7
+}

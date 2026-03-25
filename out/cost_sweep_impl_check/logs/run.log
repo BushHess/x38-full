@@ -1,0 +1,44 @@
+2026-02-24 06:40:27,041 INFO validation: Validation run started
+2026-02-24 06:40:27,041 INFO validation: command=python validate_strategy.py --strategy v10_baseline --baseline v10_baseline --config v10/configs/baseline_legacy.live.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --out out/cost_sweep_impl_check --suite basic --bootstrap 0 --lookahead-check off --start 2022-01-01 --end 2025-12-31 --wfo-windows 2 --cost-sweep-bps 0,10,25,50,75,100 --cost-sweep-mode quick --force
+2026-02-24 06:40:27,041 INFO validation: seed=1337
+2026-02-24 06:40:27,041 INFO validation: git_hash=c74c650
+2026-02-24 06:40:27,041 INFO validation: candidate=v10_baseline config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:40:27,041 INFO validation: baseline=v10_baseline config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:40:27,041 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 06:40:27,041 INFO validation: period=2022-01-01 -> 2025-12-31
+2026-02-24 06:40:27,672 INFO validation: suite data_integrity started
+2026-02-24 06:40:27,848 INFO validation: suite data_integrity finished: pass (0.18s)
+2026-02-24 06:40:27,852 INFO validation: suite backtest started
+2026-02-24 06:40:27,852 INFO validation:   backtest: candidate x smart
+2026-02-24 06:40:27,951 INFO validation:   backtest: candidate x base
+2026-02-24 06:40:28,051 INFO validation:   backtest: candidate x harsh
+2026-02-24 06:40:28,155 INFO validation:   backtest: baseline x smart
+2026-02-24 06:40:28,255 INFO validation:   backtest: baseline x base
+2026-02-24 06:40:28,353 INFO validation:   backtest: baseline x harsh
+2026-02-24 06:40:28,451 INFO validation: suite backtest finished: pass (0.60s)
+2026-02-24 06:40:28,452 INFO validation: suite cost_sweep started
+2026-02-24 06:40:28,453 INFO validation:   cost_sweep: candidate @ 0.00 bps (quick)
+2026-02-24 06:40:28,525 INFO validation:   cost_sweep: baseline @ 0.00 bps (quick)
+2026-02-24 06:40:28,603 INFO validation:   cost_sweep: candidate @ 10.00 bps (quick)
+2026-02-24 06:40:28,676 INFO validation:   cost_sweep: baseline @ 10.00 bps (quick)
+2026-02-24 06:40:28,765 INFO validation:   cost_sweep: candidate @ 25.00 bps (quick)
+2026-02-24 06:40:28,834 INFO validation:   cost_sweep: baseline @ 25.00 bps (quick)
+2026-02-24 06:40:28,905 INFO validation:   cost_sweep: candidate @ 50.00 bps (quick)
+2026-02-24 06:40:28,975 INFO validation:   cost_sweep: baseline @ 50.00 bps (quick)
+2026-02-24 06:40:29,049 INFO validation:   cost_sweep: candidate @ 75.00 bps (quick)
+2026-02-24 06:40:29,123 INFO validation:   cost_sweep: baseline @ 75.00 bps (quick)
+2026-02-24 06:40:29,198 INFO validation:   cost_sweep: candidate @ 100.00 bps (quick)
+2026-02-24 06:40:29,271 INFO validation:   cost_sweep: baseline @ 100.00 bps (quick)
+2026-02-24 06:40:29,346 INFO validation: suite cost_sweep finished: pass (0.89s)
+2026-02-24 06:40:29,347 INFO validation: suite invariants started
+2026-02-24 06:40:29,354 INFO validation: suite invariants finished: pass (0.01s)
+2026-02-24 06:40:29,356 INFO validation: suite churn_metrics started
+2026-02-24 06:40:29,356 INFO validation: suite churn_metrics finished: info (0.00s)
+2026-02-24 06:40:29,356 INFO validation: suite regime started
+2026-02-24 06:40:29,392 INFO validation: suite regime finished: info (0.04s)
+2026-02-24 06:40:29,393 INFO validation: suite wfo started
+2026-02-24 06:40:30,019 INFO validation: suite wfo finished: fail (0.63s)
+2026-02-24 06:40:30,019 WARNING validation: Low-trade WFO detected (1 windows); trade-level suite auto-enabled
+2026-02-24 06:40:30,020 INFO validation: suite trade_level started
+2026-02-24 06:40:30,058 INFO validation: suite trade_level finished: info (0.04s)
+2026-02-24 06:40:30,184 INFO validation: Validation run complete in 3.15s

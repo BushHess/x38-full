@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/research/x30/v1/code/x30_signal.py", line 40, in <module>
+    from v10.core.data import DataFeed
+ModuleNotFoundError: No module named 'v10'

@@ -1,0 +1,3 @@
+regime,n_bars,mean_ret,std_ret,skew,kurtosis,n_trends_20pct
+low,9385,0.00013432,0.00774599,-0.073,3.262,1
+high,9366,0.00016151,0.01951215,-0.174,12.5255,12

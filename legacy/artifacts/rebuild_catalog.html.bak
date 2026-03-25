@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Mechanism Catalog — Bot Rebuild Reference</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --dim: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --yellow: #d29922; --red: #f85149;
+    --orange: #db6d28; --purple: #bc8cff; --cyan: #39d353;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; max-width: 1400px; margin: 0 auto; }
+  h1 { font-size: 1.8em; margin-bottom: 4px; color: var(--accent); }
+  h2 { font-size: 1.35em; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--text); }
+  h3 { font-size: 1.1em; margin: 24px 0 12px; color: var(--purple); }
+  .subtitle { color: var(--dim); margin-bottom: 24px; font-size: 0.95em; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0 28px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { font-size: 0.8em; color: var(--dim); margin-top: 4px; }
+  .num.green { color: var(--green); }
+  .num.yellow { color: var(--yellow); }
+  .num.red { color: var(--red); }
+  .num.accent { color: var(--accent); }
+  .num.purple { color: var(--purple); }
+  .num.orange { color: var(--orange); }
+  .num.cyan { color: var(--cyan); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 0.85em; }
+  th, td { padding: 8px 10px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: #1c2129; color: var(--accent); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+  tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  tr:hover { background: rgba(88,166,255,0.06); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.78em; font-weight: 600; white-space: nowrap; }
+  .badge-critical { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-important { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
+  .badge-valuable { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .badge-nice { background: rgba(139,148,158,0.15); color: var(--dim); border: 1px solid rgba(139,148,158,0.3); }
+  .badge-ironclad { background: rgba(219,109,40,0.15); color: var(--orange); border: 1px solid rgba(219,109,40,0.3); }
+  .badge-spotbot { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+  .badge-both { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-proven { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-disproven { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-invariant { background: rgba(139,148,158,0.15); color: var(--dim); border: 1px solid rgba(139,148,158,0.3); }
+
+  .verdict { font-weight: 700; }
+  .verdict-use { color: var(--green); }
+  .verdict-test { color: var(--yellow); }
+  .verdict-skip { color: var(--red); }
+  .verdict-review { color: var(--dim); }
+
+  .note { background: var(--surface); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9em; }
+  .note-warn { border-left-color: var(--yellow); }
+  .note-critical { border-left-color: var(--red); }
+  .note-star { border-left-color: var(--yellow); background: rgba(210,153,34,0.08); }
+  .note-green { border-left-color: var(--green); }
+
+  .section-divider { border: none; border-top: 2px solid var(--border); margin: 40px 0; }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  details { margin: 8px 0; }
+  details summary { cursor: pointer; color: var(--accent); font-weight: 600; padding: 4px 0; }
+  details summary:hover { text-decoration: underline; }
+  .errata { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.2); border-radius: 6px; padding: 12px 16px; margin: 8px 0; }
+  .errata-item { margin: 6px 0; padding-left: 16px; border-left: 2px solid var(--red); }
+  .correct { color: var(--green); font-weight: 600; }
+  .wrong { color: var(--red); text-decoration: line-through; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin: 20px 0; }
+  .toc a { display: block; padding: 3px 0; }
+  .toc .indent { padding-left: 20px; font-size: 0.9em; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<h1>Complete Mechanism Catalog — Bot Rebuild Reference</h1>
+<p class="subtitle">
+  Verified scan: IRONCLAD (<span class="mono">spot_portfolio_bot.py</span>, 4416 lines, ~93 config params) +
+  spotbot V10 (<span class="mono">btc-spot/spotbot/</span>, ~3500 lines across 20+ files) &middot;
+  Feb 2026 &middot; Replaces previous audit.html
+</p>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+
+<div class="toc">
+  <strong>Mục lục</strong>
+  <a href="#summary">0. Tổng quan</a>
+  <a href="#errata">1. Chỉnh sửa từ audit cũ (13 lỗi)</a>
+  <a href="#sec-A">A. Type System & Data Model</a>
+  <a href="#sec-B">B. Exchange API & Network</a>
+  <a href="#sec-C">C. Exchange Filter Compliance</a>
+  <a href="#sec-D">D. Order Execution Patterns</a>
+  <a href="#sec-E">E. Order Lifecycle & Crash Recovery</a>
+  <a href="#sec-F">F. Risk Management & Circuit Breakers</a>
+  <a href="#sec-G">G. Position Lifecycle & Management</a>
+  <a href="#sec-H">H. State Persistence & Recovery</a>
+  <a href="#sec-I">I. Market Data, Timing & Bar Processing</a>
+  <a href="#sec-J">J. Strategy: Entry Logic</a>
+  <a href="#sec-K">K. Strategy: Exit Logic</a>
+  <a href="#sec-L">L. Configuration & Validation</a>
+  <a href="#sec-M">M. Monitoring, Logging & Observability</a>
+  <a href="#sec-N">N. Paper Trading, Backtest & Testing</a>
+  <a href="#sec-O">O. Session & Metadata Management</a>
+  <a href="#sec-P">P. Strategy Decisions — Proven / Disproven / Pending</a>
+  <a href="#rebuild">Q. Rebuild Priority Order</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUMMARY -->
+<!-- ============================================================ -->
+
+<h2 id="summary">0. Tổng quan</h2>
+
+<div class="summary-grid">
+  <div class="stat-card"><div class="num red">48</div><div class="label">CRITICAL</div></div>
+  <div class="stat-card"><div class="num yellow">35</div><div class="label">IMPORTANT</div></div>
+  <div class="stat-card"><div class="num accent">18</div><div class="label">VALUABLE</div></div>
+  <div class="stat-card"><div class="num purple">3</div><div class="label">NICE-TO-HAVE</div></div>
+  <div class="stat-card"><div class="num green">104</div><div class="label">Tổng cơ chế đã xác thực</div></div>
+  <div class="stat-card"><div class="num orange">56</div><div class="label">Từ IRONCLAD</div></div>
+  <div class="stat-card"><div class="num purple">65</div><div class="label">Từ spotbot V10</div></div>
+  <div class="stat-card"><div class="num cyan">15</div><div class="label">Phần/Category</div></div>
+</div>
+
+<div class="note note-star">
+  <strong>So với audit cũ:</strong> Audit cũ liệt kê 24 cơ chế, trong đó 3 là bịa đặt, 6 sai chi tiết, 3 sai metadata.
+  Tài liệu này thay thế hoàn toàn: <strong>104 cơ chế đã xác thực</strong> từ code thật, phân loại theo 15 category,
+  mỗi cơ chế có line number, source, priority.
+</div>
+
+<!-- ============================================================ -->
+<!-- ERRATA -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="errata">1. Chỉnh sửa từ audit cũ (13 lỗi)</h2>
+
+<h3>Metadata sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Filename:</strong> <span class="wrong">spot_portfolio_bot_v2.py</span> &rarr; <span class="correct">spot_portfolio_bot.py</span> (không có v2)</div>
+  <div class="errata-item"><strong>Line count:</strong> <span class="wrong">5420 dòng</span> &rarr; <span class="correct">4416 dòng</span></div>
+  <div class="errata-item"><strong>Config params:</strong> <span class="wrong">489 params</span> &rarr; <span class="correct">~93 params</span> (frozen dataclass, lines 1078-1244)</div>
+</div>
+
+<h3>3 cơ chế bịa đặt (KHÔNG tồn tại trong code)</h3>
+<div class="errata">
+  <div class="errata-item"><strong>#1 LIMIT_MAKER entry:</strong> Code dùng MARKET hoặc LIMIT_SNIPER (limit buy at EMA/low), KHÔNG CÓ post-only LIMIT_MAKER. Đã xác nhận qua grep toàn bộ file.</div>
+  <div class="errata-item"><strong>#4 Fee caching 6h TTL:</strong> KHÔNG tồn tại. Dry-run dùng flat rate <span class="mono">dry_taker_fee_pct=0.1%</span>. Live dùng flat config, KHÔNG fetch fee từ API.</div>
+  <div class="errata-item"><strong>Pre-TP1 partial derisk (+1R &rarr; BE):</strong> KHÔNG tồn tại. TP1 chỉ trigger khi giá chạm <span class="mono">tp1_price</span>. Post-TP1 stop policy (BE/ATR) chỉ áp dụng SAU khi TP1 hit, KHÔNG có pre-TP1 logic.</div>
+</div>
+
+<h3>6 chi tiết sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Slippage buffer:</strong> <span class="wrong">10 bps</span> &rarr; <span class="correct">3 bps</span> (<span class="mono">dry_slippage_bps=3</span>, line 1220)</div>
+  <div class="errata-item"><strong>Kill switch DD:</strong> <span class="wrong">45% DD</span> &rarr; <span class="correct">15% default, safe-live override 10%</span> (<span class="mono">max_drawdown_stop=0.15</span>, safe-live=0.10, lines 1208, 1394)</div>
+  <div class="errata-item"><strong>Cancel-replace:</strong> <span class="wrong">Atomic cancelReplace API</span> &rarr; <span class="correct">Sequential cancel + place</span>. Code does <span class="mono">_cancel_order()</span> then <span class="mono">_order_stop_loss()</span>. Có naked window, handled bằng watchdog.</div>
+  <div class="errata-item"><strong>Trail update cooldown:</strong> <span class="wrong">60s + 0.25 ATR</span> &rarr; <span class="correct">Per H4 candle close only</span>. Trail chỉ update trên new closed H4 candle, không có timer hay ATR threshold. (lines 3851-3943)</div>
+  <div class="errata-item"><strong>Daily order limiter:</strong> <span class="wrong">5 orders/ngày</span> &rarr; <span class="correct">Daily LOSS lock</span>. IRONCLAD dùng <span class="mono">daily_loss_limit</span> (% NAV), KHÔNG phải order count. spotbot V10 có <span class="mono">max_daily_orders=5</span>. Hai system khác nhau.</div>
+  <div class="errata-item"><strong>Trend strength:</strong> <span class="wrong">EMA slope + ADX</span> &rarr; <span class="correct">EMA displacement only</span>. Code dùng <span class="mono">close > EMA_TREND</span>, KHÔNG có ADX. (IRONCLAD line 3043)</div>
+</div>
+
+<h3>1 nguồn sai</h3>
+<div class="errata">
+  <div class="errata-item"><strong>Dead money exit:</strong> <span class="wrong">CẢ HAI</span> &rarr; <span class="correct">Chỉ IRONCLAD</span>. spotbot V10 KHÔNG có dead money exit / time exit mechanism.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- A. TYPE SYSTEM -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-A">A. Type System & Data Model (7 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Nền tảng dữ liệu. Mỗi type là một contract giữa các module.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>A1</td>
+  <td><strong>Bar (Frozen OHLCV Record)</strong></td>
+  <td>Immutable dataclass: open_time, OHLCV, close_time, taker_buy_base_vol, interval. Frozen+slots cho performance.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">types.py:46-57</span></td>
+</tr>
+<tr>
+  <td>A2</td>
+  <td><strong>CostConfig + 3 Scenarios</strong></td>
+  <td>Parameterize execution cost (spread, slippage, fee). Smart=13bps RT, Base=31bps, Harsh=50bps. Derived properties cho per-side cost.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">types.py:64-96</span></td>
+</tr>
+<tr>
+  <td>A3</td>
+  <td><strong>Signal (Dual-Mode Output)</strong></td>
+  <td>Strategy output: target_exposure (0-1 fraction) HOẶC explicit Order list. Orders take priority. Carries reason string.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">types.py:133-154</span></td>
+</tr>
+<tr>
+  <td>A4</td>
+  <td><strong>MarketState (Strategy Input View)</strong></td>
+  <td>Snapshot truyền vào strategy.on_bar(): bar, bar lists, indices, cash, btc_qty, nav, exposure, entry_price_avg, position_entry_nav. Strategy KHÔNG bao giờ thấy portfolio internals.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">types.py:160-178</span></td>
+</tr>
+<tr>
+  <td>A5</td>
+  <td><strong>EntryNavMode (3-Way Enum)</strong></td>
+  <td>Control how position_entry_nav computed on first fill: PRE_TRADE_NAV (before mutation), POST_TRADE_NAV (after), LEGACY_GROSS (after + cost). Quyết định emergency DD reference.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">types.py:23-39</span></td>
+</tr>
+<tr>
+  <td>A6</td>
+  <td><strong>Fill / Trade / EquitySnap / BacktestResult</strong></td>
+  <td>Fill: individual order fill. Trade: round-trip entry→exit (PnL, return, days_held). EquitySnap: periodic NAV. BacktestResult: bundle all + summary dict.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">types.py:103-204</span></td>
+</tr>
+<tr>
+  <td>A7</td>
+  <td><strong>Position Dataclass (IRONCLAD)</strong></td>
+  <td>Per-position state: symbol, entry_price, size, stop_price, atr, tp1_price, tp1_hit, highest_price, opened_at, stop_order_id/cid, last_trail_close_ms. Methods: risk_amount(), days_held().</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">spot_portfolio_bot.py:628-651</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- B. EXCHANGE API -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-B">B. Exchange API & Network (12 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Mọi tương tác với Binance đều đi qua đây. Retry, signing, time sync, rate limit.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>B1</td>
+  <td><strong>REST Client + HMAC-SHA256 Signing</strong></td>
+  <td>Full Binance Spot REST. Auto recvWindow, HMAC signing. Credential từ env vars.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:345-537; V10 client.py:98-194</span></td>
+</tr>
+<tr>
+  <td>B2</td>
+  <td><strong>Exponential Backoff Retry</strong></td>
+  <td>Retry với backoff: IRONCLAD 6 attempts (0.6s base, 12s max, 20% jitter); V10 3 attempts. Handle 429 (Retry-After), 418 (ban), 502/503/504 (gateway).</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:362-533; V10 client.py:197-284</span></td>
+</tr>
+<tr>
+  <td>B3</td>
+  <td><strong>Time Synchronization (Server Offset)</strong></td>
+  <td>Query <span class="mono">/api/v3/time</span>, compute offset = server - local. Applied to all signed requests. Auto re-sync on -1021 timestamp error.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:420-427; V10 client.py:155-173</span></td>
+</tr>
+<tr>
+  <td>B4</td>
+  <td><strong>-1007 TIMEOUT Resolution</strong></td>
+  <td><strong>Status Unknown = order CÓ THỂ đã executed.</strong> Không được coi là fail. Phải confirm qua UDS (fast) + REST query (fallback). Raise <span class="mono">BinanceStatusUnknownError</span> → caller confirm.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:511-520</span></td>
+</tr>
+<tr>
+  <td>B5</td>
+  <td><strong>HTTPS Enforcement</strong></td>
+  <td>Constructor validate base_url = https://. Reject http://. Prevent credential leakage qua unencrypted connection.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:401-406</span></td>
+</tr>
+<tr>
+  <td>B6</td>
+  <td><strong>Endpoint Security Allowlist</strong></td>
+  <td>Validate REST + WS URLs against known Binance domains. Reject non-HTTPS, non-WSS, credentials in URL, unknown hosts. Override bằng <span class="mono">ALLOW_CUSTOM_ENDPOINT=YES</span>.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:4281-4342</span></td>
+</tr>
+<tr>
+  <td>B7</td>
+  <td><strong>Rate Limit Weight Tracking</strong></td>
+  <td>Parse <span class="mono">X-MBX-USED-WEIGHT-1M</span> từ response headers. Store cho soft-throttle decisions.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:433-445</span></td>
+</tr>
+<tr>
+  <td>B8</td>
+  <td><strong>Soft Rate Limit Throttle</strong></td>
+  <td>Khi used weight &gt; <span class="mono">used_weight_1m_soft_limit</span> → skip non-critical tasks (breadth, regime, entries, orphan scan). Prevent HTTP 429 ban.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1604-1607, 4130-4210</span></td>
+</tr>
+<tr>
+  <td>B9</td>
+  <td><strong>User Data Stream (WebSocket)</strong></td>
+  <td>Real-time execution reports qua WS. Auto-reconnect với exponential backoff (1s base, 30s max). Handle eventStreamTerminated. Server ping→pong. Thread-safe event queue.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:851-1070</span></td>
+</tr>
+<tr>
+  <td>B10</td>
+  <td><strong>ExecReportTracker (Thread-Safe)</strong></td>
+  <td>Store latest executionReport per clientOrderId/orderId. <span class="mono">wait_for_cid()</span> blocks with timeout cho main thread. Tracks terminal statuses.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:789-848</span></td>
+</tr>
+<tr>
+  <td>B11</td>
+  <td><strong>UDS Event Drain + Readiness</strong></td>
+  <td>Process max 500 events/loop. Handle: account_dirty (invalidate cache), ready transitions (reconnect→reconcile; disconnect→pause entries + cancel pending). Route executionReport to handler.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1701-1799</span></td>
+</tr>
+<tr>
+  <td>B12</td>
+  <td><strong>Account Cache (1s TTL)</strong></td>
+  <td>Cache Binance account snapshot 1s. Invalidate on order/fill/UDS event. Giảm signed endpoint weight.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1515-1517, 1944-1957</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- C. FILTER COMPLIANCE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-C">C. Exchange Filter Compliance (7 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Sai filter = order bị reject. Đặc biệt: LOT_SIZE vs MARKET_LOT_SIZE cho stop orders.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>C1</td>
+  <td><strong>Decimal Arithmetic Throughout</strong></td>
+  <td>Python <span class="mono">Decimal</span> (prec=28) cho mọi qty/price. <span class="mono">ROUND_DOWN</span> cho qty, <span class="mono">ROUND_CEILING</span> cho ceil. Float → Decimal trước mọi rounding. Tránh <span class="mono">0.001 * 3 = 0.0030000000000000004</span>.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:89-168; V10 filters.py:1-151</span></td>
+</tr>
+<tr>
+  <td>C2</td>
+  <td><strong>SymbolFilters / SymbolInfo Dataclass</strong></td>
+  <td>Per-symbol: tick_size, min/max_price (PRICE_FILTER), step_size/min_qty/max_qty (LOT_SIZE), market_step_size/min_qty/max_qty (MARKET_LOT_SIZE), min_notional.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:372-386; V10 filters.py:33-67</span></td>
+</tr>
+<tr>
+  <td>C3</td>
+  <td><strong>LOT_SIZE vs MARKET_LOT_SIZE</strong></td>
+  <td><strong>MARKET/STOP_LOSS dùng MARKET_LOT_SIZE. LIMIT/STOP_LOSS_LIMIT dùng LOT_SIZE.</strong> Sai filter = stop bị reject. <span class="mono">_lot_for_order()</span> chọn đúng filter theo order type.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2359-2386</span></td>
+</tr>
+<tr>
+  <td>C4</td>
+  <td><strong>Direction-Aware Price Rounding</strong></td>
+  <td>SELL price: round DOWN (safe cho stop). BUY price: round UP. LIMIT BUY: round DOWN (don't overpay). Clamp to min/max price.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2388-2411</span></td>
+</tr>
+<tr>
+  <td>C5</td>
+  <td><strong>RulesCache (exchangeInfo)</strong></td>
+  <td>Lazy fetch + cache exchangeInfo per symbol. Parse PRICE_FILTER, LOT_SIZE, MARKET_LOT_SIZE, MIN_NOTIONAL, NOTIONAL. In-memory, bot lifetime.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1423-1461</span></td>
+</tr>
+<tr>
+  <td>C6</td>
+  <td><strong>Notional Validation</strong></td>
+  <td><span class="mono">price * qty >= min_notional</span> check trước mọi order. Binance reject nếu dưới min_notional.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2413-2415; V10 filters.py:118-150</span></td>
+</tr>
+<tr>
+  <td>C7</td>
+  <td><strong>Post-Rounding Safety Checks</strong></td>
+  <td>Sau round qty xuống stepSize: re-check qty &gt;= min_qty VÀ notional &gt;= min_notional. Return HOLD nếu fail. Prevent submitting invalid orders.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 order_planner.py:159-173</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- D. ORDER EXECUTION -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-D">D. Order Execution Patterns (10 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Idempotency, status-unknown recovery, stop fallback chain. Mỗi pattern prevent một failure mode cụ thể.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>D1</td>
+  <td><strong>Deterministic Client Order ID</strong></td>
+  <td>IRONCLAD: SHA1(<span class="mono">tag|symbol|ts_ms</span>)[:20]. V10: SHA256(<span class="mono">symbol|strategy|signal_close_ms|side|reason</span>)[:20]. Deterministic = same signal → same ID. Prevent duplicate sends on restart.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2354-2357; V10 order_manager.py:75-84</span></td>
+</tr>
+<tr>
+  <td>D2</td>
+  <td><strong>Idempotent Order Placement</strong></td>
+  <td>Trước mỗi order: query bằng clientOrderId. Nếu đã tồn tại → return existing, KHÔNG place duplicate. Safe qua retries + crash recovery.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2433-2437; V10 order_manager.py:219-220</span></td>
+</tr>
+<tr>
+  <td>D3</td>
+  <td><strong>Market Order + Status-Unknown Recovery</strong></td>
+  <td>Catch <span class="mono">BinanceStatusUnknownError</span> (-1007) + network errors. Confirm qua UDS first (fast, timeout), then REST query fallback. Refuse BUY khi UDS not ready.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2417-2480</span></td>
+</tr>
+<tr>
+  <td>D4</td>
+  <td><strong>Stop Loss Fallback Chain</strong></td>
+  <td>Try STOP_LOSS (market stop, MARKET_LOT_SIZE) first. If rejected → fallback STOP_LOSS_LIMIT (limit stop, LOT_SIZE, price = stop - offset%). Cả hai có idempotent pre-check + status-unknown recovery.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2541-2662</span></td>
+</tr>
+<tr>
+  <td>D5</td>
+  <td><strong>Min Stop Gap Enforcement</strong></td>
+  <td>Stop price phải cách market price ít nhất <span class="mono">min_stop_gap_pct</span>. Prevent "stop too close" rejection từ Binance.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2552-2557</span></td>
+</tr>
+<tr>
+  <td>D6</td>
+  <td><strong>Panic Exit on Stop Failure</strong></td>
+  <td>Nếu stop placement fail sau BUY → <strong>market sell ALL free base NGAY</strong>. Invariant: KHÔNG BAO GIỜ có position mà không có stop.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3368-3381</span></td>
+</tr>
+<tr>
+  <td>D7</td>
+  <td><strong>Order Confirmation via UDS + REST Fallback</strong></td>
+  <td><span class="mono">_confirm_order_by_cid()</span>: try ExecReportTracker.wait_for_cid() (blocking timeout) → REST query by cid → synthesize from UDS data.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1906-1942</span></td>
+</tr>
+<tr>
+  <td>D8</td>
+  <td><strong>Target Exposure → Order Plan Conversion</strong></td>
+  <td>Pure function: NAV + btc_qty + mid + target → OrderPlan (side, qty, est_fill, notional). Apply R1 clamp, delta_value, min_notional, cost model, round qty, re-check.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 order_planner.py:73-186</span></td>
+</tr>
+<tr>
+  <td>D9</td>
+  <td><strong>Duplicate Order Handling</strong></td>
+  <td>Exchange trả "duplicate clientOrderId" error → catch và reconcile bằng fetch existing order state. Map to _reconcile_duplicate() poll until terminal.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 order_manager.py:239-245, 295-308</span></td>
+</tr>
+<tr>
+  <td>D10</td>
+  <td><strong>Cancel Order (Non-Fatal)</strong></td>
+  <td>Wrap REST cancel, generate newClientOrderId. Silently ignore failures (logged warning). Invalidate account cache. Used by trail, TP1, close.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:2664-2675</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- E. ORDER LIFECYCLE & CRASH RECOVERY -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-E">E. Order Lifecycle & Crash Recovery (7 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Write-ahead log, startup reconciliation, crash point testing. Bot phải survive crash ở MỌI điểm trong workflow.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>E1</td>
+  <td><strong>Write-Ahead Order Persistence</strong></td>
+  <td>SQLite-backed lifecycle: INSERT PENDING before send → SENT after send → poll until terminal (FILLED/CANCELED/REJECTED/EXPIRED). INSERT OR IGNORE = idempotent writes.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 order_manager.py:184-260</span></td>
+</tr>
+<tr>
+  <td>E2</td>
+  <td><strong>Startup Reconciliation (Order Manager)</strong></td>
+  <td>On startup: scan all non-terminal orders in SQLite, query exchange for each, update status. PENDING orders never sent → EXPIRED. Incremental myTrades scan (watermark).</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 order_manager.py:344-431</span></td>
+</tr>
+<tr>
+  <td>E3</td>
+  <td><strong>Crash Point Testing Framework</strong></td>
+  <td>CrashPoint enum: BEFORE_PERSIST, AFTER_DB, AFTER_SEND, AFTER_PARTIAL. Inject deterministic crash → verify recovery. Tests validate correct behavior from EVERY crash point.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 order_manager.py:92-101</span></td>
+</tr>
+<tr>
+  <td>E4</td>
+  <td><strong>Snapshot Reconciliation (IRONCLAD)</strong></td>
+  <td>After UDS reconnect or startup: for each position, check actual balance. If ~0 → remove. Clamp size to actual. Ensure stop exists. Scan orphans.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2688-2801</span></td>
+</tr>
+<tr>
+  <td>E5</td>
+  <td><strong>Stop Watchdog (Every Loop)</strong></td>
+  <td>Mỗi iteration: verify stop order exists on exchange. Query by orderId → fallback by cid. Missing → repair (new stop). Repair fail → emergency market exit.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2803-2892</span></td>
+</tr>
+<tr>
+  <td>E6</td>
+  <td><strong>Orphan Holdings Detection</strong></td>
+  <td>Scan non-zero balances not in positions. Policy: ALERT (default, log + Telegram) hoặc FLATTEN (auto-sell, chỉ cho managed_symbols — protect manual holdings).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1801-1904</span></td>
+</tr>
+<tr>
+  <td>E7</td>
+  <td><strong>Incremental Trade Scan (Watermark)</strong></td>
+  <td>Fetch myTrades since last_trade_id. Match fills to known orders. Catch fills missed during crashes. Watermark stored in kv table.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 order_manager.py:395-431</span></td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-critical">
+  <strong>No-Naked-Position Invariant:</strong> Enforced ở 5 tầng độc lập: (1) Panic exit nếu stop fail sau BUY. (2) Stop watchdog mỗi loop. (3) UDS execution report handler. (4) Snapshot reconciliation. (5) Soft stop rescue. Bất kỳ tầng nào fail đều được tầng khác bắt. Đây là thuộc tính an toàn quan trọng nhất.
+</div>
+
+<!-- ============================================================ -->
+<!-- F. RISK MANAGEMENT -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-F">F. Risk Management & Circuit Breakers (12 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Kill switch, daily lock, NaN handling, exposure clamp. Mỗi cái prevent một failure mode khác nhau.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>F1</td>
+  <td><strong>Clamp Target Exposure + NaN Fail-Closed</strong></td>
+  <td>Clamp target to [0, max_total_exposure]. <strong>NaN input → raise ValueError.</strong> Prevent NaN propagation qua min/max operations. Called in order_planner + paper runner.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 guards.py:38-59</span></td>
+</tr>
+<tr>
+  <td>F2</td>
+  <td><strong>Kill Switch — Max Drawdown</strong></td>
+  <td>DD &gt;= threshold → flatten ALL + halt. IRONCLAD: <span class="mono">max_drawdown_stop=15%</span> (safe-live 10%), lock <span class="mono">kill_cooldown_hours=72h</span> (safe-live 168h). V10: <span class="mono">kill_switch_dd_total=45%</span>. Idempotent, persist peak_nav.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2267-2318; V10 guards.py:86-146</span></td>
+</tr>
+<tr>
+  <td>F3</td>
+  <td><strong>Daily Loss Lock (Circuit Breaker)</strong></td>
+  <td>IRONCLAD: daily NAV DD &gt; <span class="mono">daily_loss_limit</span> → lock entries (or FLATTEN all). Day reset on UTC midnight. <span class="mono">day_start_nav</span> set lazily.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2252-2304</span></td>
+</tr>
+<tr>
+  <td>F4</td>
+  <td><strong>Daily Order Limiter</strong></td>
+  <td>V10: count orders per UTC day. Block khi <span class="mono">orders_today &gt;= max_daily_orders (5)</span>. Reset on day rollover.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 guards.py:152-181</span></td>
+</tr>
+<tr>
+  <td>F5</td>
+  <td><strong>Min Notional Guard</strong></td>
+  <td>Block trades where |delta_value| &lt; min_notional_usdt ($10). Prevent dust trades.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 guards.py:66-79</span></td>
+</tr>
+<tr>
+  <td>F6</td>
+  <td><strong>NaN NAV → Halt + Flatten</strong></td>
+  <td>Mỗi bar close: check nav_mid is finite. NaN/Inf → halt + flatten reason "risk_nan_nav". Separate từ kill switch — catch corruption bugs.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 paper.py:421-434</span></td>
+</tr>
+<tr>
+  <td>F7</td>
+  <td><strong>Forced Flatten Bypass Guards</strong></td>
+  <td>Kill switch + NaN flatten bypass R2 (min_notional) + R4 (daily limiter). Emergency exit LUÔN execute bất kể guard state.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 paper.py:562-564, 619-625</span></td>
+</tr>
+<tr>
+  <td>F8</td>
+  <td><strong>Open Risk Budget</strong></td>
+  <td>Max total open risk % NAV, adjusted by vol_scale + breadth_scale. Different caps for RISK_ON vs CAUTION. Sum of (entry-stop)*size across positions.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2320-2336</span></td>
+</tr>
+<tr>
+  <td>F9</td>
+  <td><strong>Position Count Limit</strong></td>
+  <td><span class="mono">max_positions=3</span> (safe-live 2). Cap concurrent open positions.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1200, 3163</span></td>
+</tr>
+<tr>
+  <td>F10</td>
+  <td><strong>Cash Buffer</strong></td>
+  <td>Reserve <span class="mono">cash_buffer_pct=5%</span> (safe-live 20%) NAV in cash. Reduce entry qty to maintain buffer. Prevent over-deployment.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3221-3237</span></td>
+</tr>
+<tr>
+  <td>F11</td>
+  <td><strong>RiskState (Serializable)</strong></td>
+  <td>Immutable dataclass: equity_peak_nav/ts, kill_switch_tripped/ts, day_key, orders_today. JSON-serializable. Persist to SQLite kv. Resume correct state after restart.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 state.py:1-44</span></td>
+</tr>
+<tr>
+  <td>F12</td>
+  <td><strong>Kill Lock Management</strong></td>
+  <td>Check if kill lock still active. If expired → reset regime to RISK_OFF, clear lock. While locked → all entries blocked, pending entries canceled.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2238-2250</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- G. POSITION LIFECYCLE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-G">G. Position Lifecycle & Management (12 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Entry → stop → TP1 → trail → exit. Full lifecycle từ cả hai systems.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>G1</td>
+  <td><strong>Market Entry (BUY + Immediate STOP)</strong></td>
+  <td>Market BUY → wait 0.4s → fetch free base → place STOP_LOSS immediately. Stop fail → PANIC EXIT (sell all). <strong>Never naked.</strong></td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3325-3381</span></td>
+</tr>
+<tr>
+  <td>G2</td>
+  <td><strong>Limit Sniper Entry + Pending Lifecycle</strong></td>
+  <td>LIMIT BUY at EMA_PB/LOW/MIN. Track in <span class="mono">pending_entry</span> with expiry. Cancel if: kill-locked, regime change, UDS disconnect, expired, setup invalidated (bid ≤ stop, spread blowout). Partial fill → cancel remainder → finalize. Full fill → place stop.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3206-3649</span></td>
+</tr>
+<tr>
+  <td>G3</td>
+  <td><strong>TP1 Partial Take-Profit</strong></td>
+  <td>Bid &gt;= tp1_price → cancel old stop → sell fraction → place new stop (BE or ATR policy). Pre-validate sell qty + remainder &gt; min_qty (dust prevention). Regime-aware fraction. TP1 fail → full close.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3695-3849</span></td>
+</tr>
+<tr>
+  <td>G4</td>
+  <td><strong>TP1 Dust Prevention</strong></td>
+  <td>Pre-validate BOTH sell qty AND remainder &gt;= min_qty thresholds. If remainder would be dust → full close instead. Prevent unmanageable position fragments.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3710-3738</span></td>
+</tr>
+<tr>
+  <td>G5</td>
+  <td><strong>Trailing Stop (Post-TP1, H4 Candle-Based)</strong></td>
+  <td>After TP1 hit, on each new H4 close: candidate = max(current_stop, EMA_PB, highest - ATR × trail_mult). If candidate &gt;= price → close. If too close to market → SKIP (don't tighten). Only raise if meaningful (&gt; 2×tick).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3851-3943</span></td>
+</tr>
+<tr>
+  <td>G6</td>
+  <td><strong>Trail "Too Close" Skip</strong></td>
+  <td>Khi candidate stop &gt; bid × (1 - min_stop_gap_pct) → SKIP entirely (keep old stop). KHÔNG clamp xuống. Prevent accidental tightening.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3889-3900</span></td>
+</tr>
+<tr>
+  <td>G7</td>
+  <td><strong>Soft Stop Rescue</strong></td>
+  <td>Bid &lt; stop × (1 - 20%) → assume exchange stop failed/gapped → force market exit. Last-resort protection.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3945-3954</span></td>
+</tr>
+<tr>
+  <td>G8</td>
+  <td><strong>Time Exit (Dead Money, 3 modes)</strong></td>
+  <td>HARD: force close after max_hold_days. DEAD_MONEY_SIMPLE: close only if TP1 never hit. DEAD_MONEY_SMART: close if TP1 not hit OR (TP1 hit + trend lost + low R-multiple). Recycle capital.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3956-4007</span></td>
+</tr>
+<tr>
+  <td>G9</td>
+  <td><strong>Full Position Close</strong></td>
+  <td>Cancel stop → wait → fetch free base → market sell. On sell fail: log error (manual intervention). Remove from state, set symbol cooldown. DRY: simulate fill with slippage + fee.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3651-3692</span></td>
+</tr>
+<tr>
+  <td>G10</td>
+  <td><strong>Position Management Orchestration</strong></td>
+  <td>Per loop per position: reconcile → ensure stop → RISK_OFF exit → update peaks → soft rescue → TP1 → trail → time exit. Each step try/except (one position error doesn't block others).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:4042-4088</span></td>
+</tr>
+<tr>
+  <td>G11</td>
+  <td><strong>Portfolio Buy/Sell (Cash-Constrained)</strong></td>
+  <td>V10 Portfolio: buy() and sell() via ExecutionModel. Cash constraint: if total_cost &gt; cash → reduce qty proportionally. Track VWAP entry, open trade state, generate Trade on close.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 execution.py:133-329</span></td>
+</tr>
+<tr>
+  <td>G12</td>
+  <td><strong>Symbol Cooldown (Post-Stop)</strong></td>
+  <td>After stop hit → block re-entry for configurable duration. IRONCLAD: fixed 12h (safe-live 24h). V10: escalating (3 bars isolated, 12 bars cascade). Prevent cascade re-entry.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:2218-2235; V10 strategy:266-314</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- H. STATE PERSISTENCE -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-H">H. State Persistence & Recovery (7 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">SQLite WAL mode, schema migration, day reset logic. Bot phải resume chính xác sau crash.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>H1</td>
+  <td><strong>SQLiteKV Store (WAL Mode)</strong></td>
+  <td>Key-value store backed by SQLite. WAL + synchronous=NORMAL. ON CONFLICT DO UPDATE (upsert). Timeout 30s. Stores all bot state.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:297-337; V10 paper.py:89-291</span></td>
+</tr>
+<tr>
+  <td>H2</td>
+  <td><strong>State Schema Evolution (Backward-Compatible)</strong></td>
+  <td><span class="mono">state_from_dict()</span> handles missing fields bằng defaults. New fields tự có giá trị safe khi upgrade. Zero-downtime upgrades, no migration scripts.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:726-770</span></td>
+</tr>
+<tr>
+  <td>H3</td>
+  <td><strong>State Load/Save + Day Reset</strong></td>
+  <td>Load: read from SQLite + reset daily counters if UTC day changed. Save: write full state dict. Day reset: clear entries_locked_day, reset day_start_nav.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1552-1577</span></td>
+</tr>
+<tr>
+  <td>H4</td>
+  <td><strong>Peak NAV Periodic Persistence</strong></td>
+  <td>Peak NAV persisted every 15 min or on meaningful increase. Kill switch works correctly even after crash (không mất peak).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2267-2318</span></td>
+</tr>
+<tr>
+  <td>H5</td>
+  <td><strong>RiskState Persistence (V10)</strong></td>
+  <td>Save RiskState as JSON in kv table after every risk guard eval. Resume equity peak, kill switch state, daily order count correctly.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 paper.py:271-282, 335-338</span></td>
+</tr>
+<tr>
+  <td>H6</td>
+  <td><strong>Managed Symbols List</strong></td>
+  <td>Track every symbol bot ever opened position on. Used to safely limit FLATTEN orphan policy to bot-managed symbols only. Never pruned.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:671-672, 1498-1508</span></td>
+</tr>
+<tr>
+  <td>H7</td>
+  <td><strong>Planned Order Write-Ahead (V10)</strong></td>
+  <td>Before executing signal: insert into planned_orders table. After execution: mark executed with fill details. Enable post-crash reconciliation.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 paper.py:197-231</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- I. MARKET DATA & TIMING -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-I">I. Market Data, Timing & Bar Processing (9 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Candle close detection, MTF alignment, fill-at-next-open. Anti-lookahead.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>I1</td>
+  <td><strong>Next-Open Fill Pattern</strong></td>
+  <td>Core loop: (1) execute pending signal at current OPEN, (2) equity at CLOSE, (3) strategy sees CLOSE → generate signal, (4) signal pending for NEXT bar. Zero lookahead.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 backtest.py:91-186</span></td>
+</tr>
+<tr>
+  <td>I2</td>
+  <td><strong>Strict MTF Alignment (D1 Anti-Lookahead)</strong></td>
+  <td>D1 index advanced only when <span class="mono">d1[d1_idx+1].close_time &lt; bar.close_time</span> (strictly before). Prevents strategy seeing D1 bar that closes at/after current H4. <strong>Identical logic in backtest, paper, parity.</strong></td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 backtest.py:117-122; paper.py:367-371; live_parity.py:268-272</span></td>
+</tr>
+<tr>
+  <td>I3</td>
+  <td><strong>BarClock (H4 Close Detection)</strong></td>
+  <td>Poll Binance klines, detect new closed H4 bars. Safety buffer (5s) after close_time. Persist last_processed in SQLite. Return BarEvent with signal_bar + fill_bar_open. Exactly-once processing.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 bar_clock.py:1-234</span></td>
+</tr>
+<tr>
+  <td>I4</td>
+  <td><strong>Candle Close Deduplication</strong></td>
+  <td>Compare bar close_time against last_processed. Skip already-processed. Persist watermark BEFORE returning event — crash-safe exactly-once delivery.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2974-2987; V10 bar_clock.py:142-165</span></td>
+</tr>
+<tr>
+  <td>I5</td>
+  <td><strong>Entry Candle Grace Period</strong></td>
+  <td>Wait <span class="mono">entry_candle_grace_sec=20s</span> after candle close before fetch klines. Exchange needs time to finalize. Early fetch → incomplete/stale data → wrong signal.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3004-3007</span></td>
+</tr>
+<tr>
+  <td>I6</td>
+  <td><strong>Kline Close-Only Filtering</strong></td>
+  <td>Filter out current (still-open) candle by checking <span class="mono">close_time &lt; now_ms</span>. Only use closed candles for indicators.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1634-1664</span></td>
+</tr>
+<tr>
+  <td>I7</td>
+  <td><strong>H4 Indicator Cache</strong></td>
+  <td>Cache kline DataFrames keyed by (symbol, last_close_time). Only refetch when new candle closed. Reduce API calls from O(universe × polls) to O(universe × candles).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:2895-2951</span></td>
+</tr>
+<tr>
+  <td>I8</td>
+  <td><strong>Dual NAV (Mid vs Liq)</strong></td>
+  <td>nav_mid = cash + btc × mid (mark-to-market). nav_liq = cash + btc × fill_sell_price - fee (conservative). nav_liq cho equity curve, nav_mid cho metrics.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 execution.py:173-184</span></td>
+</tr>
+<tr>
+  <td>I9</td>
+  <td><strong>DataFeed (Multi-TF CSV Loader)</strong></td>
+  <td>Load CSV, split into H4 + D1 bar lists sorted by open_time. Date range filtering with warmup_days offset. Sets report_start_ms.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 datafeed.py:32-94</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- J. ENTRY LOGIC -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-J">J. Strategy: Entry Logic (10 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Entry signal generation, sizing, gates. Mỗi system có approach khác nhau.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>J1</td>
+  <td><strong>D1 Regime State Machine (EMA Hysteresis)</strong></td>
+  <td>RISK_ON / CAUTION / RISK_OFF. EMA50/EMA200 with confirm_bars (2) above for ON, off_bars (4) below for OFF. Asymmetric: fast risk-off, slow risk-on. Prevents whipsaw.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2004-2103; V10 strategy:229-253</span></td>
+</tr>
+<tr>
+  <td>J2</td>
+  <td><strong>IRONCLAD Entry Signal (Multi-Filter Chain)</strong></td>
+  <td>Sequential filters: not in position → no cooldown → regime allows → new H4 candle → sufficient history → close &gt; EMA_TREND(89) → pullback touch EMA_PB(34) + bounce → vol filter (1.5×MA) → anti-chase → spread filter. Stop = entry - ATR × sl_mult. Score for ranking.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:2953-3142</span></td>
+</tr>
+<tr>
+  <td>J3</td>
+  <td><strong>V10 Entry Gate Chain (5 Gates + Sizing)</strong></td>
+  <td>Sequential: (0) ED cooldown, (1) regime ≠ RISK_OFF, (2) entry/exit cooldown bars, (3) VDO &gt; threshold, (4) above HMA OR RSI oversold. Then: vol-sized base, vol brake, DD adaptive, gap check, VDO-proportional sizing + modifiers.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 strategy:404-514</span></td>
+</tr>
+<tr>
+  <td>J4</td>
+  <td><strong>Spread Filter</strong></td>
+  <td>Block entry when bid-ask spread &gt; <span class="mono">max_spread_pct (0.2%)</span>. Spread rộng = execution cost 5-10×. Also acts as implicit vol gate.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3082-3087</span></td>
+</tr>
+<tr>
+  <td>J5</td>
+  <td><strong>Risk Per Trade Sizing</strong></td>
+  <td>IRONCLAD: <span class="mono">risk/trade = base × vol_scale × breadth_scale × regime_mult</span>. Position = risk_money / (entry - stop). Cap by max_position_value_pct + open risk budget. Multi-layer caps.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:3144-3156</span></td>
+</tr>
+<tr>
+  <td>J6</td>
+  <td><strong>Max Position Value Cap</strong></td>
+  <td>Single position ≤ <span class="mono">max_position_value_pct=12%</span> NAV (safe-live 8%), independent of stop distance. Safety net khi ATR nhỏ → size lớn → ATR spike → loss vượt expected.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:3144-3156</span></td>
+</tr>
+<tr>
+  <td>J7</td>
+  <td><strong>Entry Ranking (Full Universe Scan)</strong></td>
+  <td>Scan ALL universe symbols, collect valid signals, sort by score, try top N. Eliminate alphabetical/insertion-order selection bias.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">IRONCLAD:4216-4244</span></td>
+</tr>
+<tr>
+  <td>J8</td>
+  <td><strong>VDO (Volume Delta Oscillator)</strong></td>
+  <td>Fast EMA - slow EMA of volume delta ratio (taker_buy/total). Fallback to OHLCV proxy when taker data unavailable. Leading entry signal.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 strategy:198-207</span></td>
+</tr>
+<tr>
+  <td>J9</td>
+  <td><strong>Vol-Sized Position (Target Vol Annual)</strong></td>
+  <td>Base exposure = min(max_exposure, target_vol_annual / d1_ann_vol). Scale inversely with realized vol. CAUTION halves target.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 strategy:436-444</span></td>
+</tr>
+<tr>
+  <td>J10</td>
+  <td><strong>TP1 Target Modes (RR / SWING / BOLL)</strong></td>
+  <td>Three modes: RR (1.5R default), SWING (highest high over lookback), BOLL (Bollinger upper). All fallback to RR if invalid. Configurable.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">IRONCLAD:3082-3106</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- K. EXIT LOGIC -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-K">K. Strategy: Exit Logic (6 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">5-layer exit stack, trailing stop tightening, emergency DD.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>K1</td>
+  <td><strong>V10 Exit Stack (5-Layer Priority)</strong></td>
+  <td>(1) Emergency DD → (2) Regime exit (optional) → (3a) Trailing stop after profit threshold → (3b) Fixed stop before trail activates → (4) Structural breakdown (optional) → (5) HMA cross (optional). First trigger wins.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 strategy:341-400</span></td>
+</tr>
+<tr>
+  <td>K2</td>
+  <td><strong>Trailing Stop with Tightening (V10)</strong></td>
+  <td>Activate after peak_profit &gt;= 5%. Distance: trail_atr_mult (3.5×) ATR from peak. Tighten to 2.5× after 25% profit. Dynamic protection.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 strategy:361-372</span></td>
+</tr>
+<tr>
+  <td>K3</td>
+  <td><strong>Emergency DD Exit</strong></td>
+  <td>V10: configurable reference (peak NAV, pre_cost, post_cost). IRONCLAD: fixed 20% gap from stop → soft rescue. Both: immediate market exit.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 strategy:345-355; IRONCLAD:3945-3954</span></td>
+</tr>
+<tr>
+  <td>K4</td>
+  <td><strong>Emergency DD Cooldown (Escalating)</strong></td>
+  <td>V10: after ED exit → block re-entry. V1: flat 12 bars. V2: 3 bars isolated, 12 bars cascade (≥2 ED in 24-bar window). Prevent rapid re-entry into deteriorating market.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 strategy:266-314</span></td>
+</tr>
+<tr>
+  <td>K5</td>
+  <td><strong>Peak Tracking (Price, Profit, NAV)</strong></td>
+  <td>Track peak_price (highest mid), peak_profit (highest % gain), position_nav_peak (highest NAV during position). Used by trail + ED. Reset on close.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 strategy:316-322</span></td>
+</tr>
+<tr>
+  <td>K6</td>
+  <td><strong>UDS Reconnect Freeze</strong></td>
+  <td>After UDS reconnect: freeze entries for ≥1 full loop cycle to allow snapshot reconciliation. Prevent entering on stale state.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:4155-4167</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- L. CONFIG & VALIDATION -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-L">L. Configuration & Validation (6 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Config validation, safe-live defaults, live trading gate.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>L1</td>
+  <td><strong>IRONCLAD Config (Frozen Dataclass, ~93 params)</strong></td>
+  <td>All params in one frozen dataclass. Runtime, scheduling, assets, regime, indicators, entry, TP, stop, risk sizing, vol, breadth, circuit breakers, telegram, dry-run, orphan, safety.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1078-1244</span></td>
+</tr>
+<tr>
+  <td>L2</td>
+  <td><strong>Config Validation (~30 checks)</strong></td>
+  <td>Range checks, enum validation, timeframe parsing, logical consistency. Raise ValueError with ALL errors concatenated. Fail-fast on misconfiguration.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1247-1359; V10 config.py:68-195</span></td>
+</tr>
+<tr>
+  <td>L3</td>
+  <td><strong>Safe Live Defaults Override</strong></td>
+  <td>Auto-tighten for LIVE: risk → 0.3%, positions → 2, pos_value → 8%, cash buffer → 20%, DD → 10%, kill_cooldown → 168h, MARKET entry only. Disable unless <span class="mono">SAFE_LIVE_DEFAULTS=NO</span>.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:1362-1415</span></td>
+</tr>
+<tr>
+  <td>L4</td>
+  <td><strong>Live Trading Confirmation Gate</strong></td>
+  <td>Require <span class="mono">CONFIRM_LIVE_TRADING=YES</span> env var for non-dry-run. Bot refuses to start without it. Prevent accidental live trading.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:4362-4369</span></td>
+</tr>
+<tr>
+  <td>L5</td>
+  <td><strong>YAML Config Loader + Unknown Key Detection</strong></td>
+  <td>V10: Load YAML into typed LiveConfig (Engine+Strategy+Risk). Flag unknown keys at all levels. Strategy key validation via registry. Prevent silent typos.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 config.py:68-195</span></td>
+</tr>
+<tr>
+  <td>L6</td>
+  <td><strong>Strategy Registry (Centralized)</strong></td>
+  <td>Single source: name → (class, config_class). Lazy-load, prevents circular imports. known_strategies(), build_config(), build_strategy().</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 registry.py:1-108</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- M. MONITORING -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-M">M. Monitoring, Logging & Observability (7 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Heartbeat, Telegram, order CSV audit trail, parity checking.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>M1</td>
+  <td><strong>Heartbeat + Telegram Alerts</strong></td>
+  <td>12h heartbeat. Rate-limited (10s min). force=True bypasses. Fire-and-forget (ignore send failures).</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">IRONCLAD:257-289</span></td>
+</tr>
+<tr>
+  <td>M2</td>
+  <td><strong>Order Plan CSV Audit Trail</strong></td>
+  <td>Append every OrderPlan (incl. HOLDs) to CSV: 15 fields (ts, side, qty, price, notional, reason, nav, exposures, delta). Full decision audit.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 order_planner.py:25-41, 193-220</span></td>
+</tr>
+<tr>
+  <td>M3</td>
+  <td><strong>Live Parity Checker (Shadow Replay)</strong></td>
+  <td>For each live signal: replay entire bar history through shadow strategy + portfolio. Compare expected vs actual. Halt trading on mismatch. Log to CSV.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 live_parity.py:96-365</span></td>
+</tr>
+<tr>
+  <td>M4</td>
+  <td><strong>Parity Shadow Replay Engine</strong></td>
+  <td>Mini-backtest inside ParityChecker: exact same MTF alignment, next-open fill, exposure threshold. Produces expected signal for comparison.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 live_parity.py:250-305</span></td>
+</tr>
+<tr>
+  <td>M5</td>
+  <td><strong>Bar Event CSV Logging</strong></td>
+  <td>Each BarEvent → CSV: signal close/fill open times, OHLC, fill open price. Full bar processing audit trail.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">V10 bar_clock.py:188-202</span></td>
+</tr>
+<tr>
+  <td>M6</td>
+  <td><strong>Entry Reason Tagging</strong></td>
+  <td>Tag entries: vdo_compression, vdo_dip_buy, vdo_trend_accel, vdo_trend. Enable post-hoc analysis of which entry types profitable.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">V10 strategy:500-508</span></td>
+</tr>
+<tr>
+  <td>M7</td>
+  <td><strong>Persistent Scheduler</strong></td>
+  <td>Replace fragile <span class="mono">time() % N</span>. Store last-run timestamps in state (persisted). Returns True once per interval. Prevents double-firing across restarts.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:1584-1602</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- N. PAPER & BACKTEST -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-N">N. Paper Trading, Backtest & Testing (10 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Paper engine, backtest engine, compare CLI, validate pipeline.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>N1</td>
+  <td><strong>BacktestEngine</strong></td>
+  <td>Next-open fill, strict MTF alignment, warmup modes (no_trade / allow_trade), exposure threshold, post-fill callback. The gold standard.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 backtest.py:1-329</span></td>
+</tr>
+<tr>
+  <td>N2</td>
+  <td><strong>PaperRunner (Full Risk Guards)</strong></td>
+  <td>Mirror BacktestEngine exactly + R1-R4 risk guards + SQLite persistence + CSV output. The authoritative paper/shadow runner.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 paper.py:298-674</span></td>
+</tr>
+<tr>
+  <td>N3</td>
+  <td><strong>DRY-RUN Simulation (IRONCLAD)</strong></td>
+  <td>Paper trading: paper_cash, fill sim with slippage + fee, synthetic orders (orderId=-1), stop sim (bid ≤ stop each loop). No UDS, no exchange orders.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:2339-2351, 2423-2430, etc.</span></td>
+</tr>
+<tr>
+  <td>N4</td>
+  <td><strong>Execution Model (Stateless Cost)</strong></td>
+  <td>Pure cost computation: bid/ask from mid, fill_buy = ask + slippage, fill_sell = bid - slippage, fee. Stateless — same inputs → same outputs.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">V10 execution.py:27-53</span></td>
+</tr>
+<tr>
+  <td>N5</td>
+  <td><strong>Compare CLI (Paper vs Backtest Parity)</strong></td>
+  <td>Compare paper_equity vs backtest equity. Check timestamps, target_exposure, entry/exit events. Structured Mismatch diagnostics. Exit code 0=pass, 2=mismatch.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 compare.py:1-451</span></td>
+</tr>
+<tr>
+  <td>N6</td>
+  <td><strong>Validate CLI (16-Suite Pipeline)</strong></td>
+  <td>Backtest, bootstrap, WFO, holdout, sensitivity, selection bias, lookahead, trade-level, DD episodes, overlay, data integrity, cost sweep, invariants, regression, churn, regime. PASS/FAIL/WARN verdict.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 validate.py:1-289</span></td>
+</tr>
+<tr>
+  <td>N7</td>
+  <td><strong>Research CLI (Matrix + WFO + Decision)</strong></td>
+  <td>Strategy matrix across cost scenarios, walk-forward optimization, decision gate. Three modes: matrix, wfo, decision.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 research.py:1-302</span></td>
+</tr>
+<tr>
+  <td>N8</td>
+  <td><strong>Comprehensive Metrics (22 measures)</strong></td>
+  <td>Total return, CAGR, max DD (mid+liq), Sharpe, Sortino, Calmar, trade stats, exposure stats, fee drag, turnover. 4H annualized (2190/yr). Population std.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 metrics.py:22-190</span></td>
+</tr>
+<tr>
+  <td>N9</td>
+  <td><strong>Clean Account Gate</strong></td>
+  <td>Pre-trading verify: only USDT/BTC/BNB have balances. Non-allowed &gt; $500 → violation. BTC must be 0. Testnet only for cleanup.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 account_sweeper.py:260-373</span></td>
+</tr>
+<tr>
+  <td>N10</td>
+  <td><strong>Main Loop Orchestration (12 Steps)</strong></td>
+  <td>Priority-ordered: (1) UDS drain → (2) pending entries → (3) heartbeat → (4) time sync → (5) rate limit → (6) universe → (7) NAV+breakers → (8) reconcile → (9) regime → (10) positions → (11) orphans → (12) entries. Safety first, entries last.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-critical">CRITICAL</span></td>
+  <td><span class="mono">IRONCLAD:4091-4251</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- O. SESSION & METADATA -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-O">O. Session & Metadata Management (6 mechanisms)</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Reproducibility, audit trail, session lifecycle.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Cơ chế</th><th>Mô tả</th><th>Nguồn</th><th>Priority</th><th>Vị trí</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>O1</td>
+  <td><strong>Run Metadata Stamping</strong></td>
+  <td>Write run_meta.json: git hash, UTC timestamp, argv, config snapshot, data file SHA-256 fingerprint. Exact reproduction of any run.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 meta.py:36-83</span></td>
+</tr>
+<tr>
+  <td>O2</td>
+  <td><strong>Session Registry (JSON + File Lock)</strong></td>
+  <td>Every CLI run registered: session_id, cli_type, outdir, timestamp, git_hash, argv, status, TTL, tags. Advisory file locking for concurrent access.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 session.py:227-310</span></td>
+</tr>
+<tr>
+  <td>O3</td>
+  <td><strong>Atomic Registry Write</strong></td>
+  <td>Write .json.tmp → rename atomically. Prevent partial writes from corrupting registry on crash. Auto-detect + backup corrupt files.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">V10 session.py:155-161</span></td>
+</tr>
+<tr>
+  <td>O4</td>
+  <td><strong>File Fingerprinting (SHA-256)</strong></td>
+  <td>Compute hex SHA-256 of data file in 1MB chunks. Record in run_meta.json for data provenance.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">V10 meta.py:27-33</span></td>
+</tr>
+<tr>
+  <td>O5</td>
+  <td><strong>TTL-Based Session Auto-Expiry</strong></td>
+  <td>Default TTLs: backtest 7d, research 14d, validate 30d, paper never. Opportunistic expiry on new session registration.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-valuable">VALUABLE</span></td>
+  <td><span class="mono">V10 session.py:31-37, 196-219</span></td>
+</tr>
+<tr>
+  <td>O6</td>
+  <td><strong>Graceful Shutdown (Signal Handler)</strong></td>
+  <td>Handle SIGTERM/SIGINT → set _stop flag → main loop exits cleanly → UDS thread stopped. Positions survive via persisted state + exchange stops.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-important">IMPORTANT</span></td>
+  <td><span class="mono">IRONCLAD:4402-4412</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- P. STRATEGY DECISIONS -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="sec-P">P. Strategy Decisions — Proven / Disproven / Pending</h2>
+<p style="color: var(--dim); margin-bottom: 12px;">Kết quả validation pipeline. Xác định cái gì dùng, cái gì bỏ cho rebuild.</p>
+
+<h3>Proven (dùng cho rebuild)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Evidence</th><th>Nguồn</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>EMA Trend Signal</strong></td>
+  <td>Permutation test p=0.000 (10K permutations). EMA-price temporal alignment has genuine value.</td>
+  <td><span class="badge badge-proven">PROVEN</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>ATR Trail Stop</strong></td>
+  <td>Permutation test p&lt;0.001. Local ATR-price alignment matters for stop placement.</td>
+  <td><span class="badge badge-proven">PROVEN</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>H4 Resolution Optimal</strong></td>
+  <td>Multi-resolution sweep: H4 peak Sharpe 0.442 (16d), productive width 24×. H1 DEAD (all negative). D1 weaker (0.419@20d).</td>
+  <td><span class="badge badge-proven">PROVEN</span></td>
+  <td><span class="verdict verdict-use">H4 PREFERRED</span></td>
+</tr>
+<tr>
+  <td><strong>Timescale Robustness (10-120 days)</strong></td>
+  <td>H4: 24× productive width (10-120d), strong region 10-24d (2.4×). Smooth surface (r=0.953). Generic trend-following, not curve fit.</td>
+  <td><span class="badge badge-proven">PROVEN</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+<tr>
+  <td><strong>Binary Sizing for Sharpe</strong></td>
+  <td>All sizing variants (Kelly, vol-target, DD-adaptive, f-scaling) → Sharpe invariant. Binary (0/1) is correct for Sharpe evaluation.</td>
+  <td><span class="badge badge-proven">PROVEN</span></td>
+  <td><span class="verdict verdict-use">DÙNG</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Disproven / Invariant (bỏ)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Evidence</th><th>Nguồn</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Regime filter (EMA50/200 D1)</td>
+  <td>VTREND profits mọi regime. Filter giảm cả win lẫn loss.</td>
+  <td><span class="badge badge-both">CẢ HAI</span></td>
+  <td><span class="badge badge-disproven">DISPROVEN</span></td>
+</tr>
+<tr>
+  <td>Vol targeting</td>
+  <td>Sharpe invariant (0.442 vs 0.445). No statistical difference.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-invariant">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>Vol brake (ATR ratio)</td>
+  <td>Sharpe invariant. Spread filter covers execution-level.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>DD adaptive sizing</td>
+  <td>Sizing variants → Sharpe invariant. Same concept as f-scaling.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">INVARIANT</span></td>
+</tr>
+<tr>
+  <td>Breadth scaling (universe &gt; EMA200)</td>
+  <td>Regime filter variant → disproven.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-disproven">DISPROVEN</span></td>
+</tr>
+<tr>
+  <td>Volume confirmation (1.5× MA20)</td>
+  <td>VDO already covers volume. Extra filter → giảm cả win lẫn loss.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-invariant">REDUNDANT</span></td>
+</tr>
+<tr>
+  <td>Trend strength (EMA slope / ADX)</td>
+  <td>Entry filter → giống regime filter pattern → disproven.</td>
+  <td><span class="badge badge-ironclad">IRONCLAD</span></td>
+  <td><span class="badge badge-disproven">DISPROVEN</span></td>
+</tr>
+<tr>
+  <td>Structural exit (close &lt; EMA200)</td>
+  <td>Disabled by default in V10. Redundant with ATR trail.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">DISABLED</span></td>
+</tr>
+<tr>
+  <td>HMA cross exit</td>
+  <td>Disabled by default. Same OHLC data = same alpha ceiling.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">DISABLED</span></td>
+</tr>
+<tr>
+  <td>RSI overbought/oversold sizing</td>
+  <td>V10-specific, sizing variant → Sharpe invariant.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">V10-ONLY</span></td>
+</tr>
+<tr>
+  <td>Compression boost (ATR fast/slow)</td>
+  <td>Default multiplier = 1.0 (no-op in code). Sizing → invariant.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">NO-OP</span></td>
+</tr>
+<tr>
+  <td>Acceleration sizing (ROC diff)</td>
+  <td>V10-specific momentum scaling. Sizing → invariant.</td>
+  <td><span class="badge badge-spotbot">V10</span></td>
+  <td><span class="badge badge-invariant">V10-ONLY</span></td>
+</tr>
+<tr>
+  <td>VPULL (Pullback Entry)</td>
+  <td>Permutation test p=1.0000 (10K perms). Worse than random filter. "Chờ giá tốt hơn" = fail on BTC.</td>
+  <td><span class="badge badge-disproven">btc-spot-dev</span></td>
+  <td><span class="badge badge-disproven">DISPROVEN (p=1.0)</span></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Pending Test (có potential)</h3>
+<table>
+<thead>
+<tr><th>Cơ chế</th><th>Tiên lượng</th><th>Lý do</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Escalating Cooldown (V10)</strong></td>
+  <td><span class="badge badge-important">TỐT</span></td>
+  <td>Cascade DD = proven problem (bootstrap MDD). VPULL (p=1.0) = re-entry ngay luôn tệ. Escalating = not prediction, just "đang bị hit, dừng." Test bằng paired bootstrap.</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Trail Tighten at Profit (V10)</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Lock profit on big winners. Nhưng tighter trail = bị shake out sớm. Sharpe likely invariant (same pattern as all sizing/stop variants).</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Symbol Cooldown (Fixed, IRONCLAD)</strong></td>
+  <td><span class="badge badge-important">TỐT</span></td>
+  <td>Directly addresses cascade DD. Simple: "vừa thua, bắt buộc chờ." Cost: miss V-shape recovery. But VPULL failure suggests waiting is better.</td>
+  <td><span class="verdict verdict-test">CẦN TEST</span></td>
+</tr>
+<tr>
+  <td><strong>Anti-Chase Filter</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Execution quality concern, not prediction. Buy high = stop xa = RR xấu. But giống VPULL concept → likely disproven.</td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+<tr>
+  <td><strong>Dead Money Exit (Time-Based)</strong></td>
+  <td><span class="badge badge-nice">TRUNG BÌNH</span></td>
+  <td>Capital efficiency. Trail handles winners, but zombies tie up capital. 30 days arbitrary.</td>
+  <td><span class="verdict verdict-review">TÙY</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<!-- Q. REBUILD PRIORITY -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+<h2 id="rebuild">Q. Rebuild Priority Order</h2>
+
+<div class="note note-green">
+  <strong>Nguyên tắc rebuild:</strong> Infrastructure/safety trước, strategy logic sau. Không ship live trước khi có đủ safety layers.
+  VTREND chỉ cần 3 params (slow_period, trail_mult, vdo_threshold). Tất cả complexity nằm ở execution + risk management.
+</div>
+
+<table>
+<thead>
+<tr><th>Phase</th><th>Mô tả</th><th>Mechanisms</th><th>Ước tính</th></tr>
+</thead>
+<tbody>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Phase 0</strong></td>
+  <td><strong>Type System + Data Model</strong><br>Bar, CostConfig, Signal, MarketState, EntryNavMode, Fill/Trade/EquitySnap</td>
+  <td>A1-A7</td>
+  <td>~1 day</td>
+</tr>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Phase 1</strong></td>
+  <td><strong>Execution Model + Backtest Engine</strong><br>Stateless cost, Portfolio, next-open fill, MTF alignment, warmup, DataFeed</td>
+  <td>N1, N4, G11, I1, I2, I9</td>
+  <td>~2 days</td>
+</tr>
+<tr style="background: rgba(248,81,73,0.06);">
+  <td><strong>Phase 2</strong></td>
+  <td><strong>VTREND Strategy (3 params)</strong><br>EMA trend, ATR trail, VDO filter. Entry gates, exit stack. H4 optimal. Indicators: EMA, ATR, VDO.</td>
+  <td>J1-J3, K1-K3, J8</td>
+  <td>~2 days</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Phase 3</strong></td>
+  <td><strong>Validation Pipeline</strong><br>Block bootstrap, permutation tests (EMA/VDO/ATR), paired comparison, multiple correction, timescale robustness. Methodology.md as spec.</td>
+  <td>N6, N7, N8</td>
+  <td>~3 days</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Phase 4</strong></td>
+  <td><strong>Risk Guards + State</strong><br>NaN fail-closed, kill switch, daily lock/limiter, exposure clamp, min notional, RiskState persistence, forced flatten bypass.</td>
+  <td>F1-F12, H1-H5</td>
+  <td>~2 days</td>
+</tr>
+<tr style="background: rgba(210,153,34,0.06);">
+  <td><strong>Phase 5</strong></td>
+  <td><strong>Exchange Client + Filters</strong><br>REST + signing, retry, time sync, Decimal arithmetic, LOT/MARKET_LOT, price rounding, notional validation.</td>
+  <td>B1-B6, C1-C7</td>
+  <td>~2 days</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Phase 6</strong></td>
+  <td><strong>Order Execution</strong><br>Deterministic clientOrderId, idempotent placement, status-unknown recovery, stop fallback chain, panic exit, min stop gap.</td>
+  <td>D1-D10</td>
+  <td>~3 days</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Phase 7</strong></td>
+  <td><strong>Order Lifecycle + Crash Recovery</strong><br>Write-ahead log, startup reconciliation, crash points, snapshot reconciliation, stop watchdog, orphan detection.</td>
+  <td>E1-E7</td>
+  <td>~3 days</td>
+</tr>
+<tr style="background: rgba(88,166,255,0.06);">
+  <td><strong>Phase 8</strong></td>
+  <td><strong>WebSocket + Live Data</strong><br>UDS, ExecReportTracker, event drain, rate limit, account cache, BarClock, parity checker.</td>
+  <td>B7-B12, I3-I7, M3-M4</td>
+  <td>~3 days</td>
+</tr>
+<tr style="background: rgba(139,148,158,0.06);">
+  <td><strong>Phase 9</strong></td>
+  <td><strong>Position Lifecycle (Full)</strong><br>Market entry, limit sniper, TP1, trailing stop, soft rescue, time exit, full close, orchestration, cooldowns.</td>
+  <td>G1-G12</td>
+  <td>~3 days</td>
+</tr>
+<tr style="background: rgba(139,148,158,0.06);">
+  <td><strong>Phase 10</strong></td>
+  <td><strong>Configuration + Safety</strong><br>Config validation, safe-live defaults, live gate, YAML loader, registry. Monitoring, session, metadata.</td>
+  <td>L1-L6, M1-M7, O1-O6</td>
+  <td>~2 days</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note note-warn">
+  <strong>Tổng ước tính: ~26 ngày cho full rebuild.</strong>
+  Phase 0-3 cho phép chạy backtest + validation pipeline hoàn chỉnh (~8 ngày).
+  Phase 4-8 cho phép chạy paper trading an toàn (~13 ngày thêm).
+  Phase 9-10 cho phép go live (~5 ngày thêm).
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+
+<hr class="section-divider">
+
+<div style="margin-top: 40px; padding: 16px; background: var(--surface); border-radius: 8px; font-size: 0.85em; color: var(--dim);">
+  <strong>Methodology:</strong> Full source code scan of IRONCLAD <span class="mono">spot_portfolio_bot.py</span> (4416 lines, ~93 config params)
+  + spotbot V10 <span class="mono">btc-spot/spotbot/</span> (~3500 lines across 20+ files: strategies/vdo_momentum.py, engine/backtest.py, engine/execution.py,
+  exchange/order_planner.py, exchange/filters.py, exchange/order_manager.py, exchange/bar_clock.py, exchange/live_parity.py, exchange/client.py,
+  risk/guards.py, risk/state.py, cli/paper.py, config.py, types.py, session.py, meta.py).
+  Cross-referenced với validation results: permutation tests (10K perms), block bootstrap (2K paths), timescale sweep (H1/H4/D1 × 16 × 2),
+  walk-forward OOS, multiple comparison correction (K=16 Bonferroni/Holm/BH).
+  <br><br>
+  <strong>Generated:</strong> 2026-02-26 &middot; <strong>Replaces:</strong> audit.html (had 13 errors: 3 fabricated, 6 wrong details, 3 wrong metadata, 1 wrong source)
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+blocked_entries,override_entries,recovery_entries,strategy_id
+397,0,0,X0E5_CHOP_STRETCH18
+289,9,0,X0E5_OVR_BROAD
+329,5,0,X0E5_OVR_NARROW
+358,0,3,X0E5_RE6_IMPULSE
+322,5,0,X0E5_OVR_NARROW_RE6

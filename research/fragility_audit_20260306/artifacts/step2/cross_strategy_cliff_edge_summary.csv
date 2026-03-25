@@ -1,0 +1,13 @@
+ledger_view,tested_window_max_removal_pct,base_terminal_value,base_cagr,base_sharpe,max_cliff_score_terminal,first_terminal_cliff_index,cliff_flag_terminal,max_cliff_score_cagr,first_cagr_cliff_index,cliff_flag_cagr,max_cliff_score_sharpe,first_sharpe_cliff_index,cliff_flag_sharpe,interpretation,candidate_label
+native,19.79,228479.79,61.82794,1.137892,3.6044,1,True,17.3591,5,True,4.2077,28,True,single-point collapse,E0
+unit_size,19.79,354310.95,73.127819,1.137892,17.8095,1,True,5.6403,1,True,1.3237,0,False,single-point collapse,E0
+native,19.81,282869.38,67.232589,1.229858,4.02,1,True,25.293,7,True,3.6943,17,True,single-point collapse,E5
+unit_size,19.81,458108.0,80.108214,1.229858,16.6303,1,True,4.9673,1,True,1.1436,0,False,single-point collapse,E5
+native,20.0,29640.67,18.194741,0.820877,1.8179,0,False,1.1902,0,False,1.8467,0,False,smooth decay,SM
+unit_size,20.0,90430.03,40.32176,0.820877,6.2095,1,True,2.7602,0,False,1.3981,0,False,single-point collapse,SM
+native,20.0,24197.25,14.562093,0.824538,1.7465,0,False,1.2268,0,False,1.8475,0,False,smooth decay,LATCH
+unit_size,20.0,93096.81,40.950588,0.824538,6.2942,1,True,2.807,0,False,1.3821,0,False,single-point collapse,LATCH
+native,19.77,253441.42,64.430043,1.175,3.6257,1,True,23.0616,6,True,4.2963,27,True,single-point collapse,E0_plus_EMA1D21
+unit_size,19.77,377552.27,74.82835,1.175,15.3927,1,True,4.9371,1,True,1.3738,0,False,single-point collapse,E0_plus_EMA1D21
+native,19.89,320900.1,70.509746,1.270151,3.861,1,True,21.6055,8,True,3.9287,18,True,single-point collapse,E5_plus_EMA1D21
+unit_size,19.89,497466.27,82.406605,1.270151,14.3452,1,True,4.338,1,True,1.1484,0,False,single-point collapse,E5_plus_EMA1D21

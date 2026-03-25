@@ -1,0 +1,52 @@
+{
+  "git_hash": "c74c650",
+  "timestamp_utc": "2026-02-23T20:24:00Z",
+  "argv": [
+    "/var/www/trading-bots/btc-spot/v10/cli/research.py",
+    "--data",
+    "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "--candidates",
+    "candidates_v10_topping.yaml",
+    "--start",
+    "2019-01-01",
+    "--end",
+    "2026-02-20",
+    "--warmup-days",
+    "365",
+    "--outdir",
+    "out_v10_topping",
+    "--mode",
+    "full",
+    "--baseline",
+    "baseline"
+  ],
+  "config": {
+    "mode": "full",
+    "candidates_file": "candidates_v10_topping.yaml",
+    "candidate_names": [
+      "baseline",
+      "fast_regime_off",
+      "cautious_030",
+      "rsi_ob_70",
+      "topping_defense"
+    ],
+    "scenarios": [
+      "smart",
+      "base",
+      "harsh"
+    ],
+    "initial_cash": 10000.0,
+    "warmup_days": 365,
+    "baseline": "baseline",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "wfo": {
+      "train_months": 24,
+      "test_months": 6,
+      "slide_months": 6,
+      "top_k": 3,
+      "wfo_scenario": "base"
+    }
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

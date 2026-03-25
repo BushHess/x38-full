@@ -1,0 +1,31 @@
+candidates:
+  # Baseline: current code defaults (trail_tighten=0.25 applied, rsi=ewm_span)
+  - name: baseline
+    description: "Current V10 defaults after trail_tighten fix"
+    params: {}
+
+  # --- Isolated variable tests (each changes EXACTLY one param) ---
+
+  # Test A: RSI method
+  - name: rsi_wilder
+    description: "Only change rsi_method to wilder (gate study winner config)"
+    params:
+      rsi_method: wilder
+
+  # Test B: Trailing ATR multiplier (WFO best_params suggested 3.0)
+  - name: trail_atr_30
+    description: "Only change trail_atr_mult from 3.5 to 3.0"
+    params:
+      trail_atr_mult: 3.0
+
+  # Test C: Fixed stop wider (WFO best_params suggested 0.18)
+  - name: fstop_018
+    description: "Only change fixed_stop_pct from 0.15 to 0.18"
+    params:
+      fixed_stop_pct: 0.18
+
+  # Test D: Entry cooldown shorter (WFO best_params suggested 2)
+  - name: cooldown_2
+    description: "Only change entry_cooldown_bars from 3 to 2"
+    params:
+      entry_cooldown_bars: 2

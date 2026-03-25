@@ -1,0 +1,9 @@
+branch_or_family,status,best_candidate_or_anchor,key_verdict,key_evidence,next_action
+ml0_feasibility,killed,none,KILL_STACK; incremental information and ESS insufficient,research/ml0_feasibility/P0_1_INITIAL_REPORT.md,do not continue ML without new data
+e0_forensics,completed,E0,false_breakout and trail_stop_noise identified as dominant failure modes,research/e0_forensics/P0_1_INITIAL_REPORT.md,use only as mechanism source
+e0_entry_hygiene,research_only,X0E5_CHOP_STRETCH18,real mechanism but mixed holdout and borderline validation,research/e0_entry_hygiene/P0_4_VALIDATION_REPORT.md,do not promote
+e0_reentry,killed,none,KILL_RECOVERY_MECHANICS; no recovery variant beat stretch baseline cleanly,research/e0_reentry/P0_1_BENCHMARK_REPORT.md,stop re-entry work in this family
+e0_exit_floor,research_only,X0E5_FLOOR_LATCH,promising benchmark but mixed validation and sequencing-driven uplift,research/e0_exit_floor/P0_2_VALIDATION_REPORT.md,do not promote
+e0_exit_event_gate,killed,none,KILL_EVENT_GATE; simple event gates could not beat both anchor and raw floor cleanly,research/e0_exit_event_gate/P0_2_BENCHMARK_REPORT.md,stop event-gate work in this family
+x0_family,anchor,X0_E5EXIT,strongest clean family member after validation chain,research/x0/p2_4_backtest_table.csv,keep as current anchor
+deployable_decision,active,X0_E5EXIT,current best operational choice under present evidence,research/final_20260307_synthesis/FINAL_DECISION_MEMO.md,freeze and move to engineering hardening

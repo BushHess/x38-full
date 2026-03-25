@@ -1,0 +1,304 @@
+======================================================================
+PHASE 7: VALIDATION
+======================================================================
+
+Loading data...
+  H4: 18752 bars (2017-08-17 → 2026-03-11)
+  D1: 3128 bars
+Computing indicators...
+  Indicators ready. D1 EMA50 regime: 9805 bars (52.3%)
+
+Defining strategies...
+  Cand01: EMA(20,90) cross + trail 8% + D1 EMA(50)  (raw signals: 114)
+  Cand02: EMA(20,90) cross + (trail 8% OR reversal) + D1 EMA(50)  (raw signals: 114)
+  Cand03: 60-bar breakout + ATR(14)*3.0 trail + D1 EMA(50)  (raw signals: 697)
+  Benchmark: EMA(20,90) cross + ATR(14)*3.0 trail (no filter)  (raw signals: 114)
+
+======================================================================
+SECTION 3: FULL-SAMPLE BACKTEST (50 bps RT)
+======================================================================
+
+  Cand01: EMA(20,90) cross + trail 8% + D1 EMA(50)
+    Sharpe=1.251  CAGR=41.7%  MDD=-52.0%  Calmar=0.801
+    Trades=39  WinRate=46.2%  Exposure=25.8%  AvgHold=124.3
+    AvgWinner=0.3091  AvgLoser=-0.0700  PF=3.78  MaxConsecLoss=6
+
+  Cand02: EMA(20,90) cross + (trail 8% OR reversal) + D1 EMA(50)
+    Sharpe=1.099  CAGR=32.1%  MDD=-40.3%  Calmar=0.795
+    Trades=49  WinRate=30.6%  Exposure=19.8%  AvgHold=75.6
+    AvgWinner=0.3190  AvgLoser=-0.0431  PF=3.27  MaxConsecLoss=6
+
+  Cand03: 60-bar breakout + ATR(14)*3.0 trail + D1 EMA(50)
+    Sharpe=0.888  CAGR=36.9%  MDD=-45.0%  Calmar=0.819
+    Trades=110  WinRate=38.2%  Exposure=27.5%  AvgHold=47.0
+    AvgWinner=0.1553  AvgLoser=-0.0411  PF=2.33  MaxConsecLoss=5
+
+  Benchmark: EMA(20,90) cross + ATR(14)*3.0 trail (no filter)
+    Sharpe=0.819  CAGR=31.7%  MDD=-39.9%  Calmar=0.795
+    Trades=108  WinRate=36.1%  Exposure=25.7%  AvgHold=44.7
+    AvgWinner=0.1596  AvgLoser=-0.0402  PF=2.24  MaxConsecLoss=10
+
+  Buy-and-hold: Sharpe=0.467  CAGR=38.3%  MDD=-83.9%
+
+  --- Rejection Criteria ---
+    Cand01: PASS all
+    Cand02: PASS all
+    Cand03: PASS all
+  Saved Tbl_full_sample_comparison
+    Cand01 trade count: actual=39, expected=39, dev=0%
+    Cand02 trade count: actual=49, expected=49, dev=0%
+    Cand03 trade count: actual=110, expected=110, dev=0%
+
+Generating plots...
+  Saved Fig14–Fig17
+
+======================================================================
+SECTION 5: CONSTRAINT VERIFICATION
+======================================================================
+
+  Cand01:
+    HC-1: avg_loser >= -0.08: PASS (actual=-0.0700)
+    HC-2: avg_hold >= 40: PASS (actual=124.2821)
+    HC-3: 30-200 trades: PASS (actual=39.0000)
+    HC-6: MDD <= 60%: PASS (actual=0.5198)
+    --- vs Phase 6 estimates ---
+    n_trades       : actual=  39.0000  expected=  39.0000  dev=0%
+    exposure       : actual=   0.2585  expected=   0.2580  dev=0%
+    avg_hold       : actual= 124.2821  expected= 124.3000  dev=0%
+    avg_loser      : actual=  -0.0700  expected=  -0.0700  dev=0%
+    avg_winner     : actual=   0.3091  expected=   0.3090  dev=0%
+    win_rate       : actual=   0.4615  expected=   0.4620  dev=0%
+
+  Cand02:
+    HC-1: avg_loser >= -0.08: PASS (actual=-0.0431)
+    HC-2: avg_hold >= 40: PASS (actual=75.6327)
+    HC-3: 30-200 trades: PASS (actual=49.0000)
+    HC-6: MDD <= 60%: PASS (actual=0.4033)
+    --- vs Phase 6 estimates ---
+    n_trades       : actual=  49.0000  expected=  49.0000  dev=0%
+    exposure       : actual=   0.1976  expected=   0.1980  dev=0%
+    avg_hold       : actual=  75.6327  expected=  75.6000  dev=0%
+    avg_loser      : actual=  -0.0431  expected=  -0.0430  dev=0%
+    avg_winner     : actual=   0.3190  expected=   0.3190  dev=0%
+    win_rate       : actual=   0.3061  expected=   0.3060  dev=0%
+
+  Cand03:
+    HC-1: avg_loser >= -0.08: PASS (actual=-0.0411)
+    HC-2: avg_hold >= 40: PASS (actual=46.9636)
+    HC-3: 30-200 trades: PASS (actual=110.0000)
+    HC-6: MDD <= 60%: PASS (actual=0.4499)
+    --- vs Phase 6 estimates ---
+    n_trades       : actual= 110.0000  expected= 110.0000  dev=0%
+    exposure       : actual=   0.2755  expected=   0.2750  dev=0%
+    avg_hold       : actual=  46.9636  expected=  47.0000  dev=0%
+    avg_loser      : actual=  -0.0411  expected=  -0.0410  dev=0%
+    avg_winner     : actual=   0.1553  expected=   0.1550  dev=0%
+    win_rate       : actual=   0.3818  expected=   0.3820  dev=0%
+  Saved Tbl_constraint_verification
+
+======================================================================
+SECTION 6: WALK-FORWARD OPTIMIZATION (4-fold anchored)
+======================================================================
+
+  Fold 1: IS [0,3750), OOS [3750,7500)  2019-05→2021-01
+
+  Fold 2: IS [0,7500), OOS [7500,11250)  2021-01→2022-10
+
+  Fold 3: IS [0,11250), OOS [11250,15000)  2022-10→2024-06
+
+  Fold 4: IS [0,15000), OOS [15000,18750)  2024-06→2026-03
+
+  --- WFO Summary ---
+    Cand01: deltas=['+1.150', '+0.139', '-0.402', '+0.758']  winrate=75%  PASS
+      Fold 1: IS_Sh=1.459  OOS_Sh=2.733  Δbench=+1.150  OOS_trades=9
+      Fold 2: IS_Sh=2.179  OOS_Sh=0.308  Δbench=+0.139  OOS_trades=7
+      Fold 3: IS_Sh=1.639  OOS_Sh=0.595  Δbench=-0.402  OOS_trades=11
+      Fold 4: IS_Sh=1.367  OOS_Sh=0.684  Δbench=+0.758  OOS_trades=7
+    Cand02: deltas=['+0.422', '+0.159', '-0.203', '+0.891']  winrate=75%  PASS
+      Fold 1: IS_Sh=1.371  OOS_Sh=2.006  Δbench=+0.422  OOS_trades=11
+      Fold 2: IS_Sh=1.715  OOS_Sh=0.328  Δbench=+0.159  OOS_trades=10
+      Fold 3: IS_Sh=1.289  OOS_Sh=0.795  Δbench=-0.203  OOS_trades=13
+      Fold 4: IS_Sh=1.160  OOS_Sh=0.818  Δbench=+0.891  OOS_trades=9
+    Cand03: deltas=['-0.008', '-0.392', '+0.353', '+0.787']  winrate=50%  PASS
+      Fold 1: IS_Sh=0.929  OOS_Sh=1.575  Δbench=-0.008  OOS_trades=23
+      Fold 2: IS_Sh=1.241  OOS_Sh=-0.223  Δbench=-0.392  OOS_trades=20
+      Fold 3: IS_Sh=0.847  OOS_Sh=1.351  Δbench=+0.353  OOS_trades=26
+      Fold 4: IS_Sh=0.933  OOS_Sh=0.714  Δbench=+0.787  OOS_trades=22
+  Saved Tbl_wfo_results
+  Saved Fig18
+
+======================================================================
+SECTION 7: BOOTSTRAP VALIDATION (circular block, 2000 paths)
+======================================================================
+  Block size: 136, N paths: 2000
+
+  Cand01 (2.3s):
+    P(Sharpe>0) = 99.6%  →  PASS
+    P(ΔSharpe>0) = 85.8%
+    Median ΔSharpe = +0.419  [-0.234, +1.043]
+
+  Cand02 (2.4s):
+    P(Sharpe>0) = 99.4%  →  PASS
+    P(ΔSharpe>0) = 77.2%
+    Median ΔSharpe = +0.285  [-0.341, +0.891]
+
+  Cand03 (2.7s):
+    P(Sharpe>0) = 99.5%  →  PASS
+    P(ΔSharpe>0) = 60.2%
+    Median ΔSharpe = +0.064  [-0.355, +0.527]
+  Saved Tbl_bootstrap_summary
+  Saved Fig19
+
+======================================================================
+SECTION 8: ROBUSTNESS CHECKS
+======================================================================
+
+  --- 8a. Jackknife (remove 1/6 chronologically) ---
+    Cand01: [1.325, 1.046, 0.956, 1.425, 1.377, 1.339]  neg=0  PASS
+    Cand02: [1.172, 0.818, 1.049, 1.284, 1.110, 1.136]  neg=0  PASS
+    Cand03: [0.904, 0.883, 0.756, 0.981, 0.911, 0.890]  neg=0  PASS
+  Saved Tbl_jackknife
+
+  --- 8b. Cost Sensitivity ---
+    Cand01: 15bps=1.313  30bps=1.286  50bps=1.251  75bps=1.206  100bps=1.162  
+    Cand02: 15bps=1.183  30bps=1.147  50bps=1.099  75bps=1.039  100bps=0.979  
+    Cand03: 15bps=1.019  30bps=0.963  50bps=0.888  75bps=0.794  100bps=0.701  
+      breakeven ~ 295 bps
+  Saved Tbl_cost_sensitivity
+  Saved Fig20
+
+  --- 8c. Regime Split (D1 EMA21 bull/bear) ---
+    Bull Cand01: Sharpe=2.044  (9861 bars)
+    Bull Cand02: Sharpe=1.673  (9861 bars)
+    Bull Cand03: Sharpe=1.261  (9861 bars)
+    Bear Cand01: Sharpe=-0.937  (8890 bars)
+    Bear Cand02: Sharpe=-0.952  (8890 bars)
+    Bear Cand03: Sharpe=-0.415  (8890 bars)
+
+  --- 8d. Year-by-Year Performance ---
+    Cand01: catastrophic years (ret<-30%): 0 (none)
+      2017: Sh=1.273  Ret=21.2%  trades=3
+      2018: Sh=0.637  Ret=7.2%  trades=1
+      2019: Sh=2.918  Ret=152.8%  trades=4
+      2020: Sh=2.864  Ret=181.4%  trades=6
+      2021: Sh=0.741  Ret=28.4%  trades=6
+      2022: Sh=-1.281  Ret=-6.2%  trades=1
+      2023: Sh=0.587  Ret=18.6%  trades=6
+      2024: Sh=1.607  Ret=74.4%  trades=6
+      2025: Sh=-0.811  Ret=-14.6%  trades=6
+      2026: Sh=0.000  Ret=0.0%  trades=0
+    Cand02: catastrophic years (ret<-30%): 0 (none)
+      2017: Sh=1.273  Ret=21.2%  trades=3
+      2018: Sh=0.268  Ret=2.8%  trades=2
+      2019: Sh=2.957  Ret=152.9%  trades=5
+      2020: Sh=1.503  Ret=44.6%  trades=7
+      2021: Sh=0.773  Ret=29.0%  trades=9
+      2022: Sh=-1.281  Ret=-6.2%  trades=1
+      2023: Sh=1.032  Ret=33.1%  trades=7
+      2024: Sh=1.585  Ret=63.5%  trades=8
+      2025: Sh=-0.575  Ret=-10.0%  trades=7
+      2026: Sh=0.000  Ret=0.0%  trades=0
+    Cand03: catastrophic years (ret<-30%): 0 (none)
+      2017: Sh=2.819  Ret=147.5%  trades=5
+      2018: Sh=-1.235  Ret=-25.2%  trades=8
+      2019: Sh=1.304  Ret=65.3%  trades=12
+      2020: Sh=1.787  Ret=100.4%  trades=17
+      2021: Sh=0.465  Ret=23.1%  trades=14
+      2022: Sh=-1.696  Ret=-24.9%  trades=8
+      2023: Sh=1.955  Ret=74.1%  trades=15
+      2024: Sh=1.079  Ret=38.9%  trades=18
+      2025: Sh=0.481  Ret=9.1%  trades=12
+      2026: Sh=-2.129  Ret=-2.2%  trades=1
+  Saved Tbl_yearly_performance
+
+======================================================================
+SECTION 9: SHARPE ATTRIBUTION
+======================================================================
+
+  Cand01 vs Benchmark: ΔSharpe = +0.432
+    Property              Cand      Bench      Delta     Impact
+    avg_loser          -0.0700    -0.0402    -0.0298    -0.6053
+    avg_hold          124.2821    44.6667   +79.6154    +0.3185
+    n_trades           39.0000   108.0000   -69.0000    +0.1380
+    exposure            0.2585     0.2573    +0.0012    +0.0010
+    win_rate            0.4615     0.3611    +0.1004    +0.1563
+    churn_rate          0.0000     0.0000    +0.0000    -0.0000
+    TOTAL EXPLAINED                                     +0.0084
+    ACTUAL ΔSharpe                                      +0.4320
+    RESIDUAL                                            +0.4236
+    Conclusion: Cand01 beats benchmark mainly due to avg_loser (worse)
+
+  Cand02 vs Benchmark: ΔSharpe = +0.280
+    Property              Cand      Bench      Delta     Impact
+    avg_loser          -0.0431    -0.0402    -0.0029    -0.0586
+    avg_hold           75.6327    44.6667   +30.9660    +0.1239
+    n_trades           49.0000   108.0000   -59.0000    +0.1180
+    exposure            0.1976     0.2573    -0.0596    -0.0491
+    win_rate            0.3061     0.3611    -0.0550    -0.0856
+    churn_rate          0.0816     0.0000    +0.0816    -0.0073
+    TOTAL EXPLAINED                                     +0.0413
+    ACTUAL ΔSharpe                                      +0.2797
+    RESIDUAL                                            +0.2384
+    Conclusion: Cand02 beats benchmark mainly due to avg_hold (better)
+
+  Cand03 vs Benchmark: ΔSharpe = +0.069
+    Property              Cand      Bench      Delta     Impact
+    avg_loser          -0.0411    -0.0402    -0.0009    -0.0175
+    avg_hold           46.9636    44.6667    +2.2970    +0.0092
+    n_trades          110.0000   108.0000    +2.0000    -0.0040
+    exposure            0.2755     0.2573    +0.0182    +0.0150
+    win_rate            0.3818     0.3611    +0.0207    +0.0322
+    churn_rate          0.0455     0.0000    +0.0455    -0.0040
+    TOTAL EXPLAINED                                     +0.0308
+    ACTUAL ΔSharpe                                      +0.0692
+    RESIDUAL                                            +0.0384
+    Conclusion: Cand03 beats benchmark mainly due to win_rate (better)
+  Saved Tbl_sharpe_attribution
+
+======================================================================
+SECTION 10: VERDICTS
+======================================================================
+
+  Cand01: 9/9 gates  →  PROMOTE
+    G1 Sharpe>0: PASS
+    G2 Sharpe>=0.80*bench: PASS
+    G3 MDD<=75%: PASS
+    G4 Trades>=15: PASS
+    G5 WFO>=50%: PASS
+    G6 Bootstrap>=70%: PASS
+    G7 JK<=1neg: PASS
+    G8 NoCatastrophe: PASS
+    G9 Phase5HC: PASS
+
+  Cand02: 9/9 gates  →  PROMOTE
+    G1 Sharpe>0: PASS
+    G2 Sharpe>=0.80*bench: PASS
+    G3 MDD<=75%: PASS
+    G4 Trades>=15: PASS
+    G5 WFO>=50%: PASS
+    G6 Bootstrap>=70%: PASS
+    G7 JK<=1neg: PASS
+    G8 NoCatastrophe: PASS
+    G9 Phase5HC: PASS
+
+  Cand03: 9/9 gates  →  PROMOTE
+    G1 Sharpe>0: PASS
+    G2 Sharpe>=0.80*bench: PASS
+    G3 MDD<=75%: PASS
+    G4 Trades>=15: PASS
+    G5 WFO>=50%: PASS
+    G6 Bootstrap>=70%: PASS
+    G7 JK<=1neg: PASS
+    G8 NoCatastrophe: PASS
+    G9 Phase5HC: PASS
+
+======================================================================
+Phase 7 COMPLETE in 15.8s
+======================================================================
+  Cand01: Sharpe=1.251  →  PROMOTE
+  Cand02: Sharpe=1.099  →  PROMOTE
+  Cand03: Sharpe=0.888  →  PROMOTE
+  Benchmark: Sharpe=0.819
+  Figures: Fig14-Fig20 (/var/www/trading-bots/btc-spot-dev/research/x28/figures/)
+  Tables: 8 files (/var/www/trading-bots/btc-spot-dev/research/x28/tables/)
+======================================================================

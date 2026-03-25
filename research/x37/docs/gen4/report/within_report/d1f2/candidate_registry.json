@@ -1,0 +1,95 @@
+{
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "parent_system_version_id": null,
+  "freeze_cutoff_utc": "2026-03-18T23:59:59.999000+00:00",
+  "design_inputs_end_utc": "2026-03-18T23:59:59.999000+00:00",
+  "evidence_clean_since_utc": "2026-03-19T00:00:00+00:00",
+  "registry_created_in_session": "session_20260319_seed_001",
+  "active_champion_id": "btcsd_20260318_c3_trade4h15m",
+  "live_candidates": [
+    {
+      "candidate_id": "btcsd_20260318_c3_trade4h15m",
+      "role": "champion",
+      "status": "active",
+      "mechanism_type": "daily trade-surprise permission plus 4h range-position context plus 15m relative-volume timing, long-only",
+      "frozen_spec_file": "frozen_system_specs/btcsd_20260318_c3_trade4h15m.md",
+      "origin_snapshot_id": "snapshot_20260318",
+      "frozen_at_utc": "2026-03-18T23:59:59.999000+00:00",
+      "logical_layers": 3,
+      "tunable_quantities": 3,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "PASS",
+      "cumulative_anchor_utc": "2026-03-19",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "retention_rule_ref": "forward_review_policy.champion_retention_rule"
+    },
+    {
+      "candidate_id": "btcsd_20260318_c1_av4h",
+      "role": "challenger",
+      "status": "active",
+      "mechanism_type": "daily anti-vol permission plus 4h range-position continuation, long-only",
+      "frozen_spec_file": "frozen_system_specs/btcsd_20260318_c1_av4h.md",
+      "origin_snapshot_id": "snapshot_20260318",
+      "frozen_at_utc": "2026-03-18T23:59:59.999000+00:00",
+      "logical_layers": 2,
+      "tunable_quantities": 3,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "holdout_flag": "FAIL",
+      "cumulative_anchor_utc": "2026-03-19",
+      "cumulative_anchor_event": "freeze",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "promotion_rule_ref": "forward_review_policy.challenger_promotion_rule",
+      "kill_rule_ref": "forward_review_policy.challenger_kill_rule"
+    }
+  ],
+  "retired_candidates": [
+    {
+      "candidate_id": "btcsd_20260318_c2_flow1hpb",
+      "status": "retired_pre_freeze",
+      "mechanism_type": "daily flow-exhaustion permission plus 4h bullish context plus 1h pullback execution, long-only",
+      "origin_snapshot_id": "snapshot_20260318",
+      "retired_at_utc": "2026-03-18T23:59:59.999000+00:00",
+      "reason": "No representative config survived discovery hard constraints in D1e1; no eligible post-ablation simplification passed hard constraints."
+    }
+  ],
+  "version_lineage_summary": [
+    {
+      "system_version_id": "V1",
+      "parent_system_version_id": null,
+      "freeze_cutoff_utc": "2026-03-18T23:59:59.999000+00:00",
+      "evidence_days_accumulated": 0,
+      "status": "active"
+    }
+  ]
+}

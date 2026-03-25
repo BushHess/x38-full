@@ -1,0 +1,50 @@
+{
+  "config": {
+    "n_boot": 2000,
+    "n_perm": 10000,
+    "block_size": 60,
+    "seed": 42,
+    "w_grid": [
+      30,
+      48,
+      60,
+      72,
+      84,
+      96,
+      108,
+      120,
+      144,
+      168,
+      200,
+      240,
+      300,
+      360,
+      500,
+      720
+    ],
+    "cusum_k": 0.5,
+    "threshold": 4.0,
+    "trail": 3.0,
+    "atr_period": 14,
+    "cost_rt_bps": 50.0,
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup": 365
+  },
+  "phase_reached": 1,
+  "determination": "FAIL",
+  "fail_reason": "Phase 1: CUSUM signal not significant (p=0.018600)",
+  "phase_1_permutation": {
+    "cusum_signal": {
+      "p_value": 0.0186,
+      "real_score": 65.445,
+      "null_mean": -2.6397,
+      "null_std": 30.4133
+    },
+    "atr": {
+      "p_value": 0.0062,
+      "null_mean": 25.4695,
+      "null_std": 16.0746
+    }
+  }
+}

@@ -1,0 +1,38 @@
+object,field,max_abs_diff,criterion,status
+final_yearly_thresholds,d1_ret_60_q50_trailing1095d,9.020562075079397e-17,<=1e-12,True
+final_yearly_thresholds,h4_trendq_84_entry_q60_expanding,1.4210854715202004e-14,<=1e-12,True
+final_yearly_thresholds,h4_trendq_84_hold_q50_expanding,6.161737786669619e-15,<=1e-12,True
+final_signal_path,close_dt,0.0,exact string equality,True
+final_signal_path,date,0.0,exact string equality,True
+final_signal_path,year,0.0,exact integer equality,True
+final_signal_path,open,0.0,exact float equality,True
+final_signal_path,close,0.0,exact float equality,True
+final_signal_path,oo_ret,9.996344030316351e-17,<= 1e-12,True
+final_signal_path,d1_ret_60,2.220446049250313e-16,<= 1e-12,True
+final_signal_path,h4_trendq_84,2.2071233729548112e-13,<= 1e-10,True
+final_signal_path,macro_thr,9.020562075079397e-17,<= 1e-12,True
+final_signal_path,entry_thr,1.4210854715202004e-14,<= 1e-12,True
+final_signal_path,exit_thr,6.161737786669619e-15,<= 1e-12,True
+final_signal_path,macro_on,0.0,exact boolean equality,True
+final_signal_path,micro_entry_on,0.0,exact boolean equality,True
+final_signal_path,micro_hold_on,0.0,exact boolean equality,True
+final_signal_path,pos,0.0,exact integer equality,True
+final_signal_path,trade,0.0,exact integer equality,True
+final_signal_path,ret,9.974659986866641e-17,<= 1e-12,True
+final_trades,entry_idx,0.0,exact integer equality,True
+final_trades,exit_idx,0.0,exact integer equality,True
+final_trades,entry_dt,0.0,exact string equality,True
+final_trades,exit_dt,0.0,exact string equality,True
+final_trades,net_ret,9.8879238130678e-17,<= 1e-12,True
+final_trades,bars,0.0,exact integer equality,True
+final_trades,entry_signal_idx,0.0,exact integer equality,True
+final_trades,entry_signal_year,0.0,exact integer equality,True
+final_trades,entry_d1_ret_60,1.1102230246251565e-16,<= 1e-12,True
+final_trades,entry_h4_trendq_84,2.2071233729548112e-13,<= 1e-10,True
+final_trades,macro_thr,9.020562075079397e-17,<= 1e-12,True
+final_trades,entry_thr,1.4210854715202004e-14,<= 1e-12,True
+final_trades,hold_thr,6.161737786669619e-15,<= 1e-12,True
+final_daily_equity,date,0.0,exact string equality,True
+final_daily_equity,ret,5.377642775528102e-16,<= 1e-12,True
+final_daily_equity,equity,3.552713678800501e-15,<= 1e-12,True
+final_daily_equity,drawdown,9.93129189996722e-17,<= 1e-12,True

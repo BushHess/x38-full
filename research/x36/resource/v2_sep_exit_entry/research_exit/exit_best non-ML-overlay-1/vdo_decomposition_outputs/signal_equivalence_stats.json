@@ -1,0 +1,6 @@
+{
+  "trade_corr_vdo_vs_quote_osc": 0.9999931190000784,
+  "trade_sign_disagreement_vdo_vs_quote_osc": 0.004048582995951417,
+  "trade_corr_vdo_vs_netquote_osc": 0.8954689231113298,
+  "trade_corr_vdo_vs_ema12_volsurp": -0.2029518486161371
+}

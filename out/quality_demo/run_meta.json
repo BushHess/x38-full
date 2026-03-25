@@ -1,0 +1,110 @@
+{
+  "git_hash": "c74c650",
+  "timestamp_utc": "2026-02-24T06:17:32Z",
+  "argv": [
+    "python",
+    "validate_strategy.py",
+    "--strategy",
+    "v10_baseline",
+    "--baseline",
+    "v10_baseline",
+    "--config",
+    "v10/configs/baseline_legacy.live.yaml",
+    "--baseline-config",
+    "v10/configs/baseline_legacy.live.yaml",
+    "--out",
+    "out/quality_demo",
+    "--force"
+  ],
+  "config": {
+    "strategy_name": "v10_baseline",
+    "baseline_name": "v10_baseline",
+    "config_path": "/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml",
+    "baseline_config_path": "/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml",
+    "outdir": "/var/www/trading-bots/btc-spot/out/quality_demo",
+    "dataset": "/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "dataset_id": "default",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "initial_cash": 10000.0,
+    "suite": "full",
+    "scenarios": [
+      "smart",
+      "base",
+      "harsh"
+    ],
+    "harsh_cost_bps": 50.0,
+    "seed": 1337,
+    "command": [
+      "python",
+      "validate_strategy.py",
+      "--strategy",
+      "v10_baseline",
+      "--baseline",
+      "v10_baseline",
+      "--config",
+      "v10/configs/baseline_legacy.live.yaml",
+      "--baseline-config",
+      "v10/configs/baseline_legacy.live.yaml",
+      "--out",
+      "out/quality_demo",
+      "--force"
+    ],
+    "force": true,
+    "force_holdout": false,
+    "bootstrap": 2000,
+    "bootstrap_block_sizes": [
+      10,
+      20,
+      40
+    ],
+    "wfo_windows": 8,
+    "wfo_mode": "rolling",
+    "wfo_train_months": 24,
+    "wfo_test_months": 6,
+    "wfo_slide_months": 6,
+    "low_trade_threshold": 10,
+    "holdout_frac": 0.2,
+    "holdout_start": null,
+    "holdout_end": null,
+    "sensitivity_grid": false,
+    "grid_aggr": [
+      0.85,
+      0.9,
+      0.95
+    ],
+    "grid_trail": [
+      2.7,
+      3.0,
+      3.3
+    ],
+    "grid_cap": [
+      0.75,
+      0.9,
+      0.95
+    ],
+    "selection_bias": "deflated",
+    "lookahead_check": true,
+    "trade_level": false,
+    "dd_episodes": false,
+    "overlay_test": false,
+    "data_integrity_check": true,
+    "cost_sweep_bps": [
+      0.0,
+      10.0,
+      25.0,
+      50.0,
+      75.0,
+      100.0
+    ],
+    "cost_sweep_mode": "quick",
+    "invariant_check": true,
+    "regression_guard": false,
+    "golden_path": null,
+    "churn_metrics": true,
+    "auto_trade_level": false,
+    "git_hash": "c74c650"
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

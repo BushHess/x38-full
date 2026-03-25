@@ -1,0 +1,247 @@
+Loaded 15m: 299,754 rows, ['symbol', 'interval', 'open_time', 'close_time', 'open', 'high', 'low', 'close', 'volume', 'quote_volume', 'num_trades', 'taker_buy_base_vol', 'taker_buy_quote_vol', 'dt']
+Loaded 1h: 74,952 rows, ['symbol', 'interval', 'open_time', 'close_time', 'open', 'high', 'low', 'close', 'volume', 'quote_volume', 'num_trades', 'taker_buy_base_vol', 'taker_buy_quote_vol', 'dt']
+Loaded 4h: 18,752 rows, ['symbol', 'interval', 'open_time', 'close_time', 'open', 'high', 'low', 'close', 'volume', 'quote_volume', 'num_trades', 'taker_buy_base_vol', 'taker_buy_quote_vol', 'dt']
+Loaded 1d: 3,128 rows, ['symbol', 'interval', 'open_time', 'close_time', 'open', 'high', 'low', 'close', 'volume', 'quote_volume', 'num_trades', 'taker_buy_base_vol', 'taker_buy_quote_vol', 'dt']
+
+======================================================================
+1. SCHEMA & COVERAGE
+======================================================================
+
+15m:
+  Rows: 299,754
+  Date range: 2017-08-17 04:00 → 2026-03-11 10:45 (3128 days)
+  Dtypes: {'symbol': <StringDtype(na_value=nan)>, 'interval': <StringDtype(na_value=nan)>, 'open_time': dtype('int64'), 'close_time': dtype('int64'), 'open': dtype('float64'), 'high': dtype('float64'), 'low': dtype('float64'), 'close': dtype('float64'), 'volume': dtype('float64'), 'quote_volume': dtype('float64'), 'num_trades': dtype('int64'), 'taker_buy_base_vol': dtype('float64'), 'taker_buy_quote_vol': dtype('float64')}
+
+1h:
+  Rows: 74,952
+  Date range: 2017-08-17 04:00 → 2026-03-11 10:00 (3128 days)
+  Dtypes: {'symbol': <StringDtype(na_value=nan)>, 'interval': <StringDtype(na_value=nan)>, 'open_time': dtype('int64'), 'close_time': dtype('int64'), 'open': dtype('float64'), 'high': dtype('float64'), 'low': dtype('float64'), 'close': dtype('float64'), 'volume': dtype('float64'), 'quote_volume': dtype('float64'), 'num_trades': dtype('int64'), 'taker_buy_base_vol': dtype('float64'), 'taker_buy_quote_vol': dtype('float64')}
+
+4h:
+  Rows: 18,752
+  Date range: 2017-08-17 04:00 → 2026-03-11 04:00 (3128 days)
+  Dtypes: {'symbol': <StringDtype(na_value=nan)>, 'interval': <StringDtype(na_value=nan)>, 'open_time': dtype('int64'), 'close_time': dtype('int64'), 'open': dtype('float64'), 'high': dtype('float64'), 'low': dtype('float64'), 'close': dtype('float64'), 'volume': dtype('float64'), 'quote_volume': dtype('float64'), 'num_trades': dtype('int64'), 'taker_buy_base_vol': dtype('float64'), 'taker_buy_quote_vol': dtype('float64')}
+
+1d:
+  Rows: 3,128
+  Date range: 2017-08-17 00:00 → 2026-03-10 00:00 (3127 days)
+  Dtypes: {'symbol': <StringDtype(na_value=nan)>, 'interval': <StringDtype(na_value=nan)>, 'open_time': dtype('int64'), 'close_time': dtype('int64'), 'open': dtype('float64'), 'high': dtype('float64'), 'low': dtype('float64'), 'close': dtype('float64'), 'volume': dtype('float64'), 'quote_volume': dtype('float64'), 'num_trades': dtype('int64'), 'taker_buy_base_vol': dtype('float64'), 'taker_buy_quote_vol': dtype('float64')}
+
+file   rows  columns            start              end  duration_days
+ 15m 299754       13 2017-08-17 04:00 2026-03-11 10:45         3128.3
+  1h  74952       13 2017-08-17 04:00 2026-03-11 10:00         3128.2
+  4h  18752       13 2017-08-17 04:00 2026-03-11 04:00         3128.0
+  1d   3128       13 2017-08-17 00:00 2026-03-10 00:00         3127.0
+
+--- Duplicate timestamps ---
+  15m: 0 duplicates
+  1h: 0 duplicates
+  4h: 0 duplicates
+  1d: 0 duplicates
+
+--- Gaps > 3 consecutive bars ---
+
+  15m: 30 gaps > 3 bars
+    2017-09-06 15:45 → 2017-09-06 23:00 (29 bars, 7.2h)
+    2017-12-18 12:15 → 2017-12-18 13:30 (5 bars, 1.2h)
+    2018-01-04 03:00 → 2018-01-04 05:00 (8 bars, 2.0h)
+    2018-02-08 00:15 → 2018-02-09 09:45 (134 bars, 33.5h)
+    2018-06-26 01:45 → 2018-06-26 12:00 (41 bars, 10.2h)
+    2018-06-27 12:45 → 2018-06-27 14:45 (8 bars, 2.0h)
+    2018-07-04 00:15 → 2018-07-04 08:00 (31 bars, 7.8h)
+    2018-10-19 05:45 → 2018-10-19 09:30 (15 bars, 3.8h)
+    2018-11-14 01:45 → 2018-11-14 09:00 (29 bars, 7.2h)
+    2019-03-12 01:45 → 2019-03-12 08:00 (25 bars, 6.2h)
+    2019-05-15 02:45 → 2019-05-15 13:00 (41 bars, 10.2h)
+    2019-06-07 21:00 → 2019-06-07 22:15 (5 bars, 1.2h)
+    2019-08-15 01:45 → 2019-08-15 10:00 (33 bars, 8.2h)
+    2019-11-13 01:45 → 2019-11-13 04:15 (10 bars, 2.5h)
+    2019-11-25 01:45 → 2019-11-25 04:00 (9 bars, 2.2h)
+    2020-02-09 01:45 → 2020-02-09 03:00 (5 bars, 1.2h)
+    2020-02-19 11:30 → 2020-02-19 17:30 (24 bars, 6.0h)
+    2020-03-04 09:15 → 2020-03-04 11:30 (9 bars, 2.2h)
+    2020-04-25 01:45 → 2020-04-25 04:30 (11 bars, 2.8h)
+    2020-06-28 01:45 → 2020-06-28 05:30 (15 bars, 3.8h)
+    2020-11-30 05:45 → 2020-11-30 07:00 (5 bars, 1.2h)
+    2020-12-21 14:00 → 2020-12-21 18:00 (16 bars, 4.0h)
+    2020-12-25 01:45 → 2020-12-25 03:00 (5 bars, 1.2h)
+    2021-02-11 03:30 → 2021-02-11 05:00 (6 bars, 1.5h)
+    2021-03-06 01:45 → 2021-03-06 03:30 (7 bars, 1.8h)
+    2021-04-20 01:45 → 2021-04-20 04:30 (11 bars, 2.8h)
+    2021-04-25 04:00 → 2021-04-25 08:45 (19 bars, 4.8h)
+    2021-08-13 01:45 → 2021-08-13 06:30 (19 bars, 4.8h)
+    2021-09-29 06:45 → 2021-09-29 09:00 (9 bars, 2.2h)
+    2023-03-24 12:30 → 2023-03-24 14:00 (6 bars, 1.5h)
+
+  1h: 14 gaps > 3 bars
+    2017-09-06 15:00 → 2017-09-06 23:00 (8 bars, 8.0h)
+    2018-02-08 00:00 → 2018-02-09 09:00 (33 bars, 33.0h)
+    2018-06-26 01:00 → 2018-06-26 12:00 (11 bars, 11.0h)
+    2018-07-04 00:00 → 2018-07-04 08:00 (8 bars, 8.0h)
+    2018-10-19 05:00 → 2018-10-19 09:00 (4 bars, 4.0h)
+    2018-11-14 01:00 → 2018-11-14 09:00 (8 bars, 8.0h)
+    2019-03-12 01:00 → 2019-03-12 08:00 (7 bars, 7.0h)
+    2019-05-15 02:00 → 2019-05-15 13:00 (11 bars, 11.0h)
+    2019-08-15 01:00 → 2019-08-15 10:00 (9 bars, 9.0h)
+    2020-02-19 11:00 → 2020-02-19 17:00 (6 bars, 6.0h)
+    2020-06-28 01:00 → 2020-06-28 05:00 (4 bars, 4.0h)
+    2020-12-21 14:00 → 2020-12-21 18:00 (4 bars, 4.0h)
+    2021-04-25 04:00 → 2021-04-25 08:00 (4 bars, 4.0h)
+    2021-08-13 01:00 → 2021-08-13 06:00 (5 bars, 5.0h)
+
+  4h: 1 gaps > 3 bars
+    2018-02-08 00:00 → 2018-02-09 08:00 (8 bars, 32.0h)
+
+  1d: 0 gaps > 3 bars
+
+======================================================================
+2. DATA QUALITY
+======================================================================
+
+15m:
+  Missing values total: 0
+  Zero volume bars: 60
+  Price integrity: close>high=0, close<low=0, open<=0=0, high<low=0
+  Extreme moves (|log_ret|>15%): 1
+    2020-03-13 02:30:00+00:00: log_ret=0.2040
+  taker_buy_base_vol: missing=0, zero=241, mean_ratio=0.4954
+
+1h:
+  Missing values total: 0
+  Zero volume bars: 4
+  Price integrity: close>high=0, close<low=0, open<=0=0, high<low=0
+  Extreme moves (|log_ret|>15%): 3
+    2020-03-12 10:00:00+00:00: log_ret=-0.2010
+    2020-03-12 23:00:00+00:00: log_ret=-0.1897
+    2020-03-13 02:00:00+00:00: log_ret=0.1603
+  taker_buy_base_vol: missing=0, zero=4, mean_ratio=0.4952
+
+4h:
+  Missing values total: 0
+  Zero volume bars: 0
+  Price integrity: close>high=0, close<low=0, open<=0=0, high<low=0
+  Extreme moves (|log_ret|>15%): 3
+    2017-09-15 12:00:00+00:00: log_ret=0.2716
+    2020-03-12 08:00:00+00:00: log_ret=-0.1976
+    2020-03-12 20:00:00+00:00: log_ret=-0.2294
+  taker_buy_base_vol: missing=0, zero=0, mean_ratio=0.4950
+
+1d:
+  Missing values total: 0
+  Zero volume bars: 0
+  Price integrity: close>high=0, close<low=0, open<=0=0, high<low=0
+  Extreme moves (|log_ret|>15%): 14
+    2017-09-14 00:00:00+00:00: log_ret=-0.2127
+    2017-12-07 00:00:00+00:00: log_ret=0.2030
+    2017-12-22 00:00:00+00:00: log_ret=-0.1506
+    2018-01-16 00:00:00+00:00: log_ret=-0.2169
+    2018-02-05 00:00:00+00:00: log_ret=-0.1650
+    2019-04-02 00:00:00+00:00: log_ret=0.1587
+    2019-10-25 00:00:00+00:00: log_ret=0.1550
+    2020-03-12 00:00:00+00:00: log_ret=-0.5026
+    2020-03-13 00:00:00+00:00: log_ret=0.1503
+    2021-02-08 00:00:00+00:00: log_ret=0.1784
+  taker_buy_base_vol: missing=0, zero=0, mean_ratio=0.4953
+
+Saved: Tbl03_data_quality.csv
+
+--- Zero volume bars by year ---
+  4h: none
+  1d: none
+
+--- Extreme H4 moves (|log_ret| > 15%) detail ---
+  2017-09-15 12:00:00+00:00: close=3830.00, prev_close=2919.00, log_ret=0.2716 (27.2%), vol=683
+  2020-03-12 08:00:00+00:00: close=6067.01, prev_close=7392.13, log_ret=-0.1976 (-19.8%), vol=65426
+  2020-03-12 20:00:00+00:00: close=4800.00, prev_close=6037.45, log_ret=-0.2294 (-22.9%), vol=72866
+
+======================================================================
+3. DESCRIPTIVE STATISTICS
+======================================================================
+
+4h descriptive stats:
+                       count          mean           std           min           25%           50%           75%           max
+open                 18752.0  3.688048e+04  3.239205e+04   2870.900000  9.208888e+03  2.681551e+04  5.795626e+04  1.254108e+05
+high                 18752.0  3.718817e+04  3.259357e+04   3148.000000  9.276993e+03  2.692101e+04  5.847126e+04  1.261996e+05
+low                  18752.0  3.655143e+04  3.217757e+04   2817.000000  9.130900e+03  2.663239e+04  5.735589e+04  1.248000e+05
+close                18752.0  3.688401e+04  3.239203e+04   2919.000000  9.209747e+03  2.681709e+04  5.796399e+04  1.254108e+05
+volume               18752.0  1.028097e+04  1.420465e+04      5.887034  3.369576e+03  5.969371e+03  1.096756e+04  2.847117e+05
+quote_volume         18752.0  2.945265e+08  3.670861e+08  27090.323790  5.969168e+07  1.719390e+08  3.953906e+08  5.457624e+09
+num_trades           18752.0  3.248564e+05  4.174071e+05     43.000000  6.772000e+04  1.743030e+05  3.929228e+05  6.089593e+06
+taker_buy_base_vol   18752.0  5.104968e+03  7.072912e+03      4.229245  1.663062e+03  2.985471e+03  5.443451e+03  1.412327e+05
+taker_buy_quote_vol  18752.0  1.453652e+08  1.824031e+08  22758.803109  2.949339e+07  8.361658e+07  1.944385e+08  2.747537e+09
+Saved: Tbl01_h4_descriptive.csv
+
+1d descriptive stats:
+                      count          mean           std            min           25%           50%           75%           max
+open                 3128.0  3.684913e+04  3.239164e+04    3188.010000  9.221890e+03  2.676889e+04  5.797568e+04  1.246585e+05
+high                 3128.0  3.763131e+04  3.291265e+04    3276.500000  9.395000e+03  2.717160e+04  5.940560e+04  1.261996e+05
+low                  3128.0  3.599959e+04  3.182629e+04    2817.000000  9.018173e+03  2.637753e+04  5.658128e+04  1.230840e+05
+close                3128.0  3.687018e+04  3.239180e+04    3189.020000  9.226380e+03  2.678514e+04  5.800087e+04  1.246585e+05
+volume               3128.0  6.163085e+04  7.626452e+04     228.108068  2.369767e+04  3.904723e+04  6.491918e+04  7.607054e+05
+quote_volume         3128.0  1.765486e+09  1.919371e+09  977865.733332  3.866283e+08  1.221220e+09  2.450692e+09  1.746531e+10
+num_trades           3128.0  1.947161e+06  2.254561e+06    2153.000000  4.189165e+05  1.155096e+06  2.458716e+06  1.536401e+07
+taker_buy_base_vol   3128.0  3.060235e+04  3.796609e+04      56.190141  1.189209e+04  1.945462e+04  3.209256e+04  3.747756e+05
+taker_buy_quote_vol  3128.0  8.713542e+08  9.533295e+08  241363.800502  1.926838e+08  5.869928e+08  1.207094e+09  8.783916e+09
+Saved: Tbl02_d1_descriptive.csv
+
+4h price range: lowest_close=2919.00, highest_close=125410.81, ratio=43.0x
+
+1d price range: lowest_close=3189.02, highest_close=124658.54, ratio=39.1x
+
+H4 bars per day: mean=5.99, std=0.14, min=1, max=6
+
+======================================================================
+4. TIME COVERAGE
+======================================================================
+
+4h year-by-year bar count:
+  2017: 820
+  2018: 2179
+  2019: 2186
+  2020: 2195
+  2021: 2190
+  2022: 2190
+  2023: 2190
+  2024: 2196
+  2025: 2190
+  2026: 416
+
+1d year-by-year bar count:
+  2017: 137
+  2018: 365
+  2019: 365
+  2020: 366
+  2021: 365
+  2022: 365
+  2023: 365
+  2024: 366
+  2025: 365
+  2026: 69
+
+--- H4 gaps > 12h ---
+  2018-02-08 00:00 → 2018-02-09 08:00 (32.0h)
+
+--- D1 gaps > 48h ---
+  None found.
+
+--- H4 bars per month (check for sparse periods) ---
+/var/www/trading-bots/btc-spot-dev/research/x27/code/phase1_audit.py:280: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  monthly = df4.groupby(df4["dt"].dt.to_period("M")).size()
+  Months with <80% expected bars:
+    2017-08: 89 bars (expected ~180)
+    2026-03: 62 bars (expected ~180)
+
+  First 3 months:
+    2017-08: 89
+    2017-09: 179
+    2017-10: 186
+  Last 3 months:
+    2026-01: 186
+    2026-02: 168
+    2026-03: 62
+
+Saved: manifest.json
+
+======================================================================
+PHASE 1 AUDIT COMPLETE
+======================================================================

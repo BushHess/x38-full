@@ -1,0 +1,214 @@
+{
+  "E5": {
+    "total_trades": 188,
+    "total_pnl": 531000.2497196016,
+    "sharpe": 1.6635,
+    "cagr_pct": 74.88,
+    "max_dd_pct": 36.3,
+    "avg_bars_held": 37.02127659574468,
+    "median_bars_held": 28.0,
+    "max_bars_held": 212.0,
+    "buckets": [
+      {
+        "label": "\u226410 bars (\u22641.7d)",
+        "count": 31,
+        "pct_of_trades": 16.48936170212766,
+        "total_pnl": -178012.10091292582,
+        "pnl_contribution_pct": -33.52392037610648,
+        "avg_return_pct": -2.1451393622262196,
+        "max_return_pct": 8.046392484087217,
+        "min_return_pct": -7.497722771686827,
+        "win_rate_pct": 16.129032258064516
+      },
+      {
+        "label": "11-30 bars (1.7-5d)",
+        "count": 73,
+        "pct_of_trades": 38.82978723404255,
+        "total_pnl": -284900.131996578,
+        "pnl_contribution_pct": -53.65348361832627,
+        "avg_return_pct": -2.4056634307571994,
+        "max_return_pct": 7.879817460786898,
+        "min_return_pct": -12.697028622073534,
+        "win_rate_pct": 19.17808219178082
+      },
+      {
+        "label": "31-60 bars (5-10d)",
+        "count": 54,
+        "pct_of_trades": 28.723404255319153,
+        "total_pnl": 215236.49455806168,
+        "pnl_contribution_pct": 40.534160703637866,
+        "avg_return_pct": 3.0900805456009577,
+        "max_return_pct": 25.06503015882856,
+        "min_return_pct": -4.346798760650561,
+        "win_rate_pct": 64.81481481481481
+      },
+      {
+        "label": "61-120 bars (10-20d)",
+        "count": 24,
+        "pct_of_trades": 12.76595744680851,
+        "total_pnl": 440519.73903290264,
+        "pnl_contribution_pct": 82.96036381631123,
+        "avg_return_pct": 14.022791621044727,
+        "max_return_pct": 61.74453406940267,
+        "min_return_pct": -0.553986513433134,
+        "win_rate_pct": 95.83333333333334
+      },
+      {
+        "label": ">120 bars (>20d)",
+        "count": 6,
+        "pct_of_trades": 3.1914893617021276,
+        "total_pnl": 338156.2490381411,
+        "pnl_contribution_pct": 63.682879474483656,
+        "avg_return_pct": 39.37553778079735,
+        "max_return_pct": 68.07386908882555,
+        "min_return_pct": 10.793501930368725,
+        "win_rate_pct": 100.0
+      }
+    ],
+    "truncation": {
+      "trades_over_30bars": 84,
+      "pct_of_total_trades": 44.680851063829785,
+      "pnl_at_risk": 993912.4826291054,
+      "pnl_at_risk_pct": 187.17740399443275,
+      "top5_longest": [
+        {
+          "bars": 212.0,
+          "return_pct": 40.770436629672915,
+          "pnl": 105437.75,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 175.0,
+          "return_pct": 25.51055345072053,
+          "pnl": 44237.5,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 147.0,
+          "return_pct": 68.07386908882555,
+          "pnl": 34682.42,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 131.0,
+          "return_pct": 32.76250299650732,
+          "pnl": 51854.37,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 123.0,
+          "return_pct": 58.3423625886891,
+          "pnl": 50670.92,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        }
+      ],
+      "top5_profitable": [
+        {
+          "bars": 212.0,
+          "return_pct": 40.770436629672915,
+          "pnl": 105437.75,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 73.0,
+          "return_pct": 25.37924521036662,
+          "pnl": 89679.87,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 115.0,
+          "return_pct": 31.79702868024667,
+          "pnl": 52811.92,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 131.0,
+          "return_pct": 32.76250299650732,
+          "pnl": 51854.37,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        },
+        {
+          "bars": 121.0,
+          "return_pct": 10.793501930368725,
+          "pnl": 51273.3,
+          "exit": "vtrend_e5_ema21_d1_trail_stop"
+        }
+      ],
+      "actual_ablation": {
+        "e5_ts30_pnl": 279742.4330601427,
+        "e5_ts30_trades": 294,
+        "e5_ts30_sharpe": 1.4636,
+        "e5_ts30_cagr_pct": 60.24,
+        "actual_profit_loss_pct": 47.3178339920061
+      }
+    }
+  },
+  "V3": {
+    "total_trades": 211,
+    "total_pnl": 224162.37807621027,
+    "sharpe": 1.4956,
+    "cagr_pct": 55.53,
+    "max_dd_pct": 37.34,
+    "avg_bars_held": 25.085308056872037,
+    "median_bars_held": 30.0,
+    "max_bars_held": 30.0,
+    "buckets": [
+      {
+        "label": "\u226410 bars (\u22641.7d)",
+        "count": 21,
+        "pct_of_trades": 9.95260663507109,
+        "total_pnl": -61444.1923844944,
+        "pnl_contribution_pct": -27.410573046117815,
+        "avg_return_pct": -4.306580783623353,
+        "max_return_pct": 1.5809913950949637,
+        "min_return_pct": -9.225024128018928,
+        "win_rate_pct": 4.761904761904762
+      },
+      {
+        "label": "11-30 bars (1.7-5d)",
+        "count": 190,
+        "pct_of_trades": 90.04739336492891,
+        "total_pnl": 285606.5704607047,
+        "pnl_contribution_pct": 127.41057304611783,
+        "avg_return_pct": 2.3746785531664374,
+        "max_return_pct": 21.680161913926487,
+        "min_return_pct": -13.984788007342102,
+        "win_rate_pct": 62.63157894736842
+      },
+      {
+        "label": "31-60 bars (5-10d)",
+        "count": 0,
+        "pct_of_trades": 0.0,
+        "total_pnl": 0,
+        "pnl_contribution_pct": 0.0,
+        "avg_return_pct": 0.0,
+        "max_return_pct": 0.0,
+        "min_return_pct": 0.0,
+        "win_rate_pct": 0.0
+      },
+      {
+        "label": "61-120 bars (10-20d)",
+        "count": 0,
+        "pct_of_trades": 0.0,
+        "total_pnl": 0,
+        "pnl_contribution_pct": 0.0,
+        "avg_return_pct": 0.0,
+        "max_return_pct": 0.0,
+        "min_return_pct": 0.0,
+        "win_rate_pct": 0.0
+      },
+      {
+        "label": ">120 bars (>20d)",
+        "count": 0,
+        "pct_of_trades": 0.0,
+        "total_pnl": 0,
+        "pnl_contribution_pct": 0.0,
+        "avg_return_pct": 0.0,
+        "max_return_pct": 0.0,
+        "min_return_pct": 0.0,
+        "win_rate_pct": 0.0
+      }
+    ],
+    "truncation": null
+  }
+}

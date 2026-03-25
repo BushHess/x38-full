@@ -1,0 +1,22 @@
+candidates:
+  - name: baseline_legacy
+    description: "Legacy-like baseline: pre-cost emergency reference + Wilder RSI"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+    param_ranges:
+      trail_atr_mult: [2.5, 3.0, 3.5, 4.0, 4.5]
+      emergency_dd_pct: [0.22, 0.25, 0.28, 0.31, 0.34]
+      fixed_stop_pct: [0.12, 0.15, 0.18]
+      entry_cooldown_bars: [2, 3, 4]
+
+  - name: v9_like
+    description: "V9-like: post-cost emergency reference + EWM RSI"
+    params:
+      emergency_ref: post_cost
+      rsi_method: ewm_span
+    param_ranges:
+      trail_atr_mult: [2.5, 3.0, 3.5, 4.0, 4.5]
+      emergency_dd_pct: [0.22, 0.25, 0.28, 0.31, 0.34]
+      fixed_stop_pct: [0.12, 0.15, 0.18]
+      entry_cooldown_bars: [2, 3, 4]

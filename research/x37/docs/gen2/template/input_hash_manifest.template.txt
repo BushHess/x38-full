@@ -1,0 +1,10 @@
+# Input Hash Manifest
+
+# format:
+# sha256  file_size_bytes  relative_path
+
+<sha256_placeholder>  <size_placeholder>  manifest/session_manifest.json
+<sha256_placeholder>  <size_placeholder>  raw/spot_btcusdt_15m.csv
+<sha256_placeholder>  <size_placeholder>  raw/spot_btcusdt_1h.csv
+<sha256_placeholder>  <size_placeholder>  raw/spot_btcusdt_4h.csv
+<sha256_placeholder>  <size_placeholder>  raw/spot_btcusdt_1d.csv

@@ -1,0 +1,17 @@
+{
+  "replay_bars": 500,
+  "signals": 6,
+  "orders_sent": 6,
+  "orders_filled": 6,
+  "slippage_entries": 6,
+  "db_orders": 6,
+  "db_fills": 6,
+  "duplicate_coids": 0,
+  "checks": {
+    "P1_no_duplicates": "PASS",
+    "signals_generated": "PASS",
+    "orders_filled": "PASS",
+    "slippage": "WARN (max=2721 bps)"
+  },
+  "passed": true
+}

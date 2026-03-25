@@ -1,0 +1,9 @@
+candidate_label,ledger_view,n_threshold,skip_event_count,skipped_trade_count,skipped_winner_count,skipped_loser_count,skipped_top1_count,skipped_top3_count,skipped_top5_count,skipped_top10_count,terminal_value,cagr,sharpe,delta_terminal_value,delta_cagr,delta_sharpe,delta_sharpe_pct,verdict
+,native,2,13,13,7,6,0,0,0,3,18661.69,10.074002,0.665929,-5535.57,-4.48809,-0.15861,-19.2362,HARMFUL
+,unit_size,2,13,13,7,6,0,0,0,2,48039.01,27.309445,0.665929,-45057.8,-13.641143,-0.15861,-19.2362,HARMFUL
+,native,3,6,6,4,2,0,0,0,2,21765.45,12.710468,0.686904,-2431.81,-1.851625,-0.137634,-16.6923,HARMFUL
+,unit_size,3,6,6,4,2,0,0,0,2,55457.8,30.153483,0.686904,-37639.01,-10.797106,-0.137634,-16.6923,HARMFUL
+,native,4,1,1,0,1,0,0,0,0,24449.63,14.745116,0.850986,252.38,0.183024,0.026447,3.2075,NEUTRAL
+,unit_size,4,1,1,0,1,0,0,0,0,101905.85,42.924787,0.850986,8809.04,1.974199,0.026447,3.2075,NEUTRAL
+,native,5,1,1,0,1,0,0,0,0,24341.57,14.666947,0.836702,144.32,0.104855,0.012164,1.4753,NEUTRAL
+,unit_size,5,1,1,0,1,0,0,0,0,97001.73,41.844412,0.836702,3904.92,0.893823,0.012164,1.4753,NEUTRAL

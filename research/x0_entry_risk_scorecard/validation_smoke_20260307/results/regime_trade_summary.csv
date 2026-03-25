@@ -1,0 +1,13 @@
+label,regime,n_trades,total_pnl,win_rate,avg_pnl
+baseline,AnalyticalRegime.BEAR,23,684.903769,0.434783,29.778425
+baseline,AnalyticalRegime.BULL,56,6291.712828,0.428571,112.352015
+baseline,AnalyticalRegime.CHOP,12,6070.527926,0.5,505.877327
+baseline,AnalyticalRegime.NEUTRAL,5,-1514.642477,0.0,-302.928495
+baseline,AnalyticalRegime.SHOCK,1,-257.868604,0.0,-257.868604
+baseline,AnalyticalRegime.TOPPING,3,-1061.860271,0.333333,-353.953424
+candidate,AnalyticalRegime.BEAR,23,632.184032,0.391304,27.486262
+candidate,AnalyticalRegime.BULL,61,6573.702221,0.442623,107.76561
+candidate,AnalyticalRegime.CHOP,13,6720.198886,0.615385,516.938376
+candidate,AnalyticalRegime.NEUTRAL,5,-1544.561078,0.0,-308.912216
+candidate,AnalyticalRegime.SHOCK,1,-248.3548,0.0,-248.3548
+candidate,AnalyticalRegime.TOPPING,3,-1036.440577,0.0,-345.480192

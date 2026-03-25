@@ -1,0 +1,3 @@
+strategy_id,fills_parity,fills_detail,trades_parity,trades_detail,summary_parity,summary_detail
+X0,True,ok,True,ok,True,ok
+X0_E5EXIT,True,ok,True,ok,True,ok

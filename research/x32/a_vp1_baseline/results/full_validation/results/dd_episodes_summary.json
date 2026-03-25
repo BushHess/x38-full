@@ -1,0 +1,14 @@
+{
+  "candidate": {
+    "scenario": "harsh",
+    "n_episodes": 34,
+    "worst_dd_pct": 40.513805,
+    "mean_dd_pct": 12.61789
+  },
+  "baseline": {
+    "scenario": "harsh",
+    "n_episodes": 28,
+    "worst_dd_pct": 41.611857,
+    "mean_dd_pct": 14.340425
+  }
+}

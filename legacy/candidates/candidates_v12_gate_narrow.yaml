@@ -1,0 +1,17 @@
+candidates:
+  - name: baseline_legacy
+    strategy: v8_apex
+    description: "Frozen baseline anchor for decision/report comparison"
+    params: {}
+
+  - name: v12_gate_narrow
+    strategy: v12_emdd_ref_fix
+    description: "Narrow search focused on top starvation blockers: VDO threshold + regime gating"
+    params:
+      emdd_ref_mode: legacy
+      rsi_method: wilder
+      entry_cooldown_bars: 3
+    param_ranges:
+      vdo_entry_threshold: [0.0025, 0.0030, 0.0035, 0.0040]
+      d1_regime_confirm_bars: [1, 2, 3]
+      d1_regime_off_bars: [3, 4, 5]

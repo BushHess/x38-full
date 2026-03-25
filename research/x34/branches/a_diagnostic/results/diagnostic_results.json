@@ -1,0 +1,53 @@
+{
+  "params": {
+    "fast": 12,
+    "slow": 28,
+    "k": 1.0,
+    "warmup": 60
+  },
+  "statistics": {
+    "spearman_r": 0.886639,
+    "spearman_p": 0.0,
+    "direction_agreement": 0.8686,
+    "n_bars": 18602,
+    "vdo_trigger_count": 9378,
+    "qvdo_trigger_count": 4477,
+    "trigger_freq_ratio": 0.4774,
+    "vdo_distribution": {
+      "mean": 0.00012480168290056266,
+      "std": 0.014503658367332526,
+      "min": -0.12156591678521217,
+      "max": 0.1709713833907514,
+      "pct_positive": 0.5041393398559295
+    },
+    "qvdo_distribution": {
+      "mean": 5.9790599354099874e-05,
+      "std": 0.01830433361561269,
+      "min": -0.1488493258018584,
+      "max": 0.2872943377118262,
+      "pct_positive": 0.511074078056123
+    }
+  },
+  "divergence": {
+    "vdo_yes_qvdo_no": {
+      "total": 4962,
+      "high_vol": 2512,
+      "low_vol": 2450,
+      "trend_up": 2590,
+      "trend_down": 2372
+    },
+    "vdo_no_qvdo_yes": {
+      "total": 71,
+      "high_vol": 31,
+      "low_vol": 40,
+      "trend_up": 47,
+      "trend_down": 24
+    },
+    "agreement_both_on": 4406,
+    "agreement_both_off": 9153
+  },
+  "verdict": "GO",
+  "flags": [
+    "FLAG: Q-VDO-RH triggers 48% of VDO (< 50%) \u2014 much more selective"
+  ]
+}

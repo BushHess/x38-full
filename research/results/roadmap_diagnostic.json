@@ -1,0 +1,71 @@
+{
+  "e5_ratcheting": {
+    "verdict": "REJECTED",
+    "reason": "Ratcheting adds ZERO value (P\u224850%). E5 loses CAGR. No interaction.",
+    "v_ratch_p_sharpe": 0,
+    "v_ratch_p_mdd": 0
+  },
+  "spa_vs_binomial": {
+    "verdict": "KEEP BINOMIAL + DOF",
+    "reason": "Binomial tests consistency (16/16), SPA tests existence (\u22651). Our question is about GENERIC trend-following, not best single timescale.",
+    "spa_applicability": "LOW \u2014 wrong question, underpowered on real OOS, major rewrite needed"
+  },
+  "pbo": {
+    "pbo": 0.444,
+    "pbo_count": 5714,
+    "pbo_total": 12870,
+    "verdict": "NEUTRAL \u2014 ambiguous",
+    "spearman_rho": 0.4353,
+    "spearman_p": 0.092,
+    "oos_sharpe_range": 0.1171,
+    "oos_sharpe_cv": 0.0942,
+    "best_is_n": 200,
+    "best_is_oos_rank": 8,
+    "is_oos_ratio_mean": 2.68
+  },
+  "purge_embargo": {
+    "verdict": "NOT NEEDED",
+    "max_lookback_days": 20,
+    "window_days": 182,
+    "purge_ratio": 0.11,
+    "reason": "All indicators causal. EMA memory decays exponentially. 99.9% of weight within 6-month window."
+  },
+  "multi_coin": {
+    "verdict": "FEASIBLE and VALUABLE",
+    "existing_infrastructure": true,
+    "fetch_script": "/var/www/trading-bots/data-pipeline/fetch_binance_klines.py",
+    "data_available": true,
+    "min_common_window": "2020-01 to present",
+    "estimated_compute_hours": 5,
+    "key_challenge": "Per-coin cost calibration and VDO signal quality"
+  },
+  "claim_calibration": {
+    "revisions_needed": 3,
+    "key_revision": "VDO from PROVEN to STRONG (DOF-corrected p=0.031)",
+    "evidence_hierarchy": [
+      "1. Permutation test: EMA p=0.0003 (primary)",
+      "2. Multi-timescale: VDO p=0.031-0.004 (secondary)",
+      "3. Bootstrap paired comparison (tertiary)",
+      "4. WFO real OOS (supplementary)"
+    ]
+  },
+  "summary": {
+    "accepted": [
+      "multi_coin_oos",
+      "calibrate_claims"
+    ],
+    "rejected": [
+      "spa",
+      "pbo_cscv",
+      "purge_embargo",
+      "e5_ratcheting",
+      "rc_ssb"
+    ],
+    "already_done": [
+      "freeze_vcbb",
+      "demote_bootstrap"
+    ],
+    "priority_1": "Multi-coin OOS validation (10 coins)",
+    "priority_2": "Calibrate claims (VDO PROVEN \u2192 STRONG)"
+  }
+}

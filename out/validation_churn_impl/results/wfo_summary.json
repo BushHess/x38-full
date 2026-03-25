@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "mode": "rolling",
+    "n_windows": 1,
+    "positive_delta_windows": 0,
+    "win_rate": 0.0,
+    "mean_delta_score": 0.0,
+    "low_trade_windows": 1,
+    "low_trade_threshold": 10
+  },
+  "windows": [
+    {
+      "window_id": 0,
+      "test_start": "2024-02-01",
+      "test_end": "2024-03-01",
+      "candidate_score": -1000000.0,
+      "candidate_cagr_pct": 2056.15,
+      "candidate_max_dd_pct": 2.78,
+      "candidate_sharpe": 9.9183,
+      "candidate_trades": 0,
+      "baseline_score": -1000000.0,
+      "baseline_cagr_pct": 2056.15,
+      "baseline_max_dd_pct": 2.78,
+      "baseline_sharpe": 9.9183,
+      "baseline_trades": 0,
+      "delta_harsh_score": 0.0
+    }
+  ]
+}

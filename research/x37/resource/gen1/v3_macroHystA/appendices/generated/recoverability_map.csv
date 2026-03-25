@@ -1,0 +1,13 @@
+component,status,notes
+raw data load + timestamp parsing,exact,Deterministic from data.zip; see data_fingerprints.csv.
+d1_ret_60 / d1_trendq_60 / h4_trendq_84 formulas,exact,Exact and sufficient to reproduce final system and macro channel comparison.
+D1->H4 alignment in final system,exact,"merge_asof(direction=""backward"", allow_exact_matches=True). This is the only setting that matches archived signal path."
+final yearly thresholds,exact,Quantiles reproduce archived CSV exactly within machine precision.
+final state machine / signal path / trade list / daily equity,exact,All rebuilt files match archived outputs exactly within floating tolerance.
+macro_channel_compare.csv,exact,Reproducible from formulas and metric semantics in SPEC.
+macro_only baseline,exact,Reproducible exactly once trade-event counting and segment semantics are respected.
+anti_chase_cap extension,high_confidence,"Rule and q90 trailing-1095d threshold are exact; h4_ma_gap_84 monotonic encodings close/MA-1 and (close-MA)/MA produce identical decisions on this dataset. SPEC fixes close/rolling_mean(close,84)-1."
+optional flow_entry branch,unrecoverable_noncritical,Exact feature/window/quantile code path is not recoverable from remaining artifacts. This branch was not frozen.
+fast_old_like comparator branch,unrecoverable_noncritical,Exact comparator code path is not recoverable from remaining artifacts. Use archived tables as canonical reference only.
+bootstrap seed and n_boot,high_confidence,"Likely reused helper defaults n_boot=1000, seed=123. Archived bootstrap CSVs remain canonical."
+HTML report presentation,unrecoverable_noncritical,Metrics/tables matter; identical HTML markup is not required.

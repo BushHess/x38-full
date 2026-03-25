@@ -1,0 +1,13 @@
+label,regime,total_return_pct,max_dd_pct,n_bars,n_days,sharpe,notes
+candidate,SHOCK,-19.73,24.34,168,28.0,-6.3723,
+candidate,BEAR,0.0,11.92,2394,399.0,,
+candidate,CHOP,-4.14,25.11,660,110.0,-0.2506,
+candidate,TOPPING,-15.56,16.08,438,73.0,-3.3321,
+candidate,BULL,159.2,28.44,4128,688.0,1.7959,
+candidate,NEUTRAL,16.83,13.46,978,163.0,1.867,
+baseline,SHOCK,-19.73,24.34,168,28.0,-6.3723,
+baseline,BEAR,0.0,11.92,2394,399.0,,
+baseline,CHOP,-4.14,25.11,660,110.0,-0.2506,
+baseline,TOPPING,-15.56,16.08,438,73.0,-3.3321,
+baseline,BULL,159.2,28.44,4128,688.0,1.7959,
+baseline,NEUTRAL,16.83,13.46,978,163.0,1.867,

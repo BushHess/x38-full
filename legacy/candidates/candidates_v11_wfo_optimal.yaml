@@ -1,0 +1,12 @@
+candidates:
+  # WFO-optimal params from grid search
+  - name: v11_wfo_optimal
+    strategy: v11_hybrid
+    description: "V11 WFO-optimal params (0.95/2.8/0.9)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90

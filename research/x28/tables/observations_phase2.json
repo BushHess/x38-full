@@ -1,0 +1,122 @@
+[
+  {
+    "id": "Obs01",
+    "text": "H4 log returns: mean=0.000148, std=0.0148, skew=-0.201, excess_kurt=20.41",
+    "refs": [
+      "Fig01"
+    ]
+  },
+  {
+    "id": "Obs02",
+    "text": "Jarque-Bera rejects normality: stat=325731.1, p=0.00e+00. Excess kurtosis 20.4 indicates heavy tails.",
+    "refs": [
+      "Fig01"
+    ]
+  },
+  {
+    "id": "Obs03",
+    "text": "Tail excess: P(|r|>3\u03c3)=0.0187 vs normal 0.0027 (6.9x). P(|r|>4\u03c3)=0.00784 vs normal 0.000063 (124x).",
+    "refs": [
+      "Fig01"
+    ]
+  },
+  {
+    "id": "Obs04",
+    "text": "ACF(returns): 25/100 lags significant at 5%. Lag1=-0.0441. Max |ACF|=0.0740. Weak serial dependence in raw returns.",
+    "refs": [
+      "Fig02"
+    ]
+  },
+  {
+    "id": "Obs05",
+    "text": "ACF(|returns|): 100/100 lags significant. Lag1=0.2607, lag50=0.1326, lag100=0.1117. Strong volatility clustering \u2014 slow decay.",
+    "refs": [
+      "Fig03"
+    ]
+  },
+  {
+    "id": "Obs06",
+    "text": "PACF(returns): significant lags = [1, 3, 4, 6, 7, 9, 10, 11, 16, 19]. Lag1=-0.0441. Little structure beyond lag 1-2.",
+    "refs": [
+      "Fig04"
+    ]
+  },
+  {
+    "id": "Obs07",
+    "text": "Variance ratio: 3/9 periods VR>1, 0/9 significant at 5%. VR(20)=0.9499, VR(120)=1.0651. Mostly consistent with random walk.",
+    "refs": [
+      "Tbl04"
+    ]
+  },
+  {
+    "id": "Obs08",
+    "text": "Hurst (R/S): full sample H=0.583. Rolling (500-bar): mean=0.588, range [0.50, 0.70]. H>0.5 suggests mild persistence.",
+    "refs": [
+      "Fig05"
+    ]
+  },
+  {
+    "id": "Obs09",
+    "text": "Uptrends \u226510%: 175 events, mean duration=53 bars (211h), mean magnitude=21.5%.",
+    "refs": [
+      "Tbl06",
+      "Fig06"
+    ]
+  },
+  {
+    "id": "Obs10",
+    "text": "Uptrends \u226520%: 61 events, mean duration=150 bars (599h), mean magnitude=45.2%.",
+    "refs": [
+      "Tbl06"
+    ]
+  },
+  {
+    "id": "Obs11",
+    "text": "Volatility ACF: 100/100 lags significant. Lag1=0.986, lag50=0.468. Extremely persistent \u2014 characteristic of long-memory vol.",
+    "refs": [
+      "Fig07"
+    ]
+  },
+  {
+    "id": "Obs12",
+    "text": "Vol-return correlation: contemporaneous r=0.0092 (p=0.207). Lagged vol\u2192ret: lag1 r=0.0128, lag20 r=0.0041. Weak vol\u2192return predictability.",
+    "refs": [
+      "Fig08"
+    ]
+  },
+  {
+    "id": "Obs13",
+    "text": "Vol regimes \u2014 Low (<39%): mean ret 1.69 bps, High (>62%): mean ret -0.04 bps.",
+    "refs": [
+      "Tbl07"
+    ]
+  },
+  {
+    "id": "Obs14",
+    "text": "H4 volume: mean=10281 BTC, heavily right-skewed (skew=4.60). Taker buy ratio: mean=0.4950, std=0.0481 \u2014 centered near 0.50 with low dispersion.",
+    "refs": [
+      "Fig09"
+    ]
+  },
+  {
+    "id": "Obs15",
+    "text": "Volume \u00d7 |return| (contemp): r=0.3323 \u2014 volume concurrent with large moves. Leading volume\u2192return: |r| < 0.03 at all horizons. Taker buy ratio\u2192return: similarly negligible.",
+    "refs": [
+      "Tbl08"
+    ]
+  },
+  {
+    "id": "Obs16",
+    "text": "D1 regime differentials: SMA(200) diff=202.8 pp/yr (p=0.0000), EMA(21) diff=661.2 pp/yr (p=0.0000), EMA(50) diff=428.7 pp/yr (p=0.0000).",
+    "refs": [
+      "Tbl09"
+    ]
+  },
+  {
+    "id": "Obs17",
+    "text": "H4 returns conditioned on D1 regime (1-day lag): EMA(21) above=3.67 bps, below=-0.93 bps (Welch p=0.0356). Cross-timeframe regime conditioning has significant effect on H4 mean returns.",
+    "refs": [
+      "Tbl10"
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+=== Special Research Directories ===
+Started: Mon Mar 16 08:32:54 PM UTC 2026
+[20:32:54] START e0_entry_hygiene_p0_1_entry_hygiene_benchmark
+[20:33:29] DONE  e0_entry_hygiene_p0_1_entry_hygiene_benchmark
+[20:33:29] START e0_entry_hygiene_p0_2_stretch_attribution
+[20:33:30] DONE  e0_entry_hygiene_p0_2_stretch_attribution
+[20:33:30] START e0_entry_hygiene_p0_3_matched_trade_attribution
+[20:33:30] DONE  e0_entry_hygiene_p0_3_matched_trade_attribution
+[20:33:30] START e0_entry_hygiene_p0_4_validate_stretch
+[20:36:07] DONE  e0_entry_hygiene_p0_4_validate_stretch
+[20:36:07] START e0_exit_event_gate_p0_1_event_scan
+[20:36:15] DONE  e0_exit_event_gate_p0_1_event_scan
+[20:36:15] START e0_exit_event_gate_p0_2_benchmark_event_gate
+[20:37:12] DONE  e0_exit_event_gate_p0_2_benchmark_event_gate
+[20:37:12] START e0_exit_floor_p0_1_exit_floor_benchmark
+[20:37:48] DONE  e0_exit_floor_p0_1_exit_floor_benchmark
+[20:37:48] START e0_exit_floor_p0_2_validate_exit_floor
+[20:41:49] DONE  e0_exit_floor_p0_2_validate_exit_floor
+[20:41:49] START e0_exit_floor_p0_3_event_review
+[20:41:49] DONE  e0_exit_floor_p0_3_event_review
+[20:41:49] START e0_forensics_p0_1_e0_forensics
+[20:41:53] DONE  e0_forensics_p0_1_e0_forensics
+[20:41:53] START e0_reentry_p0_1_recovery_benchmark
+[20:43:20] DONE  e0_reentry_p0_1_recovery_benchmark
+[20:43:20] START x0_entry_risk_scorecard_p0_1_entry_risk_scorecard
+[20:43:20] DONE  x0_entry_risk_scorecard_p0_1_entry_risk_scorecard
+[20:43:20] START x0_entry_risk_scorecard_p0_2_runtime_probe
+[20:43:34] DONE  x0_entry_risk_scorecard_p0_2_runtime_probe
+[20:43:34] START x0_entry_risk_scorecard_p0_3_validate_scorecard
+[20:44:02] FAIL  x0_entry_risk_scorecard_p0_3_validate_scorecard (rc=0)
+[20:44:02] START x0_drought_analysis_p0_1_x0e5_drought
+[20:44:07] DONE  x0_drought_analysis_p0_1_x0e5_drought
+[20:44:07] START prod_readiness_e5_ema1d21_e5_dof_correction
+[20:44:13] DONE  prod_readiness_e5_ema1d21_e5_dof_correction
+[20:44:13] START prod_readiness_e5_ema1d21_e5s_validation
+[20:46:58] DONE  prod_readiness_e5_ema1d21_e5s_validation
+[20:46:58] START prod_readiness_e5_ema1d21_regime_monitor_v2
+[20:47:03] DONE  prod_readiness_e5_ema1d21_regime_monitor_v2
+[20:47:03] START prod_readiness_e5_ema1d21_validate_monitor_v2
+[20:48:50] DONE  prod_readiness_e5_ema1d21_validate_monitor_v2
+=== Special Dirs COMPLETE: Mon Mar 16 08:48:50 PM UTC 2026 ===

@@ -1,0 +1,69 @@
+{
+  "threshold": 6,
+  "gates": {
+    "G1_oracle_delta_sharpe_20bps": {
+      "value": 0.0816,
+      "threshold": 0.08,
+      "pass": true
+    },
+    "G2_non_negative_15_25bps": {
+      "delta_15": 0.0759,
+      "delta_25": 0.0703,
+      "pass": true
+    },
+    "G3_concentration_top3": {
+      "value": 20.7,
+      "threshold": 60.0,
+      "pass": true
+    },
+    "G4_loyo_stability": {
+      "worst_year": 2024,
+      "worst_delta": 0.0609,
+      "pass": true
+    }
+  },
+  "verdict": "GO",
+  "results_by_cost": {
+    "15": {
+      "base_sharpe": 1.4001,
+      "oracle_sharpe": 1.476,
+      "delta_sharpe": 0.0759,
+      "delta_cagr_pct": 3.27,
+      "delta_mdd_pp": -2.91,
+      "anti_oracle_delta_sharpe": -0.1981,
+      "n_blocked_bad": 47,
+      "n_blocked_good": 31
+    },
+    "20": {
+      "base_sharpe": 1.3329,
+      "oracle_sharpe": 1.4145,
+      "delta_sharpe": 0.0816,
+      "delta_cagr_pct": 3.48,
+      "delta_mdd_pp": -3.92,
+      "anti_oracle_delta_sharpe": -0.203,
+      "n_blocked_bad": 48,
+      "n_blocked_good": 30
+    },
+    "25": {
+      "base_sharpe": 1.2657,
+      "oracle_sharpe": 1.336,
+      "delta_sharpe": 0.0703,
+      "delta_cagr_pct": 2.83,
+      "delta_mdd_pp": -4.89,
+      "anti_oracle_delta_sharpe": -0.1881,
+      "n_blocked_bad": 49,
+      "n_blocked_good": 29
+    }
+  },
+  "loyo": {
+    "2018": 0.0648,
+    "2019": 0.0699,
+    "2020": 0.0745,
+    "2021": 0.0766,
+    "2022": 0.0622,
+    "2023": 0.0666,
+    "2024": 0.0609,
+    "2025": 0.1083,
+    "2026": 0.0672
+  }
+}

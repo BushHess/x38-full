@@ -1,0 +1,20 @@
+metric,latch_vs_e0_value,source_file,source_line_or_field,computation_path
+latch_harsh_score,50.4114,results/eval_latch_vs_e0_full/results/score_breakdown_full.csv,row 4 total_score,"objective.py:65-69 → 2.5*12.82 - 0.60*11.24 + 8.0*1.4428 + 5.0*max(0,min(2.71,3)-1) + 5.0"
+e0_harsh_score,123.3249,results/eval_latch_vs_e0_full/results/score_breakdown_full.csv,row 7 total_score,"objective.py:65-69 → 2.5*52.04 - 0.60*41.61 + 8.0*1.2653 + 5.0*max(0,min(1.61,3)-1) + 5.0"
+latch_harsh_cagr,12.82,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh cagr_pct,metrics.py:65 pow(final/initial 1/years)-1
+e0_harsh_cagr,52.04,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh cagr_pct,metrics.py:65
+latch_harsh_sharpe,1.4428,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh sharpe,metrics.py:181 mu/sigma*sqrt(2190)
+e0_harsh_sharpe,1.2653,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh sharpe,metrics.py:181
+latch_harsh_mdd,11.24,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh max_drawdown_mid_pct,metrics.py:163 peak-to-trough *100
+e0_harsh_mdd,41.61,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh max_drawdown_mid_pct,metrics.py:163
+latch_avg_exposure,0.0948,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh avg_exposure,metrics.py:110 mean(exposures)
+e0_avg_exposure,0.4682,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh avg_exposure,metrics.py:110
+latch_trades,65,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh trades,metrics.py:83 len(trades)
+e0_trades,192,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh trades,metrics.py:83
+latch_turnover_per_year,5.59,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh turnover_per_year,metrics.py:122 turnover/(avg_nav*years)
+e0_turnover_per_year,52.28,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh turnover_per_year,metrics.py:122
+latch_fee_drag_pct_per_year,0.84,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,candidate harsh fee_drag_pct_per_year,metrics.py:121 (fees/years)/avg_nav*100
+e0_fee_drag_pct_per_year,7.84,results/eval_latch_vs_e0_full/results/full_backtest_summary.csv,baseline harsh fee_drag_pct_per_year,metrics.py:121
+score_delta_harsh,-72.9135,results/eval_latch_vs_e0_full/results/full_backtest_detail.json,"deltas.harsh.score_delta (50.4114-123.3249)",backtest.py:180
+return_term_delta,-98.05,score_breakdown_full.csv,"candidate=32.05 - baseline=130.1","objective.py:65 2.5*cagr difference"
+verdict,REJECT,results/eval_latch_vs_e0_full/reports/decision.json,verdict,"decision.py:294 harsh_delta(-72.91) < -tolerance(-0.2)"

@@ -1,0 +1,26 @@
+[
+  {
+    "hypothesis": "H1",
+    "raw_p": 0.5204,
+    "holm_p": 1.0,
+    "block_length": 126
+  },
+  {
+    "hypothesis": "H2",
+    "raw_p": 0.4688000000000001,
+    "holm_p": 1.0,
+    "block_length": 126
+  },
+  {
+    "hypothesis": "H3",
+    "raw_p": 0.4796,
+    "holm_p": 1.0,
+    "block_length": 126
+  },
+  {
+    "hypothesis": "H4",
+    "raw_p": 0.9064000000000001,
+    "holm_p": 1.0,
+    "block_length": 126
+  }
+]

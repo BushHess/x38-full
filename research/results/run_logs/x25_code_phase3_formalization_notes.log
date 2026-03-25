@@ -1,0 +1,50 @@
+============================================================
+PHASE 3 — DETECTABILITY & POWER BOUNDS
+============================================================
+
+1. Two-group MDE (n_w=78, n_l=123)
+   Cohen d = 0.406 at 80% power, alpha=0.05
+
+2. VDO effect (Obs18)
+   Rank-biserial = 0.144
+   Approx Cohen d = 0.291
+   Status: BELOW MDE
+
+3. Win rate detection (base=38.8%)
+      Target WR    Cohen h      Power    n_eff
+          42%            0.065      0.150      201
+          42% (block 15%)      0.065      0.134      171
+          45%            0.126      0.429      201
+          45% (block 15%)      0.126      0.376      171
+          48%            0.186      0.750      201
+          48% (block 15%)      0.186      0.681      171
+          50%            0.226      0.893      201
+          50% (block 15%)      0.226      0.840      171
+          55%            0.326      0.996      201
+          55% (block 15%)      0.326      0.989      171
+
+4. Sharpe ratio MDE (base Sh=1.19)
+   Block  0%: n_eff=201, delta_Sh MDE = 0.365
+   Block 10%: n_eff=180, delta_Sh MDE = 0.386
+   Block 20%: n_eff=160, delta_Sh MDE = 0.409
+   Block 30%: n_eff=140, delta_Sh MDE = 0.438
+
+5. Blocking analysis (k=30 blocked)
+     Loser prec   New W   New L     New WR
+          50%      63     108      36.8%
+          60%      66     105      38.6%
+          70%      69     102      40.4%
+          80%      72      99      42.1%
+          90%      75      96      43.9%
+         100%      78      93      45.6%
+
+6. Information bounds
+   H(win/lose) = 0.964 bits
+   With r_rb=0.144 (VDO), approx MI << 0.964 bits
+   Point-biserial r² ≈ 0.0207 → 2.07% variance explained
+
+============================================================
+CONCLUSION: MDE d=0.406. Strongest signal (VDO) d=0.291.
+VDO explains ~2.1% of win/lose variance.
+Any volume-based filter faces severe power constraints at n=201.
+============================================================

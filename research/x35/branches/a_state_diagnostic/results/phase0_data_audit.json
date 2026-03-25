@@ -1,0 +1,62 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "window": {
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "report_start_ms": 1546300800000
+  },
+  "coverage": [
+    {
+      "series": "H4",
+      "total_bars": 17838,
+      "report_bars": 15648,
+      "first_close": "2018-01-01",
+      "last_close": "2026-02-20"
+    },
+    {
+      "series": "D1",
+      "total_bars": 2973,
+      "report_bars": 2608,
+      "first_close": "2018-01-01",
+      "last_close": "2026-02-20"
+    },
+    {
+      "series": "W1",
+      "total_bars": 425,
+      "report_bars": 373,
+      "first_close": "2018-01-07",
+      "last_close": "2026-02-20"
+    },
+    {
+      "series": "M1",
+      "total_bars": 98,
+      "report_bars": 86,
+      "first_close": "2018-01-31",
+      "last_close": "2026-02-20"
+    }
+  ],
+  "candidate_audit": [
+    {
+      "spec_id": "wk_close_above_ema26",
+      "timeframe": "W1",
+      "pre_report_bars": 52,
+      "required_warmup_bars": 26,
+      "warmup_ok": "PASS"
+    },
+    {
+      "spec_id": "wk_ema13_above_ema26",
+      "timeframe": "W1",
+      "pre_report_bars": 52,
+      "required_warmup_bars": 26,
+      "warmup_ok": "PASS"
+    },
+    {
+      "spec_id": "mo_close_above_ema6",
+      "timeframe": "M1",
+      "pre_report_bars": 12,
+      "required_warmup_bars": 6,
+      "warmup_ok": "PASS"
+    }
+  ]
+}

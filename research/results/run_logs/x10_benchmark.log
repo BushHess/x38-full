@@ -1,0 +1,167 @@
+/var/www/trading-bots/btc-spot-dev/research/x10/benchmark.py:51: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X10 RESEARCH — MULTI-TP LADDER FOR E5+EMA21D1
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  E5 params: slow=120, trail=3.0, vdo_thr=0.0, d1_ema=21
+  Variants: FULL (baseline), TP2 (50% at 1.5R), TP3 (30%@1.5R + 30%@2.2R + 20%@3.0R)
+  TP sweep: 0.5R to 3.0R (2-level 50/50)
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T1: VECTORIZED FACTORIAL (3 variants × 3 cost scenarios)
+================================================================================
+
+Strategy Scen     Sharpe    CAGR%     MDD%   Calmar  Trades
+-----------------------------------------------------------
+FULL     smart    1.7226    78.83    35.63   2.2125     202
+FULL     base     1.5994    70.68    37.56   1.8820     202
+FULL     harsh    1.4690    62.48    40.90   1.5275     202
+TP2      smart    1.6436    59.07    37.20   1.5879     202
+TP2      base     1.4939    51.82    40.37   1.2837     202
+TP2      harsh    1.3356    44.53    43.54   1.0227     202
+TP3      smart    1.4119    46.49    41.79   1.1123     202
+TP3      base     1.2577    39.81    44.74   0.8898     202
+TP3      harsh    1.0947    33.10    47.69   0.6940     202
+
+        DELTA vs FULL baseline
+--------------------------------------------------------------------------------
+  TP2  smart   dSharpe=-0.0790  dCAGR=-19.76%  dMDD=+1.57%  dCalmar=-0.6246  dTrades=+0
+  TP2  base    dSharpe=-0.1054  dCAGR=-18.86%  dMDD=+2.81%  dCalmar=-0.5983  dTrades=+0
+  TP2  harsh   dSharpe=-0.1335  dCAGR=-17.95%  dMDD=+2.63%  dCalmar=-0.5048  dTrades=+0
+  TP3  smart   dSharpe=-0.3107  dCAGR=-32.34%  dMDD=+6.17%  dCalmar=-1.1002  dTrades=+0
+  TP3  base    dSharpe=-0.3416  dCAGR=-30.87%  dMDD=+7.18%  dCalmar=-0.9921  dTrades=+0
+  TP3  harsh   dSharpe=-0.3743  dCAGR=-29.39%  dMDD=+6.78%  dCalmar=-0.8335  dTrades=+0
+
+================================================================================
+T5: TRADE ANATOMY — per-trade partial exit breakdown
+================================================================================
+
+  FULL: 202 trades, WR=41.1%
+    PnL%: mean=2.10  median=-0.97  P25=-3.51  P75=3.07
+    MFE (R units): mean=1.92  median=0.95  P25=0.34  P75=2.06  max=27.14
+    Exit reasons:
+      trail_stop            n= 183  avg_pnl=+2.54%  WR=44.8%
+      trend_exit            n=  19  avg_pnl=-2.05%  WR=5.3%
+    Bars held: mean=37.2  median=29.0  P10=8  P90=79
+    Return stats: skew=3.263  kurtosis=13.602
+
+  TP2: 202 trades, WR=42.6%
+    PnL%: mean=1.46  median=-0.88  P25=-3.51  P75=4.94
+    MFE (R units): mean=1.92  median=0.95  P25=0.34  P75=2.06  max=27.14
+    TP hits: mean=0.35  0_hits=132  1_hit=70  2_hits=0  3_hits=0
+    TP frac exited: mean=0.173  median=0.000
+    PnL when TP hit: mean=+9.46%  (n=70)
+    PnL when no TP:  mean=-2.79%  (n=132)
+    Exit reasons:
+      trail_stop            n= 183  avg_pnl=+1.82%  WR=46.4%
+      trend_exit            n=  19  avg_pnl=-2.05%  WR=5.3%
+    Bars held: mean=37.2  median=29.0  P10=8  P90=79
+    Return stats: skew=1.997  kurtosis=6.033
+
+  TP3: 202 trades, WR=42.6%
+    PnL%: mean=1.11  median=-0.88  P25=-3.51  P75=4.71
+    MFE (R units): mean=1.92  median=0.95  P25=0.34  P75=2.06  max=27.14
+    TP hits: mean=0.70  0_hits=132  1_hit=26  2_hits=16  3_hits=28
+    TP frac exited: mean=0.197  median=0.000
+    PnL when TP hit: mean=+8.46%  (n=70)
+    PnL when no TP:  mean=-2.79%  (n=132)
+    Exit reasons:
+      trail_stop            n= 183  avg_pnl=+1.44%  WR=46.4%
+      trend_exit            n=  19  avg_pnl=-2.05%  WR=5.3%
+    Bars held: mean=37.2  median=29.0  P10=8  P90=79
+    Return stats: skew=1.400  kurtosis=2.791
+
+================================================================================
+T6: PER-TRADE DRAWDOWN — does partial exit reduce intra-trade MDD?
+================================================================================
+
+  FULL: 202 trades
+    Trade MDD%: mean=5.42  median=5.05  P75=6.46  P90=8.45  max=14.53
+    Giveback%:  mean=5.96  median=5.58  P75=7.34  P90=9.57
+    Trades reaching ≥1R: 96/202, giveback>50%: 0 (0.0%)
+
+  TP2: 202 trades
+    Trade MDD%: mean=4.54  median=4.06  P75=5.82  P90=7.15  max=14.53
+    Giveback%:  mean=6.61  median=5.13  P75=7.37  P90=12.48
+    Trades reaching ≥1R: 96/202, giveback>50%: 0 (0.0%)
+
+  TP3: 202 trades
+    Trade MDD%: mean=4.45  median=4.06  P75=5.75  P90=7.15  max=14.53
+    Giveback%:  mean=6.95  median=5.08  P75=7.30  P90=12.45
+    Trades reaching ≥1R: 96/202, giveback>50%: 2 (2.1%)
+
+  DELTA vs FULL:
+    TP2: dTradeMDD_mean=-0.88%  dTradeMDD_p90=-1.30%  dGiveback_mean=+0.65%  dGiveback_p90=+2.91%
+    TP3: dTradeMDD_mean=-0.97%  dTradeMDD_p90=-1.30%  dGiveback_mean=+0.99%  dGiveback_p90=+2.88%
+
+================================================================================
+T4: TP1 THRESHOLD SWEEP (0.5R to 3.0R, 2-level 50/50)
+================================================================================
+
+  Baseline (FULL): Sharpe=1.4690  CAGR=62.48%  MDD=40.90%  Trades=202
+
+   TP1_R   Sharpe    CAGR%     MDD%  Trades   dSharpe    dCAGR     dMDD
+------------------------------------------------------------------------
+    0.50   1.3474    38.45    38.93     202   -0.1216   -24.03    -1.98
+    0.75   1.3539    40.89    36.42     202   -0.1152   -21.60    -4.49
+    1.00   1.3008    40.47    41.17     202   -0.1682   -22.02    +0.26
+    1.25   1.3159    42.46    41.07     202   -0.1531   -20.02    +0.16
+    1.50   1.3356    44.53    43.54     202   -0.1335   -17.95    +2.63
+    1.75   1.3411    45.66    42.58     202   -0.1280   -16.82    +1.68
+    2.00   1.3494    46.80    44.92     202   -0.1196   -15.68    +4.01
+    2.25   1.2620    43.92    44.97     202   -0.2070   -18.57    +4.07
+    2.50   1.2462    43.54    46.33     202   -0.2229   -18.94    +5.43
+    2.75   1.2470    43.94    45.81     202   -0.2220   -18.54    +4.90
+    3.00   1.2408    44.55    47.18     202   -0.2282   -17.93    +6.28
+
+================================================================================
+T2: TIMESCALE ROBUSTNESS (16 slow_periods)
+================================================================================
+
+  Slow    Sharpe    CAGR%     MDD%    Sharpe    CAGR%     MDD%    Sharpe    CAGR%     MDD%
+------------------------------------------------------------------------------------------
+    30    1.0830    38.34    46.80    0.8367    22.39    44.95    0.7203    17.79    46.39
+    48    0.9949    34.74    46.52    0.6724    17.14    41.98    0.5407    12.25    45.56
+    60    1.1569    43.78    41.12    0.9234    27.11    40.89    0.7478    19.75    39.27
+    72    1.2275    47.90    42.05    1.0156    30.72    41.80    0.8401    23.06    38.24
+    84    1.2478    49.55    41.24    1.0356    31.83    41.25    0.8283    22.84    39.16
+    96    1.2540    49.93    43.43    1.0562    32.64    43.98    0.8412    23.31    40.31
+   108    1.3853    57.42    39.97    1.2155    39.38    40.00    0.9596    27.86    44.99
+   120    1.4690    62.48    40.90    1.3356    44.53    43.54    1.0947    33.10    47.69
+   144    1.4497    60.72    41.11    1.3424    44.40    42.28    1.1146    33.50    46.91
+   168    1.3132    52.44    46.67    1.1564    36.15    48.38    0.9382    26.49    51.98
+   200    1.5464    64.88    36.52    1.4481    47.55    33.99    1.2022    35.79    38.34
+   240    1.4022    55.65    39.95    1.2963    40.69    37.42    1.0736    30.67    36.46
+   300    1.3000    49.62    39.19    1.1776    35.63    38.30    0.9273    25.21    40.38
+   360    1.2909    48.61    38.12    1.1559    34.45    36.25    0.9435    25.51    33.86
+   500    1.2132    43.99    45.78    1.0428    29.90    44.73    0.8074    20.73    43.56
+   720    1.0980    37.56    39.02    0.9338    25.42    38.24    0.7191    17.53    37.11
+
+  TP2 vs FULL:  Sharpe 0/16  CAGR 0/16  MDD 10/16  Calmar 0/16
+
+  TP3 vs FULL:  Sharpe 0/16  CAGR 0/16  MDD 10/16  Calmar 0/16
+
+================================================================================
+T3: BOOTSTRAP VCBB (500 paths, block=60)
+================================================================================
+  Generating bootstrap paths... done (4.5s)
+  FULL      Sharpe=0.5721 [-0.1320, 1.2577]  CAGR=13.99% [-8.61, 46.37]  MDD=52.20%  P(CAGR>0)=0.844  (20.2s)
+  TP2       Sharpe=0.4464 [-0.2222, 1.1304]  CAGR=8.88% [-9.78, 34.13]  MDD=49.85%  P(CAGR>0)=0.776  (20.9s)
+  TP3       Sharpe=0.3809 [-0.2917, 1.0876]  CAGR=7.01% [-10.68, 30.69]  MDD=49.93%  P(CAGR>0)=0.736  (21.5s)
+
+  HEAD-TO-HEAD vs FULL across 500 bootstrap paths:
+    TP2: Sharpe wins 49/500 (9.8%)  CAGR wins 46/500 (9.2%)  MDD wins 387/500 (77.4%)
+    TP3: Sharpe wins 52/500 (10.4%)  CAGR wins 35/500 (7.0%)  MDD wins 354/500 (70.8%)
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x10/x10_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x10/x10_factorial_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x10/x10_timescale_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x10/x10_bootstrap_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x10/x10_tp_sweep.csv
+
+================================================================================
+X10 BENCHMARK COMPLETE — 72s total
+================================================================================

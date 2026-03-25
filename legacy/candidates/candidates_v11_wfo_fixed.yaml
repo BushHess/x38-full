@@ -1,0 +1,13 @@
+candidates:
+  # V11 winner — fixed params, no grid search
+  # Single-point grid → tested on ALL 10 windows
+  - name: v11_winner_fixed
+    strategy: v11_hybrid
+    description: "V11 cycle_late_only exact winner params"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.90
+      cycle_late_trail_mult: 3.0
+      cycle_late_max_exposure: 0.90

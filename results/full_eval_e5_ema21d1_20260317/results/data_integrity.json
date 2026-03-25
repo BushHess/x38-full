@@ -1,0 +1,126 @@
+{
+  "status": "pass",
+  "pass": true,
+  "hard_fail": false,
+  "hard_fail_reasons": [],
+  "policy": {
+    "missing_bars_fail_pct": 0.5,
+    "gap_multiplier": 1.5,
+    "warmup_fail_coverage_pct": 50.0,
+    "issue_rows_cap": 200
+  },
+  "dataset": "/var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv",
+  "window": {
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "report_start_ms": 1546300800000,
+    "report_start_utc": "2019-01-01 00:00:00 UTC",
+    "load_start_ms": 1514764800000,
+    "load_start_utc": "2018-01-01 00:00:00 UTC",
+    "load_end_ms": 1771631999999,
+    "load_end_utc": "2026-02-20 23:59:59 UTC",
+    "required_warmup_days": 365
+  },
+  "counts": {
+    "rows_checked": 92163,
+    "intervals_checked": 2,
+    "issues_total": 0,
+    "issues_written": 0,
+    "fail_issues": 0,
+    "warning_issues": 0,
+    "timestamp_not_increasing": 0,
+    "duplicate_timestamps": 0,
+    "ohlc_invalid_rows": 0,
+    "volume_invalid_rows": 0,
+    "max_missing_bars_pct_estimated": 0.0
+  },
+  "nan_inf_by_column": {
+    "nan": {
+      "close": 0,
+      "high": 0,
+      "low": 0,
+      "open": 0,
+      "volume": 0
+    },
+    "inf": {
+      "close": 0,
+      "high": 0,
+      "low": 0,
+      "open": 0,
+      "volume": 0
+    }
+  },
+  "intervals": [
+    {
+      "timeframe": "4h",
+      "rows": 17838,
+      "bar_seconds": 14400.0,
+      "bar_seconds_source": "config",
+      "timestamp_not_increasing": 0,
+      "duplicate_timestamps": 0,
+      "gap_count": 0,
+      "max_gap_seconds": 0.0,
+      "missing_bars_estimated": 0,
+      "missing_bars_pct_estimated": 0.0,
+      "ohlc_invalid_rows": 0,
+      "volume_invalid_rows": 0,
+      "nan_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "inf_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "timezone_drift_events": 0,
+      "warmup": {
+        "required_days": 365,
+        "available_days": 365.0,
+        "coverage_pct": 100.0,
+        "severity": "ok"
+      }
+    },
+    {
+      "timeframe": "1d",
+      "rows": 2973,
+      "bar_seconds": 86400.0,
+      "bar_seconds_source": "config",
+      "timestamp_not_increasing": 0,
+      "duplicate_timestamps": 0,
+      "gap_count": 0,
+      "max_gap_seconds": 0.0,
+      "missing_bars_estimated": 0,
+      "missing_bars_pct_estimated": 0.0,
+      "ohlc_invalid_rows": 0,
+      "volume_invalid_rows": 0,
+      "nan_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "inf_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "timezone_drift_events": 0,
+      "warmup": {
+        "required_days": 365,
+        "available_days": 365.0,
+        "coverage_pct": 100.0,
+        "severity": "ok"
+      }
+    }
+  ],
+  "issue_type_counts": {}
+}

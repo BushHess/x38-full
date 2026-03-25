@@ -1,0 +1,66 @@
+{
+  "scenario": "harsh",
+  "candidate_trades": 20,
+  "baseline_trades": 24,
+  "matched_trades": 17,
+  "candidate_only_trades": 3,
+  "baseline_only_trades": 7,
+  "match_rate": 0.85,
+  "matched_delta_pnl_mean": -154.719224,
+  "matched_delta_pnl_median": 0.0,
+  "matched_delta_return_mean": -1.523108,
+  "matched_delta_return_median": 0.0,
+  "matched_win_rate_baseline": 0.647059,
+  "matched_win_rate_candidate": 0.588235,
+  "matched_win_rate_delta": -0.058824,
+  "matched_p_positive": 0.294118,
+  "matched_block_bootstrap_ci_lower": -0.000179,
+  "matched_block_bootstrap_ci_upper": 1e-06,
+  "matched_block_bootstrap_p_positive": 0.027,
+  "trade_level_bootstrap": {
+    "mean_diff": -8.13013560668001e-05,
+    "ci95_low": -0.00017913281295947782,
+    "ci95_high": 1.05210794065489e-06,
+    "p_gt_0": 0.027,
+    "n_obs": 3131,
+    "block_len": 168,
+    "n_resamples": 10000,
+    "seed": 1505,
+    "ci_crosses_zero": true,
+    "small_improvement_threshold": 0.0002,
+    "is_small_improvement": true,
+    "all_blocks": [
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.00017085796250606637,
+        "ci95_high": 3.088216080151271e-06,
+        "p_gt_0": 0.0295,
+        "n_obs": 3131,
+        "block_len": 42,
+        "n_resamples": 10000,
+        "seed": 1379
+      },
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.00016968596399411239,
+        "ci95_high": -3.718592651325988e-07,
+        "p_gt_0": 0.0243,
+        "n_obs": 3131,
+        "block_len": 84,
+        "n_resamples": 10000,
+        "seed": 1421
+      },
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.00017913281295947782,
+        "ci95_high": 1.05210794065489e-06,
+        "p_gt_0": 0.027,
+        "n_obs": 3131,
+        "block_len": 168,
+        "n_resamples": 10000,
+        "seed": 1505
+      }
+    ],
+    "n_timestamps": 3131
+  }
+}

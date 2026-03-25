@@ -1,0 +1,60 @@
+{
+  "clean_independent_rederivation": true,
+  "prompt_and_raw_only_before_freeze": true,
+  "consulted_before_freeze": [
+    {
+      "sequence": 1,
+      "artifact": "RESEARCH_PROMPT_V6.md",
+      "artifact_type": "prompt",
+      "source": "user upload"
+    },
+    {
+      "sequence": 2,
+      "artifact": "data_btcusdt_1d.csv",
+      "artifact_type": "raw_data",
+      "source": "user upload"
+    },
+    {
+      "sequence": 3,
+      "artifact": "data_btcusdt_4h.csv",
+      "artifact_type": "raw_data",
+      "source": "user upload"
+    },
+    {
+      "sequence": 4,
+      "artifact": "in-session generated data audit tables",
+      "artifact_type": "derived_current_session",
+      "source": "computed from raw data"
+    },
+    {
+      "sequence": 5,
+      "artifact": "in-session generated Stage 1 registry and shortlist tables",
+      "artifact_type": "derived_current_session",
+      "source": "computed from raw data"
+    },
+    {
+      "sequence": 6,
+      "artifact": "in-session generated holdout comparisons and freeze ledgers",
+      "artifact_type": "derived_current_session",
+      "source": "computed from raw data"
+    }
+  ],
+  "consulted_after_freeze": [
+    {
+      "sequence": 7,
+      "artifact": "in-session generated reserve/internal evaluation tables",
+      "artifact_type": "derived_current_session",
+      "source": "computed from raw data"
+    },
+    {
+      "sequence": 8,
+      "artifact": "in-session generated validation charts and bootstrap tables",
+      "artifact_type": "derived_current_session",
+      "source": "computed from raw data"
+    }
+  ],
+  "disallowed_artifacts_consulted_before_freeze": [],
+  "benchmarks_consulted": false,
+  "prior_reports_or_prior_system_specs_consulted": false,
+  "note": "No prior result files, logs, reports, frozen system specs, benchmarks, or precomputed artifacts were consulted before freeze."
+}

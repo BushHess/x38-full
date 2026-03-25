@@ -1,0 +1,152 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "branch": "c_stress_state_diagnostic",
+  "branch_verdict": "NO_GO_STRESS_FAMILY",
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "trades": 188,
+    "sharpe": 1.4545,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97
+  },
+  "features": [
+    {
+      "feature": "dd63_depth",
+      "n_mapped_trades": 185,
+      "rho_spearman": 0.0185,
+      "delta_mean_return_pct_q1_minus_q4": -1.471,
+      "loss_share_q4": 0.1747,
+      "promising": false,
+      "quantiles": [
+        {
+          "quantile": "Q1",
+          "n_trades": 47,
+          "mean_return_pct": 1.1593,
+          "median_return_pct": -1.6571,
+          "win_rate_pct": 40.43,
+          "profit_sum": 151792.15,
+          "loss_sum": 165427.82
+        },
+        {
+          "quantile": "Q2",
+          "n_trades": 46,
+          "mean_return_pct": 1.0675,
+          "median_return_pct": -0.4044,
+          "win_rate_pct": 43.48,
+          "profit_sum": 137933.81,
+          "loss_sum": 93274.05
+        },
+        {
+          "quantile": "Q3",
+          "n_trades": 46,
+          "mean_return_pct": 4.7065,
+          "median_return_pct": -1.0034,
+          "win_rate_pct": 39.13,
+          "profit_sum": 269531.02,
+          "loss_sum": 117964.3
+        },
+        {
+          "quantile": "Q4",
+          "n_trades": 46,
+          "mean_return_pct": 2.6303,
+          "median_return_pct": -0.4248,
+          "win_rate_pct": 45.65,
+          "profit_sum": 195081.62,
+          "loss_sum": 79740.24
+        }
+      ]
+    },
+    {
+      "feature": "dd126_depth",
+      "n_mapped_trades": 179,
+      "rho_spearman": 0.015,
+      "delta_mean_return_pct_q1_minus_q4": -2.392,
+      "loss_share_q4": 0.2227,
+      "promising": false,
+      "quantiles": [
+        {
+          "quantile": "Q1",
+          "n_trades": 45,
+          "mean_return_pct": 0.7404,
+          "median_return_pct": -1.4849,
+          "win_rate_pct": 40.0,
+          "profit_sum": 137147.31,
+          "loss_sum": 157219.7
+        },
+        {
+          "quantile": "Q2",
+          "n_trades": 45,
+          "mean_return_pct": 3.7821,
+          "median_return_pct": -0.3129,
+          "win_rate_pct": 42.22,
+          "profit_sum": 233842.41,
+          "loss_sum": 93512.14
+        },
+        {
+          "quantile": "Q3",
+          "n_trades": 44,
+          "mean_return_pct": 0.9161,
+          "median_return_pct": -1.1814,
+          "win_rate_pct": 31.82,
+          "profit_sum": 177559.07,
+          "loss_sum": 103961.29
+        },
+        {
+          "quantile": "Q4",
+          "n_trades": 45,
+          "mean_return_pct": 3.1324,
+          "median_return_pct": -0.4157,
+          "win_rate_pct": 48.89,
+          "profit_sum": 199229.52,
+          "loss_sum": 101593.35
+        }
+      ]
+    },
+    {
+      "feature": "vol_shock_30_180",
+      "n_mapped_trades": 173,
+      "rho_spearman": -0.0222,
+      "delta_mean_return_pct_q1_minus_q4": -1.7601,
+      "loss_share_q4": 0.2839,
+      "promising": false,
+      "quantiles": [
+        {
+          "quantile": "Q1",
+          "n_trades": 44,
+          "mean_return_pct": 2.4117,
+          "median_return_pct": -1.2818,
+          "win_rate_pct": 40.91,
+          "profit_sum": 178621.77,
+          "loss_sum": 120261.36
+        },
+        {
+          "quantile": "Q2",
+          "n_trades": 43,
+          "mean_return_pct": 0.3644,
+          "median_return_pct": -1.2319,
+          "win_rate_pct": 34.88,
+          "profit_sum": 106713.56,
+          "loss_sum": 89432.38
+        },
+        {
+          "quantile": "Q3",
+          "n_trades": 43,
+          "mean_return_pct": 0.4446,
+          "median_return_pct": -1.0419,
+          "win_rate_pct": 34.88,
+          "profit_sum": 180935.66,
+          "loss_sum": 113413.05
+        },
+        {
+          "quantile": "Q4",
+          "n_trades": 43,
+          "mean_return_pct": 4.1718,
+          "median_return_pct": 0.2155,
+          "win_rate_pct": 51.16,
+          "profit_sum": 266204.22,
+          "loss_sum": 128109.53
+        }
+      ]
+    }
+  ]
+}

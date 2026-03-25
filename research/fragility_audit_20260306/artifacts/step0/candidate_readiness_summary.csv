@@ -1,0 +1,7 @@
+candidate_label,fill_ledger_status,native_episode_status,unit_size_episode_status,track_a_status,track_b_status,primary_blocker,notes
+E0,READY,READY,PARTIAL,GO,GO,Unit-size episode recomputation of Sharpe/CAGR needed,Fill ledger = episode ledger (all 1-buy 1-sell); trade_profile_8x5 already provides T1-T8 metrics; Track A can start immediately using existing trade log + trade_profile_8x5
+E5,READY,READY,PARTIAL,n/a,GO,Unit-size episode recomputation,trade_profile_8x5 provides T1-T8; Track B ready
+SM,READY,READY,PARTIAL,n/a,GO,Unit-size episode recomputation,trade_profile_8x5 provides T1-T8; Track B ready
+LATCH,READY,READY,PARTIAL,n/a,GO,Unit-size episode recomputation,trade_profile_8x5 provides T1-T8; Track B ready
+E0_plus_EMA1D21,READY,READY,PARTIAL,n/a,GO,Unit-size episode recomputation,trade_profile_8x5 provides T1-T8; Track B ready
+E5_plus_EMA1D21,READY,READY,PARTIAL,n/a,PARTIAL,MFE/MAE not computed; not in trade_profile_8x5,Trade CSV exists with same schema; needs trade_profile_8x5 rerun or extension to cover 6th candidate

@@ -1,0 +1,72 @@
+{
+  "candidate": {
+    "smart": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    },
+    "base": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    },
+    "harsh": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    }
+  },
+  "baseline": {
+    "smart": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    },
+    "base": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    },
+    "harsh": {
+      "add_throttle_dd1": 0.0,
+      "add_throttle_dd2": 0.0,
+      "add_throttle_mult": 0.0,
+      "add_attempt_count": 0,
+      "add_allowed_count": 0,
+      "add_blocked_count": 0,
+      "throttle_activation_rate": 0.0,
+      "mean_dd_depth_when_blocked": 0.0,
+      "p90_dd_depth_when_blocked": 0.0
+    }
+  }
+}

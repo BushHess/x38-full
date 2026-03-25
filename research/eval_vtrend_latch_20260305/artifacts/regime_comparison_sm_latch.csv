@@ -1,0 +1,11 @@
+dimension,sm_value,latch_value,delta,interpretation
+bars_compared,18656,18656,0,all finite-indicator bars
+regime_on_bars,8958,9785,+827,LATCH extends regime ON by hysteresis
+regime_on_pct,48.0%,52.4%,+4.4%,"hysteresis adds 4.4% more time in bullish regime"
+regime_flips,254,170,-84,"LATCH has 33.1% fewer regime transitions (smoother)"
+agree_bars,17829,17829,0,95.6% concordance
+disagree_sm_on_latch_off,0,n/a,0,never: SM ON when LATCH OFF
+disagree_sm_off_latch_on,827,n/a,827,"hysteresis persistence: LATCH holds ON when SM turns OFF"
+position_concordance,n/a,n/a,99.8%,"despite regime difference, nearly identical trade decisions"
+entries_binary_signal,76,76,0,"same entry count with identical parameters"
+exits_binary_signal,76,76,0,"same exit count — regime flip_off adds exits but floor_break dominates"

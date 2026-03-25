@@ -1,0 +1,4 @@
+sharpe,cagr_pct,max_dd_pct,trades,win_rate_pct,profit_factor,avg_exposure,avg_days_held,sortino,calmar,final_nav,total_return_pct,years,strategy
+1.8986,61.02,18.97,63,57.14,2.1057,0.3444,4.28,1.631,3.2162,27721.58,177.22,2.14,V3
+1.2109,33.97,23.7,63,50.79,1.5641,0.4032,5.01,1.0993,1.4332,18700.77,87.01,2.14,V4
+1.2848,38.88,21.55,57,50.88,1.8804,0.4346,5.96,1.2187,1.8042,20199.81,102.0,2.14,E5+EMA21D1

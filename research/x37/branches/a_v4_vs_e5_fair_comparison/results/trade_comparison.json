@@ -1,0 +1,22 @@
+{
+  "v4": {
+    "trades": 51,
+    "win_rate": 0.5882,
+    "avg_return": 0.075134,
+    "median_return": 0.00365,
+    "avg_hold_days": 11.05,
+    "median_hold_days": 6.33,
+    "top5_pnl_sum": 155133.99,
+    "bottom5_pnl_sum": -20660.51
+  },
+  "e5": {
+    "trades": 162,
+    "win_rate": 0.4444,
+    "avg_return": 0.024516,
+    "median_return": -0.005272,
+    "avg_hold_days": 6.17,
+    "median_hold_days": 4.75,
+    "top5_pnl_sum": 162434.19,
+    "bottom5_pnl_sum": -49917.02
+  }
+}

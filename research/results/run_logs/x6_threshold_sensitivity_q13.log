@@ -1,0 +1,112 @@
+=====================================================================================
+SECTION 1: Current sign-off at threshold = -0.35
+=====================================================================================
+  SM              delta=-0.000  status=GO                 margin=+0.350
+  E0_plus         delta=-0.318  status=GO_WITH_GUARDS     margin=+0.032
+  E0              delta=-0.322  status=GO_WITH_GUARDS     margin=+0.028
+  E5_plus         delta=-0.396  status=HOLD               margin=-0.046
+  E5              delta=-0.402  status=HOLD               margin=-0.052
+
+=====================================================================================
+SECTION 2: Threshold sensitivity — who passes at each level?
+=====================================================================================
+
+ Threshold            SM     E0_plus          E0     E5_plus          E5
+------------------------------------------------------------------------
+     -0.20            GO        HOLD        HOLD        HOLD        HOLD
+     -0.25            GO        HOLD        HOLD        HOLD        HOLD
+     -0.30            GO        HOLD        HOLD        HOLD        HOLD
+     -0.32            GO         GWG        HOLD        HOLD        HOLD
+     -0.35            GO         GWG         GWG        HOLD        HOLD ← current
+     -0.38            GO         GWG         GWG        HOLD        HOLD
+     -0.40            GO         GWG         GWG         GWG        HOLD
+     -0.45            GO         GWG         GWG         GWG         GWG
+     -0.50            GO         GWG         GWG         GWG         GWG
+     -0.60            GO         GWG         GWG         GWG         GWG
+
+=====================================================================================
+SECTION 3: Critical threshold values (where verdicts flip)
+=====================================================================================
+
+  Threshold range       E0_plus     E5_plus     Who benefits?
+  ─────────────────     ────────    ────────    ─────────────
+  > -0.318              GO_WITH_G   GO_WITH_G   Both pass
+  -0.318 to -0.396      HOLD       GO_WITH_G   Only E5_plus passes (current roles reversed!)
+  -0.396 to -0.402      HOLD        HOLD       Neither passes
+  < -0.402              HOLD        HOLD       All binary HOLD
+
+  CURRENT (-0.35):      GO_WITH_G    HOLD       Only E0_plus passes
+  At -0.40:             HOLD         HOLD       Both fail → SM only viable
+  At -0.32:             GO_WITH_G   GO_WITH_G   Both pass
+
+=====================================================================================
+SECTION 4: The two arbitrary thresholds in series
+=====================================================================================
+
+The recommendation chain depends on TWO unproven thresholds:
+
+  THRESHOLD 1: WFO win_rate >= 0.60
+  ─────────────────────────────────
+  Source: validation/thresholds.py (hardcoded default)
+  Provenance: Report 32 H04 — "UNPROVEN"
+  Statistical basis: For N=8 windows, P(≥5/8 | H₀) = 0.363
+                     This is NOT a standard significance level
+  Impact: E0 gets 0/8 (tautological), X0 gets 6/8 (PASS), X2/X6 get 4/8 (FAIL)
+
+  THRESHOLD 2: worst_combo_delta_sharpe > -0.35
+  ──────────────────────────────────────────────
+  Source: run_step5_live_signoff.py line 89 (hardcoded constant)
+  Provenance: NONE — not in Report 32 inventory, not in any research report
+  Statistical basis: NONE — no simulation, derivation, or literature reference
+  Impact: E0_plus passes at -0.318 (margin 0.032), E5_plus fails at -0.396 (over by 0.046)
+
+  COMBINED EFFECT:
+  ────────────────
+  X2/X6 rejected by threshold 1 (WFO 4/8 < 60%)
+  E5_plus rejected by threshold 2 (combined -0.396 < -0.35)
+  Only X0 (E0_plus) survives both arbitrary gates
+
+=====================================================================================
+SECTION 5: What standard statistical thresholds would look like
+=====================================================================================
+  X0 (E0_plus)     WFO 6/8  Binomial P(>=6/8 | H0) = 0.1445  FAIL α=0.05
+  E5_plus          WFO 5/8  Binomial P(>=5/8 | H0) = 0.3633  FAIL α=0.05
+  X2/X6            WFO 4/8  Binomial P(>=4/8 | H0) = 0.6367  FAIL α=0.05
+
+  At α=0.05 (one-sided): need P < 0.05 → need ≥7/8 wins
+  At α=0.10: need P < 0.10 → need ≥7/8 wins
+  At α=0.20: need P < 0.20 → need ≥6/8 wins
+  At α=0.35: need P < 0.35 → need ≥5/8 wins  ← E5_plus passes here
+
+  The current 60% threshold (5/8) corresponds to α ≈ 0.363 — far above
+  any standard significance level. Even the 6/8 (X0) corresponds to α=0.145.
+
+  NONE of the WFO results are statistically significant at α=0.05.
+
+=====================================================================================
+SECTION 6: Summary of arbitrary threshold chain
+=====================================================================================
+
+FINDING: The final recommendation (X0 over E5+EMA1D21) rests on
+TWO arbitrary thresholds applied in series:
+
+  1. WFO 60% — UNPROVEN (Report 32 H04)
+     → Rejects X2/X6 (4/8) but passes X0 (6/8) and E5+ (5/8)
+
+  2. Combined disruption -0.35 — ZERO PROVENANCE (not even audited)
+     → Rejects E5+ (-0.396) but passes X0 (-0.318)
+     → Margin of decision: 0.078 Sharpe units
+     → If threshold were -0.40: both fail → recommendation becomes SM
+     → If threshold were -0.32: both pass → E5+ would be recommended
+
+  Neither threshold has:
+  ✗ Statistical derivation
+  ✗ Simulation calibration
+  ✗ Literature reference
+  ✗ Sensitivity analysis
+  ✗ Provenance documentation
+
+  The entire decision path from "E5+EMA1D21 is the best strategy" to
+  "X0 is the recommendation" hangs on 0.078 Sharpe units of margin
+  split across two undocumented thresholds.
+

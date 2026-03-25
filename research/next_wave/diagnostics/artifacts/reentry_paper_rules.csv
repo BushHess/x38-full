@@ -1,0 +1,4 @@
+rule,description,n_blocked,n_remaining,blocked_losers,blocked_winners,blocked_pnl,original_pnl,remaining_pnl,net_effect,blocked_mean_ret
+re6_breadth_rank_gt_0.58,Veto re-entry (<=6 bars) when breadth_pct_rank_90 > 0.58,32,154,23,9,-18069.0,426354.0,444423.0,18069.0,-0.21
+re2_breadth_share_gt_0.80,Veto re-entry (<=2 bars) when breadth_share > 0.80,15,171,12,3,-24402.0,426354.0,450756.0,24402.0,-1.928
+re6_funding_rank_gt_0.80,Veto re-entry (<=6 bars) when funding_pct_rank > 0.80,31,134,19,12,43854.0,412452.0,368598.0,-43854.0,1.404

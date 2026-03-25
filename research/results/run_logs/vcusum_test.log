@@ -1,0 +1,43 @@
+======================================================================
+VCUSUM — SEQUENTIAL CHANGE-POINT DETECTION: FULL VALIDATION PIPELINE
+======================================================================
+  Period: 2019-01-01 -> 2026-02-20   Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 2000 paths, block=60, seed=42
+  Permutation: 10000 shuffles
+  Timescales: 16 (30-720 H4 bars)
+  CUSUM: k=0.5, threshold=4.0
+  Pipeline: 4 phases with early stopping
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+======================================================================
+PHASE 1a: PERMUTATION TEST — CUSUM SIGNAL
+======================================================================
+  Real score: 65.45  (CAGR=+25.2%, Sharpe=0.934, MDD=28.5%, trades=80)
+      2000/10000  (20s, ~81s left)
+      4000/10000  (40s, ~61s left)
+      6000/10000  (61s, ~41s left)
+      8000/10000  (81s, ~20s left)
+     10000/10000  (101s, ~0s left)
+
+  Done: 101.2s (99 perms/sec)
+  Null: mean=-2.64, std=30.41
+  p-value: 0.018600
+  Gate: FAIL (threshold: p < 0.001)
+
+======================================================================
+PHASE 1b: PERMUTATION TEST — ATR TRAILING STOP
+======================================================================
+      2000/10000  (22s, ~87s left)
+      4000/10000  (43s, ~65s left)
+      6000/10000  (64s, ~43s left)
+      8000/10000  (86s, ~22s left)
+     10000/10000  (108s, ~0s left)
+
+  Done: 107.8s
+  p-value: 0.006200
+  Gate: FAIL
+
+EARLY STOP at Phase 1. Results -> /var/www/trading-bots/btc-spot-dev/research/results/vcusum_test.json

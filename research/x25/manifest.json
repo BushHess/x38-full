@@ -1,0 +1,93 @@
+{
+  "study_id": "entry_filter_lab",
+  "created": "2026-03-10",
+  "objective": "Discover and validate volume/microstructure entry filter for BTC H4 trend-following",
+  "protocol_version": "1.0",
+  "constraints": {
+    "max_filter_params": 2,
+    "total_dof_target": 6,
+    "approx_trades": 226,
+    "asset": "BTC spot",
+    "timeframe": "H4",
+    "direction": "long-only",
+    "entry_base": "EMA(30) cross above EMA(120) on H4 close",
+    "regime_filter": "D1 close > D1 EMA(21)",
+    "exit": "ATR trailing stop or EMA cross-down (fixed, not modified)",
+    "data": "/var/www/trading-bots/btc-spot/data/bars_btcusdt_h1_4h_1d.csv"
+  },
+  "phases": [
+    {"id": "00", "name": "data_audit", "status": "DONE"},
+    {"id": "01", "name": "raw_eda", "status": "DONE"},
+    {"id": "02", "name": "trade_eda", "status": "DONE"},
+    {"id": "03", "name": "formalization", "status": "DONE"},
+    {"id": "04", "name": "go_no_go", "status": "DONE", "gate": "STOP_VDO_NEAR_OPTIMAL", "conclusion": "B"},
+    {"id": "05", "name": "design", "status": "SKIPPED", "reason": "Gate STOP at Phase 4"},
+    {"id": "06", "name": "validation", "status": "SKIPPED", "reason": "Gate STOP at Phase 4"},
+    {"id": "07", "name": "final_report", "status": "DONE", "gate": "FINALIZED_KEEP_VDO"}
+  ],
+  "tags": {
+    "figures": [
+      "Fig01: H4 close + TBR timeseries",
+      "Fig02: TBR yearly histograms",
+      "Fig03: Volume by bar type",
+      "Fig04: TBR by bar type",
+      "Fig05: ACF comparison (volume, TBR, returns)",
+      "Fig06a/b/c: TBR vs forward returns scatter",
+      "Fig07: Regime-dependent correlations",
+      "Fig08: Rolling Spearman TBR→fwd return",
+      "Fig09: Volume profile around entry (W vs L)",
+      "Fig10: TBR profile around entry (W vs L)",
+      "Fig11: Volatility profile around entry (W vs L)",
+      "Fig12: VDO histogram at entry (W vs L)",
+      "Fig13: VDO vs net return scatter",
+      "Fig14a-e: 5 worst losers individual plots"
+    ],
+    "tables": [
+      "Tbl01: Bar type statistical tests",
+      "Tbl02: TBR forward correlation table",
+      "Tbl03: Regime-conditioned correlation table",
+      "Tbl04: Winner/loser trade group statistics",
+      "Tbl05: Entry bar feature separation tests",
+      "Tbl06: VDO at entry statistics"
+    ],
+    "observations": [
+      "Obs01: TBR contemporaneous, not predictive (Fig04, Tbl01)",
+      "Obs02: TBR moderate ACF, slow decay (Fig05)",
+      "Obs03: TBR→fwd return near zero all horizons (Tbl02)",
+      "Obs04: TBR→fwd return sign weakly negative (Tbl02)",
+      "Obs05: Volume higher during strong moves both dirs (Fig03, Tbl01)",
+      "Obs06: TBR distribution shape varies yearly (Fig02)",
+      "Obs07: Rolling TBR→fwd return non-stationary, oscillates (Fig08)",
+      "Obs08: Regime conditioning does not improve TBR (Fig07, Tbl03)",
+      "Obs09: H4 returns near-zero ACF (Fig05)",
+      "Obs10: Data quality high (00_data_audit.md)",
+      "Obs11: Volume does NOT differentiate up vs down (Fig03, Tbl01) [NON-FINDING]",
+      "Obs12: TBR no predictive power at t+24 (Tbl02) [NON-FINDING]",
+      "Obs13: Weak negative TBR→fwd possibly spurious (Fig08, Tbl02) [SPURIOUS?]",
+      "Obs14: Regime difference at t+24 likely noise (Fig07, Tbl03) [SPURIOUS?]",
+      "Obs15: Volume profile identical W vs L (Fig09)",
+      "Obs16: TBR profile identical W vs L (Fig10)",
+      "Obs17: All 5 features fail at entry bar, p>0.39 (Tbl05)",
+      "Obs18: VDO marginal p=0.086, r_rb=0.144 (Tbl06)",
+      "Obs19: Volatility gap persistent, not entry-localized (Fig11, Tbl05)",
+      "Obs20: Winners hold 3.5x longer (Tbl04) [OUTCOME, not predictor]",
+      "Obs21: Pre-entry TBR rise is mechanical (Fig10, Obs01)",
+      "Obs22: 91% trail stop exits (Tbl04)",
+      "Obs23: Worst losers show no common volume/TBR pattern (Fig14a-e)",
+      "Obs24: VDO clusters just above zero (Fig12, Fig13)",
+      "Obs25: VDO slightly favors winners [VISUALLY TEMPTING, WEAK] (Fig12, Tbl06)",
+      "Obs26: Volatility gap [VISUALLY TEMPTING, WEAK] (Fig11, Tbl05)"
+    ],
+    "hypotheses": [],
+    "propositions": [
+      "Prop01: Volume/TBR no incremental info | HIGH | Obs15,Obs16,Obs17",
+      "Prop02: VDO marginal signal likely floor artifact | MEDIUM | Obs18,Obs24,Obs25",
+      "Prop03: Pre-entry TBR rise is mechanical, info-free | HIGH | Obs21,Obs01,Obs16",
+      "Prop04: TBR predictive content non-stationary, negligible | HIGH | Obs03,Obs04,Obs07,Obs13",
+      "Prop05: Volume symmetric up/down, uninformative for long-only | HIGH | Obs05,Obs11,Obs15,Obs17",
+      "Prop06: Volatility gap is regime property, not entry feature | MED-HIGH | Obs19,Obs26,Tbl05"
+    ],
+    "candidates": [],
+    "tests": []
+  }
+}

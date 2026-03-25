@@ -1,0 +1,2 @@
+pair_id,entry_ts,channel,candidate_in_position,pnl_usd,return_pct,bars_held,entry_context,failure_mode,is_winner
+x0e5_floor_latch,2020-04-15T20:00:00Z,reference_only,True,17.62,0.3775,30,chop,winner,True

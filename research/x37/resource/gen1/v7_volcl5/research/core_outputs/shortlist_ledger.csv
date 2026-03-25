@@ -1,0 +1,16 @@
+stage,item_id,action,reason
+stage2,native_d1|volcluster_5_20|low|fixed|1,keep,"Strong slower volatility-state representative; discovery CAGR 0.708, Sharpe 1.267, 126 trades, positive holdout later, reserve later positive."
+stage2,native_d1|atrpct_10|high|q|0.60,keep,Simple slower volatility-level rival; strong discovery metrics and independent corroboration of slower volatility regime family.
+stage2,native_d1|ret_40|high|q|0.75,keep,Best slower directional/trend representative; strong discovery edge despite sparse trade count.
+stage2,native_d1|takeratio_10|low|abs|0.480,keep,Orthogonal slower participation/flow representative; lower exposure and distinct failure mode.
+stage2,native_h4|rangepct_48|high|q|0.60,keep,Best native H4 range/breakout representative; strong discovery and positive holdout.
+stage2,native_h4|ret_48|high|q|0.55,keep,Simple native H4 momentum representative; broad local plateau and nearest simple rival to H4 range.
+stage2,native_h4|takeratio_6|high|abs|0.520,keep,Orthogonal H4 participation filter; modest edge and useful as optional entry/filter candidate.
+stage2,native_h4|retvol_48|high|q|0.55,drop,Near-duplicate of native_h4|ret_48|high|q|0.55 with very high daily correlation; ret_48 is simpler.
+stage2,cross_tf|x_rel_d1low_atr|high|zero|0,drop,Cross-timeframe relation candidate was discovery-positive but failed 50 bps stress and carried high drawdown.
+stage2,cross_tf|x_h4rangepct_vs_d1trend|high|zero|0,drop,Cross-timeframe relation candidate discovery edge proved cost-fragile and not frontier-worthy.
+stage2,transported_d1_on_h4|volcluster_5_20|low|fixed|1,drop,"Transported slower-state clone; not independent fast information, daily-return correlation with native D1 clone ≈ 0.9996."
+stage3,2L_VOLCL_RANGE48_Q60,keep,Best two-layer family from discovery; D1 volcluster gate + H4 range controller improved Sharpe and drawdown versus H4 controller alone.
+stage3,2L_VOLCL_RET48_Q55,keep,Nearest two-layer internal rival within same gate family; retained for comparison-set freeze.
+stage3,2L_TAKER10_RANGE48_ABS060,keep,Orthogonal lower-risk layered alternative with distinct failure mode; retained for frozen comparison set.
+stage3,3L_VOLCL_RANGE48_Q60_ENTRY_TAKER6_ABS052,drop,"Entry-only confirmation layer shrank trades too severely and degraded discovery, holdout, and reserve performance; layer did not earn its place."

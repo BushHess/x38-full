@@ -1,0 +1,43 @@
+======================================================================
+VBREAK — DONCHIAN BREAKOUT: FULL VALIDATION PIPELINE
+======================================================================
+  Period: 2019-01-01 → 2026-02-20   Warmup: 365d
+  Cost: harsh (50 bps RT)
+  Bootstrap: 2000 paths, block=60, seed=42
+  Permutation: 10000 shuffles
+  Timescales: 16 (30–720 H4 bars)
+  Exit ratio: M = N // 3
+  Pipeline: 4 phases with early stopping
+
+Loading data...
+  17838 H4 bars, warmup idx=2190, trading=15648 bars
+
+======================================================================
+PHASE 1a: PERMUTATION TEST — BREAKOUT SIGNAL
+======================================================================
+  Real score: 89.10  (CAGR=+35.2%, Sharpe=1.179, MDD=34.0%, trades=75)
+      2000/10000  (28s, ~111s left)
+      4000/10000  (56s, ~84s left)
+      6000/10000  (83s, ~56s left)
+      8000/10000  (111s, ~28s left)
+     10000/10000  (139s, ~0s left)
+
+  Done: 139.4s (72 perms/sec)
+  Null: mean=-10.53, std=40.08
+  p-value: 0.002600
+  Gate: FAIL (threshold: p < 0.001)
+
+======================================================================
+PHASE 1b: PERMUTATION TEST — ATR TRAILING STOP
+======================================================================
+      2000/10000  (26s, ~104s left)
+      4000/10000  (53s, ~79s left)
+      6000/10000  (80s, ~53s left)
+      8000/10000  (107s, ~27s left)
+     10000/10000  (134s, ~0s left)
+
+  Done: 134.0s
+  p-value: 0.047200
+  Gate: FAIL
+
+EARLY STOP at Phase 1. Results → /var/www/trading-bots/btc-spot-dev/research/results/vbreak_test.json

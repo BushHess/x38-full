@@ -1,0 +1,5 @@
+# Artifact Hash Manifest
+# Generated: 2026-03-20T17:12:47Z
+# Scope: all files in frozen_system_specs/ and frozen_implementations/ packaged in this state pack
+# format: sha256  file_size_bytes  line_count  relative_path
+# No frozen artifacts are present in this pack because the session outcome was NO_ROBUST_CANDIDATE.

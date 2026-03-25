@@ -1,0 +1,5 @@
+strategy,churn_events,churn_rate,churn_cost_pct,n_trades
+Cand01,0,0.0,0.0,70
+Cand02,0,0.0,0.0,68
+Cand03,1,1.9,0.5,55
+Benchmark,107,49.1,53.5,219

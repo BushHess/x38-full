@@ -1,0 +1,61 @@
+candidates:
+  - name: v10_baseline
+    description: "V8 Apex current defaults"
+    params: {}
+
+  # Cycle: only early bull boost, no late penalty
+  - name: v11_cycle_early_only
+    strategy: v11_hybrid
+    description: "Cycle phase: early bull boost only, late=neutral"
+    params:
+      enable_cycle_phase: true
+      cycle_late_aggression: 1.0
+      cycle_late_trail_mult: 3.5
+      cycle_late_max_exposure: 1.0
+
+  # Cycle: mild late penalty (80% instead of 60%)
+  - name: v11_cycle_mild_late
+    strategy: v11_hybrid
+    description: "Cycle with milder late bull penalty"
+    params:
+      enable_cycle_phase: true
+      cycle_late_aggression: 0.80
+      cycle_late_trail_mult: 3.0
+      cycle_late_max_exposure: 0.85
+
+  # Cycle: wider late threshold (only trigger at 50% above MA200)
+  - name: v11_cycle_wide_late
+    strategy: v11_hybrid
+    description: "Cycle with wider late bull threshold"
+    params:
+      enable_cycle_phase: true
+      cycle_late_min_dist: 0.50
+      cycle_late_rsi_min: 75.0
+
+  # MR: ultra-extreme thresholds only
+  - name: v11_mr_ultra
+    strategy: v11_hybrid
+    description: "MR with very extreme thresholds (RSI 90+)"
+    params:
+      enable_mr_defensive: true
+      d1_rsi_extreme_high: 88.0
+      d1_rsi_entry_block: 92.0
+      d1_rsi_exit_trigger: 95.0
+      ma200_dist_reduce: 0.60
+      ma200_dist_block: 0.80
+
+  # Best cycle + ultra MR
+  - name: v11_cycle_mild_mr_ultra
+    strategy: v11_hybrid
+    description: "Mild cycle + ultra-extreme MR"
+    params:
+      enable_cycle_phase: true
+      cycle_late_aggression: 0.80
+      cycle_late_trail_mult: 3.0
+      cycle_late_max_exposure: 0.85
+      enable_mr_defensive: true
+      d1_rsi_extreme_high: 88.0
+      d1_rsi_entry_block: 92.0
+      d1_rsi_exit_trigger: 95.0
+      ma200_dist_reduce: 0.60
+      ma200_dist_block: 0.80

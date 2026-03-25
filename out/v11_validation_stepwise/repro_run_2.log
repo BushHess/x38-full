@@ -1,0 +1,37 @@
+======================================================================
+  REPRODUCIBLE V10 vs V11 COMPARISON
+======================================================================
+  Data: bars_btcusdt_2016_now_h1_4h_1d.csv
+  Range: 2019-01-01 → 2026-02-20, warmup=365d
+  Bootstrap: n=5000, block=20, seed=42
+  Baseline: V8ApexConfig() defaults
+  Candidate: V11HybridConfig WFO-optimal (0.95/2.8/0.90)
+
+  [smart] round_trip=13.0 bps
+    V10: score=121.3708 CAGR=48.56% MDD=34.07% Sharpe=1.3856
+    V11: score=123.3048 CAGR=49.26% MDD=34.07% Sharpe=1.4051
+    Delta: score=+1.9340
+  [base] round_trip=31.0 bps
+    V10: score=112.7367 CAGR=45.55% MDD=34.78% Sharpe=1.3219
+    V11: score=114.6459 CAGR=46.24% MDD=34.78% Sharpe=1.3413
+    Delta: score=+1.9092
+  [harsh] round_trip=50.0 bps
+    V10: score=88.9365 CAGR=37.26% MDD=36.28% Sharpe=1.1510
+    V11: score=90.7970 CAGR=37.93% MDD=36.28% Sharpe=1.1700
+    Delta: score=+1.8605
+
+  Saved: out_v11_validation_stepwise/summary_full_backtest.csv
+
+  Paired bootstrap (seed=42):
+    [smart] delta=+0.0196 CI=[-0.0047, +0.0534] P(V11>V10)=0.9240 seed=42
+    [base] delta=+0.0194 CI=[-0.0047, +0.0530] P(V11>V10)=0.9216 seed=42
+    [harsh] delta=+0.0191 CI=[-0.0053, +0.0527] P(V11>V10)=0.9170 seed=42
+  Saved: out_v11_validation_stepwise/paired_bootstrap.csv
+
+  SHA256(summary_full_backtest.csv): 51dde56ebe98e7304321a06d53f820e62bac42a3169292a7292467ba377c9290
+
+  SHA256(paired_bootstrap.csv): 35b91db43eda73c57021769cd4295da352a6813e485a34cae149588fe905d97a
+
+======================================================================
+  DONE. Run twice and compare SHA256 hashes for PASS/FAIL.
+======================================================================

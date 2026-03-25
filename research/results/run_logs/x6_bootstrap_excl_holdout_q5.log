@@ -1,0 +1,68 @@
+/var/www/trading-bots/btc-spot-dev/research/x6/bootstrap_excl_holdout_q5.py:25: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+Q5: BOOTSTRAP VCBB — FULL vs PRE-HOLDOUT COMPARISON
+================================================================================
+  Full sample: 17838 bars (7.14 years post-warmup)
+  Pre-holdout: 14706 bars (5.71 years post-warmup)
+  Holdout:     3132 bars (1.43 years)
+  Warmup idx:  2190
+
+================================================================================
+  BOOTSTRAP: FULL (incl holdout)
+  Data bars: 17838, post-warmup: 15648
+================================================================================
+  X0: 55.5s
+  X2: 69.4s
+  X6: 68.8s
+
+  X2 vs X0 Sharpe median (bootstrap):
+      SP          X0          X2     wins?       delta
+      30      0.0485      0.0690       YES     +0.0205
+      60      0.1942      0.2637       YES     +0.0695
+     120      0.2897      0.3697       YES     +0.0800
+     200      0.2639      0.3366       YES     +0.0727
+     360      0.2405      0.3061       YES     +0.0656
+     720      0.1844      0.2264       YES     +0.0421
+  → X2 wins: 6/16
+
+  X6 vs X0 Sharpe median (bootstrap):
+      SP          X0          X6     wins?       delta
+      30      0.0485      0.0690       YES     +0.0205
+      60      0.1942      0.2637       YES     +0.0695
+     120      0.2897      0.3697       YES     +0.0800
+     200      0.2639      0.3366       YES     +0.0727
+     360      0.2405      0.3061       YES     +0.0656
+     720      0.1844      0.2264       YES     +0.0421
+  → X6 wins: 6/16
+
+================================================================================
+  BOOTSTRAP: PRE-HOLDOUT (excl)
+  Data bars: 14706, post-warmup: 12516
+================================================================================
+  X0: 51.4s
+  X2: 56.9s
+  X6: 58.6s
+
+  X2 vs X0 Sharpe median (bootstrap):
+      SP          X0          X2     wins?       delta
+      30      0.2097      0.2229       YES     +0.0133
+      60      0.3429      0.3949       YES     +0.0520
+     120      0.3866      0.4714       YES     +0.0848
+     200      0.3806      0.4652       YES     +0.0847
+     360      0.3300      0.4502       YES     +0.1201
+     720      0.3106      0.3956       YES     +0.0849
+  → X2 wins: 6/16
+
+  X6 vs X0 Sharpe median (bootstrap):
+      SP          X0          X6     wins?       delta
+      30      0.2097      0.2229       YES     +0.0133
+      60      0.3429      0.3949       YES     +0.0520
+     120      0.3866      0.4714       YES     +0.0848
+     200      0.3806      0.4652       YES     +0.0847
+     360      0.3300      0.4502       YES     +0.1201
+     720      0.3106      0.3956       YES     +0.0849
+  → X6 wins: 6/16
+
+
+Total time: 365.7s

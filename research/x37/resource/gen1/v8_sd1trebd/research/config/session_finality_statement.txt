@@ -1,0 +1,1 @@
+This V8 run is the final same-file audit on the current BTC/USDT file pair. After reserve/internal evaluation is reported, same-file prompt iteration stops; stronger claims require appended future data.

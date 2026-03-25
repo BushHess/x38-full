@@ -1,0 +1,115 @@
+======================================================================
+X31 PHASE 0: D1 REGIME EXIT DIAGNOSTIC
+======================================================================
+
+Loading data...
+  H4 bars: 17838, D1 bars: 2973, warmup idx: 2190
+Computing indicators...
+Running base sim (50 bps)...
+  Total trades: 202
+  Trail stops:  183
+  Trend exits:  19
+  End of data:  0
+
+Analyzing D1 regime flips during trades...
+
+======================================================================
+ANALYSIS 1: COVERAGE
+======================================================================
+  Total trades:              202
+  D1 flips before exit:      33 (16.3%)
+  No D1 flip (regime held):  169 (83.7%)
+
+  By exit reason:
+    trail_stop     : 20/183 (10.9%)
+    trend_exit     : 13/19 (68.4%)
+    end_of_data    : 0/0 (0.0%)
+
+  GATE 1 (coverage >= 10%): PASS (16.3%)
+
+======================================================================
+ANALYSIS 2: TIMING ADVANTAGE
+======================================================================
+  Bars saved (D1 exit earlier than actual):
+    Median:  10 bars (40 hours)
+    Mean:    19.0 bars (76 hours)
+    P25-P75: [4, 20] bars
+    Min-Max: [1, 146] bars
+
+  GATE 2 (median >= 2 bars): PASS (10)
+
+======================================================================
+ANALYSIS 3: P&L SELECTIVITY
+======================================================================
+
+  D1-flip trades breakdown:
+    Actual losers:  28
+    Actual winners: 5
+
+  LOSERS (D1 exit vs actual):
+    Improved by D1 exit: 20/28 (71.4%)
+    Mean Δret:   +1.67%
+    Median Δret: +0.89%
+    Mean actual ret:  -3.84%
+    Mean hyp ret:     -2.17%
+
+  WINNERS (D1 exit vs actual):
+    Hurt by D1 exit: 5/5 (100.0%)
+    Mean Δret:   -22.29%
+    Median Δret: -9.24%
+    Mean actual ret:  20.49%
+    Mean hyp ret:     -1.81%
+
+  NET EFFECT (all D1-flip trades):
+    Mean Δret:   -1.96%
+    Sum Δret:    -64.7%
+
+  SELECTIVITY:
+    Mean loser benefit (saved):  +1.67%
+    Mean winner cost (cut):      +22.29%
+    Selectivity ratio (benefit/cost): 0.07
+
+======================================================================
+ANALYSIS 4: TOP-20 WINNER DAMAGE
+======================================================================
+  Top-20 winners with D1 flip: 2/20 (10.0%)
+
+  Rank   ActRet%   HypRet%     ΔRet%  D1Flip  BarsSaved          Exit
+     1    +67.57     -1.94    -69.51     YES        146    trail_stop
+     2    +61.20       N/A       N/A      no        N/A    trail_stop
+     3    +57.89       N/A       N/A      no        N/A    trail_stop
+     4    +40.35       N/A       N/A      no        N/A    trail_stop
+     5    +32.36       N/A       N/A      no        N/A    trail_stop
+     6    +31.40       N/A       N/A      no        N/A    trail_stop
+     7    +28.07       N/A       N/A      no        N/A    trail_stop
+     8    +25.13       N/A       N/A      no        N/A    trail_stop
+     9    +25.00     -2.87    -27.88     YES         60    trail_stop
+    10    +24.66       N/A       N/A      no        N/A    trail_stop
+    11    +23.30       N/A       N/A      no        N/A    trail_stop
+    12    +20.32       N/A       N/A      no        N/A    trail_stop
+    13    +18.05       N/A       N/A      no        N/A    trail_stop
+    14    +17.56       N/A       N/A      no        N/A    trail_stop
+    15    +16.47       N/A       N/A      no        N/A    trail_stop
+    16    +16.40       N/A       N/A      no        N/A    trail_stop
+    17    +15.83       N/A       N/A      no        N/A    trail_stop
+    18    +15.60       N/A       N/A      no        N/A    trail_stop
+    19    +15.30       N/A       N/A      no        N/A    trail_stop
+    20    +14.16       N/A       N/A      no        N/A    trail_stop
+
+  GATE 4 (top-20 flip <= 50%): PASS (2/20)
+
+======================================================================
+PHASE 0 VERDICT
+======================================================================
+  Gate 1 — Coverage >= 10%:      PASS (16.3%)
+  Gate 2 — Timing >= 2 bars:     PASS
+  Gate 3 — Selective:            FAIL (ratio=0.07)
+  Gate 4 — Top-20 damage <= 50%: PASS
+
+  >>> VERDICT: STOP (not selective)
+======================================================================
+
+Generating figures...
+
+Artifacts: /var/www/trading-bots/btc-spot-dev/research/x31/tables, /var/www/trading-bots/btc-spot-dev/research/x31/figures
+Total time: 3.5s

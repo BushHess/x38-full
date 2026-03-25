@@ -1,0 +1,54 @@
+candidates:
+  - name: v10_baseline
+    description: "V8 Apex defaults (reference)"
+    params: {}
+
+  - name: v11_cycle_late
+    strategy: v11_hybrid
+    description: "V11 cycle_late_only WFO-opt (0.95/2.8/0.90)"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+
+  - name: ov1_trail_1.8
+    strategy: v11_hybrid
+    description: "Overlay 1: pyramid ban + trail 1.8"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_pyramid_ban: true
+      ov1_late_trail_mult: 1.8
+
+  - name: ov1_trail_2.0
+    strategy: v11_hybrid
+    description: "Overlay 1: pyramid ban + trail 2.0"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_pyramid_ban: true
+      ov1_late_trail_mult: 2.0
+
+  - name: ov1_trail_2.2
+    strategy: v11_hybrid
+    description: "Overlay 1: pyramid ban + trail 2.2"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+      cycle_late_aggression: 0.95
+      cycle_late_trail_mult: 2.8
+      cycle_late_max_exposure: 0.90
+      enable_overlay_pyramid_ban: true
+      ov1_late_trail_mult: 2.2

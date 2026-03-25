@@ -1,0 +1,25 @@
+2026-02-22 16:46:04,807 smoke_c3 INFO === Phase 0: Reset to cash ===
+2026-02-22 16:46:05,301 v10.exchange.account_scope INFO Selling 1.00100000 BTC (rounded from 1.00100000)
+2026-02-22 16:46:05,402 smoke_c3 INFO Cancelled 0 orders, sold 1.00100000 BTC
+2026-02-22 16:46:05,500 smoke_c3 INFO SymbolInfo: step=0.00001000 tick=0.01000000 minQty=0.00001000 minNotional=5.00000000
+2026-02-22 16:46:05,562 smoke_c3 INFO === Phase 1: Run 5 cycles (3 with orders) ===
+2026-02-22 16:46:05,766 smoke_c3 INFO Cycle 0 done in 0.20s | NAV=77594.18 exposure=0.0000 action=HOLD
+2026-02-22 16:46:06,270 smoke_c3 INFO Cycle 1: placing BUY 0.00100 @ MARKET (coid=9781ed73822291837600)
+2026-02-22 16:46:06,500 smoke_c3 INFO Cycle 1 done in 0.43s | NAV=77594.18 exposure=0.0000 action=BUY
+2026-02-22 16:46:07,007 smoke_c3 INFO Cycle 2: placing BUY 0.00100 @ MARKET (coid=b47c426de714259e89ae)
+2026-02-22 16:46:07,233 smoke_c3 INFO Cycle 2 done in 0.43s | NAV=77594.17 exposure=0.0009 action=BUY
+2026-02-22 16:46:07,745 smoke_c3 INFO Cycle 3 done in 0.21s | NAV=77594.16 exposure=0.0017 action=HOLD
+2026-02-22 16:46:08,455 smoke_c3 INFO Cycle 4: placing SELL 0.00200 @ MARKET (coid=fec5296628f069894d8f)
+2026-02-22 16:46:08,683 smoke_c3 INFO Cycle 4 done in 0.64s | NAV=77594.18 exposure=0.0017 action=SELL
+2026-02-22 16:46:08,984 smoke_c3 INFO === Phase 2: Crash simulation (AFTER_SEND) ===
+2026-02-22 16:46:08,995 smoke_c3 INFO Submitting crash-test order coid=157edb846b2b8dd7852b
+2026-02-22 16:46:09,121 smoke_c3 WARNING !!! CrashSimulation raised at AFTER_SEND — simulating process death !!!
+2026-02-22 16:46:09,122 smoke_c3 INFO Order state before restart: 157edb846b2b8dd7852b (status=FILLED)
+2026-02-22 16:46:09,130 smoke_c3 INFO === Phase 3: Restart + Reconcile ===
+2026-02-22 16:46:09,132 smoke_c3 INFO Running reconcile()...
+2026-02-22 16:46:09,245 smoke_c3 INFO Reconcile updated 0 order(s)
+2026-02-22 16:46:09,246 smoke_c3 INFO Order state after reconcile: 157edb846b2b8dd7852b (status=FILLED)
+2026-02-22 16:46:09,452 smoke_c3 INFO Wrote run_meta.json
+2026-02-22 16:46:09,452 smoke_c3 INFO Wrote live_cycles.csv (6 rows)
+2026-02-22 16:46:09,453 smoke_c3 INFO Wrote live_slippage.csv (3 rows)
+2026-02-22 16:46:09,454 smoke_c3 INFO Wrote sqlite_dump.txt

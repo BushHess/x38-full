@@ -1,0 +1,7 @@
+candidate_label,trade_count_expected,trade_count_observed,period_expected,period_observed,fee_expected,fee_observed,recon_status,notes
+E0,192,192,2019-01-01 to 2026-02-20,2019-01-04 to 2026-01-21,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,
+E5,207,207,2019-01-01 to 2026-02-20,2019-01-04 to 2026-01-21,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,
+SM,65,65,2019-01-01 to 2026-02-20,2019-01-06 to 2026-01-19,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,
+LATCH,65,65,2019-01-01 to 2026-02-20,2019-01-06 to 2026-01-19,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,
+E0_plus_EMA1D21,172,172,2019-01-01 to 2026-02-20,2019-01-05 to 2026-01-20,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,
+E5_plus_EMA1D21,186,186,2019-01-01 to 2026-02-20,2019-01-05 to 2026-01-20,50 bps RT,50 bps RT (Step 0 reconciliation),PASS,

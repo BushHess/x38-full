@@ -1,0 +1,10 @@
+{
+  "trade_count": true,
+  "trade_count_detail": "207 vs 207",
+  "entry_exit_timestamps": true,
+  "native_terminal_match": "True",
+  "native_terminal_detail": "replay=282869.38 canonical=282869.38 diff=0.00",
+  "unit_terminal_match": "True",
+  "unit_terminal_detail": "replay=458108.03 canonical=458108.00 diff=0.03",
+  "all_pass": true
+}

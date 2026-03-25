@@ -1,0 +1,75 @@
+{
+  "frozen_date": "2026-03-05",
+  "frozen_before_results": true,
+  "primary_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Under identical sizing (EntryVol_12_NoRebal), E0 has higher Sharpe than LATCH",
+      "effect_size": "Sharpe(E0_EntryVol_12) - Sharpe(LATCH_EntryVol_12)",
+      "point_estimate": 0.1365,
+      "direction": "E0 > LATCH",
+      "comparison_type": "equal_sizing_signal_quality"
+    },
+    {
+      "id": "H2",
+      "claim": "At matched 5% MDD budget using native systems with external cash scaling, LATCH has higher CAGR than E0",
+      "effect_size": "CAGR(LATCH at 5% MDD) - CAGR(E0 at 5% MDD)",
+      "point_estimate": 0.0221,
+      "direction": "LATCH > E0",
+      "comparison_type": "matched_risk_low_budget"
+    },
+    {
+      "id": "H3",
+      "claim": "At matched 10% MDD budget using native systems with external cash scaling, LATCH has higher CAGR than E0",
+      "effect_size": "CAGR(LATCH at 10% MDD) - CAGR(E0 at 10% MDD)",
+      "point_estimate": 0.0459,
+      "direction": "LATCH > E0",
+      "comparison_type": "matched_risk_medium_budget"
+    },
+    {
+      "id": "H4",
+      "claim": "Native LATCH does not have a robust Sharpe advantage over native SM large enough to justify its added complexity",
+      "effect_size": "Sharpe(LATCH_native) - Sharpe(SM_native)",
+      "point_estimate": 0.003,
+      "direction": "near zero",
+      "comparison_type": "complexity_premium"
+    }
+  ],
+  "secondary_analyses": [
+    "crossover_budget_stability",
+    "matched_exposure_comparison",
+    "native_latch_vs_e0_sharpe",
+    "calendar_period_splits",
+    "start_date_sensitivity_2019_2020",
+    "p_strategy_diagnostics"
+  ],
+  "bootstrap_method": {
+    "primary": "circular_block_bootstrap",
+    "sensitivity": "stationary_bootstrap_optional",
+    "block_lengths": [42, 126, 252],
+    "n_replications": 5000,
+    "random_seed": 20260305
+  },
+  "temporal_analyses": {
+    "start_date_sensitivity": ["2017-08", "2019-01", "2020-01"],
+    "rolling_windows": {
+      "window_sizes_months": [24, 36],
+      "step_months": 6,
+      "min_bars_per_window": 1000
+    },
+    "calendar_slices": "annual_where_data_exists"
+  },
+  "evidence_thresholds": {
+    "ROBUST": "effect direction consistent AND 95% CI excludes 0 AND not highly sensitive to block length",
+    "TENTATIVE": "effect direction mostly one-sided BUT 95% CI wide or method-sensitive",
+    "UNSUPPORTED": "95% CI includes 0 broadly OR effect direction unstable OR strongly method-dependent"
+  },
+  "multiplicity_correction": "Holm for 4 primary hypotheses",
+  "complexity_premium_criteria": {
+    "requires_both": [
+      "statistical_support: 95% CI excludes 0",
+      "practical_materiality: Sharpe difference > 0.05 or CAGR difference > 1pp at matched risk"
+    ],
+    "if_fails": "NOT_JUSTIFIED_BY_CURRENT_EVIDENCE"
+  }
+}

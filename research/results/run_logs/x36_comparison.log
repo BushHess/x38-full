@@ -1,0 +1,79 @@
+=== X36 run_comparison.py ===
+Started: Mon Mar 16 08:33:16 PM UTC 2026
+/var/www/trading-bots/btc-spot-dev/research/x36/vcbb_bias_study/run_comparison.py:38: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import gen_path_vcbb, make_ratios, precompute_vcbb
+Loading data...
+  H4: 18662 bars, D1: 3110 bars  (0.6s)
+  Full-sample feed: 17838 H4, 2973 D1
+
+=== 1. Full-Sample Backtest (20 bps) ===
+  V3              Sharpe=1.4956  CAGR=55.5%  MDD=37.3%  Trades=211
+  V4              Sharpe=1.7885  CAGR=77.8%  MDD=33.6%  Trades=197
+  E5+EMA21D1      Sharpe=1.6635  CAGR=74.9%  MDD=36.3%  Trades=188
+
+=== 2. PSR ===
+  V3              PSR=1.0000
+  V4              PSR=1.0000
+  E5+EMA21D1      PSR=1.0000
+
+=== 3. Holdout (2024-01 to 2026-02) ===
+  V3              Sharpe=1.8986  CAGR=61.0%  MDD=19.0%
+  V4              Sharpe=1.2109  CAGR=34.0%  MDD=23.7%
+  E5+EMA21D1      Sharpe=1.2848  CAGR=38.9%  MDD=21.6%
+
+=== 4. WFO (12 x 6-month windows) ===
+  V3              11/12 positive  median Sharpe=1.234
+  V4              10/12 positive  median Sharpe=1.556
+  E5+EMA21D1      10/12 positive  median Sharpe=1.429
+
+=== 5. Cost Sweep ===
+   10 bps:  V3=1.585  V4=1.866  E5+EMA21D1=1.733
+   20 bps:  V3=1.496  V4=1.788  E5+EMA21D1=1.663
+   50 bps:  V3=1.122  V4=1.556  E5+EMA21D1=1.454
+
+=== 6. Regime Decomposition ===
+  Pre-2021      V3              Sharpe=1.185
+  Pre-2021      V4              Sharpe=2.615
+  Pre-2021      E5+EMA21D1      Sharpe=2.569
+  2021-2022     V3              Sharpe=1.172
+  2021-2022     V4              Sharpe=1.137
+  2021-2022     E5+EMA21D1      Sharpe=1.002
+  2023-2024     V3              Sharpe=2.307
+  2023-2024     V4              Sharpe=2.359
+  2023-2024     E5+EMA21D1      Sharpe=1.860
+  2025+         V3              Sharpe=0.740
+  2025+         V4              Sharpe=0.128
+  2025+         E5+EMA21D1      Sharpe=0.423
+
+=== 7. Trade Stats ===
+  strategy  trades  wins  losses win_rate avg_return median_return avg_days_held median_days_held best_trade worst_trade  churn_le_12h  churn_le_24h
+        V3     211   120      91    56.9%      1.71%         0.97%           4.2              5.0      21.7%      -14.0%             0             0
+        V4     197    95     102    48.2%      2.44%        -0.13%           5.3              5.0      42.5%      -13.4%             0             0
+E5+EMA21D1     188    83     105    44.1%      2.65%        -0.55%           6.2              4.7      68.1%      -12.7%             1             3
+
+=== 8. VCBB Bootstrap (500 paths, 20 bps) ===
+  Bootstrap path 0/500  (0s)
+  Bootstrap path 50/500  (319s)
+  Bootstrap path 100/500  (623s)
+  Bootstrap path 150/500  (906s)
+  Bootstrap path 200/500  (1159s)
+  Bootstrap path 250/500  (1440s)
+  Bootstrap path 300/500  (1694s)
+  Bootstrap path 350/500  (1961s)
+  Bootstrap path 400/500  (2203s)
+  Bootstrap path 450/500  (2446s)
+  Bootstrap done: 500 paths x 3 strats in 2695s
+  V3              n=500  Sharpe med=0.507  P(Sh>0)=89.0%
+  V4              n=500  Sharpe med=0.744  P(Sh>0)=96.8%
+  E5+EMA21D1      n=500  Sharpe med=0.768  P(Sh>0)=97.0%
+
+=== Saving results ===
+
+=== Generating charts ===
+  Charts saved to figures/
+
+=== Writing report ===
+  Report written: /var/www/trading-bots/btc-spot-dev/research/x36/vcbb_bias_study/results/comparison_report.md
+
+=== Done in 2781s ===
+=== COMPLETE: Mon Mar 16 09:19:39 PM UTC 2026 ===

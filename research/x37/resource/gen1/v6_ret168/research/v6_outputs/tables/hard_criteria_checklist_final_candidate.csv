@@ -1,0 +1,8 @@
+criterion,passed,evidence
+positive_edge_after_20bps_on_aggregate_discovery_walkforward,True,"disc_cagr=0.984197, disc_net_return=6.815529"
+positive_performance_after_cost_on_holdout,True,"hold_cagr=1.007564, hold_net_return=1.839743"
+at_least_20_discovery_trades,True,disc_trade_count=82
+at_least_10_holdout_trades,True,hold_trade_count=52
+no_clear_collapse_across_major_regimes_pre_reserve,True,bear:noise-only; bull:effective; neutral:noise-only
+broad_plateau_around_selected_cell,True,Neighboring H4 return lookbacks 134/168/202 with fixed_zero and q0.50 remain strong; no sharp isolated optimum.
+no_pre_freeze_contamination,True,Only prompt and raw CSVs were consulted before freeze.

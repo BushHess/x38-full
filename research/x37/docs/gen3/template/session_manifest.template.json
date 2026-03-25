@@ -1,0 +1,39 @@
+{
+  "_schema_notes": {
+    "mode_variants": "This template shows seed_discovery defaults. For forward_evaluation: set mode to \"forward_evaluation\", state_pack_input to the input state pack filename, input_files to the appended delta CSV filenames, warmup_buffer_files to any required warmup files, appended_delta_window start/end to the new data range, snapshot_id to the value inherited from the input state pack, and set contamination_status.blind_seed_discovery_required to false. For governance_review: set mode to \"governance_review\", state_pack_input to the latest state pack filename, input_files to the governance-relevant files (constitution, state pack contents, failure dossier), snapshot_id to the value inherited from the input state pack, and set contamination_status.blind_seed_discovery_required to false."
+  },
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "session_id": "session_YYYYMMDD_mode_seq",
+  "mode": "seed_discovery",
+  "constitution_file": "research_constitution_v3.0.yaml",
+  "constitution_version": "3.0",
+  "snapshot_id": "snapshot_YYYYMMDD",
+  "state_pack_input": null,
+  "input_files": [
+    "spot_btcusdt_15m.csv",
+    "spot_btcusdt_1h.csv",
+    "spot_btcusdt_4h.csv",
+    "spot_btcusdt_1d.csv"
+  ],
+  "warmup_buffer_files": [],
+  "appended_delta_window": {
+    "start_utc": null,
+    "end_utc": null
+  },
+  "forbidden_inputs_confirmed_absent": [
+    "prior reports",
+    "prior winners",
+    "prior shortlist tables",
+    "prior system specs",
+    "prior evaluation ledgers",
+    "prior benchmark definitions",
+    "prior state packs",
+    "prior contamination logs"
+  ],
+  "contamination_status": {
+    "historical_snapshot_treated_as_contaminated_for_oos": true,
+    "blind_seed_discovery_required": true
+  },
+  "hash_manifest_file": "input_hash_manifest.txt",
+  "notes": "Operational metadata only (data quality, download anomalies). Do NOT include research hints, prior findings, or benchmark expectations."
+}

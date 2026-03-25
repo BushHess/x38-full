@@ -1,0 +1,91 @@
+{
+  "date": "2026-03-05",
+  "research_branch": "research/eval_vtrend_latch_20260305",
+  "total_reports": 7,
+  "total_artifacts": 55,
+  "default_candidate_by_mandate": {
+    "high_risk_growth": {
+      "strategy": "E0 / VTREND",
+      "reason": "Only candidate that can fill MDD budgets >15%. Simplest (3 params). Well-proven baseline.",
+      "evidence_grade": "ROBUST (structural capacity advantage)"
+    },
+    "low_risk_capital_efficient": {
+      "strategy": "SM",
+      "reason": "Highest Sharpe (1.31) with moderate complexity (8 params). More capacity than LATCH (+34%).",
+      "evidence_grade": "TENTATIVE (advantage over scaled E0 not proven at 95%)"
+    },
+    "research_control": {
+      "strategy": "SM",
+      "reason": "8 params vs LATCH 15. Equivalent performance. Easier to audit and validate.",
+      "evidence_grade": "ROBUST (simplicity advantage over LATCH)"
+    }
+  },
+  "backup_candidate_by_mandate": {
+    "high_risk_growth": {
+      "strategy": "SM (up to 15% MDD ceiling)",
+      "reason": "Can partially fill medium-risk budgets with higher Sharpe than E0"
+    },
+    "low_risk_capital_efficient": {
+      "strategy": "E0 (scaled down)",
+      "reason": "Safety fallback; lower tentative CAGR at matched MDD but proven capacity"
+    },
+    "research_control": {
+      "strategy": "E0",
+      "reason": "Simplest (3 params) but requires exposure scaling for low-risk use"
+    }
+  },
+  "deprecated_candidates": [
+    {
+      "strategy": "LATCH",
+      "reason": "Zero complexity premium over SM (Sharpe +0.003, P(>0)=55%). 99.8% same signal, double the parameters. Replaced by SM.",
+      "evidence_step": "Step 5, H4"
+    },
+    {
+      "strategy": "P",
+      "reason": "Dominated by SM on Sharpe (1.24 vs 1.31), Calmar (0.85 vs 0.93), and risk capacity (12.7% vs 15.0% MDD ceiling).",
+      "evidence_step": "Steps 3-4"
+    }
+  ],
+  "claims_robust": [
+    "Scoring formula has structural exposure bias (CAGR term = 108-182% of delta)",
+    "35% of original score gap is sizing/exposure not signal quality",
+    "Backtest engines are functionally identical (divergence 7.7e-14%)",
+    "Indicators are bit-identical across implementations",
+    "SM and LATCH are 99.8% concordant at default parameters",
+    "LATCH complexity premium over SM is absent (Sharpe +0.003)",
+    "E0 has highest native risk capacity (MDD ceiling 63.3%)",
+    "External cash-scaling preserves Sharpe exactly",
+    "LATCH cannot reach E0-level risk without leverage",
+    "P is dominated by SM on all major metrics"
+  ],
+  "claims_tentative": [
+    "E0 has a signal-quality edge (+0.14 Sharpe at equal sizing; CI includes 0)",
+    "SM/LATCH produces higher CAGR at 5% MDD budget (+1.2 pp; CI includes 0)",
+    "SM/LATCH produces higher CAGR at 10% MDD budget (+2.3 pp; CI includes 0)",
+    "Two-regime model holds in 64-67% of rolling windows",
+    "E0 favored in bull markets; SM/LATCH in bear/sideways",
+    "Start-date dependence: 2018 bear market matters for LATCH/SM advantage"
+  ],
+  "claims_unsupported": [
+    "Any statistically proven pairwise Sharpe superiority (all Holm p=1.000)",
+    "LATCH complexity premium over SM (Sharpe +0.003, coin flip)",
+    "Crossover at ~20% MDD is a stable boundary (varies 3-27%)",
+    "P adds unique non-dominated value"
+  ],
+  "do_not_overstate": [
+    "Do not claim E0 is clearly superior to LATCH/SM based on native score",
+    "Do not claim LATCH dominates E0 at low risk as established fact",
+    "Do not cite ~20% MDD crossover as a stable law",
+    "Do not treat any pairwise Sharpe difference as statistically significant",
+    "Do not recommend LATCH over SM without evidence of complexity premium"
+  ],
+  "future_eval_policy": [
+    "Always separate signal from sizing via factorial decomposition",
+    "Always audit exposure and fee drag before comparing strategies",
+    "Always validate engine equivalence before comparing implementations",
+    "Always use matched-risk frontier for deployment decisions",
+    "Never accept complexity increase without robust premium evidence",
+    "Always label claims by evidence strength (ROBUST/TENTATIVE/UNSUPPORTED)",
+    "Retire current scoring formula from cross-exposure decision authority"
+  ]
+}

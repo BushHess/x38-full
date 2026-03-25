@@ -1,0 +1,52 @@
+{
+  "requested_method": "deflated",
+  "method": "deflated",
+  "scenario": "harsh",
+  "sr_observed": 1.43,
+  "T": 2607,
+  "skew": 0.996004,
+  "kurtosis": 15.453261,
+  "dsr": {
+    "27": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.104903,
+      "sr_std": 0.051686,
+      "pass": true
+    },
+    "54": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.119171,
+      "sr_std": 0.051686,
+      "pass": true
+    },
+    "100": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.130798,
+      "sr_std": 0.051686,
+      "pass": true
+    },
+    "200": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.14294,
+      "sr_std": 0.051686,
+      "pass": true
+    },
+    "500": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.157774,
+      "sr_std": 0.051686,
+      "pass": true
+    },
+    "700": {
+      "dsr": 1.0,
+      "expected_max_sr": 0.16293,
+      "sr_std": 0.051686,
+      "pass": true
+    }
+  },
+  "pbo_proxy": {
+    "n_windows": 8,
+    "negative_delta_ratio": 0.375
+  },
+  "risk_statement": "PASS \u2014 deflated Sharpe robust across tested trials"
+}

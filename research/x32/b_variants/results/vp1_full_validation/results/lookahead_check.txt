@@ -1,0 +1,39 @@
+PASS
+exit_code=0
+tests=3
+
+...........................                                              [100%]
+=============================== warnings summary ===============================
+v10/tests/test_no_lookahead_htf.py::TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1
+v10/tests/test_no_lookahead_htf.py::TestV11IndicatorIndexing::test_indicator_array_bounds
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day
+  /var/www/trading-bots/btc-spot-dev/v10/strategies/v11_hybrid.py:159: RuntimeWarning: divide by zero encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+v10/tests/test_no_lookahead_htf.py::TestV11CyclePhaseNoLookahead::test_cycle_phase_uses_lagged_d1
+v10/tests/test_no_lookahead_htf.py::TestV11IndicatorIndexing::test_indicator_array_bounds
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+v10/tests/test_no_lookahead_htf.py::TestRealDataTimestampAlignment::test_d1_index_never_exceeds_current_day
+v10/tests/test_no_lookahead_htf.py::TestD1IndexMonotonicity::test_d1_index_never_decreases
+  /var/www/trading-bots/btc-spot-dev/v10/strategies/v11_hybrid.py:159: RuntimeWarning: invalid value encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+v10/tests/test_v10_no_lookahead_htf.py::TestV10RegimeNoLookahead::test_regime_uses_lagged_d1
+v10/tests/test_v10_no_lookahead_htf.py::TestV10IndicatorIndexing::test_indicator_array_bounds
+  /var/www/trading-bots/btc-spot-dev/v10/strategies/v8_apex.py:176: RuntimeWarning: divide by zero encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+v10/tests/test_v10_no_lookahead_htf.py::TestV10RegimeNoLookahead::test_regime_uses_lagged_d1
+v10/tests/test_v10_no_lookahead_htf.py::TestV10IndicatorIndexing::test_indicator_array_bounds
+v10/tests/test_v10_no_lookahead_htf.py::TestV10RealDataTimestampAlignment::test_d1_always_behind_h4_real_data
+v10/tests/test_v10_no_lookahead_htf.py::TestV10RealDataTimestampAlignment::test_d1_index_tracks_correctly_real_data
+v10/tests/test_v10_no_lookahead_htf.py::TestV10D1IndexMonotonicity::test_d1_index_never_decreases
+v10/tests/test_v10_no_lookahead_htf.py::TestV10BoundaryRegime::test_last_h4_uses_previous_day_regime
+v10/tests/test_v10_no_lookahead_htf.py::TestV10D1LagMatters::test_removing_d1_changes_behavior
+v10/tests/test_v10_no_lookahead_htf.py::TestV10D1LagMatters::test_removing_d1_changes_behavior
+  /var/www/trading-bots/btc-spot-dev/v10/strategies/v8_apex.py:176: RuntimeWarning: invalid value encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+27 passed, 19 warnings in 2.64s

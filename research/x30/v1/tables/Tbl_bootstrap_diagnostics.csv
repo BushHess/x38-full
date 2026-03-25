@@ -1,0 +1,10 @@
+test,metric,value,interpretation
+C1,KS_D,0.0715,preserved
+C1,KS_pvalue,0.2957,p >.05 preserved
+C2,P_high_activity,0.436,n=500 paths with >=10 trail stops
+C2,P_low_activity,0.0,n=0 paths with <10 trail stops
+C3,bottom_50_avg_dsh,-0.2968,worst 50 paths
+C3,top_50_avg_dsh,0.2003,best 50 paths
+C4,permutation_pvalue,1.0,not significant at 5%
+C5,effect_d,-0.2068,d = mean(dSh) / std(dSh)
+C5,years_needed,inf,years for P(dSh>0)>55%

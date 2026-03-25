@@ -1,0 +1,271 @@
+========================================================================
+PART 1: TRUE WALK-FORWARD OPTIMIZATION
+  VTREND 245 combos  |  V8 252 combos  |  10 windows  |  harsh cost
+========================================================================
+  W0: train [2019-01-01→2021-01-01]  test [2021-01-01→2021-07-01]
+  W1: train [2019-01-01→2021-07-01]  test [2021-07-01→2022-01-01]
+  W2: train [2019-01-01→2022-01-01]  test [2022-01-01→2022-07-01]
+  W3: train [2019-01-01→2022-07-01]  test [2022-07-01→2023-01-01]
+  W4: train [2019-01-01→2023-01-01]  test [2023-01-01→2023-07-01]
+  W5: train [2019-01-01→2023-07-01]  test [2023-07-01→2024-01-01]
+  W6: train [2019-01-01→2024-01-01]  test [2024-01-01→2024-07-01]
+  W7: train [2019-01-01→2024-07-01]  test [2024-07-01→2025-01-01]
+  W8: train [2019-01-01→2025-01-01]  test [2025-01-01→2025-07-01]
+  W9: train [2019-01-01→2025-07-01]  test [2025-07-01→2026-01-01]
+
+── Window 0 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 556.5  slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 184.9  entry_aggression=1.3 trail_atr_mult=3.0 vdo_entry_threshold=0.006
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (36s)
+
+── Window 1 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 502.8  slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 203.7  entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.004
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (41s)
+
+── Window 2 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 443.0  slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 157.4  entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.004
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (44s)
+
+── Window 3 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 320.5  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.002
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 111.3  entry_aggression=1.15 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (50s)
+
+── Window 4 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 238.7  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.002
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 92.1  entry_aggression=1.15 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (54s)
+
+── Window 5 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 239.9  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 87.1  entry_aggression=1.15 trail_atr_mult=4.0 vdo_entry_threshold=0.002
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (58s)
+
+── Window 6 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 251.5  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 85.7  entry_aggression=1.15 trail_atr_mult=4.0 vdo_entry_threshold=0.002
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (61s)
+
+── Window 7 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 234.8  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 97.3  entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  OOS: VT=-1000000.0 V8=126.5 B&H=-1000000.0 → V8  (66s)
+
+── Window 8 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 222.6  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 101.8  entry_aggression=1.3 trail_atr_mult=5.0 vdo_entry_threshold=0.004
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (69s)
+
+── Window 9 ──
+  VT train 50/245
+  VT train 100/245
+  VT train 150/245
+  VT train 200/245
+  VT best train: 199.7  slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  V8 train 50/252
+  V8 train 100/252
+  V8 train 150/252
+  V8 train 200/252
+  V8 train 250/252
+  V8 best train: 92.1  entry_aggression=1.3 trail_atr_mult=5.0 vdo_entry_threshold=0.004
+  OOS: VT=-1000000.0 V8=-1000000.0 B&H=-1000000.0 → TIE  (74s)
+
+========================================================================
+TRUE WFO SUMMARY (all metrics are OOS — never seen during selection)
+========================================================================
+ W              Test Period   VT sc   V8 sc     B&H  VT CAGR  V8 CAGR  VT MDD  V8 MDD     Win
+---------------------------------------------------------------------------------------------
+ 0    2021-01-01→2021-07-01 -1000000.0 -1000000.0 -1000000.0   125.8%    -2.4%   29.7%   24.7%     TIE
+ 1    2021-07-01→2022-01-01 -1000000.0 -1000000.0 -1000000.0    80.0%     4.9%   20.6%   32.2%     TIE
+ 2    2022-01-01→2022-07-01 -1000000.0 -1000000.0 -1000000.0   -39.3%     0.0%   22.6%    0.0%     TIE
+ 3    2022-07-01→2023-01-01 -1000000.0 -1000000.0 -1000000.0   -29.4%     0.0%   17.4%    0.0%     TIE
+ 4    2023-01-01→2023-07-01 -1000000.0 -1000000.0 -1000000.0    73.0%    22.4%   15.4%   15.0%     TIE
+ 5    2023-07-01→2024-01-01 -1000000.0 -1000000.0 -1000000.0   128.3%    48.0%   10.5%   19.2%     TIE
+ 6    2024-01-01→2024-07-01 -1000000.0 -1000000.0 -1000000.0    51.5%    33.2%   25.8%   28.4%     TIE
+ 7    2024-07-01→2025-01-01 -1000000.0   126.5 -1000000.0    45.6%    51.2%   22.7%   28.1%      V8
+ 8    2025-01-01→2025-07-01 -1000000.0 -1000000.0 -1000000.0     3.2%    -7.8%   16.6%   25.7%     TIE
+ 9    2025-07-01→2026-01-01 -1000000.0 -1000000.0 -1000000.0    -4.9%   -28.1%   14.2%   25.0%     TIE
+
+Win rate:  VTREND 0/10 (0%)   V8 1/10 (10%)
+
+Mean OOS score:    VT=-1000000.0  V8=-899987.3  B&H=-1000000.0
+Median OOS score:  VT=-1000000.0  V8=-1000000.0  B&H=-1000000.0
+
+Mean OOS CAGR:     VT=43.4%  V8=12.1%  B&H=59.5%
+Mean OOS Calmar:   VT=2.56  V8=0.56
+Mean OOS Sharpe:   VT=0.60  V8=0.40
+
+Mean degradation (train→OOS):  VT=1000321.0  V8=900108.7  (lower = less overfit)
+
+── Parameter Stability ──
+VTREND selected params per window:
+  W0: slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  W1: slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  W2: slow_period=200.0 trail_mult=5.0 vdo_threshold=-0.002
+  W3: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.002
+  W4: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.002
+  W5: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  W6: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  W7: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  W8: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+  W9: slow_period=200.0 trail_mult=5.0 vdo_threshold=0.0
+V8 selected params per window:
+  W0: entry_aggression=1.3 trail_atr_mult=3.0 vdo_entry_threshold=0.006
+  W1: entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.004
+  W2: entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.004
+  W3: entry_aggression=1.15 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  W4: entry_aggression=1.15 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  W5: entry_aggression=1.15 trail_atr_mult=4.0 vdo_entry_threshold=0.002
+  W6: entry_aggression=1.15 trail_atr_mult=4.0 vdo_entry_threshold=0.002
+  W7: entry_aggression=1.3 trail_atr_mult=3.5 vdo_entry_threshold=0.006
+  W8: entry_aggression=1.3 trail_atr_mult=5.0 vdo_entry_threshold=0.004
+  W9: entry_aggression=1.3 trail_atr_mult=5.0 vdo_entry_threshold=0.004
+
+VTREND param spread:
+  slow_period: min=200.0 max=200.0 unique=1/10
+  trail_mult: min=5.0 max=5.0 unique=1/10
+  vdo_threshold: min=-0.002 max=0.002 unique=3/10
+
+V8 param spread:
+  entry_aggression: min=1.15 max=1.3 unique=2/10
+  trail_atr_mult: min=3.0 max=5.0 unique=4/10
+  vdo_entry_threshold: min=0.002 max=0.006 unique=3/10
+
+
+========================================================================
+PART 2: PERMUTATION TEST — VDO Signal Authenticity
+  200 permutations  |  block=20 H4 bars  |  harsh cost
+========================================================================
+
+A. VTREND with real VDO...
+   score=122.8  CAGR=52.0%  MDD=41.6%  Calmar=1.25  trades=192
+
+B. VTREND with VDO DISABLED (threshold=-999)...
+   score=106.4  CAGR=48.2%  MDD=49.9%  Calmar=0.97  trades=238
+
+C. 200 VDO permutations...
+   25/200  (2s)
+   50/200  (5s)
+   75/200  (7s)
+   100/200  (10s)
+   125/200  (12s)
+   150/200  (14s)
+   175/200  (17s)
+   200/200  (19s)
+
+D. 200 EMA permutations...
+   25/200  (2s)
+   50/200  (5s)
+   75/200  (7s)
+   100/200  (10s)
+   125/200  (12s)
+   150/200  (15s)
+   175/200  (17s)
+   200/200  (20s)
+
+============================================================
+PERMUTATION TEST RESULTS
+============================================================
+
+Baseline (real VDO + real EMA):  score = 122.8
+EMA-only (VDO disabled):         score = 106.4  (delta = +16.3)
+
+VDO Shuffle Test  (EMA intact, VDO shuffled):
+  null mean=100.6  std=13.8  [76.1, 122.9]
+  p-value = 0.0600  * marginal
+
+EMA Shuffle Test  (VDO intact, EMA shuffled):
+  null mean=-10.8  std=33.0  [-67.6, 42.4]
+  p-value = 0.0000  *** SIGNIFICANT
+
+Interpretation:
+  EMA structure is genuine, but VDO adds no significant alpha.
+  VDO can be simplified or removed without loss.
+
+
+Total runtime: 594s (9.9 min)
+Saved: /var/www/trading-bots/btc-spot-dev/research/results/true_wfo_results.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/results/permutation_test.json

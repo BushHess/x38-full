@@ -1,0 +1,122 @@
+======================================================================
+X31 PHASE 0: RE-ENTRY BARRIER — ORACLE CEILING
+======================================================================
+
+Loading data...
+  H4 bars: 17838, D1 bars: 2973
+Computing indicators...
+
+======================================================================
+Q1: RE-ENTRY COHORTS BY LATENCY
+======================================================================
+
+  Base trades (20 bps): 202
+
+   Threshold   N_reentry  % trades   WinRate   MeanRet%    MeanPnL   AvgWinner    AvgLoser
+           1          20       9.9      35.0      -0.41         -7       +8571       -4626
+           2          28      13.9      39.3      -0.06       +581       +7916       -4165
+           3          45      22.3      37.8      +0.50       -103       +6649       -4202
+           6          78      38.6      38.5      +0.57        -67       +5926       -3813
+
+  Non-re-entry (th=6): N=124, WR=43.5%, MeanPnL=$+2529
+
+======================================================================
+Q2-Q4: ORACLE STRATEGY-LEVEL REPLAY (threshold=6 bars)
+======================================================================
+
+  --- 15 bps ---
+    Base:       Sh=1.4001  CAGR=56.83%  MDD=37.38%  trades=202
+    Oracle:     Sh=1.4760  CAGR=60.10%  MDD=34.46%  trades=187
+    ΔOracle:    ΔSh=+0.0759  ΔCAGR=+3.27%  ΔMDD=-2.91pp
+    Anti-oracle (block good): ΔSh=-0.1981
+    Blocked:    47 bad re-entry windows, 31 good re-entry windows
+
+  --- 20 bps ---
+    Base:       Sh=1.3329  CAGR=52.98%  MDD=39.17%  trades=202
+    Oracle:     Sh=1.4145  CAGR=56.47%  MDD=35.24%  trades=186
+    ΔOracle:    ΔSh=+0.0816  ΔCAGR=+3.48%  ΔMDD=-3.92pp
+    Anti-oracle (block good): ΔSh=-0.2030
+    Blocked:    48 bad re-entry windows, 30 good re-entry windows
+
+  --- 25 bps ---
+    Base:       Sh=1.2657  CAGR=49.23%  MDD=40.90%  trades=202
+    Oracle:     Sh=1.3360  CAGR=52.06%  MDD=36.02%  trades=186
+    ΔOracle:    ΔSh=+0.0703  ΔCAGR=+2.83%  ΔMDD=-4.89pp
+    Anti-oracle (block good): ΔSh=-0.1881
+    Blocked:    49 bad re-entry windows, 29 good re-entry windows
+
+======================================================================
+Q5: CONCENTRATION & TEMPORAL STABILITY
+======================================================================
+
+  Concentration (P&L-based, 20 bps):
+    Total blocked trades:     48
+    Total savings (bad P&L):  $183,018
+    Top-3 worst re-entries:   $37,810 (20.7%)
+
+    Top-5 worst blocked re-entries:
+    Rank         PnL      Ret%   EntryBar   Bars   Year
+/var/www/trading-bots/btc-spot-dev/research/x31/code/x31_phase0_reentry_barrier.py:311: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+  return datetime.utcfromtimestamp(ts_ms / 1000).year
+       1  $   -13,622     -4.10      17643      8   2026
+       2  $   -12,288     -3.53      17025     13   2025
+       3  $   -11,900     -3.35      16205     30   2025
+       4  $   -11,178     -4.96      13697      3   2024
+       5  $    -9,242     -6.73      10138     10   2022
+
+    GATE G3 (top-3 <= 60%): PASS (20.7%)
+
+    Year distribution of blocked trades:
+     Year   Count     Savings   % Total
+     2018       2  $       520       0.3%
+     2019       5  $     5,880       3.2%
+     2020       5  $     3,342       1.8%
+     2021       3  $    11,867       6.5%
+     2022       5  $    31,099      17.0%
+     2023      12  $    34,972      19.1%
+     2024       8  $    41,913      22.9%
+     2025       7  $    39,803      21.7%
+     2026       1  $    13,622       7.4%
+
+  Leave-One-Year-Out (20 bps):
+    Leave out 2018: ΔSh=+0.0648 (dropped 2 blocks)
+    Leave out 2019: ΔSh=+0.0699 (dropped 5 blocks)
+    Leave out 2020: ΔSh=+0.0745 (dropped 5 blocks)
+    Leave out 2021: ΔSh=+0.0766 (dropped 3 blocks)
+    Leave out 2022: ΔSh=+0.0622 (dropped 5 blocks)
+    Leave out 2023: ΔSh=+0.0666 (dropped 12 blocks)
+    Leave out 2024: ΔSh=+0.0609 (dropped 8 blocks)
+    Leave out 2025: ΔSh=+0.1083 (dropped 7 blocks)
+    Leave out 2026: ΔSh=+0.0672 (dropped 1 blocks)
+
+    Worst LOYO: 2024 → ΔSh=+0.0609
+    GATE G4 (no year removal → ΔSh <= 0): PASS
+
+======================================================================
+GO/NO-GO GATES
+======================================================================
+  G1: Oracle ΔSh >= +0.08 @ 20 bps:     PASS (ΔSh=+0.0816)
+  G2: Oracle ΔSh >= 0 @ 15 & 25 bps:    PASS (15bps=+0.0759, 25bps=+0.0703)
+  G3: Top-3 concentration <= 60%:        PASS (20.7%)
+  G4: LOYO stability (no year → ΔSh<=0): PASS (worst=+0.0609)
+
+  >>> VERDICT: GO
+
+======================================================================
+Q6: FEATURE SEPARABILITY (bad vs good re-entries)
+======================================================================
+
+               Feature     AUC   p-value   Mean(bad)  Mean(good)
+        bars_held_prev   0.358    0.0361     +40.062     +63.867
+       bars_since_exit   0.518    0.7855      +3.333      +3.200
+          prev_ret_pct   0.430    0.3020      +3.025      +8.616
+            ema_spread   0.495    0.9468      +3.740      +4.317
+             ratr_pctl   0.464    0.5968      +1.632      +1.567
+          vdo_at_entry   0.507    0.9223      +0.004      +0.004
+
+  (AUC > 0.60 or < 0.40 suggests useful separability)
+
+Generating figures...
+
+Artifacts: /var/www/trading-bots/btc-spot-dev/research/x31/tables, /var/www/trading-bots/btc-spot-dev/research/x31/figures
+Total time: 4.9s

@@ -1,0 +1,57 @@
+{
+  "git_hash": "82e6f13",
+  "timestamp_utc": "2026-02-24T12:22:52Z",
+  "argv": [
+    "/var/www/trading-bots/btc-spot/v10/cli/research.py",
+    "--data",
+    "bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "--candidates",
+    "candidates_v12_gate_focus.yaml",
+    "--start",
+    "2019-01-01",
+    "--end",
+    "2026-02-20",
+    "--warmup-days",
+    "365",
+    "--outdir",
+    "out_v12_gate_focus_research",
+    "--mode",
+    "wfo",
+    "--train-months",
+    "24",
+    "--test-months",
+    "6",
+    "--slide-months",
+    "6",
+    "--top-k",
+    "3",
+    "--wfo-scenario",
+    "harsh"
+  ],
+  "config": {
+    "mode": "wfo",
+    "candidates_file": "candidates_v12_gate_focus.yaml",
+    "candidate_names": [
+      "v12_baseline_legacy",
+      "v12_gate_focus_grid"
+    ],
+    "scenarios": [
+      "smart",
+      "base",
+      "harsh"
+    ],
+    "initial_cash": 10000.0,
+    "warmup_days": 365,
+    "baseline": "baseline_legacy",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "wfo": {
+      "train_months": 24,
+      "test_months": 6,
+      "slide_months": 6,
+      "top_k": 3,
+      "wfo_scenario": "harsh"
+    }
+  },
+  "data_fingerprint": "a1da6188938b997d1c74dbb0ec436b6bea32f9c5cedb1a6276b7b42bcf618c7d"
+}

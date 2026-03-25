@@ -1,0 +1,19 @@
+counterfactual_group,parameter,alternative_value,current_value,runs_analyzed,verdict_flips,gate_only_changes,assessment
+delta_tolerance,harsh_score_tolerance,-0.15,-0.20,38,0,0,stable — failing deltas are -33 to -76; far beyond any reasonable tolerance
+delta_tolerance,harsh_score_tolerance,-0.20,-0.20,38,0,0,baseline
+delta_tolerance,harsh_score_tolerance,-0.25,-0.20,38,0,0,stable — no marginal runs near threshold
+wfo_win_rate,wfo_win_rate_threshold,0.55,0.60,38,0,0,stable — most failing runs have win_rate=0.000
+wfo_win_rate,wfo_win_rate_threshold,0.60,0.60,38,0,0,baseline
+wfo_win_rate,wfo_win_rate_threshold,0.65,0.60,38,0,0,stable — no runs near 0.60-0.65 boundary without other hard failures
+wfo_power_cutoff,power_windows_cutoff,<2,<3,38,0,0,stable — low_power only fires in 2 runs; both have other binding constraints
+wfo_power_cutoff,power_windows_cutoff,<3,<3,38,0,0,baseline
+wfo_power_cutoff,power_windows_cutoff,<4,<3,38,0,0,stable — would widen low_power net but no verdict impact
+wfo_low_trade_ratio,low_trade_ratio_cutoff,>0.40,>0.50,38,0,0,stable — same 2 low_power runs; other constraints dominate
+wfo_low_trade_ratio,low_trade_ratio_cutoff,>0.50,>0.50,38,0,0,baseline
+wfo_low_trade_ratio,low_trade_ratio_cutoff,>0.60,>0.50,38,0,0,stable — narrowing low_power net has no verdict impact
+near_boundary_run_1,amt_validation,wfo_win_rate=0.700,threshold=0.60,1,0,0,margin=+0.10 but locked REJECT by lookahead hard fail
+near_boundary_run_2,step2_effective_config_score_decomp,wfo_win_rate=0.500,threshold=0.60,1,0,0,margin=-0.10 but locked REJECT by lookahead+holdout hard fails
+binding_constraint_analysis,lookahead,fails in 26/38 runs,binary gate,38,n/a,n/a,dominant constraint — not threshold-tunable
+binding_constraint_analysis,full_harsh_delta,fails in 24/38 runs; deltas -33 to -76,tolerance=-0.2,38,n/a,n/a,gross failures — orders of magnitude beyond threshold
+binding_constraint_analysis,wfo_robustness,sole blocker in 4 runs,win_rate=0.000,38,n/a,n/a,complete failures (0% win rate) — no threshold can rescue
+binding_constraint_analysis,trade_level_bootstrap,sole blocker in 1 run,CI-based,38,n/a,n/a,rare sole constraint

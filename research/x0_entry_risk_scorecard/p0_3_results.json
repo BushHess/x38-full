@@ -1,0 +1,181 @@
+{
+  "elapsed_seconds": 13.7868,
+  "decision": {
+    "verdict": "warning_only",
+    "rationale": "risk_bucket_is_real_but_not_clean_enough_for_default_gate",
+    "need_full_47_stack_now": false,
+    "full_47_stack_trigger": "only_if_promoting_a_new_gated_strategy"
+  },
+  "per_strategy": {
+    "X0": {
+      "parity_pass": true,
+      "cohorts": {
+        "full": {
+          "low_trades": 43,
+          "low_avg_pnl_usd": 2440.317173,
+          "low_win_rate": 0.534884,
+          "medium_trades": 76,
+          "medium_avg_pnl_usd": 2095.823261,
+          "medium_win_rate": 0.460526,
+          "high_trades": 53,
+          "high_avg_pnl_usd": -391.977007,
+          "high_win_rate": 0.283019
+        },
+        "holdout": {
+          "low_trades": 12,
+          "low_avg_pnl_usd": 349.127851,
+          "low_win_rate": 0.75,
+          "medium_trades": 22,
+          "medium_avg_pnl_usd": 208.602125,
+          "medium_win_rate": 0.454545,
+          "high_trades": 17,
+          "high_avg_pnl_usd": -59.791899,
+          "high_win_rate": 0.352941
+        }
+      },
+      "bootstrap": {
+        "full": {
+          "low_non_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0",
+            "period": "full",
+            "gap_name": "low_non_chop_minus_high_chop_stretch",
+            "left_trades": 43,
+            "right_trades": 53,
+            "observed_mean_gap": 2832.294181,
+            "ci95_low": -896.363755,
+            "ci95_high": 6935.720459,
+            "p_gt_0": 0.9268
+          },
+          "medium_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0",
+            "period": "full",
+            "gap_name": "medium_chop_minus_high_chop_stretch",
+            "left_trades": 76,
+            "right_trades": 53,
+            "observed_mean_gap": 2487.800269,
+            "ci95_low": -655.31195,
+            "ci95_high": 5569.504086,
+            "p_gt_0": 0.9364
+          }
+        },
+        "holdout": {
+          "low_non_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0",
+            "period": "holdout",
+            "gap_name": "low_non_chop_minus_high_chop_stretch",
+            "left_trades": 12,
+            "right_trades": 17,
+            "observed_mean_gap": 408.91975,
+            "ci95_low": -258.342675,
+            "ci95_high": 1244.859364,
+            "p_gt_0": 0.8598
+          },
+          "medium_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0",
+            "period": "holdout",
+            "gap_name": "medium_chop_minus_high_chop_stretch",
+            "left_trades": 22,
+            "right_trades": 17,
+            "observed_mean_gap": 268.394024,
+            "ci95_low": -318.428674,
+            "ci95_high": 882.446251,
+            "p_gt_0": 0.8218
+          }
+        }
+      },
+      "wfo": {
+        "strategy_id": "X0",
+        "eligible_windows": 4,
+        "total_windows": 8,
+        "pnl_order_pass_rate": 1.0,
+        "win_rate_order_pass_rate": 1.0,
+        "both_order_pass_rate": 1.0
+      }
+    },
+    "X0_E5EXIT": {
+      "parity_pass": true,
+      "cohorts": {
+        "full": {
+          "low_trades": 51,
+          "low_avg_pnl_usd": 2840.019878,
+          "low_win_rate": 0.490196,
+          "medium_trades": 78,
+          "medium_avg_pnl_usd": 2090.97223,
+          "medium_win_rate": 0.461538,
+          "high_trades": 57,
+          "high_avg_pnl_usd": 51.98689,
+          "high_win_rate": 0.350877
+        },
+        "holdout": {
+          "low_trades": 13,
+          "low_avg_pnl_usd": 407.064545,
+          "low_win_rate": 0.692308,
+          "medium_trades": 23,
+          "medium_avg_pnl_usd": 155.804808,
+          "medium_win_rate": 0.478261,
+          "high_trades": 19,
+          "high_avg_pnl_usd": -2.644312,
+          "high_win_rate": 0.421053
+        }
+      },
+      "bootstrap": {
+        "full": {
+          "low_non_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0_E5EXIT",
+            "period": "full",
+            "gap_name": "low_non_chop_minus_high_chop_stretch",
+            "left_trades": 51,
+            "right_trades": 57,
+            "observed_mean_gap": 2788.032988,
+            "ci95_low": -951.306301,
+            "ci95_high": 7123.667196,
+            "p_gt_0": 0.928
+          },
+          "medium_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0_E5EXIT",
+            "period": "full",
+            "gap_name": "medium_chop_minus_high_chop_stretch",
+            "left_trades": 78,
+            "right_trades": 57,
+            "observed_mean_gap": 2038.98534,
+            "ci95_low": -1185.673173,
+            "ci95_high": 5257.469441,
+            "p_gt_0": 0.8974
+          }
+        },
+        "holdout": {
+          "low_non_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0_E5EXIT",
+            "period": "holdout",
+            "gap_name": "low_non_chop_minus_high_chop_stretch",
+            "left_trades": 13,
+            "right_trades": 19,
+            "observed_mean_gap": 409.708856,
+            "ci95_low": -188.365357,
+            "ci95_high": 1188.766084,
+            "p_gt_0": 0.8974
+          },
+          "medium_chop_minus_high_chop_stretch": {
+            "strategy_id": "X0_E5EXIT",
+            "period": "holdout",
+            "gap_name": "medium_chop_minus_high_chop_stretch",
+            "left_trades": 23,
+            "right_trades": 19,
+            "observed_mean_gap": 158.449119,
+            "ci95_low": -272.462162,
+            "ci95_high": 636.403668,
+            "p_gt_0": 0.7436
+          }
+        }
+      },
+      "wfo": {
+        "strategy_id": "X0_E5EXIT",
+        "eligible_windows": 5,
+        "total_windows": 8,
+        "pnl_order_pass_rate": 1.0,
+        "win_rate_order_pass_rate": 0.8,
+        "both_order_pass_rate": 0.8
+      }
+    }
+  }
+}

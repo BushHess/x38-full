@@ -1,0 +1,176 @@
+/var/www/trading-bots/btc-spot-dev/research/x11/benchmark.py:62: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+================================================================================
+X11 RESEARCH — SHORT-SIDE COMPLEMENT FOR E5+EMA21D1
+  Data: /var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv (SPOT — feasibility gate only)
+  Period: 2019-01-01 to 2026-02-20 (warmup=365d)
+  E5 params: slow=120, trail=3.0, vdo_thr=0.0, d1_ema=21
+  Short: mirror EMA crossover + ATR trail, regime OFF only
+  Funding: 1.0 bps/4h bar (~21.9%/yr)
+  Bootstrap: 500 VCBB paths, block=60
+================================================================================
+
+================================================================================
+T0: BEAR-PERIOD CHARACTERIZATION (regime OFF windows)
+================================================================================
+
+  Total H4 bars (post-warmup): 15648
+  Regime ON  (bullish): 8526 bars (54.5%)
+  Regime OFF (bearish): 7122 bars (45.5%)
+
+  Number of OFF windows: 140
+  Window length (bars): mean=50.9  median=30.0  min=6  max=246
+  Window return%: mean=0.25  median=1.54  min=-29.59  max=11.45
+  Windows with negative return: 34/140 (24.3%)
+  Windows with positive return: 106/140 (75.7%)
+
+  Per-bar return during OFF: mean=0.0096%  std=1.3775%  ann_drift=21.10%
+  WARNING: Annualized drift during OFF is POSITIVE (21.10%) — shorting faces headwind
+
+================================================================================
+T1: SHORT-ONLY FACTORIAL (3 cost × 2 funding variants)
+================================================================================
+
+   Funding Scen     Sharpe    CAGR%     MDD%   Calmar  Trades
+-------------------------------------------------------------
+   no_fund smart   -0.1380   -10.17    79.23  -0.1283     238
+   no_fund base    -0.2849   -14.63    84.55  -0.1730     238
+   no_fund harsh   -0.4394   -19.09    88.70  -0.2152     238
+ fund_1bps smart   -0.3541   -16.67    86.26  -0.1932     238
+ fund_1bps base    -0.5007   -20.81    89.78  -0.2318     238
+ fund_1bps harsh   -0.6550   -24.95    92.53  -0.2697     238
+
+================================================================================
+T2: TIMESCALE ROBUSTNESS — SHORT-ONLY (16 slow_periods)
+================================================================================
+
+  Slow   Sharpe    CAGR%     MDD%   Calmar  Trades
+--------------------------------------------------
+    30  -0.7216   -25.77    92.54  -0.2785     262
+    48  -0.7580   -27.46    93.92  -0.2924     252
+    60  -0.7884   -28.74    94.70  -0.3035     249
+    72  -0.6716   -25.97    93.59  -0.2775     242
+    84  -0.6545   -25.65    93.28  -0.2749     239
+    96  -0.6655   -25.71    93.05  -0.2763     239
+   108  -0.6424   -24.95    92.66  -0.2693     239
+   120  -0.6550   -24.95    92.53  -0.2697     238
+   144  -0.5239   -21.06    88.47  -0.2381     228
+   168  -0.6306   -23.53    90.06  -0.2613     224
+   200  -0.5644   -21.37    89.89  -0.2377     216
+   240  -0.6511   -23.44    91.42  -0.2564     212
+   300  -0.6826   -23.36    91.04  -0.2566     201
+   360  -0.5832   -20.37    89.16  -0.2285     192
+   500  -0.6673   -21.58    87.63  -0.2463     168
+   720  -0.6356   -18.44    80.47  -0.2291     153
+
+  Positive Sharpe: 0/16 timescales
+  Median Sharpe: -0.6547
+
+================================================================================
+T6: FUNDING RATE SENSITIVITY SWEEP (short-only)
+================================================================================
+
+  Fund_bps  Fund_ann%   Sharpe    CAGR%     MDD%   Calmar
+---------------------------------------------------------
+      0.00       0.00  -0.4394   -19.09    88.70  -0.2152
+      0.25       5.48  -0.4933   -20.60    89.81  -0.2293
+      0.50      10.96  -0.5472   -22.07    90.81  -0.2431
+      0.75      16.44  -0.6011   -23.53    91.71  -0.2565
+      1.00      21.91  -0.6550   -24.95    92.53  -0.2697
+      1.50      32.87  -0.7627   -27.73    93.93  -0.2953
+      2.00      43.83  -0.8705   -30.42    95.12  -0.3198
+      3.00      65.75  -1.0862   -35.50    96.88  -0.3665
+      5.00     109.58  -1.5174   -44.64    98.73  -0.4521
+
+  Sharpe breakeven funding rate: ~0.00 bps/4h bar (~0.0% annualized)
+
+================================================================================
+T5: CORRELATION ANALYSIS — long vs short return streams
+================================================================================
+
+  Active bars (either side trading): 12953 / 15648
+  Pearson rho:  0.0006 (p=9.4524e-01)
+  Spearman rho: 0.0016 (p=8.5465e-01)
+
+  Bars where BOTH sides active: 11 / 15648 (0.07%)
+  Correlation when both active: 0.0688 (p=8.4081e-01)
+
+  Bars only LONG active:  7140
+  Bars only SHORT active: 5802
+  Bars neither active:    2695
+
+  NOTE: 11 concurrent bars exist due to signal lag (EMA crossover doesn't align exactly with regime switch)
+/var/www/trading-bots/btc-spot-dev/research/x11/benchmark.py:830: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rho_b, _ = pearsonr(rl_b[mask_b], rs_b[mask_b])
+
+  Rolling monthly correlation (60 valid blocks):
+    Mean: 0.0015  Median: 0.0001
+    Min:  -0.0401  Max: 0.0327
+
+================================================================================
+T3: COMBINED LONG+SHORT vs LONG-ONLY
+================================================================================
+
+      Config Scen     Sharpe    CAGR%     MDD%   Calmar  Trades
+---------------------------------------------------------------
+        long smart    1.7226    78.83    35.63   2.2125     202
+    combined smart    1.5572    59.90    33.42   1.7924     440
+        long base     1.5994    70.68    37.56   1.8820     202
+    combined base     1.4249    53.03    36.89   1.4374     440
+        long harsh    1.4690    62.48    40.90   1.5275     202
+    combined harsh    1.2854    46.09    40.35   1.1421     440
+
+  DELTA (combined - long):
+    smart   dSharpe=-0.1654  dCAGR=-18.93%  dMDD=-2.21%  dCalmar=-0.4201
+    base    dSharpe=-0.1745  dCAGR=-17.66%  dMDD=-0.67%  dCalmar=-0.4445
+    harsh   dSharpe=-0.1837  dCAGR=-16.40%  dMDD=-0.55%  dCalmar=-0.3854
+
+================================================================================
+T4: BOOTSTRAP VCBB (500 paths, combined vs long-only h2h)
+================================================================================
+  Generating bootstrap paths... done (4.4s)
+  Running simulations...
+    100/500 done (12.1s)
+    200/500 done (23.8s)
+    300/500 done (35.5s)
+    400/500 done (47.0s)
+    500/500 done (58.6s)
+  Simulations complete (58.6s)
+
+  long        Sharpe=0.5721 [-0.1320, 1.2577]  CAGR=13.99% [-8.61, 46.37]  MDD=52.20%  P(CAGR>0)=0.844
+
+  combined    Sharpe=0.2959 [-0.5814, 1.0563]  CAGR=4.30% [-13.79, 31.71]  MDD=50.35%  P(CAGR>0)=0.630
+
+  HEAD-TO-HEAD (combined vs long-only) across 500 paths:
+    Sharpe wins: 0/500 (0.0%)
+    CAGR wins:   2/500 (0.4%)
+    MDD wins:    318/500 (63.6%)
+    Mean dSharpe: -0.2906
+    Mean dCAGR:   -9.88%
+    Mean dMDD:    -0.94%
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/x11/x11_results.json
+Saved: /var/www/trading-bots/btc-spot-dev/research/x11/x11_short_factorial.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x11/x11_timescale_table.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x11/x11_funding_sweep.csv
+Saved: /var/www/trading-bots/btc-spot-dev/research/x11/x11_bootstrap_table.csv
+
+================================================================================
+X11 VERDICT — SHORT-SIDE COMPLEMENT FEASIBILITY
+================================================================================
+  [FAIL] G1: Short Sharpe > 0 (harsh + funding): -0.6550
+  [FAIL] G2: Positive Sharpe >=10/16 timescales: 0/16
+  [FAIL] G3: Combined Sharpe > Long Sharpe (harsh): 1.2854 vs 1.4690
+  [FAIL] G4: Bootstrap Sharpe wins >=60%: 0.0%
+  [PASS] G5: |Correlation| < 0.3: 0.0006
+  [FAIL] G6: Funding breakeven > 2.0 bps/bar: 0.00
+
+  Gates passed: 1/6
+
+  VERDICT: REJECT
+  Short-side complement does not show sufficient feasibility.
+  The idle exposure during regime OFF is a feature, not a bug.
+
+================================================================================
+X11 BENCHMARK COMPLETE — 66s total — VERDICT: REJECT
+================================================================================

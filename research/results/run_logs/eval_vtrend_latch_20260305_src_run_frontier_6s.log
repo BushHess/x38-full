@@ -1,0 +1,73 @@
+6-Strategy Matched-Risk Frontier
+======================================================================
+Loaded 24 equity curves, 18662 bars
+  WARNING: E0_plus_EMA1D21_Native not found in equity curves, skipping
+Prepared 5 strategy return streams
+
+======================================================================
+LINEARITY SANITY CHECK
+======================================================================
+  E0           PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  E5           PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  SM           PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  LATCH        PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+  EMA21_H4     PASS  Sharpe_rng=0.0%  MDD_mono=True  CAGR_mono=True
+
+======================================================================
+BUILDING 101-POINT FRONTIERS
+======================================================================
+/var/www/trading-bots/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/var/www/trading-bots/.venv/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+  E0           k=0.50: CAGR=0.2328 MDD=0.3779 Sharpe=1.0773
+  E5           k=0.50: CAGR=0.2617 MDD=0.3230 Sharpe=1.2076
+  SM           k=0.50: CAGR=0.0687 MDD=0.0767 Sharpe=1.3118
+  LATCH        k=0.50: CAGR=0.0555 MDD=0.0570 Sharpe=1.3148
+  EMA21_H4     k=0.50: CAGR=0.2321 MDD=0.3506 Sharpe=1.0934
+
+======================================================================
+MATCHED-MDD ANALYSIS
+======================================================================
+  Native MDDs:
+    E0           MDD=0.6330 (63.30%)
+    E5           MDD=0.5647 (56.47%)
+    SM           MDD=0.1500 (15.00%)
+    LATCH        MDD=0.1124 (11.24%)
+    EMA21_H4     MDD=0.5967 (59.67%)
+  Min native MDD: 0.1124
+  Feasible targets: ['5.0%', '10.0%']
+
+  Matched-MDD comparison table:
+  MDD=5.0%  E0=0.0264/1.0773  E5=0.0360/1.2076  SM=0.0448/1.3118  LATCH=0.0485/1.3148  EMA21_H4=0.0289/1.0934
+  MDD=10.0%  E0=0.0538/1.0773  E5=0.0724/1.2076  SM=0.0905/1.3118  LATCH=0.0997/1.3148  EMA21_H4=0.0589/1.0934
+
+======================================================================
+OPERATIONAL RISK-BUDGET REGION
+======================================================================
+  MDD=12.5%  E0=Y/0.0684  E5=Y/0.0927  SM=Y/0.1146  LATCH=N/0.1121  EMA21_H4=Y/0.0743
+  MDD=15.0%  E0=Y/0.0830  E5=Y/0.1111  SM=Y/0.1384  LATCH=N/0.1121  EMA21_H4=Y/0.0907
+  MDD=20.0%  E0=Y/0.1132  E5=Y/0.1521  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.1235
+  MDD=25.0%  E0=Y/0.1442  E5=Y/0.1955  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.1580
+  MDD=30.0%  E0=Y/0.1778  E5=Y/0.2410  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.1943
+  MDD=35.0%  E0=Y/0.2131  E5=Y/0.2866  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.2321
+  MDD=40.0%  E0=Y/0.2489  E5=Y/0.3383  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.2713
+  MDD=50.0%  E0=Y/0.3296  E5=Y/0.4447  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=Y/0.3586
+  MDD=60.0%  E0=Y/0.4184  E5=N/0.5226  SM=N/0.1390  LATCH=N/0.1121  EMA21_H4=N/0.4516
+
+======================================================================
+PAIRWISE: ALL vs E0 AT E0-MATCHED RISK
+======================================================================
+  E0 at E5 MDD (56.47%): k=0.844 CAGR=0.3855 vs 0.5226 (delta=+0.1370)
+  E0 at SM MDD (15.00%): k=0.178 CAGR=0.0830 vs 0.1390 (delta=+0.0560)
+  E0 at LATCH MDD (11.24%): k=0.131 CAGR=0.0611 vs 0.1121 (delta=+0.0511)
+  E0 at EMA21_H4 MDD (59.67%): k=0.914 CAGR=0.4152 vs 0.4516 (delta=+0.0364)
+
+======================================================================
+SAVING ARTIFACTS
+======================================================================
+  frontier_6s_grid.csv (505 rows)
+
+======================================================================
+COMPLETE in 11.5s
+======================================================================

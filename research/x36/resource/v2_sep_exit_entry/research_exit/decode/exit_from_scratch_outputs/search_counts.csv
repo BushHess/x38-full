@@ -1,0 +1,6 @@
+family,evaluations
+price_core_no_timestop,640
+price_core_with_timestop,3360
+volume_continuation,720
+always_on_volume_exit,180
+initial_stop_addons,15

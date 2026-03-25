@@ -1,0 +1,54 @@
+{
+  "verdict": "REJECT",
+  "exit_code": 2,
+  "deltas": {
+    "full_harsh_score_delta": -43.6893
+  },
+  "trade_level_bootstrap": {},
+  "failures": [
+    "full_harsh_delta_below_tolerance",
+    "wfo_robustness_failed"
+  ],
+  "warnings": [],
+  "errors": [],
+  "reasons": [
+    "Candidate harsh score delta too low (-43.6893)",
+    "WFO robustness did not meet threshold"
+  ],
+  "key_links": {
+    "data_integrity": "results/data_integrity.json",
+    "backtest": "results/full_backtest_summary.csv",
+    "wfo": "results/wfo_per_round_metrics.csv",
+    "holdout": "results/final_holdout_metrics.csv",
+    "bootstrap": "results/bootstrap_paired_test.csv",
+    "trade_level": "results/matched_trades.csv",
+    "trade_level_bootstrap": "results/bootstrap_return_diff.json",
+    "regression_guard": "results/regression_guard.json"
+  },
+  "gates": [
+    {
+      "name": "lookahead",
+      "passed": true,
+      "severity": "hard",
+      "detail": "status=pass"
+    },
+    {
+      "name": "full_harsh_delta",
+      "passed": false,
+      "severity": "hard",
+      "detail": "delta=-43.6893, min=-0.2000"
+    },
+    {
+      "name": "wfo_robustness",
+      "passed": false,
+      "severity": "soft",
+      "detail": "win_rate=0.500, required>=0.600"
+    }
+  ],
+  "metadata": {
+    "n_gates": 3,
+    "n_hard_fail": 1,
+    "n_soft_fail": 1,
+    "wfo_low_power": false
+  }
+}

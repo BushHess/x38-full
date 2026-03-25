@@ -1,0 +1,296 @@
+{
+  "session_timestamp_utc": "2026-03-18T17:11:31.829036+00:00",
+  "protocol_version": "V8 final same-file convergence audit",
+  "execution_model": {
+    "market": "BTC/USDT spot",
+    "directionality": "long-only",
+    "signal_timing": "signal computed at bar close",
+    "fill_model": "execute at next bar open",
+    "trading_cost_bps_per_side": 10,
+    "round_trip_cost_bps": 20,
+    "warmup_no_live_trading_before": "2020-01-01",
+    "timestamps_assumed_utc": true,
+    "native_bars_only": true,
+    "no_resampling_synthetic_bars": true,
+    "no_missing_bar_imputation": true,
+    "position_sizing": "100% notional when long, 0% when flat",
+    "leverage": 0,
+    "pyramiding": false,
+    "discretionary_overrides": false
+  },
+  "admissible_inputs": {
+    "prompt": "/mnt/data/RESEARCH_PROMPT_V8.md",
+    "raw_files": [
+      "/mnt/data/data_btcusdt_4h.csv",
+      "/mnt/data/data_btcusdt_1d.csv"
+    ],
+    "expected_schema": [
+      "symbol",
+      "interval",
+      "open_time",
+      "close_time",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "quote_volume",
+      "num_trades",
+      "taker_buy_base_vol",
+      "taker_buy_quote_vol"
+    ]
+  },
+  "data_splits": {
+    "context_warmup": {
+      "start": "2017-08-17",
+      "end": "2019-12-31"
+    },
+    "discovery": {
+      "start": "2020-01-01",
+      "end": "2023-06-30"
+    },
+    "candidate_selection_holdout": {
+      "start": "2023-07-01",
+      "end": "2024-09-30"
+    },
+    "reserve_internal": {
+      "start": "2024-10-01",
+      "end": null
+    }
+  },
+  "discovery_folds": [
+    {
+      "train_end_exclusive": "2020-01-01",
+      "test_start": "2020-01-01",
+      "test_end": "2020-03-31"
+    },
+    {
+      "train_end_exclusive": "2020-04-01",
+      "test_start": "2020-04-01",
+      "test_end": "2020-06-30"
+    },
+    {
+      "train_end_exclusive": "2020-07-01",
+      "test_start": "2020-07-01",
+      "test_end": "2020-09-30"
+    },
+    {
+      "train_end_exclusive": "2020-10-01",
+      "test_start": "2020-10-01",
+      "test_end": "2020-12-31"
+    },
+    {
+      "train_end_exclusive": "2021-01-01",
+      "test_start": "2021-01-01",
+      "test_end": "2021-03-31"
+    },
+    {
+      "train_end_exclusive": "2021-04-01",
+      "test_start": "2021-04-01",
+      "test_end": "2021-06-30"
+    },
+    {
+      "train_end_exclusive": "2021-07-01",
+      "test_start": "2021-07-01",
+      "test_end": "2021-09-30"
+    },
+    {
+      "train_end_exclusive": "2021-10-01",
+      "test_start": "2021-10-01",
+      "test_end": "2021-12-31"
+    },
+    {
+      "train_end_exclusive": "2022-01-01",
+      "test_start": "2022-01-01",
+      "test_end": "2022-03-31"
+    },
+    {
+      "train_end_exclusive": "2022-04-01",
+      "test_start": "2022-04-01",
+      "test_end": "2022-06-30"
+    },
+    {
+      "train_end_exclusive": "2022-07-01",
+      "test_start": "2022-07-01",
+      "test_end": "2022-09-30"
+    },
+    {
+      "train_end_exclusive": "2022-10-01",
+      "test_start": "2022-10-01",
+      "test_end": "2022-12-31"
+    },
+    {
+      "train_end_exclusive": "2023-01-01",
+      "test_start": "2023-01-01",
+      "test_end": "2023-03-31"
+    },
+    {
+      "train_end_exclusive": "2023-04-01",
+      "test_start": "2023-04-01",
+      "test_end": "2023-06-30"
+    }
+  ],
+  "evaluation_metrics": [
+    "daily_return_sharpe_365",
+    "CAGR",
+    "max_drawdown",
+    "trade_count_entries_started_in_segment",
+    "exposure_fraction",
+    "win_rate",
+    "mean_trade_return",
+    "median_trade_return",
+    "mean_holding_period_bars",
+    "median_holding_period_bars",
+    "top_5_winner_concentration",
+    "bottom_decile_trade_return_mean",
+    "positive_discovery_fold_share",
+    "worst_discovery_fold_CAGR"
+  ],
+  "feature_library_manifest_format": {
+    "feature_id": "unique family identifier",
+    "bucket": "native_d1 | native_h4 | cross_timeframe",
+    "timeframe": "1d | 4h | 4h_with_completed_1d_context",
+    "family": "high-level conceptual family",
+    "formula_description": "human-readable formula",
+    "parameter_ladder": "predeclared monotone sparse discrete ladder",
+    "admissible_tails": "high | low | categorical",
+    "threshold_mode_taxonomy": "sign | train_quantile | structural_level | categorical",
+    "calibration_mode_taxonomy": "fixed_structural | expanding_train_distribution | none"
+  },
+  "threshold_calibration_modes_allowed": {
+    "sign": {
+      "calibration_mode": "fixed_structural",
+      "levels": [
+        0.0
+      ]
+    },
+    "train_quantile": {
+      "calibration_mode": "expanding_train_distribution",
+      "percentiles_high": [
+        0.6,
+        0.7,
+        0.8
+      ]
+    },
+    "structural_level": {
+      "calibration_mode": "fixed_structural",
+      "range_pos_levels_high": [
+        0.8
+      ],
+      "range_pos_levels_low": [
+        0.2
+      ],
+      "up_frac_levels_high": [
+        0.6
+      ],
+      "up_frac_levels_low": [
+        0.4
+      ],
+      "buy_ratio_levels_high": [
+        0.55
+      ],
+      "buy_ratio_levels_low": [
+        0.45
+      ]
+    },
+    "categorical": {
+      "calibration_mode": "none"
+    }
+  },
+  "bootstrap_settings": {
+    "method": "moving_block_bootstrap_on_daily_UTC_returns",
+    "block_sizes_days": [
+      5,
+      10,
+      20
+    ],
+    "resamples_per_block_size": 3000,
+    "seed": 20260318,
+    "paired_bootstrap_uses_common_resampled_indices": true,
+    "serialized_selection_driver": {
+      "seed": 20260318,
+      "block_sizes_days": [
+        5,
+        10,
+        20
+      ],
+      "resamples_per_block_size": 3000
+    }
+  },
+  "plateau_perturbation_spec": {
+    "rule": "perturb every tunable quantity by at least \u00b120% or nearest-grid equivalent inside its predeclared ladder",
+    "lookback_rule": "use nearest admissible ladder value on each side approximating 0.8x and 1.2x",
+    "quantile_rule": "use adjacent admissible quantile cutoffs as nearest-grid equivalents",
+    "categorical_rule": "not applicable",
+    "reporting": "one-at-a-time perturbations plus local neighborhood summary"
+  },
+  "complexity_budget": {
+    "max_logical_layers": 3,
+    "max_slower_contextual_layers": 1,
+    "max_faster_state_layers": 1,
+    "max_optional_entry_only_confirmation_layers": 1,
+    "max_tunable_quantities_final_candidate": 6,
+    "no_regime_specific_parameter_sets": true
+  },
+  "candidate_progression_gates": {
+    "stage1_promotion": {
+      "positive_edge_after_20bps_rt_discovery": true,
+      "min_discovery_test_window_entries": 20,
+      "min_nonnegative_discovery_fold_share": 0.5,
+      "no_single_isolated_quarter_dependence": true,
+      "no_unresolved_leakage_or_anomaly_ambiguity": true,
+      "isolated_quarter_dependence_rule": {
+        "positive_fold_count_min": 3,
+        "max_single_positive_fold_contribution_share": 0.65,
+        "definition": "largest positive fold net return divided by sum of positive fold net returns"
+      }
+    },
+    "holdout_hard_gate": {
+      "positive_holdout_after_cost": true,
+      "min_holdout_entries": 10
+    }
+  },
+  "evidence_labels": [
+    "CLEAN OOS CONFIRMED",
+    "INTERNAL ROBUST CANDIDATE",
+    "NO ROBUST IMPROVEMENT"
+  ],
+  "benchmark_access_rule": "No benchmark specifications supplied in this session; benchmark comparison not consulted and not used for selection.",
+  "common_daily_return_alignment_rule": {
+    "rule": "aggregate realized strategy bar returns to daily UTC returns by compounding all open-to-open interval returns whose interval starts on the UTC date",
+    "daily_domain_includes_flat_days": true,
+    "candidate_to_candidate_paired_tests_use_this_daily_domain_only": true
+  },
+  "segment_trade_count_convention": {
+    "rule": "trade count for any segment equals number of long entries whose execution timestamp (next-bar open) falls inside the segment",
+    "win_rate_and_trade_return_stats": "computed on completed round trips; open trades at segment end excluded from trade PnL stats but included in bar-return/equity metrics up to segment end"
+  },
+  "meaningful_paired_advantage_definition": {
+    "primary_quantity": "paired mean daily return difference on common daily UTC domain",
+    "point_estimate_minimum": 5e-05,
+    "bootstrap_requirement": "P(mean_diff > 0) >= 0.95 on pooled resamples and on at least 2 of 3 block sizes",
+    "paired_indeterminate_if_not_met": true
+  },
+  "deterministic_tie_break_rule": [
+    "broader_plateau",
+    "lower_pre_reserve_drawdown_at_comparable_pre_reserve_growth",
+    "stronger_fold_consistency",
+    "higher_trade_count",
+    "lower_cross_timeframe_dependence",
+    "fixed_lexical_order_of_candidate_id"
+  ],
+  "anomaly_disposition_register_format": {
+    "anomaly_class": "",
+    "timeframe": "",
+    "detection_rule": "",
+    "row_count": 0,
+    "disposition": "retained_exactly | dropped_by_deterministic_rule | excluded_from_scoring_retained_in_audit",
+    "notes": ""
+  },
+  "session_finality_statement_and_stop_condition": {
+    "statement": "This V8 run is the final same-file audit on the current BTC/USDT file pair.",
+    "stop_condition": "After reserve/internal evaluation is reported, same-file prompt iteration stops; stronger claims require appended future data."
+  },
+  "procedural_independence_before_freeze_statement_template": "Before freeze, no prior-session reports, logs, shortlists, frozen candidates, benchmark specs, or serialized outputs were consulted; selection used only this prompt, the raw CSVs, and code/artifacts generated inside this session.",
+  "global_cross_session_split_independence_statement_template": "Within-file global OOS independence is not claimed; discovery, holdout, and reserve all come from the same raw file, with reserve internal only."
+}

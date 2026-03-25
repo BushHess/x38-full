@@ -1,0 +1,35 @@
+# Input Hash Manifest
+
+# format:
+# sha256  file_size_bytes  line_count  relative_path
+#
+# Path convention: use the filename as uploaded to the execution chat.
+# These are upload-level identifiers, not filesystem paths within the bundle.
+# For delta files that share the same name across windows, prefix with the
+# delta folder name (e.g. delta_YYYYMMDD_to_YYYYMMDD/raw/spot_btcusdt_15m.csv)
+# to disambiguate.
+
+# --- common to all modes ---
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  research_constitution_v4.0.yaml
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  session_manifest.json
+
+# --- seed discovery: raw snapshot + schema doc ---
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  FILE_AND_SCHEMA_CONVENTIONS_EN.md
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  spot_btcusdt_15m.csv
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  spot_btcusdt_1h.csv
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  spot_btcusdt_4h.csv
+<sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  spot_btcusdt_1d.csv
+
+# --- forward evaluation: state pack + appended delta ---
+# (replace the seed lines above with actual admitted files for the session mode)
+# <sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  state_pack_vN.zip
+# <sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  delta_YYYYMMDD_to_YYYYMMDD/raw/spot_btcusdt_15m.csv
+# <sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  delta_YYYYMMDD_to_YYYYMMDD/raw/spot_btcusdt_1h.csv
+# <sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  delta_YYYYMMDD_to_YYYYMMDD/raw/spot_btcusdt_4h.csv
+# <sha256_placeholder>  <size_placeholder>  <line_count_placeholder>  delta_YYYYMMDD_to_YYYYMMDD/raw/spot_btcusdt_1d.csv
+#
+# --- governance review ---
+# Governance does not produce a state pack. A hash manifest is not required
+# for governance sessions per required_artifacts_by_mode in the constitution.
+# If the operator chooses to record one for audit, list the constitution,
+# state pack, and governance_failure_dossier as admitted inputs.

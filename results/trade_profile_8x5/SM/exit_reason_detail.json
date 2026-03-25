@@ -1,0 +1,11 @@
+{
+  "vtrend_sm_floor_exit": {
+    "n_trades": 65,
+    "pct_of_total": 100.0,
+    "win_rate_pct": 40.0,
+    "avg_return_pct": 4.7301082615384615,
+    "median_return_pct": -1.991546,
+    "total_pnl_usd": 19640.668775,
+    "avg_days_held": 14.402564061538463
+  }
+}

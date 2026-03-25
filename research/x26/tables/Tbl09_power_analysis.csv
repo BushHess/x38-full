@@ -1,0 +1,4 @@
+class,name,DOF,N_total,N_per_year,gross_bps,net_50bps,net_20bps,effect_d,MDE,powered
+A,Single-bar contrarian long,1,5188,610,2.9,-47.1,-17.1,0.0172,0.0389,UNDERPOWERED
+B,Multi-bar MR long (k=5),2,4708,553,9.1,-40.9,-10.9,0.0249,0.0408,UNDERPOWERED
+C,VR-conditional VTREND filter,2,153,18,N/A (filter),N/A,N/A,-0.0816,0.2265,UNDERPOWERED

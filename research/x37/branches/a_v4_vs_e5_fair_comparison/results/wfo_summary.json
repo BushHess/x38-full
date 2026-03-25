@@ -1,0 +1,46 @@
+{
+  "comparison": "v4_minus_e5",
+  "n_windows_total": 8,
+  "n_windows_valid": 7,
+  "n_windows_power_only": 3,
+  "wins_valid": {
+    "v4": 5,
+    "e5": 2,
+    "ties": 0
+  },
+  "wins_power": {
+    "v4": 2,
+    "e5": 1,
+    "ties": 0
+  },
+  "winner_valid": "V4",
+  "winner_power": "V4",
+  "wilcoxon": {
+    "W_plus": NaN,
+    "p_value": 1.0,
+    "n": 3,
+    "pass": false,
+    "sufficient": false
+  },
+  "bootstrap": {
+    "mean": 108.34956666666666,
+    "ci_lo": -117.0446,
+    "ci_hi": 231.0275,
+    "ci_above_zero": false,
+    "n": 3
+  },
+  "deltas_valid": [
+    11.744,
+    211.0658,
+    -117.0446,
+    231.0275,
+    -46.3592,
+    30.724,
+    27.4214
+  ],
+  "deltas_power": [
+    211.0658,
+    -117.0446,
+    231.0275
+  ]
+}

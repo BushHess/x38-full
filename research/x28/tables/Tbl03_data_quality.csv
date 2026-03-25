@@ -1,0 +1,5 @@
+timeframe,rows,missing_values,dup_timestamps,gaps,zero_volume,price_integrity_fails,extreme_moves
+15m,299754,0,0,30,60,0,1
+1h,74952,0,0,19,4,0,1
+4h,18752,0,0,1,0,0,2
+1d,3128,0,0,0,0,0,4

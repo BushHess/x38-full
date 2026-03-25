@@ -1,0 +1,92 @@
+{
+  "config": {
+    "ema_sweep_h4": [
+      126,
+      378,
+      756
+    ],
+    "ema_sweep_days": [
+      21.0,
+      63.0,
+      126.0
+    ],
+    "cost_bps_rt": 50,
+    "warmup_days": 365,
+    "n_boot": 500,
+    "seed": 42,
+    "blksz": 60
+  },
+  "phase3_bootstrap": {
+    "126": {
+      "P(Sharpe+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      }
+    },
+    "378": {
+      "P(Sharpe+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 11,
+        "p_binom": 0.10505676,
+        "verdict": "NOT SIG"
+      }
+    },
+    "756": {
+      "P(Sharpe+)>50%": {
+        "wins": 1,
+        "p_binom": 0.99998474,
+        "verdict": "NOT SIG"
+      },
+      "P(CAGR+)>50%": {
+        "wins": 5,
+        "p_binom": 0.96159363,
+        "verdict": "NOT SIG"
+      },
+      "P(MDD-)>50%": {
+        "wins": 16,
+        "p_binom": 1.526e-05,
+        "verdict": "PROVEN ***"
+      },
+      "P(NAV+)>50%": {
+        "wins": 5,
+        "p_binom": 0.96159363,
+        "verdict": "NOT SIG"
+      }
+    }
+  },
+  "proven_range_days": [
+    21.0,
+    21.0
+  ],
+  "proven_count": 1
+}

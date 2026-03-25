@@ -1,0 +1,52 @@
+Trade export started: 2026-02-24T00:48:52.368262+00:00
+Command: python export_trades.py
+Period: 2019-01-01 → 2026-02-20, warmup=365d
+Scenarios: ['harsh', 'base']
+
+── V10_harsh ──
+  File:         trades_v10_harsh.csv
+  Rows:         103
+  Expected:     103
+  Count match:  YES
+  Regimes OK:   YES
+  MFE/MAE OK:   YES
+  Net PnL sum:  94025.85
+  Final NAV:    95968.45
+  Status:       PASS
+
+── V10_base ──
+  File:         trades_v10_base.csv
+  Rows:         100
+  Expected:     100
+  Count match:  YES
+  Regimes OK:   YES
+  MFE/MAE OK:   YES
+  Net PnL sum:  142729.12
+  Final NAV:    145814.61
+  Status:       PASS
+
+── V11_harsh ──
+  File:         trades_v11_harsh.csv
+  Rows:         102
+  Expected:     102
+  Count match:  YES
+  Regimes OK:   YES
+  MFE/MAE OK:   YES
+  Net PnL sum:  125735.30
+  Final NAV:    125427.49
+  Status:       PASS
+
+── V11_base ──
+  File:         trades_v11_base.csv
+  Rows:         102
+  Expected:     102
+  Count match:  YES
+  Regimes OK:   YES
+  MFE/MAE OK:   YES
+  Net PnL sum:  135440.11
+  Final NAV:    138043.92
+  Status:       PASS
+
+Overall: PASS
+Elapsed: 5.4s
+Finished: 2026-02-24T00:48:57.749279+00:00

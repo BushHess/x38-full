@@ -1,0 +1,15 @@
+target,feature,n,n_pos,pos_rate_pct,mean_pos,mean_neg,direction,auc
+hard,dd_now_atr,968,177,18.29,0.471202,0.355674,high_is_risk,0.59317
+hard,vdo,968,177,18.29,0.000243,0.003639,low_is_risk,0.587485
+hard,ret_3,968,177,18.29,0.007482,0.012151,low_is_risk,0.581057
+hard,d1_regime,968,177,18.29,0.99435,0.97598,high_is_risk,0.554101
+hard,atr_pct,968,177,18.29,0.016057,0.016544,low_is_risk,0.551458
+hard,ema_spread_atr,968,177,18.29,2.681737,2.461658,high_is_risk,0.531609
+hard,price_to_slow_atr,968,177,18.29,4.67417,4.61081,high_is_risk,0.503989
+soft,dd_now_atr,1183,456,38.55,0.481322,0.345241,high_is_risk,0.606823
+soft,ret_3,1183,456,38.55,0.008482,0.012318,low_is_risk,0.562308
+soft,d1_regime,1183,456,38.55,0.991228,0.975241,high_is_risk,0.559585
+soft,vdo,1183,456,38.55,0.001975,0.003431,low_is_risk,0.542786
+soft,atr_pct,1183,456,38.55,0.016092,0.016711,low_is_risk,0.538629
+soft,ema_spread_atr,1183,456,38.55,2.617378,2.428724,high_is_risk,0.530071
+soft,price_to_slow_atr,1183,456,38.55,4.506295,4.600174,low_is_risk,0.517324

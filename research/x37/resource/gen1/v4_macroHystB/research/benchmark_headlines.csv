@@ -1,0 +1,4 @@
+benchmark,sharpe,cagr,mdd,trades,bootstrap_median_sharpe,bootstrap_median_cagr,p_sharpe_gt_0,note
+Benchmark A,1.638,0.728,-0.385,186,0.766,0.244,0.968,robustness leader
+Benchmark B,1.83,0.804,-0.336,196,0.733,0.217,0.966,best full-sample variant; fragile in recent data
+Benchmark C,1.533,0.578,-0.373,211,0.516,0.122,0.894,diagnostic comparator

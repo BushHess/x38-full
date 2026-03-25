@@ -1,0 +1,27 @@
+
+========================================================================
+VERDICT: REJECT (exit code 2)
+========================================================================
+lookahead          PASS
+data_integrity     PASS
+backtest           FAIL
+cost_sweep         PASS
+invariants         PASS
+churn_metrics      PASS
+regime             INFO
+wfo                PASS
+bootstrap          INFO
+subsampling        INFO
+sensitivity        SKIP
+holdout            FAIL
+selection_bias     PASS
+trade_level        INFO
+dd_episodes        INFO
+overlay            SKIP
+
+Reasons:
+- Candidate harsh score delta too low (-67.6253)
+- Holdout harsh score delta too low (-33.6112)
+
+Output: /var/www/trading-bots/btc-spot-dev/results/parity_20260305/eval_sm_vs_e0
+SM exit code: 2

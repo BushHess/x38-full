@@ -1,0 +1,7 @@
+candidate,trade_count_match,timestamps_match,native_terminal_match,unit_terminal_match,all_pass
+E0,True,True,True,True,True
+E5,True,True,True,True,True
+SM,True,True,True,False,True
+LATCH,True,True,True,False,True
+E0_plus_EMA1D21,False,False,False,False,False
+E5_plus_EMA1D21,False,False,False,False,False

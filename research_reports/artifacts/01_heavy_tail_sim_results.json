@@ -1,0 +1,73 @@
+{
+  "parameters": {
+    "generator": "Student-t(df=3.0)",
+    "n_bars": 15000,
+    "n_reps": 200,
+    "vol": 0.0065,
+    "phi_ar1": 0.15,
+    "edge_per_bar": 2.5e-05,
+    "edge_annualized_pct": 5.63,
+    "block_sizes": [
+      10,
+      20,
+      40
+    ],
+    "n_bootstrap": 1000,
+    "ci_level": 0.95,
+    "bootstrap_seed": 42,
+    "pop_truth_n_runs": 30,
+    "pop_truth_n_bars": 80000
+  },
+  "tail_properties": {
+    "kurtosis_fisher_false": 30.36,
+    "skewness": -0.5598,
+    "hill_alpha": 2.67,
+    "hill_k": 750
+  },
+  "population_truth": {
+    "true_sharpe_diff": 0.1714,
+    "true_growth_diff": 0.0553
+  },
+  "coverage_pct": {
+    "10": {
+      "bootstrap": 94.0,
+      "subsampling": 96.0
+    },
+    "20": {
+      "bootstrap": 95.0,
+      "subsampling": 96.0
+    },
+    "40": {
+      "bootstrap": 94.5,
+      "subsampling": 96.5
+    }
+  },
+  "type1_error_pct": {
+    "10": {
+      "bootstrap": 2.5,
+      "subsampling": 2.0
+    },
+    "20": {
+      "bootstrap": 2.0,
+      "subsampling": 1.5
+    },
+    "40": {
+      "bootstrap": 1.5,
+      "subsampling": 2.0
+    }
+  },
+  "power_pct": {
+    "10": {
+      "bootstrap": 6.5,
+      "subsampling": 6.5
+    },
+    "20": {
+      "bootstrap": 7.000000000000001,
+      "subsampling": 6.0
+    },
+    "40": {
+      "bootstrap": 6.5,
+      "subsampling": 6.5
+    }
+  }
+}

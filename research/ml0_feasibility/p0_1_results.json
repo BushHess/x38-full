@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "data": "/var/www/trading-bots/btc-spot-dev/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "horizon_bars": 24,
+    "thin_stride": 3,
+    "train_years": 3,
+    "test_days": 180,
+    "step_days": 180,
+    "embargo_bars": 24
+  },
+  "sample_summary": {
+    "raw_origins": 3439,
+    "thin3_origins": 1327,
+    "clusters": 441,
+    "soft_noncens": 3081,
+    "soft_pos": 1164,
+    "hard_noncens": 2547,
+    "hard_pos": 463,
+    "folds": 8
+  },
+  "best_models": {
+    "soft": {
+      "target": "soft",
+      "model": "CORE4",
+      "folds": 8,
+      "logloss_med": 0.6705860581072844,
+      "brier_med": 0.23878626922416307,
+      "auc_med": 0.659760333673377,
+      "logloss_gain_vs_prior_pct": 2.3648276640656376,
+      "brier_gain_vs_prior_pct": 3.261769556119804
+    },
+    "hard": {
+      "target": "hard",
+      "model": "DD_ONLY",
+      "folds": 8,
+      "logloss_med": 0.529373068219056,
+      "brier_med": 0.1739534138114397,
+      "auc_med": 0.5634432783608196,
+      "logloss_gain_vs_prior_pct": 2.2043375361295294,
+      "brier_gain_vs_prior_pct": 1.5821687310506
+    }
+  },
+  "ess_summary": {
+    "soft": {
+      "median_thin3_pos": 197.5,
+      "median_positive_clusters": 123.0,
+      "median_ess_pc1_thin3": 54.15188408008362
+    },
+    "hard": {
+      "median_thin3_pos": 69.5,
+      "median_positive_clusters": 49.5,
+      "median_ess_pc1_thin3": 44.30947791285962
+    }
+  },
+  "verdict": "KILL_STACK",
+  "elapsed_seconds": 0.48131418228149414
+}

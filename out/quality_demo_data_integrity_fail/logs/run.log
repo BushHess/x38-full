@@ -1,0 +1,12 @@
+2026-02-24 06:32:46,375 INFO validation: Validation run started
+2026-02-24 06:32:46,375 INFO validation: command=python validate_strategy.py --strategy v8_apex --baseline v8_apex --config v10/configs/baseline_legacy.live.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --dataset /tmp/di_bad.csv --out out/quality_demo_data_integrity_fail --force --suite basic --bootstrap 0 --lookahead-check off --start 2020-01-04 --end 2020-01-05 --warmup-days 3 --wfo-windows 2
+2026-02-24 06:32:46,375 INFO validation: seed=1337
+2026-02-24 06:32:46,375 INFO validation: git_hash=c74c650
+2026-02-24 06:32:46,375 INFO validation: candidate=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:32:46,375 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:32:46,375 INFO validation: dataset=/tmp/di_bad.csv
+2026-02-24 06:32:46,375 INFO validation: period=2020-01-04 -> 2020-01-05
+2026-02-24 06:32:46,383 INFO validation: suite data_integrity started
+2026-02-24 06:32:46,395 INFO validation: suite data_integrity finished: fail (0.01s)
+2026-02-24 06:32:46,395 ERROR validation: Data integrity hard-fail detected; skipping remaining suites.
+2026-02-24 06:32:46,523 INFO validation: Validation run complete in 0.15s

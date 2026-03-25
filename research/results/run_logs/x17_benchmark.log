@@ -1,0 +1,52 @@
+/var/www/trading-bots/btc-spot-dev/research/x17/benchmark.py:53: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X17: Percentile-Ranked Selective Exit — Nested WFO & ΔU Diagnostic
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+  E0: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+  Training 7-feature logistic model on E0 trail stops...
+  Model: C=10.0, n_samples=168, OK
+  Training scores: n=168, median=0.6547, [p5=0.3984, p95=0.9262]
+
+======================================================================
+T0: ΔU DIAGNOSTIC (score-utility monotonicity)
+======================================================================
+  Trail-stop episodes with scores: 168
+
+  Best (G,δ) for monotonicity: G=3, δ=1.0
+  Overall mean ΔU: -0.004267
+  Quintile breakdown (sorted by score, low→high):
+    Q1 (n=33): mean=-0.008758, median=-0.006509, p10=-0.022238
+    Q2 (n=33): mean=-0.003390, median=-0.001003, p10=-0.021999
+    Q3 (n=33): mean=-0.003309, median=-0.004468, p10=-0.022145
+    Q4 (n=33): mean=+0.000447, median=+0.002495, p10=-0.020661
+    Q5 (n=36): mean=-0.006153, median=+0.003575, p10=-0.032264
+
+  G0: PASS (top 2 quintiles median ΔU > 0: Q4=+0.002495, Q5=+0.003575)
+
+======================================================================
+T1: NESTED WALK-FORWARD VALIDATION (4 folds)
+======================================================================
+    Fold 1: α=5% G=1 δ=0.5, E0=-0.8896, Filt=-0.8896, d=-0.0000 LOSE
+    Fold 2: α=25% G=3 δ=1.5, E0=1.1935, Filt=1.1318, d=-0.0617 LOSE
+    Fold 3: α=25% G=1 δ=0.5, E0=1.7196, Filt=1.7785, d=+0.0590 WIN
+    Fold 4: α=25% G=2 δ=1.5, E0=0.0470, Filt=0.2849, d=+0.2379 WIN
+
+  Win rate: 50%, mean d_sharpe: +0.0588, G1: FAIL
+  Consensus: α=25%, G=1, δ=1.5
+
+  T1 FAILED — WFO win_rate=50%, mean_d=+0.0588
+
+======================================================================
+T5: COMPARISON TABLE
+======================================================================
+
+  Strategy                              Sharpe    CAGR%     MDD%  Trades  AvgHold  Oracle%
+  --------------------------------------------------------------------------------------
+  E0                                    1.3718    57.72    39.96     189     40.8      0.0
+  X17_WATCH(α=25%,G=1,δ=1.5)            1.3150    54.67    45.51     184     42.2      0.0
+  X14_D                                 1.4280    64.00    36.70     133     60.3     10.9
+  X16_E                                 1.4240    62.70    38.90     162     48.7     10.4
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x17/x17_*.{json,csv}

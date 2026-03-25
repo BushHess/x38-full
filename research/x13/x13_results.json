@@ -1,0 +1,75 @@
+{
+  "oracle_ceiling": {
+    "d_sharpe": 0.7911285549392832,
+    "d_cagr": 62.45809095025592,
+    "d_mdd": -10.633516425078597,
+    "n_suppressed": 1662,
+    "n_allowed": -1494,
+    "baseline_trades": 189,
+    "oracle_trades": 81,
+    "v0": "True"
+  },
+  "oracle_baseline": {
+    "sharpe": 1.3717784945111047,
+    "cagr": 57.71622821909108,
+    "mdd": 39.957134910032146,
+    "trades": 189
+  },
+  "oracle_result": {
+    "sharpe": 2.162907049450388,
+    "cagr": 120.174319169347,
+    "mdd": 29.32361848495355,
+    "trades": 81
+  },
+  "univariate": {
+    "v1": true
+  },
+  "multivariate": {
+    "loocv_auc": 0.8174490279753438,
+    "best_C": 10.0,
+    "permutation_p": 0.001996007984031936,
+    "null_auc_mean": 0.4675011853959222,
+    "null_auc_std": 0.07607127454933256,
+    "null_auc_p5": 0.3333254306938518,
+    "null_auc_p95": 0.5836573415520784,
+    "coefficients": {
+      "ema_ratio": 0.4432675831396174,
+      "bars_held": 0.4596826582616002,
+      "atr_pctl": 0.12250792468147054,
+      "bar_range_atr": -0.338262768244982,
+      "dd_from_peak": -0.10694923959786978,
+      "bars_since_peak": 0.29385806279874804,
+      "close_position": -0.07193890548156642,
+      "vdo_at_exit": 0.17183198341025877,
+      "d1_regime_str": 0.36333622861897114,
+      "trail_tightness": 0.008797696358052354
+    },
+    "bias": 0.8891065980165782,
+    "n_nonzero": 9,
+    "youden_threshold": 0.73,
+    "confusion": {
+      "tp": 65,
+      "fp": 4,
+      "fn": 46,
+      "tn": 53
+    },
+    "v2": true
+  },
+  "bootstrap": {
+    "n_valid": 500,
+    "n_skipped": 0,
+    "auc_median": 0.6790705616048082,
+    "auc_p5": 0.5627169705294706,
+    "auc_p95": 0.7686643480066444,
+    "auc_mean": 0.675082962969515,
+    "p_auc_gt060": 0.888,
+    "p_auc_gt055": 0.964,
+    "best_p_median": 8.265471416118113e-07,
+    "p_bestp_lt005": 1.0,
+    "v3": true
+  },
+  "window_sensitivity": {
+    "stable_count": 5,
+    "v4": true
+  }
+}

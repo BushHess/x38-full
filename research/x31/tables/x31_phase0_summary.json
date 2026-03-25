@@ -1,0 +1,17 @@
+{
+  "total_trades": 202,
+  "d1_flip_trades": 33,
+  "coverage_pct": 16.34,
+  "gate_1_coverage": true,
+  "median_bars_saved": 10.0,
+  "gate_2_timing": true,
+  "n_losers_with_flip": 28,
+  "n_winners_with_flip": 5,
+  "loser_mean_delta_pct": 1.6714,
+  "winner_mean_delta_pct": -22.2919,
+  "selectivity_ratio": 0.075,
+  "gate_3_selective": false,
+  "top20_flip_count": 2,
+  "gate_4_winner_damage": true,
+  "verdict": "STOP (not selective)"
+}

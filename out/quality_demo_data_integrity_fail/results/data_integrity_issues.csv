@@ -1,0 +1,7 @@
+ts_start,ts_end,issue_type,severity,timeframe,details
+1578009600000,1578096000000,warmup_missing_severe,fail,1d,"required_days=3, available_days=1.000, coverage_pct=33.33, fail_if_below=50.00"
+1578009600000,1578096000000,warmup_missing_severe,fail,4h,"required_days=3, available_days=1.000, coverage_pct=33.33, fail_if_below=50.00"
+1578024000000,1578024000000,duplicate_timestamp,fail,4h,duplicate timestamp found in input order
+1578024000000,1578024000000,duplicate_timestamp,fail,4h,timestamp repeats 2 times
+1578024000000,1578024000000,ohlc_invalid,fail,4h,"violations=high_lt_max(open,close),low_gt_min(open,close),high_lt_low; open=100, high=99.0, low=101.0, close=100.0"
+1578024000000,1578067200000,gap_detected,warning,4h,"gap_seconds=43200.00, expected_bar_seconds=14400.00, estimated_missing_bars=2"

@@ -1,0 +1,83 @@
+{
+  "branch": "research/eval_vtrend_latch_20260305",
+  "date": "2026-03-05",
+  "status": "SYNTHESIS_COMPLETE",
+  "reports": [
+    {
+      "id": "00",
+      "title": "Setup and Scope",
+      "path": "reports/00_setup_and_scope.md",
+      "purpose": "Namespace creation, repo scan, research questions Q1-Q6, prohibitions"
+    },
+    {
+      "id": "01",
+      "title": "Strategy and Engine Inventory",
+      "path": "reports/01_strategy_and_engine_inventory.md",
+      "purpose": "Code-truth inventory of 4 strategies + 2 engines, 20 confounders identified"
+    },
+    {
+      "id": "02",
+      "title": "Parity and Signal Extraction",
+      "path": "reports/02_parity_and_signal_extraction.md",
+      "purpose": "3-layer parity (indicator, signal, engine), canonical signal package extraction"
+    },
+    {
+      "id": "03",
+      "title": "Factorial Sizing and Scoring Bias",
+      "path": "reports/03_factorial_sizing_and_scoring_bias.md",
+      "purpose": "4x3 factorial decomposition, scoring formula CAGR-bias audit"
+    },
+    {
+      "id": "04",
+      "title": "Matched-Risk Frontier and Deploy Comparison",
+      "path": "reports/04_matched_risk_frontier.md",
+      "purpose": "101-point frontier, matched-MDD analysis, operational risk-budget table"
+    },
+    {
+      "id": "05",
+      "title": "Statistical Robustness and Temporal Stability",
+      "path": "reports/05_statistical_robustness_and_temporal_stability.md",
+      "purpose": "Circular block bootstrap (5000 reps), Holm correction, evidence grading"
+    },
+    {
+      "id": "06",
+      "title": "Final Synthesis and Decision Memo",
+      "path": "reports/06_final_synthesis_and_decision_memo.md",
+      "purpose": "Final synthesis, decision framework, strategy verdicts, evidence ladder"
+    }
+  ],
+  "scripts": [
+    {"path": "src/data_align.py", "purpose": "Canonical data loader for both engines"},
+    {"path": "src/run_parity.py", "purpose": "3-layer parity harness (Step 2)"},
+    {"path": "src/run_factorial.py", "purpose": "4x3 factorial + scoring bias audit (Step 3)"},
+    {"path": "src/run_frontier.py", "purpose": "Matched-risk frontier + deploy comparison (Step 4)"},
+    {"path": "src/run_robustness.py", "purpose": "Bootstrap + temporal stability (Step 5)"}
+  ],
+  "tests": [
+    {"path": "tests/test_parity.py", "count": 14, "status": "PASS"},
+    {"path": "tests/test_factorial.py", "count": 12, "status": "PASS"},
+    {"path": "tests/test_frontier.py", "count": 18, "status": "PASS"},
+    {"path": "tests/test_robustness.py", "count": 17, "status": "PASS"}
+  ],
+  "total_tests": 61,
+  "total_artifacts": 55,
+  "strategies_evaluated": ["E0 / VTREND", "SM", "LATCH", "P"],
+  "data_period": "2017-08 to 2026-02 (18662 H4 bars)",
+  "cost_model": "25 bps one-way (50 bps RT)",
+  "key_findings": {
+    "scoring_bias": "CAGR term = 108-182% of cross-exposure score deltas (ROBUST)",
+    "engine_parity": "Functionally identical, divergence 7.7e-14% (ROBUST)",
+    "signal_concordance_SM_LATCH": "99.8% at defaults (ROBUST)",
+    "LATCH_complexity_premium": "Absent, Sharpe +0.003, P(>0)=55% (ROBUST)",
+    "E0_signal_edge": "+0.14 Sharpe at equal sizing, CI includes 0, P(>0)=74% (TENTATIVE)",
+    "low_risk_SM_advantage": "+1.2pp CAGR at 5% MDD, CI includes 0, P(>0)=77% (TENTATIVE)"
+  },
+  "final_decisions": {
+    "E0": "KEEP (high-risk default)",
+    "SM": "KEEP (low-risk default, replaces LATCH)",
+    "LATCH": "DEPRECATE (zero complexity premium over SM)",
+    "P": "DEPRIORITIZE (dominated by SM)"
+  },
+  "production_files_modified": 0,
+  "prior_reports_overwritten": 0
+}

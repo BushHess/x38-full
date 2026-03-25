@@ -1,0 +1,38 @@
+{
+  "period": "holdout",
+  "n_cascade_episodes": 1,
+  "benefit_$": 13448.75,
+  "cost_$": 5765.09,
+  "net_$": 7683.66,
+  "benefit_cost_ratio": 2.333,
+  "g1_delta_total": 13448.75,
+  "g1_negative_delta": 0,
+  "g1_n_episodes_positive": 1,
+  "g1_n_episodes_negative": 0,
+  "per_episode_benefit": [
+    {
+      "episode_id": 2,
+      "peak_date": "2025-01-20",
+      "delta_pnl": 13448.75,
+      "benefit_contribution": 13448.75
+    }
+  ],
+  "g2_bl_pnl": 40778.68,
+  "g2_ov_pnl": 35013.59,
+  "g2_delta": -5765.09,
+  "n_blocked_trades": 1,
+  "blocked_total_pnl": 2224.16,
+  "blocked_positive_pnl": 2224.16,
+  "blocked_negative_pnl": 0,
+  "global_bl_total": 17900.98,
+  "global_ov_total": 25584.64,
+  "decomposition_sum": 7683.66,
+  "decomposition_residual": 0.0,
+  "concentration_top1_pct": 100.0,
+  "concentration_top1_episode": 2,
+  "concentration_top2_pct": 100.0,
+  "concentration_top2_episodes": [
+    2
+  ],
+  "small_sample_warning": true
+}

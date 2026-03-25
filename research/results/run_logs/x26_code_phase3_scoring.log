@@ -1,0 +1,279 @@
+======================================================================
+PHASE 3: PHENOMENON SURVEY & SCORING
+======================================================================
+
+1. Loading data...
+   H4 bars: 18661 (FLAT: 10697, IN_TRADE: 7964)
+   Trades: 221
+   Flat periods: 222
+
+2. Filtering observations from Phase 2...
+
+   ── EXCLUDED observations ──
+   Obs11 (FLAT mean -2.05 bps): Describes absence of trend → mechanical
+         consequence of VTREND filtering. Not a tradeable phenomenon.
+   Obs12 (FLAT kurtosis 22.49): Known/universal property of non-trending
+         financial returns. Fat tails exist everywhere.
+   Obs13 (FLAT skew -0.126): Mechanical consequence of VTREND trail stop
+         truncating tails asymmetrically during IN_TRADE.
+   Obs15 (|return| ACF 0.278): Volatility clustering is universal (GARCH).
+         Known and present in ALL financial assets. Already captured
+         implicitly by ATR-based trail in VTREND.
+   Obs16 (PACF lag-6): Same phenomenon as Obs14 (24h periodicity).
+         Subsumed — not independent.
+   Obs18 (Hurst mixed): Ambiguous/unreliable. VR test (Obs17) is the
+         preferred measure. Subsumed.
+   Obs19 (FLAT vol > IN_TRADE): Descriptive property, not a structured
+         phenomenon. Higher dispersion during out-of-market is expected.
+   Obs20 (Vol elevated mid-period): Mechanical — vol compression at
+         period boundaries is the VTREND entry/exit condition itself.
+   Obs21 (No flat→trade predictability): Null result. No structure to
+         score. Confirms flat characteristics carry no signal.
+   Obs22 (Pre-entry drift +1.03%): Mechanical consequence of EMA crossover
+         entry. Price MUST have risen for entry signal to fire.
+   Obs24 (Post-exit vol decay): Known microstructure effect. Vol is
+         elevated at trade exits universally.
+   Obs25 (H1 reproduces H4): Not an independent phenomenon — confirms
+         Obs14/17 at finer resolution.
+   Obs26 (D1 Hurst 0.467): Subsumed by Obs17 (mean-reversion).
+   Obs27 (Cross-TF consistency): Confirms Obs14/17, not independent.
+   Obs29 (Stability confirmation): Meta-observation about Obs28.
+
+   ── KEPT for scoring ──
+   P1: Mean-Reversion within FLAT periods (Obs17)
+       VR(2)=0.824 per-period, p<0.0001, consistent H1/H4/D1
+   P2: Return Autocorrelation / 24h Periodicity (Obs14)
+       Lag-1 ACF=-0.052, lag-6 ACF=-0.076, 15/50 significant
+   P3: Post-Exit Asymmetry (Obs23)
+       Winners +0.81% post-exit, Losers -0.02%, conditional on outcome
+   P4: Calendar Return Effect (Obs28)
+       Hourly return bias ±5 bps, p=0.0001, STABLE across halves
+
+
+======================================================================
+P1: MEAN-REVERSION WITHIN FLAT PERIODS (Obs17)
+======================================================================
+
+  S1: SIGNAL STRENGTH
+      N periods (≥3 bars): 184
+      Mean VR(2): 0.7654
+      Std VR(2): 0.2734
+      Cohen's d (vs VR=1): -0.8579
+      t-stat: -11.6372, p-value: 8.75e-24
+      → S1 = STRONG
+
+  S2: TEMPORAL STABILITY (4 blocks)
+      Block 1: n=48, mean VR(2)=0.8025, t=-5.091, p=0.0000, sign=<1, sig=YES
+      Block 2: n=48, mean VR(2)=0.7003, t=-8.297, p=0.0000, sign=<1, sig=YES
+      Block 3: n=44, mean VR(2)=0.7757, t=-5.148, p=0.0000, sign=<1, sig=YES
+      Block 4: n=44, mean VR(2)=0.7858, t=-5.011, p=0.0000, sign=<1, sig=YES
+      Same sign: 4/4, Significant: 4/4 → S2 = STABLE
+
+  S3: ECONOMIC MAGNITUDE
+      ρ(1) estimate (per-period): 0.2346
+      σ_bar: 157.4 bps
+      Gross per trade: 36.9 bps
+      Net per trade (after 50 bps cost): -13.1 bps
+      Opportunities/year: 1258
+      ΔSharpe estimate: -0.0464
+      → S3 = NEGLIGIBLE
+      NOTE: Net return is NEGATIVE after cost. The mean-reversion effect
+      (~37 bps gross) does not cover 50 bps RT cost.
+
+  S4: COMPLEMENTARITY WITH VTREND
+      Operates during FLAT: 100%
+      ρ with VTREND returns: 0.00 (non-overlapping by construction)
+      → S4 = COMPLEMENTARY
+
+  S5: SAMPLE ADEQUACY
+      N = 184
+      MDE (80% power, α=0.05): 0.2065
+      Observed |d|: 0.8579
+      Ratio observed/MDE: 4.15
+      → S5 = ADEQUATE
+
+======================================================================
+P2: RETURN AUTOCORRELATION / 24H PERIODICITY (Obs14)
+======================================================================
+
+  S1: SIGNAL STRENGTH
+      Lag-6 (24h cycle):
+        N periods (≥8 bars): 129
+        Mean ACF(6): -0.0791
+        Cohen's d: -0.5925
+        t=-6.730, p=0.0000
+      Lag-1:
+        N periods (≥3 bars): 184
+        Mean ACF(1): -0.1292
+        Cohen's d: -0.5794
+        t=-7.859, p=0.0000
+      Best: |d|=0.5925, p=0.0000
+      → S1 = STRONG
+
+  S2: TEMPORAL STABILITY (4 blocks, lag-6)
+      Block 1: n=37, mean ACF(6)=-0.0855, t=-3.434, p=0.0015, sign=neg, sig=YES
+      Block 2: n=36, mean ACF(6)=-0.0786, t=-4.036, p=0.0003, sign=neg, sig=YES
+      Block 3: n=26, mean ACF(6)=-0.0829, t=-3.661, p=0.0012, sign=neg, sig=YES
+      Block 4: n=30, mean ACF(6)=-0.0685, t=-2.527, p=0.0172, sign=neg, sig=YES
+      Same sign: 4/4, Significant: 4/4 → S2 = STABLE
+
+  S3: ECONOMIC MAGNITUDE
+      Mean |ACF(6)| per-period: 0.0791
+      Gross per trade: 12.4 bps
+      Net per trade (after 50 bps cost): -37.6 bps
+      6-bar windows/year: 1133
+      ΔSharpe estimate: -0.1264
+      → S3 = NEGLIGIBLE
+
+  S4: COMPLEMENTARITY
+      FLAT-only: 100%, ρ=0.00
+      → S4 = COMPLEMENTARY
+
+  S5: SAMPLE ADEQUACY
+      N = 129
+      MDE: 0.2467, Observed |d|: 0.5925
+      Ratio: 2.40
+      → S5 = ADEQUATE
+
+======================================================================
+P3: POST-EXIT ASYMMETRY (Obs23)
+======================================================================
+
+  S1: SIGNAL STRENGTH
+      Winners post-exit (n=91): mean=0.70%
+      Losers post-exit (n=130): mean=0.92%
+      Difference: -0.23%
+      Cohen's d: -0.0388
+      Rank-biserial r: -0.0005
+      Mann-Whitney U=5918, p=0.9957
+      → S1 = WEAK
+
+  S2: TEMPORAL STABILITY (4 blocks)
+      Block 1: n_w=23, n_l=32, diff=0.32%, p=0.6759, sig=no
+      Block 2: n_w=25, n_l=31, diff=0.98%, p=0.6210, sig=no
+      Block 3: n_w=14, n_l=38, diff=-2.13%, p=0.6425, sig=no
+      Block 4: n_w=29, n_l=29, diff=-0.92%, p=0.3754, sig=no
+      Same sign: 2/4, Significant: 0/4 → S2 = MIXED
+
+  S3: ECONOMIC MAGNITUDE
+      Winner opportunities/year: 10.7
+      Mean post-winner return: 0.70%
+      Net per trade (after 50 bps): 0.20%
+      ΔSharpe estimate: 0.0909
+      CAVEAT: Requires KNOWING trade outcome at exit (look-ahead).
+      Without a predictor, this phenomenon is NOT directly tradeable.
+      → S3 = NEGLIGIBLE (but requires look-ahead predictor)
+
+  S4: COMPLEMENTARITY
+      FLAT-only: 100%, but conditioned on VTREND outcome
+      → S4 = COMPLEMENTARY
+
+  S5: SAMPLE ADEQUACY
+      N total = 221, N winners = 91, N losers = 130
+      MDE (smaller group n=91): 0.2937
+      Observed |d|: 0.0388
+      Ratio: 0.13
+      → S5 = UNDERPOWERED
+
+======================================================================
+P4: CALENDAR RETURN EFFECT (Obs28)
+======================================================================
+   H1 FLAT bars: 42791
+
+  S1: SIGNAL STRENGTH
+      Kruskal-Wallis H=57.43, p=8.89e-05
+      η² = 0.000805
+      Cohen's f = 0.0284
+      Hourly mean range: 11.0 bps
+      Practical d (max-min / pooled_std): 0.1307
+      Equivalent d: 0.0568
+      → S1 = WEAK
+
+  S2: TEMPORAL STABILITY (4 blocks)
+      Block 1: n=10697, KW H=44.9, p=0.0040, best=11h, worst=1h, sig=YES
+      Block 2: n=10697, KW H=42.6, p=0.0077, best=21h, worst=14h, sig=YES
+      Block 3: n=10697, KW H=37.4, p=0.0294, best=20h, worst=1h, sig=YES
+      Block 4: n=10700, KW H=48.9, p=0.0013, best=21h, worst=23h, sig=YES
+      Present: 4/4, Significant: 4/4 → S2 = STABLE
+
+  S3: ECONOMIC MAGNITUDE
+      Hourly mean range: 11.0 bps (best - worst)
+      Cost per RT: 50 bps
+      Net per trade: -39.0 bps
+      ΔSharpe estimate: -0.0780
+      → S3 = NEGLIGIBLE
+
+  S4: COMPLEMENTARITY
+      FLAT-only: 100%, ρ=0.00
+      → S4 = COMPLEMENTARY
+
+  S5: SAMPLE ADEQUACY
+      N per hour (min): 1760
+      MDE: 0.0668
+      Observed equiv. d: 0.0568
+      Ratio: 0.85
+      → S5 = UNDERPOWERED
+
+======================================================================
+5. SCORING MATRIX
+======================================================================
+
+           Phenomenon Obs_Ref S1_Signal S2_Stability S3_EconMag S4_Complement    S5_Sample  Total_TopTier  Effect_d  p_value  Delta_Sharpe
+     P1_MeanReversion   Obs17    STRONG       STABLE NEGLIGIBLE COMPLEMENTARY     ADEQUATE              4   -0.8579 8.75e-24       -0.0464
+P2_Autocorrelation24h   Obs14    STRONG       STABLE NEGLIGIBLE COMPLEMENTARY     ADEQUATE              4   -0.5925 5.13e-10       -0.1264
+    P4_CalendarReturn   Obs28      WEAK       STABLE NEGLIGIBLE COMPLEMENTARY UNDERPOWERED              2    0.0568 8.89e-05       -0.0780
+ P3_PostExitAsymmetry   Obs23      WEAK        MIXED NEGLIGIBLE COMPLEMENTARY UNDERPOWERED              1   -0.0388 9.96e-01        0.0909
+
+   Saved: Tbl_scoring_matrix.csv
+
+======================================================================
+6. STABILITY BLOCKS TABLE
+======================================================================
+           Phenomenon  Block  Sign  Significant
+     P1_MeanReversion      1    -1         True
+     P1_MeanReversion      2    -1         True
+     P1_MeanReversion      3    -1         True
+     P1_MeanReversion      4    -1         True
+P2_Autocorrelation24h      1    -1         True
+P2_Autocorrelation24h      2    -1         True
+P2_Autocorrelation24h      3    -1         True
+P2_Autocorrelation24h      4    -1         True
+ P3_PostExitAsymmetry      1     1        False
+ P3_PostExitAsymmetry      2     1        False
+ P3_PostExitAsymmetry      3    -1        False
+ P3_PostExitAsymmetry      4    -1        False
+    P4_CalendarReturn      1     1         True
+    P4_CalendarReturn      2     1         True
+    P4_CalendarReturn      3     1         True
+    P4_CalendarReturn      4     1         True
+
+   Saved: Tbl_stability_blocks.csv
+
+======================================================================
+7. ROLLING STABILITY ANALYSIS
+   Phenomena qualifying (Total ≥ 2): ['P1_MeanReversion', 'P2_Autocorrelation24h', 'P4_CalendarReturn']
+======================================================================
+
+   Saved: Fig12_rolling_stability.png
+
+======================================================================
+8. GATE DECISION
+======================================================================
+
+   Best phenomenon: P1_MeanReversion with Total = 4
+
+   Scoring summary:
+     P1_MeanReversion: S1=STRONG, S2=STABLE, S3=NEGLIGIBLE, S4=COMPLEMENTARY, S5=ADEQUATE → Total=4
+     P2_Autocorrelation24h: S1=STRONG, S2=STABLE, S3=NEGLIGIBLE, S4=COMPLEMENTARY, S5=ADEQUATE → Total=4
+     P4_CalendarReturn: S1=WEAK, S2=STABLE, S3=NEGLIGIBLE, S4=COMPLEMENTARY, S5=UNDERPOWERED → Total=2
+     P3_PostExitAsymmetry: S1=WEAK, S2=MIXED, S3=NEGLIGIBLE, S4=COMPLEMENTARY, S5=UNDERPOWERED → Total=1
+
+   GATE: PASS_TO_NEXT_PHASE
+   ≥ 3 top-tier scores on P1_MeanReversion
+   Selected for Phase 4: ['P1_MeanReversion', 'P2_Autocorrelation24h']
+
+   Decision: PASS_TO_NEXT_PHASE
+
+======================================================================
+PHASE 3 COMPLETE — PASS_TO_NEXT_PHASE
+======================================================================

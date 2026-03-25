@@ -1,0 +1,51 @@
+{
+  "candidate": {
+    "unused_fields": [],
+    "unused_raw": [
+      "cascade_trigger_count",
+      "dd_adaptive_floor",
+      "dd_adaptive_start",
+      "escalating_lookback_bars",
+      "hma_exit_bars",
+      "long_cooldown_bars",
+      "short_cooldown_bars",
+      "structural_exit_bars"
+    ],
+    "allowlist": [
+      "cascade_trigger_count",
+      "dd_adaptive_floor",
+      "dd_adaptive_start",
+      "escalating_lookback_bars",
+      "hma_exit_bars",
+      "long_cooldown_bars",
+      "short_cooldown_bars",
+      "structural_exit_bars"
+    ],
+    "status": "PASS"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [
+      "cascade_trigger_count",
+      "dd_adaptive_floor",
+      "dd_adaptive_start",
+      "escalating_lookback_bars",
+      "hma_exit_bars",
+      "long_cooldown_bars",
+      "short_cooldown_bars",
+      "structural_exit_bars"
+    ],
+    "allowlist": [
+      "cascade_trigger_count",
+      "dd_adaptive_floor",
+      "dd_adaptive_start",
+      "escalating_lookback_bars",
+      "hma_exit_bars",
+      "long_cooldown_bars",
+      "short_cooldown_bars",
+      "structural_exit_bars"
+    ],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

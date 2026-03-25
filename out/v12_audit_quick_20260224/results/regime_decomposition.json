@@ -1,0 +1,98 @@
+{
+  "detail": {
+    "candidate": {
+      "SHOCK": {
+        "total_return_pct": -9.39,
+        "max_dd_pct": 39.76,
+        "n_bars": 66,
+        "n_days": 11.0,
+        "sharpe": -5.2094
+      },
+      "BEAR": {
+        "total_return_pct": 0.0,
+        "max_dd_pct": 8.99,
+        "n_bars": 126,
+        "n_days": 21.0,
+        "sharpe": null
+      },
+      "CHOP": {
+        "total_return_pct": -14.52,
+        "max_dd_pct": 36.29,
+        "n_bars": 354,
+        "n_days": 59.0,
+        "sharpe": -2.2983
+      },
+      "TOPPING": {
+        "total_return_pct": -6.55,
+        "max_dd_pct": 31.37,
+        "n_bars": 342,
+        "n_days": 57.0,
+        "sharpe": -1.4315
+      },
+      "BULL": {
+        "total_return_pct": 91.96,
+        "max_dd_pct": 42.12,
+        "n_bars": 2856,
+        "n_days": 476.0,
+        "sharpe": 1.6207
+      },
+      "NEUTRAL": {
+        "total_return_pct": 14.62,
+        "max_dd_pct": 15.91,
+        "n_bars": 642,
+        "n_days": 107.0,
+        "sharpe": 1.9324
+      }
+    },
+    "baseline": {
+      "SHOCK": {
+        "total_return_pct": -9.39,
+        "max_dd_pct": 24.34,
+        "n_bars": 66,
+        "n_days": 11.0,
+        "sharpe": -5.2094
+      },
+      "BEAR": {
+        "total_return_pct": 0.0,
+        "max_dd_pct": 11.92,
+        "n_bars": 126,
+        "n_days": 21.0,
+        "sharpe": null
+      },
+      "CHOP": {
+        "total_return_pct": -7.89,
+        "max_dd_pct": 19.97,
+        "n_bars": 354,
+        "n_days": 59.0,
+        "sharpe": -1.3769
+      },
+      "TOPPING": {
+        "total_return_pct": -14.21,
+        "max_dd_pct": 16.08,
+        "n_bars": 342,
+        "n_days": 57.0,
+        "sharpe": -4.392
+      },
+      "BULL": {
+        "total_return_pct": 121.73,
+        "max_dd_pct": 28.44,
+        "n_bars": 2856,
+        "n_days": 476.0,
+        "sharpe": 2.0924
+      },
+      "NEUTRAL": {
+        "total_return_pct": 16.37,
+        "max_dd_pct": 13.46,
+        "n_bars": 642,
+        "n_days": 107.0,
+        "sharpe": 2.626
+      }
+    }
+  },
+  "overlap": {
+    "enabled": false,
+    "scenario": "harsh",
+    "trades_in_topping": 0,
+    "trades_in_late_bull": 0
+  }
+}

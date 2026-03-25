@@ -1,0 +1,30 @@
+count,source,pipeline,data_window,scenario,strategy,explanation
+217,P3.3 parity audit,BacktestEngine (actual strategy),full dataset (no start/end),base,vtrend_x0_e5exit / vtrend_x0_volsize,Full dataset run — includes trades before 2019-01-01
+192,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,E0,Canonical engine count for restricted window
+192,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,E0,Canonical engine count for restricted window
+192,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,E0,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,E0_EMA21,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,E0_EMA21,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,E0_EMA21,Canonical engine count for restricted window
+207,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,E5,Canonical engine count for restricted window
+207,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,E5,Canonical engine count for restricted window
+207,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,E5,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,E5_EMA21,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,E5_EMA21,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,E5_EMA21,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,X0,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,X0,Canonical engine count for restricted window
+174,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,X0,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,X0_E5EXIT,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,X0_E5EXIT,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,X0_E5EXIT,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,smart,X0_VOLSIZE,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,base,X0_VOLSIZE,Canonical engine count for restricted window
+188,P3.5 canonical,BacktestEngine (actual strategy),2019-01-01 to 2026-02-20,harsh,X0_VOLSIZE,Canonical engine count for restricted window
+211,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,E0,Surrogate count — DIFFERS from engine
+189,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,E0_EMA21,Surrogate count — DIFFERS from engine
+225,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,E5,Surrogate count — DIFFERS from engine
+202,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,E5_EMA21,Surrogate count — DIFFERS from engine
+189,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,X0,Surrogate count — DIFFERS from engine
+202,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,X0_E5EXIT,Surrogate count — DIFFERS from engine
+202,P3.5 parity check,vectorized surrogate,2019-01-01 to 2026-02-20,base,X0_VOLSIZE,Surrogate count — DIFFERS from engine

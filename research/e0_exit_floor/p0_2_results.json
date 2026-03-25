@@ -1,0 +1,247 @@
+{
+  "settings": {
+    "data": "/var/www/trading-bots/btc-spot-dev/data/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "holdout_start": "2024-01-01",
+    "wfo_train_months": 24,
+    "wfo_test_months": 6,
+    "wfo_step_months": 3,
+    "pair_bootstrap_n": 2000,
+    "pair_bootstrap_block": 20
+  },
+  "elapsed_seconds": 239.75,
+  "candidate_verdicts": {
+    "X0E5_LL30": "HOLD_RESEARCH_ONLY",
+    "X0E5_FLOOR_LATCH": "HOLD_RESEARCH_ONLY"
+  },
+  "branch_verdict": "HOLD_RESEARCH_ONLY",
+  "champion_candidate": "X0E5_FLOOR_LATCH",
+  "wfo_summary": {
+    "X0E5_LL30": {
+      "windows": 21,
+      "candidate_sharpe_wins": 7,
+      "candidate_cagr_wins": 7,
+      "candidate_mdd_wins": 7,
+      "candidate_calmar_wins": 7
+    },
+    "X0E5_FLOOR_LATCH": {
+      "windows": 21,
+      "candidate_sharpe_wins": 7,
+      "candidate_cagr_wins": 7,
+      "candidate_mdd_wins": 7,
+      "candidate_calmar_wins": 7
+    }
+  },
+  "bootstrap_rows": {
+    "X0E5_LL30": [
+      {
+        "metric": "sharpe",
+        "observed_candidate": 1.4530565913572309,
+        "observed_reference": 1.4544944288208077,
+        "observed_delta": -0.001437837463576841,
+        "mean_delta": -0.0019117714618476214,
+        "ci_lower": -0.09907365623730358,
+        "ci_upper": 0.09688391139581658,
+        "p_candidate_better": 0.4765,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      },
+      {
+        "metric": "cagr_pct",
+        "observed_candidate": 61.07416909325241,
+        "observed_reference": 61.547618489431244,
+        "observed_delta": -0.47344939617883597,
+        "mean_delta": -0.5314543793168632,
+        "ci_lower": -6.735262565806731,
+        "ci_upper": 5.510461186843792,
+        "p_candidate_better": 0.4355,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      },
+      {
+        "metric": "neg_mdd",
+        "observed_candidate": -36.15342266792597,
+        "observed_reference": -40.96674859250601,
+        "observed_delta": 4.813325924580035,
+        "mean_delta": 0.14009511163410002,
+        "ci_lower": -4.712772544942152,
+        "ci_upper": 4.8637198922095015,
+        "p_candidate_better": 0.5225,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      }
+    ],
+    "X0E5_FLOOR_LATCH": [
+      {
+        "metric": "sharpe",
+        "observed_candidate": 1.4560155704016953,
+        "observed_reference": 1.4544944288208077,
+        "observed_delta": 0.001521141580887564,
+        "mean_delta": 0.0012084149424103359,
+        "ci_lower": -0.09627844781287752,
+        "ci_upper": 0.10048361102548102,
+        "p_candidate_better": 0.509,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      },
+      {
+        "metric": "cagr_pct",
+        "observed_candidate": 61.227895185367444,
+        "observed_reference": 61.547618489431244,
+        "observed_delta": -0.3197233040637997,
+        "mean_delta": -0.36801880275177334,
+        "ci_lower": -6.525757305948548,
+        "ci_upper": 5.684113030060401,
+        "p_candidate_better": 0.464,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      },
+      {
+        "metric": "neg_mdd",
+        "observed_candidate": -35.4596533167863,
+        "observed_reference": -40.96674859250601,
+        "observed_delta": 5.507095275719706,
+        "mean_delta": 0.20533401104107463,
+        "ci_lower": -4.669630925546612,
+        "ci_upper": 4.903700559951697,
+        "p_candidate_better": 0.5435,
+        "block_size": 20,
+        "n_bootstrap": 2000
+      }
+    ]
+  },
+  "pair_diagnostics": {
+    "X0E5_LL30": {
+      "label_a": "X0E5_LL30",
+      "label_b": "X0_E5EXIT",
+      "profile": {
+        "n_bars": 15647,
+        "equal_rate_tol": 0.9916916980890905,
+        "near_equal_1bp_rate": 0.9916916980890905,
+        "near_equal_10bp_rate": 0.9925225282801815,
+        "same_direction_rate": 0.9927781683389787,
+        "return_correlation": 0.9935043148288372,
+        "exposure_agreement_rate": 0.9931616284271746
+      },
+      "classification": {
+        "pair_class": "near_identical",
+        "subsampling_reliable": false,
+        "primary_reason": "near_equal_1bp=99.2%, corr=0.994"
+      },
+      "boot_sharpe_p": 0.4775,
+      "boot_sharpe_ci_lower": -0.09907869201356195,
+      "boot_sharpe_ci_upper": 0.09342127318765583,
+      "boot_sharpe_ci_width": 0.1924999652012178,
+      "boot_sharpe_observed_delta": -0.001437837463576841,
+      "boot_geo_p": 0.433,
+      "boot_geo_ci_lower": -1.8304058043733346e-05,
+      "boot_geo_ci_upper": 1.4869582705043776e-05,
+      "sub_p": 0.01804453544919371,
+      "sub_ci_lower": -0.003035330476488445,
+      "sub_ci_upper": -0.0030046893028063213,
+      "sub_support": 0.0,
+      "consensus_gap_pp": 41.49554645508063,
+      "consensus_ok": false,
+      "dsr_a": {
+        "27": 0.9688936067014415,
+        "54": 0.9437601978424052,
+        "100": 0.9132265890947496,
+        "200": 0.8696258652666172,
+        "500": 0.7984145385002616,
+        "700": 0.7690274655520628
+      },
+      "dsr_b": {
+        "27": 0.9691550197159495,
+        "54": 0.9441846013743065,
+        "100": 0.9138215960723808,
+        "200": 0.8704275957715404,
+        "500": 0.7994844222115767,
+        "700": 0.7701873444311254
+      },
+      "caveats": [
+        "Subsampling unreliable: near_equal_1bp_rate=99.2% > 80% threshold",
+        "Subsampling support=0.00 (expected for available effect sizes)",
+        "Very high return correlation (0.994) \u2014 strategies may be near-equivalent"
+      ],
+      "suggested_route": "no_action_default",
+      "route_reason": "near_identical pair, no anomalous signal",
+      "bootstrap_config": {
+        "n_bootstrap": 2000,
+        "block_sizes": [
+          10,
+          20,
+          40
+        ],
+        "seed": 1337
+      },
+      "timestamp_utc": "2026-03-16T20:40:59.892101+00:00"
+    },
+    "X0E5_FLOOR_LATCH": {
+      "label_a": "X0E5_FLOOR_LATCH",
+      "label_b": "X0_E5EXIT",
+      "profile": {
+        "n_bars": 15647,
+        "equal_rate_tol": 0.9910525979420975,
+        "near_equal_1bp_rate": 0.9910525979420975,
+        "near_equal_10bp_rate": 0.9919473381478878,
+        "same_direction_rate": 0.9921390681919857,
+        "return_correlation": 0.9930618627493507,
+        "exposure_agreement_rate": 0.9926503483095801
+      },
+      "classification": {
+        "pair_class": "near_identical",
+        "subsampling_reliable": false,
+        "primary_reason": "near_equal_1bp=99.1%, corr=0.993"
+      },
+      "boot_sharpe_p": 0.498,
+      "boot_sharpe_ci_lower": -0.09791768736985647,
+      "boot_sharpe_ci_upper": 0.09722308183681115,
+      "boot_sharpe_ci_width": 0.19514076920666762,
+      "boot_sharpe_observed_delta": 0.001521141580887564,
+      "boot_geo_p": 0.4545,
+      "boot_geo_ci_lower": -1.8108197992898962e-05,
+      "boot_geo_ci_upper": 1.554720771950274e-05,
+      "sub_p": 0.019644228308164813,
+      "sub_ci_lower": -0.002049812359578492,
+      "sub_ci_upper": -0.0020291097071227,
+      "sub_support": 0.0,
+      "consensus_gap_pp": 43.48557716918352,
+      "consensus_ok": false,
+      "dsr_a": {
+        "27": 0.9694499779484129,
+        "54": 0.9446589224414115,
+        "100": 0.9144814354623497,
+        "200": 0.8713094854181158,
+        "500": 0.8006496323340129,
+        "700": 0.7714462064353396
+      },
+      "dsr_b": {
+        "27": 0.9691550197159495,
+        "54": 0.9441846013743065,
+        "100": 0.9138215960723808,
+        "200": 0.8704275957715404,
+        "500": 0.7994844222115767,
+        "700": 0.7701873444311254
+      },
+      "caveats": [
+        "Subsampling unreliable: near_equal_1bp_rate=99.1% > 80% threshold",
+        "Subsampling support=0.00 (expected for available effect sizes)",
+        "Very high return correlation (0.993) \u2014 strategies may be near-equivalent"
+      ],
+      "suggested_route": "no_action_default",
+      "route_reason": "near_identical pair, no anomalous signal",
+      "bootstrap_config": {
+        "n_bootstrap": 2000,
+        "block_sizes": [
+          10,
+          20,
+          40
+        ],
+        "seed": 1337
+      },
+      "timestamp_utc": "2026-03-16T20:41:49.236651+00:00"
+    }
+  }
+}

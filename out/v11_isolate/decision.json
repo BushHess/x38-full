@@ -1,0 +1,115 @@
+{
+  "selected_candidate": "v10_baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T21:25:19.724309+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "v10_baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_mr_default",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 41.56 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 41.56,
+        "min_cagr": 20.24,
+        "max_mdd": 38.46,
+        "max_fee_drag": 3.58,
+        "trades": 97
+      }
+    },
+    {
+      "name": "v11_mr_gentle",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 49.27 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 49.27,
+        "min_cagr": 23.04,
+        "max_mdd": 38.46,
+        "max_fee_drag": 3.73,
+        "trades": 103
+      }
+    },
+    {
+      "name": "v11_cycle_default",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 89.41,
+        "min_cagr": 37.58,
+        "max_mdd": 36.84,
+        "max_fee_drag": 3.94,
+        "trades": 104
+      }
+    },
+    {
+      "name": "v11_cycle_aggressive_early",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 82.5 < baseline 88.9",
+        "TOPPING return -21.4% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 82.5,
+        "min_cagr": 34.99,
+        "max_mdd": 36.15,
+        "max_fee_drag": 3.83,
+        "trades": 103
+      }
+    },
+    {
+      "name": "v11_adx_d1",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 45.0% > baseline 36.3% + 5"
+      ],
+      "worst": {
+        "min_score": 49.77,
+        "min_cagr": 24.61,
+        "max_mdd": 45.03,
+        "max_fee_drag": 2.57,
+        "trades": 81
+      }
+    },
+    {
+      "name": "v11_adx_h4",
+      "tag": "REJECT",
+      "reasons": [
+        "harsh MDD 43.4% > baseline 36.3% + 5"
+      ],
+      "worst": {
+        "min_score": 76.88,
+        "min_cagr": 34.07,
+        "max_mdd": 43.39,
+        "max_fee_drag": 2.51,
+        "trades": 77
+      }
+    }
+  ]
+}

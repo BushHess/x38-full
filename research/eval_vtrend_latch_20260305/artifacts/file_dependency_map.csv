@@ -1,0 +1,28 @@
+file,depends_on,role
+strategies/vtrend/strategy.py,"v10/core/types.py, v10/strategies/base.py",VTREND E0 strategy implementation
+strategies/vtrend_sm/strategy.py,"v10/core/types.py, v10/strategies/base.py",VTREND-SM strategy implementation
+strategies/vtrend_p/strategy.py,"v10/core/types.py, v10/strategies/base.py",VTREND-P strategy implementation
+strategies/latch/strategy.py,"v10/core/types.py, v10/strategies/base.py",LATCH integrated strategy implementation
+v10/core/engine.py,"v10/core/data.py, v10/core/execution.py, v10/core/metrics.py, v10/core/types.py, v10/strategies/base.py",BacktestEngine (shared by all integrated strategies)
+v10/core/execution.py,v10/core/types.py,ExecutionModel + Portfolio (fill price + fee computation)
+v10/core/data.py,v10/core/types.py,DataFeed (CSV loading)
+v10/core/types.py,(none),Core data types (Bar CostConfig Signal Fill Trade)
+v10/core/metrics.py,v10/core/types.py,compute_metrics (Sharpe CAGR MDD)
+v10/core/config.py,"v10/core/types.py, v10/strategies/v8_apex.py, v10/strategies/v11_hybrid.py, strategies/*/strategy.py",YAML config loader + strategy factory
+v10/strategies/base.py,v10/core/types.py,Strategy ABC
+v10/research/objective.py,(none),Scoring function (compute_objective_breakdown)
+validation/decision.py,"validation/suites/base.py, validation/thresholds.py",Decision policy (REJECT/HOLD/PROMOTE)
+validation/thresholds.py,(none),Decision thresholds (HARSH_SCORE_TOLERANCE=0.2)
+validation/suites/backtest.py,"v10/core/engine.py, v10/research/objective.py, validation/suites/base.py",BacktestSuite (runs candidate vs baseline)
+validate_strategy.py,"validation/runner.py, validation/cli.py",CLI entrypoint for strategy evaluation
+Latch/research/Latch/strategy.py,"Latch/research/Latch/backtest.py, Latch/research/Latch/config.py, Latch/research/Latch/indicators.py, Latch/research/Latch/state_machine.py, Latch/research/Latch/overlays.py",Standalone LATCH (run_latch)
+Latch/research/Latch/backtest.py,Latch/research/Latch/config.py,Standalone engine (execute_target_weights + compute_metrics)
+Latch/research/Latch/state_machine.py,(none),Hysteretic regime computation
+Latch/research/Latch/indicators.py,(none),EMA ATR rolling_high/low realized_vol VDO
+Latch/research/Latch/config.py,(none),LatchParams CostModel VDOOverlayParams
+Latch/research/Latch/overlays.py,"Latch/research/Latch/config.py, Latch/research/Latch/indicators.py",VDO overlay computation
+Latch/research/vtrend_variants.py,(none),Standalone VTREND-SM and VTREND-P with own backtest loop
+configs/vtrend/vtrend_default.yaml,(none),VTREND default params (slow=120 trail=3.0 vdo=0.0)
+configs/vtrend_sm/vtrend_sm_default.yaml,(none),SM default params (slow=120 atr_mult=3.0 target_vol=0.15)
+configs/vtrend_p/vtrend_p_default.yaml,(none),P default params (slow=120 atr_mult=1.5 target_vol=0.12)
+configs/latch/latch_default.yaml,(none),LATCH default params (slow=120 fast=30 atr_mult=2.0 target_vol=0.12 vol_floor=0.08)

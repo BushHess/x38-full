@@ -1,0 +1,56 @@
+{
+  "decision": "HOLD",
+  "date": "2026-03-07",
+  "candidates": {
+    "twap": {
+      "mean_combined_delta_bps": -1.06,
+      "median_combined_delta_bps": 4.97,
+      "implementation_shortfall_bps": -0.97,
+      "implementation_shortfall_usd": -15392,
+      "total_pnl_delta_usd": -15392,
+      "frac_improved": 0.538,
+      "years_positive": 2,
+      "total_years": 8,
+      "entry_mean_delta_bps": 0.90,
+      "exit_mean_delta_bps": -0.16,
+      "notional_correlation": 0.0015,
+      "gates_passed": 2,
+      "gates_total": 6,
+      "verdict": "HOLD"
+    },
+    "vwap": {
+      "mean_combined_delta_bps": -7.82,
+      "median_combined_delta_bps": 1.83,
+      "implementation_shortfall_bps": -6.96,
+      "implementation_shortfall_usd": -34439,
+      "total_pnl_delta_usd": -34439,
+      "frac_improved": 0.511,
+      "years_positive": 1,
+      "total_years": 8,
+      "entry_mean_delta_bps": 0.90,
+      "exit_mean_delta_bps": -6.92,
+      "notional_correlation": 0.0143,
+      "gates_passed": 3,
+      "gates_total": 6,
+      "verdict": "HOLD"
+    }
+  },
+  "go_hold_gates": {
+    "gate_1_magnitude": {"required": "> +1.0 bps", "twap": -1.06, "vwap": -7.82, "pass": false},
+    "gate_2_consistency": {"required": "> 55%", "twap": 0.538, "vwap": 0.511, "pass": false},
+    "gate_3_broad": {"required": ">= 5/7 years", "twap": "2/8", "vwap": "1/8", "pass": false},
+    "gate_4_symmetric": {"required": "both > 0.3 bps", "twap": "entry 0.90, exit 0.16 FAIL", "vwap": "entry 0.90, exit 6.92 PASS", "pass": false},
+    "gate_5_secondary": {"required": "direction match", "twap": true, "vwap": true, "pass": true},
+    "gate_6_concentrated": {"required": "|r| < 0.30", "twap": 0.0015, "vwap": 0.0143, "pass": true}
+  },
+  "accounting_checks": {
+    "combined_formula": "PASS",
+    "shadow_fill_formula": "PASS",
+    "pnl_recomputation": "PASS",
+    "pnl_delta_formula": "PASS",
+    "nan_count": 0,
+    "fallbacks": 0,
+    "m15_coverage": "4/4 all trades"
+  },
+  "recommendation": "STOP E-track. No execution-aware variant justified. Transition to deployment/shadow-live."
+}

@@ -1,0 +1,13 @@
+candidate_label,ledger_view,row_count,episode_id_unique_ok,hold_metrics_ok,exit_reason_ok,mfe_mae_ok,giveback_ok,positive_contribution_rank_ok,notes
+E0,native,192,True,True,True,True,True,True,
+E0,unit_size,192,True,True,True,True,True,True,
+E5,native,207,True,True,True,True,True,True,
+E5,unit_size,207,True,True,True,True,True,True,
+SM,native,65,True,True,True,True,True,True,
+SM,unit_size,65,True,True,True,True,True,True,
+LATCH,native,65,True,True,True,True,True,True,
+LATCH,unit_size,65,True,True,True,True,True,True,
+E0_plus_EMA1D21,native,172,True,True,True,True,True,True,
+E0_plus_EMA1D21,unit_size,172,True,True,True,True,True,True,
+E5_plus_EMA1D21,native,186,True,True,True,True,True,True,
+E5_plus_EMA1D21,unit_size,186,True,True,True,True,True,True,

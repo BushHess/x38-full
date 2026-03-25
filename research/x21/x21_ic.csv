@@ -1,0 +1,7 @@
+feature,ic,p_value
+vdo_value,0.084166,0.233687
+ema_spread,-0.081658,0.247968
+atr_pctl,-0.013877,0.844596
+d1_regime_str,-0.016163,0.819407
+full_model,0.076980,0.276192
+cv_mean,-0.134491,

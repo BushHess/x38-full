@@ -1,0 +1,57 @@
+artifact_name,step_or_phase,branch_tag,purpose,authority_status,implementation_authoritative,must_keep
+step1_spec_lock.md,Step 1,shared_baseline,frozen base-spec extraction and execution conventions,authoritative,True,True
+step1_base_verification.md,Step 1,shared_baseline,frozen base performance verification,authoritative,True,True
+step1_event_log.csv,Step 1,shared_baseline,frozen base fill/event audit trail,authoritative,True,True
+step1_equity_curve.csv,Step 1,shared_baseline,frozen base bar-level equity/indicator timeline,authoritative,True,True
+step2_trail_episode_table.csv,Step 2,legacy_binary_rejected,canonical trail-stop episode table for legacy modeling branch,authoritative,True,True
+step2_feature_summary.csv,Step 2,legacy_binary_rejected,EDA feature summaries on legacy branch,report_only,False,True
+step2_feature_effect_sizes.csv,Step 2,legacy_binary_rejected,EDA effect sizes on legacy branch,report_only,False,True
+step2_gap_sensitivity.csv,Step 2,legacy_binary_rejected,gap-sensitivity audit on legacy branch,report_only,False,True
+step2_eda_report.md,Step 2,legacy_binary_rejected,legacy branch EDA narrative,report_only,False,True
+step3_experiment_charter_v3.md,Step 3,legacy_binary_rejected,final locked charter for legacy modeling branch,authoritative,True,True
+step3_gates_locked_v3.json,Step 3,legacy_binary_rejected,machine-readable legacy branch lock file,authoritative,True,True
+step3_scope_lock_v3.md,Step 3,legacy_binary_rejected,scope lock for legacy modeling branch,authoritative,True,True
+step4_feature_matrix_primary.csv,Step 4,legacy_binary_rejected,authoritative 178-episode feature matrix,authoritative,True,True
+step4_model_cv_results.csv,Step 4,legacy_binary_rejected,legacy branch model selection results,report_only,False,True
+step4_oos_scores.csv,Step 4,legacy_binary_rejected,legacy branch temporal OOS episode scores,authoritative,True,True
+step4_quartile_analysis.csv,Step 4,legacy_binary_rejected,legacy branch quartile analysis,report_only,False,True
+step4_feature_importance.csv,Step 4,legacy_binary_rejected,legacy branch feature importance,report_only,False,True
+step4_calibration.csv,Step 4,legacy_binary_rejected,legacy branch calibration results,report_only,False,True
+step4_binary_candidate_summary.csv,Step 4,legacy_binary_rejected,legacy rejected binary actuator exploratory summary,deprecated_for_deployment,False,True
+step4_binary_candidate_rankings.csv,Step 4,legacy_binary_rejected,legacy rejected binary actuator rankings,deprecated_for_deployment,False,True
+step4_candidate_signal_log.csv,Step 4,legacy_binary_rejected,legacy rejected binary actuator live-signal log,deprecated_for_deployment,False,True
+step4_model_report.md,Step 4,legacy_binary_rejected,legacy branch model report,report_only,False,True
+phaseB1_failure_mode_audit.csv,Phase B1,bounded_winner_branch,failure audit of rejected legacy actuator,authoritative,False,True
+phaseB1_utility_alignment.csv,Phase B1,bounded_winner_branch,utility-alignment audit for bounded branch design,report_only,False,True
+phaseB1_utility_surface.csv,Phase B1,bounded_winner_branch,bounded-horizon utility surface study,report_only,False,True
+phaseB1_ood_design_rules.md,Phase B1,bounded_winner_branch,OOD-robustness design rules for bounded branch,authoritative,True,True
+phaseB1_direction_nomination.md,Phase B1,bounded_winner_branch,bounded branch direction nomination,authoritative,True,True
+phaseB2_experiment_charter_v2.md,Phase B2,bounded_winner_branch,final pre-commit charter for bounded actuator branch,authoritative,True,True
+phaseB2_gates_locked_v2.json,Phase B2,bounded_winner_branch,machine-readable lock file for bounded actuator branch,authoritative,True,True
+phaseB2_scope_lock_v2.md,Phase B2,bounded_winner_branch,scope lock for bounded actuator branch,authoritative,True,True
+phaseB3_score_refit_summary.csv,Phase B3,bounded_winner_branch,full-178 score-source refit summary,authoritative,True,True
+phaseB3_thresholds.csv,Phase B3,bounded_winner_branch,exploratory full-sample threshold values,authoritative,True,True
+phaseB3_candidate_manifest.csv,Phase B3,bounded_winner_branch,locked candidate manifest,authoritative,True,True
+phaseB3_candidate_summary.csv,Phase B3,bounded_winner_branch,exploratory candidate metrics summary,report_only,False,True
+phaseB3_live_decision_log.csv,Phase B3,bounded_winner_branch,bounded-branch live first-decision log,authoritative,True,True
+phaseB3_continuation_log.csv,Phase B3,bounded_winner_branch,bounded-branch continuation log,authoritative,True,True
+phaseB3_tail_accounting_audit.csv,Phase B3,bounded_winner_branch,tail accounting audit,authoritative,True,True
+phaseB3_family_rankings.csv,Phase B3,bounded_winner_branch,within-family exploratory rankings,report_only,False,True
+phaseB3_shortlist_for_B4.csv,Phase B3,bounded_winner_branch,frozen shortlist and comparison-only baselines for B4,authoritative,True,True
+phaseB3_report.md,Phase B3,bounded_winner_branch,bounded branch exploratory report,report_only,False,True
+phaseB4_fold_metrics.csv,Phase B4,bounded_winner_branch,fold-level validation outputs for bounded branch,authoritative,True,True
+phaseB4_fold_score_diagnostics.csv,Phase B4,bounded_winner_branch,fold-level score-source diagnostics,report_only,False,True
+phaseB4_aggregate_oos_series.csv,Phase B4,bounded_winner_branch,aggregate WFO OOS return series,authoritative,True,True
+phaseB4_bootstrap_summary.csv,Phase B4,bounded_winner_branch,bootstrap gate results,authoritative,True,True
+phaseB4_cost_sweep.csv,Phase B4,bounded_winner_branch,cost gate results,authoritative,True,True
+phaseB4_exposure_trap.csv,Phase B4,bounded_winner_branch,exposure trap check results,authoritative,True,True
+phaseB4_added_value_gate.csv,Phase B4,bounded_winner_branch,gated vs matched-ungated added-value gate results,authoritative,True,True
+phaseB4_wfo_pattern_analysis.csv,Phase B4,bounded_winner_branch,report-only WFO pattern diagnostics,report_only,False,True
+phaseB4_final_verdict.json,Phase B4,bounded_winner_branch,frozen final verdict for bounded branch,authoritative,True,True
+phaseB4_report.md,Phase B4,bounded_winner_branch,bounded branch final validation report,report_only,False,True
+final_project_report.md,Final Close-Out,final_deployment_freeze,final project reconciliation and close-out report,report_only,False,True
+final_deployment_freeze_spec.json,Final Close-Out,final_deployment_freeze,deterministic deployment freeze spec for promoted winner,authoritative,True,True
+final_implementation_spec.md,Final Close-Out,final_deployment_freeze,engineering implementation specification for promoted winner,authoritative,True,True
+final_acceptance_test_plan.md,Final Close-Out,final_deployment_freeze,deterministic acceptance test plan,authoritative,True,True
+final_shadow_mode_plan.md,Final Close-Out,final_deployment_freeze,shadow/paper-trading and monitoring plan,authoritative,True,True
+final_artifact_manifest.csv,Final Close-Out,final_deployment_freeze,project-wide artifact manifest,authoritative,True,True

@@ -1,0 +1,106 @@
+{
+  "verdict": "REJECT",
+  "exit_code": 2,
+  "deltas": {
+    "full_harsh_score_delta": -57.1102,
+    "matched_trade_p_positive": 0.2941,
+    "matched_trade_ci_lower": -0.000177,
+    "matched_trade_ci_upper": 4e-06,
+    "trade_level_bootstrap_mean_diff": -8.13e-05,
+    "trade_level_bootstrap_ci95_low": -0.00017744,
+    "trade_level_bootstrap_ci95_high": 4.19e-06,
+    "trade_level_bootstrap_p_gt_0": 0.033
+  },
+  "trade_level_bootstrap": {
+    "mean_diff": -8.13013560668001e-05,
+    "ci95_low": -0.00017744052379971338,
+    "ci95_high": 4.194174465309482e-06,
+    "p_gt_0": 0.033,
+    "n_obs": 3131,
+    "block_len": 168,
+    "n_resamples": 10000,
+    "seed": 1673,
+    "ci_crosses_zero": true,
+    "small_improvement_threshold": 0.0002,
+    "is_small_improvement": true,
+    "all_blocks": [
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.0001710131297993201,
+        "ci95_high": 1.7154829872810071e-06,
+        "p_gt_0": 0.0287,
+        "n_obs": 3131,
+        "block_len": 42,
+        "n_resamples": 10000,
+        "seed": 1547
+      },
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.00017292119636857137,
+        "ci95_high": 8.991914531728608e-07,
+        "p_gt_0": 0.0267,
+        "n_obs": 3131,
+        "block_len": 84,
+        "n_resamples": 10000,
+        "seed": 1589
+      },
+      {
+        "mean_diff": -8.13013560668001e-05,
+        "ci95_low": -0.00017744052379971338,
+        "ci95_high": 4.194174465309482e-06,
+        "p_gt_0": 0.033,
+        "n_obs": 3131,
+        "block_len": 168,
+        "n_resamples": 10000,
+        "seed": 1673
+      }
+    ],
+    "n_timestamps": 3131
+  },
+  "failures": [
+    "lookahead_check_failed",
+    "full_harsh_delta_below_tolerance"
+  ],
+  "warnings": [],
+  "errors": [],
+  "reasons": [
+    "Lookahead sanity failed",
+    "Candidate harsh score delta too low (-57.1102)"
+  ],
+  "key_links": {
+    "data_integrity": "results/data_integrity.json",
+    "backtest": "results/full_backtest_summary.csv",
+    "wfo": "results/wfo_per_round_metrics.csv",
+    "holdout": "results/final_holdout_metrics.csv",
+    "bootstrap": "results/bootstrap_paired_test.csv",
+    "trade_level": "results/matched_trades.csv",
+    "trade_level_bootstrap": "results/bootstrap_return_diff.json",
+    "regression_guard": "results/regression_guard.json"
+  },
+  "gates": [
+    {
+      "name": "lookahead",
+      "passed": false,
+      "severity": "hard",
+      "detail": "status=fail"
+    },
+    {
+      "name": "full_harsh_delta",
+      "passed": false,
+      "severity": "hard",
+      "detail": "delta=-57.1102, min=-0.2000"
+    },
+    {
+      "name": "trade_level_bootstrap",
+      "passed": true,
+      "severity": "soft",
+      "detail": "mean_diff=-0.00008130, ci95=[-0.00017744,0.00000419], p_gt_0=0.0330, block_len=168"
+    }
+  ],
+  "metadata": {
+    "n_gates": 3,
+    "n_hard_fail": 2,
+    "n_soft_fail": 0,
+    "wfo_low_power": false
+  }
+}

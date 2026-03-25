@@ -1,0 +1,36 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "session_id": "session_20260319_seed_001",
+  "mode": "seed_discovery",
+  "constitution_file": "research_constitution_v3.0.yaml",
+  "constitution_version": "3.0",
+  "snapshot_id": "snapshot_20260318",
+  "state_pack_input": null,
+  "input_files": [
+    "spot_btcusdt_15m.csv",
+    "spot_btcusdt_1h.csv",
+    "spot_btcusdt_4h.csv",
+    "spot_btcusdt_1d.csv"
+  ],
+  "warmup_buffer_files": [],
+  "appended_delta_window": {
+    "start_utc": null,
+    "end_utc": null
+  },
+  "forbidden_inputs_confirmed_absent": [
+    "prior reports",
+    "prior winners",
+    "prior shortlist tables",
+    "prior system specs",
+    "prior evaluation ledgers",
+    "prior benchmark definitions",
+    "prior state packs",
+    "prior contamination logs"
+  ],
+  "contamination_status": {
+    "historical_snapshot_treated_as_contaminated_for_oos": true,
+    "blind_seed_discovery_required": true
+  },
+  "hash_manifest_file": "input_hash_manifest.txt",
+  "notes": "First seed discovery session. Historical snapshot covers 2017-08-17 to 2026-03-18 UTC. 4 timeframes: 15m, 1h, 4h, 1d. All files canonicalized to 13-column schema."
+}

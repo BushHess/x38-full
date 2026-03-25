@@ -1,0 +1,14 @@
+{
+  "verdict": "LIKELY_DESIGN_SENSITIVE_FAIL",
+  "reason": "Canonical fail disappears under most preregistered alternative split designs.",
+  "canonical_pass": false,
+  "alternative_passes": 2,
+  "alternative_fails": 1,
+  "alternative_unresolved": 0,
+  "suite_pass_map": {
+    "canonical_24_6_last8": false,
+    "short_horizon_24_3_last12": false,
+    "long_horizon_24_9_last6": true,
+    "canonical_24_6_all": true
+  }
+}

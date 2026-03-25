@@ -1,0 +1,67 @@
+{
+  "period": "full",
+  "n_cascade_episodes": 4,
+  "benefit_$": 15789.48,
+  "cost_$": 14717.05,
+  "net_$": -1415.92,
+  "benefit_cost_ratio": 1.073,
+  "g1_delta_total": 14089.21,
+  "g1_negative_delta": -1700.27,
+  "g1_n_episodes_positive": 3,
+  "g1_n_episodes_negative": 1,
+  "per_episode_benefit": [
+    {
+      "episode_id": 4,
+      "peak_date": "2019-06-26",
+      "delta_pnl": -1700.27,
+      "benefit_contribution": 0.0
+    },
+    {
+      "episode_id": 11,
+      "peak_date": "2021-11-10",
+      "delta_pnl": 464.65,
+      "benefit_contribution": 464.65
+    },
+    {
+      "episode_id": 14,
+      "peak_date": "2024-03-04",
+      "delta_pnl": 1876.08,
+      "benefit_contribution": 1876.08
+    },
+    {
+      "episode_id": 16,
+      "peak_date": "2025-01-20",
+      "delta_pnl": 13448.75,
+      "benefit_contribution": 13448.75
+    }
+  ],
+  "g2_bl_pnl": 107665.86,
+  "g2_ov_pnl": 92948.81,
+  "g2_delta": -14717.05,
+  "n_blocked_trades": 2,
+  "blocked_total_pnl": 33732.77,
+  "blocked_positive_pnl": 33732.77,
+  "blocked_negative_pnl": 0,
+  "global_bl_total": 85968.45,
+  "global_ov_total": 84552.53,
+  "decomposition_sum": -627.84,
+  "decomposition_residual": 788.08,
+  "concentration_top1_pct": 85.2,
+  "concentration_top1_episode": 16,
+  "concentration_top2_pct": 97.1,
+  "concentration_top2_episodes": [
+    16,
+    14
+  ],
+  "small_sample_warning": false,
+  "verdict": {
+    "verdict": "HOLD",
+    "reason": "Full-period approximately neutral ($-1,416, -1.6% of baseline), BCR 1.07 > 1.0. Holdout net positive ($+7,684) but small sample (1 cascade episodes < 3).",
+    "net_full_pct_of_baseline": -1.65,
+    "consistency": "DIVERGENT_FAVORABLE",
+    "consistency_note": "Full-period slightly negative, holdout positive. Holdout does NOT confirm full-period loss \u2014 suggests the full-period result is borderline/noisy.",
+    "concentration_warning": true,
+    "concentration_note": "Benefit is highly concentrated: 85% from episode 16. Top 2 episodes account for 97% of total benefit.",
+    "small_sample_warning": true
+  }
+}

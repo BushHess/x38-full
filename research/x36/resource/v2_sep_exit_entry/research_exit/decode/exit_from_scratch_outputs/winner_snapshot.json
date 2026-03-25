@@ -1,0 +1,74 @@
+{
+  "policy_name": "trail3.3_close_current_confirm2__no_trend_exit__cooldown6__time_stop30",
+  "entry_locked": "weakvdo_q0.5_activity_and_fresh_imb (research-version fold-adaptive)",
+  "exit_params": {
+    "trail_enabled": true,
+    "trail_mult": 3.3,
+    "peak_anchor": "close",
+    "trail_atr_mode": "current",
+    "trend_exit": "none",
+    "cooldown_bars": 6,
+    "trail_confirm_bars": 2,
+    "time_stop_bars": 30
+  },
+  "aggregate_oos": {
+    "sharpe": 1.804351689756462,
+    "cagr": 0.5680134276168118,
+    "mdd": -0.26018298058238953,
+    "trades": 124
+  },
+  "folds": [
+    {
+      "fold": "fold1",
+      "sharpe": 1.6910214277580962,
+      "cagr": 0.5341892626385114,
+      "mdd": -0.2379029296102121,
+      "trades": 28,
+      "baselineA_sharpe": 1.1196934805892897,
+      "delta_sharpe_vs_A": 0.5713279471688064
+    },
+    {
+      "fold": "fold2",
+      "sharpe": 1.8233418285133742,
+      "cagr": 0.628950191693908,
+      "mdd": -0.2601829805823894,
+      "trades": 51,
+      "baselineA_sharpe": 1.6040926839062521,
+      "delta_sharpe_vs_A": 0.21924914460712208
+    },
+    {
+      "fold": "fold3",
+      "sharpe": 2.376257548102369,
+      "cagr": 0.9043578983892142,
+      "mdd": -0.19214211751555954,
+      "trades": 32,
+      "baselineA_sharpe": 1.8753474413200957,
+      "delta_sharpe_vs_A": 0.5009101067822734
+    },
+    {
+      "fold": "fold4",
+      "sharpe": 0.8956505477176805,
+      "cagr": 0.12997679368322235,
+      "mdd": -0.12026080715429555,
+      "trades": 13,
+      "baselineA_sharpe": 0.3222358854220594,
+      "delta_sharpe_vs_A": 0.5734146622956211
+    }
+  ],
+  "baselineA_aggregate": {
+    "sharpe": 1.3740835418443518,
+    "cagr": 0.42715613356832627,
+    "mdd": -0.2733669220869339,
+    "bar_count": 10224,
+    "exposure": 0.3765649452269171,
+    "trades": 104
+  },
+  "baselineB_aggregate": {
+    "sharpe": 1.130759799972208,
+    "cagr": 0.3503025443385248,
+    "mdd": -0.37093930671517295,
+    "bar_count": 10224,
+    "exposure": 0.40923317683881066,
+    "trades": 118
+  }
+}

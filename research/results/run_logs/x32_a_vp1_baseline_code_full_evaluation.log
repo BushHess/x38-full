@@ -1,0 +1,75 @@
+======================================================================
+  A3: Full-History Backtest — VP1
+======================================================================
+  Data: DataFeed(h4=18662 bars, d1=3110 bars, range=1502942400000..1771660800000)
+
+  [smart] (13 bps RT, 0.4s)
+    Sharpe: 1.3853  |  CAGR: 64.08%  |  MDD: 61.55%  |  Trades: 232
+
+  [base] (31 bps RT, 0.4s)
+    Sharpe: 1.2691  |  CAGR: 56.22%  |  MDD: 63.37%  |  Trades: 232
+
+  [harsh] (50 bps RT, 0.4s)
+    Sharpe: 1.1461  |  CAGR: 48.34%  |  MDD: 65.24%  |  Trades: 232
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x32/a_vp1_baseline/results/full_eval/backtests/
+
+======================================================================
+  A4: Bootstrap Confidence Intervals (VCBB)
+======================================================================
+  Observed: Sharpe=1.1461, CAGR=48.30%, MDD=65.24%
+  Bootstrap: 2000 resamples, block sizes [10, 20, 40]...
+
+  Sharpe: 1.1461  [0.4582, 1.8104]  P(>0)=99.9%
+  CAGR:   48.30%  [10.97%, 96.27%]  P(>0)=99.7%
+  MDD:    65.24%  [35.81%, 74.83%]
+
+  Bootstrap saved to /var/www/trading-bots/btc-spot-dev/research/x32/a_vp1_baseline/results/full_eval/bootstrap_ci.json
+
+======================================================================
+  A5: Trade Structure Analysis
+======================================================================
+
+  Trades: 232  (95W / 137L)  Win rate: 40.9%
+  Avg winner: 10.03%  |  Avg loser: -3.66%
+  Best: 67.57%  |  Worst: -19.51%
+  Avg days held: 5.7  |  Max: 24.5
+  Top 5 trades = 74.4% of total PnL
+  Avg exposure: 0.4229
+
+  Exit reasons:
+    vp1_trailing_stop: 220 (94.8%)
+    vp1_trend_reversal: 12 (5.2%)
+
+  Yearly breakdown:
+    2017: 17 trades, PnL $5,560.94, WR 47.1%
+    2018: 21 trades, PnL $-6,280.74, WR 23.8%
+    2019: 25 trades, PnL $8,084.99, WR 40.0%
+    2020: 30 trades, PnL $44,416.85, WR 53.3%
+    2021: 26 trades, PnL $56,515.78, WR 46.2%
+    2022: 18 trades, PnL $-25,609.12, WR 27.8%
+    2023: 35 trades, PnL $63,193.54, WR 37.1%
+    2024: 28 trades, PnL $164,192.57, WR 53.6%
+    2025: 28 trades, PnL $-25,536.32, WR 32.1%
+    2026: 4 trades, PnL $-7,221.17, WR 50.0%
+
+  Trade analysis saved to /var/www/trading-bots/btc-spot-dev/research/x32/a_vp1_baseline/results/full_eval/trade_analysis.json
+
+======================================================================
+  VP1 vs E5+EMA1D21 — Quick Reference (harsh scenario)
+======================================================================
+  Metric                             VP1   E5+EMA1D21
+  -------------------------------------------------
+  Sharpe                          1.1461       1.1944
+  CAGR %                           48.34        52.59
+  MDD %                            65.24        61.37
+  Trades                             232          226
+  Win Rate %                       40.95          ~43
+  Avg Exposure                    0.4229        0.452
+
+  Bootstrap Comparison (harsh):
+  Metric                                     VP1           E5+EMA1D21
+  -----------------------------------------------------------------
+  Sharpe (median)                         1.1408                 0.54
+  CAGR % (median)                          47.49                 14.2
+  P(CAGR>0)                                99.7%                80.3%

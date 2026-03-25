@@ -1,0 +1,35 @@
+{
+  "study": "X28",
+  "research_question": "Long-only BTC spot algorithm maximizing Sharpe (MDD \u2264 60%)",
+  "phases_completed": [
+    1
+  ],
+  "phase_1": {
+    "status": "PASS_TO_NEXT_PHASE",
+    "deliverables": [
+      "01_data_audit.md",
+      "code/phase1_audit.py",
+      "tables/Tbl01_h4_descriptive.csv",
+      "tables/Tbl02_d1_descriptive.csv",
+      "tables/Tbl03_data_quality.csv"
+    ],
+    "data_files": {
+      "15m": {
+        "rows": 299754,
+        "date_range": "2017-08-17 \u2192 2026-03-11"
+      },
+      "1h": {
+        "rows": 74952,
+        "date_range": "2017-08-17 \u2192 2026-03-11"
+      },
+      "4h": {
+        "rows": 18752,
+        "date_range": "2017-08-17 \u2192 2026-03-11"
+      },
+      "1d": {
+        "rows": 3128,
+        "date_range": "2017-08-17 \u2192 2026-03-10"
+      }
+    }
+  }
+}

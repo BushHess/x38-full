@@ -1,0 +1,101 @@
+======================================================================
+PHASE 1: DATA AUDIT & VTREND STATE MAP
+======================================================================
+
+1. Data Verification:
+   H1 bars: 74651 (expected ~74,651)
+   H4 bars: 18662 (expected ~18,662)
+   D1 bars: 3110 (expected ~3,110)
+   Total rows: 96423
+   All counts within expected range
+
+2. Running VTREND E5+EMA21D1 via v10 engine...
+   [Full range] Trades: 221, Sharpe: 1.2999, CAGR: 57.34%, MDD: 51.49%, WR: 41.18%, Exposure: 0.4267
+   [Eval window] Trades: 188, Sharpe: 1.4545, CAGR: 61.6%, MDD: 40.97%, WR: 42.02%, Exposure: 0.4448
+   Note: Ref '~201 trades' is X0 (E0+EMA21D1), not E5. E5 eval-window ref: ~186 trades.
+
+3. Classifying H4 bars...
+   IN_TRADE: 7964 bars (42.7%)
+   FLAT:     10698 bars (57.3%)
+   Saved: state_classification.csv
+
+4. Temporal Statistics...
+   IN_TRADE periods: 221
+   FLAT periods:     222
+
+   IN_TRADE Duration Distribution:
+     Mean:   36.0 bars (6.0 days)
+     Median: 27 bars (4.5 days)
+     Min:    1 bars
+     Max:    212 bars (35.3 days)
+     Q25:    13 bars
+     Q75:    49 bars
+
+   FLAT Duration Distribution:
+     Mean:   48.2 bars (8.0 days)
+     Median: 11 bars (1.8 days)
+     Min:    1 bars
+     Max:    621 bars (103.5 days)
+     Q25:    4 bars
+     Q75:    46 bars
+
+   Saved: Tbl01_state_summary.csv
+   Saved: Tbl02_flat_durations.csv
+
+   Year-by-year state fraction:
+     2017: IN_TRADE 54.8%, FLAT 45.2%
+     2018: IN_TRADE 25.3%, FLAT 74.7%
+     2019: IN_TRADE 43.8%, FLAT 56.2%
+     2020: IN_TRADE 58.3%, FLAT 41.7%
+     2021: IN_TRADE 45.4%, FLAT 54.6%
+     2022: IN_TRADE 22.1%, FLAT 77.9%
+     2023: IN_TRADE 54.7%, FLAT 45.3%
+     2024: IN_TRADE 53.7%, FLAT 46.3%
+     2025: IN_TRADE 35.3%, FLAT 64.7%
+     2026: IN_TRADE 30.7%, FLAT 69.3%
+
+5. Transition Analysis...
+   Trade-to-trade transitions: 220
+
+   Gap distribution (bars between trades):
+     Mean:   47.2 bars (7.9 days)
+     Median: 11 bars (1.8 days)
+     Min:    1 bars
+     Max:    621 bars (103.5 days)
+   Re-entry within 5 bars (20h): 77/220 (35.0%)
+   Re-entry within 10 bars (40h): 109/220 (49.5%)
+   Re-entry within 20 bars (3.3d): 144/220 (65.5%)
+   Quick-flips (<=2 bars, 8h): 38/220 (17.3%)
+   Immediate re-entry (<=1 bar): 29/220 (13.2%)
+
+6. Generating figures...
+/var/www/trading-bots/btc-spot-dev/research/x26/code/phase1_state_map.py:385: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+   Saved: Fig01_price_state_overlay.png
+   Saved: Fig02_flat_duration_hist.png
+   Saved: Fig03_yearly_state_fraction.png
+
+7. Cross-reference checks:
+   [Full range — used for state classification]
+   Trades:    221
+   Sharpe:    1.2999
+   CAGR:      57.34%
+   MDD:       51.49%
+   Win rate:  41.18%
+   Exposure:  0.4267
+
+   [Eval window 2019-01-01 → 2026-02-20, warmup 365d, harsh cost]
+   Trades:    188 (ref: ~186 under base cost)
+   Sharpe:    1.4545
+   CAGR:      61.6%
+   MDD:       40.97%
+
+   CLARIFICATION: The '~201 trades' in prompt refers to X0 (E0+EMA21D1),
+   not E5+EMA21D1. E5 uses robust ATR (different from E0's standard ATR).
+   Full-range E5+EMA21D1 produces 221 trades — no discrepancy.
+
+   Saved supplementary: trades.csv, in_trade_periods.csv, in_position.npy
+
+======================================================================
+PHASE 1 COMPLETE
+======================================================================

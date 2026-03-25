@@ -1,0 +1,9 @@
+combination,entry_dof,exit_dof,filter_dof,total_dof
+B + Y,1,2,0,3
+B + Y + regime,1,2,1,4
+B + W,1,1,0,2
+B + W + regime,1,1,1,3
+C + Y,2,2,0,4
+C + Y + regime,2,2,1,5
+C + W,2,1,0,3
+C + W + regime,2,1,1,4

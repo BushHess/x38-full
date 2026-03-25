@@ -1,0 +1,67 @@
+{
+  "lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "2.0",
+  "registry_created_in_session": "session_YYYYMMDD_mode_seq",
+  "active_champion_id": "CHAMPION_PLACEHOLDER",
+  "live_candidates": [
+    {
+      "candidate_id": "CHAMPION_PLACEHOLDER",
+      "role": "champion",
+      "status": "active",
+      "archetype": "A_slow_trend_state",
+      "frozen_spec_file": "frozen_system_specs/CHAMPION_PLACEHOLDER.md",
+      "seed_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 2,
+      "tunable_quantities": 3,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "promotion_rule_ref": "research_constitution_v2.0.yaml#forward_review_policy.challenger_promotion_rule",
+      "kill_rule_ref": "research_constitution_v2.0.yaml#forward_review_policy.challenger_kill_rule"
+    },
+    {
+      "candidate_id": "CHALLENGER_1_PLACEHOLDER",
+      "role": "challenger",
+      "status": "active",
+      "archetype": "B_pullback_continuation",
+      "frozen_spec_file": "frozen_system_specs/CHALLENGER_1_PLACEHOLDER.md",
+      "seed_snapshot_id": "snapshot_YYYYMMDD",
+      "frozen_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "logical_layers": 3,
+      "tunable_quantities": 4,
+      "current_evidence_label": "INTERNAL_SEED_CANDIDATE",
+      "decision_eligibility": {
+        "cumulative_forward_days_required": 90,
+        "cumulative_forward_entries_required": 6
+      },
+      "cumulative_forward_metrics": {
+        "days": 0,
+        "entries": 0,
+        "cagr_20bps": null,
+        "cagr_50bps": null,
+        "sharpe_20bps": null,
+        "sharpe_50bps": null,
+        "max_drawdown_20bps": null,
+        "max_drawdown_50bps": null,
+        "exposure": null
+      },
+      "promotion_rule_ref": "research_constitution_v2.0.yaml#forward_review_policy.challenger_promotion_rule",
+      "kill_rule_ref": "research_constitution_v2.0.yaml#forward_review_policy.challenger_kill_rule"
+    }
+  ],
+  "retired_candidates": []
+}

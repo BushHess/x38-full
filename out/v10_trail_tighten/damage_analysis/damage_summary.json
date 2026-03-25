@@ -1,0 +1,46 @@
+{
+  "baseline_020": {
+    "total_trades": 103,
+    "trail_exits": 65,
+    "total_pnl": 97653.70999999999,
+    "avg_return_pct": 2.628543689320389,
+    "tightened_exits": 13,
+    "double_compressed_exits": 1,
+    "false_exit_3pct_5d": 58.46153846153847,
+    "avg_max_upside_5d": 5.669510725245299,
+    "avg_close_return_5d": 0.2762246360855826
+  },
+  "tighten_025": {
+    "total_trades": 101,
+    "trail_exits": 63,
+    "total_pnl": 123031.31999999999,
+    "avg_return_pct": 2.9624752475247527,
+    "tightened_exits": 12,
+    "double_compressed_exits": 0,
+    "false_exit_3pct_5d": 57.14285714285714,
+    "avg_max_upside_5d": 5.261236890936589,
+    "avg_close_return_5d": -0.15857863228098112
+  },
+  "tighten_030": {
+    "total_trades": 101,
+    "trail_exits": 63,
+    "total_pnl": 125872.33,
+    "avg_return_pct": 3.0118811881188123,
+    "tightened_exits": 10,
+    "double_compressed_exits": 0,
+    "false_exit_3pct_5d": 57.14285714285714,
+    "avg_max_upside_5d": 5.292006428072467,
+    "avg_close_return_5d": -0.2838400470297886
+  },
+  "apex": {
+    "total_trades": 101,
+    "trail_exits": 65,
+    "total_pnl": 109207.81,
+    "avg_return_pct": 2.8445544554455453,
+    "tightened_exits": 13,
+    "double_compressed_exits": 1,
+    "false_exit_3pct_5d": 58.46153846153847,
+    "avg_max_upside_5d": 5.616015486690987,
+    "avg_close_return_5d": 0.3376747382045497
+  }
+}

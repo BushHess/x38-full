@@ -1,0 +1,99 @@
+/var/www/trading-bots/btc-spot-dev/research/x18/benchmark.py:45: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X18: α-Percentile Static Mask — Nested WFO Validation
+======================================================================
+  Bars: 17838 H4, warmup_idx=2190
+  E0: Sh=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+  Training 7-feature logistic...
+  Model: C=10.0, n=168, OK
+  Scores: n=168, median=0.6547
+
+======================================================================
+T0: ΔU DIAGNOSTIC (static suppress)
+======================================================================
+  Trail-stop episodes: 168
+
+  Best α for monotonicity: 30%
+  Sharpe=1.4276, trades=167, suppress=325, matched=162, nonzero_ΔU=51
+  Quintile ΔU (low score → high score):
+    Q1 (n=33): mean=+0.000000, median=+0.000000, p10=+0.000000
+    Q2 (n=33): mean=+0.000000, median=+0.000000, p10=+0.000000
+    Q3 (n=33): mean=+0.000000, median=+0.000000, p10=+0.000000
+    Q4 (n=33): mean=-0.003776, median=+0.000000, p10=-0.025889
+    Q5 (n=36): mean=+0.003872, median=+0.001258, p10=-0.047257
+
+  G0 (Q5 median > 0): PASS (Q5 median=+0.001258, Q5 mean=+0.003872)
+  Note: For static suppress, Q4 straddles threshold → many ΔU=0 by design
+
+  All α sweep:
+    α= 5%: Sh=1.3422, trades=186, suppress=   41, matched=166, nonzero=  9, Q5_med=+0.000000
+    α=10%: Sh=1.3605, trades=182, suppress=   82, matched=167, nonzero= 18, Q5_med=+0.000000
+    α=15%: Sh=1.3382, trades=179, suppress=  133, matched=167, nonzero= 27, Q5_med=+0.000000
+    α=20%: Sh=1.3143, trades=179, suppress=  194, matched=168, nonzero= 35, Q5_med=-0.000271
+    α=25%: Sh=1.3151, trades=175, suppress=  248, matched=166, nonzero= 44, Q5_med=+0.000533
+    α=30%: Sh=1.4276, trades=167, suppress=  325, matched=162, nonzero= 51, Q5_med=+0.001258
+    α=40%: Sh=1.5126, trades=157, suppress=  436, matched=157, nonzero= 67, Q5_med=-0.000771
+    α=50%: Sh=1.5479, trades=145, suppress=  673, matched=156, nonzero= 87, Q5_med=-0.003203
+    α=60%: Sh=1.4454, trades=135, suppress=  880, matched=160, nonzero=103, Q5_med=-0.017973
+    α=70%: Sh=1.4591, trades=125, suppress= 1004, matched=161, nonzero=117, Q5_med=-0.019777
+
+======================================================================
+T1: NESTED WALK-FORWARD VALIDATION (4 folds)
+======================================================================
+    Fold 1: α=50%, E0=-0.8896, Mask=-0.6982, d=+0.1914 WIN
+    Fold 2: α=40%, E0=1.1935, Mask=1.3356, d=+0.1422 WIN
+    Fold 3: α=50%, E0=1.7196, Mask=1.6069, d=-0.1127 LOSE
+    Fold 4: α=50%, E0=0.0470, Mask=0.3584, d=+0.3114 WIN
+
+  Win rate: 75%, mean d: +0.1331, G1: PASS
+  Consensus α: 50%
+
+======================================================================
+T2: BOOTSTRAP (500 paths, α=50%)
+======================================================================
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+
+  d_sharpe: median=+0.0416, [-0.1566, +0.2612]
+  P(d_sharpe > 0): 63.4%
+  d_mdd: median=-0.23pp
+  G2: PASS, G3: PASS
+
+======================================================================
+T3: JACKKNIFE
+======================================================================
+    Drop 2020: E0=0.7743, Mask=0.8395, d=+0.0651
+    Drop 2021: E0=1.1851, Mask=1.2330, d=+0.0479
+    Drop 2022: E0=1.4863, Mask=1.6830, d=+0.1967
+    Drop 2023: E0=1.4432, Mask=1.5393, d=+0.0962
+    Drop 2024: E0=1.2877, Mask=1.4198, d=+0.1321
+    Drop 2025: E0=1.5034, Mask=1.6931, d=+0.1898
+  Negative: 0/6, mean d=+0.1213, G4: PASS
+
+======================================================================
+T4: PSR
+======================================================================
+  E0: Sh=1.3718, PSR=1.0000
+  Mask: Sh=1.5479, PSR=1.0000
+  DOF=5.35, n_eff=12722, G5: PASS
+
+======================================================================
+T5: COMPARISON TABLE
+======================================================================
+
+  Strategy                   Sharpe   CAGR%    MDD% Trades   Hold   Orc%   Supp
+  ----------------------------------------------------------------------------
+  E0                         1.3718   57.72   39.96    189   40.8    0.0      0
+  X18(α=50%)                 1.5479   71.89   36.92    145   55.2   20.8    673
+  X14_D(P>0.5)               1.4280   64.00   36.70    133   60.3   10.9    812
+  X16_E(τ=.85,G=8)           1.4240   62.70   38.90    162   48.7   10.4      0
+
+  *** ALL GATES PASSED — PROMOTE (α=50%) ***
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x18/x18_*.{json,csv}
+
+X18 COMPLETE — 37s — VERDICT: PROMOTE

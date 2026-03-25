@@ -1,0 +1,284 @@
+{
+  "linearity": {
+    "E0_Native": {
+      "test_ks": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "sharpes": [
+        1.0773365733395106,
+        1.0773365733395106,
+        1.0773365733395108,
+        1.0773365733395106
+      ],
+      "sharpe_pct_range": 2.0610513967491237e-14,
+      "sharpe_quasi_constant": true,
+      "mdds": [
+        0.20611047729483134,
+        0.3779237257467921,
+        0.5189789217787811,
+        0.6330351775051142
+      ],
+      "mdd_monotonic": true,
+      "cagrs": [
+        0.11681358779728468,
+        0.2328094891874577,
+        0.34505484559362665,
+        0.4504450324904816
+      ],
+      "cagr_monotonic": true,
+      "pass": true
+    },
+    "SM_Native": {
+      "test_ks": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "sharpes": [
+        1.3117855384085118,
+        1.3117855384085118,
+        1.3117855384085113,
+        1.3117855384085118
+      ],
+      "sharpe_pct_range": 3.385379674095522e-14,
+      "sharpe_quasi_constant": true,
+      "mdds": [
+        0.03877774413384949,
+        0.07671252668325879,
+        0.1137850622709683,
+        0.1499785981822851
+      ],
+      "mdd_monotonic": true,
+      "cagrs": [
+        0.03409902086194316,
+        0.06865003812419324,
+        0.10362360569412488,
+        0.13898851296891968
+      ],
+      "cagr_monotonic": true,
+      "pass": true
+    },
+    "P_Native": {
+      "test_ks": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "sharpes": [
+        1.243351704981683,
+        1.243351704981683,
+        1.2433517049816831,
+        1.243351704981683
+      ],
+      "sharpe_pct_range": 1.785855152933598e-14,
+      "sharpe_quasi_constant": true,
+      "mdds": [
+        0.032652390808366016,
+        0.064675320875483,
+        0.09606041964356848,
+        0.12680046554872004
+      ],
+      "mdd_monotonic": true,
+      "cagrs": [
+        0.02657166813673184,
+        0.053373356687312024,
+        0.08038766418895449,
+        0.10759647234049341
+      ],
+      "cagr_monotonic": true,
+      "pass": true
+    },
+    "LATCH_Native": {
+      "test_ks": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "sharpes": [
+        1.3147570754201092,
+        1.3147570754201092,
+        1.3147570754201094,
+        1.3147570754201092
+      ],
+      "sharpe_pct_range": 1.6888641185222795e-14,
+      "sharpe_quasi_constant": true,
+      "mdds": [
+        0.02870391057894839,
+        0.057017192946156925,
+        0.0849258511011457,
+        0.11241683869571395
+      ],
+      "mdd_monotonic": true,
+      "cagrs": [
+        0.02759802297108971,
+        0.05549852284517143,
+        0.08368620731537746,
+        0.1121450184474222
+      ],
+      "cagr_monotonic": true,
+      "pass": true
+    }
+  },
+  "matched_mdd_summary": {
+    "native_mdds": {
+      "E0_Native": 0.6330351775051166,
+      "SM_Native": 0.1499785981822962,
+      "P_Native": 0.1268004655487187,
+      "LATCH_Native": 0.11241683869571384
+    },
+    "min_native_mdd": 0.11241683869571384,
+    "max_native_mdd": 0.6330351775051166,
+    "feasible_targets": [
+      0.05,
+      0.1
+    ]
+  },
+  "pairwise": {
+    "E0_at_LATCH_MDD": {
+      "k": 0.130859375,
+      "terminal_wealth": 1.657243354236581,
+      "total_return": 0.657243354236581,
+      "cagr": 0.061076090086674695,
+      "mdd": 0.11236641603176778,
+      "sharpe": 1.0773365733395108,
+      "sortino": 0.9501431859204974,
+      "calmar": 0.5435439897754459,
+      "ulcer_index": 0.04575657336255295,
+      "realized_vol": 0.056510712358515014,
+      "avg_exposure": 0.05918192717822313,
+      "time_in_market": 0.45225592112313795,
+      "turnover": 58.179055713676675,
+      "fee_drag": 0.06598961086363837,
+      "longest_dd_days": 782.3333333333334,
+      "recovery_days": 102.16666666666667,
+      "budget_utilization": 0.130859375,
+      "beta_vs_btc": 0.050513098934238006,
+      "alpha_vs_btc": 0.032392739985598586,
+      "corr_vs_btc": 0.62098303653057,
+      "match_type": "E0_at_LATCH_MDD",
+      "match_target": 0.11241683869571384
+    },
+    "E0_at_LATCH_exposure": {
+      "k": 0.18976995328550433,
+      "terminal_wealth": 2.0620102097869286,
+      "total_return": 1.0620102097869286,
+      "cagr": 0.08863989064755873,
+      "mdd": 0.1597164128593237,
+      "sharpe": 1.0773365733395108,
+      "sortino": 0.9501431859204976,
+      "calmar": 0.5549829792735934,
+      "ulcer_index": 0.06576261703488341,
+      "realized_vol": 0.081950836494565,
+      "avg_exposure": 0.08582458502463063,
+      "time_in_market": 0.45225592112313795,
+      "turnover": 84.37023854790057,
+      "fee_drag": 0.0956969676106222,
+      "longest_dd_days": 782.3333333333334,
+      "recovery_days": 105.16666666666667,
+      "budget_utilization": 0.18976995328550433,
+      "beta_vs_btc": 0.07325320348699821,
+      "alpha_vs_btc": 0.04697537913394843,
+      "corr_vs_btc": 0.62098303653057,
+      "match_type": "E0_at_LATCH_exposure",
+      "match_target": 0.08582458502463063
+    },
+    "LATCH_Native_ref": {
+      "k": 1.0,
+      "terminal_wealth": 2.4736695217806295,
+      "total_return": 1.4736695217806295,
+      "cagr": 0.1121450184474222,
+      "mdd": 0.11241683869571395,
+      "sharpe": 1.3147570754201092,
+      "sortino": 1.0931650029156696,
+      "calmar": 0.9975820326256682,
+      "ulcer_index": 0.046813540341085466,
+      "realized_vol": 0.08348882042878016,
+      "avg_exposure": 0.08582458502463063,
+      "time_in_market": 0.08582458502463063,
+      "turnover": 45.107726574531156,
+      "fee_drag": 0.08063267723539207,
+      "longest_dd_days": 693.8333333333334,
+      "recovery_days": 31.833333333333332,
+      "budget_utilization": 1.0,
+      "beta_vs_btc": 0.060567107151577565,
+      "alpha_vs_btc": 0.07560895260370758,
+      "corr_vs_btc": 0.5039819836825835,
+      "match_type": "LATCH_Native"
+    },
+    "reverse_feasible": true,
+    "reverse_note": "LATCH native MDD=0.1124 < E0 native MDD=0.6330. LATCH cannot reach E0-level MDD without leverage >1."
+  },
+  "equal_overlay": {
+    "e0": {
+      "cagr": 0.14938672715112733,
+      "mdd": 0.1597745834434109,
+      "sharpe": 1.3316080161459516,
+      "sortino": 1.2154352830829296,
+      "calmar": 0.9349843005789295,
+      "exposure": 0.11825773164371832,
+      "score": 48.50858100422065
+    },
+    "latch": {
+      "cagr": 0.1291075642866839,
+      "mdd": 0.13637364565880028,
+      "sharpe": 1.195131274824337,
+      "sortino": 0.9095963278950119,
+      "calmar": 0.9467193141532952,
+      "exposure": 0.0978747543119976,
+      "score": 47.456930740734784
+    },
+    "delta_sharpe": -0.13647674132161458,
+    "delta_cagr": -0.020279162864443423,
+    "delta_mdd": -0.02340093778461061,
+    "delta_score": -1.0516502634858682
+  },
+  "resolutions": [
+    {
+      "id": "D1",
+      "question": "At matched MDD, which strategy has higher CAGR?",
+      "verdict": "LATCH wins at MDD\u224810.0%: CAGR 9.97% vs 5.38%",
+      "detail": "target_mdd=10.0%"
+    },
+    {
+      "id": "D2",
+      "question": "At matched MDD, which has higher Sharpe?",
+      "verdict": "LATCH wins at MDD\u224810.0%: Sharpe 1.3148 vs 1.0773",
+      "detail": ""
+    },
+    {
+      "id": "D3",
+      "question": "E0 scaled to LATCH MDD: head-to-head",
+      "verdict": "E0(k=0.131): CAGR=6.11%, Sharpe=1.0773 | LATCH: CAGR=11.21%, Sharpe=1.3148",
+      "detail": ""
+    },
+    {
+      "id": "D4",
+      "question": "Can LATCH reach E0-level MDD without leverage?",
+      "verdict": "LATCH native MDD=0.1124 < E0 native MDD=0.6330. LATCH cannot reach E0-level MDD without leverage >1.",
+      "detail": ""
+    },
+    {
+      "id": "D5",
+      "question": "Equal-overlay control (EntryVol_12)",
+      "verdict": "E0 Sharpe=1.3316, LATCH Sharpe=1.1951, \u0394Sharpe=-0.1365, \u0394Score=-1.05",
+      "detail": "Same signal extraction, same sizing, same cost"
+    },
+    {
+      "id": "D6",
+      "question": "Overall deploy-oriented comparison",
+      "verdict": "See report narrative",
+      "detail": "Matched-risk analysis resolves exposure bias"
+    }
+  ],
+  "_meta": {
+    "elapsed_s": 4.4,
+    "n_frontier_points": 101,
+    "date": "2026-03-05"
+  }
+}

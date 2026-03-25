@@ -1,0 +1,13 @@
+{
+  "scenario": "harsh",
+  "candidate_trades": 102,
+  "baseline_trades": 98,
+  "matched_trades": 86,
+  "match_rate": 0.843137,
+  "matched_p_positive": 0.546512,
+  "matched_block_bootstrap_ci_lower": -421.30684,
+  "matched_block_bootstrap_ci_upper": 893.199785,
+  "matched_delta_mean": 230.095384,
+  "matched_delta_std": 2911.507024,
+  "matched_block_bootstrap_p_positive": 0.746
+}

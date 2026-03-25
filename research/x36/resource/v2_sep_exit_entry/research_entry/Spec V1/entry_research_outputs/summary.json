@@ -1,0 +1,54 @@
+{
+  "baseline_vdo": {
+    "aggregate_sharpe": 1.1307597999722059,
+    "aggregate_cagr": 0.3503025443385248,
+    "aggregate_mdd": -0.37093930671517295,
+    "end_equity": 4.059198917344875,
+    "bar_count": 10224
+  },
+  "winner_policy": "weakvdo_q0.5_activity_and_fresh_imb",
+  "winner_aggregate": {
+    "aggregate_sharpe": 1.3740835418443529,
+    "aggregate_cagr": 0.42715613356832627,
+    "aggregate_mdd": -0.2733669220869338,
+    "end_equity": 5.255148575030997,
+    "bar_count": 10224
+  },
+  "winner_positive_folds_vs_vdo": 4,
+  "bootstrap": {
+    "block24": {
+      "mean": 0.23720730922468675,
+      "p05": 0.002823605250695044,
+      "p50": 0.23132603107463542,
+      "p95": 0.4881110502604224,
+      "prob_gt0": 0.9525
+    },
+    "block72": {
+      "mean": 0.24088522004135512,
+      "p05": 0.03317605948275279,
+      "p50": 0.23632032694093164,
+      "p95": 0.47077964399571914,
+      "prob_gt0": 0.9725
+    }
+  },
+  "fixed_approximations": [
+    {
+      "threshold": 0.006,
+      "aggregate_sharpe": 1.2253666093328761,
+      "aggregate_cagr": 0.374605232490105,
+      "aggregate_mdd": -0.2968996241383951,
+      "positive_folds_vs_vdo": 4
+    },
+    {
+      "threshold": 0.00648105072393846,
+      "aggregate_sharpe": 1.3404104320598558,
+      "aggregate_cagr": 0.41257096350760825,
+      "aggregate_mdd": -0.28561783607987157,
+      "positive_folds_vs_vdo": 3
+    }
+  ],
+  "library_counts": {
+    "natural_rules": 94,
+    "train_threshold_families": 16
+  }
+}

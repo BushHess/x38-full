@@ -1,0 +1,14 @@
+metric,value
+n_blocked,21
+n_total_baseline,103
+pct_blocked,20.4
+mean_net_pnl,334.77
+median_net_pnl,-741.59
+p10_net_pnl,-5211.87
+p5_net_pnl,-6100.15
+total_net_pnl,7030.1
+pct_exit_emergency_dd,47.6
+total_fees,3381.69
+mean_return_pct,1.5346
+mean_days_held,13.0
+overlay_actual_blocks,363

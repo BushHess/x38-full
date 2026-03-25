@@ -1,0 +1,309 @@
+{
+  "study_id": "x35_long_horizon_regime",
+  "branch": "e_transition_instability_diagnostic",
+  "branch_verdict": "NO_GO_F4_TRANSITION_FAMILY",
+  "warmup": {
+    "pre_report_weeks": 52,
+    "warmup_ok": true
+  },
+  "baseline": {
+    "strategy": "VTrendE5Ema21D1Strategy",
+    "trades": 188,
+    "sharpe": 1.4545,
+    "cagr_pct": 61.6,
+    "max_drawdown_mid_pct": 40.97
+  },
+  "specs": [
+    {
+      "spec_id": "wk_mixed_structure_flag",
+      "calendar": {
+        "unstable_fraction": 0.3462,
+        "unstable_fraction_pct": 34.62,
+        "flips_total": 32,
+        "flips_per_year": 4.483,
+        "median_spell_days": 42.0
+      },
+      "trade_split": {
+        "stable_trades": 133,
+        "unstable_trades": 55,
+        "stable_mean_return_pct": 2.2819,
+        "unstable_mean_return_pct": 2.4773,
+        "stable_win_rate_pct": 41.35,
+        "unstable_win_rate_pct": 43.64
+      },
+      "concentration": {
+        "profit_share_stable": 0.7669,
+        "profit_share_stable_pct": 76.69,
+        "loss_share_unstable": 0.3048,
+        "loss_share_unstable_pct": 30.48
+      },
+      "stability": {
+        "valid_folds": 8,
+        "fold_wins": 4,
+        "fold_win_rate": 0.5,
+        "fold_win_rate_pct": 50.0,
+        "fold_details": [
+          {
+            "fold": 1,
+            "stable_trades": 14,
+            "unstable_trades": 10,
+            "delta_mean_return_pct": -9.8384,
+            "stable_beats_unstable": 0
+          },
+          {
+            "fold": 2,
+            "stable_trades": 17,
+            "unstable_trades": 7,
+            "delta_mean_return_pct": -2.3332,
+            "stable_beats_unstable": 0
+          },
+          {
+            "fold": 3,
+            "stable_trades": 21,
+            "unstable_trades": 3,
+            "delta_mean_return_pct": -2.6403,
+            "stable_beats_unstable": 0
+          },
+          {
+            "fold": 4,
+            "stable_trades": 18,
+            "unstable_trades": 6,
+            "delta_mean_return_pct": 0.1421,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 5,
+            "stable_trades": 5,
+            "unstable_trades": 18,
+            "delta_mean_return_pct": 7.2222,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 6,
+            "stable_trades": 20,
+            "unstable_trades": 3,
+            "delta_mean_return_pct": 3.4446,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 7,
+            "stable_trades": 20,
+            "unstable_trades": 3,
+            "delta_mean_return_pct": 0.0835,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 8,
+            "stable_trades": 18,
+            "unstable_trades": 5,
+            "delta_mean_return_pct": -1.0654,
+            "stable_beats_unstable": 0
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "promising": false
+    },
+    {
+      "spec_id": "wk_flip_count_8w_ge_2",
+      "calendar": {
+        "unstable_fraction": 0.2469,
+        "unstable_fraction_pct": 24.69,
+        "flips_total": 24,
+        "flips_per_year": 3.362,
+        "median_spell_days": 63.0
+      },
+      "trade_split": {
+        "stable_trades": 145,
+        "unstable_trades": 43,
+        "stable_mean_return_pct": 2.7134,
+        "unstable_mean_return_pct": 1.0769,
+        "stable_win_rate_pct": 42.76,
+        "unstable_win_rate_pct": 39.53
+      },
+      "concentration": {
+        "profit_share_stable": 0.8897,
+        "profit_share_stable_pct": 88.97,
+        "loss_share_unstable": 0.1543,
+        "loss_share_unstable_pct": 15.43
+      },
+      "stability": {
+        "valid_folds": 4,
+        "fold_wins": 4,
+        "fold_win_rate": 1.0,
+        "fold_win_rate_pct": 100.0,
+        "fold_details": [
+          {
+            "fold": 1,
+            "stable_trades": 20,
+            "unstable_trades": 4,
+            "delta_mean_return_pct": 0.7336,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 2,
+            "stable_trades": 4,
+            "unstable_trades": 20,
+            "delta_mean_return_pct": 3.0265,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 3,
+            "stable_trades": 22,
+            "unstable_trades": 2,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 4,
+            "stable_trades": 20,
+            "unstable_trades": 4,
+            "delta_mean_return_pct": 1.9473,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 5,
+            "stable_trades": 23,
+            "unstable_trades": 0,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 6,
+            "stable_trades": 21,
+            "unstable_trades": 2,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 7,
+            "stable_trades": 14,
+            "unstable_trades": 9,
+            "delta_mean_return_pct": 1.9487,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 8,
+            "stable_trades": 21,
+            "unstable_trades": 2,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "promising": false
+    },
+    {
+      "spec_id": "wk_score_range_8w_ge_2",
+      "calendar": {
+        "unstable_fraction": 0.11,
+        "unstable_fraction_pct": 11.0,
+        "flips_total": 18,
+        "flips_per_year": 2.522,
+        "median_spell_days": 35.0
+      },
+      "trade_split": {
+        "stable_trades": 168,
+        "unstable_trades": 20,
+        "stable_mean_return_pct": 2.5022,
+        "unstable_mean_return_pct": 0.9688,
+        "stable_win_rate_pct": 42.26,
+        "unstable_win_rate_pct": 40.0
+      },
+      "concentration": {
+        "profit_share_stable": 0.977,
+        "profit_share_stable_pct": 97.7,
+        "loss_share_unstable": 0.048,
+        "loss_share_unstable_pct": 4.8
+      },
+      "stability": {
+        "valid_folds": 2,
+        "fold_wins": 2,
+        "fold_win_rate": 1.0,
+        "fold_win_rate_pct": 100.0,
+        "fold_details": [
+          {
+            "fold": 1,
+            "stable_trades": 22,
+            "unstable_trades": 2,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 2,
+            "stable_trades": 11,
+            "unstable_trades": 13,
+            "delta_mean_return_pct": 2.9546,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 3,
+            "stable_trades": 23,
+            "unstable_trades": 1,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 4,
+            "stable_trades": 20,
+            "unstable_trades": 4,
+            "delta_mean_return_pct": 1.9473,
+            "stable_beats_unstable": 1
+          },
+          {
+            "fold": 5,
+            "stable_trades": 23,
+            "unstable_trades": 0,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 6,
+            "stable_trades": 23,
+            "unstable_trades": 0,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 7,
+            "stable_trades": 23,
+            "unstable_trades": 0,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          },
+          {
+            "fold": 8,
+            "stable_trades": 23,
+            "unstable_trades": 0,
+            "delta_mean_return_pct": null,
+            "stable_beats_unstable": null
+          }
+        ]
+      },
+      "gates": {
+        "D0_warmup": true,
+        "D1_persistence": true,
+        "D2_trade_split": true,
+        "D3_sign_separation": false,
+        "D4_concentration": false,
+        "D5_stability": false
+      },
+      "promising": false
+    }
+  ]
+}

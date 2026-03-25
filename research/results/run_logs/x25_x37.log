@@ -1,0 +1,61 @@
+=== X25-X37 Phase Scripts ===
+Started: Mon Mar 16 08:33:16 PM UTC 2026
+[20:33:16] START x25_code_phase1_raw_eda
+[20:33:38] DONE  x25_code_phase1_raw_eda
+[20:33:38] START x25_code_phase2_trade_eda
+[20:33:45] DONE  x25_code_phase2_trade_eda
+[20:33:45] START x25_code_phase3_formalization_notes
+[20:33:47] DONE  x25_code_phase3_formalization_notes
+[20:33:47] START x26_code_phase0_state_map
+[20:33:52] FAIL  x26_code_phase0_state_map (rc=0)
+[20:33:52] START x26_code_phase1_state_map
+[20:34:05] DONE  x26_code_phase1_state_map
+[20:34:05] START x26_code_phase2_flat_eda
+[20:34:21] DONE  x26_code_phase2_flat_eda
+[20:34:21] START x26_code_phase3_scoring
+[20:34:41] DONE  x26_code_phase3_scoring
+[20:34:41] START x26_code_phase4_formalization
+[20:34:49] DONE  x26_code_phase4_formalization
+[20:34:49] START x27_code_phase1_audit
+[20:34:51] DONE  x27_code_phase1_audit
+[20:34:51] START x27_code_phase2_eda
+[20:35:07] DONE  x27_code_phase2_eda
+[20:35:07] START x27_code_phase3_signal_landscape
+[20:35:13] DONE  x27_code_phase3_signal_landscape
+[20:35:13] START x27_code_phase4_information
+[20:35:17] DONE  x27_code_phase4_information
+[20:35:17] START x27_code_phase7_validation
+[20:35:43] DONE  x27_code_phase7_validation
+[20:35:43] START x28_code_phase1_audit
+[20:35:45] DONE  x28_code_phase1_audit
+[20:35:45] START x28_code_phase2_eda
+[20:35:57] DONE  x28_code_phase2_eda
+[20:35:57] START x28_code_phase3_signal_landscape
+[20:36:07] DONE  x28_code_phase3_signal_landscape
+[20:36:07] START x28_code_phase4_information
+[20:36:10] DONE  x28_code_phase4_information
+[20:36:10] START x28_code_phase7_validation
+[20:36:28] DONE  x28_code_phase7_validation
+[20:36:28] START x29_code_x29_benchmark
+[20:51:31] DONE  x29_code_x29_benchmark
+[20:51:31] START x29_code_x29_monitor_diagnostic
+[21:07:56] DONE  x29_code_x29_monitor_diagnostic
+[21:07:56] START x29_code_x29_signal_diagnostic
+[21:24:13] DONE  x29_code_x29_signal_diagnostic
+[21:24:13] START x30_v1_code_x30_actuator
+[21:24:15] FAIL  x30_v1_code_x30_actuator (rc=0)
+[21:24:15] START x30_v1_code_x30_signal
+[21:24:16] FAIL  x30_v1_code_x30_signal (rc=0)
+[21:24:16] START x30_v1_code_x30_validate
+[21:24:18] FAIL  x30_v1_code_x30_validate (rc=0)
+[21:24:18] START x31_code_x31_diagnostic
+[21:24:23] DONE  x31_code_x31_diagnostic
+[21:24:23] START x31_code_x31_phase0_reentry_barrier
+[21:24:30] DONE  x31_code_x31_phase0_reentry_barrier
+[21:24:30] START x32_a_vp1_baseline_code_full_evaluation
+[21:24:53] DONE  x32_a_vp1_baseline_code_full_evaluation
+[21:24:53] START x33_analyze_execution_cost
+[21:25:33] DONE  x33_analyze_execution_cost
+[21:25:33] START x35_code_run_all
+[21:26:05] DONE  x35_code_run_all
+=== X25-X37 COMPLETE: Mon Mar 16 09:26:05 PM UTC 2026 ===

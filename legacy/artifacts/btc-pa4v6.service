@@ -1,0 +1,38 @@
+[Unit]
+Description=BTC PA4v6 Apex Trading Bot (Binance Spot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/bitcoin/btc-only/best-versions
+
+# Python venv
+Environment="PATH=/var/www/bitcoin/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+
+# Required
+EnvironmentFile=/var/www/bitcoin/btc-only/best-versions/.env.v6
+
+# Runtime
+ExecStart=/var/www/bitcoin/.venv/bin/python btc_only_bot_v6.py
+
+# Restart policy
+Restart=on-failure
+RestartSec=30
+StartLimitIntervalSec=600
+StartLimitBurst=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=btc-pa4v6
+
+# Security
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/var/www/bitcoin/btc-only/best-versions
+
+[Install]
+WantedBy=multi-user.target

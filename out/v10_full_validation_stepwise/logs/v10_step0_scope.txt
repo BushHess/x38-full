@@ -1,0 +1,132 @@
+================================================================================
+STEP 0: SCOPE LOCK — V10 BASELINE FULL VALIDATION PACK
+================================================================================
+Date: 2026-02-23
+Purpose: Create validation pack for V10 baseline with same standards as
+         V11 cycle_late_only (apples-to-apples comparison).
+
+================================================================================
+GIT / VERSION
+================================================================================
+Commit:  c74c650618852baecace9f75d95c16f491dc20e0
+Tag:     RC0
+Message: Phase B: paper/shadow runner, parity tool, and replay verification
+Author:  BushHess <voson@cbs.vn>
+
+================================================================================
+STRATEGY IDENTITY
+================================================================================
+Strategy class:  V8ApexStrategy
+Config class:    V8ApexConfig (all defaults)
+Strategy file:   v10/strategies/v8_apex.py
+Config file:     v10/configs/baseline_legacy.live.yaml
+Instantiation:   V8ApexStrategy(V8ApexConfig())
+
+Key config overrides (from YAML vs defaults):
+  rsi_method:     wilder          (default: ewm_span)
+  emergency_ref:  pre_cost_legacy (default: pre_cost_legacy)
+  entry_cooldown_bars: 3          (matches default)
+
+Note: For validation purposes, V10 baseline uses V8ApexConfig() with
+      ALL defaults (matching V11 validation runner at run_v11_validation.py:114).
+
+================================================================================
+DATASET
+================================================================================
+File:       bars_btcusdt_2016_now_h1_4h_1d.csv
+Path:       /var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+Size:       13,107,461 bytes (13 MB)
+MD5:        f9a77c8cd7f900e258a73eae5cd2bf11
+Timeframes: H1 (1h), H4 (4h), D1 (1d)
+Coverage:   Aug 2017 — Feb 2026
+
+================================================================================
+EVALUATION PERIOD
+================================================================================
+Start:      2019-01-01
+End:        2026-02-20
+Warmup:     365 days (no_trade mode)
+Duration:   ~7.14 years
+
+(Identical to V11 validation: run_v11_wfo_bootstrap.py lines 26-28)
+
+================================================================================
+WFO WINDOWS (Walk-Forward Optimization)
+================================================================================
+Train:      24 months
+Test:       6 months
+Slide:      6 months
+Generator:  v10/research/wfo.py :: generate_windows()
+
+10 OOS windows:
+  Window 0:  2021-01-01 → 2021-07-01
+  Window 1:  2021-07-01 → 2022-01-01
+  Window 2:  2022-01-01 → 2022-07-01
+  Window 3:  2022-07-01 → 2023-01-01
+  Window 4:  2023-01-01 → 2023-07-01
+  Window 5:  2023-07-01 → 2024-01-01
+  Window 6:  2024-01-01 → 2024-07-01
+  Window 7:  2024-07-01 → 2025-01-01
+  Window 8:  2025-01-01 → 2025-07-01
+  Window 9:  2025-07-01 → 2026-01-01
+
+(Identical to V11 WFO setup)
+
+================================================================================
+COST SCENARIOS
+================================================================================
+Source: v10/core/types.py :: SCENARIOS dict
+
+  smart:  spread=3.0 bps, slippage=1.5 bps, fee=0.035%
+          → per-side= 5.0 bps, round-trip=10.0 bps  — CORRECTION below
+          → per-side= 3.0/2 + 1.5 + 0.035*100 = 1.5+1.5+3.5 = 6.5 bps
+          → round-trip= 13.0 bps (0.13%)
+
+  base:   spread=5.0 bps, slippage=3.0 bps, fee=0.100%
+          → per-side= 5.0/2 + 3.0 + 0.100*100 = 2.5+3.0+10.0 = 15.5 bps
+          → round-trip= 31.0 bps (0.31%)
+
+  harsh:  spread=10.0 bps, slippage=5.0 bps, fee=0.150%
+          → per-side= 10.0/2 + 5.0 + 0.150*100 = 5.0+5.0+15.0 = 25.0 bps
+          → round-trip= 50.0 bps (0.50%)
+
+Formula: per_side = spread/2 + slippage + fee_pct*100 (all in bps)
+
+================================================================================
+OUTPUT DIRECTORY
+================================================================================
+Path: out_v10_full_validation_stepwise/
+      (new folder, does not overwrite any existing output)
+
+Planned structure:
+  logs/v10_step0_scope.txt      ← this file
+  logs/                         ← run logs for each validation step
+  reports/                      ← markdown reports
+  data/                         ← CSV outputs (equity curves, metrics, etc.)
+
+================================================================================
+REFERENCE: V11 VALIDATION OUTPUTS (for parity checks)
+================================================================================
+V11 stepwise:   out_v11_validation_stepwise/
+V11 full:       out_v11_full_validation/
+V11 WFO:        out_v11_wfo_extended/
+V11 scope log:  out_v11_validation_stepwise/logs/step0_environment.txt
+
+================================================================================
+VALIDATION STEPS TO REPLICATE (from V11 pack)
+================================================================================
+  Step A:  Reproducibility check (deterministic runs)
+  Step B1: WFO round-by-round scoring (10 windows × 3 scenarios)
+  Step B2: Sensitivity grid (parameter robustness)
+  Step B3: Final holdout (2024-10 to 2026-02, one-shot)
+  Step C:  Selection bias (PBO / DSR)
+  Step D:  Lookahead sanity check
+  Step E:  Regime decomposition
+  Step F:  Risk overlay evaluation
+
+Note: For V10 standalone pack, Steps B2/F (sensitivity/overlay) focus on
+      V10 parameter stability rather than V10-vs-V11 delta.
+
+================================================================================
+SCOPE LOCKED
+================================================================================

@@ -1,0 +1,41 @@
+2026-02-24 06:32:40,629 INFO validation: Validation run started
+2026-02-24 06:32:40,629 INFO validation: command=python validate_strategy.py --strategy v8_apex --baseline v8_apex --config v10/configs/baseline_legacy.live.yaml --baseline-config v10/configs/baseline_legacy.live.yaml --out out/quality_demo_data_integrity --force --suite basic --bootstrap 0 --lookahead-check off --start 2024-01-01 --end 2024-03-31 --wfo-windows 2
+2026-02-24 06:32:40,629 INFO validation: seed=1337
+2026-02-24 06:32:40,629 INFO validation: git_hash=c74c650
+2026-02-24 06:32:40,629 INFO validation: candidate=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:32:40,629 INFO validation: baseline=v8_apex config=/var/www/trading-bots/btc-spot/v10/configs/baseline_legacy.live.yaml
+2026-02-24 06:32:40,629 INFO validation: dataset=/var/www/trading-bots/btc-spot/bars_btcusdt_2016_now_h1_4h_1d.csv
+2026-02-24 06:32:40,629 INFO validation: period=2024-01-01 -> 2024-03-31
+2026-02-24 06:32:40,907 INFO validation: suite data_integrity started
+2026-02-24 06:32:41,048 INFO validation: suite data_integrity finished: pass (0.14s)
+2026-02-24 06:32:41,052 INFO validation: suite backtest started
+2026-02-24 06:32:41,052 INFO validation:   backtest: candidate x smart
+2026-02-24 06:32:41,075 INFO validation:   backtest: candidate x base
+2026-02-24 06:32:41,097 INFO validation:   backtest: candidate x harsh
+2026-02-24 06:32:41,120 INFO validation:   backtest: baseline x smart
+2026-02-24 06:32:41,142 INFO validation:   backtest: baseline x base
+2026-02-24 06:32:41,167 INFO validation:   backtest: baseline x harsh
+2026-02-24 06:32:41,191 INFO validation: suite backtest finished: pass (0.14s)
+2026-02-24 06:32:41,191 INFO validation: suite cost_sweep started
+2026-02-24 06:32:41,191 INFO validation:   cost_sweep: candidate @ 0.00 bps (quick)
+2026-02-24 06:32:41,215 INFO validation:   cost_sweep: baseline @ 0.00 bps (quick)
+2026-02-24 06:32:41,238 INFO validation:   cost_sweep: candidate @ 10.00 bps (quick)
+2026-02-24 06:32:41,260 INFO validation:   cost_sweep: baseline @ 10.00 bps (quick)
+2026-02-24 06:32:41,283 INFO validation:   cost_sweep: candidate @ 25.00 bps (quick)
+2026-02-24 06:32:41,306 INFO validation:   cost_sweep: baseline @ 25.00 bps (quick)
+2026-02-24 06:32:41,329 INFO validation:   cost_sweep: candidate @ 50.00 bps (quick)
+2026-02-24 06:32:41,352 INFO validation:   cost_sweep: baseline @ 50.00 bps (quick)
+2026-02-24 06:32:41,376 INFO validation:   cost_sweep: candidate @ 75.00 bps (quick)
+2026-02-24 06:32:41,398 INFO validation:   cost_sweep: baseline @ 75.00 bps (quick)
+2026-02-24 06:32:41,422 INFO validation:   cost_sweep: candidate @ 100.00 bps (quick)
+2026-02-24 06:32:41,445 INFO validation:   cost_sweep: baseline @ 100.00 bps (quick)
+2026-02-24 06:32:41,467 INFO validation: suite cost_sweep finished: info (0.28s)
+2026-02-24 06:32:41,467 INFO validation: suite invariants started
+2026-02-24 06:32:41,468 INFO validation: suite invariants finished: pass (0.00s)
+2026-02-24 06:32:41,469 INFO validation: suite churn_metrics started
+2026-02-24 06:32:41,470 INFO validation: suite churn_metrics finished: info (0.00s)
+2026-02-24 06:32:41,470 INFO validation: suite regime started
+2026-02-24 06:32:41,474 INFO validation: suite regime finished: info (0.00s)
+2026-02-24 06:32:41,475 INFO validation: suite wfo started
+2026-02-24 06:32:41,475 INFO validation: suite wfo finished: info (0.00s)
+2026-02-24 06:32:41,600 INFO validation: Validation run complete in 0.97s

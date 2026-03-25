@@ -1,0 +1,32 @@
+{
+  "v4": {
+    "num_trials": 10,
+    "dsr": {
+      "n_obs": 13456,
+      "num_trials": 10,
+      "sr_per_bar": 0.036792,
+      "sr_annualized": 1.722343,
+      "sr0_per_bar": 0.013575,
+      "sr0_annualized": 0.635475,
+      "dsr_statistic": 2.71642,
+      "dsr_pvalue": 0.9967,
+      "skewness": 0.839671,
+      "kurtosis": 41.70549
+    }
+  },
+  "e5": {
+    "num_trials": 245,
+    "dsr": {
+      "n_obs": 13456,
+      "num_trials": 245,
+      "sr_per_bar": 0.030445,
+      "sr_annualized": 1.425215,
+      "sr0_per_bar": 0.024408,
+      "sr0_annualized": 1.142617,
+      "dsr_statistic": 0.69928,
+      "dsr_pvalue": 0.757812,
+      "skewness": 0.091937,
+      "kurtosis": 24.806677
+    }
+  }
+}

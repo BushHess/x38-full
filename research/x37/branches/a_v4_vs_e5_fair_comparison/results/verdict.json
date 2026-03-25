@@ -1,0 +1,31 @@
+{
+  "verdict": "V4_COMPETITIVE",
+  "v4_wins": 3,
+  "e5_wins": 0,
+  "details": {
+    "sharpe_winner": "V4",
+    "sharpe_v4": 1.865,
+    "sharpe_e5": 1.6073,
+    "mdd_winner": "V4",
+    "mdd_v4": 23.87,
+    "mdd_e5": 35.41,
+    "wfo_winner": "TIE",
+    "wfo_raw_winner": "V4",
+    "wfo_winner_basis": "power_only",
+    "wfo_statistically_supported": false,
+    "wfo_v4_wins_valid": 5,
+    "wfo_e5_wins_valid": 2,
+    "wfo_v4_wins_power": 2,
+    "wfo_e5_wins_power": 1,
+    "wfo_n_windows_valid": 7,
+    "wfo_n_windows_power_only": 3,
+    "wfo_p_value": 1.0,
+    "paired_p_v4_gt_e5": 0.936,
+    "sensitivity_spread_v4": 0.5354,
+    "sensitivity_spread_e5": 0.4128,
+    "robustness_winner": "E5",
+    "cost_crossover_bps": null,
+    "v4_param_count": "~10 (3 lookbacks + 4 quantiles + 2 modes + 1 anchor)",
+    "e5_param_count": "4 (slow_period, trail_mult, vdo_threshold, d1_ema_period)"
+  }
+}

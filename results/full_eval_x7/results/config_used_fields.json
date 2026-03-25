@@ -1,0 +1,55 @@
+{
+  "candidate": {
+    "known_fields": [
+      "atr_period",
+      "cooldown_bars",
+      "d1_ema_period",
+      "fast_period",
+      "slow_period",
+      "stretch_cap",
+      "trail_mult",
+      "trend_entry_band",
+      "trend_exit_band",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold_proxy",
+      "vdo_threshold_real"
+    ],
+    "used_fields": [
+      "atr_period",
+      "cooldown_bars",
+      "d1_ema_period",
+      "fast_period",
+      "slow_period",
+      "stretch_cap",
+      "trail_mult",
+      "trend_entry_band",
+      "trend_exit_band",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold_real"
+    ],
+    "used_count": 12,
+    "known_count": 13
+  },
+  "baseline": {
+    "known_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_count": 6,
+    "known_count": 6
+  }
+}

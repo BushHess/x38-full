@@ -1,0 +1,261 @@
+Loading data...
+H4: 18752 bars, D1: 3128 bars
+
+======================================================================
+1. RETURN DISTRIBUTION (H4)
+======================================================================
+  N = 18751
+  Mean   = 0.000148 (0.0148%)
+  Std    = 0.014839 (1.4839%)
+  Skew   = -0.2008
+  Kurt   = 20.4145 (excess)
+  JB     = 325731.15, p = 0.00e+00
+  Obs09: H4 log-return distribution: mean=0.000148, std=0.014839, skew=-0.2008, excess_kurtosis=20.4145
+  Obs10: Jarque-Bera test: stat=325731.15, p=0.00e+00. Normality strongly rejected.
+  Beyond +2σ: 495 (2.64%) vs Normal expected 2.28%
+  Beyond -2σ: 508 (2.71%) vs Normal expected 2.28%
+  Beyond +3σ: 159 (0.85%) vs Normal expected 0.13%
+  Beyond -3σ: 191 (1.02%) vs Normal expected 0.13%
+  Obs11: Tail analysis: +2σ observed 2.64% vs Normal 2.28%, -2σ observed 2.71% vs Normal 2.28%. +3σ observed 0.85% vs Normal 0.13%, -3σ observed 1.02% vs Normal 0.13%.
+  Obs12: Tail asymmetry at 3σ: up-tail 159 events, down-tail 191 events. Down-tail heavier.
+  Saved: Tbl04_ret_dist.csv
+  Saved: Fig01_return_distribution.png
+
+======================================================================
+2. SERIAL DEPENDENCE
+======================================================================
+  ACF returns: 25 significant lags out of 100
+  Significant lags (|ACF| > 0.0143): [1, 3, 4, 6, 7, 10, 11, 16, 19, 23, 26, 29, 32, 33, 38, 39, 55, 56, 66, 85]...
+  Obs13: ACF of H4 returns: 25/100 lags significant at 95%. First 10 significant: [1, 3, 4, 6, 7, 10, 11, 16, 19, 23].
+  ACF |returns|: 100 significant lags out of 100
+  ACF |ret| lag 1: 0.2607, lag 5: 0.2376, lag 10: 0.1885, lag 20: 0.1670
+  Obs14: ACF of |returns|: 100/100 lags significant. Strong volatility clustering: lag1=0.2607, lag10=0.1885, lag20=0.1670. Decays slowly.
+  PACF returns: significant lags: [1, 3, 4, 6, 7, 9, 10, 11, 16, 19, 23, 25, 26, 29]
+  Obs15: PACF of H4 returns: significant lags = [1, 3, 4, 6, 7, 9, 10, 11, 16, 19, 23, 25, 26, 29].
+  Saved: Fig02_acf_returns.png
+  Saved: Fig03_acf_abs_returns.png
+  Saved: Fig04_pacf_returns.png
+
+  Variance Ratio Test (Lo-MacKinlay, heteroskedasticity-robust):
+    k=  2 (   8h): VR=0.9558, z*=-0.023, p=0.9819 
+    k=  5 (  20h): VR=0.9737, z*=-0.006, p=0.9952 
+    k= 10 (  40h): VR=0.9480, z*=-0.008, p=0.9938 
+    k= 20 (  80h): VR=0.9499, z*=-0.005, p=0.9957 
+    k= 40 ( 160h): VR=0.9801, z*=-0.002, p=0.9987 
+    k= 60 ( 240h): VR=0.9979, z*=-0.000, p=0.9999 
+  Saved: Tbl04_variance_ratio.csv
+  Obs16: Variance ratio test: VR(2)=0.9558 (p=0.9819), VR(5)=0.9737 (p=0.9952), VR(10)=0.9480 (p=0.9938), VR(20)=0.9499 (p=0.9957), VR(40)=0.9801 (p=0.9987), VR(60)=0.9979 (p=0.9999). VR>1 indicates persistence, VR<1 indicates mean-reversion.
+
+  Hurst Exponent (R/S method):
+    Overall H = 0.5805
+  Obs17: Hurst exponent (R/S, overall): H = 0.5805. Persistent (H>0.5).
+    Rolling Hurst (500-bar): mean=0.5859, std=0.0364, min=0.4818, max=0.6850
+  Obs18: Rolling Hurst (500-bar windows): mean=0.5859, std=0.0364, range=[0.4818, 0.6850].
+  Saved: Tbl05_hurst.csv
+  Saved: Fig05_rolling_hurst.png
+
+  Scale dependence summary:
+    k=2 (8h): VR=0.9558 → mean-reverting
+    k=5 (20h): VR=0.9737 → mean-reverting
+    k=10 (40h): VR=0.9480 → mean-reverting
+    k=20 (80h): VR=0.9499 → mean-reverting
+    k=40 (160h): VR=0.9801 → ≈ random walk
+    k=60 (240h): VR=0.9979 → ≈ random walk
+  Obs19: Scale dependence pattern from VR test: k=2(8h): VR=0.9558; k=5(20h): VR=0.9737; k=10(40h): VR=0.9480; k=20(80h): VR=0.9499; k=40(160h): VR=0.9801; k=60(240h): VR=0.9979
+
+======================================================================
+3. TREND ANATOMY
+======================================================================
+  Threshold 10%: 27 trends
+    Duration (bars):   mean=27.6, median=14.0, Q25=9.0, Q75=24.0
+    Magnitude (%):     mean=11.6, median=11.2
+    Speed (%/bar):     mean=1.791
+  Threshold 20%: 13 trends
+    Duration (bars):   mean=35.8, median=24.0, Q25=18.0, Q75=59.0
+    Magnitude (%):     mean=21.6, median=20.8
+    Speed (%/bar):     mean=1.305
+  Threshold 30%: 7 trends
+    Duration (bars):   mean=56.3, median=53.0, Q25=36.5, Q75=62.0
+    Magnitude (%):     mean=32.8, median=32.4
+    Speed (%/bar):     mean=0.852
+  Threshold 50%: 5 trends
+    Duration (bars):   mean=167.6, median=103.0, Q25=90.0, Q75=114.0
+    Magnitude (%):     mean=52.2, median=50.7
+    Speed (%/bar):     mean=0.618
+  Saved: Tbl06_trend_anatomy.csv
+  Obs20: Trend anatomy (cumulative return method): 10% threshold → 27 trends, median duration 14.0 bars (56h), 20% threshold → 13 trends, median duration 24.0 bars (96h), 30% threshold → 7 trends, median duration 53.0 bars (212h), 50% threshold → 5 trends, median duration 103.0 bars (412h)
+  Saved: Fig06_trend_profiles.png
+  Obs21: Pre-trend pattern (20 bars before trend start, ≥20% trends): mean cumulative return = 9.16%, median = 7.91%.
+  Obs22: Post-peak pattern (20 bars after trend peak, ≥20% trends): mean cumulative return = 4.96%, median = 3.57%.
+
+======================================================================
+4. VOLATILITY STRUCTURE
+======================================================================
+  Realized vol (20-bar): mean=0.012491, median=0.010674, std=0.008048
+  Saved: Fig07_volatility_timeseries.png
+  ACF realized vol: lag1=0.9862, lag5=0.9175, lag10=0.8127, lag20=0.5965, lag50=0.4678
+  Obs23: Realized vol ACF: lag1=0.9862, lag10=0.8127, lag20=0.5965, lag50=0.4678. Extremely persistent — long memory in volatility.
+  Vol-return correlation (vol_t vs ret_{t+1..t+20}):
+    Pearson r = 0.0258, p = 0.0004
+  Vol-return correlations by forward window:
+    fwd=1: r=0.0125, p=0.0863
+    fwd=5: r=0.0227, p=0.0019
+    fwd=10: r=0.0237, p=0.0012
+    fwd=20: r=0.0258, p=0.0004
+    fwd=40: r=0.0538, p=0.0000
+  Obs24: Vol-return correlation (vol_t vs forward returns): r(fwd20)=0.0258 (p=0.0004). fwd1: r=0.0125; fwd5: r=0.0227; fwd10: r=0.0237; fwd20: r=0.0258; fwd40: r=0.0538
+  Saved: Fig08_vol_return_scatter.png
+
+  Vol regimes (split at median=0.010674):
+    low: n=9385, mean=0.000134, std=0.007746, skew=-0.0730, kurtosis=3.2620
+    high: n=9366, mean=0.000162, std=0.019512, skew=-0.1740, kurtosis=12.5255
+  Obs25: Vol regimes: low-vol mean_ret=0.000134, high-vol mean_ret=0.000162. Low-vol std=0.007746, high-vol std=0.019512.
+  Trend frequency by vol regime (≥20% trends):
+    low: 1 trends / 9385 bars = 0.11 per 1000 bars
+    high: 12 trends / 9366 bars = 1.28 per 1000 bars
+  Obs26: Trend frequency by vol regime (≥20% trends): low-vol=1 trends, high-vol=12 trends.
+  Saved: Tbl07_vol_regimes.csv
+
+======================================================================
+5. VOLUME STRUCTURE
+======================================================================
+  Volume: mean=10281.5, median=5969.5, std=14204.5
+  Saved: Fig09_volume_distribution.png
+
+  Average volume by year:
+    2017: 727.9
+    2018: 6106.7
+    2019: 7012.8
+    2020: 11723.8
+    2021: 11651.6
+    2022: 24406.9
+    2023: 16714.8
+    2024: 5888.5
+    2025: 3520.8
+    2026: 3863.6
+  Obs27: Volume changes over time: 2017: 728, 2018: 6107, 2019: 7013, 2020: 11724, 2021: 11652, 2022: 24407, 2023: 16715, 2024: 5888, 2025: 3521, 2026: 3864. Volume is non-stationary (reflects market maturation).
+
+  Contemporaneous cor(volume, |return|): r=0.2384, p=1.5697e-240
+  Contemporaneous cor(log_volume, |return|): r=0.2233, p=1.5389e-210
+  Leading volume-return correlations:
+    lag 1: cor(log_vol_t, |r_t+1|) = 0.0735, p = 7.1760e-24
+    lag 2: cor(log_vol_t, |r_t+2|) = 0.0525, p = 6.5988e-13
+    lag 3: cor(log_vol_t, |r_t+3|) = 0.0402, p = 3.8063e-08
+    lag 4: cor(log_vol_t, |r_t+4|) = 0.0329, p = 6.4345e-06
+    lag 5: cor(log_vol_t, |r_t+5|) = 0.0369, p = 4.4422e-07
+    lag 6: cor(log_vol_t, |r_t+6|) = 0.0388, p = 1.0852e-07
+    lag 7: cor(log_vol_t, |r_t+7|) = 0.0191, p = 8.8982e-03
+    lag 8: cor(log_vol_t, |r_t+8|) = 0.0058, p = 4.2601e-01
+    lag 9: cor(log_vol_t, |r_t+9|) = 0.0027, p = 7.1568e-01
+    lag 10: cor(log_vol_t, |r_t+10|) = -0.0038, p = 6.0323e-01
+  Obs28: Volume-return relationship: contemporaneous cor(log_vol, |ret|)=0.2233 (p=1.54e-210). Leading: lag1: r=0.0735; lag2: r=0.0525; lag3: r=0.0402. Volume reflects concurrent activity, limited predictive power for future |returns|.
+
+  Taker buy ratio: mean=0.4949, std=0.0480, min=0.0854, max=0.9240
+  Obs29: Taker buy ratio: mean=0.4949, std=0.0480. Concentrated around 0.495 — near-symmetric buying/selling.
+  TBR predictive power (cor(TBR_t, r_{t+1..t+k})):
+    k=1: r=-0.0036, p=0.6192
+    k=5: r=0.0124, p=0.0906
+    k=10: r=0.0168, p=0.0216
+    k=20: r=0.0265, p=0.0003
+  Obs30: TBR predictive power: k=1: r=-0.0036 (p=0.6192); k=5: r=0.0124 (p=0.0906); k=10: r=0.0168 (p=0.0216); k=20: r=0.0265 (p=0.0003). TBR has negligible predictive power for future returns.
+
+  Volume at trend starts vs ends (≥20% trends):
+    Start: mean=7885.1, median=1203.1
+    End:   mean=13298.9, median=1038.2
+    Ratio (end/start): 1.69
+  Obs31: Volume at trend start (mean=7885) vs trend end (mean=13299), ratio=1.69.
+  Saved: Tbl08_volume_corrs.csv
+
+======================================================================
+6. D1 CONTEXT
+======================================================================
+  D1 returns: mean=0.000893, std=0.036122, skew=-0.9581, kurt=15.4416
+  JB: stat=31545.46, p=0.00e+00
+  Obs32: D1 log-returns: mean=0.000893, std=0.036122, skew=-0.9581, excess_kurtosis=15.4416. JB p=0.00e+00.
+  D1 ACF significant lags (50): [1, 2, 10, 17, 33, 44]
+  D1 ACF |returns| significant lags: 50/50
+  D1 ACF |ret| lag1=0.1718, lag5=0.1437, lag10=0.1027
+  Obs33: D1 ACF: returns have 6 significant lags, |returns| have 50 significant lags. D1 volatility clustering: lag1=0.1718, lag10=0.1027.
+  D1 Variance Ratio:
+    k=2 (2d): VR=0.9467, z*=-0.032, p=0.9746
+    k=5 (5d): VR=0.9752, z*=-0.008, p=0.9940
+    k=10 (10d): VR=1.0150, z*=0.003, p=0.9975
+    k=20 (20d): VR=1.0854, z*=0.013, p=0.9899
+  Obs34: D1 variance ratio: VR(2d)=0.9467 (p=0.9746), VR(5d)=0.9752 (p=0.9940), VR(10d)=1.0150 (p=0.9975), VR(20d)=1.0854 (p=0.9899)
+  Saved: Tbl09_d1_returns.csv
+
+  D1 regimes:
+    SMA200: {'above': np.int64(1594), 'below': np.int64(1533)}
+    D1 Vol: {'low_vol': np.int64(1573), 'high_vol': np.int64(1554)}
+
+  D1 SMA200 regime vs H4 trend frequency (≥20% trends):
+    above: 6 trends / 9560 bars = 0.63 per 1000 bars
+    below: 7 trends / 9185 bars = 0.76 per 1000 bars
+  Obs35: D1 SMA200 regime vs H4 trends (≥20%): above=6 trends, below=7 trends. Price above D1 SMA200 appears to reduce trend occurrence.
+
+  D1 vol regime vs H4 trend frequency (≥20% trends):
+    low_vol: 1 trends / 9435 bars = 0.11 per 1000 bars
+    high_vol: 12 trends / 9310 bars = 1.29 per 1000 bars
+  Obs36: D1 vol regime vs H4 trends (≥20%): low_vol=1, high_vol=12.
+
+======================================================================
+7. CROSS-TIMEFRAME
+======================================================================
+  H4 return characteristics conditioned on D1 SMA200 regime:
+    above: n=9560, mean=0.000524, std=0.012854, skew=-0.0996, kurtosis=10.8976
+    below: n=9185, mean=-0.000242, std=0.016649, skew=-0.2144, kurtosis=22.0058
+    Welch t-test: t=3.517, p=0.0004
+    Mann-Whitney U: p=0.0002
+  Obs37: H4 returns conditioned on D1 SMA200: above mean=0.000524, below mean=-0.000242. Welch t=3.517 (p=0.0004), Mann-Whitney p=0.0002.
+
+  H4 return characteristics conditioned on D1 vol regime:
+    low_vol: n=9435, mean=0.000084, std=0.009443
+    high_vol: n=9310, mean=0.000214, std=0.018789
+
+  ACF difference (D1 native vs H4-aggregated-to-D1):
+    Mean |diff|: 0.000160
+    Max |diff|: 0.000379
+  Obs38: D1-native vs H4-aggregated-to-D1 ACF difference: mean=0.000160, max=0.000379. Minimal structural difference — D1 does not contain return-predictive information beyond what H4 already captures.
+
+  Scale-conditional persistence:
+    above: VR(5)=0.9921, VR(20)=0.9269
+    below: VR(5)=0.9544, VR(20)=0.9182
+    low_vol: VR(5)=1.0132, VR(20)=1.0490
+    high_vol: VR(5)=0.9601, VR(20)=0.9079
+  Obs39: D1 regime conditioning changes H4 persistence structure. Regime provides a FRAMING variable, not additional return-predictive signal.
+  Saved: Tbl10_cross_timeframe.csv
+
+======================================================================
+HYPOTHESIS VERIFICATION
+======================================================================
+
+  H_prior_1 (trend persistence): PARTIAL
+    VR(20)=0.9499(p=0.9957), VR(40)=0.9801(p=0.9987), VR(60)=0.9979(p=0.9999)
+    Hurst=0.5805
+
+  H_prior_2 (cross-scale redundancy): PARTIAL
+    VR range across scales: 0.0499
+    Smooth monotonic VR profile suggests single underlying phenomenon
+
+  H_prior_5 (volume info ≈ 0): PARTIAL
+    Max |TBR→return corr| = 0.0265
+    Max |vol_lead→|return| corr| = 0.0735
+
+  H_prior_6 (D1 regime useful): CONFIRMED
+    Above annualized: 114.84%, Below: -52.94%
+    Welch t-test p=0.0004
+
+Saved: phase2_observations.csv (31 observations)
+
+======================================================================
+PHASE 2 COMPLETE
+======================================================================
+Observations: Obs09-Obs39
+Figures: Fig01-Fig09
+Tables: Tbl04-Tbl10
+
+Hypothesis verification:
+  H_prior_1 (trend persistence): PARTIAL
+  H_prior_2 (cross-scale redundancy): PARTIAL
+  H_prior_5 (volume info ≈ 0): PARTIAL
+  H_prior_6 (D1 regime useful): CONFIRMED

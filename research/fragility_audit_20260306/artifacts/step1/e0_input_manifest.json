@@ -1,0 +1,18 @@
+{
+  "step0_artifacts_read": [
+    "artifacts/step0/step0_summary.json",
+    "artifacts/step0/missing_diagnostics_spec.md",
+    "artifacts/step0/reconciliation_audit.csv",
+    "artifacts/step0/candidate_repo_mapping.csv",
+    "artifacts/step0/track_split_plan.md",
+    "artifacts/step0/trade_metric_coverage_matrix.csv"
+  ],
+  "canonical_e0_trade_csv": "results/parity_20260305/eval_e0_vs_e0/results/trades_candidate.csv",
+  "canonical_e0_profile_dir": "results/trade_profile_8x5/E0",
+  "canonical_e0_backtest_detail_json": "results/parity_20260305/eval_e0_vs_e0/results/full_backtest_detail.json",
+  "canonical_period_start": "2019-01-01",
+  "canonical_period_end": "2026-02-20",
+  "canonical_fee_bps_round_trip": 50,
+  "initial_cash": 10000.0,
+  "expected_trade_count": 192
+}

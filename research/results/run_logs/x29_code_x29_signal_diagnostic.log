@@ -1,0 +1,111 @@
+/var/www/trading-bots/btc-spot-dev/research/x29/code/x29_signal_diagnostic.py:41: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+======================================================================
+X29 Signal Diagnostic + Fractional Actuator Pilot
+======================================================================
+  H4: 17838, D1: 2973, warmup: 2190
+  Churn model: C=10.0, n_train=183
+  X18 threshold: 0.718
+
+======================================================================
+PART A: X18 Root Cause at 25 bps
+======================================================================
+
+  Base trades: 202, X18 trades: 161
+  Saved round-trips: 41
+  Suppressions (bar-level): 531
+  Annual cost: Base=707 bps/yr, X18=564 bps/yr
+  Cost savings: 144 bps/yr
+
+  At 0 cost (gross alpha):
+    Base: Sh=1.8113, CAGR=85.0%
+    X18:  Sh=1.7827, CAGR=88.2%
+    ΔSh(gross) = -0.0286
+
+  Crossover analysis:
+     10 bps: Base Sh=1.743, X18 Sh=1.731, Δ=-0.012 → Base
+     15 bps: Base Sh=1.709, X18 Sh=1.706, Δ=-0.003 → Base
+     20 bps: Base Sh=1.675, X18 Sh=1.680, Δ=+0.005 → X18
+     25 bps: Base Sh=1.640, X18 Sh=1.654, Δ=+0.014 → X18
+     30 bps: Base Sh=1.606, X18 Sh=1.629, Δ=+0.022 → X18
+     35 bps: Base Sh=1.572, X18 Sh=1.603, Δ=+0.031 → X18
+     50 bps: Base Sh=1.469, X18 Sh=1.526, Δ=+0.057 → X18
+     75 bps: Base Sh=1.297, X18 Sh=1.397, Δ=+0.100 → X18
+    100 bps: Base Sh=1.125, X18 Sh=1.268, Δ=+0.142 → X18
+
+======================================================================
+PART B: Signal Quality Assessment
+======================================================================
+
+  B1: Trade outcomes by Monitor regime at entry
+    NORMAL: 119 trades, WR=43.7%, avg ret=+2.33%, med ret=-0.54%
+    AMBER: 65 trades, WR=47.7%, avg ret=+3.64%, med ret=-0.60%
+    RED_would_enter: no trades
+
+    AMBER bars: 4962 (31.7%)
+    RED bars: 1392 (8.9%)
+    Entry signals during AMBER: 1291
+
+  B2: Trail-stop outcomes by churn score quartile
+    Trail-stop trades: 183
+    Q1 (low score): n=46, avg ret=-3.54%, med ret=-3.60%, WR=6.5%
+    Q2: n=46, avg ret=-0.51%, med ret=-0.76%, WR=39.1%
+    Q3: n=45, avg ret=+1.19%, med ret=+0.65%, WR=55.6%
+    Q4 (high score): n=46, avg ret=+14.00%, med ret=+8.20%, WR=87.0%
+
+======================================================================
+PART C: Fractional Actuator Pilot
+======================================================================
+  Monitor sizing: NORMAL=0.3, AMBER=0.15, RED=0.0
+  X18 partial: keep 50% on churn suppress
+   10 bps:  Base=1.743  Mon(binary)=1.867  X18(binary)=1.731  Mon(sizing)=1.751  X18(partial)=1.708  Combined(frac)=1.706
+   15 bps:  Base=1.709  Mon(binary)=1.835  X18(binary)=1.706  Mon(sizing)=1.721  X18(partial)=1.677  Combined(frac)=1.679
+   20 bps:  Base=1.675  Mon(binary)=1.803  X18(binary)=1.680  Mon(sizing)=1.690  X18(partial)=1.645  Combined(frac)=1.651
+   25 bps:  Base=1.640  Mon(binary)=1.770  X18(binary)=1.654  Mon(sizing)=1.660  X18(partial)=1.614  Combined(frac)=1.624
+   30 bps:  Base=1.606  Mon(binary)=1.738  X18(binary)=1.629  Mon(sizing)=1.630  X18(partial)=1.583  Combined(frac)=1.596
+   35 bps:  Base=1.572  Mon(binary)=1.705  X18(binary)=1.603  Mon(sizing)=1.599  X18(partial)=1.551  Combined(frac)=1.568
+   50 bps:  Base=1.469  Mon(binary)=1.608  X18(binary)=1.526  Mon(sizing)=1.508  X18(partial)=1.457  Combined(frac)=1.485
+   75 bps:  Base=1.297  Mon(binary)=1.445  X18(binary)=1.397  Mon(sizing)=1.356  X18(partial)=1.300  Combined(frac)=1.347
+  100 bps:  Base=1.125  Mon(binary)=1.283  X18(binary)=1.268  Mon(sizing)=1.203  X18(partial)=1.143  Combined(frac)=1.208
+
+  Saved: /var/www/trading-bots/btc-spot-dev/research/x29/tables/Tbl_fractional_pilot.csv
+
+  Summary — Delta vs Base at key costs:
+
+    15 bps (Base Sh=1.709):
+      Mon(binary)       : Sh=1.835 (Δ=+0.126), MDD=35.8%
+      X18(binary)       : Sh=1.706 (Δ=-0.003), MDD=34.6%
+      Mon(sizing)       : Sh=1.721 (Δ=+0.012), MDD=9.2%
+      X18(partial)      : Sh=1.677 (Δ=-0.032), MDD=28.7%
+      Combined(frac)    : Sh=1.679 (Δ=-0.030), MDD=8.3%
+
+    25 bps (Base Sh=1.640):
+      Mon(binary)       : Sh=1.770 (Δ=+0.130), MDD=36.6%
+      X18(binary)       : Sh=1.654 (Δ=+0.014), MDD=35.2%
+      Mon(sizing)       : Sh=1.660 (Δ=+0.020), MDD=9.5%
+      X18(partial)      : Sh=1.614 (Δ=-0.027), MDD=30.0%
+      Combined(frac)    : Sh=1.624 (Δ=-0.017), MDD=8.6%
+
+    50 bps (Base Sh=1.469):
+      Mon(binary)       : Sh=1.608 (Δ=+0.139), MDD=38.7%
+      X18(binary)       : Sh=1.526 (Δ=+0.057), MDD=36.8%
+      Mon(sizing)       : Sh=1.508 (Δ=+0.039), MDD=10.2%
+      X18(partial)      : Sh=1.457 (Δ=-0.012), MDD=33.1%
+      Combined(frac)    : Sh=1.485 (Δ=+0.016), MDD=9.7%
+
+======================================================================
+PART D: Bootstrap Fractional vs Base (500 VCBB, 25 bps)
+======================================================================
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+
+  Results:
+    Mon(binary)       : P(Δsh>0)=40.0%, med Δsh=+0.0000, mean=-0.0266
+    Mon(sizing)       : P(Δsh>0)=43.8%, med Δsh=-0.0100, mean=-0.0287
+    X18(partial)      : P(Δsh>0)=36.2%, med Δsh=-0.0522, mean=-0.0706
+    Combined(frac)    : P(Δsh>0)=34.2%, med Δsh=-0.0765, mean=-0.0885
+
+Total time: 975.8s

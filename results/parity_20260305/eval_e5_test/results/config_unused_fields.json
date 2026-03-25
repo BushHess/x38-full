@@ -1,0 +1,15 @@
+{
+  "candidate": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,42 @@
+{
+  "study_id": "x36_path_robustness_family",
+  "created": "2026-03-17",
+  "study_status": "ACTIVE_BRANCH_DIAGNOSTIC",
+  "current_active_branch": "branches/b_e5_wfo_robustness_diagnostic/",
+  "legacy_frozen_branch": "branches/a_vcbb_bias_study/",
+  "objective": "Diagnose whether the 2026-03-16 E5+EMA21D1 WFO soft-fail reflects true instability or WFO split-design sensitivity.",
+  "write_zone": [
+    "README.md",
+    "PLAN.md",
+    "manifest.json",
+    "x36_RULES.md",
+    "program/",
+    "shared/",
+    "branches/",
+    "code/",
+    "results/"
+  ],
+  "read_only_inputs": [
+    "resource/",
+    "branches/a_vcbb_bias_study/",
+    "../../results/full_eval_e5_ema21d1/",
+    "../../configs/vtrend_e5_ema21_d1/vtrend_e5_ema21_d1_default.yaml",
+    "../../configs/vtrend/vtrend_default.yaml",
+    "../../data/bars_btcusdt_2016_now_h1_4h_1d.csv"
+  ],
+  "branches": [
+    {
+      "branch_id": "a_vcbb_bias_study",
+      "status": "FROZEN",
+      "branch_plan": "branches/a_vcbb_bias_study/PLAN.md",
+      "results_dir": "branches/a_vcbb_bias_study/results/"
+    },
+    {
+      "branch_id": "b_e5_wfo_robustness_diagnostic",
+      "status": "ACTIVE",
+      "branch_plan": "branches/b_e5_wfo_robustness_diagnostic/PLAN.md",
+      "runner": "branches/b_e5_wfo_robustness_diagnostic/code/run_b_e5_wfo_robustness_diagnostic.py",
+      "results_dir": "branches/b_e5_wfo_robustness_diagnostic/results/"
+    }
+  ]
+}

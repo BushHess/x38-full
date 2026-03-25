@@ -1,0 +1,316 @@
+{
+  "configs": {
+    "CUSTOM": {
+      "slow": 200,
+      "fast": 50,
+      "trail": 4.5
+    },
+    "DEFAULT": {
+      "slow": 120,
+      "fast": 30,
+      "trail": 3.0
+    }
+  },
+  "real_data": {
+    "CUSTOM": {
+      "sharpe": 1.5342,
+      "cagr": 73.97,
+      "mdd": 38.79,
+      "calmar": 1.907,
+      "trades": 112,
+      "final_nav": 222657.22
+    },
+    "DEFAULT": {
+      "sharpe": 1.276,
+      "cagr": 52.68,
+      "mdd": 41.53,
+      "calmar": 1.2683,
+      "trades": 211,
+      "final_nav": 138022.86
+    }
+  },
+  "real_data_timescale": {
+    "CUSTOM": {
+      "30": {
+        "sharpe": 0.7579,
+        "cagr": 25.6,
+        "mdd": 73.98,
+        "calmar": 0.3461,
+        "trades": 323,
+        "final_nav": 47391.56
+      },
+      "48": {
+        "sharpe": 0.5298,
+        "cagr": 14.27,
+        "mdd": 76.13,
+        "calmar": 0.1875,
+        "trades": 227,
+        "final_nav": 20854.03
+      },
+      "60": {
+        "sharpe": 0.7823,
+        "cagr": 26.88,
+        "mdd": 61.77,
+        "calmar": 0.4352,
+        "trades": 187,
+        "final_nav": 42198.75
+      },
+      "72": {
+        "sharpe": 0.9493,
+        "cagr": 35.6,
+        "mdd": 61.29,
+        "calmar": 0.5809,
+        "trades": 163,
+        "final_nav": 71513.53
+      },
+      "84": {
+        "sharpe": 1.1815,
+        "cagr": 49.41,
+        "mdd": 50.83,
+        "calmar": 0.972,
+        "trades": 143,
+        "final_nav": 114536.16
+      },
+      "96": {
+        "sharpe": 1.1666,
+        "cagr": 48.49,
+        "mdd": 48.96,
+        "calmar": 0.9903,
+        "trades": 140,
+        "final_nav": 101573.66
+      },
+      "108": {
+        "sharpe": 1.3066,
+        "cagr": 57.24,
+        "mdd": 39.45,
+        "calmar": 1.4508,
+        "trades": 142,
+        "final_nav": 133956.73
+      },
+      "120": {
+        "sharpe": 1.3565,
+        "cagr": 60.74,
+        "mdd": 37.53,
+        "calmar": 1.6184,
+        "trades": 139,
+        "final_nav": 156732.98
+      },
+      "144": {
+        "sharpe": 1.3958,
+        "cagr": 63.48,
+        "mdd": 37.26,
+        "calmar": 1.7039,
+        "trades": 126,
+        "final_nav": 152123.84
+      },
+      "168": {
+        "sharpe": 1.2551,
+        "cagr": 54.57,
+        "mdd": 46.49,
+        "calmar": 1.1739,
+        "trades": 125,
+        "final_nav": 112146.43
+      },
+      "200": {
+        "sharpe": 1.5342,
+        "cagr": 73.97,
+        "mdd": 38.79,
+        "calmar": 1.907,
+        "trades": 112,
+        "final_nav": 222657.22
+      },
+      "240": {
+        "sharpe": 1.3246,
+        "cagr": 59.51,
+        "mdd": 42.66,
+        "calmar": 1.3951,
+        "trades": 112,
+        "final_nav": 114977.68
+      },
+      "300": {
+        "sharpe": 1.2259,
+        "cagr": 53.75,
+        "mdd": 41.9,
+        "calmar": 1.2828,
+        "trades": 113,
+        "final_nav": 80026.24
+      },
+      "360": {
+        "sharpe": 1.2582,
+        "cagr": 56.83,
+        "mdd": 50.25,
+        "calmar": 1.1311,
+        "trades": 112,
+        "final_nav": 107308.76
+      },
+      "500": {
+        "sharpe": 1.207,
+        "cagr": 54.25,
+        "mdd": 49.19,
+        "calmar": 1.1029,
+        "trades": 111,
+        "final_nav": 105182.56
+      },
+      "720": {
+        "sharpe": 1.0636,
+        "cagr": 46.14,
+        "mdd": 49.6,
+        "calmar": 0.9302,
+        "trades": 109,
+        "final_nav": 84961.66
+      }
+    },
+    "DEFAULT": {
+      "30": {
+        "sharpe": 0.6724,
+        "cagr": 21.06,
+        "mdd": 71.87,
+        "calmar": 0.293,
+        "trades": 342,
+        "final_nav": 34352.51
+      },
+      "48": {
+        "sharpe": 0.6536,
+        "cagr": 19.82,
+        "mdd": 62.4,
+        "calmar": 0.3175,
+        "trades": 280,
+        "final_nav": 29282.1
+      },
+      "60": {
+        "sharpe": 0.7964,
+        "cagr": 26.69,
+        "mdd": 54.06,
+        "calmar": 0.4936,
+        "trades": 257,
+        "final_nav": 48944.58
+      },
+      "72": {
+        "sharpe": 0.9931,
+        "cagr": 36.43,
+        "mdd": 50.05,
+        "calmar": 0.7279,
+        "trades": 231,
+        "final_nav": 83081.11
+      },
+      "84": {
+        "sharpe": 1.1284,
+        "cagr": 43.93,
+        "mdd": 47.94,
+        "calmar": 0.9164,
+        "trades": 218,
+        "final_nav": 107113.99
+      },
+      "96": {
+        "sharpe": 1.0765,
+        "cagr": 41.1,
+        "mdd": 47.46,
+        "calmar": 0.8661,
+        "trades": 217,
+        "final_nav": 89045.43
+      },
+      "108": {
+        "sharpe": 1.2087,
+        "cagr": 48.58,
+        "mdd": 43.99,
+        "calmar": 1.1045,
+        "trades": 216,
+        "final_nav": 113029.41
+      },
+      "120": {
+        "sharpe": 1.276,
+        "cagr": 52.68,
+        "mdd": 41.53,
+        "calmar": 1.2683,
+        "trades": 211,
+        "final_nav": 138022.86
+      },
+      "144": {
+        "sharpe": 1.3273,
+        "cagr": 55.86,
+        "mdd": 42.33,
+        "calmar": 1.3196,
+        "trades": 199,
+        "final_nav": 140257.38
+      },
+      "168": {
+        "sharpe": 1.1927,
+        "cagr": 48.12,
+        "mdd": 50.34,
+        "calmar": 0.9558,
+        "trades": 201,
+        "final_nav": 105867.01
+      },
+      "200": {
+        "sharpe": 1.4312,
+        "cagr": 63.09,
+        "mdd": 41.84,
+        "calmar": 1.5079,
+        "trades": 188,
+        "final_nav": 172660.26
+      },
+      "240": {
+        "sharpe": 1.2264,
+        "cagr": 50.5,
+        "mdd": 42.01,
+        "calmar": 1.2021,
+        "trades": 188,
+        "final_nav": 95612.79
+      },
+      "300": {
+        "sharpe": 1.0165,
+        "cagr": 38.93,
+        "mdd": 47.01,
+        "calmar": 0.8281,
+        "trades": 197,
+        "final_nav": 48946.95
+      },
+      "360": {
+        "sharpe": 1.1136,
+        "cagr": 45.11,
+        "mdd": 48.82,
+        "calmar": 0.924,
+        "trades": 194,
+        "final_nav": 77930.47
+      },
+      "500": {
+        "sharpe": 1.074,
+        "cagr": 43.25,
+        "mdd": 49.49,
+        "calmar": 0.874,
+        "trades": 193,
+        "final_nav": 84408.03
+      },
+      "720": {
+        "sharpe": 0.8374,
+        "cagr": 30.67,
+        "mdd": 59.81,
+        "calmar": 0.5128,
+        "trades": 199,
+        "final_nav": 50738.96
+      }
+    }
+  },
+  "bootstrap_summary": {
+    "Sharpe": {
+      "wins": 12,
+      "p": 0.03840637,
+      "verdict": "STRONG"
+    },
+    "CAGR": {
+      "wins": 14,
+      "p": 0.00209045,
+      "verdict": "PROVEN **"
+    },
+    "MDD": {
+      "wins": 1,
+      "p": 0.99998474,
+      "verdict": "NOT SIG"
+    },
+    "NAV": {
+      "wins": 14,
+      "p": 0.00209045,
+      "verdict": "PROVEN **"
+    }
+  }
+}

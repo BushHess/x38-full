@@ -1,0 +1,369 @@
+{
+  "holdout_start": "2024-10-01",
+  "holdout_end": "2026-02-20",
+  "holdout_pct": 19.4,
+  "timestamp": "2026-02-23 22:39:25 UTC",
+  "baseline": "V10 = V8ApexConfig()",
+  "candidate": "V11 WFO-opt (0.95/2.8/0.90)",
+  "commitment": "One-shot. No re-runs. No parameter tuning on holdout.",
+  "results": {
+    "harsh": {
+      "v10": {
+        "strategy": "V10",
+        "score": 34.656299999999995,
+        "cagr_pct": 17.29,
+        "total_return_pct": 24.82,
+        "mdd_pct": 31.56,
+        "sharpe": 0.6961,
+        "profit_factor": 1.4397,
+        "trades": 26,
+        "turnover_per_year": 34.62,
+        "fees_total": 901.86,
+        "final_nav": 12481.72,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 43.89,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.7,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 2.59,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.82,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.55,
+            "n_days": 7.0
+          }
+        }
+      },
+      "v11": {
+        "strategy": "V11_WFO_opt",
+        "score": 33.428,
+        "cagr_pct": 16.85,
+        "total_return_pct": 24.18,
+        "mdd_pct": 31.56,
+        "sharpe": 0.685,
+        "profit_factor": 1.4318,
+        "trades": 26,
+        "turnover_per_year": 34.56,
+        "fees_total": 896.26,
+        "final_nav": 12417.99,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 43.16,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.7,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 2.59,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.82,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.55,
+            "n_days": 7.0
+          }
+        }
+      },
+      "delta": {
+        "strategy": "DELTA",
+        "score": -1.2282999999999973,
+        "cagr_pct": -0.4399999999999977,
+        "total_return_pct": -0.6400000000000006,
+        "mdd_pct": 0.0,
+        "sharpe": -0.011099999999999999,
+        "profit_factor": -0.007900000000000018,
+        "trades": 0.0,
+        "turnover_per_year": -0.05999999999999517,
+        "fees_total": -5.600000000000023,
+        "final_nav": -63.72999999999956,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": -0.730000000000004,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": 0.0,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 0.0,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": 0.0,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": 0.0,
+            "n_days": 7.0
+          }
+        }
+      }
+    },
+    "base": {
+      "v10": {
+        "strategy": "V10",
+        "score": 55.0562,
+        "cagr_pct": 24.35,
+        "total_return_pct": 35.4,
+        "mdd_pct": 30.86,
+        "sharpe": 0.8954,
+        "profit_factor": 1.6068,
+        "trades": 25,
+        "turnover_per_year": 32.9,
+        "fees_total": 595.06,
+        "final_nav": 13539.92,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 54.25,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.62,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 3.17,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.4,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.45,
+            "n_days": 7.0
+          }
+        }
+      },
+      "v11": {
+        "strategy": "V11_WFO_opt",
+        "score": 53.7805,
+        "cagr_pct": 23.89,
+        "total_return_pct": 34.7,
+        "mdd_pct": 30.86,
+        "sharpe": 0.885,
+        "profit_factor": 1.5983,
+        "trades": 25,
+        "turnover_per_year": 32.85,
+        "fees_total": 591.31,
+        "final_nav": 13469.76,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 53.46,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.62,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 3.17,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.4,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.45,
+            "n_days": 7.0
+          }
+        }
+      },
+      "delta": {
+        "strategy": "DELTA",
+        "score": -1.2756999999999934,
+        "cagr_pct": -0.46000000000000085,
+        "total_return_pct": -0.6999999999999957,
+        "mdd_pct": 0.0,
+        "sharpe": -0.010399999999999965,
+        "profit_factor": -0.008499999999999952,
+        "trades": 0.0,
+        "turnover_per_year": -0.04999999999999716,
+        "fees_total": -3.75,
+        "final_nav": -70.15999999999985,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": -0.7899999999999991,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": 0.0,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 0.0,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": 0.0,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": 0.0,
+            "n_days": 7.0
+          }
+        }
+      }
+    },
+    "smart": {
+      "v10": {
+        "strategy": "V10",
+        "score": 64.6378,
+        "cagr_pct": 27.65,
+        "total_return_pct": 40.42,
+        "mdd_pct": 30.19,
+        "sharpe": 0.9856,
+        "profit_factor": 1.6484,
+        "trades": 25,
+        "turnover_per_year": 32.77,
+        "fees_total": 212.52,
+        "final_nav": 14042.02,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 58.13,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.51,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 3.71,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.0,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.36,
+            "n_days": 7.0
+          }
+        }
+      },
+      "v11": {
+        "strategy": "V11_WFO_opt",
+        "score": 63.31370000000001,
+        "cagr_pct": 27.17,
+        "total_return_pct": 39.68,
+        "mdd_pct": 30.19,
+        "sharpe": 0.9754,
+        "profit_factor": 1.6399,
+        "trades": 25,
+        "turnover_per_year": 32.71,
+        "fees_total": 211.17,
+        "final_nav": 13968.26,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": 57.3,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": -0.51,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 3.71,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": -4.0,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": -10.36,
+            "n_days": 7.0
+          }
+        }
+      },
+      "delta": {
+        "strategy": "DELTA",
+        "score": -1.3240999999999872,
+        "cagr_pct": -0.4799999999999969,
+        "total_return_pct": -0.740000000000002,
+        "mdd_pct": 0.0,
+        "sharpe": -0.010199999999999987,
+        "profit_factor": -0.008500000000000174,
+        "trades": 0.0,
+        "turnover_per_year": -0.060000000000002274,
+        "fees_total": -1.3500000000000227,
+        "final_nav": -73.76000000000022,
+        "regime_returns": {
+          "BULL": {
+            "total_return_pct": -0.8300000000000054,
+            "n_days": 300.0
+          },
+          "TOPPING": {
+            "total_return_pct": 0.0,
+            "n_days": 18.0
+          },
+          "BEAR": {
+            "total_return_pct": 0.0,
+            "n_days": 93.0
+          },
+          "CHOP": {
+            "total_return_pct": 0.0,
+            "n_days": 50.0
+          },
+          "NEUTRAL": {
+            "total_return_pct": 0.0,
+            "n_days": 40.0
+          },
+          "SHOCK": {
+            "total_return_pct": 0.0,
+            "n_days": 7.0
+          }
+        }
+      }
+    }
+  },
+  "verdict": "HOLD \u2014 V11 slightly behind but within noise margin"
+}

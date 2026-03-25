@@ -1,0 +1,158 @@
+{
+  "name": "D1 ret_60 regime-entry gate + H4 trendq_84 hysteresis + H4 buyimb_12 entry confirmation",
+  "short_name": "new_final_flow",
+  "status": "practical_final_candidate",
+  "purpose": "Best practical system after integrating what the entire research process revealed, while keeping complexity low.",
+  "market": "BTCUSDT spot",
+  "side": "long_only",
+  "timeframes": [
+    "4h",
+    "1d"
+  ],
+  "execution": {
+    "signal_time": "bar_close",
+    "fill_time": "next_bar_open",
+    "cost_per_side": 0.001,
+    "round_trip_cost": 0.002,
+    "trading_timeframe": "4h"
+  },
+  "raw_data_window": {
+    "d1_start": "2017-08-17",
+    "d1_end": "2026-03-10",
+    "h4_start": "2017-08-17 04:00:00 UTC",
+    "h4_end": "2026-03-11 07:59:59 UTC"
+  },
+  "locked_protocol_context": {
+    "development_window": "2019-01-01 to 2023-12-31",
+    "development_walkforward_reported": "2020-01-01 to 2023-12-31",
+    "diagnostic_post_dev_window": "2024-01-01 to 2026-02-20",
+    "micro_untouched_slice": "2026-02-21 to 2026-03-10",
+    "note": "This is the best practical design in the already-contaminated research context, not a strict untouched-holdout proof."
+  },
+  "feature_definitions": {
+    "d1_ret_60": "d1_close / d1_close.shift(60) - 1",
+    "h4_trendq_84": "(h4_close / h4_close.shift(84) - 1) / (rolling_std(h4_logret, 84) * sqrt(84))",
+    "h4_buyimb_12": "2 * (rolling_sum(h4_taker_buy_base_vol, 12) / rolling_sum(h4_volume, 12)) - 1"
+  },
+  "calibration": {
+    "recalibration_frequency": "yearly",
+    "macro_threshold_mode": "expanding",
+    "micro_threshold_mode": "expanding",
+    "entry_filter_threshold_mode": "trailing_365d",
+    "macro_thresholds": {
+      "entry_quantile": 0.5,
+      "tail": "high"
+    },
+    "micro_thresholds": {
+      "entry_quantile": 0.6,
+      "hold_quantile": 0.5,
+      "tail": "high"
+    },
+    "entry_filter_thresholds": {
+      "entry_quantile": 0.55,
+      "tail": "high"
+    },
+    "cross_timeframe_alignment": "On each H4 bar, D1 features are merged with backward as-of alignment using only the most recently completed D1 bar."
+  },
+  "logic": {
+    "entry": [
+      "Flat position",
+      "d1_ret_60 > yearly expanding q50",
+      "h4_trendq_84 > yearly expanding q60",
+      "h4_buyimb_12 > yearly trailing-365d q55"
+    ],
+    "hold": [
+      "Once long, ignore D1 macro as an exit clause",
+      "Continue holding while h4_trendq_84 > yearly expanding q50"
+    ],
+    "exit": [
+      "Exit when h4_trendq_84 <= yearly expanding q50"
+    ]
+  },
+  "yearly_thresholds": [
+    {
+      "year": 2020,
+      "d1_ret_60_q50_expanding": 0.017331177924108765,
+      "h4_trendq_84_entry_q60_expanding": 0.44456083332901164,
+      "h4_trendq_84_hold_q50_expanding": 0.18495010546723112,
+      "h4_buyimb_12_entry_confirm_q55_tr365": 0.03494194647705767
+    },
+    {
+      "year": 2021,
+      "d1_ret_60_q50_expanding": 0.11701674886713587,
+      "h4_trendq_84_entry_q60_expanding": 0.5976763181047767,
+      "h4_trendq_84_hold_q50_expanding": 0.37280954220438917,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.02210510532461034
+    },
+    {
+      "year": 2022,
+      "d1_ret_60_q50_expanding": 0.16551381051796077,
+      "h4_trendq_84_entry_q60_expanding": 0.5327188921296244,
+      "h4_trendq_84_hold_q50_expanding": 0.2733410988105367,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.01170658980566075
+    },
+    {
+      "year": 2023,
+      "d1_ret_60_q50_expanding": 0.024763203088496333,
+      "h4_trendq_84_entry_q60_expanding": 0.3979686825003266,
+      "h4_trendq_84_hold_q50_expanding": 0.1211884305135927,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.004300957697662272
+    },
+    {
+      "year": 2024,
+      "d1_ret_60_q50_expanding": 0.07826335476518742,
+      "h4_trendq_84_entry_q60_expanding": 0.4162470167531465,
+      "h4_trendq_84_hold_q50_expanding": 0.15029781084866284,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.013614515666457584
+    },
+    {
+      "year": 2025,
+      "d1_ret_60_q50_expanding": 0.07915294281956675,
+      "h4_trendq_84_entry_q60_expanding": 0.4311089854478672,
+      "h4_trendq_84_hold_q50_expanding": 0.1585613219014447,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.004844457125607151
+    },
+    {
+      "year": 2026,
+      "d1_ret_60_q50_expanding": 0.06139221189286537,
+      "h4_trendq_84_entry_q60_expanding": 0.391328364812821,
+      "h4_trendq_84_hold_q50_expanding": 0.1269146816344053,
+      "h4_buyimb_12_entry_confirm_q55_tr365": -0.030803992151972655
+    }
+  ],
+  "performance": {
+    "dev_2020_2023": {
+      "sharpe": 1.8337706802708391,
+      "cagr": 0.7338546602896199,
+      "mdd": -0.227294597845199,
+      "trades": 35
+    },
+    "diagnostic_2024_2026_02_20": {
+      "sharpe": 1.8358930282860428,
+      "cagr": 0.5324260093751243,
+      "mdd": -0.1128819150260073,
+      "trades": 16
+    },
+    "full_2020_2026_02_20": {
+      "sharpe": 1.8394607991314476,
+      "cagr": 0.6714277971498728,
+      "mdd": -0.227294597845199,
+      "trades": 51
+    },
+    "trade_distribution": {
+      "trades": 51,
+      "win_rate": 0.5882352941176471,
+      "avg_net_ret": 0.07513264089695962,
+      "med_net_ret": 0.0036489520647891016,
+      "avg_hold_days": 11.045751633986926,
+      "med_hold_days": 6.333333333333333,
+      "top5_sum": 2.5984806250404224,
+      "bottom5_sum": -0.3035922860589969,
+      "total_net_factor": 23.37388054139441
+    }
+  },
+  "interpretation": {
+    "core_claim": "D1 slow return persistence carries the regime edge; H4 trend quality controls state; H4 buy imbalance improves entry selection.",
+    "design_implication": "Order-flow is useful as entry confirmation, not as the main alpha carrier and not as a hold/exit rule."
+  }
+}

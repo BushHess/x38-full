@@ -1,0 +1,112 @@
+{
+  "overlay": "OverlayA",
+  "description": "Post-emergency-dd cooldown (entry-blocking overlay)",
+  "date": "2026-02-24",
+  "scenario": "harsh_50bps",
+  "decision": "REJECT",
+  "candidates": {
+    "v1_K12": {
+      "verdict": "REJECT",
+      "criteria": {
+        "full_net_gte_neg500": {
+          "threshold": -500,
+          "value": -1415.92,
+          "pass": false
+        },
+        "holdout_net_gte_0": {
+          "threshold": 0,
+          "value": 7683.66,
+          "pass": true
+        },
+        "bcr_gt_1": {
+          "threshold": 1.0,
+          "value_full": 1.18,
+          "value_holdout": 2.333,
+          "pass": true
+        },
+        "concentration_top1_lte_70pct": {
+          "threshold": 70,
+          "value": 77.4,
+          "pass": false,
+          "loo_check_required": true,
+          "loo_result": {
+            "scenarios_positive": 2,
+            "scenarios_total": 4,
+            "worst_loo_net": -10797.45,
+            "worst_excluded_ep": "EP17_2025-01-20",
+            "pass": false
+          }
+        },
+        "blocked_winners_pnl_lte_20pct_benefit": {
+          "threshold_pct": 20,
+          "blocked_winners_pnl": 33732.78,
+          "total_benefit": 17368.33,
+          "ratio_pct": 194.2,
+          "pass": false
+        }
+      },
+      "criteria_passed": 2,
+      "criteria_total": 5,
+      "summary": "Net negative on full period, 77% concentration in one episode, LOO fails in 2/4, blocked winners PnL 194% of benefit"
+    },
+    "v2_escalating": {
+      "verdict": "REJECT",
+      "criteria": {
+        "full_net_gte_neg500": {
+          "threshold": -500,
+          "value": -11728.08,
+          "pass": false
+        },
+        "holdout_net_gte_0": {
+          "threshold": 0,
+          "value": -11728.08,
+          "pass": false
+        },
+        "bcr_gt_1": {
+          "threshold": 1.0,
+          "value_full": 0.0,
+          "value_holdout": 0.0,
+          "pass": false
+        },
+        "concentration_top1_lte_70pct": {
+          "threshold": 70,
+          "value": 0.0,
+          "pass": true,
+          "note": "Vacuously true — zero benefit"
+        },
+        "blocked_winners_pnl_lte_20pct_benefit": {
+          "threshold_pct": 20,
+          "blocked_winners_pnl": 0,
+          "total_benefit": 0,
+          "ratio_pct": 0,
+          "pass": true,
+          "note": "Vacuously true — zero benefit"
+        }
+      },
+      "criteria_passed": 2,
+      "criteria_total": 5,
+      "summary": "Complete failure — short_cooldown=3 redundant with exit_cooldown_bars=3, zero cascade protection, benefit=$0"
+    }
+  },
+  "alternative_k_values": {
+    "K6_note": "Only K value passing all 5 criteria, but benefit=$699 on 7yr backtest is statistical noise",
+    "K6_full_net": 955.51,
+    "K6_holdout_net": 540.61,
+    "K6_benefit": 699.0,
+    "K6_verdict": "Not viable — negligible effect"
+  },
+  "reasons": [
+    "V1(K=12) full-period net = -$1,416 (below -$500 epsilon)",
+    "V1(K=12) benefit 77% concentrated in single episode (EP17, Jan 2025)",
+    "V1(K=12) LOO: removing EP17 → net = -$10,797; 2/4 scenarios flip negative",
+    "V1(K=12) blocked winners PnL ($33,733) = 194% of total benefit ($17,368)",
+    "V2(escalating) short_cooldown=3 redundant with exit_cooldown_bars=3 — zero benefit",
+    "K=6 passes all criteria but benefit ($699) is negligible/noise",
+    "No K value provides meaningful cascade protection without excessive opportunity cost"
+  ],
+  "recommendation": {
+    "action": "Set cooldown_after_emergency_dd_bars=0 in production",
+    "keep_code": true,
+    "next_steps": "Consider position-sizing overlays (reduce size after ED) instead of entry-blocking overlays"
+  }
+}

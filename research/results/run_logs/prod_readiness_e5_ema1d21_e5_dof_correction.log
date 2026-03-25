@@ -1,0 +1,202 @@
+/var/www/trading-bots/btc-spot-dev/research/prod_readiness_e5_ema1d21/e5_dof_correction.py:33: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.effective_dof import compute_meff, corrected_binomial
+================================================================================
+X0A — EFFECTIVE DOF CORRECTION FOR E5+EMA1D21
+  16 timescales: [30, 48, 60, 72, 84, 96, 108, 120, 144, 168, 200, 240, 300, 360, 500, 720]
+  Data: 2019-01-01 to 2026-02-20, warmup=365d, harsh cost
+================================================================================
+
+[1] Collecting NAV series at 16 timescales...
+
+[2] Computing correlation matrices...
+
+  E5 return correlation (adjacent timescales):
+    slow= 30 vs  48: ρ = 0.9607
+    slow= 48 vs  60: ρ = 0.9670
+    slow= 60 vs  72: ρ = 0.9778
+    slow= 72 vs  84: ρ = 0.9795
+    slow= 84 vs  96: ρ = 0.9891
+    slow= 96 vs 108: ρ = 0.9835
+    slow=108 vs 120: ρ = 0.9836
+    slow=120 vs 144: ρ = 0.9782
+    slow=144 vs 168: ρ = 0.9838
+    slow=168 vs 200: ρ = 0.9771
+    slow=200 vs 240: ρ = 0.9799
+    slow=240 vs 300: ρ = 0.9796
+    slow=300 vs 360: ρ = 0.9793
+    slow=360 vs 500: ρ = 0.9670
+    slow=500 vs 720: ρ = 0.9699
+
+  Eigenvalue spectrum (E5 returns): [1.452e+01, 7.391e-01, 2.720e-01, 1.476e-01, 8.026e-02, 5.461e-02,
+ 3.674e-02, 3.099e-02, 2.360e-02, 2.091e-02, 1.738e-02, 1.522e-02,
+ 1.208e-02, 1.089e-02, 1.009e-02, 7.727e-03]
+  Top eigenvalue explains 90.8% of variance
+
+  Eigenvalue spectrum (E5-X0 diff): [1.464e+01, 7.036e-01, 2.259e-01, 1.683e-01, 7.951e-02, 5.456e-02,
+ 2.839e-02, 2.384e-02, 1.987e-02, 1.631e-02, 9.372e-03, 7.361e-03,
+ 6.329e-03, 6.011e-03, 4.348e-03, 3.374e-03]
+  Top eigenvalue explains 91.5% of variance
+
+================================================================================
+[3] EFFECTIVE DOF ESTIMATION
+================================================================================
+
+  E5 returns:
+    Nyholt:  M_eff = 4.54
+    Li-Ji:   M_eff = 2.48
+    Galwey:  M_eff = 1.21
+    Conservative (min): 1.21
+
+  E5-X0 difference returns:
+    Nyholt:  M_eff = 4.34
+    Li-Ji:   M_eff = 2.36
+    Galwey:  M_eff = 1.19
+    Conservative (min): 1.19
+
+  E5-E5S difference returns:
+    Nyholt:  M_eff = 5.38
+    Li-Ji:   M_eff = 2.73
+    Galwey:  M_eff = 1.30
+    Conservative (min): 1.30
+
+================================================================================
+[4] METRIC WINS & DOF-CORRECTED BINOMIAL TESTS
+================================================================================
+
+  --- E5 vs X0 ---
+
+   Slow      Sh_E5      Sh_X0   Sh_win     MDD_E5     MDD_X0  MDD_win
+  ----------------------------------------------------------------------
+     30     1.0830     1.0348        ✓      46.80      47.30        ✓
+     48     0.9949     0.9408        ✓      46.52      47.29        ✓
+     60     1.1569     1.0848        ✓      41.12      42.29        ✓
+     72     1.2275     1.1572        ✓      42.05      41.71        ✗
+     84     1.2478     1.1714        ✓      41.24      43.94        ✓
+     96     1.2540     1.1776        ✓      43.43      46.02        ✓
+    108     1.3853     1.2926        ✓      39.97      41.63        ✓
+    120     1.4690     1.3718        ✓      40.90      39.96        ✗
+    144     1.4497     1.3560        ✓      41.11      37.80        ✗
+    168     1.3132     1.2275        ✓      46.67      44.16        ✗
+    200     1.5464     1.4468        ✓      36.52      37.98        ✓
+    240     1.4022     1.3055        ✓      39.95      42.04        ✓
+    300     1.3000     1.2054        ✓      39.19      39.32        ✓
+    360     1.2909     1.1628        ✓      38.12      41.63        ✓
+    500     1.2132     1.0801        ✓      45.78      47.08        ✓
+    720     1.0980     0.9606        ✓      39.02      43.56        ✓
+
+  Win counts (out of 16):
+      sharpe: 16/16
+        cagr: 16/16
+         mdd: 12/16
+          pf: 16/16
+
+  Corrected binomial test (Sharpe, wins=16/16):
+    Nominal p-value (assumes 16 indep.): 1.525879e-05
+          nyholt: M_eff=4.34 → 4/4  p = 6.250000e-02  ns
+           li_ji: M_eff=2.36 → 2/2  p = 2.500000e-01  ns
+          galwey: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+
+  Corrected binomial test (MDD, wins=12/16):
+    Nominal p-value: 3.840637e-02
+          nyholt: M_eff=4.34 → 3/4  p = 3.125000e-01  ns
+           li_ji: M_eff=2.36 → 2/2  p = 2.500000e-01  ns
+          galwey: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+
+  Corrected binomial test (CAGR, wins=16/16):
+    Nominal p-value: 1.525879e-05
+          nyholt: M_eff=4.34 → 4/4  p = 6.250000e-02  ns
+           li_ji: M_eff=2.36 → 2/2  p = 2.500000e-01  ns
+          galwey: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.19 → 1/1  p = 5.000000e-01  ns
+
+  --- E5 vs E5S ---
+
+   Slow      Sh_E5     Sh_E5S   Sh_win     MDD_E5    MDD_E5S  MDD_win
+  ----------------------------------------------------------------------
+     30     1.0830     1.0264        ✓      46.80      47.30        ✓
+     48     0.9949     0.8984        ✓      46.52      47.11        ✓
+     60     1.1569     1.0438        ✓      41.12      42.75        ✓
+     72     1.2275     1.1118        ✓      42.05      43.03        ✓
+     84     1.2478     1.1694        ✓      41.24      44.10        ✓
+     96     1.2540     1.2033        ✓      43.43      46.18        ✓
+    108     1.3853     1.3205        ✓      39.97      41.84        ✓
+    120     1.4690     1.4008        ✓      40.90      40.17        ✗
+    144     1.4497     1.3770        ✓      41.11      38.58        ✗
+    168     1.3132     1.2424        ✓      46.67      44.32        ✗
+    200     1.5464     1.4683        ✓      36.52      37.51        ✓
+    240     1.4022     1.3277        ✓      39.95      41.60        ✓
+    300     1.3000     1.2294        ✓      39.19      38.86        ✗
+    360     1.2909     1.1933        ✓      38.12      41.06        ✓
+    500     1.2132     1.1422        ✓      45.78      45.41        ✗
+    720     1.0980     1.0276        ✓      39.02      41.78        ✓
+
+  Win counts (out of 16):
+      sharpe: 16/16
+        cagr: 16/16
+         mdd: 11/16
+          pf: 16/16
+
+  Corrected binomial test (Sharpe, wins=16/16):
+    Nominal p-value (assumes 16 indep.): 1.525879e-05
+          nyholt: M_eff=5.38 → 5/5  p = 3.125000e-02  *
+           li_ji: M_eff=2.73 → 3/3  p = 1.250000e-01  ns
+          galwey: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+
+  Corrected binomial test (MDD, wins=11/16):
+    Nominal p-value: 1.050568e-01
+          nyholt: M_eff=5.38 → 4/5  p = 1.875000e-01  ns
+           li_ji: M_eff=2.73 → 2/3  p = 5.000000e-01  ns
+          galwey: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+
+  Corrected binomial test (CAGR, wins=16/16):
+    Nominal p-value: 1.525879e-05
+          nyholt: M_eff=5.38 → 5/5  p = 3.125000e-02  *
+           li_ji: M_eff=2.73 → 3/3  p = 1.250000e-01  ns
+          galwey: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+    conservative: M_eff=1.30 → 1/1  p = 5.000000e-01  ns
+
+================================================================================
+[5] PAIRED TESTS ON SHARPE DIFFERENCES
+    (Caveat: assumes 16 independent obs — anti-conservative with ρ≈0.97)
+================================================================================
+
+  E5 vs X0 Sharpe differences:
+    Mean: +0.0910  Std: 0.0257  Range: [+0.0482, +0.1373]
+    Wilcoxon signed-rank (one-sided): p = 1.525879e-05
+    Paired t-test (one-sided):        p = 2.155753e-10
+
+  E5 vs E5S Sharpe differences:
+    Mean: +0.0781  Std: 0.0184  Range: [+0.0506, +0.1156]
+    Wilcoxon signed-rank (one-sided): p = 1.525879e-05
+    Paired t-test (one-sided):        p = 1.726975e-11
+
+================================================================================
+[6] SUMMARY
+================================================================================
+
+  E5 vs X0 (Sharpe):
+    Raw: 16/16, nominal p = 1.53e-05
+    M_eff: Nyholt=4.3, Li-Ji=2.4, Galwey=1.2
+    Nyholt corrected: 4/4, p = 0.0625
+    Galwey corrected: 1/1, p = 0.5000 (degenerates: M_eff≈1 → 1/1 always p=0.5)
+    Paired Wilcoxon (anti-conservative): p = 1.53e-05
+    Effect size: mean Sharpe diff = +0.0910, all 16 positive
+    VERDICT: Nyholt p = 0.0625 — suggestive but not <0.05
+    Confidence: 93.8% (Nyholt)
+
+  E5 vs E5S (Sharpe):
+    Raw: 16/16, nominal p = 1.53e-05
+    M_eff: Nyholt=5.4, Li-Ji=2.7, Galwey=1.3
+    Nyholt corrected: 5/5, p = 0.0312
+    Paired Wilcoxon (anti-conservative): p = 1.53e-05
+    Effect size: mean Sharpe diff = +0.0781, all 16 positive
+
+Saved: /var/www/trading-bots/btc-spot-dev/research/prod_readiness_e5_ema1d21/E5_DOF_CORRECTION_REPORT.md
+
+================================================================================
+DOF CORRECTION COMPLETE (4s)
+================================================================================

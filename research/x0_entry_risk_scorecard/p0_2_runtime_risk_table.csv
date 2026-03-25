@@ -1,0 +1,7 @@
+strategy_id,risk_level,trades,avg_pnl_usd,net_pnl_usd
+X0,low_non_chop,44,2325.68,102329.98
+X0,medium_chop,78,2137.34,166712.57
+X0,high_chop_stretch,52,-631.73,-32849.8
+X0_E5EXIT,low_non_chop,52,2725.42,141721.82
+X0_E5EXIT,medium_chop,80,2082.73,166618.55
+X0_E5EXIT,high_chop_stretch,56,-188.39,-10549.89

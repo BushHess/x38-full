@@ -1,0 +1,192 @@
+======================================================================
+PHASE 4: FORMALIZATION — COMPUTATION SUPPORT
+======================================================================
+
+Total H4 bars: 18662
+FLAT bars: 10698 (57.3%)
+
+======================================================================
+SECTION 1: CONDITIONAL RETURNS DURING FLAT (bar-level)
+======================================================================
+
+Valid FLAT bar-pairs: 10475
+
+Overall lag-1 autocorrelation (FLAT bar-pairs): ρ(1) = -0.0548
+
+After DOWN bars (n=5174):
+  E[r_{t+1}] = 3.05 bps
+  σ[r_{t+1}] = 169.98 bps
+  t = 1.292, p = 0.1963
+
+After UP bars (n=5284):
+  E[r_{t+1}] = -4.26 bps
+  σ[r_{t+1}] = 142.95 bps
+
+σ(r_t, FLAT) = 157.16 bps
+
+  k=0.00: n=5174, E[r_next]=3.05 bps, σ=169.98, t=1.292, p=0.1963, /yr=609
+
+  k=0.25: n=3047, E[r_next]=4.24 bps, σ=200.37, t=1.167, p=0.2432, /yr=358
+
+  k=0.50: n=1975, E[r_next]=7.73 bps, σ=228.86, t=1.501, p=0.1335, /yr=232
+
+  k=0.75: n=1364, E[r_next]=9.15 bps, σ=256.40, t=1.318, p=0.1878, /yr=160
+
+  k=1.00: n=1005, E[r_next]=12.19 bps, σ=274.16, t=1.410, p=0.1588, /yr=118
+
+  k=1.50: n=538, E[r_next]=25.91 bps, σ=311.39, t=1.930, p=0.0542, /yr=63
+
+Saved Tbl07_conditional_returns.csv
+
+======================================================================
+SECTION 2: MULTI-BAR CUMULATIVE MEAN-REVERSION (Class B)
+======================================================================
+Flat periods: 222
+  k=2: n=4931, E[fwd]=-2.13 bps, σ=233.11, t=-0.643, p=0.5204, /yr=580
+  k=5: n=4672, E[fwd]=8.09 bps, σ=366.20, t=1.509, p=0.1313, /yr=550
+  k=10: n=4506, E[fwd]=-14.50 bps, σ=502.35, t=-1.937, p=0.0528, /yr=530
+  k=20: n=4181, E[fwd]=-30.40 bps, σ=698.55, t=-2.814, p=0.0049, /yr=492
+
+======================================================================
+SECTION 3: VR-CONDITIONAL FILTER (Class C)
+======================================================================
+Trades loaded: 221
+VR-trade pairs: 157
+
+VR(2) median: 0.930
+Low VR (<0.930):  n=78, mean trade ret=331.9 bps
+High VR (>=0.930): n=79, mean trade ret=223.2 bps
+Mann-Whitney: U=3067, p=0.9622
+Spearman(VR2, trade_ret): ρ=0.0696, p=0.3863
+Cohen's d (high-low VR): -0.0873
+
+Tercile split:
+  T1 (VR<0.785): n=52, mean ret=208.0 bps
+  T2 (0.785<=VR<0.990): n=53, mean ret=329.0 bps
+  T3 (VR>=0.990): n=52, mean ret=293.7 bps
+  KW H=1.748, p=0.4172
+
+======================================================================
+SECTION 4: POWER ANALYSIS
+======================================================================
+
+Class A (single-bar contrarian long):
+  N = 5174
+  N/year = 609
+  MDE = 0.0389
+  Observed |d| = 0.0180
+  Ratio |d|/MDE = 0.46
+  Status: UNDERPOWERED
+
+Class B (k=2):
+  N = 4931
+  N/year = 580
+  MDE = 0.0399
+  Observed |d| = 0.0092
+  Ratio |d|/MDE = 0.23
+  Status: UNDERPOWERED
+
+Class B (k=5):
+  N = 4672
+  N/year = 550
+  MDE = 0.0410
+  Observed |d| = 0.0221
+  Ratio |d|/MDE = 0.54
+  Status: UNDERPOWERED
+
+Class B (k=10):
+  N = 4506
+  N/year = 530
+  MDE = 0.0417
+  Observed |d| = 0.0289
+  Ratio |d|/MDE = 0.69
+  Status: UNDERPOWERED
+
+Class B (k=20):
+  N = 4181
+  N/year = 492
+  MDE = 0.0433
+  Observed |d| = 0.0435
+  Ratio |d|/MDE = 1.00
+  Status: BORDERLINE
+
+Class C (VR-conditional filter):
+  N (VR-trade pairs) = 157
+  N/year = 18
+  MDE = 0.2236
+  Observed |d| (VR→trade_ret) = 0.0873
+  Ratio |d|/MDE = 0.39
+  Status: UNDERPOWERED
+
+--- WFO Fold Sizes ---
+  4-fold: 2674 bars/fold (1.2 years/fold)
+  5-fold: 2139 bars/fold (1.0 years/fold)
+
+======================================================================
+SECTION 5: COMPLEMENTARITY PROOF
+======================================================================
+
+VTREND FLAT fraction: 57.3%
+All three classes operate ONLY during FLAT → 0% time overlap with VTREND IN_TRADE
+
+  VR threshold < 0.5: suppress 15/157 (9.6%)
+    Suppressed mean ret: 265.2 bps
+    Kept mean ret: 278.5 bps
+
+  VR threshold < 0.6: suppress 25/157 (15.9%)
+    Suppressed mean ret: 20.2 bps
+    Kept mean ret: 325.9 bps
+
+  VR threshold < 0.7: suppress 34/157 (21.7%)
+    Suppressed mean ret: 11.2 bps
+    Kept mean ret: 350.7 bps
+
+  VR threshold < 0.8: suppress 55/157 (35.0%)
+    Suppressed mean ret: 259.8 bps
+    Kept mean ret: 286.6 bps
+
+--- Capital Conflict ---
+Class A: 1-bar hold → max 1-bar overlap with VTREND entry. Negligible.
+Class B (k-bar hold): potential k-bar overlap.
+
+Class A: 76/5250 signals (1.4%) followed by VTREND entry next bar
+Class B (k=5): 376/5249 signals (7.2%) overlap with VTREND entry in hold window
+Class B (k=10): 651/5247 signals (12.4%) overlap with VTREND entry in hold window
+
+======================================================================
+SECTION 6: ECONOMIC MAGNITUDE — STANDALONE SHARPE ESTIMATES
+======================================================================
+  Class A @ 50 bps RT: net/trade=-46.9 bps, N/yr=609, Sharpe=-6.814
+  Class A @ 30 bps RT: net/trade=-26.9 bps, N/yr=609, Sharpe=-3.911
+  Class A @ 20 bps RT: net/trade=-16.9 bps, N/yr=609, Sharpe=-2.460
+  Class A @ 15 bps RT: net/trade=-11.9 bps, N/yr=609, Sharpe=-1.734
+  Class B (k=2) @ 50 bps RT: net/trade=-52.1 bps, N/yr=580, Sharpe=-5.387
+  Class B (k=5) @ 50 bps RT: net/trade=-41.9 bps, N/yr=550, Sharpe=-2.683
+  Class B (k=10) @ 50 bps RT: net/trade=-64.5 bps, N/yr=530, Sharpe=-2.956
+  Class B (k=20) @ 50 bps RT: net/trade=-80.4 bps, N/yr=492, Sharpe=-2.553
+
+======================================================================
+SECTION 7: I(ΔU; V_new | P_t, VT_t) ESTIMATION
+======================================================================
+
+Gaussian MI proxy: I(r_{t+1}; r_t | FLAT) = 0.001505 nats
+  (ρ = -0.0548)
+  This is 2.171 millibits
+  For context: perfect prediction = ~11.5 nats (for Gaussian with σ=157bps)
+
+Gaussian MI proxy: I(trade_ret; VR(2)_preceding_flat) = 0.002429 nats
+  (Spearman ρ = 0.0696, p = 0.3863)
+  This is 3.504 millibits
+
+======================================================================
+SUMMARY TABLE: FUNCTION CLASS ASSESSMENT
+======================================================================
+
+class                         name  DOF  N_total  N_per_year    gross_bps net_50bps net_20bps  effect_d    MDE      powered
+    A   Single-bar contrarian long    1     5174         608          3.1     -46.9     -16.9    0.0180 0.0389 UNDERPOWERED
+    B      Multi-bar MR long (k=5)    2     4672         549          8.1     -41.9     -11.9    0.0221 0.0410 UNDERPOWERED
+    C VR-conditional VTREND filter    2      157          18 N/A (filter)       N/A       N/A   -0.0873 0.2236 UNDERPOWERED
+
+======================================================================
+DONE — All Phase 4 computation tables saved.
+======================================================================

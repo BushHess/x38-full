@@ -1,0 +1,28 @@
+{
+  "crashes": [
+    {
+      "crash_point": "BEFORE_PERSIST",
+      "client_order_id": "7895630769c3a7d281e5",
+      "order_in_db": false,
+      "expected": "order NOT in DB (crashed before write)"
+    },
+    {
+      "crash_point": "AFTER_SEND",
+      "client_order_id": "06c5b09117ec4b58539e",
+      "status_before_reconcile": "FILLED"
+    }
+  ],
+  "reconciles": [],
+  "before_persist_check": {
+    "order_exists": false,
+    "status": "N/A",
+    "expected": "NOT in DB or EXPIRED",
+    "passed": true
+  },
+  "after_send_check": {
+    "order_exists": true,
+    "status": "FILLED",
+    "expected": "FILLED",
+    "passed": true
+  }
+}

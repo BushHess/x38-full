@@ -1,0 +1,28 @@
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/code/phase0_data_audit.py:11: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import DEFAULT_END  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/results/phase0_data_audit.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/results/phase0_data_audit.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/code/phase1_regime_decomposition.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import attach_state_to_events  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/results/phase1_regime_decomposition.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/a_state_diagnostic/results/phase1_regime_decomposition.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/c_stress_state_diagnostic/code/run_c_stress_state_diagnostic.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import attach_state_to_events  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/c_stress_state_diagnostic/results/stress_state_scan.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/c_stress_state_diagnostic/results/stress_state_scan.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/d_multi_horizon_trend_diagnostic/code/run_d_multi_horizon_trend_diagnostic.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import aggregate_outer_bars  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/d_multi_horizon_trend_diagnostic/results/multi_horizon_trend_scan.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/d_multi_horizon_trend_diagnostic/results/multi_horizon_trend_scan.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/e_transition_instability_diagnostic/code/run_e_transition_instability_diagnostic.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import aggregate_outer_bars  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/e_transition_instability_diagnostic/results/transition_instability_scan.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/e_transition_instability_diagnostic/results/transition_instability_scan.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/f_price_level_state_diagnostic/code/run_f_price_level_state_diagnostic.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import aggregate_outer_bars  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/f_price_level_state_diagnostic/results/price_level_state_scan.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/f_price_level_state_diagnostic/results/price_level_state_scan.md
+/var/www/trading-bots/btc-spot-dev/research/x35/branches/g_mid_trade_hazard_diagnostic/code/run_g_mid_trade_hazard_diagnostic.py:14: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.x35.shared.common import attach_state_to_events  # noqa: E402
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/g_mid_trade_hazard_diagnostic/results/mid_trade_hazard_scan.json
+Wrote /var/www/trading-bots/btc-spot-dev/research/x35/branches/g_mid_trade_hazard_diagnostic/results/mid_trade_hazard_scan.md

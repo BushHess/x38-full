@@ -1,0 +1,85 @@
+{
+  "description": "Sensitivity grid: 27-point for V11 cycle_late params",
+  "grid_axes": {
+    "aggression": [
+      0.85,
+      0.9,
+      0.95
+    ],
+    "trail_mult": [
+      2.7,
+      3.0,
+      3.3
+    ],
+    "max_exposure": [
+      0.75,
+      0.9,
+      0.95
+    ]
+  },
+  "baseline": {
+    "harsh": {
+      "score": 88.94,
+      "cagr_pct": 37.26,
+      "mdd_pct": 36.28
+    },
+    "base": {
+      "score": 112.74,
+      "cagr_pct": 45.55,
+      "mdd_pct": 34.78
+    },
+    "smart": {
+      "score": 121.37,
+      "cagr_pct": 48.56,
+      "mdd_pct": 34.07
+    }
+  },
+  "summary_by_scenario": {
+    "harsh": {
+      "n_beat": 6,
+      "n_tie": 0,
+      "n_lose": 21,
+      "pct_beat": 22.2,
+      "best_delta": 2.1001,
+      "best_point": "(0.95, 3.0, 0.95)",
+      "worst_delta": -7.5939,
+      "worst_point": "(0.85, 2.7, 0.75)",
+      "mean_delta": -2.243,
+      "median_delta": -1.2184
+    },
+    "base": {
+      "n_beat": 6,
+      "n_tie": 0,
+      "n_lose": 21,
+      "pct_beat": 22.2,
+      "best_delta": 2.1982,
+      "best_point": "(0.95, 3.0, 0.95)",
+      "worst_delta": -8.6464,
+      "worst_point": "(0.85, 2.7, 0.75)",
+      "mean_delta": -2.5965,
+      "median_delta": -1.254
+    },
+    "smart": {
+      "n_beat": 6,
+      "n_tie": 0,
+      "n_lose": 21,
+      "pct_beat": 22.2,
+      "best_delta": 2.223,
+      "best_point": "(0.95, 3.0, 0.95)",
+      "worst_delta": -8.5752,
+      "worst_point": "(0.85, 3.3, 0.75)",
+      "mean_delta": -2.5537,
+      "median_delta": -1.2503
+    }
+  },
+  "cliff_risk_analysis": {
+    "n_beat_harsh": 6,
+    "avg_neighbor_beat_rate": 0.4792,
+    "cliff_risk": true
+  },
+  "verdict": "FAIL \u2014 narrow winning region (cliff risk)",
+  "pass_criteria": {
+    "pct_beat_threshold": ">=60% for PASS",
+    "cliff_definition": "avg neighbor beat rate < 50%"
+  }
+}

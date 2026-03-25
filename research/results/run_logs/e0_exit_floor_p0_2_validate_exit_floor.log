@@ -1,0 +1,3 @@
+/var/www/trading-bots/btc-spot-dev/research/e0_exit_floor/p0_2_validate_exit_floor.py:20: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.e0_exit_floor.p0_1_exit_floor_benchmark import ExitFloorConfig, X0ExitFloorStrategy
+Saved P0.2 validation artifacts to /var/www/trading-bots/btc-spot-dev/research/e0_exit_floor

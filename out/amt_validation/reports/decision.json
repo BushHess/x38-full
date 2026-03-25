@@ -1,0 +1,52 @@
+{
+  "verdict": "REJECT",
+  "exit_code": 2,
+  "gates": [
+    {
+      "name": "lookahead",
+      "passed": false,
+      "reason": "status=skip",
+      "severity": "hard"
+    },
+    {
+      "name": "min_trades",
+      "passed": true,
+      "reason": "trades=192 (min=10)",
+      "severity": "hard"
+    },
+    {
+      "name": "wfo_win_rate",
+      "passed": true,
+      "reason": "win_rate=0.700 (threshold=0.6)",
+      "severity": "soft"
+    },
+    {
+      "name": "bootstrap",
+      "passed": false,
+      "reason": "p=0.598 ci_lower=-0.5365",
+      "severity": "soft"
+    },
+    {
+      "name": "holdout",
+      "passed": false,
+      "reason": "status=fail",
+      "severity": "soft"
+    },
+    {
+      "name": "selection_bias",
+      "passed": true,
+      "reason": "PASS \u2014 Observed Sharpe survives DSR at all tested N",
+      "severity": "soft"
+    }
+  ],
+  "reasons": [
+    "REJECT: lookahead test failed (skip)",
+    "HOLD: bootstrap p=0.598, ci_lower=-0.5365",
+    "HOLD: holdout gate failed (fail)"
+  ],
+  "metadata": {
+    "n_gates": 6,
+    "n_hard_fail": 1,
+    "n_soft_fail": 2
+  }
+}

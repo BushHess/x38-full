@@ -1,0 +1,67 @@
+/var/www/trading-bots/btc-spot-dev/research/benchmark_compare.py:82: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  edf["ym"] = edf["datetime"].dt.to_period("M")
+/var/www/trading-bots/btc-spot-dev/research/benchmark_compare.py:100: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  h4_filtered["ym"] = h4_filtered["datetime"].dt.to_period("M")
+====================================================================================================
+YEARLY COMPARISON: VTREND vs BTC Buy&Hold vs USDT Savings vs VND Savings
+Starting capital: $10,000 (Aug 2017)
+====================================================================================================
+Year       VTREND NAV   VTREND % │    BTC B&H NAV      BTC % │     USDT NAV   USDT % │      VND NAV    VND %
+────────────────────────────────────────────────────────────────────────────────────────────────────
+2017   $      17,358     +73.6% │ $      31,532    +215.3% │ $    10,099    +1.0% │ $    10,222    +2.2%
+2018   $      11,938     -31.2% │ $       8,512     -73.0% │ $    10,495    +3.9% │ $    10,926    +6.9%
+2019   $      24,927    +108.8% │ $      16,541     +94.3% │ $    10,914    +4.0% │ $    11,690    +7.0%
+2020   $      76,104    +205.3% │ $      66,491    +302.0% │ $    11,950    +9.5% │ $    12,401    +6.1%
+2021   $     148,330     +94.9% │ $     106,246     +59.8% │ $    13,145   +10.0% │ $    13,088    +5.5%
+2022   $     110,261     -25.7% │ $      38,029     -64.2% │ $    13,856    +5.4% │ $    13,928    +6.4%
+2023   $     153,442     +39.2% │ $      97,204    +155.6% │ $    14,548    +5.0% │ $    14,961    +7.4%
+2024   $     242,537     +58.1% │ $     215,118    +121.3% │ $    15,276    +5.0% │ $    15,809    +5.7%
+2025   $     245,476      +1.2% │ $     201,491      -6.3% │ $    15,899    +4.1% │ $    16,606    +5.0%
+2026   $     237,768      -3.1% │ $     156,535     -22.3% │ $    16,004    +0.7% │ $    16,741    +0.8%
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+================================================================================
+FINAL COMPARISON SUMMARY
+================================================================================
+Period: Aug 2017 → Feb 2026 (8.5 years)
+Starting capital: $10,000
+
+Strategy                  Final NAV   Total Return     CAGR     Max DD
+──────────────────────────────────────────────────────────────────────
+VTREND               $     237,768       +2277.7%   +45.2%     -63.3%
+BTC Buy & Hold       $     156,535       +1465.3%   +38.2%     -83.9%
+USDT Savings         $      16,004         +60.0%    +5.7%       0.0%
+VND Savings          $      16,741         +67.4%    +6.2%       0.0%
+
+──────────────────────────────────────────────────────────────────────
+VTREND vs BTC B&H:
+  VTREND / BTC = 1.52x
+  VTREND beats BTC B&H by $81,234 (+51.9%)
+
+VTREND vs USDT savings:
+  VTREND / USDT = 14.9x
+
+VTREND vs VND savings:
+  VTREND / VND = 14.2x
+
+================================================================================
+YEAR-BY-YEAR WINNER
+================================================================================
+  2017: BTC B&H    (+215.3%)  |  VTREND +73.6%  BTC +215.3%  USDT +1.0%  VND +2.2%
+  2018: VND        (+6.9%)  |  VTREND -31.2%  BTC -73.0%  USDT +3.9%  VND +6.9%
+  2019: VTREND     (+108.8%)  |  VTREND +108.8%  BTC +94.3%  USDT +4.0%  VND +7.0%
+  2020: BTC B&H    (+302.0%)  |  VTREND +205.3%  BTC +302.0%  USDT +9.5%  VND +6.1%
+  2021: VTREND     (+94.9%)  |  VTREND +94.9%  BTC +59.8%  USDT +10.0%  VND +5.5%
+  2022: VND        (+6.4%)  |  VTREND -25.7%  BTC -64.2%  USDT +5.4%  VND +6.4%
+  2023: BTC B&H    (+155.6%)  |  VTREND +39.2%  BTC +155.6%  USDT +5.0%  VND +7.4%
+  2024: BTC B&H    (+121.3%)  |  VTREND +58.1%  BTC +121.3%  USDT +5.0%  VND +5.7%
+  2025: VND        (+5.0%)  |  VTREND +1.2%  BTC -6.3%  USDT +4.1%  VND +5.0%
+  2026: VND        (+0.8%)  |  VTREND -3.1%  BTC -22.3%  USDT +0.7%  VND +0.8%
+
+================================================================================
+RISK-ADJUSTED (return per unit of max drawdown)
+================================================================================
+  VTREND Calmar:  35.98
+  BTC B&H Calmar: 17.46
+  USDT: no drawdown risk (counterparty risk only)
+  VND:  no drawdown risk (inflation risk ~3-4%/yr)

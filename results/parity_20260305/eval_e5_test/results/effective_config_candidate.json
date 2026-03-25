@@ -1,0 +1,134 @@
+{
+  "model": "candidate",
+  "config_path": "/var/www/trading-bots/btc-spot-dev/configs/vtrend_e5/vtrend_e5_default.yaml",
+  "strategy_name": "vtrend_e5",
+  "wfo_overrides_applied": false,
+  "params": {
+    "engine.symbol": {
+      "value": "BTCUSDT",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.symbol in vtrend_e5_default.yaml"
+    },
+    "engine.timeframe_h4": {
+      "value": "4h",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.timeframe_h4 in vtrend_e5_default.yaml"
+    },
+    "engine.timeframe_d1": {
+      "value": "1d",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.timeframe_d1 in vtrend_e5_default.yaml"
+    },
+    "engine.warmup_days": {
+      "value": 365,
+      "unit": "days",
+      "source": "cli",
+      "source_detail": "--warmup-days"
+    },
+    "engine.warmup_mode": {
+      "value": "no_trade",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.warmup_mode in vtrend_e5_default.yaml"
+    },
+    "engine.scenario_eval": {
+      "value": "base",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "engine.scenario_eval in vtrend_e5_default.yaml"
+    },
+    "engine.initial_cash": {
+      "value": 10000.0,
+      "unit": "usd",
+      "source": "cli",
+      "source_detail": "--initial-cash"
+    },
+    "risk.max_total_exposure": {
+      "value": 1.0,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "risk.max_total_exposure in vtrend_e5_default.yaml"
+    },
+    "risk.min_notional_usdt": {
+      "value": 10,
+      "unit": "usd",
+      "source": "yaml",
+      "source_detail": "risk.min_notional_usdt in vtrend_e5_default.yaml"
+    },
+    "risk.kill_switch_dd_total": {
+      "value": 0.45,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "risk.kill_switch_dd_total in vtrend_e5_default.yaml"
+    },
+    "risk.max_daily_orders": {
+      "value": 5,
+      "unit": "int",
+      "source": "yaml",
+      "source_detail": "risk.max_daily_orders in vtrend_e5_default.yaml"
+    },
+    "strategy.name": {
+      "value": "vtrend_e5",
+      "unit": "none",
+      "source": "yaml",
+      "source_detail": "strategy.name"
+    },
+    "strategy.slow_period": {
+      "value": 120.0,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "strategy.slow_period in vtrend_e5_default.yaml"
+    },
+    "strategy.trail_mult": {
+      "value": 3.0,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "strategy.trail_mult in vtrend_e5_default.yaml"
+    },
+    "strategy.vdo_threshold": {
+      "value": 0.0,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "strategy.vdo_threshold in vtrend_e5_default.yaml"
+    },
+    "strategy.atr_period": {
+      "value": 14,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.atr_period default"
+    },
+    "strategy.vdo_fast": {
+      "value": 12,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.vdo_fast default"
+    },
+    "strategy.vdo_slow": {
+      "value": 28,
+      "unit": "int",
+      "source": "default",
+      "source_detail": "strategy.vdo_slow default"
+    },
+    "strategy.ratr_cap_q": {
+      "value": 0.9,
+      "unit": "float",
+      "source": "yaml",
+      "source_detail": "strategy.ratr_cap_q in vtrend_e5_default.yaml"
+    },
+    "strategy.ratr_cap_lb": {
+      "value": 100,
+      "unit": "int",
+      "source": "yaml",
+      "source_detail": "strategy.ratr_cap_lb in vtrend_e5_default.yaml"
+    },
+    "strategy.ratr_period": {
+      "value": 20,
+      "unit": "int",
+      "source": "yaml",
+      "source_detail": "strategy.ratr_period in vtrend_e5_default.yaml"
+    }
+  }
+}

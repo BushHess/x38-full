@@ -1,0 +1,3 @@
+label,scenario,check,index,ts_ms,value,detail
+candidate,harsh,summary_final_nav_match,-1,1771631999999,96908.67,"summary=96908.67, curve=96908.6655977272"
+baseline,harsh,summary_final_nav_match,-1,1771631999999,96908.67,"summary=96908.67, curve=96908.6655977272"

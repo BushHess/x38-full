@@ -1,0 +1,13 @@
+strategy_id,period,risk_level,trades,core_bad_rate,any_bad_rate,avg_pnl_usd,net_pnl_usd
+X0,train,low_non_chop,32,0.28125,0.59375,1400.32,44810.18
+X0,train,medium_chop,55,0.272727,0.527273,1886.45,103754.83
+X0,train,high_chop_stretch,35,0.342857,0.771429,-355.63,-12446.94
+X0,holdout,low_non_chop,12,0.083333,0.333333,4793.32,57519.8
+X0,holdout,medium_chop,23,0.217391,0.565217,2737.29,62957.7
+X0,holdout,high_chop_stretch,17,0.352941,0.705882,-1200.17,-20402.83
+X0_E5EXIT,train,low_non_chop,39,0.282051,0.589744,1399.24,54570.28
+X0_E5EXIT,train,medium_chop,56,0.285714,0.535714,1975.95,110653.39
+X0_E5EXIT,train,high_chop_stretch,37,0.324324,0.72973,-55.94,-2069.76
+X0_E5EXIT,holdout,low_non_chop,13,0.076923,0.307692,6703.96,87151.51
+X0_E5EXIT,holdout,medium_chop,24,0.25,0.583333,2331.88,55965.18
+X0_E5EXIT,holdout,high_chop_stretch,19,0.315789,0.578947,-446.32,-8480.13

@@ -1,0 +1,33 @@
+2026-03-09 09:33:46,594 smoke_c5 INFO === C5 Testnet Validation (E5+EMA1D21) ===
+2026-03-09 09:33:46,595 smoke_c5 INFO Exchange: https://testnet.binance.vision/api
+2026-03-09 09:33:46,595 smoke_c5 INFO Phase 0: Reset to cash
+2026-03-09 09:33:47,178 smoke_c5 INFO Cancelled 0, sold 0.00000000 BTC
+2026-03-09 09:33:47,310 smoke_c5 INFO Filters: step=0.00001000 min_notional=5.00000000 | Cost: 50 bps RT
+2026-03-09 09:33:47,311 smoke_c5 INFO Loading data from bars_btcusdt_2016_now_h1_4h_1d.csv...
+2026-03-09 09:33:48,269 smoke_c5 INFO Total: 18662 H4 + 3110 D1 bars
+2026-03-09 09:33:48,269 smoke_c5 INFO Warmup: 18162 H4 bars | Replay: 500 H4 bars
+2026-03-09 09:33:49,221 smoke_c5 INFO === Phase 1: Replaying 500 bars with E5+EMA1D21 ===
+2026-03-09 09:34:03,479 smoke_c5 INFO Progress: 50/500 bars | signals=0 orders=0 fills=0
+2026-03-09 09:34:16,528 smoke_c5 INFO Progress: 100/500 bars | signals=0 orders=0 fills=0
+2026-03-09 09:34:29,689 smoke_c5 INFO Progress: 150/500 bars | signals=0 orders=0 fills=0
+2026-03-09 09:34:42,732 smoke_c5 INFO Progress: 200/500 bars | signals=0 orders=0 fills=0
+2026-03-09 09:34:43,512 v10.exchange.order_planner INFO OrderPlan: BUY 3.73675 @ 90547.03 (notional=338351.63) exposure 0.0000→1.0000
+2026-03-09 09:34:51,951 v10.exchange.order_planner INFO OrderPlan: SELL 0.00016 @ 91121.58 (notional=14.58) exposure 0.0000→0.0000
+2026-03-09 09:34:55,319 v10.exchange.order_planner INFO OrderPlan: BUY 3.70481 @ 91327.75 (notional=338351.96) exposure 0.0000→1.0000
+2026-03-09 09:34:59,733 smoke_c5 INFO Progress: 250/500 bars | signals=3 orders=3 fills=3
+2026-03-09 09:35:12,261 v10.exchange.order_planner INFO OrderPlan: SELL 0.00016 @ 93438.96 (notional=14.95) exposure 0.0000→0.0000
+2026-03-09 09:35:14,068 smoke_c5 INFO Progress: 300/500 bars | signals=4 orders=4 fills=4
+2026-03-09 09:35:14,327 v10.exchange.order_planner INFO OrderPlan: BUY 3.62165 @ 93424.94 (notional=338352.43) exposure 0.0000→1.0000
+2026-03-09 09:35:17,683 v10.exchange.order_planner INFO OrderPlan: SELL 0.00016 @ 89501.46 (notional=14.32) exposure 0.0000→0.0000
+2026-03-09 09:35:29,731 smoke_c5 INFO Progress: 350/500 bars | signals=6 orders=6 fills=6
+2026-03-09 09:35:42,598 smoke_c5 INFO Progress: 400/500 bars | signals=6 orders=6 fills=6
+2026-03-09 09:35:55,608 smoke_c5 INFO Progress: 450/500 bars | signals=6 orders=6 fills=6
+2026-03-09 09:36:08,074 smoke_c5 INFO === Writing outputs ===
+2026-03-09 09:36:08,076 smoke_c5 INFO Wrote live_cycles.csv (499 rows)
+2026-03-09 09:36:08,076 smoke_c5 INFO Wrote live_plan.csv (6 rows)
+2026-03-09 09:36:08,076 smoke_c5 INFO Wrote live_slippage.csv (6 rows)
+2026-03-09 09:36:08,077 smoke_c5 INFO === Verification ===
+2026-03-09 09:36:08,077 smoke_c5 INFO PASS P1: 0 duplicate clientOrderIds
+2026-03-09 09:36:08,077 smoke_c5 INFO PASS: 6 signals generated
+2026-03-09 09:36:08,077 smoke_c5 INFO PASS: 6 orders filled on testnet
+2026-03-09 09:36:08,077 smoke_c5 WARNING WARN: max slippage 2721 bps (testnet can be wild)

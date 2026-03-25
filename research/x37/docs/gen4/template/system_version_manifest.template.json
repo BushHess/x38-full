@@ -1,0 +1,31 @@
+{
+  "_schema_notes": {
+    "purpose": "Machine-readable version lineage record. Tracks all frozen system versions, their parent relationships, freeze cutoffs, and evidence clocks.",
+    "version_history": "Append-only list of all versions created in this lineage. Never remove entries.",
+    "evidence_days_accumulated": "Updated in each forward evaluation packaging step."
+  },
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "parent_system_version_id": null,
+  "freeze_cutoff_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "design_inputs_end_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "reason_for_freeze": "Initial seed discovery freeze",
+  "version_history": [
+    {
+      "system_version_id": "V1",
+      "parent_system_version_id": null,
+      "freeze_cutoff_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "design_inputs_end_utc": "YYYY-MM-DDTHH:MM:SSZ",
+      "reason_for_freeze": "Initial seed discovery freeze",
+      "evidence_clock_start": "YYYY-MM-DDTHH:MM:SSZ",
+      "evidence_days_accumulated": 0,
+      "logical_layers": 0,
+      "tunable_quantities": 0,
+      "status": "active",
+      "redesign_trigger": null,
+      "redesign_dossier_ref": null,
+      "redesign_classification": null
+    }
+  ]
+}

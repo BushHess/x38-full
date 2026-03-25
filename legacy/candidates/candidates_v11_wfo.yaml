@@ -1,0 +1,13 @@
+candidates:
+  # V11 winner with param_ranges for WFO validation
+  - name: v11_cycle_late_only
+    strategy: v11_hybrid
+    description: "V11 cycle late-only with param ranges for WFO"
+    params:
+      enable_cycle_phase: true
+      cycle_early_aggression: 1.0
+      cycle_early_trail_mult: 3.5
+    param_ranges:
+      cycle_late_aggression: [0.85, 0.90, 0.95]
+      cycle_late_trail_mult: [2.8, 3.0, 3.2]
+      cycle_late_max_exposure: [0.85, 0.90, 0.95]

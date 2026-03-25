@@ -1,0 +1,1 @@
+candidate_id,mechanism_type,representative_config_id,cost_bps_rt,cagr,sharpe,max_drawdown,entries,exposure,mean_daily_return,cagr_pass_50bps,mdd_pass_50bps,entries_per_year_pass_50bps,exposure_pass_50bps,holdout_hard_constraints_pass_50bps

@@ -1,0 +1,34 @@
+candidates:
+  - name: baseline_legacy
+    description: "Legacy-like baseline: pre-cost emergency reference + Wilder RSI"
+    params:
+      emergency_ref: pre_cost_legacy
+      rsi_method: wilder
+
+  - name: v9_like
+    description: "V9-like: post-cost emergency reference + EWM RSI"
+    params:
+      emergency_ref: post_cost
+      rsi_method: ewm_span
+
+  - name: peak_emergency
+    description: "Peak-referenced emergency DD + Wilder RSI"
+    params:
+      emergency_ref: peak
+      rsi_method: wilder
+
+  - name: peak_cooldown
+    description: "Peak emergency with longer re-entry cooldown to reduce churn"
+    params:
+      emergency_ref: peak
+      rsi_method: wilder
+      entry_cooldown_bars: 6
+
+  - name: peak_dd_adaptive
+    description: "Peak emergency + DD-adaptive sizing"
+    params:
+      emergency_ref: peak
+      rsi_method: wilder
+      enable_dd_adaptive: true
+      dd_adaptive_start: 0.16
+      dd_adaptive_floor: 0.35

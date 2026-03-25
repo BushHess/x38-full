@@ -1,0 +1,1228 @@
+{
+  "config": {
+    "slow_periods": [
+      30,
+      48,
+      60,
+      72,
+      84,
+      96,
+      108,
+      120,
+      144,
+      168,
+      200,
+      240,
+      300,
+      360,
+      500,
+      720
+    ],
+    "n_sp": 16,
+    "cost_rt_bps": 50.0,
+    "n_boot": 500,
+    "blksz": 60,
+    "seed": 42,
+    "ctx": 90,
+    "k_vcbb": 50,
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "n_bars": 17838,
+    "warmup_idx": 2190
+  },
+  "real_data_metrics": {
+    "VTREND_A0": {
+      "30": {
+        "sharpe": 0.672605,
+        "cagr": 21.059822,
+        "mdd": 71.86995
+      },
+      "48": {
+        "sharpe": 0.653844,
+        "cagr": 19.817145,
+        "mdd": 62.403328
+      },
+      "60": {
+        "sharpe": 0.79672,
+        "cagr": 26.689057,
+        "mdd": 54.063515
+      },
+      "72": {
+        "sharpe": 0.993415,
+        "cagr": 36.436673,
+        "mdd": 50.052761
+      },
+      "84": {
+        "sharpe": 1.128774,
+        "cagr": 43.935051,
+        "mdd": 47.941106
+      },
+      "96": {
+        "sharpe": 1.07687,
+        "cagr": 41.106149,
+        "mdd": 47.456754
+      },
+      "108": {
+        "sharpe": 1.209147,
+        "cagr": 48.584989,
+        "mdd": 43.986636
+      },
+      "120": {
+        "sharpe": 1.27647,
+        "cagr": 52.67921,
+        "mdd": 41.533069
+      },
+      "144": {
+        "sharpe": 1.327776,
+        "cagr": 55.865729,
+        "mdd": 42.333025
+      },
+      "168": {
+        "sharpe": 1.193111,
+        "cagr": 48.120082,
+        "mdd": 50.341499
+      },
+      "200": {
+        "sharpe": 1.431644,
+        "cagr": 63.097655,
+        "mdd": 41.841802
+      },
+      "240": {
+        "sharpe": 1.226814,
+        "cagr": 50.502612,
+        "mdd": 42.0086
+      },
+      "300": {
+        "sharpe": 1.016874,
+        "cagr": 38.930846,
+        "mdd": 47.0065
+      },
+      "360": {
+        "sharpe": 1.114006,
+        "cagr": 45.110718,
+        "mdd": 48.817562
+      },
+      "500": {
+        "sharpe": 1.07436,
+        "cagr": 43.255812,
+        "mdd": 49.49016
+      },
+      "720": {
+        "sharpe": 0.837715,
+        "cagr": 30.675299,
+        "mdd": 59.810769
+      }
+    },
+    "VTREND_A1": {
+      "30": {
+        "sharpe": 0.653849,
+        "cagr": 20.078442,
+        "mdd": 71.86995
+      },
+      "48": {
+        "sharpe": 0.607081,
+        "cagr": 17.563801,
+        "mdd": 61.918852
+      },
+      "60": {
+        "sharpe": 0.754152,
+        "cagr": 24.493846,
+        "mdd": 56.830312
+      },
+      "72": {
+        "sharpe": 0.948811,
+        "cagr": 33.911792,
+        "mdd": 51.319866
+      },
+      "84": {
+        "sharpe": 1.129633,
+        "cagr": 43.628343,
+        "mdd": 48.354848
+      },
+      "96": {
+        "sharpe": 1.084981,
+        "cagr": 41.1981,
+        "mdd": 47.696765
+      },
+      "108": {
+        "sharpe": 1.214861,
+        "cagr": 48.470842,
+        "mdd": 44.186515
+      },
+      "120": {
+        "sharpe": 1.282946,
+        "cagr": 52.572138,
+        "mdd": 41.741703
+      },
+      "144": {
+        "sharpe": 1.32662,
+        "cagr": 55.270359,
+        "mdd": 42.538804
+      },
+      "168": {
+        "sharpe": 1.186122,
+        "cagr": 47.30144,
+        "mdd": 50.487095
+      },
+      "200": {
+        "sharpe": 1.429574,
+        "cagr": 62.379223,
+        "mdd": 42.304019
+      },
+      "240": {
+        "sharpe": 1.219736,
+        "cagr": 49.653038,
+        "mdd": 42.111791
+      },
+      "300": {
+        "sharpe": 0.997572,
+        "cagr": 37.592995,
+        "mdd": 47.936211
+      },
+      "360": {
+        "sharpe": 1.100045,
+        "cagr": 43.960549,
+        "mdd": 48.106163
+      },
+      "500": {
+        "sharpe": 1.075659,
+        "cagr": 43.063616,
+        "mdd": 49.704581
+      },
+      "720": {
+        "sharpe": 0.846593,
+        "cagr": 30.959758,
+        "mdd": 58.389844
+      }
+    },
+    "VBREAK": {
+      "30": {
+        "sharpe": 1.045079,
+        "cagr": 36.620749,
+        "mdd": 49.15047
+      },
+      "48": {
+        "sharpe": 1.090259,
+        "cagr": 35.751051,
+        "mdd": 36.386957
+      },
+      "60": {
+        "sharpe": 1.14364,
+        "cagr": 37.098118,
+        "mdd": 36.326884
+      },
+      "72": {
+        "sharpe": 1.158231,
+        "cagr": 36.755717,
+        "mdd": 36.136569
+      },
+      "84": {
+        "sharpe": 1.216625,
+        "cagr": 38.205074,
+        "mdd": 36.136569
+      },
+      "96": {
+        "sharpe": 1.177045,
+        "cagr": 35.794716,
+        "mdd": 30.427038
+      },
+      "108": {
+        "sharpe": 1.167271,
+        "cagr": 35.110424,
+        "mdd": 35.656808
+      },
+      "120": {
+        "sharpe": 1.178908,
+        "cagr": 35.185892,
+        "mdd": 33.9913
+      },
+      "144": {
+        "sharpe": 1.1029,
+        "cagr": 31.617077,
+        "mdd": 33.732465
+      },
+      "168": {
+        "sharpe": 1.083727,
+        "cagr": 29.912774,
+        "mdd": 36.472117
+      },
+      "200": {
+        "sharpe": 0.95632,
+        "cagr": 24.73142,
+        "mdd": 45.065156
+      },
+      "240": {
+        "sharpe": 1.001199,
+        "cagr": 25.214023,
+        "mdd": 42.443913
+      },
+      "300": {
+        "sharpe": 0.980648,
+        "cagr": 23.809708,
+        "mdd": 37.946903
+      },
+      "360": {
+        "sharpe": 0.891594,
+        "cagr": 20.826002,
+        "mdd": 37.946903
+      },
+      "500": {
+        "sharpe": 0.876326,
+        "cagr": 19.24862,
+        "mdd": 41.492737
+      },
+      "720": {
+        "sharpe": 1.004331,
+        "cagr": 21.736706,
+        "mdd": 28.549644
+      }
+    },
+    "VCUSUM": {
+      "30": {
+        "sharpe": 1.041654,
+        "cagr": 29.881594,
+        "mdd": 38.740329
+      },
+      "48": {
+        "sharpe": 0.898571,
+        "cagr": 23.276728,
+        "mdd": 27.829539
+      },
+      "60": {
+        "sharpe": 1.031479,
+        "cagr": 28.325243,
+        "mdd": 27.152976
+      },
+      "72": {
+        "sharpe": 0.851112,
+        "cagr": 21.694497,
+        "mdd": 27.836369
+      },
+      "84": {
+        "sharpe": 1.00833,
+        "cagr": 27.997072,
+        "mdd": 30.446298
+      },
+      "96": {
+        "sharpe": 0.887109,
+        "cagr": 23.131964,
+        "mdd": 29.896279
+      },
+      "108": {
+        "sharpe": 0.84549,
+        "cagr": 21.627788,
+        "mdd": 29.896279
+      },
+      "120": {
+        "sharpe": 0.933863,
+        "cagr": 25.192963,
+        "mdd": 28.480226
+      },
+      "144": {
+        "sharpe": 0.89843,
+        "cagr": 23.694542,
+        "mdd": 30.258002
+      },
+      "168": {
+        "sharpe": 0.906392,
+        "cagr": 24.36694,
+        "mdd": 30.631038
+      },
+      "200": {
+        "sharpe": 0.782837,
+        "cagr": 20.159288,
+        "mdd": 32.877493
+      },
+      "240": {
+        "sharpe": 0.484234,
+        "cagr": 10.12114,
+        "mdd": 32.877493
+      },
+      "300": {
+        "sharpe": 0.655045,
+        "cagr": 15.635487,
+        "mdd": 40.314938
+      },
+      "360": {
+        "sharpe": 0.564198,
+        "cagr": 12.604878,
+        "mdd": 34.16228
+      },
+      "500": {
+        "sharpe": 0.613664,
+        "cagr": 14.502189,
+        "mdd": 36.165569
+      },
+      "720": {
+        "sharpe": 0.778111,
+        "cagr": 20.703918,
+        "mdd": 36.456597
+      }
+    }
+  },
+  "v1_real_data_wins": {
+    "VTREND_A0 vs VTREND_A1": {
+      "control_type": "negative_control",
+      "sharpe": {
+        "wins": 10,
+        "losses": 6,
+        "ties": 0,
+        "win_detail": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "p_binomial": 0.2272491455078125,
+        "verdict": "NOT SIG"
+      },
+      "cagr": {
+        "wins": 14,
+        "losses": 2,
+        "ties": 0,
+        "win_detail": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "p_binomial": 0.0020904541015625,
+        "verdict": "PROVEN **"
+      },
+      "mdd": {
+        "wins": 12,
+        "losses": 3,
+        "ties": 1,
+        "win_detail": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "p_binomial": 0.0384063720703125,
+        "verdict": "STRONG"
+      }
+    },
+    "VTREND_A0 vs VBREAK": {
+      "control_type": "mid_positive_control",
+      "sharpe": {
+        "wins": 9,
+        "losses": 7,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "p_binomial": 0.4018096923828125,
+        "verdict": "NOT SIG"
+      },
+      "cagr": {
+        "wins": 12,
+        "losses": 4,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "p_binomial": 0.0384063720703125,
+        "verdict": "STRONG"
+      },
+      "mdd": {
+        "wins": 2,
+        "losses": 14,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "p_binomial": 0.9997406005859375,
+        "verdict": "NOT SIG"
+      }
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "control_type": "strong_positive_control",
+      "sharpe": {
+        "wins": 13,
+        "losses": 3,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "p_binomial": 0.0106353759765625,
+        "verdict": "PROVEN *"
+      },
+      "cagr": {
+        "wins": 13,
+        "losses": 3,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "p_binomial": 0.0106353759765625,
+        "verdict": "PROVEN *"
+      },
+      "mdd": {
+        "wins": 0,
+        "losses": 16,
+        "ties": 0,
+        "win_detail": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "p_binomial": 1.0,
+        "verdict": "NOT SIG"
+      }
+    }
+  },
+  "v2_bootstrap_binomial": {
+    "VTREND_A0 vs VTREND_A1": {
+      "control_type": "negative_control",
+      "sharpe": {
+        "p_win_per_timescale": [
+          0.586,
+          0.524,
+          0.522,
+          0.538,
+          0.532,
+          0.536,
+          0.56,
+          0.574,
+          0.56,
+          0.55,
+          0.576,
+          0.576,
+          0.562,
+          0.56,
+          0.538,
+          0.542
+        ],
+        "wins": 16,
+        "p_binomial": 1.52587890625e-05,
+        "verdict": "PROVEN ***"
+      },
+      "cagr": {
+        "p_win_per_timescale": [
+          0.578,
+          0.514,
+          0.526,
+          0.536,
+          0.534,
+          0.538,
+          0.554,
+          0.576,
+          0.562,
+          0.55,
+          0.576,
+          0.58,
+          0.57,
+          0.564,
+          0.548,
+          0.55
+        ],
+        "wins": 16,
+        "p_binomial": 1.52587890625e-05,
+        "verdict": "PROVEN ***"
+      },
+      "mdd": {
+        "p_win_per_timescale": [
+          0.438,
+          0.432,
+          0.438,
+          0.436,
+          0.426,
+          0.464,
+          0.474,
+          0.486,
+          0.478,
+          0.48,
+          0.476,
+          0.48,
+          0.474,
+          0.494,
+          0.51,
+          0.494
+        ],
+        "wins": 1,
+        "p_binomial": 0.9999847412109375,
+        "verdict": "NOT SIG"
+      }
+    },
+    "VTREND_A0 vs VBREAK": {
+      "control_type": "mid_positive_control",
+      "sharpe": {
+        "p_win_per_timescale": [
+          0.148,
+          0.194,
+          0.26,
+          0.286,
+          0.312,
+          0.346,
+          0.37,
+          0.374,
+          0.386,
+          0.404,
+          0.408,
+          0.416,
+          0.444,
+          0.46,
+          0.488,
+          0.526
+        ],
+        "wins": 1,
+        "p_binomial": 0.9999847412109375,
+        "verdict": "NOT SIG"
+      },
+      "cagr": {
+        "p_win_per_timescale": [
+          0.176,
+          0.244,
+          0.338,
+          0.364,
+          0.434,
+          0.448,
+          0.484,
+          0.496,
+          0.51,
+          0.546,
+          0.54,
+          0.528,
+          0.538,
+          0.57,
+          0.586,
+          0.608
+        ],
+        "wins": 8,
+        "p_binomial": 0.5981903076171875,
+        "verdict": "NOT SIG"
+      },
+      "mdd": {
+        "p_win_per_timescale": [
+          0.106,
+          0.088,
+          0.09,
+          0.09,
+          0.078,
+          0.096,
+          0.08,
+          0.076,
+          0.078,
+          0.07,
+          0.058,
+          0.036,
+          0.032,
+          0.034,
+          0.022,
+          0.018
+        ],
+        "wins": 0,
+        "p_binomial": 1.0,
+        "verdict": "NOT SIG"
+      }
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "control_type": "strong_positive_control",
+      "sharpe": {
+        "p_win_per_timescale": [
+          0.226,
+          0.298,
+          0.362,
+          0.378,
+          0.418,
+          0.454,
+          0.482,
+          0.512,
+          0.518,
+          0.55,
+          0.57,
+          0.546,
+          0.524,
+          0.53,
+          0.5,
+          0.508
+        ],
+        "wins": 8,
+        "p_binomial": 0.5981903076171875,
+        "verdict": "NOT SIG"
+      },
+      "cagr": {
+        "p_win_per_timescale": [
+          0.3,
+          0.416,
+          0.448,
+          0.472,
+          0.512,
+          0.534,
+          0.548,
+          0.586,
+          0.58,
+          0.606,
+          0.608,
+          0.588,
+          0.564,
+          0.578,
+          0.542,
+          0.568
+        ],
+        "wins": 12,
+        "p_binomial": 0.0384063720703125,
+        "verdict": "STRONG"
+      },
+      "mdd": {
+        "p_win_per_timescale": [
+          0.03,
+          0.062,
+          0.078,
+          0.072,
+          0.084,
+          0.096,
+          0.108,
+          0.102,
+          0.156,
+          0.156,
+          0.154,
+          0.168,
+          0.15,
+          0.172,
+          0.15,
+          0.182
+        ],
+        "wins": 0,
+        "p_binomial": 1.0,
+        "verdict": "NOT SIG"
+      }
+    }
+  },
+  "v3_dof_corrected": {
+    "VTREND_A0 vs VTREND_A1": {
+      "control_type": "negative_control",
+      "sharpe": {
+        "wins": 16,
+        "p_nominal": 1.52587890625e-05,
+        "verdict_nominal": "PROVEN ***",
+        "p_corrected": 0.25,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 10.85,
+          "li_ji": 6.36,
+          "galwey": 2.46,
+          "conservative": 2.46
+        },
+        "mean_adj_corr": 0.7871146724882148,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 10.85,
+            "wins_scaled": 11,
+            "p_value": 0.00048828125
+          },
+          "li_ji": {
+            "m_eff": 6.36,
+            "wins_scaled": 6,
+            "p_value": 0.015625
+          },
+          "galwey": {
+            "m_eff": 2.46,
+            "wins_scaled": 2,
+            "p_value": 0.25
+          },
+          "conservative": {
+            "m_eff": 2.46,
+            "wins_scaled": 2,
+            "p_value": 0.25
+          }
+        }
+      },
+      "cagr": {
+        "wins": 16,
+        "p_nominal": 1.52587890625e-05,
+        "verdict_nominal": "PROVEN ***",
+        "p_corrected": 0.25,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 10.9,
+          "li_ji": 6.36,
+          "galwey": 2.49,
+          "conservative": 2.49
+        },
+        "mean_adj_corr": 0.7885981741997277,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 10.9,
+            "wins_scaled": 11,
+            "p_value": 0.00048828125
+          },
+          "li_ji": {
+            "m_eff": 6.36,
+            "wins_scaled": 6,
+            "p_value": 0.015625
+          },
+          "galwey": {
+            "m_eff": 2.49,
+            "wins_scaled": 2,
+            "p_value": 0.25
+          },
+          "conservative": {
+            "m_eff": 2.49,
+            "wins_scaled": 2,
+            "p_value": 0.25
+          }
+        }
+      },
+      "mdd": {
+        "wins": 1,
+        "p_nominal": 0.9999847412109375,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 1.0,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 14.38,
+          "li_ji": 9.57,
+          "galwey": 5.86,
+          "conservative": 5.86
+        },
+        "mean_adj_corr": 0.5692279787937168,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 14.38,
+            "wins_scaled": 1,
+            "p_value": 0.99993896484375
+          },
+          "li_ji": {
+            "m_eff": 9.57,
+            "wins_scaled": 1,
+            "p_value": 0.9990234375
+          },
+          "galwey": {
+            "m_eff": 5.86,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "conservative": {
+            "m_eff": 5.86,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          }
+        }
+      }
+    },
+    "VTREND_A0 vs VBREAK": {
+      "control_type": "mid_positive_control",
+      "sharpe": {
+        "wins": 1,
+        "p_nominal": 0.9999847412109375,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 1.0,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 13.16,
+          "li_ji": 8.37,
+          "galwey": 3.97,
+          "conservative": 3.97
+        },
+        "mean_adj_corr": 0.6575057496791162,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 13.16,
+            "wins_scaled": 1,
+            "p_value": 0.9998779296875
+          },
+          "li_ji": {
+            "m_eff": 8.37,
+            "wins_scaled": 1,
+            "p_value": 0.99609375
+          },
+          "galwey": {
+            "m_eff": 3.97,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "conservative": {
+            "m_eff": 3.97,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          }
+        }
+      },
+      "cagr": {
+        "wins": 8,
+        "p_nominal": 0.5981903076171875,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 0.6875,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 12.85,
+          "li_ji": 8.03,
+          "galwey": 3.67,
+          "conservative": 3.67
+        },
+        "mean_adj_corr": 0.6774653862710027,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 12.85,
+            "wins_scaled": 6,
+            "p_value": 0.70947265625
+          },
+          "li_ji": {
+            "m_eff": 8.03,
+            "wins_scaled": 4,
+            "p_value": 0.63671875
+          },
+          "galwey": {
+            "m_eff": 3.67,
+            "wins_scaled": 2,
+            "p_value": 0.6875
+          },
+          "conservative": {
+            "m_eff": 3.67,
+            "wins_scaled": 2,
+            "p_value": 0.6875
+          }
+        }
+      },
+      "mdd": {
+        "wins": 0,
+        "p_nominal": 1.0,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 1.0,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 14.94,
+          "li_ji": 10.35,
+          "galwey": 7.52,
+          "conservative": 7.52
+        },
+        "mean_adj_corr": 0.4909411675123755,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 14.94,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "li_ji": {
+            "m_eff": 10.35,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "galwey": {
+            "m_eff": 7.52,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "conservative": {
+            "m_eff": 7.52,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          }
+        }
+      }
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "control_type": "strong_positive_control",
+      "sharpe": {
+        "wins": 8,
+        "p_nominal": 0.5981903076171875,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 0.6875,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 13.11,
+          "li_ji": 8.12,
+          "galwey": 3.92,
+          "conservative": 3.92
+        },
+        "mean_adj_corr": 0.6756359435289343,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 13.11,
+            "wins_scaled": 7,
+            "p_value": 0.5
+          },
+          "li_ji": {
+            "m_eff": 8.12,
+            "wins_scaled": 4,
+            "p_value": 0.63671875
+          },
+          "galwey": {
+            "m_eff": 3.92,
+            "wins_scaled": 2,
+            "p_value": 0.6875
+          },
+          "conservative": {
+            "m_eff": 3.92,
+            "wins_scaled": 2,
+            "p_value": 0.6875
+          }
+        }
+      },
+      "cagr": {
+        "wins": 12,
+        "p_nominal": 0.0384063720703125,
+        "verdict_nominal": "STRONG",
+        "p_corrected": 0.125,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 12.61,
+          "li_ji": 7.58,
+          "galwey": 3.47,
+          "conservative": 3.47
+        },
+        "mean_adj_corr": 0.7111815393753443,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 12.61,
+            "wins_scaled": 9,
+            "p_value": 0.1334228515625
+          },
+          "li_ji": {
+            "m_eff": 7.58,
+            "wins_scaled": 6,
+            "p_value": 0.14453125
+          },
+          "galwey": {
+            "m_eff": 3.47,
+            "wins_scaled": 3,
+            "p_value": 0.125
+          },
+          "conservative": {
+            "m_eff": 3.47,
+            "wins_scaled": 3,
+            "p_value": 0.125
+          }
+        }
+      },
+      "mdd": {
+        "wins": 0,
+        "p_nominal": 1.0,
+        "verdict_nominal": "NOT SIG",
+        "p_corrected": 1.0,
+        "verdict_corrected": "NOT SIG",
+        "meff": {
+          "nyholt": 14.77,
+          "li_ji": 10.08,
+          "galwey": 6.92,
+          "conservative": 6.92
+        },
+        "mean_adj_corr": 0.5340264267448351,
+        "corrected_detail": {
+          "nyholt": {
+            "m_eff": 14.77,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "li_ji": {
+            "m_eff": 10.08,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "galwey": {
+            "m_eff": 6.92,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          },
+          "conservative": {
+            "m_eff": 6.92,
+            "wins_scaled": 0,
+            "p_value": 1.0
+          }
+        }
+      }
+    }
+  },
+  "timescale_dependence": {
+    "VTREND_A0 vs VTREND_A1": {
+      "sharpe": {
+        "binary_mean_adj_r": 0.7871,
+        "binary_meff_conservative": 2.46,
+        "continuous_mean_adj_r": 0.9308
+      },
+      "cagr": {
+        "binary_mean_adj_r": 0.7886,
+        "binary_meff_conservative": 2.49,
+        "continuous_mean_adj_r": 0.9345
+      }
+    },
+    "VTREND_A0 vs VBREAK": {
+      "sharpe": {
+        "binary_mean_adj_r": 0.6575,
+        "binary_meff_conservative": 3.97,
+        "continuous_mean_adj_r": 0.8512
+      },
+      "cagr": {
+        "binary_mean_adj_r": 0.6775,
+        "binary_meff_conservative": 3.67,
+        "continuous_mean_adj_r": 0.8662
+      }
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "sharpe": {
+        "binary_mean_adj_r": 0.6756,
+        "binary_meff_conservative": 3.92,
+        "continuous_mean_adj_r": 0.8698
+      },
+      "cagr": {
+        "binary_mean_adj_r": 0.7112,
+        "binary_meff_conservative": 3.47,
+        "continuous_mean_adj_r": 0.8948
+      }
+    }
+  },
+  "comparison": {
+    "VTREND_A0 vs VTREND_A1": {
+      "expected": "FAIL",
+      "boot_ci": "FAIL",
+      "sub_ci": "FAIL",
+      "v1_sharpe": "FAIL",
+      "v1_cagr": "PASS",
+      "v2_sharpe": "PASS",
+      "v2_cagr": "PASS",
+      "v3_sharpe": "FAIL",
+      "v3_cagr": "FAIL"
+    },
+    "VTREND_A0 vs VBREAK": {
+      "expected": "PASS",
+      "boot_ci": "FAIL",
+      "sub_ci": "FAIL",
+      "v1_sharpe": "FAIL",
+      "v1_cagr": "PASS",
+      "v2_sharpe": "FAIL",
+      "v2_cagr": "FAIL",
+      "v3_sharpe": "FAIL",
+      "v3_cagr": "FAIL"
+    },
+    "VTREND_A0 vs VCUSUM": {
+      "expected": "PASS",
+      "boot_ci": "FAIL",
+      "sub_ci": "FAIL",
+      "v1_sharpe": "PASS",
+      "v1_cagr": "PASS",
+      "v2_sharpe": "FAIL",
+      "v2_cagr": "PASS",
+      "v3_sharpe": "FAIL",
+      "v3_cagr": "FAIL"
+    }
+  },
+  "total_time_s": 709.3,
+  "boot_time_s": 707.0
+}

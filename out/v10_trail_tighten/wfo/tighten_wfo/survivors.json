@@ -1,0 +1,325 @@
+[
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.18
+    },
+    "windows_tested": 2,
+    "windows_passed": 2,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 259.87,
+        "test_score": -1000000.0,
+        "test_return_pct": 26.35,
+        "test_mdd_pct": 17.78,
+        "passed": true
+      },
+      {
+        "window_id": 5,
+        "train_score": -1.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 19.47,
+        "test_mdd_pct": 18.02,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.2
+    },
+    "windows_tested": 2,
+    "windows_passed": 2,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 259.87,
+        "test_score": -1000000.0,
+        "test_return_pct": 22.42,
+        "test_mdd_pct": 17.78,
+        "passed": true
+      },
+      {
+        "window_id": 5,
+        "train_score": -1.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 19.47,
+        "test_mdd_pct": 18.02,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.22
+    },
+    "windows_tested": 5,
+    "windows_passed": 5,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 1,
+        "train_score": 212.83,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.69,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 255.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 274.02,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 57.94,
+        "test_score": -1000000.0,
+        "test_return_pct": 3.08,
+        "test_mdd_pct": 14.54,
+        "passed": true
+      },
+      {
+        "window_id": 5,
+        "train_score": -1.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 19.47,
+        "test_mdd_pct": 18.02,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.25
+    },
+    "windows_tested": 5,
+    "windows_passed": 5,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 1,
+        "train_score": 210.83,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.69,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 255.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 274.02,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 57.94,
+        "test_score": -1000000.0,
+        "test_return_pct": 3.08,
+        "test_mdd_pct": 14.54,
+        "passed": true
+      },
+      {
+        "window_id": 6,
+        "train_score": 36.59,
+        "test_score": 81.26,
+        "test_return_pct": 15.62,
+        "test_mdd_pct": 23.59,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.28
+    },
+    "windows_tested": 8,
+    "windows_passed": 7,
+    "pass_rate": 0.875,
+    "median_test_score": -44.08,
+    "window_details": [
+      {
+        "window_id": 1,
+        "train_score": 210.83,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.69,
+        "test_mdd_pct": 23.51,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 255.44,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 274.02,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 57.94,
+        "test_score": -1000000.0,
+        "test_return_pct": 3.08,
+        "test_mdd_pct": 14.54,
+        "passed": true
+      },
+      {
+        "window_id": 6,
+        "train_score": 36.59,
+        "test_score": 174.63,
+        "test_return_pct": 29.51,
+        "test_mdd_pct": 20.05,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 77.37,
+        "test_score": 261.29,
+        "test_return_pct": 40.36,
+        "test_mdd_pct": 10.2,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 119.79,
+        "test_score": -44.08,
+        "test_return_pct": -5.86,
+        "test_mdd_pct": 27.5,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 119.82,
+        "test_score": -14.87,
+        "test_return_pct": -1.39,
+        "test_mdd_pct": 15.07,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.3
+    },
+    "windows_tested": 4,
+    "windows_passed": 3,
+    "pass_rate": 0.75,
+    "median_test_score": 174.63,
+    "window_details": [
+      {
+        "window_id": 6,
+        "train_score": 30.06,
+        "test_score": 174.63,
+        "test_return_pct": 29.51,
+        "test_mdd_pct": 20.05,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 71.0,
+        "test_score": 261.29,
+        "test_return_pct": 40.36,
+        "test_mdd_pct": 10.2,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 112.86,
+        "test_score": -44.08,
+        "test_return_pct": -5.86,
+        "test_mdd_pct": 27.5,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 129.97,
+        "test_score": -14.87,
+        "test_return_pct": -1.39,
+        "test_mdd_pct": 15.07,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "trail_tighten_profit_pct": 0.35
+    },
+    "windows_tested": 3,
+    "windows_passed": 2,
+    "pass_rate": 0.6667,
+    "median_test_score": -14.87,
+    "window_details": [
+      {
+        "window_id": 7,
+        "train_score": 61.63,
+        "test_score": 261.29,
+        "test_return_pct": 40.36,
+        "test_mdd_pct": 10.2,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 103.15,
+        "test_score": -44.08,
+        "test_return_pct": -5.86,
+        "test_mdd_pct": 27.5,
+        "passed": false
+      },
+      {
+        "window_id": 9,
+        "train_score": 120.05,
+        "test_score": -14.87,
+        "test_return_pct": -1.39,
+        "test_mdd_pct": 15.07,
+        "passed": true
+      }
+    ]
+  }
+]

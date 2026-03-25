@@ -1,0 +1,24 @@
+
+=== orders (first 10 rows) ===
+client_order_id | symbol | side | type | quantity | price | reason | status | exchange_order_id | created_at_ms | updated_at_ms
+------------------------------------------------------------------------------------------------------------------------
+9781ed73822291837600 | BTCUSDT | BUY | MARKET | 0.001 | None | smoke_buy_1 | FILLED | 5076481 | 1771778766271 | 1771778766380
+b47c426de714259e89ae | BTCUSDT | BUY | MARKET | 0.001 | None | smoke_buy_2 | FILLED | 5076484 | 1771778767007 | 1771778767118
+fec5296628f069894d8f | BTCUSDT | SELL | MARKET | 0.002 | None | smoke_sell_final | FILLED | 5076494 | 1771778768455 | 1771778768563
+157edb846b2b8dd7852b | BTCUSDT | BUY | MARKET | 0.001 | None | crash_test | FILLED | 5076499 | 1771778768995 | 1771778769113
+(total rows: 4)
+
+=== fills (first 10 rows) ===
+trade_id | client_order_id | symbol | price | qty | commission | commission_asset | time_ms | is_buyer | is_maker
+------------------------------------------------------------------------------------------------------------------------
+1072663 | 9781ed73822291837600 | BTCUSDT | 67606.0 | 0.001 | 0.0 | BTC | 1771778766345 | 1 | 0
+1072665 | b47c426de714259e89ae | BTCUSDT | 67606.0 | 0.001 | 0.0 | BTC | 1771778767082 | 1 | 0
+1072668 | fec5296628f069894d8f | BTCUSDT | 67605.99 | 0.002 | 0.0 | USDT | 1771778768527 | 0 | 0
+1072669 | 157edb846b2b8dd7852b | BTCUSDT | 67606.0 | 0.001 | 0.0 | BTC | 1771778769077 | 1 | 0
+(total rows: 4)
+
+=== kv (first 10 rows) ===
+key | value
+------------------------------------------------------------------------------------------------------------------------
+last_trade_id | 1072669
+(total rows: 1)

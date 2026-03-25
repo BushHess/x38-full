@@ -1,0 +1,18 @@
+{
+  "breadth": {
+    "n": 186,
+    "spearman_r": -0.0545,
+    "spearman_p": 0.4602,
+    "coverage": "186/186"
+  },
+  "funding": {
+    "n": 165,
+    "spearman_r": -0.1974,
+    "spearman_p": 0.0111
+  },
+  "orthogonality": {
+    "breadth_funding_r": 0.2389,
+    "breadth_funding_p": 0.002,
+    "n": 165
+  }
+}

@@ -1,0 +1,90 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-03-08 16:07:00 UTC
+Candidate: vtrend_x2
+Baseline: vtrend_x0
+Suite: all
+Scenarios: smart,base,harsh
+Seed: 1337
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_vtrend_x0_default.yaml
+configs/candidate_vtrend_x2_default.yaml
+
+[results]
+results/add_throttle_stats.json
+results/bootstrap_paired_test.csv
+results/bootstrap_return_diff.json
+results/bootstrap_summary.json
+results/churn_metrics.csv
+results/config_unused_fields.json
+results/config_used_fields.json
+results/cost_sweep.csv
+results/data_integrity.json
+results/data_integrity_issues.csv
+results/dd_episodes_baseline.csv
+results/dd_episodes_candidate.csv
+results/dd_episodes_summary.json
+results/effective_config_baseline.json
+results/effective_config_candidate.json
+results/final_holdout_metrics.csv
+results/full_backtest_detail.json
+results/full_backtest_summary.csv
+results/holdout_detail.json
+results/holdout_lock.json
+results/invariant_violations.csv
+results/lookahead_check.txt
+results/matched_trades.csv
+results/regime_decomposition.csv
+results/regime_decomposition.json
+results/regime_trade_summary.csv
+results/score_breakdown_full.csv
+results/score_breakdown_holdout.csv
+results/selection_bias.json
+results/sensitivity_detail.json
+results/sensitivity_grid.csv
+results/subsampling_paired_test.csv
+results/subsampling_summary.json
+results/trade_level_summary.json
+results/trades_baseline.csv
+results/trades_candidate.csv
+results/wfo_per_round_metrics.csv
+results/wfo_summary.json
+results/window_trade_counts.csv
+
+[reports]
+reports/audit_effective_config.md
+reports/audit_score_decomposition.md
+reports/audit_wfo_invalid_windows.md
+reports/decision.json
+reports/discovered_tests.md
+reports/quality_checks.md
+reports/trade_level_analysis.md
+reports/validation_report.md
+
+[suite_status]
+lookahead: pass
+data_integrity: pass
+backtest: pass
+cost_sweep: pass
+invariants: pass
+churn_metrics: pass
+regime: info
+wfo: fail
+bootstrap: info
+subsampling: info
+sensitivity: info
+holdout: fail
+selection_bias: pass
+trade_level: info
+dd_episodes: info
+overlay: skip
+
+[decision]
+verdict=REJECT
+exit_code=2
+- Holdout harsh score delta too low (-22.1860)
+- WFO robustness did not meet threshold

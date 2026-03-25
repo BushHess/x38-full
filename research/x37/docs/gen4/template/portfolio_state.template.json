@@ -1,0 +1,51 @@
+{
+  "_schema_notes": {
+    "no_robust_candidate": "If active_champion_id is NO_ROBUST_CANDIDATE: set active_challenger_ids to [], current_forward_status to governance_required, and candidate_states to {}.",
+    "system_version_id": "The frozen version these candidates belong to. Must match candidate_registry."
+  },
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "state_pack_version": "v1",
+  "active_champion_id": "CHAMPION_PLACEHOLDER",
+  "active_challenger_ids": [
+    "CHALLENGER_1_PLACEHOLDER"
+  ],
+  "current_forward_status": "not_started",
+  "forward_boundary_utc": null,
+  "last_evaluated_timestamp_by_timeframe_utc": {
+    "15m": null,
+    "1h": null,
+    "4h": null,
+    "1d": null
+  },
+  "warmup_requirements": {
+    "15m_bars_required": 0,
+    "1h_bars_required": 0,
+    "4h_bars_required": 0,
+    "1d_bars_required": 0
+  },
+  "candidate_states": {
+    "CHAMPION_PLACEHOLDER": {
+      "position_state": "flat",
+      "position_fraction": 0.0,
+      "entry_time_utc": null,
+      "entry_price": null,
+      "trail_state": null,
+      "custom_state": null,
+      "last_signal_time_utc": null,
+      "reconstructable_from_warmup_only": true
+    },
+    "CHALLENGER_1_PLACEHOLDER": {
+      "position_state": "flat",
+      "position_fraction": 0.0,
+      "entry_time_utc": null,
+      "entry_price": null,
+      "trail_state": null,
+      "custom_state": null,
+      "last_signal_time_utc": null,
+      "reconstructable_from_warmup_only": true
+    }
+  },
+  "notes": "Update only in packaging prompts."
+}

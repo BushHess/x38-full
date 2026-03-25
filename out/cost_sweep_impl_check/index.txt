@@ -1,0 +1,55 @@
+VALIDATION OUTPUT INDEX
+================================================
+Generated: 2026-02-24 06:40:30 UTC
+Candidate: v10_baseline
+Baseline: v10_baseline
+Suite: basic
+Scenarios: smart,base,harsh
+Seed: 1337
+
+[logs]
+logs/run.log
+
+[configs]
+configs/baseline_baseline_legacy.live.yaml
+configs/candidate_baseline_legacy.live.yaml
+
+[results]
+results/churn_metrics.csv
+results/cost_sweep.csv
+results/data_integrity.json
+results/data_integrity_issues.csv
+results/full_backtest_detail.json
+results/full_backtest_summary.csv
+results/invariant_violations.csv
+results/matched_trades.csv
+results/regime_decomposition.csv
+results/regime_decomposition.json
+results/regime_trade_summary.csv
+results/trade_level_summary.json
+results/trades_baseline.csv
+results/trades_candidate.csv
+results/wfo_per_round_metrics.csv
+results/wfo_summary.json
+results/window_trade_counts.csv
+
+[reports]
+reports/decision.json
+reports/discovered_tests.md
+reports/quality_checks.md
+reports/validation_report.md
+
+[suite_status]
+data_integrity: pass
+backtest: pass
+cost_sweep: pass
+invariants: pass
+churn_metrics: info
+regime: info
+wfo: fail
+trade_level: info
+
+[decision]
+verdict=HOLD
+exit_code=1
+- WFO robustness did not meet threshold

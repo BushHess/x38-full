@@ -1,0 +1,8 @@
+{
+  "cycle_early_aggression": 1.0,
+  "cycle_early_trail_mult": 3.5,
+  "cycle_late_aggression": 0.95,
+  "cycle_late_max_exposure": 0.9,
+  "cycle_late_trail_mult": 2.8,
+  "enable_cycle_phase": true
+}

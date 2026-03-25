@@ -1,0 +1,16 @@
+{
+  "run_id": "smoke_c3_1771778765",
+  "started_at": "2026-02-22T16:46:05Z",
+  "git_hash": "c74c650",
+  "config_fingerprint": "10dc24fe41bc",
+  "symbol": "BTCUSDT",
+  "env": "testnet",
+  "exchange_info": {
+    "step_size": "0.00001000",
+    "tick_size": "0.01000000",
+    "min_qty": "0.00001000",
+    "min_notional": "5.00000000"
+  },
+  "finished_at": "2026-02-22T16:46:09Z",
+  "total_cycles": 6
+}

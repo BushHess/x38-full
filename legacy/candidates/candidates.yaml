@@ -1,0 +1,15 @@
+# Production candidate registry
+# Rule: only point to `strategies/` and `configs/v*/`.
+
+candidates:
+  - id: v13_add_throttle
+    strategy_dir: strategies/v13_add_throttle
+    config_path: configs/v13/v13_add_throttle_default.yaml
+
+  - id: v12_emdd_ref_fix
+    strategy_dir: strategies/v12_emdd_ref_fix
+    config_path: configs/v12/v12_emdd_ref_fix.yaml
+
+  - id: v12_emdd_ref_fix_step5_best
+    strategy_dir: strategies/v12_emdd_ref_fix
+    config_path: configs/v12/v12_emdd_ref_fix_step5_best.yaml

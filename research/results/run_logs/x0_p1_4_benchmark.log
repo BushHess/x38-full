@@ -1,0 +1,76 @@
+/var/www/trading-bots/btc-spot-dev/research/x0/p1_4_benchmark.py:35: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+P1.4 — X0 Phase 1 Full Benchmark
+================================================================================
+Loading data...
+  H4: 17838 bars, D1: 2973 bars
+  Warmup index: 2190 (reporting from bar 2190 onwards)
+
+================================================================================
+T1: FULL BACKTEST (3 cost scenarios)
+================================================================================
+
+Strategy       Scenario   Sharpe    CAGR%     MDD%   Calmar  Trades   TotRet%
+-----------------------------------------------------------------------------
+E0             smart      1.5277    68.39    38.42   1.7798     211   4029.20
+E0             base       1.4056    60.55    39.96   1.5155     211   2838.45
+E0             harsh      1.2765    52.68    41.53   1.2684     211   1951.93
+E0_EMA21       smart      1.6019    72.33    37.23   1.9427     189   4770.66
+E0_EMA21       base       1.4900    65.06    38.57   1.6867     189   3480.24
+E0_EMA21       harsh      1.3718    57.72    39.96   1.4445     189   2487.08
+E5             smart      1.6404    74.55    36.85   2.0228     225   5236.33
+E5             base       1.5064    65.80    38.54   1.7075     225   3596.32
+E5             harsh      1.3647    57.04    40.26   1.4166     225   2408.63
+E5_EMA21       smart      1.7226    78.83    35.63   2.2125     202   6244.35
+E5_EMA21       base       1.5994    70.68    37.56   1.8820     202   4447.44
+E5_EMA21       harsh      1.4690    62.48    40.90   1.5275     202   3099.72
+X0             smart      1.6019    72.33    37.23   1.9427     189   4770.66
+X0             base       1.4900    65.06    38.57   1.6867     189   3480.24
+X0             harsh      1.3718    57.72    39.96   1.4445     189   2487.08
+
+  X0 vs E0_EMA21 parity check:
+    smart: BIT-IDENTICAL
+    base: BIT-IDENTICAL
+    harsh: BIT-IDENTICAL
+
+================================================================================
+T2: BOOTSTRAP VCBB (500 paths, slow=120, block=60)
+================================================================================
+  Generating bootstrap paths... done (6.5s)
+  E0              Sharpe=0.3365 [-0.3806, 0.9816]  CAGR=5.44% [-19.87, 38.44]  MDD=70.49% [49.21, 89.40]  P(CAGR>0)=0.620  (17.1s)
+  E0_EMA21        Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (26.9s)
+  E5              Sharpe=0.2907 [-0.4197, 0.9441]  CAGR=3.79% [-20.40, 36.12]  MDD=69.42% [49.03, 89.38]  P(CAGR>0)=0.590  (33.0s)
+  E5_EMA21        Sharpe=0.2357 [-0.4865, 0.9397]  CAGR=2.45% [-18.20, 31.21]  MDD=62.41% [43.01, 86.21]  P(CAGR>0)=0.560  (41.5s)
+  X0              Sharpe=0.2689 [-0.4268, 0.9687]  CAGR=3.48% [-17.30, 31.79]  MDD=62.53% [43.10, 85.40]  P(CAGR>0)=0.594  (27.0s)
+
+  X0 vs E0_EMA21 bootstrap parity:
+    BIT-IDENTICAL
+
+Results saved to /var/www/trading-bots/btc-spot-dev/research/x0/
+
+================================================================================
+RANKINGS (harsh scenario)
+================================================================================
+
+  By Sharpe:
+    1. E5_EMA21       = 1.4690
+    2. E0_EMA21       = 1.3718
+    3. X0             = 1.3718
+    4. E5             = 1.3647
+    5. E0             = 1.2765
+
+  By CAGR%:
+    1. E5_EMA21       = 62.4816
+    2. E0_EMA21       = 57.7162
+    3. X0             = 57.7162
+    4. E5             = 57.0375
+    5. E0             = 52.6792
+
+  By MDD%:
+    1. E0_EMA21       = 39.9571
+    2. X0             = 39.9571
+    3. E5             = 40.2624
+    4. E5_EMA21       = 40.9045
+    5. E0             = 41.5331
+
+Total time: 154.6s

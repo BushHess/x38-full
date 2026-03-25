@@ -1,0 +1,11 @@
+rank,peak_date,trough_date,depth_pct,duration_days,recovery_days,peak_nav,trough_nav,btc_peak_price,btc_trough_price,btc_dd_pct,dominant_regime,exposure_at_peak,exposure_at_trough,max_exposure_during,n_trades_overlapping,n_buy_fills,n_sell_fills,entry_reasons,exit_reasons
+1,2019-06-26,2020-07-05,39.92,374.8,135.5,24885.7,14950.81,13961.0,9028.0,35.3,BULL,0.982,0.779,1.0,20,93,19,"{""vdo_trend_accel"": 79, ""vdo_trend"": 12, ""vdo_dip_buy"": 2}","{""trailing_stop"": 10, ""emergency_dd"": 9}"
+2,2021-11-09,2023-10-12,37.02,702.5,124.8,68978.38,43441.35,68490.0,26675.0,61.1,BEAR,0.958,0.683,0.989,13,60,12,"{""vdo_trend"": 11, ""vdo_trend_accel"": 44, ""vdo_dip_buy"": 5}","{""trailing_stop"": 5, ""emergency_dd"": 6, ""fixed_stop"": 1}"
+3,2024-05-20,2024-08-07,29.81,78.8,104.0,88391.5,62041.52,71447.0,54759.0,23.4,BULL,0.972,0.75,0.972,8,31,7,"{""vdo_trend_accel"": 22, ""vdo_trend"": 9}","{""trailing_stop"": 1, ""emergency_dd"": 6}"
+4,2025-01-20,2025-03-31,25.76,69.7,105.2,103981.48,77196.71,108239.0,81530.0,24.7,BULL,0.961,0.699,0.969,6,27,5,"{""vdo_trend_accel"": 14, ""vdo_trend"": 9, ""vdo_dip_buy"": 4}","{""trailing_stop"": 2, ""emergency_dd"": 3}"
+5,2021-05-03,2021-09-29,25.34,148.8,41.0,68370.68,51046.93,58788.0,42200.0,28.2,BULL,0.873,0.0,0.963,8,31,8,"{""vdo_trend_accel"": 23, ""vdo_trend"": 8}","{""trailing_stop"": 5, ""fixed_stop"": 2, ""emergency_dd"": 1}"
+6,2021-01-08,2021-01-27,20.88,19.2,17.7,53602.87,42412.66,41287.0,30323.0,26.6,BULL,0.978,0.364,0.978,3,9,2,"{""vdo_trend"": 4, ""vdo_trend_accel"": 5}","{""trailing_stop"": 2}"
+7,2025-07-14,2025-09-01,14.64,48.8,32.5,105198.44,89792.69,122736.0,107660.0,12.3,BULL,1.0,0.977,1.0,5,19,4,"{""vdo_trend_accel"": 13, ""vdo_trend"": 4, ""vdo_dip_buy"": 2}","{""trailing_stop"": 2, ""emergency_dd"": 2}"
+8,2021-03-14,2021-03-25,14.35,11.5,36.0,66004.32,56531.96,61356.0,50996.0,16.9,BULL,0.904,0.263,0.904,2,1,1,"{""vdo_trend_accel"": 1}","{""trailing_stop"": 1}"
+9,2024-03-13,2024-05-01,13.69,48.8,19.3,87176.55,75239.1,73349.0,56886.0,22.4,BULL,0.905,0.271,0.956,5,21,4,"{""vdo_trend"": 4, ""vdo_trend_accel"": 17}","{""trailing_stop"": 4}"
+10,2025-10-06,2025-11-13,12.64,38.2,no_recovery,108238.82,94552.53,125411.0,99692.0,20.5,BULL,0.971,0.0,0.971,4,15,4,"{""vdo_trend_accel"": 9, ""vdo_trend"": 5, ""vdo_dip_buy"": 1}","{""trailing_stop"": 2, ""emergency_dd"": 2}"

@@ -1,0 +1,11 @@
+candidate_id,type,complexity,reason_frozen_from_discovery_only,discovery_cagr,discovery_sharpe,discovery_trades,discovery_positive_fold_share
+S_D1_ATR10_HI_Q60,single,1,Simple slower volatility-level rival from the same broad family as the final leader; retained despite sparse expected trade count.,0.6506745863927605,1.3126941050337617,32,0.8571428571428571
+S_D1_VOLCL5_20_LOW_F1,single,1,Strongest simple slower volatility-state candidate by discovery robustness and later the final frozen leader.,0.7084469947773184,1.2668027312502885,126,0.7857142857142857
+S_D1_RET40_HI_Q75,single,1,Simple slower directional/trend rival with strong discovery edge but sparse behavior.,0.45755419849823786,1.2629426392463712,25,0.8571428571428571
+S_D1_TAKER10_LOW_ABS048,single,1,Orthogonal slower flow/participation representative with low exposure and distinct failure mode.,0.25046933452401543,1.2236375905063257,21,0.8571428571428571
+S_H4_RET48_HI_Q55,single,1,Simplest viable native H4 momentum representative from the strongest H4 directional family.,0.40196447580956485,0.9728050121419393,220,0.7142857142857143
+S_H4_RANGE48_HI_Q60,single,1,Best native H4 breakout/location representative and strongest genuine faster frontier rival.,0.46965590989449213,1.116576364353919,219,0.6428571428571429
+S_H4_TAKER6_HI_ABS052,single,1,Orthogonal native H4 participation candidate used as stand-alone rival and entry-filter source.,0.09110172562038255,0.8664751102320309,64,0.7857142857142857
+L2_VOLCL_RET48_Q55,layered2,2,Nearest serious two-layer rival within the D1-volcluster gate family using H4 momentum controller.,0.435664838402571,1.1635858562331969,201,0.7142857142857143
+L2_VOLCL_RANGE48_Q60,layered2,2,Best discovery two-layer candidate and nearest serious complex rival to the final leader.,0.5972469865380323,1.5884643808859455,184,0.7142857142857143
+L2_TAKER10_RANGE48_ABS060,layered2,2,Orthogonal layered low-exposure alternative retained to avoid one-family tunnel vision.,0.09138590394001933,0.8163371806757087,20,0.9285714285714286

@@ -1,0 +1,95 @@
+artifact_name,phase_or_step,purpose,classification,used_in_master_spec,used_in_deployment,must_keep,file_type,readable,notes
+revised_phaseB_prompt1.md,AUXILIARY,Auxiliary prompt artifact,DEPRECATED,False,False,False,md,True,Superseded by later frozen artifact or master spec package
+acceptance_test_plan.md,MASTER_SPEC,Deployment acceptance and replay test plan,AUTHORITATIVE,True,True,True,md,True,Master reproducibility package deliverable
+artifact_manifest.csv,MASTER_SPEC,Project-wide artifact manifest,AUTHORITATIVE,True,False,True,csv,True,
+deployment_freeze_spec.json,MASTER_SPEC,Deterministic deployment freeze specification,AUTHORITATIVE,True,True,True,json,True,Master reproducibility package deliverable
+final_verdict_summary.json,MASTER_SPEC,Master reproducibility package final verdict summary,AUTHORITATIVE,True,True,True,json,True,Master reproducibility package deliverable
+implementation_spec.md,MASTER_SPEC,Engineering implementation specification,AUTHORITATIVE,True,True,True,md,True,Master reproducibility package deliverable
+master_reproducibility_spec.md,MASTER_SPEC,Master reproducibility specification,AUTHORITATIVE,True,True,True,md,True,Master reproducibility package deliverable
+research_protocol_appendix.md,MASTER_SPEC,Methodology and charter appendix,AUTHORITATIVE,True,False,True,md,True,Master reproducibility package deliverable
+shadow_mode_plan.md,MASTER_SPEC,Shadow / paper-trading plan,AUTHORITATIVE,True,True,True,md,True,Master reproducibility package deliverable
+phaseB1_direction_nomination.md,PHASE_B1,Phase B1 direction nomination,WINNING-BRANCH,True,False,True,md,True,Retained to reproduce promoted bounded branch
+phaseB1_failure_mode_audit.csv,PHASE_B1,Bounded branch Phase B1 legacy failure audit,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB1_ood_design_rules.md,PHASE_B1,Phase B1 OOD robustness design rules,WINNING-BRANCH,True,False,True,md,True,Retained to reproduce promoted bounded branch
+phaseB1_utility_alignment.csv,PHASE_B1,Phase B1 utility alignment summary,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB1_utility_surface.csv,PHASE_B1,Phase B1 bounded-horizon utility surface,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB2_experiment_charter.md,PHASE_B2,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+phaseB2_experiment_charter_v2.md,PHASE_B2,Bounded branch final charter,WINNING-BRANCH,True,True,True,md,True,Retained to reproduce promoted bounded branch
+phaseB2_gates_locked.json,PHASE_B2,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,json,True,Superseded by later frozen artifact or master spec package
+phaseB2_gates_locked_v2.json,PHASE_B2,Bounded branch final gates lock,WINNING-BRANCH,True,True,True,json,True,Retained to reproduce promoted bounded branch
+phaseB2_patch_notes.md,PHASE_B2,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+phaseB2_scope_lock.md,PHASE_B2,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+phaseB2_scope_lock_v2.md,PHASE_B2,Bounded branch final scope lock,WINNING-BRANCH,True,True,True,md,True,Retained to reproduce promoted bounded branch
+phaseB3_candidate_manifest.csv,PHASE_B3,Phase B3 locked candidate manifest,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_candidate_summary.csv,PHASE_B3,Phase B3 exploratory candidate summary,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_continuation_log.csv,PHASE_B3,Phase B3 continuation lifecycle log,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_family_rankings.csv,PHASE_B3,Phase B3 within-family rankings,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_live_decision_log.csv,PHASE_B3,Phase B3 first-decision log,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_report.md,PHASE_B3,Phase B3 exploratory report,REPORT-ONLY,False,False,True,md,True,
+phaseB3_score_refit_summary.csv,PHASE_B3,Phase B3 score-source refit summary,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_shortlist_for_B4.csv,PHASE_B3,Phase B3 shortlist for validation,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_tail_accounting_audit.csv,PHASE_B3,Phase B3 tail accounting audit,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB3_thresholds.csv,PHASE_B3,Phase B3 exploratory threshold values,WINNING-BRANCH,True,True,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_added_value_gate.csv,PHASE_B4,Phase B4 added-value gate results,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_aggregate_oos_series.csv,PHASE_B4,Phase B4 aggregate WFO OOS bar-return series,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_bootstrap_summary.csv,PHASE_B4,Phase B4 bootstrap summary,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_cost_sweep.csv,PHASE_B4,Phase B4 cost sweep results,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_exposure_trap.csv,PHASE_B4,Phase B4 exposure trap results,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_final_verdict.json,PHASE_B4,Phase B4 final validation verdict,WINNING-BRANCH,True,True,True,json,True,Retained to reproduce promoted bounded branch
+phaseB4_fold_metrics.csv,PHASE_B4,Phase B4 fold-level validation metrics,WINNING-BRANCH,True,False,True,csv,True,Retained to reproduce promoted bounded branch
+phaseB4_fold_score_diagnostics.csv,PHASE_B4,Phase B4 fold score diagnostics,REPORT-ONLY,True,False,True,csv,True,Report-only diagnostic artifact; not a deployment authority
+phaseB4_report.md,PHASE_B4,Phase B4 validation report,REPORT-ONLY,False,False,True,md,True,
+phaseB4_wfo_pattern_analysis.csv,PHASE_B4,Phase B4 WFO pattern analysis,REPORT-ONLY,True,False,True,csv,True,Report-only diagnostic artifact; not a deployment authority
+final_acceptance_test_plan.md,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,md,True,Superseded by later frozen artifact or master spec package
+final_artifact_manifest.csv,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,csv,True,Superseded by later frozen artifact or master spec package
+final_deployment_freeze_spec.json,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,json,True,Superseded by later frozen artifact or master spec package
+final_implementation_spec.md,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,md,True,Superseded by later frozen artifact or master spec package
+final_project_report.md,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,md,True,Superseded by later frozen artifact or master spec package
+final_shadow_mode_plan.md,PRIOR_FINAL,Prior close-out deliverable superseded by master spec package,DEPRECATED,False,False,False,md,True,Superseded by later frozen artifact or master spec package
+E5_EMA21D1_Spec.md,RAW_INPUT,Original algorithm specification,AUTHORITATIVE,True,True,True,md,True,Original algorithm specification input
+data.zip,RAW_INPUT,Raw BTC spot H4/D1 market data bundle,AUTHORITATIVE,True,True,True,zip,True,Raw market data input for replay and rebuild
+step1_base_impl.py,STEP1,Historical Step 1 implementation artifact,DERIVED,False,False,True,py,True,
+step1_base_verification.md,STEP1,Step 1 base verification report,AUTHORITATIVE,True,False,True,md,True,
+step1_equity_curve.csv,STEP1,Frozen base strategy bar-level equity curve,AUTHORITATIVE,True,True,True,csv,True,
+step1_event_log.csv,STEP1,Frozen base strategy fill-level event log,AUTHORITATIVE,True,True,True,csv,True,
+step1_spec_lock.md,STEP1,Frozen Step 1 spec lock extracted from algorithm spec,AUTHORITATIVE,True,True,True,md,True,
+step2_eda_report.md,STEP2,Step 2 EDA narrative report,REPORT-ONLY,False,False,True,md,True,
+step2_feature_effect_sizes.csv,STEP2,Step 2 descriptive effect sizes,DERIVED,True,False,True,csv,True,
+step2_feature_summary.csv,STEP2,Step 2 descriptive feature summary by label,DERIVED,True,False,True,csv,True,
+step2_gap_sensitivity.csv,STEP2,Gap sensitivity summary,DERIVED,True,False,True,csv,True,
+step2_plots.zip,STEP2,Step 2 EDA plot bundle,REPORT-ONLY,False,False,False,zip,True,
+step2_plots/bars_to_next_entry_fill_ecdf.png,STEP2,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step2_plots/bars_to_next_entry_signal_ecdf.png,STEP2,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step2_trail_episode_table.csv,STEP2,Frozen trail-stop episode table for modeling / EDA anchoring,AUTHORITATIVE,True,False,True,csv,True,Shared authoritative episode anchor table reused by both branches
+step3_experiment_charter.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_experiment_charter_v2.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_experiment_charter_v3.md,STEP3,Legacy branch final pre-commit charter,AUTHORITATIVE,True,False,True,md,True,
+step3_gates_locked.json,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,json,True,Superseded by later frozen artifact or master spec package
+step3_gates_locked_v2.json,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,json,True,Superseded by later frozen artifact or master spec package
+step3_gates_locked_v3.json,STEP3,Legacy branch final gates lock,AUTHORITATIVE,True,False,True,json,True,
+step3_patch2_notes.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_patch_notes.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_scope_lock.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_scope_lock_v2.md,STEP3,Superseded charter / lock / patch artifact retained for audit trail,DEPRECATED,False,False,True,md,True,Superseded by later frozen artifact or master spec package
+step3_scope_lock_v3.md,STEP3,Legacy branch final scope lock,AUTHORITATIVE,True,False,True,md,True,
+step4_binary_candidate_rankings.csv,STEP4,Legacy branch exploratory binary candidate ranking,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_binary_candidate_summary.csv,STEP4,Legacy branch exploratory binary candidate summary,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_calibration.csv,STEP4,Legacy branch calibration report data,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_candidate_signal_log.csv,STEP4,Legacy branch closed-loop candidate signal log,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_feature_correlation_primary.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,
+step4_feature_distribution_primary.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,
+step4_feature_importance.csv,STEP4,Legacy branch permutation importance output,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_feature_matrix_primary.csv,STEP4,Legacy branch primary feature matrix,REJECTED-BRANCH,True,True,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_feature_missingness_primary.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,
+step4_model_cv_results.csv,STEP4,Legacy branch CV and model-selection results,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_model_family_summary.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,
+step4_model_report.md,STEP4,Legacy branch model report,REPORT-ONLY,False,False,True,md,True,
+step4_oos_score_distribution_summary.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,
+step4_oos_scores.csv,STEP4,Legacy branch temporal OOS prediction scores,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_plots.zip,STEP4,Visualization artifact,REPORT-ONLY,False,False,False,zip,True,
+step4_plots/best_model_calibration.png,STEP4,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step4_plots/best_model_feature_importance.png,STEP4,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step4_plots/binary_candidate_sharpe.png,STEP4,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step4_plots/oos_score_hist_elastic_net_logistic_regression.png,STEP4,Visualization artifact,REPORT-ONLY,False,False,False,png,True,
+step4_quartile_analysis.csv,STEP4,Legacy branch OOS quartile analysis,REJECTED-BRANCH,True,False,True,csv,True,Retained to document rejected legacy branch and failure mode; non-deployable
+step4_temporal_split_manifest.csv,STEP4,Project artifact,DERIVED,False,False,True,csv,True,

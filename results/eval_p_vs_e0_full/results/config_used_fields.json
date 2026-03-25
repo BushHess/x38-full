@@ -1,0 +1,39 @@
+{
+  "candidate": {
+    "known_fields": [
+      "atr_mult",
+      "atr_period",
+      "entry_n",
+      "exit_n",
+      "min_rebalance_weight_delta",
+      "min_weight",
+      "slope_lookback",
+      "slow_period",
+      "target_vol",
+      "vol_lookback"
+    ],
+    "used_fields": [],
+    "used_count": 0,
+    "known_count": 10
+  },
+  "baseline": {
+    "known_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_fields": [
+      "atr_period",
+      "slow_period",
+      "trail_mult",
+      "vdo_fast",
+      "vdo_slow",
+      "vdo_threshold"
+    ],
+    "used_count": 6,
+    "known_count": 6
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "twap": {
+    "D1_implementation_shortfall": {
+      "total_is_bps": -0.9676,
+      "total_is_usd": -15392.18
+    },
+    "D2_entry_delta": {
+      "mean": 0.9001620486799085,
+      "median": -1.483055857650628,
+      "std": 38.80397016067597,
+      "p5": -50.18833307960796,
+      "p25": -15.79785573281839,
+      "p75": 15.314785701930344,
+      "p95": 69.6845210764363
+    },
+    "D3_exit_delta": {
+      "mean": -0.1570128765712747,
+      "median": 4.377626332018325,
+      "std": 62.35612993112271,
+      "p5": -96.13091609782964,
+      "p25": -24.64865520542342,
+      "p75": 26.601369710714806,
+      "p95": 94.48873879523589
+    },
+    "D4_combined_delta": {
+      "mean": -1.057174925251183,
+      "median": 4.972696872500016,
+      "std": 76.13091015047206,
+      "p5": -114.61023946460534,
+      "p95": 96.61286454392432
+    },
+    "D5_improved_vs_worsened": {
+      "improved": 100,
+      "worsened": 85,
+      "neutral": 1,
+      "frac_improved": 0.5376,
+      "mean_improved_bps": 47.6462,
+      "mean_worsened_bps": -58.3623
+    },
+    "D6_concentration": {
+      "yearly_mean_delta_bps": {
+        "2019": -3.1843698140404655,
+        "2020": -2.439941189254377,
+        "2021": -6.73620051956606,
+        "2022": -13.17220028868845,
+        "2023": 1.2339066586870509,
+        "2024": 15.51499423731087,
+        "2025": -1.7636222225402918,
+        "2026": -27.284953823752215
+      },
+      "years_positive": 2,
+      "total_years": 8,
+      "max_single_year_pct": 38.3,
+      "notional_delta_correlation": 0.0015,
+      "reentry_mean_delta_bps": -11.3184,
+      "nonreentry_mean_delta_bps": 6.6871
+    },
+    "D7_secondary_path": {
+      "total_pnl_delta_usd": -15392.18,
+      "mean_pnl_delta_usd": -82.75,
+      "sign_consistent_with_primary": true
+    },
+    "D8_reference": {
+      "baseline_total_pnl_usd": 426354.14
+    },
+    "GO_HOLD_gates": {
+      "magnitude_gt_1bps": true,
+      "consistency_gt_55pct": false,
+      "broad_5of7_years": false,
+      "symmetric_both_sides": false,
+      "secondary_confirms": true,
+      "not_concentrated": true,
+      "verdict": "HOLD"
+    }
+  },
+  "vwap": {
+    "D1_implementation_shortfall": {
+      "total_is_bps": -6.9605,
+      "total_is_usd": -34438.76
+    },
+    "D2_entry_delta": {
+      "mean": 0.9023256308018894,
+      "median": -1.1817732008073678,
+      "std": 40.2222128552648,
+      "p5": -47.09723141596623,
+      "p25": -13.868092595938354,
+      "p75": 14.977992777061576,
+      "p95": 59.14212727978596
+    },
+    "D3_exit_delta": {
+      "mean": -6.916994878708268,
+      "median": -0.9086774545780107,
+      "std": 60.828289502912995,
+      "p5": -92.96159078418131,
+      "p25": -26.675915668595565,
+      "p75": 22.159497759180468,
+      "p95": 81.67101480654136
+    },
+    "D4_combined_delta": {
+      "mean": -7.81932050951016,
+      "median": 1.827893157575481,
+      "std": 76.19344790730976,
+      "p5": -147.16280242940832,
+      "p95": 89.39963130964651
+    },
+    "D5_improved_vs_worsened": {
+      "improved": 95,
+      "worsened": 90,
+      "neutral": 1,
+      "frac_improved": 0.5108,
+      "mean_improved_bps": 42.2836,
+      "mean_worsened_bps": -60.7887
+    },
+    "D6_concentration": {
+      "yearly_mean_delta_bps": {
+        "2019": -5.15412139421668,
+        "2020": -12.647829276292944,
+        "2021": -17.92468215513521,
+        "2022": -21.66049641842439,
+        "2023": -4.675112798979594,
+        "2024": 8.630789238331861,
+        "2025": -5.285717921230768,
+        "2026": -27.868131863990246
+      },
+      "years_positive": 1,
+      "total_years": 8,
+      "max_single_year_pct": 26.8,
+      "notional_delta_correlation": 0.0143,
+      "reentry_mean_delta_bps": -17.9733,
+      "nonreentry_mean_delta_bps": -0.1559
+    },
+    "D7_secondary_path": {
+      "total_pnl_delta_usd": -34438.76,
+      "mean_pnl_delta_usd": -185.15,
+      "sign_consistent_with_primary": true
+    },
+    "D8_reference": {
+      "baseline_total_pnl_usd": 426354.14
+    },
+    "GO_HOLD_gates": {
+      "magnitude_gt_1bps": true,
+      "consistency_gt_55pct": false,
+      "broad_5of7_years": false,
+      "symmetric_both_sides": true,
+      "secondary_confirms": true,
+      "not_concentrated": true,
+      "verdict": "HOLD"
+    }
+  }
+}

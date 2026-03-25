@@ -1,0 +1,3 @@
+scenario,model,total_score,return_term,mdd_penalty,sharpe_term,profit_factor_term,trade_count_term,reject_term,residual
+harsh,candidate,48.521800000000006,51.150000000000006,-14.591999999999999,6.7768,2.8869999999999996,2.3000000000000003,0.0,0.0
+harsh,baseline,86.1051,84.75,-15.234,9.2616,4.9275,2.4,0.0,0.0

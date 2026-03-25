@@ -1,0 +1,4 @@
+scenario,score,cagr_pct,total_return_pct,max_drawdown_mid_pct,sharpe,sortino,profit_factor,trades,wins,losses,win_rate_pct,avg_trade_pnl,avg_days_held,fees_total,turnover_notional,final_nav_mid,years
+harsh,34.6563,17.29,24.82,31.56,0.6961,0.727,1.4397,26,15,11,57.69,112.7,11.96,901.86,601238.34,12481.72,1.39
+base,55.0562,24.35,35.4,30.86,0.8954,0.937,1.6068,25,15,10,60.0,153.42,12.48,595.06,595058.99,13539.92,1.39
+smart,64.6378,27.65,40.42,30.19,0.9856,1.0284,1.6484,25,15,10,60.0,165.9,12.49,212.52,607207.78,14042.02,1.39

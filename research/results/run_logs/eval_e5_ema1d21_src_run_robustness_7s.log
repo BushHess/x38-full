@@ -1,0 +1,189 @@
+6-Strategy Statistical Robustness (with E5_plus_EMA1D21)
+======================================================================
+Loaded 24 equity curves, 18662 bars
+
+======================================================================
+ALL-PAIRS BOOTSTRAP SHARPE DIFF AT BINARY_100 (block=126)
+======================================================================
+                    E0 - E5                  : mean=-0.1279  CI=[-0.2977, +0.0290]  P(A>B)=0.058  CI_excl_0=False
+                    E0 - SM                  : mean=+0.1977  CI=[-0.2521, +0.6444]  P(A>B)=0.809  CI_excl_0=False
+                    E0 - LATCH               : mean=+0.1760  CI=[-0.2641, +0.6135]  P(A>B)=0.787  CI_excl_0=False
+                    E0 - E0_plus_EMA1D21     : mean=-0.0883  CI=[-0.2027, +0.0173]  P(A>B)=0.053  CI_excl_0=False
+                    E0 - E5_plus_EMA1D21     : mean=-0.2263  CI=[-0.4108, -0.0402]  P(A>B)=0.008  CI_excl_0=True
+                    E5 - SM                  : mean=+0.3256  CI=[-0.1120, +0.7557]  P(A>B)=0.926  CI_excl_0=False
+                    E5 - LATCH               : mean=+0.3039  CI=[-0.1332, +0.7312]  P(A>B)=0.918  CI_excl_0=False
+                    E5 - E0_plus_EMA1D21     : mean=+0.0397  CI=[-0.1663, +0.2466]  P(A>B)=0.646  CI_excl_0=False
+                    E5 - E5_plus_EMA1D21     : mean=-0.0984  CI=[-0.2148, +0.0096]  P(A>B)=0.037  CI_excl_0=False
+                    SM - LATCH               : mean=-0.0217  CI=[-0.0885, +0.0230]  P(A>B)=0.236  CI_excl_0=False
+                    SM - E0_plus_EMA1D21     : mean=-0.2859  CI=[-0.7494, +0.1733]  P(A>B)=0.114  CI_excl_0=False
+                    SM - E5_plus_EMA1D21     : mean=-0.4240  CI=[-0.8651, +0.0187]  P(A>B)=0.031  CI_excl_0=False
+                 LATCH - E0_plus_EMA1D21     : mean=-0.2643  CI=[-0.7208, +0.1938]  P(A>B)=0.130  CI_excl_0=False
+                 LATCH - E5_plus_EMA1D21     : mean=-0.4023  CI=[-0.8391, +0.0331]  P(A>B)=0.037  CI_excl_0=False
+       E0_plus_EMA1D21 - E5_plus_EMA1D21     : mean=-0.1381  CI=[-0.3201, +0.0344]  P(A>B)=0.065  CI_excl_0=False
+
+  Holm-adjusted p-values:
+                                          E0 - E5: raw_p=0.1156  holm_p=1.0000
+                                          E0 - SM: raw_p=0.3816  holm_p=1.0000
+                                       E0 - LATCH: raw_p=0.4264  holm_p=1.0000
+                             E0 - E0_plus_EMA1D21: raw_p=0.1060  holm_p=1.0000
+                             E0 - E5_plus_EMA1D21: raw_p=0.0168  holm_p=0.2520
+                                          E5 - SM: raw_p=0.1484  holm_p=1.0000
+                                       E5 - LATCH: raw_p=0.1644  holm_p=1.0000
+                             E5 - E0_plus_EMA1D21: raw_p=0.7088  holm_p=1.0000
+                             E5 - E5_plus_EMA1D21: raw_p=0.0744  holm_p=0.9672
+                                       SM - LATCH: raw_p=0.4720  holm_p=1.0000
+                             SM - E0_plus_EMA1D21: raw_p=0.2288  holm_p=1.0000
+                             SM - E5_plus_EMA1D21: raw_p=0.0620  holm_p=0.8680
+                          LATCH - E0_plus_EMA1D21: raw_p=0.2600  holm_p=1.0000
+                          LATCH - E5_plus_EMA1D21: raw_p=0.0744  holm_p=0.9672
+                E0_plus_EMA1D21 - E5_plus_EMA1D21: raw_p=0.1308  holm_p=1.0000
+
+======================================================================
+NAMED HYPOTHESES (5000 reps x 3 block lengths)
+======================================================================
+
+  H1: E0_EV12 > E0_plus_EMA1D21_EV12
+    block= 42: mean=-0.0739  CI=[-0.1677, +0.0147]  P(>0)=0.053
+    block=126: mean=-0.0741  CI=[-0.1674, +0.0119]  P(>0)=0.048
+    block=252: mean=-0.0737  CI=[-0.1612, +0.0053]  P(>0)=0.035
+
+  H2: E0_EV12 > E5_EV12
+    block= 42: mean=-0.1053  CI=[-0.3235, +0.1171]  P(>0)=0.170
+    block=126: mean=-0.1054  CI=[-0.2831, +0.0746]  P(>0)=0.117
+    block=252: mean=-0.1071  CI=[-0.2703, +0.0527]  P(>0)=0.094
+
+  H3: E0_plus_EMA1D21_EV12 > SM_EV12
+    block= 42: mean=+0.2151  CI=[-0.1913, +0.6381]  P(>0)=0.846
+    block=126: mean=+0.2134  CI=[-0.1919, +0.6165]  P(>0)=0.852
+    block=252: mean=+0.2132  CI=[-0.1965, +0.6193]  P(>0)=0.843
+
+  H4: E0_plus_EMA1D21_EV12 > LATCH_EV12
+    block= 42: mean=+0.2112  CI=[-0.1965, +0.6340]  P(>0)=0.838
+    block=126: mean=+0.2095  CI=[-0.1970, +0.6131]  P(>0)=0.848
+    block=252: mean=+0.2093  CI=[-0.2018, +0.6165]  P(>0)=0.840
+
+  H5: E5_plus_EMA1D21_EV12 > E0_plus_EMA1D21_EV12
+    block= 42: mean=+0.1097  CI=[-0.1139, +0.3293]  P(>0)=0.840
+    block=126: mean=+0.1094  CI=[-0.0718, +0.2942]  P(>0)=0.886
+    block=252: mean=+0.1109  CI=[-0.0561, +0.2819]  P(>0)=0.908
+
+  H6: E5_plus_EMA1D21_EV12 > E5_EV12
+    block= 42: mean=+0.0782  CI=[-0.0112, +0.1694]  P(>0)=0.956
+    block=126: mean=+0.0782  CI=[-0.0104, +0.1711]  P(>0)=0.959
+    block=252: mean=+0.0776  CI=[-0.0134, +0.1731]  P(>0)=0.952
+
+  H7: E5_plus_EMA1D21_EV12 > E0_EV12
+    block= 42: mean=+0.1835  CI=[-0.0505, +0.4150]  P(>0)=0.940
+    block=126: mean=+0.1835  CI=[-0.0118, +0.3874]  P(>0)=0.968
+    block=252: mean=+0.1846  CI=[+0.0020, +0.3736]  P(>0)=0.976
+
+  H8: LATCH_native > SM_native
+    block= 42: mean=+0.0038  CI=[-0.0507, +0.0597]  P(>0)=0.548
+    block=126: mean=+0.0033  CI=[-0.0480, +0.0548]  P(>0)=0.549
+    block=252: mean=+0.0029  CI=[-0.0428, +0.0547]  P(>0)=0.529
+
+  Holm-adjusted p-values (block=126):
+    H1: raw_p=0.0960  holm_p=0.5760
+    H2: raw_p=0.2332  holm_p=1.0000
+    H3: raw_p=0.2968  holm_p=1.0000
+    H4: raw_p=0.3036  holm_p=1.0000
+    H5: raw_p=0.2272  holm_p=1.0000
+    H6: raw_p=0.0816  holm_p=0.5712
+    H7: raw_p=0.0648  holm_p=0.5184
+    H8: raw_p=0.9024  holm_p=1.0000
+
+  Evidence classification:
+    H1: TENTATIVE
+    H2: TENTATIVE
+    H3: TENTATIVE
+    H4: TENTATIVE
+    H5: TENTATIVE
+    H6: TENTATIVE
+    H7: TENTATIVE
+    H8: UNSUPPORTED
+
+======================================================================
+MATCHED-MDD BOOTSTRAP (E0 vs each strategy)
+======================================================================
+  E5 vs E0 at 5% MDD: mean=+0.0081  CI=[-0.0035, +0.0265]  P(E5>E0)=0.904
+  E5 vs E0 at 10% MDD: mean=+0.0169  CI=[-0.0073, +0.0566]  P(E5>E0)=0.907
+  SM vs E0 at 5% MDD: mean=+0.0108  CI=[-0.0228, +0.0533]  P(SM>E0)=0.731
+  SM vs E0 at 10% MDD: mean=+0.0226  CI=[-0.0472, +0.1099]  P(SM>E0)=0.731
+  LATCH vs E0 at 5% MDD: mean=+0.0118  CI=[-0.0221, +0.0542]  P(LATCH>E0)=0.748
+  LATCH vs E0 at 10% MDD: mean=+0.0215  CI=[-0.0474, +0.0958]  P(LATCH>E0)=0.739
+  E0_plus_EMA1D21 vs E0 at 5% MDD: mean=+0.0039  CI=[-0.0036, +0.0164]  P(E0_plus_EMA1D21>E0)=0.857
+  E0_plus_EMA1D21 vs E0 at 10% MDD: mean=+0.0082  CI=[-0.0071, +0.0339]  P(E0_plus_EMA1D21>E0)=0.862
+  E5_plus_EMA1D21 vs E0 at 5% MDD: mean=+0.0138  CI=[-0.0007, +0.0357]  P(E5_plus_EMA1D21>E0)=0.968
+  E5_plus_EMA1D21 vs E0 at 10% MDD: mean=+0.0291  CI=[-0.0013, +0.0757]  P(E5_plus_EMA1D21>E0)=0.969
+
+======================================================================
+START-DATE SENSITIVITY
+======================================================================
+
+  Start=2017-08 (18662 bars)
+                      E0: Sharpe=1.0773  CAGR=0.4504  MDD=0.6330
+                      E5: Sharpe=1.2076  CAGR=0.5226  MDD=0.5647
+                      SM: Sharpe=1.3118  CAGR=0.1390  MDD=0.1500
+                   LATCH: Sharpe=1.3148  CAGR=0.1121  MDD=0.1124
+         E0_plus_EMA1D21: Sharpe=1.1638  CAGR=0.4960  MDD=0.5648
+         E5_plus_EMA1D21: Sharpe=1.3047  CAGR=0.5739  MDD=0.4838
+
+  Start=2019-01 (15651 bars)
+                      E0: Sharpe=1.2652  CAGR=0.5199  MDD=0.4161
+                      E5: Sharpe=1.3572  CAGR=0.5656  MDD=0.4037
+                      SM: Sharpe=1.4452  CAGR=0.1600  MDD=0.1500
+                   LATCH: Sharpe=1.4427  CAGR=0.1281  MDD=0.1124
+         E0_plus_EMA1D21: Sharpe=1.3248  CAGR=0.5464  MDD=0.4205
+         E5_plus_EMA1D21: Sharpe=1.4299  CAGR=0.5978  MDD=0.4164
+
+  Start=2020-01 (13461 bars)
+                      E0: Sharpe=1.1582  CAGR=0.4433  MDD=0.4061
+                      E5: Sharpe=1.2674  CAGR=0.4980  MDD=0.4031
+                      SM: Sharpe=1.2370  CAGR=0.1277  MDD=0.1500
+                   LATCH: Sharpe=1.2264  CAGR=0.1015  MDD=0.1124
+         E0_plus_EMA1D21: Sharpe=1.2497  CAGR=0.4855  MDD=0.3813
+         E5_plus_EMA1D21: Sharpe=1.3744  CAGR=0.5473  MDD=0.4164
+
+======================================================================
+ROLLING-WINDOW STABILITY
+======================================================================
+
+  24-month windows (14 windows):
+                      E0 wins Sharpe: 0/14 (0%)
+                      E5 wins Sharpe: 0/14 (0%)
+                      SM wins Sharpe: 4/14 (29%)
+                   LATCH wins Sharpe: 3/14 (21%)
+         E0_plus_EMA1D21 wins Sharpe: 0/14 (0%)
+         E5_plus_EMA1D21 wins Sharpe: 7/14 (50%)
+
+  36-month windows (12 windows):
+                      E0 wins Sharpe: 0/12 (0%)
+                      E5 wins Sharpe: 0/12 (0%)
+                      SM wins Sharpe: 5/12 (42%)
+                   LATCH wins Sharpe: 2/12 (17%)
+         E0_plus_EMA1D21 wins Sharpe: 0/12 (0%)
+         E5_plus_EMA1D21 wins Sharpe: 5/12 (42%)
+
+======================================================================
+CALENDAR-SLICE DIAGNOSTICS
+======================================================================
+
+    Year                   E0                   E5                   SM                LATCH      E0_plus_EMA1D21      E5_plus_EMA1D21               Winner
+    2017                1.973                2.633                2.133                2.119                1.905                2.557                   E5
+    2018               -0.927               -0.970               -1.025               -0.978               -0.469               -0.516      E0_plus_EMA1D21
+    2019                1.826                1.839                2.457                2.484                1.725                1.735                LATCH
+    2020                2.656                2.863                2.972                2.927                2.585                2.793                   SM
+    2021                1.465                1.571                0.177                0.271                1.626                1.900      E5_plus_EMA1D21
+    2022               -0.996               -0.936               -1.309               -1.309               -0.928               -1.143      E0_plus_EMA1D21
+    2023                1.173                1.221                2.286                2.226                1.223                1.271                   SM
+    2024                1.419                1.545                1.330                1.345                1.676                1.851      E5_plus_EMA1D21
+    2025                0.165                0.179                0.417                0.343                0.175                0.189                   SM
+    2026               -1.115               -0.171                0.890                0.999               -1.436               -0.466                LATCH
+
+======================================================================
+SAVING ARTIFACTS
+======================================================================
+
+======================================================================
+COMPLETE in 562.1s
+======================================================================

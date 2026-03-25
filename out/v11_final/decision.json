@@ -1,0 +1,86 @@
+{
+  "selected_candidate": "v10_baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T21:26:55.983414+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "v10_baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_cycle_early_deftrail",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.1% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 105.54,
+        "min_cagr": 43.44,
+        "max_mdd": 36.84,
+        "max_fee_drag": 4.09,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_cycle_early_mild",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -20.7% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 100.99,
+        "min_cagr": 41.18,
+        "max_mdd": 35.49,
+        "max_fee_drag": 4.04,
+        "trades": 104
+      }
+    },
+    {
+      "name": "v11_cycle_early_lat50",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.1% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 105.54,
+        "min_cagr": 43.44,
+        "max_mdd": 36.84,
+        "max_fee_drag": 4.09,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_cycle_early_fast",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.9% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 109.23,
+        "min_cagr": 44.67,
+        "max_mdd": 36.71,
+        "max_fee_drag": 4.1,
+        "trades": 102
+      }
+    }
+  ]
+}

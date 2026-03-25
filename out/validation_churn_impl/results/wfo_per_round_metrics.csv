@@ -1,0 +1,2 @@
+window_id,test_start,test_end,candidate_score,baseline_score,delta_harsh_score,candidate_cagr_pct,baseline_cagr_pct,candidate_max_dd_pct,baseline_max_dd_pct,candidate_sharpe,baseline_sharpe,candidate_trades,baseline_trades
+0,2024-02-01,2024-03-01,-1000000.0,-1000000.0,0.0,2056.15,2056.15,2.78,2.78,9.9183,9.9183,0,0

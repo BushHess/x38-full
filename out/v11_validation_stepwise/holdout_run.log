@@ -1,0 +1,63 @@
+/var/www/trading-bots/btc-spot/out_v11_validation_stepwise/scripts/final_holdout.py:118: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+======================================================================
+  FINAL HOLDOUT TEST — ONE-SHOT
+======================================================================
+  Timestamp: 2026-02-23 22:39:25 UTC
+  Holdout period: 2024-10-01 → 2026-02-20
+  Full period:    2019-01-01 → 2026-02-20
+  Warmup:         365 days
+  Baseline:       V10 = V8ApexConfig() defaults
+  Candidate:      V11 WFO-opt (aggr=0.95, trail=2.8, cap=0.90)
+  Scenarios:      ['harsh', 'base', 'smart']
+  COMMITMENT:     This script runs ONCE. No re-runs.
+
+  ── Scenario: harsh ──
+    V10: score=+34.66  ret=+24.82%  cagr=+17.29%  mdd=31.56%  sharpe=0.696  trades=26
+    V11: score=+33.43  ret=+24.18%  cagr=+16.85%  mdd=31.56%  sharpe=0.685  trades=26
+    DELTA: score=-1.23 [-]  ret=-0.64%  cagr=-0.44%  mdd=+0.00%  sharpe=-0.011
+    Regime deltas:  BULL=-0.73%(300.0d)  TOPPING=+0.00%(18.0d)  BEAR=+0.00%(93.0d)  CHOP=+0.00%(50.0d)
+
+  ── Scenario: base ──
+    V10: score=+55.06  ret=+35.40%  cagr=+24.35%  mdd=30.86%  sharpe=0.895  trades=25
+    V11: score=+53.78  ret=+34.70%  cagr=+23.89%  mdd=30.86%  sharpe=0.885  trades=25
+    DELTA: score=-1.28 [-]  ret=-0.70%  cagr=-0.46%  mdd=+0.00%  sharpe=-0.010
+    Regime deltas:  BULL=-0.79%(300.0d)  TOPPING=+0.00%(18.0d)  BEAR=+0.00%(93.0d)  CHOP=+0.00%(50.0d)
+
+  ── Scenario: smart ──
+    V10: score=+64.64  ret=+40.42%  cagr=+27.65%  mdd=30.19%  sharpe=0.986  trades=25
+    V11: score=+63.31  ret=+39.68%  cagr=+27.17%  mdd=30.19%  sharpe=0.975  trades=25
+    DELTA: score=-1.32 [-]  ret=-0.74%  cagr=-0.48%  mdd=+0.00%  sharpe=-0.010
+    Regime deltas:  BULL=-0.83%(300.0d)  TOPPING=+0.00%(18.0d)  BEAR=+0.00%(93.0d)  CHOP=+0.00%(50.0d)
+
+======================================================================
+  FULL-PERIOD COMPARISON (for context)
+======================================================================
+  harsh: V10=88.94  V11=90.80  Δ=+1.86
+  base: V10=112.74  V11=114.65  Δ=+1.91
+  smart: V10=121.37  V11=123.30  Δ=+1.93
+
+  Saved: out_v11_validation_stepwise/final_holdout_metrics.csv
+
+======================================================================
+  HOLDOUT VERDICT
+======================================================================
+  Score:  V11 wins 0/3 scenarios
+  Return: V11 wins 0/3 scenarios
+  Sharpe: V11 wins 0/3 scenarios
+
+  Harsh scenario detail:
+    Δ score:  -1.23
+    Δ return: -0.64%
+    Δ sharpe: -0.011
+    Δ MDD:    +0.00%
+    Δ TOPPING: +0.00%
+    Δ BEAR:    +0.00%
+
+  ==================================================
+  VERDICT: HOLD — V11 slightly behind but within noise margin
+  ==================================================
+
+  Saved: out_v11_validation_stepwise/final_holdout.json
+  Saved: out_v11_validation_stepwise/final_holdout_metrics.csv
+======================================================================

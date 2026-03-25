@@ -1,0 +1,7 @@
+label,scenario,score,cagr_pct,max_drawdown_mid_pct,sharpe,sortino,calmar,trades,win_rate_pct,profit_factor,total_return_pct
+candidate,smart,78.1462,29.87,20.46,1.1134,1.0525,1.4602,26,46.15,1.848,45.27
+candidate,base,65.7443,25.69,21.31,0.9896,0.9408,1.2053,26,46.15,1.7577,38.63
+candidate,harsh,52.9475,21.41,22.2,0.859,0.8207,0.9645,26,46.15,1.6541,31.95
+baseline,smart,103.6487,37.56,14.59,1.3639,1.33,2.5741,31,48.39,1.8983,57.7
+baseline,base,88.2223,32.29,15.53,1.2111,1.1895,2.0787,31,48.39,1.8053,49.14
+baseline,harsh,71.4007,26.94,18.23,1.0499,1.0377,1.4776,31,48.39,1.6979,40.61

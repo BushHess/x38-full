@@ -1,0 +1,10 @@
+{
+  "mean_diff": 0.0,
+  "ci95_low": 0.0,
+  "ci95_high": 0.0,
+  "p_gt_0": 0.0,
+  "n_obs": 15647,
+  "block_len": 168,
+  "n_resamples": 10000,
+  "seed": 1505
+}

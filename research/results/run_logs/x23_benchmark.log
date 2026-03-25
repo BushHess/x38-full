@@ -1,0 +1,114 @@
+/var/www/trading-bots/btc-spot-dev/research/x23/benchmark.py:47: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X23: State-Conditioned Exit Geometry Redesign
+======================================================================
+  Bars: 17838 H4, warmup_idx=2190
+  rATR first valid: 119
+
+======================================================================
+T0: FULL-SAMPLE COMPARISON
+======================================================================
+
+  Strategy       Sharpe    CAGR%     MDD%  Trades    Exp%
+  ----------------------------------------------------
+  E0             1.3718    57.72    39.96     189    49.3
+  E5             1.4690    62.48    40.90     202    48.0
+  X23-fixed      1.2523    50.57    44.66     197    48.9
+  X23-cal        1.2778    50.03    39.45     249    46.0
+
+  d_sharpe(X23-fixed vs E5) = -0.2168
+  G0: FAIL
+  Calibrated multipliers: weak=1.608, normal=2.024, strong=2.389
+
+======================================================================
+T1: EXIT ANATOMY & CHURN DIAGNOSTIC
+======================================================================
+
+  Strategy      Total  Trail   Hard  Trend EndDat   Ch/Tr  Ch/Tot
+  --------------------------------------------------------------
+  E0              189    168      0     21      0   66.1%   66.1%
+  E5              202    183      0     19      0   67.2%   67.2%
+  X23-fixed       197    124     55     18      0   77.4%   67.0%
+  X23-cal         249    160     72     17      0   84.4%   73.7%
+
+  X23-fixed arm stats: armed=127, never_armed=70, trail_by_state={'weak': 0, 'normal': 112, 'strong': 12}
+
+  X23-cal arm stats: armed=161, never_armed=88, trail_by_state={'weak': 0, 'normal': 117, 'strong': 43}
+
+======================================================================
+T2: PULLBACK CALIBRATION REPORT
+======================================================================
+
+  State         N    Mean     Std     Q25     Q50     Q75     Q90     Q95     Cal  Preset
+  ----------------------------------------------------------------------------------
+  weak          1   0.000   0.000   0.000   0.000   0.000   0.000   0.000   1.608   2.250
+  normal     3185   0.942   0.852   0.177   0.724   1.534   2.264   2.614   2.024   3.000
+  strong     1864   1.077   0.856   0.315   0.956   1.730   2.389   2.616   2.389   4.250
+
+======================================================================
+T3: WALK-FORWARD OPTIMIZATION (4 folds)
+======================================================================
+    Fold 1: E5=-1.1070, X23f=-1.1833 (d=-0.0763), X23c=-1.1780 (d=-0.0710) LOSE
+    Fold 2: E5=1.2602, X23f=1.2986 (d=+0.0384), X23c=1.2885 (d=+0.0283) WIN
+    Fold 3: E5=1.8919, X23f=1.5835 (d=-0.3083), X23c=1.7293 (d=-0.1626) LOSE
+    Fold 4: E5=0.0998, X23f=0.2081 (d=+0.1084), X23c=-0.3986 (d=-0.4984) WIN
+
+  X23-fixed: win_rate=50%, mean_d=-0.0595, G1: FAIL
+  X23-cal:   win_rate=25%, mean_d=-0.1759 (supplementary)
+
+======================================================================
+T4: BOOTSTRAP (500 paths)
+======================================================================
+    ... 100/500
+    ... 200/500
+    ... 300/500
+    ... 400/500
+    ... 500/500
+
+  d_sharpe: median=-0.0110, [-0.1603, +0.1459]
+  P(d_sharpe > 0): 45.0%
+  d_mdd: median=+0.31pp
+  G2: FAIL, G3: PASS
+
+======================================================================
+T5: JACKKNIFE (leave-year-out)
+======================================================================
+    Drop 2020: E5=0.7696, X23=0.7267, d=-0.0429
+    Drop 2021: E5=1.1075, X23=1.1885, d=+0.0810
+    Drop 2022: E5=1.5824, X23=1.3442, d=-0.2383
+    Drop 2023: E5=1.5292, X23=1.2568, d=-0.2724
+    Drop 2024: E5=1.3169, X23=1.2532, d=-0.0637
+    Drop 2025: E5=1.6118, X23=1.3717, d=-0.2401
+  Negative: 5/6, mean d=-0.1294, G4: FAIL
+
+======================================================================
+T6: PSR WITH DOF CORRECTION
+======================================================================
+  X23-fixed Sharpe (ann): 1.2523
+  SR0 (DOF=4): 0.3938
+  PSR: 1.0000
+  G5: PASS
+
+======================================================================
+T7: SUMMARY TABLE & VERDICT
+======================================================================
+
+  Gate  Test  Criterion                 Value                Pass? 
+  ---------------------------------------------------------------
+  G0    T0    d_sharpe > 0 vs E5        -0.2168              FAIL  
+  G1    T3    WFO >= 3/4, mean d > 0    wr=50%, d=-0.0595    FAIL  
+  G2    T4    P(d_sh > 0) > 0.55        0.4500               FAIL  
+  G3    T4    med d_mdd <= +5pp         0.3145               PASS  
+  G4    T5    JK neg <= 2/6             5.0000               FAIL  
+  G5    T6    PSR > 0.95                1.0000               PASS  
+
+  Gates passed: 2/6
+  VERDICT: REJECT
+/var/www/trading-bots/btc-spot-dev/research/x23/benchmark.py:1715: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  json_data["timestamp"] = datetime.datetime.utcnow().isoformat() + "Z"
+/var/www/trading-bots/btc-spot-dev/research/x23/benchmark.py:1559: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  lines.append(f"Generated: {datetime.datetime.utcnow().isoformat()}Z\n")
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x23/x23_*.{json,csv,md}
+
+  Total time: 701.7s (11.7m)

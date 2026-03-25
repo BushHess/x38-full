@@ -1,0 +1,44 @@
+{
+  "generated": "2026-03-07T04:01:38.276793+00:00",
+  "source": "actual BacktestEngine (v10/core/engine.py)",
+  "data_file": "/var/www/trading-bots/btc-spot-claude/bars_btcusdt_2016_now_h1_4h_1d.csv",
+  "breadth_file": "/var/www/trading-bots/data-pipeline/bars_multi_4h.csv",
+  "start": "2019-01-01",
+  "end": "2026-02-20",
+  "warmup_days": 365,
+  "initial_cash": 10000.0,
+  "strategies": [
+    "X0",
+    "E0_EMA21",
+    "X0_LR"
+  ],
+  "scenarios": [
+    "smart",
+    "base",
+    "harsh"
+  ],
+  "cost_configs": {
+    "smart": {
+      "spread_bps": 3.0,
+      "slippage_bps": 1.5,
+      "taker_fee_pct": 0.035,
+      "rt_bps": 13.0
+    },
+    "base": {
+      "spread_bps": 5.0,
+      "slippage_bps": 3.0,
+      "taker_fee_pct": 0.1,
+      "rt_bps": 31.0
+    },
+    "harsh": {
+      "spread_bps": 10.0,
+      "slippage_bps": 5.0,
+      "taker_fee_pct": 0.15,
+      "rt_bps": 50.0
+    }
+  },
+  "annualization": "sqrt(6.0 * 365.25) = 46.813460",
+  "derivatives_features": "MISSING \u2014 blocked per D1.1",
+  "breadth_ema_approx": "H4 EMA(126) \u2248 D1 EMA(21)",
+  "no_lookahead": "decision_bar = fill_bar - 1; all features at decision_bar close"
+}

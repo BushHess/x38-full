@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "report": "Step 1 Track A: E0 Home-Run Dependence & Behavioral Fragility Audit",
+    "date": "2026-03-06",
+    "candidate": "E0",
+    "strategy_id": "vtrend",
+    "period": "2019-01-01 to 2026-02-20",
+    "fee_bps_rt": 50,
+    "initial_cash": 10000.0,
+    "backtest_years": 6.5
+  },
+  "recon_assert": {
+    "status": "PASS",
+    "trade_count": 192,
+    "period_start_observed": "2019-01-04",
+    "period_end_observed": "2026-01-21",
+    "fee_confirmed": "50 bps RT"
+  },
+  "t7_anchor_check": {
+    "status": "PASS",
+    "points_tested": 15,
+    "all_match": true
+  },
+  "trade_structure": {
+    "n_trades": 192,
+    "wins": 80,
+    "losses": 112,
+    "win_rate_pct": 41.67,
+    "profit_factor": 1.614,
+    "avg_win_pct": 9.98,
+    "avg_loss_pct": -3.02,
+    "wl_ratio": 3.30,
+    "expectancy_pct": 2.40,
+    "max_win_streak": 5,
+    "max_loss_streak": 9,
+    "median_hold_days": 4.83,
+    "exit_trail_stop_pct": 83.9,
+    "exit_trend_exit_pct": 16.1
+  },
+  "concentration": {
+    "top_1_pnl_pct_of_total": 22.86,
+    "top_3_pnl_pct_of_total": 61.66,
+    "top_5_pnl_pct_of_total": 90.19,
+    "top_10_pnl_pct_of_total": 143.19,
+    "gini": 0.609,
+    "hhi": 0.0174,
+    "effective_n": 57.4,
+    "note": "Top 5 trades contribute 90% of net PnL. Remaining 182 trades net to -$94K."
+  },
+  "fat_tails": {
+    "skewness": 3.656,
+    "excess_kurtosis": 18.733,
+    "jarque_bera_stat": 3075.89,
+    "jarque_bera_p": 0.0,
+    "dagostino_stat": 179.75,
+    "dagostino_p": 9.28e-40,
+    "tail_ratio_95_5": 4.377,
+    "interpretation": "Extreme positive skew and leptokurtosis. Returns are far from normal. A few massive wins drive the distribution."
+  },
+  "giveback": {
+    "valid_trades": 188,
+    "na_trades": 4,
+    "mean": 4.077,
+    "median": 1.206,
+    "p25": 0.672,
+    "p75": 2.892,
+    "p90": 6.894,
+    "p95": 17.937,
+    "frac_gt_50pct": 0.819,
+    "frac_gt_75pct": 0.691,
+    "by_exit_reason": {
+      "trail_stop_mean": 3.15,
+      "trend_exit_mean": 8.96
+    },
+    "by_hold_bucket": {
+      "lt_1d_mean": 17.04,
+      "1_3d_mean": 5.40,
+      "3_7d_mean": 2.69,
+      "7_14d_mean": 0.77,
+      "14d_plus_mean": 0.33
+    },
+    "interpretation": "Most trades give back moderate MFE. Short holds give back the most. Winners that run long (14d+) keep most of their gain (mean giveback 0.33). Trail stop captures the move well for long-duration trades."
+  },
+  "sensitivity_curve": {
+    "native_view": {
+      "base_terminal": 228479.79,
+      "base_cagr_pct": 61.83,
+      "base_sharpe": 1.138,
+      "at_removal_5_trades": {
+        "remaining_terminal": 31434.98,
+        "remaining_cagr_pct": 19.27,
+        "remaining_sharpe": 0.775
+      },
+      "at_removal_6_trades": {
+        "remaining_terminal": 1403.39,
+        "remaining_cagr_pct": -26.07,
+        "remaining_sharpe": 0.687,
+        "note": "Cross-zero boundary. Strategy becomes unprofitable."
+      },
+      "at_removal_10_trades": {
+        "remaining_terminal": -84371.81,
+        "remaining_cagr_pct": -100.0,
+        "remaining_sharpe": 0.462
+      },
+      "interpretation": "Removing top 6 trades (3.1%) collapses CAGR below zero. Classic cliff-edge."
+    },
+    "unit_size_view": {
+      "base_terminal": 354310.95,
+      "base_cagr_pct": 73.13,
+      "base_sharpe": 1.138,
+      "at_removal_5_trades": {
+        "remaining_terminal": 45031.21,
+        "remaining_cagr_pct": 26.05,
+        "remaining_sharpe": 0.753
+      },
+      "at_removal_10_trades": {
+        "remaining_terminal": 11558.62,
+        "remaining_cagr_pct": 2.25,
+        "remaining_sharpe": 0.217
+      },
+      "at_removal_12_trades": {
+        "remaining_terminal": 7634.42,
+        "remaining_cagr_pct": -4.07,
+        "remaining_sharpe": -0.017,
+        "note": "Cross-zero boundary in unit-size view."
+      },
+      "interpretation": "Unit-size view is slightly more resilient (zero-cross at 12 vs 6 trades) because compounding amplifies large wins."
+    }
+  },
+  "cliff_edge": {
+    "native": {
+      "terminal_cliff": true,
+      "terminal_max_score": 3.60,
+      "terminal_cliff_index": 1,
+      "cagr_cliff": true,
+      "cagr_max_score": 17.36,
+      "cagr_cliff_index": 5,
+      "sharpe_cliff": true,
+      "sharpe_max_score": 4.21
+    },
+    "unit_size": {
+      "terminal_cliff": true,
+      "terminal_max_score": 17.81,
+      "terminal_cliff_index": 1,
+      "cagr_cliff": true,
+      "cagr_max_score": 5.64,
+      "cagr_cliff_index": 1,
+      "sharpe_cliff": false,
+      "sharpe_max_score": 1.32
+    },
+    "interpretation": "Both views show cliff-edge behavior. The single largest trade (episode 163 in native, episode 57 in unit-size) causes disproportionate damage when removed. This is a structural feature of trend-following with high positive skew."
+  },
+  "skip_after_n_losses": {
+    "results": [
+      {"n": 2, "skips": 37, "winners_skipped": 18, "top10_hit": 3, "delta_sharpe": -0.263, "verdict": "HARMFUL"},
+      {"n": 3, "skips": 16, "winners_skipped": 7, "top10_hit": 2, "delta_sharpe": -0.109, "verdict": "HARMFUL"},
+      {"n": 4, "skips": 8, "winners_skipped": 3, "top10_hit": 0, "delta_sharpe": 0.001, "verdict": "NEUTRAL"},
+      {"n": 5, "skips": 5, "winners_skipped": 1, "top10_hit": 0, "delta_sharpe": 0.004, "verdict": "NEUTRAL"}
+    ],
+    "overall_judgment": "HARMFUL at N<=3, NEUTRAL at N>=4",
+    "interpretation": "Skipping after 2-3 consecutive losses is destructive because it catches top-10 winning trades that follow loss clusters. The strategy's big winners are unpredictable and can follow drawdown periods. Behavioral skipping destroys the home-run tail."
+  },
+  "style_classification": {
+    "native_view": "home-run",
+    "unit_size_view": "home-run",
+    "overall": "home-run",
+    "rationale": "Top 5 trades = 90% of net PnL. Top 10 trades = 143% (remaining trades net negative). CAGR collapses to zero after removing 6 of 192 trades (3.1%). Gini = 0.61, skew = 3.66, effective N = 57 of 192. Classic positively-skewed trend-following payoff profile.",
+    "cliff_vs_smooth": "cliff-like",
+    "cliff_vs_smooth_rationale": "Cliff score 3.60 (terminal) and 17.36 (CAGR) in native view both exceed the 3.0 threshold. The CAGR collapse from 19.3% to -26.1% when removing trade #6 (a single $30K trade) is the defining cliff. Dependence is concentrated, not gradual."
+  },
+  "answers_to_spec_questions": {
+    "q1_would_e0_be_profitable_without_top_5_trades": "Barely. With top 5 removed (native), terminal value = $31,435 (from $228,480), CAGR drops from 61.8% to 19.3%, Sharpe from 1.14 to 0.77. Strategy survives but at a fraction of its value. Remove one more (#6) and it collapses below zero.",
+    "q2_is_dependence_cliff_like_or_smooth": "Cliff-like. The CAGR sensitivity curve shows an abrupt collapse at trade #6 (cliff score 17.36). The terminal curve has a cliff at trade #1 (score 3.60). Both views confirm single-point collapse rather than gradual degradation.",
+    "q3_does_skipping_after_N_losses_hurt": "Yes for N<=3, No for N>=4. At N=2, skipping 37 trades destroys 23% of Sharpe and catches 3 top-10 winners. At N=4-5, the skip count drops to 5-8 trades with negligible Sharpe impact. The big winners follow loss clusters.",
+    "q4_how_much_mfe_is_given_back": "Median giveback ratio 1.21x, meaning the typical trade exits with slightly less than half its peak gain. Short-duration trades (<1d) give back 17x MFE on average (mostly losers that barely moved). Long-duration winners (14d+) give back only 0.33x — the trail stop works well for sustained moves.",
+    "q5_overall_home_run_dependence_grade": "HIGH. E0 is unambiguously a home-run dependent strategy. 3.1% of trades (6 of 192) determine whether the strategy is profitable at all. The payoff profile has extreme positive skew (3.66), the Gini (0.61) indicates high concentration, and the cliff-edge is detected in both native and unit-size views. This is a structural property of trend-following, not a deficiency — but it means every signal must be taken."
+  }
+}

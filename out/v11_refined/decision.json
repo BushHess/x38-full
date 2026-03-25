@@ -1,0 +1,101 @@
+{
+  "selected_candidate": "v10_baseline",
+  "metadata": {
+    "git_hash": "c74c650",
+    "timestamp": "2026-02-23T21:26:22.709689+00:00",
+    "scenarios": [
+      "base",
+      "harsh",
+      "smart"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "v10_baseline",
+      "tag": "PROMOTE",
+      "reasons": [
+        "harsh score >= baseline",
+        "TOPPING return >= baseline",
+        "turnover 26.1x <= 1.2 * baseline 26.1x"
+      ],
+      "worst": {
+        "min_score": 88.94,
+        "min_cagr": 37.26,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.94,
+        "trades": 100
+      }
+    },
+    {
+      "name": "v11_cycle_early_only",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 100.9,
+        "min_cagr": 41.82,
+        "max_mdd": 36.84,
+        "max_fee_drag": 4.03,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_cycle_mild_late",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 96.15,
+        "min_cagr": 40.06,
+        "max_mdd": 36.84,
+        "max_fee_drag": 3.95,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_cycle_wide_late",
+      "tag": "HOLD",
+      "reasons": [
+        "TOPPING return -18.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 93.91,
+        "min_cagr": 39.25,
+        "max_mdd": 36.84,
+        "max_fee_drag": 3.95,
+        "trades": 102
+      }
+    },
+    {
+      "name": "v11_mr_ultra",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 46.18 < baseline 88.9"
+      ],
+      "worst": {
+        "min_score": 46.18,
+        "min_cagr": 21.55,
+        "max_mdd": 36.28,
+        "max_fee_drag": 3.79,
+        "trades": 105
+      }
+    },
+    {
+      "name": "v11_cycle_mild_mr_ultra",
+      "tag": "HOLD",
+      "reasons": [
+        "harsh score 60.08 < baseline 88.9",
+        "TOPPING return -18.2% < baseline -17.5%"
+      ],
+      "worst": {
+        "min_score": 60.08,
+        "min_cagr": 26.67,
+        "max_mdd": 36.84,
+        "max_fee_drag": 3.87,
+        "trades": 106
+      }
+    }
+  ]
+}

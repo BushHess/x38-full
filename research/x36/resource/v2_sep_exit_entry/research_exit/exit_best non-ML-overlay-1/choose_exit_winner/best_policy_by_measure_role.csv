@@ -1,0 +1,9 @@
+signal,measurement,operator,role,rule_type,natural_center,aggregate_sharpe,aggregate_cagr,aggregate_mdd,delta_sharpe_vs_base_exit,positive_folds_vs_base_exit,avg_cont_decisions,avg_selected_threshold,positive_folds_vs_price_model
+ema12_net_quote_norm_28,net_quote_norm_28,ema12,stateful,train_threshold,0.0,1.216249842285937,0.3871846387237934,-0.3362750441677922,0.08549004231373436,3,4.5,-0.006293402186228885,1
+ema12_imbalance_ratio_base,imbalance_ratio_base,ema12,stateful,fixed_natural,0.0,1.2006125678148614,0.38050275871378236,-0.33664553331805,0.06985276784265881,3,3.0,,1
+ema12_imbalance_ratio_quote,imbalance_ratio_quote,ema12,stateful,fixed_natural,0.0,1.2006125678148614,0.38050275871378236,-0.33664553331805,0.06985276784265881,3,3.0,,1
+ema28_imbalance_ratio_quote,imbalance_ratio_quote,ema28,one_shot,train_threshold,0.0,1.1903375128799931,0.3774873630757296,-0.38586129562327953,0.05957771290779057,3,1.0,0.006893196429220174,2
+ema28_imbalance_ratio_base,imbalance_ratio_base,ema28,one_shot,train_threshold,0.0,1.179217505043243,0.37291517600688917,-0.38586129562327953,0.04845770507104041,3,1.25,0.0032242277123549277,2
+net_quote_norm_28,net_quote_norm_28,level,one_shot,fixed_natural,0.0,1.1715034272432896,0.37017555449809825,-0.3461538350128418,0.040743627271087046,3,3.25,,1
+ema12_vol_surprise_quote_28,vol_surprise_quote_28,ema12,one_shot,train_threshold,1.0,1.1370321839608994,0.3583735421694274,-0.3667419216592881,0.006272383988696895,1,4.5,1.0844336304352793,2
+osc_12_28_vol_surprise_quote_28,vol_surprise_quote_28,osc_12_28,stateful,fixed_natural,1.0,1.1307597999722026,0.3503025443385246,-0.37093930671517117,0.0,0,0.0,,1

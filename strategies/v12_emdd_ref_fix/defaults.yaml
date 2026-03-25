@@ -1,0 +1,5 @@
+strategy_id: v12_emdd_ref_fix
+defaults:
+  emdd_ref_mode: legacy
+  rsi_method: wilder
+  entry_cooldown_bars: 3

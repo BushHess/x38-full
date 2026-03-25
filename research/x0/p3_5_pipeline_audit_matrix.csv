@@ -1,0 +1,6 @@
+artifact,section,pipeline,strategies_via_actual_code,strategies_via_surrogate,cost_scenario,data_window,metric_source,canonical
+p3_5_final_backtest_table.csv,T1,BacktestEngine,all 7,none,smart/base/harsh,2019-01-01 to 2026-02-20 + 365d warmup,v10/core/metrics.py compute_metrics,YES
+p3_5_final_bootstrap_table.csv,T2,vectorized surrogate,none,"all 7 (X0=E0_EMA21 alias, X0_E5EXIT=E5_EMA21 alias)",base (25 bps RT),2019-01-01 to 2026-02-20 + 365d warmup,inline _metrics_vec (Sharpe/CAGR/MDD only),YES (distributional)
+p3_5_final_exposure_metrics.csv,T4,BacktestEngine,"X0_E5EXIT, X0_VOLSIZE",none,base,2019-01-01 to 2026-02-20 + 365d warmup,v10/core/metrics.py + vol-sizing formula,YES
+p3_4_backtest_table.csv,T1 (P3.4),vectorized surrogate,none,"all 7 (hard aliases for X0, X0_E5EXIT)",smart/base/harsh,2019-01-01 to 2026-02-20 + 365d warmup,inline _metrics (approximation),SUPERSEDED by P3.5
+p3_3_results.json,P3.3,BacktestEngine,"X0_E5EXIT, X0_VOLSIZE",none,base,full dataset (no start/end),v10/core/metrics.py,"YES for parity proof, different window"

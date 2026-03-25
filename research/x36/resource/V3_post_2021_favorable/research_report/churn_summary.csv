@@ -1,0 +1,4 @@
+combo,closed_trades,reenter_le3_count,reenter_le6_count,reenter_le3_pct_all_closed,reenter_le6_pct_all_closed
+combo1_entryFreeze_exitWinner,121,0,0,0.0,0.0
+combo2_entryFreeze_exitRunner,126,0,46,0.0,0.36507936507936506
+combo3_entryFreeze_baseExit,103,24,40,0.23300970873786409,0.3883495145631068

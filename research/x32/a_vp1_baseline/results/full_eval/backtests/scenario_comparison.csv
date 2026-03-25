@@ -1,0 +1,4 @@
+scenario,cost_bps,sharpe,sortino,calmar,cagr_pct,total_return_pct,max_drawdown_mid_pct,trades,win_rate_pct,profit_factor,avg_exposure,avg_days_held,fees_total,fee_drag_pct_per_year
+smart,13.0,1.3853,1.1687,1.0411,64.08,6678.92,61.55,232,43.53,1.9799,0.4229,5.67,35703.69,1.97
+base,31.0,1.2691,1.0748,0.8872,56.22,4364.77,63.37,232,42.67,1.8057,0.4229,5.67,73805.49,5.6
+harsh,50.0,1.1461,0.9744,0.741,48.34,2773.17,65.24,232,40.95,1.6496,0.4229,5.67,79248.4,8.38

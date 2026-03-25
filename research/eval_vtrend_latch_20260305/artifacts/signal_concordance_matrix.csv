@@ -1,0 +1,7 @@
+strategy_a,strategy_b,concordance_pct,entries_a,entries_b,in_position_a_pct,in_position_b_pct,notes
+SM,SM,100.0,76,76,34.8,34.8,self
+LATCH,SM,99.8,76,76,34.6,34.8,"only 32 bars differ despite regime hysteresis difference"
+LATCH,LATCH,100.0,76,76,34.6,34.6,self
+LATCH,P,95.8,76,90,34.6,38.2,"P has 14 more trades; price-only regime is more permissive"
+P,SM,95.7,90,76,38.2,34.8,"P has 14 more trades; different regime definition"
+P,P,100.0,90,90,38.2,38.2,self

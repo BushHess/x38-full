@@ -1,0 +1,15 @@
+{
+  "v4": {
+    "method": "precompute_in_on_init",
+    "description": "All features (d1_ret_60, h4_trendq_84, h4_buyimb_12) and yearly thresholds are precomputed in on_init() from the full bar arrays. on_bar() only reads precomputed arrays at state.bar_index. D1-H4 alignment allows exact matches (d1_close_time <= h4_close_time) to reproduce the frozen V4 spec. Yearly thresholds use expanding/trailing windows up to but not including the current year boundary.",
+    "d1_h4_alignment": "allow_exact_matches (d1_close_time <= h4_close_time)",
+    "threshold_calibration": "expanding to year boundary (no future data)",
+    "status": "PASS"
+  },
+  "e5": {
+    "method": "precompute_in_on_init",
+    "description": "All indicators (EMA, RATR, VDO, D1 regime) precomputed in on_init(). on_bar() only reads at state.bar_index. Same pattern as all VTREND strategies.",
+    "d1_h4_alignment": "strict_lt (d1_close_time < h4_close_time)",
+    "status": "PASS"
+  }
+}

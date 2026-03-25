@@ -1,0 +1,171 @@
+/var/www/trading-bots/btc-spot-dev/research/ema_ablation.py:37: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb
+EMA(21d) ABLATION STUDY
+==========================================================================================
+  Question: Does VTREND add value beyond simple EMA(21d) hold/cash?
+  A) Simple: hold BTC when close > EMA(21d), cash otherwise
+  B) VTREND E0: EMA crossover + VDO + ATR trail (3 params)
+  C) E0 + EMA(21d): VTREND with regime entry filter
+  Cost: 50 bps RT. Bootstrap: 500 paths × 16 timescales.
+  Data: 17838 H4 bars, warmup index = 2190
+
+==========================================================================================
+PHASE 1: BTC REAL DATA — 3-WAY COMPARISON
+==========================================================================================
+
+  At N=120 (default):
+              Strategy   Sharpe     CAGR     MDD   Calmar  Trades       Final
+  ----------------------------------------------------------------------
+    A) Simple EMA(21d)   +0.878   +32.6%   51.3%   +0.636     338    47399.40
+          B) VTREND E0   +1.276   +52.7%   41.5%   +1.268     211   138022.86
+      C) E0 + EMA(21d)   +1.281   +52.4%   42.0%   +1.246     188   146597.05
+
+  VTREND E0 vs Simple EMA:
+    ΔSharpe (B-A) = +0.3983
+    ΔCAGR   (B-A) = +20.04%
+    ΔMDD    (B-A) = -9.77pp
+
+  E0+EMA21 vs Simple EMA:
+    ΔSharpe (C-A) = +0.4032
+    ΔCAGR   (C-A) = +19.76%
+    ΔMDD    (C-A) = -9.25pp
+
+  16-Timescale Sweep:
+     sp   days   Simple       E0   E0+EMA   E0-Simp   E0E-Simp   E0E-E0
+  -----------------------------------------------------------------
+     30      5   +0.878   +0.673   +0.909   -0.2055    +0.0310  +0.2366
+     48      8   +0.878   +0.654   +0.841   -0.2243    -0.0376  +0.1867
+     60     10   +0.878   +0.797   +0.948   -0.0814    +0.0694  +0.1508
+     72     12   +0.878   +0.993   +1.073   +0.1153    +0.1945  +0.0793
+     84     14   +0.878   +1.129   +1.157   +0.2506    +0.2789  +0.0282
+     96     16   +0.878   +1.077   +1.128   +0.1987    +0.2496  +0.0508
+    108     18   +0.878   +1.209   +1.210   +0.3310    +0.3318  +0.0008
+    120     20   +0.878   +1.276   +1.281   +0.3983    +0.4032  +0.0049
+    144     24   +0.878   +1.328   +1.294   +0.4496    +0.4156  -0.0340
+    168     28   +0.878   +1.193   +1.134   +0.3150    +0.2554  -0.0596
+    200     33   +0.878   +1.432   +1.360   +0.5535    +0.4823  -0.0712
+    240     40   +0.878   +1.227   +1.195   +0.3487    +0.3170  -0.0317
+    300     50   +0.878   +1.017   +1.109   +0.1387    +0.2313  +0.0926
+    360     60   +0.878   +1.114   +1.151   +0.2359    +0.2727  +0.0369
+    500     83   +0.878   +1.074   +1.094   +0.1962    +0.2154  +0.0192
+    720    120   +0.878   +0.838   +0.969   -0.0404    +0.0904  +0.1308
+
+  Summary (Sharpe):
+    E0 > Simple EMA:     12/16 timescales
+    E0+EMA > Simple EMA: 15/16 timescales
+    E0+EMA > E0:         12/16 timescales
+
+==========================================================================================
+PHASE 2: BOOTSTRAP — 500 paths × 16 timescales × 3 strategies
+==========================================================================================
+        1/500  (0s, ~0s left)
+       50/500  (90s, ~814s left)
+      100/500  (204s, ~816s left)
+      150/500  (313s, ~730s left)
+      200/500  (419s, ~629s left)
+      250/500  (515s, ~515s left)
+      300/500  (614s, ~409s left)
+      350/500  (717s, ~307s left)
+      400/500  (816s, ~204s left)
+      450/500  (914s, ~102s left)
+      500/500  (994s, ~0s left)
+
+  Done: 995.0s (16.6 min)
+
+  E0 vs Simple EMA (Sharpe):
+     sp   days   P(E0>S)    P(F>S)   P(F>E0)      medS     medE0      medF
+  ----------------------------------------------------------------------
+     30      5     73.0%     85.2%     74.2%   +0.2646   +0.4094   +0.4828
+     48      8     80.6%     86.6%     68.6%   +0.2646   +0.4759   +0.5083
+     60     10     85.2%     89.8%     61.2%   +0.2646   +0.5075   +0.5340
+     72     12     87.4%     90.0%     58.0%   +0.2646   +0.5150   +0.5304
+     84     14     90.4%     91.2%     59.2%   +0.2646   +0.5115   +0.5278
+     96     16     89.8%     93.0%     61.0%   +0.2646   +0.5248   +0.5509
+    108     18     91.2%     93.2%     60.6%   +0.2646   +0.5315   +0.5466
+    120     20     90.4%     92.8%     61.4%   +0.2646   +0.5424   +0.5710
+    144     24     87.6%     92.0%     60.6%   +0.2646   +0.5161   +0.5496
+    168     28     84.8%     90.4%     61.6%   +0.2646   +0.5073   +0.5359
+    200     33     82.8%     89.6%     61.4%   +0.2646   +0.5127   +0.5411
+    240     40     80.6%     86.6%     61.6%   +0.2646   +0.5116   +0.5335
+    300     50     78.4%     85.0%     63.2%   +0.2646   +0.4624   +0.5252
+    360     60     75.4%     84.6%     61.2%   +0.2646   +0.4637   +0.5203
+    500     83     71.8%     82.2%     62.4%   +0.2646   +0.4569   +0.5188
+    720    120     68.8%     79.2%     61.6%   +0.2646   +0.4362   +0.4891
+
+  Binomial meta-test (>50% at how many of 16 timescales):
+                 Comparison    Metric   wins/16     binom p       verdict
+  ---------------------------------------------------------------------------
+               E0 vs Simple    sharpe     16/16    0.000015    PROVEN ***
+               E0 vs Simple      cagr     16/16    0.000015    PROVEN ***
+               E0 vs Simple       mdd     16/16    0.000015    PROVEN ***
+               E0 vs Simple       nav     16/16    0.000015    PROVEN ***
+           E0+EMA vs Simple    sharpe     16/16    0.000015    PROVEN ***
+           E0+EMA vs Simple      cagr     16/16    0.000015    PROVEN ***
+           E0+EMA vs Simple       mdd     16/16    0.000015    PROVEN ***
+           E0+EMA vs Simple       nav     16/16    0.000015    PROVEN ***
+               E0+EMA vs E0    sharpe     16/16    0.000015    PROVEN ***
+               E0+EMA vs E0      cagr     16/16    0.000015    PROVEN ***
+               E0+EMA vs E0       mdd     16/16    0.000015    PROVEN ***
+               E0+EMA vs E0       nav     16/16    0.000015    PROVEN ***
+
+  At N=120 specifically (500 paths):
+
+    E0 vs Simple:
+      P(Sharpe better)  = 90.4%  (median Δ = +0.2600)
+      P(CAGR better)    = 88.4%  (median Δ = +11.32%)
+      P(MDD lower)      = 91.4%  (median Δ = +12.20pp)
+      P(NAV higher)     = 88.4%  (median Δ = +12220)
+
+    E0+EMA vs Simple:
+      P(Sharpe better)  = 92.8%  (median Δ = +0.2744)
+      P(CAGR better)    = 91.0%  (median Δ = +12.23%)
+      P(MDD lower)      = 94.0%  (median Δ = +13.66pp)
+      P(NAV higher)     = 91.0%  (median Δ = +14792)
+
+    E0+EMA vs E0:
+      P(Sharpe better)  = 61.4%  (median Δ = +0.0193)
+      P(CAGR better)    = 60.2%  (median Δ = +0.77%)
+      P(MDD lower)      = 61.2%  (median Δ = +0.97pp)
+      P(NAV higher)     = 60.2%  (median Δ = +1027)
+
+  Median Sharpe at N=120:
+    Simple EMA(21d):  +0.2646
+    VTREND E0:        +0.5424
+    E0 + EMA(21d):    +0.5710
+
+  Median CAGR at N=120:
+    Simple EMA(21d):  +2.55%
+    VTREND E0:        +14.53%
+    E0 + EMA(21d):    +15.72%
+
+  Median MDD at N=120:
+    Simple EMA(21d):  77.4%
+    VTREND E0:        62.7%
+    E0 + EMA(21d):    61.4%
+
+==========================================================================================
+OVERALL VERDICT
+==========================================================================================
+
+  Real data at N=120:
+         simple_ema: Sh=+0.878  CAGR=+32.6%  MDD=51.3%  Trades=338
+          vtrend_e0: Sh=+1.276  CAGR=+52.7%  MDD=41.5%  Trades=211
+        e0_plus_ema: Sh=+1.281  CAGR=+52.4%  MDD=42.0%  Trades=188
+
+  Bootstrap binomial (16 timescales):
+              E0 vs Simple:  sharpe=16/16(PROVEN ***)  cagr=16/16(PROVEN ***)  mdd=16/16(PROVEN ***)  nav=16/16(PROVEN ***)
+          E0+EMA vs Simple:  sharpe=16/16(PROVEN ***)  cagr=16/16(PROVEN ***)  mdd=16/16(PROVEN ***)  nav=16/16(PROVEN ***)
+              E0+EMA vs E0:  sharpe=16/16(PROVEN ***)  cagr=16/16(PROVEN ***)  mdd=16/16(PROVEN ***)  nav=16/16(PROVEN ***)
+
+  Bootstrap at N=120 (P values):
+              E0 vs Simple: Sh=90.4%  CAGR=88.4%  MDD=91.4%  NAV=88.4%
+          E0+EMA vs Simple: Sh=92.8%  CAGR=91.0%  MDD=94.0%  NAV=91.0%
+              E0+EMA vs E0: Sh=61.4%  CAGR=60.2%  MDD=61.2%  NAV=60.2%
+
+  CONCLUSION:
+    VTREND E0 ADDS genuine value beyond simple EMA timing
+    (E0 beats Simple EMA at 16/16 timescales, p=0.000015)
+
+  Total time: 997s (16.6 min)
+  Saved: /var/www/trading-bots/btc-spot-dev/research/results/ema_ablation/ema_ablation.json
+==========================================================================================

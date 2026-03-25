@@ -1,0 +1,30 @@
+candidate_id,architecture,family_cluster,stage_status,decision,reason
+S_D1_TREND,single,slow_trend_native,comparison_set,KEEP,"Strong native D1 trend frontier; simplest slow-trend representative; positive edge, adequate trade count, good cost resilience."
+S_D1_VOLHIGH,single,slow_volatility_context,layering_only,KEEP,Useful orthogonal slower volatility context for layering search; standalone edge positive but weaker than slow-trend frontier.
+S_D1_CLV,single,slow_candle_structure,dropped_stage2,DROP,Positive but weaker and less orthogonal than retained slow-trend/volatility reps; removed under family-cluster cap.
+S_H4_TREND,single,fast_trend_native,comparison_set,KEEP,Strongest simple native H4 trend representative; retained as genuine native faster rival.
+S_H4_TREND_Q,single,fast_trend_native,comparison_set,KEEP,Nearest serious nonlinear/calibrated rival to S_H4_TREND; retained for paired comparison within H4 trend cluster.
+S_H4_PULLBACK,single,fast_pullback_native,layering_only,KEEP,Very consistent controller candidate with low drawdown; retained to test controller role rather than as headline frontier.
+S_H4_VOLQUIET,single,fast_volatility_native,layering_only,KEEP,Most useful native H4 volatility controller candidate; retained for layering tests.
+S_H4_CANDLE,single,fast_candle_native,layering_only,KEEP,Kept as optional entry/confirmation hypothesis; standalone edge weaker than retained frontiers.
+S_XR_D1EMA,single,cross_tf_context,comparison_set,KEEP,Strong simple cross-timeframe candidate with broad plateau; retained as most credible mixed-timeframe rival.
+S_XR_D1ROLL,single,cross_tf_context,comparison_set,KEEP,Nearest serious nonlinear cross-timeframe rival; retained for paired testing against S_XR_D1EMA.
+S_D1_TREND_TRANSPORT,single,transport_control,audit_only,DROP,Retained only for transport-vs-native redundancy audit; not eligible as independent faster frontier absent incremental paired evidence.
+L2_D1_TREND_AND_H4_VOLQUIET,two_layer,layered_defensive,comparison_set,KEEP,Best two-layer defensive alternative by discovery Sharpe/DD tradeoff; materially different failure mode versus single-trend frontiers.
+L2_D1_VOLHIGH_AND_H4_PULLBACK,two_layer,layered_defensive,comparison_set,KEEP,Second layered alternative kept as low-DD/positive-fold-share backup with different permission gate.
+L2_H4_TREND_AND_H4_VOLQUIET,two_layer,layered_defensive,dropped_stage5A,DROP,Discovery-positive but redundant with retained layered alternatives and inferior to simple H4 trend frontier on return quality.
+L2_XR_D1EMA_AND_H4_VOLQUIET,two_layer,layered_defensive,dropped_stage5A,DROP,Discovery-positive but not strong enough to survive cluster cap once simple cross-timeframe rival remained viable.
+L2_D1_TREND_AND_H4_PULLBACK,two_layer,layered_defensive,dropped_stage5A,DROP,Inferior to retained layered alternatives on risk-adjusted return.
+L2_D1_VOLHIGH_AND_H4_CANDLE,two_layer,layered_defensive,dropped_stage5A,DROP,No compelling incremental edge over simpler alternatives.
+L2_H4_TREND_AND_H4_PULLBACK,two_layer,layered_defensive,dropped_stage5A,DROP,Low drawdown but insufficient growth relative to retained options.
+L2_XR_D1EMA_AND_H4_PULLBACK,two_layer,layered_defensive,dropped_stage5A,DROP,Too weak on growth to survive comparison-set cap.
+L2_D1_VOLHIGH_AND_H4_VOLQUIET,two_layer,layered_defensive,dropped_stage5A,DROP,Trade count shrank without sufficient Sharpe/growth payoff.
+L2_D1_TREND_AND_H4_CANDLE,two_layer,layered_defensive,dropped_stage5A,DROP,Entry/hold quality not strong enough relative to simpler trend rep.
+L2_H4_TREND_AND_H4_CANDLE,two_layer,layered_defensive,dropped_stage5A,DROP,Weak discovery profile versus other layered candidates.
+L2_XR_D1EMA_AND_H4_CANDLE,two_layer,layered_defensive,dropped_stage5A,DROP,Weak discovery profile versus other layered candidates.
+L3_D1_TREND_AND_H4_VOLQUIET_ENTRY_H4_BODYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Third layer did not beat simpler two-layer core and reduced trade count.
+L3_D1_TREND_AND_H4_VOLQUIET_ENTRY_H4_BUYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Best three-layer candidate still failed to show robust payoff over two-layer/simple frontiers.
+L3_D1_VOLHIGH_AND_H4_PULLBACK_ENTRY_H4_BODYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Third-layer confirmation not justified by retained edge.
+L3_D1_VOLHIGH_AND_H4_PULLBACK_ENTRY_H4_BUYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Third-layer confirmation not justified by retained edge.
+L3_H4_TREND_AND_H4_VOLQUIET_ENTRY_H4_BODYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Third-layer confirmation not justified by retained edge.
+L3_H4_TREND_AND_H4_VOLQUIET_ENTRY_H4_BUYCONF,three_layer,entry_filter,dropped_stage5A,DROP,Third-layer confirmation not justified by retained edge.

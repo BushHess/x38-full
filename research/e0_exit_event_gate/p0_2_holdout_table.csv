@@ -1,0 +1,5 @@
+strategy_id,scenario,start,end,sharpe,cagr_pct,mdd_pct,calmar,trades,win_rate_pct,profit_factor,avg_exposure,total_return_pct
+X0_E5EXIT,harsh,2024-01-01,2026-02-20,1.0057,28.22,25.6,1.1023,57,47.37,1.5915,0.4346,70.25
+X0E5_FLOOR_LATCH,harsh,2024-01-01,2026-02-20,0.9426,25.72,25.66,1.0023,59,45.76,1.514,0.4303,63.22
+X0E5_FLOOR_BSLOW,harsh,2024-01-01,2026-02-20,0.9577,26.27,25.66,1.0238,58,46.55,1.5348,0.4312,64.75
+X0E5_FLOOR_PEAK3,harsh,2024-01-01,2026-02-20,1.032,29.19,25.6,1.14,57,47.37,1.6293,0.4339,73.0

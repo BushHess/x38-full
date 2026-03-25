@@ -1,0 +1,152 @@
+/var/www/trading-bots/btc-spot-dev/research/x13/benchmark.py:39: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import make_ratios, precompute_vcbb, gen_path_vcbb  # noqa: E402
+X13: Is Trail-Stop Churn Predictable?
+======================================================================
+  Bars: 17838 H4, 2973 D1, warmup_idx=2190
+  Period: 2019-01-01 to 2026-02-20, warmup=365d
+
+  Running E0+EMA1D21 baseline ...
+  E0: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+
+======================================================================
+P0: ORACLE CEILING (churn_window=20)
+======================================================================
+
+  Baseline: Sharpe=1.3718, CAGR=57.72%, MDD=39.96%, trades=189
+  Oracle:   Sharpe=2.1629, CAGR=120.17%, MDD=29.32%, trades=81
+
+  d_sharpe: +0.7911  d_cagr: +62.46pp  d_mdd: -10.63pp
+  Suppressed: 1662  Allowed: -1494
+
+  V0 (d_sharpe > 0.10): PASS
+
+======================================================================
+P1: FEATURE CENSUS (churn_window=20)
+======================================================================
+
+  Trail stop exits: 168
+  Churn: 111 (66.1%)  True: 57 (33.9%)
+  Features: 10
+    ema_ratio         : mean=  1.0379, std=  0.0325, min=  0.9995, max=  1.1864
+    bars_held         : mean= 44.2679, std= 36.9304, min=  4.0000, max=212.0000
+    atr_pctl          : mean=  0.5465, std=  0.3195, min=  0.0100, max=  1.0000
+    bar_range_atr     : mean=  1.6854, std=  1.0428, min=  0.3141, max=  6.0895
+    dd_from_peak      : mean=  0.0588, std=  0.0285, min=  0.0168, max=  0.1674
+    bars_since_peak   : mean= 13.0000, std=  8.4867, min=  1.0000, max= 57.0000
+    close_position    : mean=  0.2482, std=  0.1658, min=  0.0000, max=  0.7311
+    vdo_at_exit       : mean= -0.0108, std=  0.0106, min= -0.0534, max=  0.0173
+    d1_regime_str     : mean=  0.0436, std=  0.0405, min= -0.0459, max=  0.2518
+    trail_tightness   : mean=  0.0572, std=  0.0303, min=  0.0164, max=  0.1904
+
+======================================================================
+P2: UNIVARIATE PREDICTABILITY
+======================================================================
+
+  Feature                    U     p_raw    p_bonf   Cliff_d      Effect    Mean_C    Mean_T
+  ----------------------------------------------------------------------------------------------------
+  ema_ratio               4994    0.0000    0.0000   +0.5786       large    1.0470    1.0201 ***
+  bars_held               4836    0.0000    0.0000   +0.5287       large   54.4865   24.3684 ***
+  atr_pctl                3592    0.1514    1.0000   +0.1355  negligible    0.5732    0.4946
+  bar_range_atr           2208    0.0014    0.0138   -0.3020       small    1.5207    2.0061 ***
+  dd_from_peak            3339    0.5577    1.0000   +0.0555  negligible    0.0598    0.0570
+  bars_since_peak         3934    0.0097    0.0974   +0.2437       small   14.3333   10.4035
+  close_position          3230    0.8250    1.0000   +0.0210  negligible    0.2508    0.2433
+  vdo_at_exit             3473    0.3006    1.0000   +0.0978  negligible   -0.0102   -0.0119
+  d1_regime_str           4750    0.0000    0.0000   +0.5015       large    0.0537    0.0241 ***
+  trail_tightness         3575    0.1686    1.0000   +0.1301  negligible    0.0593    0.0532
+
+  V1 (any Bonferroni p < 0.05): PASS
+
+======================================================================
+P3: MULTIVARIATE PREDICTABILITY BOUND
+======================================================================
+
+  Selecting regularisation C from [0.001, 0.01, 0.1, 1.0, 10.0] ...
+  Best C=10.0, LOOCV AUC=0.8174
+
+  LOOCV AUC: 0.8174
+  Coefficients (standardized):
+    ema_ratio         : +0.4433
+    bars_held         : +0.4597
+    atr_pctl          : +0.1225
+    bar_range_atr     : -0.3383
+    dd_from_peak      : -0.1069
+    bars_since_peak   : +0.2939
+    close_position    : -0.0719
+    vdo_at_exit       : +0.1718
+    d1_regime_str     : +0.3633
+    trail_tightness   : +0.0088
+    bias              : +0.8891
+
+  Permutation test (500 shuffles) ...
+    ... 100/500 permutations done
+    ... 200/500 permutations done
+    ... 300/500 permutations done
+    ... 400/500 permutations done
+    ... 500/500 permutations done
+
+  Null AUC: mean=0.4675, std=0.0761
+  Permutation p-value: 0.0020
+
+  Youden threshold: 0.73
+  TP=65, FP=4, FN=46, TN=53
+  V2 (perm_p < 0.05 AND AUC > 0.60): PASS
+
+======================================================================
+P4: BOOTSTRAP OOS (500 VCBB paths)
+======================================================================
+    ... 100/500 paths done (0 skipped)
+    ... 200/500 paths done (0 skipped)
+    ... 300/500 paths done (0 skipped)
+    ... 400/500 paths done (0 skipped)
+    ... 500/500 paths done (0 skipped)
+
+  Valid paths: 500/500 (skipped 0)
+  AUC: median=0.6791, [0.5627, 0.7687]
+  P(AUC > 0.60): 88.8%
+  P(AUC > 0.55): 96.4%
+  Best univariate p: median=0.0000, P(p<0.05)=100.0%
+
+  V3 (median AUC > 0.55 AND P(AUC>0.60) > 0.30): PASS
+
+======================================================================
+P5: CHURN WINDOW SENSITIVITY
+======================================================================
+
+  --- Window=10 bars ---
+    Churn rate: 51.2%, Oracle d_sharpe: +0.6112, Best p: 0.0000, AUC: 0.7384, Perm p: 0.0099
+    V0=P V1=P V2=P
+
+  --- Window=15 bars ---
+    Churn rate: 61.3%, Oracle d_sharpe: +0.7374, Best p: 0.0000, AUC: 0.7855, Perm p: 0.0099
+    V0=P V1=P V2=P
+
+  --- Window=20 bars ---
+    Churn rate: 66.1%, Oracle d_sharpe: +0.7911, Best p: 0.0000, AUC: 0.8013, Perm p: 0.0099
+    V0=P V1=P V2=P
+
+  --- Window=30 bars ---
+    Churn rate: 69.6%, Oracle d_sharpe: +0.8268, Best p: 0.0000, AUC: 0.7707, Perm p: 0.0099
+    V0=P V1=P V2=P
+
+  --- Window=40 bars ---
+    Churn rate: 72.6%, Oracle d_sharpe: +0.8783, Best p: 0.0000, AUC: 0.7648, Perm p: 0.0099
+    V0=P V1=P V2=P
+
+  Stability: 5/5 windows match reference direction
+  V4 (stable >= 4/5): PASS
+
+  Saved to /var/www/trading-bots/btc-spot-dev/research/x13/x13_*.{json,csv}
+
+======================================================================
+VERDICT
+======================================================================
+  V0: Oracle ceiling > 0.10 Sharpe (d_sharpe=+0.7911): PASS
+  V1: Any feature Bonferroni p < 0.05: PASS
+  V2: LOOCV AUC > 0.60 + perm p < 0.05 (AUC=0.8174, p=0.0020): PASS
+  V3: Bootstrap median AUC > 0.55 + P(AUC>0.60) > 30% (med=0.6791): PASS
+  V4: Stable across >= 4/5 windows (5/5): PASS
+
+  VERDICT: INFORMATION_EXISTS
+
+X13 BENCHMARK COMPLETE — 74s — VERDICT: INFORMATION_EXISTS

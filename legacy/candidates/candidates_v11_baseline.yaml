@@ -1,0 +1,11 @@
+candidates:
+  # V10 baseline (V8 Apex current defaults)
+  - name: v10_baseline
+    description: "V8 Apex current defaults (reference)"
+    params: {}
+
+  # V11 with all features disabled — must match v10_baseline exactly
+  - name: v11_disabled
+    strategy: v11_hybrid
+    description: "V11 Hybrid all features off (parity check)"
+    params: {}

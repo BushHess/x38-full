@@ -1,0 +1,9 @@
+label,regime,total_return_pct,max_dd_pct,n_bars,n_days,sharpe,notes
+candidate,SHOCK,-10.02,12.05,24,4.0,-11.535,
+candidate,CHOP,-7.6,10.91,138,23.0,-4.3084,
+candidate,TOPPING,2.37,1.09,18,3.0,17.2146,
+candidate,BULL,56.14,12.47,366,61.0,8.4548,
+baseline,SHOCK,-10.02,12.05,24,4.0,-11.535,
+baseline,CHOP,-7.6,10.91,138,23.0,-4.3084,
+baseline,TOPPING,2.37,1.09,18,3.0,17.2146,
+baseline,BULL,56.14,12.47,366,61.0,8.4548,

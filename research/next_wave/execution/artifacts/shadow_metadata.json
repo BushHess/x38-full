@@ -1,0 +1,19 @@
+{
+  "created": "2026-03-07T05:42:28.617033+00:00",
+  "spec": "E1_1_EXECUTION_SPEC.md",
+  "strategy": "X0 default (vtrend_x0_e5exit)",
+  "scenario": "base",
+  "trades": 186,
+  "m15_bars": 298605,
+  "twap_window_bars": 4,
+  "twap_window_ms": 3600000,
+  "cost_params": {
+    "spread_bps": 5.0,
+    "slippage_bps": 3.0,
+    "taker_fee_pct": 0.1
+  },
+  "fallbacks": {
+    "entry": 0,
+    "exit": 0
+  }
+}

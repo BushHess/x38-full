@@ -1,0 +1,282 @@
+{
+  "program_lineage_id": "btc_spot_mainline_lineage_001",
+  "constitution_version": "4.0",
+  "system_version_id": "V1",
+  "registry_created_in_session": "session_20260319_seed_001",
+  "entries": [
+    {
+      "rule_id": "T1_no_lookahead",
+      "statement": "Signal generation and state transitions may use only information available up to and including the decision bar close; no future bar data may influence decisions.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v4.0.yaml :: execution_model / admissible_domain / seed_discovery_rules",
+      "scope": "All versions in btc_spot_mainline_lineage_001 under constitution 4.0.",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "Always enforce; cannot be relaxed on overlapping or non-overlapping data.",
+      "challenge_rule": "Only a new constitution version may alter this axiom.",
+      "expiry": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "T1_utc_alignment",
+      "statement": "All timestamps, split boundaries, signal timing, and daily aggregation are defined in UTC.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v4.0.yaml :: execution_model / historical_seed_protocol",
+      "scope": "All versions in btc_spot_mainline_lineage_001 under constitution 4.0.",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "Always enforce; no local-time reinterpretation is allowed.",
+      "challenge_rule": "Only a new constitution version may alter this axiom.",
+      "expiry": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "T1_next_open_execution",
+      "statement": "Signals are generated at bar close and executed at the next bar open; fills, exposure, and daily returns must respect next-open execution semantics.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v4.0.yaml :: execution_model",
+      "scope": "All versions in btc_spot_mainline_lineage_001 under constitution 4.0.",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "Always enforce; same-bar execution and discretionary fill assumptions are forbidden.",
+      "challenge_rule": "Only a new constitution version may alter this axiom.",
+      "expiry": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "T1_no_synthetic_bar_repair",
+      "statement": "Raw historical bars may be canonicalized and validated, but missing bars must not be synthetically filled or repaired.",
+      "tier": "Tier1_Axiom",
+      "basis": "research_constitution_v4.0.yaml :: canonical_input_schema / admissible_domain; D1a quality protocol",
+      "scope": "All versions in btc_spot_mainline_lineage_001 under constitution 4.0.",
+      "authority": "hard-lock",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "Always enforce; gaps may be logged and blocked, not repaired.",
+      "challenge_rule": "Only a new constitution version may alter this axiom.",
+      "expiry": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "T2_microstructure_excluded_mainline",
+      "statement": "Microstructure and order-book detail are outside the mainline swing-horizon search space; admitted research uses canonical OHLCV/taker/trade-count bars only.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "research_constitution_v4.0.yaml :: admissible_domain / search_space / complexity_guardrails",
+      "scope": "Mainline BTC spot swing-horizon seed discovery and forward evaluation under constitution 4.0.",
+      "authority": "budget and burden only",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "May guide budget allocation and implementation scope, but must not be used to claim absence of overlapping-data edge.",
+      "challenge_rule": "May be revised only by governance or non-overlapping evidence under a future constitution/version freeze.",
+      "expiry": "Until superseded by governance or constitution update.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T2_layering_not_default",
+      "statement": "Layering is a hypothesis to be justified by measured edge and ablation, not a default design pattern.",
+      "tier": "Tier2_StructuralPrior",
+      "basis": "research_constitution_v4.0.yaml :: search_space / complexity_guardrails / meta_knowledge_policy",
+      "scope": "All candidate design work in btc_spot_mainline_lineage_001.",
+      "authority": "budget and burden only",
+      "provenance": {
+        "constitution_version": "4.0",
+        "session_id": "session_20260319_seed_001"
+      },
+      "overlap_guard": "May bias toward simpler mechanisms when utility is similar, but cannot pre-eliminate a measured layer on overlapping data without ablation evidence.",
+      "challenge_rule": "May be revised only by governance or non-overlapping evidence under a future constitution/version freeze.",
+      "expiry": "Until superseded by governance or constitution update.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_d1_h4_slow_trend_core",
+      "statement": "On snapshot_20260318 discovery data, slow trend continuation concentrated most cleanly in D1/H4 price-position channels; D1 anti-vol improved H4 continuation quality.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1b_measurements.md; d1b4_measurements_cross_tf_ranking.md",
+      "scope": "snapshot_20260318 seed-discovery session only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1b_measurements.md",
+          "d1b4_measurements_cross_tf_ranking.md"
+        ]
+      },
+      "overlap_guard": "Must not be elevated to a structural prior or used to narrow blind discovery on overlapping data.",
+      "challenge_rule": "Any redesign or future forward evidence may falsify or supersede this note.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_taker_flow_exhaustion",
+      "statement": "Long-horizon taker-flow imbalance behaved more like exhaustion/reversal than simple continuation across measured channels in this snapshot.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1b3_measurements_volume_flow.md",
+      "scope": "snapshot_20260318 seed-discovery session only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1b3_measurements_volume_flow.md"
+        ]
+      },
+      "overlap_guard": "Cannot forbid future continuation hypotheses on overlapping data; it only records what this measurement pass observed.",
+      "challenge_rule": "May be overturned by later measurement on non-overlapping data or forward evidence.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_relative_volume_is_magnitude_channel",
+      "statement": "Relative volume was materially stronger as a future-magnitude/timing channel than as a standalone directional engine in this snapshot.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1b3_measurements_volume_flow.md",
+      "scope": "snapshot_20260318 seed-discovery session only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1b3_measurements_volume_flow.md"
+        ]
+      },
+      "overlap_guard": "Advisory only; do not treat this as a permanent channel taxonomy.",
+      "challenge_rule": "May be challenged by future measurement or forward evidence.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_daily_gaps_noise",
+      "statement": "Daily open-gap behavior in BTC spot appeared effectively noisy and did not support a useful directional session-boundary edge in this snapshot.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1b1_measurements_price_momentum.md",
+      "scope": "snapshot_20260318 seed-discovery session only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1b1_measurements_price_momentum.md"
+        ]
+      },
+      "overlap_guard": "Cannot be elevated beyond advisory scope and cannot eliminate future non-overlapping evidence.",
+      "challenge_rule": "May be revised if a later dataset shows persistent session-boundary structure.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_h1_to_m15_blind_stacking_weak",
+      "statement": "Blind continuation stacking from 1h state into 15m continuation degraded entry quality; 1h-to-15m conditioning favored pullback/recovery states more than same-direction stacking.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1b4_measurements_cross_tf_ranking.md",
+      "scope": "snapshot_20260318 seed-discovery session only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1b4_measurements_cross_tf_ranking.md"
+        ]
+      },
+      "overlap_guard": "Advisory only; may not pre-empt a differently conditioned lower-timeframe design on overlapping data.",
+      "challenge_rule": "May be challenged by new measurement or forward evidence.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_c2_failed_discovery_filter",
+      "statement": "Candidate btcsd_20260318_c2_flow1hpb failed discovery hard constraints across all main configs and had no eligible post-ablation simplification to rescue its slot.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1e_hard_constraint_filter.csv; d1e1_summary.md",
+      "scope": "Version V1 seed-freeze decision only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1e_hard_constraint_filter.csv",
+          "d1e1_summary.md"
+        ]
+      },
+      "overlap_guard": "This note documents selection outcome only; it does not permanently ban redesign under a future version.",
+      "challenge_rule": "A later redesign on appended data may supersede this outcome.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_c1_holdout_activity_failure",
+      "statement": "Candidate btcsd_20260318_c1_av4h ranked first by adjusted preference on discovery but failed holdout hard constraints due to low activity and low exposure at 50 bps.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1e_final_ranking.csv; d1e_holdout_results.csv",
+      "scope": "Version V1 seed-freeze decision only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1e_final_ranking.csv",
+          "d1e_holdout_results.csv"
+        ]
+      },
+      "overlap_guard": "This is not a permanent claim about the mechanism; it records a specific holdout failure in this freeze cycle.",
+      "challenge_rule": "Future appended evidence or redesign may overturn this note.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_c3_holdout_pass_reserve_weak",
+      "statement": "Candidate btcsd_20260318_c3_trade4h15m passed holdout hard constraints but showed weak/negative reserve-internal performance, so reserve should be treated as cautionary internal evidence rather than promotion proof.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1e_holdout_results.csv; d1e_reserve_results.csv; d1e_final_ranking.csv",
+      "scope": "Version V1 seed-freeze decision only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1e_holdout_results.csv",
+          "d1e_reserve_results.csv",
+          "d1e_final_ranking.csv"
+        ]
+      },
+      "overlap_guard": "Advisory only; reserve_internal is contaminated internal evidence and cannot be treated as clean OOS proof.",
+      "challenge_rule": "Clean forward evidence after freeze may confirm or refute this caution.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    },
+    {
+      "rule_id": "T3_ablation_review_required",
+      "statement": "Both live candidates carry at least one ABLATION_FAIL, so any future governance review must explicitly revisit whether the failing layers continue to earn their place.",
+      "tier": "Tier3_SessionNote",
+      "basis": "d1d_wfo_aggregate.csv; d1d3_wfo_summary.md; d1e_final_ranking.csv",
+      "scope": "Version V1 governance and review context only.",
+      "authority": "advisory only",
+      "provenance": {
+        "session_id": "session_20260319_seed_001",
+        "snapshot_id": "snapshot_20260318",
+        "artifacts": [
+          "d1d_wfo_aggregate.csv",
+          "d1d3_wfo_summary.md",
+          "d1e_final_ranking.csv"
+        ]
+      },
+      "overlap_guard": "This note cannot itself force elimination, but it must remain visible during forward governance review.",
+      "challenge_rule": "Forward evidence or a future redesign may clear or reinforce the ablation concern.",
+      "expiry": "Expires at the earliest of next freeze/redesign or 2026-09-15T00:00:00+00:00; advisory only until then.",
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "namespace_root": "research/fragility_audit_20260306/",
+  "all_prior_steps_read": true,
+  "evidence_conflicts_found": false,
+  "evidence_conflicts_detail": "No material conflicts between steps. Step 2 post-hoc fragility and Step 3 replay fragility are directionally consistent. Old-branch REJECT for SM/LATCH was based on CAGR-weighted scoring, which is not a conflict with Step 3 finding them operationally robust — different questions.",
+  "final_conclusion_status": "READY",
+  "final_primary_low_latency_candidate": {
+    "M1": "E5_plus_EMA1D21",
+    "M2": "E0_plus_EMA1D21",
+    "M3": "SM"
+  },
+  "final_degraded_ops_candidate": "E0",
+  "final_manual_viability_assessment": "SM only. No binary candidate is viable for manual or semi-manual deployment. SM loses 4% Sharpe at D4 (16h delay); binary candidates lose 29-41%.",
+  "sm_vs_latch_final_verdict": "DROP LATCH. SM is preferred representative of vol-target cluster. Identical trade structure, identical replay fragility, lower complexity.",
+  "ema_overlay_final_verdict": "EMA overlays add decision-relevant value under LT1. They increase baseline Sharpe and improve selectivity. Under LT2+, the added delay fragility makes the base variants (E0, E5) preferable. They deserve conditional deployment slots, not unconditional preference.",
+  "binary_latency_requirement": "LT1 (<4h) for full performance. LT2 (4-16h) acceptable with 17-31% Sharpe degradation. LT3 (>16h) NOT VIABLE for any binary candidate.",
+  "step5_necessity_verdict": "NOT NEEDED for research conclusion. RECOMMENDED for live sign-off hardening. Step 5 could NOT realistically change candidate ranking — it would only refine confidence bounds around delay sensitivity and validate the replay harness against the live engine.",
+  "recommended_next_step": "Step 5 (optional): live-engine replay validation and combined-disruption stress testing for deployment confidence."
+}

@@ -1,0 +1,922 @@
+{
+  "meta": {
+    "script": "08_divergence_event_attribution.py",
+    "timestamp_utc": "2026-03-03T13:31:24.115784+00:00",
+    "start": "2019-01-01",
+    "end": "2026-02-20",
+    "warmup_days": 365,
+    "cost_scenario": "harsh",
+    "cost_rt_bps": 50.0
+  },
+  "canonical_pair": {
+    "candidate_name": "v12_emdd_ref_fix",
+    "candidate_config": "configs/v12/v12_emdd_ref_fix_step5_best.yaml",
+    "candidate_params": {
+      "emdd_ref_mode": "fixed",
+      "emergency_dd_pct": 0.04,
+      "rsi_method": "wilder",
+      "entry_cooldown_bars": 3
+    },
+    "baseline_name": "v10_baseline_frozen",
+    "baseline_config": "configs/frozen/v10_baseline.yaml",
+    "baseline_strategy": "v8_apex",
+    "baseline_params": {
+      "emergency_ref": "pre_cost_legacy",
+      "rsi_method": "wilder",
+      "entry_cooldown_bars": 3
+    },
+    "validation_label": "v12_vs_v10",
+    "validation_run": "out/validate/v12_vs_v10/2026-02-24",
+    "key_mechanism_difference": "v12 triggers emergency exit at 4% DD from true post-fill NAV; baseline triggers at 28% DD from pre-cost entry NAV"
+  },
+  "concentration": {
+    "total_excess_return": 0.1078341413768698,
+    "total_absolute_differential": 4.318631085142574,
+    "max_dd_candidate": 0.4414183475234731,
+    "max_dd_baseline": 0.3589750544918945,
+    "max_dd_difference": 0.0824432930315786,
+    "top_1": {
+      "excess_in_top": -0.0925659550097169,
+      "frac_of_total_excess": -0.8584104609894182,
+      "abs_in_top": 0.0925659550097169,
+      "frac_of_total_abs_differential": 0.021434096403411814
+    },
+    "top_5": {
+      "excess_in_top": -0.08690987199043147,
+      "frac_of_total_excess": -0.805958770392486,
+      "abs_in_top": 0.26179770154076576,
+      "frac_of_total_abs_differential": 0.060620529139761625
+    },
+    "top_10": {
+      "excess_in_top": -0.0712020765142348,
+      "frac_of_total_excess": -0.6602925159425204,
+      "abs_in_top": 0.40160360703086145,
+      "frac_of_total_abs_differential": 0.09299326548463517
+    },
+    "top_20": {
+      "excess_in_top": -0.1123866823568359,
+      "frac_of_total_excess": -1.0422179925748694,
+      "abs_in_top": 0.6143349524865993,
+      "frac_of_total_abs_differential": 0.14225224159574582
+    },
+    "top_50": {
+      "excess_in_top": 0.0009991654136331657,
+      "frac_of_total_excess": 0.00926576129670454,
+      "abs_in_top": 1.0934968198993942,
+      "frac_of_total_abs_differential": 0.25320449891201896
+    },
+    "top_100": {
+      "excess_in_top": 0.0924715684480897,
+      "frac_of_total_excess": 0.8575351671314431,
+      "abs_in_top": 1.6522192088355347,
+      "frac_of_total_abs_differential": 0.3825793813506506
+    }
+  },
+  "event_type_counts": {
+    "base_exit_cand_hold": 7,
+    "other": 74,
+    "same_state_diff_exp": 14,
+    "cand_exit_base_hold": 5
+  },
+  "economic_class_counts": {
+    "harmful_stayed_in": 3,
+    "beneficial": 49,
+    "harmful": 39,
+    "beneficial_crash_avoidance": 3,
+    "beneficial_stayed_in": 4,
+    "beneficial_exit_at_top": 1,
+    "harmful_premature_exit": 1
+  },
+  "economic_class_pnl": {
+    "harmful_stayed_in": -0.11781929894650703,
+    "beneficial": 0.7684740247022567,
+    "harmful": -0.6513685096367354,
+    "beneficial_crash_avoidance": 0.04338190160856421,
+    "beneficial_stayed_in": 0.04859762564429638,
+    "beneficial_exit_at_top": 0.01189183668669524,
+    "harmful_premature_exit": -0.010686011610479988
+  },
+  "top_20_events": [
+    {
+      "rank": 1,
+      "bar_index": 2617,
+      "close_time_ms": 1584014399999,
+      "datetime_utc": "2020-03-12 11:59",
+      "simple_differential": -0.0925659550097169,
+      "log_differential": -0.0972681046454179,
+      "candidate_return": -0.09387493960742588,
+      "baseline_return": -0.001308984597708984,
+      "candidate_exposure": 0.4743304778027576,
+      "baseline_exposure": 0.0,
+      "candidate_exposure_prev": 0.5236776724524882,
+      "baseline_exposure_prev": 0.5236776724524882,
+      "candidate_nav": 14683.03215908678,
+      "baseline_nav": 15046.977468989975,
+      "event_type": "base_exit_cand_hold",
+      "event_description": "baseline exited while candidate held",
+      "economic_class": "harmful_stayed_in",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": -0.0013986795777928274,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0013986795777928274
+        },
+        "+6": {
+          "cum_ret_cand": -0.0013986795777928274,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0013986795777928274
+        },
+        "+24": {
+          "cum_ret_cand": -0.0013986795777928274,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0013986795777928274
+        },
+        "+42": {
+          "cum_ret_cand": -0.0013986795777928274,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0013986795777928274
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "bar_index": 6361,
+      "close_time_ms": 1637927999999,
+      "datetime_utc": "2021-11-26 11:59",
+      "simple_differential": 0.0480189046329643,
+      "log_differential": 0.049210102195676245,
+      "candidate_return": 0.0,
+      "baseline_return": -0.0480189046329643,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8366856534467322,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.8445278294790685,
+      "candidate_nav": 57014.751764823406,
+      "baseline_nav": 56019.32265262346,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.84\u21920.84",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.009691631273252455,
+          "cum_diff": -0.009691631273252455
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.013806271931778191,
+          "cum_diff": -0.013806271931778191
+        },
+        "+24": {
+          "cum_ret_cand": 0.0030564606243541625,
+          "cum_ret_base": 0.060982836574283494,
+          "cum_diff": -0.05792637594992933
+        },
+        "+42": {
+          "cum_ret_cand": -0.0030215610898530754,
+          "cum_ret_base": 0.04987779857662211,
+          "cum_diff": -0.05289935966647519
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "bar_index": 5995,
+      "close_time_ms": 1632657599999,
+      "datetime_utc": "2021-09-26 11:59",
+      "simple_differential": -0.04097538767346367,
+      "log_differential": -0.040158146388360155,
+      "candidate_return": 0.0,
+      "baseline_return": 0.04097538767346367,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9251510590527259,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.9220840946804632,
+      "candidate_nav": 43711.500459283445,
+      "baseline_nav": 49879.31177054987,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.92\u21920.93",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.006018783874727873,
+          "cum_diff": -0.006018783874727873
+        },
+        "+6": {
+          "cum_ret_cand": -0.0026717140121689242,
+          "cum_ret_base": 0.014497235186897495,
+          "cum_diff": -0.01716894919906642
+        },
+        "+24": {
+          "cum_ret_cand": -0.007169141731490303,
+          "cum_ret_base": -0.047605083585635755,
+          "cum_diff": 0.04043594185414545
+        },
+        "+42": {
+          "cum_ret_cand": 0.06065722410867336,
+          "cum_ret_base": -0.025554131797310253,
+          "cum_diff": 0.08621135590598361
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "bar_index": 6376,
+      "close_time_ms": 1638143999999,
+      "datetime_utc": "2021-11-28 23:59",
+      "simple_differential": -0.040812444082418055,
+      "log_differential": -0.040001604411418104,
+      "candidate_return": 0.0,
+      "baseline_return": 0.040812444082418055,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8452552122214156,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.8389396992231565,
+      "candidate_nav": 57014.751764823406,
+      "baseline_nav": 59121.59759758964,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.84\u21920.85",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": -0.000361504267183399,
+          "cum_ret_base": 0.00117307773834896,
+          "cum_diff": -0.001534582005532359
+        },
+        "+6": {
+          "cum_ret_cand": 0.0047001404866950924,
+          "cum_ret_base": 0.008155664451094946,
+          "cum_diff": -0.0034555239643998537
+        },
+        "+24": {
+          "cum_ret_cand": -0.007555677524847759,
+          "cum_ret_base": -0.013061717630466707,
+          "cum_diff": 0.005506040105618948
+        },
+        "+42": {
+          "cum_ret_cand": -0.05115612101157607,
+          "cum_ret_base": -0.06239553799239661,
+          "cum_diff": 0.011239416980820538
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "bar_index": 873,
+      "close_time_ms": 1558900799999,
+      "datetime_utc": "2019-05-26 19:59",
+      "simple_differential": 0.03942501014220286,
+      "log_differential": 0.03793081484402619,
+      "candidate_return": 0.05922977024585372,
+      "baseline_return": 0.01980476010365086,
+      "candidate_exposure": 0.9544356471751324,
+      "baseline_exposure": 0.33147389622251583,
+      "candidate_exposure_prev": 0.9517368810259145,
+      "baseline_exposure_prev": 0.3182338971141743,
+      "candidate_nav": 13894.448812483744,
+      "baseline_nav": 12813.510559482927,
+      "event_type": "same_state_diff_exp",
+      "event_description": "both same direction but different exposure",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.01513028113794257,
+          "cum_ret_base": 0.009673803272547854,
+          "cum_diff": 0.0054564778653947155
+        },
+        "+6": {
+          "cum_ret_cand": 0.0318036416064007,
+          "cum_ret_base": 0.020919032851767216,
+          "cum_diff": 0.010884608754633485
+        },
+        "+24": {
+          "cum_ret_cand": 0.01578195359043577,
+          "cum_ret_base": 0.008999730630964153,
+          "cum_diff": 0.006782222959471618
+        },
+        "+42": {
+          "cum_ret_cand": 0.021292468836390688,
+          "cum_ret_base": 0.013099267243051216,
+          "cum_diff": 0.008193201593339472
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "bar_index": 9705,
+      "close_time_ms": 1686081599999,
+      "datetime_utc": "2023-06-06 19:59",
+      "simple_differential": -0.03765256222010956,
+      "log_differential": -0.036961010235227444,
+      "candidate_return": 0.0,
+      "baseline_return": 0.03765256222010956,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9690513615030034,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.9678860659663676,
+      "candidate_nav": 44805.86158525729,
+      "baseline_nav": 48975.054615636494,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.97\u21920.97",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.005365899338643176,
+          "cum_diff": -0.005365899338643176
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.02138880756052397,
+          "cum_diff": 0.02138880756052397
+        },
+        "+24": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.0475981573011649,
+          "cum_diff": 0.0475981573011649
+        },
+        "+42": {
+          "cum_ret_cand": -0.0011526833652731883,
+          "cum_ret_base": -0.04212884049610843,
+          "cum_diff": 0.040976157130835245
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "bar_index": 13482,
+      "close_time_ms": 1740470399999,
+      "datetime_utc": "2025-02-25 07:59",
+      "simple_differential": 0.029136583650271376,
+      "log_differential": 0.029569483458367924,
+      "candidate_return": 0.0,
+      "baseline_return": -0.029136583650271376,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9458922527923714,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.9474687676950142,
+      "candidate_nav": 104002.74047928378,
+      "baseline_nav": 84088.62026742664,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.95\u21920.95",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.002363075675248072,
+          "cum_diff": 0.002363075675248072
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.002363075675248072,
+          "cum_diff": 0.002363075675248072
+        },
+        "+24": {
+          "cum_ret_cand": 0.0033758679457223106,
+          "cum_ret_base": -0.0014942228318924888,
+          "cum_diff": 0.0048700907776147995
+        },
+        "+42": {
+          "cum_ret_cand": -0.019311789419033776,
+          "cum_ret_base": -0.026396028755741763,
+          "cum_diff": 0.007084239336707987
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "bar_index": 9726,
+      "close_time_ms": 1686383999999,
+      "datetime_utc": "2023-06-10 07:59",
+      "simple_differential": 0.024716115403925952,
+      "log_differential": 0.025026686675929336,
+      "candidate_return": 0.0,
+      "baseline_return": -0.024716115403925952,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9673834279233285,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.9681895828828561,
+      "candidate_nav": 44805.86158525729,
+      "baseline_nav": 46470.58731699423,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.97\u21920.97",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.003028743148791202,
+          "cum_diff": -0.003028743148791202
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.003403234737229699,
+          "cum_diff": -0.003403234737229699
+        },
+        "+24": {
+          "cum_ret_cand": -0.0024837291652093363,
+          "cum_ret_base": 0.00930119440650401,
+          "cum_diff": -0.011784923571713346
+        },
+        "+42": {
+          "cum_ret_cand": 0.019599935537460533,
+          "cum_ret_base": -0.024451680416704313,
+          "cum_diff": 0.04405161595416485
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "bar_index": 1881,
+      "close_time_ms": 1573415999999,
+      "datetime_utc": "2019-11-10 19:59",
+      "simple_differential": -0.02439649278683993,
+      "log_differential": -0.024103651661893873,
+      "candidate_return": 0.0,
+      "baseline_return": 0.02439649278683993,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8701367137911817,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.866968505065913,
+      "candidate_nav": 17825.487964835804,
+      "baseline_nav": 16989.835187084445,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.87\u21920.87",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.0008481830064730467,
+          "cum_diff": 0.0008481830064730467
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.027362076058018103,
+          "cum_diff": 0.027362076058018103
+        },
+        "+24": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.03839614841206496,
+          "cum_diff": 0.03839614841206496
+        },
+        "+42": {
+          "cum_ret_cand": 0.0020615449528604834,
+          "cum_ret_base": -0.056740153216010336,
+          "cum_diff": 0.05880169816887082
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "bar_index": 12131,
+      "close_time_ms": 1721015999999,
+      "datetime_utc": "2024-07-15 03:59",
+      "simple_differential": 0.023904151428948854,
+      "log_differential": 0.023622920116197085,
+      "candidate_return": 0.023904151428948854,
+      "baseline_return": 0.0,
+      "candidate_exposure": 0.7906021646310084,
+      "baseline_exposure": 0.0,
+      "candidate_exposure_prev": 0.7855966870654539,
+      "baseline_exposure_prev": 0.0,
+      "candidate_nav": 77433.57545666446,
+      "baseline_nav": 61852.16047062374,
+      "event_type": "other",
+      "event_description": "c_prev=0.79\u21920.79, b_prev=0.00\u21920.00",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0024261521764477045,
+          "cum_ret_base": 0.0,
+          "cum_diff": 0.0024261521764477045
+        },
+        "+6": {
+          "cum_ret_cand": 0.02655541867533695,
+          "cum_ret_base": 0.0,
+          "cum_diff": 0.02655541867533695
+        },
+        "+24": {
+          "cum_ret_cand": 0.019167306327406486,
+          "cum_ret_base": -0.009540216543044489,
+          "cum_diff": 0.028707522870450974
+        },
+        "+42": {
+          "cum_ret_cand": 0.07054600304491454,
+          "cum_ret_base": 0.021574061194699512,
+          "cum_diff": 0.04897194185021503
+        }
+      }
+    },
+    {
+      "rank": 11,
+      "bar_index": 12138,
+      "close_time_ms": 1721116799999,
+      "datetime_utc": "2024-07-16 07:59",
+      "simple_differential": -0.022830298782934362,
+      "log_differential": -0.02309494579243397,
+      "candidate_return": -0.022830298782934362,
+      "baseline_return": 0.0,
+      "candidate_exposure": 0.7912532149069482,
+      "baseline_exposure": 0.0,
+      "candidate_exposure_prev": 0.7960189663805997,
+      "baseline_exposure_prev": 0.0,
+      "candidate_nav": 77675.07929896601,
+      "baseline_nav": 61852.16047062374,
+      "event_type": "other",
+      "event_description": "c_prev=0.80\u21920.79, b_prev=0.00\u21920.00",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.01070729794314862,
+          "cum_ret_base": 0.0,
+          "cum_diff": 0.01070729794314862
+        },
+        "+6": {
+          "cum_ret_cand": 0.029408833296527437,
+          "cum_ret_base": -0.001527486458317684,
+          "cum_diff": 0.03093631975484512
+        },
+        "+24": {
+          "cum_ret_cand": 0.04815562277423946,
+          "cum_ret_base": 0.009673846440832579,
+          "cum_diff": 0.03848177633340688
+        },
+        "+42": {
+          "cum_ret_cand": 0.047925709004678296,
+          "cum_ret_base": 0.007745582816098828,
+          "cum_diff": 0.04018012618857947
+        }
+      }
+    },
+    {
+      "rank": 12,
+      "bar_index": 6025,
+      "close_time_ms": 1633089599999,
+      "datetime_utc": "2021-10-01 11:59",
+      "simple_differential": 0.02275755796353791,
+      "log_differential": 0.022061348679888328,
+      "candidate_return": 0.04297849216291966,
+      "baseline_return": 0.020220934199381747,
+      "candidate_exposure": 0.7339541101168696,
+      "baseline_exposure": 0.3637413567893994,
+      "candidate_exposure_prev": 0.5063365332804566,
+      "baseline_exposure_prev": 0.0,
+      "candidate_nav": 46033.03817934646,
+      "baseline_nav": 48465.39445941899,
+      "event_type": "other",
+      "event_description": "c_prev=0.51\u21920.73, b_prev=0.00\u21920.36",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": -0.001922669674127575,
+          "cum_ret_base": -0.0009528585865044015,
+          "cum_diff": -0.0009698110876231736
+        },
+        "+6": {
+          "cum_ret_cand": 0.0016155822016776789,
+          "cum_ret_base": -0.0018611772153550588,
+          "cum_diff": 0.0034767594170327376
+        },
+        "+24": {
+          "cum_ret_cand": 0.04339803322479874,
+          "cum_ret_base": 0.03378403121703255,
+          "cum_diff": 0.009614002007766187
+        },
+        "+42": {
+          "cum_ret_cand": 0.14685984838220612,
+          "cum_ret_base": 0.12398755225105429,
+          "cum_diff": 0.022872296131151826
+        }
+      }
+    },
+    {
+      "rank": 13,
+      "bar_index": 3038,
+      "close_time_ms": 1590076799999,
+      "datetime_utc": "2020-05-21 15:59",
+      "simple_differential": -0.022503238113134205,
+      "log_differential": -0.02276029977581073,
+      "candidate_return": -0.022503238113134205,
+      "baseline_return": 0.0,
+      "candidate_exposure": 0.6843619297014459,
+      "baseline_exposure": 0.0,
+      "candidate_exposure_prev": 0.6914648083549445,
+      "baseline_exposure_prev": 0.0,
+      "candidate_nav": 13767.191494703276,
+      "baseline_nav": 14454.532040372595,
+      "event_type": "other",
+      "event_description": "c_prev=0.69\u21920.68, b_prev=0.00\u21920.00",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": -0.0018509813900200456,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0018509813900200456
+        },
+        "+6": {
+          "cum_ret_cand": -0.0018509813900200456,
+          "cum_ret_base": 0.0,
+          "cum_diff": -0.0018509813900200456
+        },
+        "+24": {
+          "cum_ret_cand": -0.01739220438857103,
+          "cum_ret_base": -0.027822486196661833,
+          "cum_diff": 0.010430281808090802
+        },
+        "+42": {
+          "cum_ret_cand": 0.036524010603906865,
+          "cum_ret_base": 0.03307510474704389,
+          "cum_diff": 0.0034489058568629716
+        }
+      }
+    },
+    {
+      "rank": 14,
+      "bar_index": 13480,
+      "close_time_ms": 1740441599999,
+      "datetime_utc": "2025-02-24 23:59",
+      "simple_differential": 0.02176560411489905,
+      "log_differential": 0.022058811973359682,
+      "candidate_return": -0.0023692845332410058,
+      "baseline_return": -0.024134888648140056,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9471421262162856,
+      "candidate_exposure_prev": 0.9484178451142329,
+      "baseline_exposure_prev": 0.9484178451142329,
+      "candidate_nav": 104002.74047928378,
+      "baseline_nav": 86076.97364228829,
+      "event_type": "cand_exit_base_hold",
+      "event_description": "candidate exited while baseline held",
+      "economic_class": "beneficial_crash_avoidance",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.006218043331485346,
+          "cum_diff": -0.006218043331485346
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.02540820216414197,
+          "cum_diff": 0.02540820216414197
+        },
+        "+24": {
+          "cum_ret_cand": 0.001496398336849003,
+          "cum_ret_base": -0.02493600184068434,
+          "cum_diff": 0.026432400177533344
+        },
+        "+42": {
+          "cum_ret_cand": 0.015359899473220695,
+          "cum_ret_base": -0.015843933315148884,
+          "cum_diff": 0.03120383278836958
+        }
+      }
+    },
+    {
+      "rank": 15,
+      "bar_index": 5994,
+      "close_time_ms": 1632643199999,
+      "datetime_utc": "2021-09-26 07:59",
+      "simple_differential": 0.021469068836933614,
+      "log_differential": 0.021702881850454353,
+      "candidate_return": 0.0,
+      "baseline_return": -0.021469068836933614,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.9220840946804632,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.9237568766152603,
+      "candidate_nav": 43711.500459283445,
+      "baseline_nav": 47915.93764961921,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.92\u21920.92",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.04097538767346376,
+          "cum_diff": -0.04097538767346376
+        },
+        "+6": {
+          "cum_ret_cand": -0.003068984574405631,
+          "cum_ret_base": 0.054701482409735824,
+          "cum_diff": -0.057770466984141455
+        },
+        "+24": {
+          "cum_ret_cand": -0.0057402062646718655,
+          "cum_ret_base": -0.008580332667321278,
+          "cum_diff": 0.002840126402649412
+        },
+        "+42": {
+          "cum_ret_cand": 0.05907517390462136,
+          "cum_ret_base": 0.013077865951075962,
+          "cum_diff": 0.0459973079535454
+        }
+      }
+    },
+    {
+      "rank": 16,
+      "bar_index": 14194,
+      "close_time_ms": 1750723199999,
+      "datetime_utc": "2025-06-23 23:59",
+      "simple_differential": -0.021060612948907407,
+      "log_differential": -0.020841903677921964,
+      "candidate_return": 0.0,
+      "baseline_return": 0.021060612948907407,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 1.0,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 1.0,
+      "candidate_nav": 106606.62458311426,
+      "baseline_nav": 92378.34553289825,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=1.00\u21921.00",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.003933490376747395,
+          "cum_diff": 0.003933490376747395
+        },
+        "+6": {
+          "cum_ret_cand": 0.0019121566744217944,
+          "cum_ret_base": 0.007111383767794521,
+          "cum_diff": -0.005199227093372727
+        },
+        "+24": {
+          "cum_ret_cand": 0.006328070489328708,
+          "cum_ret_base": 0.01626883189490802,
+          "cum_diff": -0.009940761405579313
+        },
+        "+42": {
+          "cum_ret_cand": 0.007225892547921164,
+          "cum_ret_base": 0.017207845563153246,
+          "cum_diff": -0.009981953015232081
+        }
+      }
+    },
+    {
+      "rank": 17,
+      "bar_index": 14188,
+      "close_time_ms": 1750636799999,
+      "datetime_utc": "2025-06-22 23:59",
+      "simple_differential": -0.02104541091255075,
+      "log_differential": -0.02082701509115979,
+      "candidate_return": 0.0,
+      "baseline_return": 0.02104541091255075,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 1.0,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 1.0,
+      "candidate_nav": 106606.62458311426,
+      "baseline_nav": 88545.78262862329,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=1.00\u21921.00",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.001884535527411746,
+          "cum_diff": -0.001884535527411746
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.043283404251441615,
+          "cum_diff": -0.043283404251441615
+        },
+        "+24": {
+          "cum_ret_cand": 0.005415543428866965,
+          "cum_ret_base": 0.05926070385376514,
+          "cum_diff": -0.053845160424898175
+        },
+        "+42": {
+          "cum_ret_cand": 0.01821316132136719,
+          "cum_ret_base": 0.07322480804271891,
+          "cum_diff": -0.055011646721351726
+        }
+      }
+    },
+    {
+      "rank": 18,
+      "bar_index": 13312,
+      "close_time_ms": 1738022399999,
+      "datetime_utc": "2025-01-27 23:59",
+      "simple_differential": -0.019814967494449772,
+      "log_differential": -0.01962120642320208,
+      "candidate_return": 0.0,
+      "baseline_return": 0.019814967494449772,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8324061300710476,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.8290852629861364,
+      "candidate_nav": 113839.04971818539,
+      "baseline_nav": 95807.72532063129,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.83\u21920.83",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.004513280724417923,
+          "cum_diff": -0.004513280724417923
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.006093732168900412,
+          "cum_diff": 0.006093732168900412
+        },
+        "+24": {
+          "cum_ret_cand": -0.013605686284859475,
+          "cum_ret_base": 0.0011842328308959704,
+          "cum_diff": -0.014789919115755445
+        },
+        "+42": {
+          "cum_ret_cand": -0.04523501898785054,
+          "cum_ret_base": -0.040136581317342324,
+          "cum_diff": -0.005098437670508216
+        }
+      }
+    },
+    {
+      "rank": 19,
+      "bar_index": 1884,
+      "close_time_ms": 1573459199999,
+      "datetime_utc": "2019-11-11 07:59",
+      "simple_differential": 0.01978113889119783,
+      "log_differential": 0.0199794045893865,
+      "candidate_return": 0.0,
+      "baseline_return": -0.01978113889119783,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8671491112493896,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.8697770531315845,
+      "candidate_nav": 17825.487964835804,
+      "baseline_nav": 16607.761154558793,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.87\u21920.87",
+      "economic_class": "beneficial",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.008627771821757668,
+          "cum_diff": 0.008627771821757668
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.004138772640152055,
+          "cum_diff": 0.004138772640152055
+        },
+        "+24": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.023578313255651295,
+          "cum_diff": 0.023578313255651295
+        },
+        "+42": {
+          "cum_ret_cand": -0.0021127014816522127,
+          "cum_ret_base": -0.03503975121562675,
+          "cum_diff": 0.032927049733974534
+        }
+      }
+    },
+    {
+      "rank": 20,
+      "bar_index": 13310,
+      "close_time_ms": 1737993599999,
+      "datetime_utc": "2025-01-27 15:59",
+      "simple_differential": -0.01970344739719301,
+      "log_differential": -0.01951184717784941,
+      "candidate_return": 0.0,
+      "baseline_return": 0.01970344739719301,
+      "candidate_exposure": 0.0,
+      "baseline_exposure": 0.8310688509244155,
+      "candidate_exposure_prev": 0.0,
+      "baseline_exposure_prev": 0.8277403249148574,
+      "candidate_nav": 113839.04971818539,
+      "baseline_nav": 95049.29992745403,
+      "event_type": "other",
+      "event_description": "c_prev=0.00\u21920.00, b_prev=0.83\u21920.83",
+      "economic_class": "harmful",
+      "forward_outcomes": {
+        "+1": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": -0.011605716235682184,
+          "cum_diff": 0.011605716235682184
+        },
+        "+6": {
+          "cum_ret_cand": 0.0,
+          "cum_ret_base": 0.01369300431299858,
+          "cum_diff": -0.01369300431299858
+        },
+        "+24": {
+          "cum_ret_cand": 0.011854204671626123,
+          "cum_ret_base": 0.037884751521310545,
+          "cum_diff": -0.02603054684968442
+        },
+        "+42": {
+          "cum_ret_cand": -0.04523501898785054,
+          "cum_ret_base": -0.032477558144457075,
+          "cum_diff": -0.012757460843393464
+        }
+      }
+    }
+  ],
+  "n_total_events": 100
+}

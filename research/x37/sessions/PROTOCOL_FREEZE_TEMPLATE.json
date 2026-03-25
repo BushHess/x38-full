@@ -1,0 +1,102 @@
+{
+  "_template_note": "Phase 0 protocol freeze. Replace every null or empty list before Phase 1. Do not change this file after discovery has started.",
+  "data": {
+    "file": "data/bars_btcusdt_2016_now_h1_4h_1d.csv",
+    "cutoff": "2026-02-20",
+    "timeframes": [
+      "H4",
+      "D1"
+    ]
+  },
+  "splits": {
+    "warmup": {
+      "start": "2017-08-17",
+      "end": "2018-12-31",
+      "trading": false
+    },
+    "development": {
+      "start": "2019-01-01",
+      "end": "2023-12-31"
+    },
+    "holdout": {
+      "start": "2024-01-01",
+      "end": "2026-02-20",
+      "untouched_until": "phase5_freeze"
+    }
+  },
+  "walk_forward": {
+    "min_windows": 4,
+    "max_window_months": 12,
+    "training": "expanding_anchored",
+    "windows": [],
+    "_windows_note": "Fill exact non-overlapping unseen test windows here before Phase 1."
+  },
+  "cost": {
+    "per_side_bps": 10,
+    "round_trip_bps": 20,
+    "stress_test_rt_bps": 50
+  },
+  "execution": {
+    "signal_timing": "bar_close",
+    "fill_timing": "next_bar_open",
+    "warmup_days": 365,
+    "anti_lookahead": "D1 bar only visible after its close_time has passed",
+    "d1_h4_alignment": {
+      "method": "merge_asof on close_time, direction=backward",
+      "allow_exact_matches": null,
+      "_allow_exact_matches_note": "Replace null with boolean true or false before Phase 1. true means d1_close_time <= h4_close_time is allowed; false means strict d1_close_time < h4_close_time."
+    }
+  },
+  "evaluation": {
+    "metrics": [
+      "sharpe",
+      "cagr",
+      "mdd",
+      "trades",
+      "exposure",
+      "win_rate",
+      "profit_factor"
+    ],
+    "bootstrap": {
+      "method": "circular_block",
+      "block_sizes": [
+        5,
+        10,
+        20,
+        40
+      ],
+      "resamples": 2000,
+      "note": "Report block-size sensitivity as diagnostic."
+    },
+    "plateau": {
+      "perturbation": "±20% on each tunable",
+      "requirement": "broad plateau, not narrow spike"
+    },
+    "complexity_budget": {
+      "max_tunables": 4,
+      "no_regime_specific_params": true
+    }
+  },
+  "benchmark_seal": {
+    "appendix_a_embargo": "Do not use Appendix A until Phase 5 is fully complete: frozen_spec.json written, holdout results recorded, and mandatory evals #2, #4, #5, #7a, #8 recorded.",
+    "benchmark_influence_prohibited": true
+  },
+  "hard_criteria": {
+    "_mapping_note": "These keys decompose RESEARCH_PROMPT_V4 hard acceptance criteria into machine-readable checks.",
+    "positive_edge_after_cost": true,
+    "positive_wfo_overall": true,
+    "positive_holdout": true,
+    "min_holdout_trades": 10,
+    "min_wfo_trades": 20,
+    "no_epoch_collapse": true,
+    "broad_plateau": true,
+    "no_lookahead": true,
+    "no_post_hoc_protocol_changes": true
+  },
+  "verdict_definitions": {
+    "SUPERIOR": "passes all hard criteria AND paired bootstrap P(delta>0) >= 0.90 vs best benchmark AND no regime where candidate materially underperforms benchmarks",
+    "COMPETITIVE": "passes all hard criteria, positive on unseen data, but does not meet SUPERIOR threshold on paired comparison",
+    "NO_ROBUST_IMPROVEMENT": "fails one or more hard criteria, or clearly dominated by benchmarks across all evaluation dimensions",
+    "ABANDONED": "session stopped before Phase 6 due to dead-end or protocol constraint"
+  }
+}

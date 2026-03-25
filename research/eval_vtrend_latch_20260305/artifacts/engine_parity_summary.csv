@@ -1,0 +1,6 @@
+test,engine,cost_config,final_equity,sharpe,cagr_pct,mdd_pct,trades,notes
+standalone_latch,execute_target_weights,"CostModel(fee=25bps)",2.5059,1.3344,11.38,11.24,237,normalized equity starting at 1.0
+v10_equiv,"Portfolio+ExecutionModel","CostConfig(spread=0,slip=0,fee=0.25%)",25058.66,1.3344,11.38,11.24,237,"starting at 10000; equivalent flat cost"
+v10_harsh,"Portfolio+ExecutionModel","CostConfig(spread=10,slip=5,fee=0.15%)",25058.70,1.3344,11.38,11.24,237,"starting at 10000; multiplicative fill"
+equity_divergence_equiv_vs_standalone,comparison,n/a,n/a,n/a,n/a,n/a,n/a,"max 7.7e-14%, mean 2.5e-14% — numerically identical"
+fill_price_impact_harsh_vs_equiv,comparison,n/a,0.0001%,n/a,n/a,n/a,n/a,"multiplicative fill adds 0.0001% to final equity — negligible"

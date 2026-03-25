@@ -1,0 +1,9 @@
+dimension,standalone_value,integrated_value,match,notes
+regime_on_total_match,18662,18662,YES,0 mismatches out of 18662 bars
+state_total_match,18542,18542,YES,0 mismatches post-warmup
+warmup_bar_index,120,120,YES,identical first finite indicator index
+entry_count,76,76,YES,same number of long entries
+exit_count,76,76,YES,same number of exits
+target_weight_correlation,1.0,1.0,YES,"weights differ only in rebalance-exposure feedback (harness artifact, max_abs=0.05)"
+state_machine_transitions,identical,identical,YES,"OFF->ARMED->LONG->OFF all match"
+regime_hysteresis,present,present,YES,both hold state when neither ON nor OFF trigger fires

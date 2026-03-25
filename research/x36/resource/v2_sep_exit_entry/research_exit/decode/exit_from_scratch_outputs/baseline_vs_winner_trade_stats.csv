@@ -1,0 +1,3 @@
+policy,trades_closed,trades_total,exposure,median_holding,mean_holding,trail_stop_exits,trend_exits,time_stop_exits
+baseline_A,103,104,0.3765649452269171,27.0,37.09708737864078,96,7,0
+winner_p1,123,124,0.3130868544600939,30.0,25.788617886178862,39,0,84

@@ -1,0 +1,106 @@
+{
+  "t7_anchor_check_status": "PASS",
+  "t7_anchor_points_tested": 15,
+  "t7_anchor_tolerance": {
+    "sharpe": 1e-06,
+    "cagr": 1e-06,
+    "pnl": 0.01
+  },
+  "t7_anchor_details": [
+    {
+      "metric": "base_sharpe",
+      "computed": 1.137892,
+      "expected": 1.137892,
+      "match": true
+    },
+    {
+      "metric": "base_cagr_pct",
+      "computed": 61.8279398,
+      "expected": 61.8279398,
+      "match": true
+    },
+    {
+      "metric": "base_total_pnl",
+      "computed": 218479.786395,
+      "expected": 218479.786395,
+      "match": true
+    },
+    {
+      "metric": "drop_top1_sharpe",
+      "computed": 1.07341752,
+      "expected": 1.07341752,
+      "match": true
+    },
+    {
+      "metric": "drop_top1_cagr_pct",
+      "computed": 55.80279367,
+      "expected": 55.80279367,
+      "match": true
+    },
+    {
+      "metric": "drop_top1_pnl",
+      "computed": 168541.452803,
+      "expected": 168541.452803,
+      "match": true
+    },
+    {
+      "metric": "drop_top3_sharpe",
+      "computed": 0.9428883,
+      "expected": 0.9428883,
+      "match": true
+    },
+    {
+      "metric": "drop_top3_cagr_pct",
+      "computed": 41.1054387,
+      "expected": 41.1054387,
+      "match": true
+    },
+    {
+      "metric": "drop_top3_pnl",
+      "computed": 83763.626572,
+      "expected": 83763.626572,
+      "match": true
+    },
+    {
+      "metric": "drop_top5_sharpe",
+      "computed": 0.77489583,
+      "expected": 0.77489583,
+      "match": true
+    },
+    {
+      "metric": "drop_top5_cagr_pct",
+      "computed": 19.26832147,
+      "expected": 19.26832147,
+      "match": true
+    },
+    {
+      "metric": "drop_top5_pnl",
+      "computed": 21434.98062,
+      "expected": 21434.98062,
+      "match": true
+    },
+    {
+      "metric": "drop_top10_sharpe",
+      "computed": 0.46162518,
+      "expected": 0.46162518,
+      "match": true
+    },
+    {
+      "metric": "drop_top10_cagr_pct",
+      "computed": -100.0,
+      "expected": -100.0,
+      "match": true
+    },
+    {
+      "metric": "drop_top10_pnl",
+      "computed": -94371.810548,
+      "expected": -94371.810548,
+      "match": true
+    }
+  ],
+  "t7_anchor_notes": "All T7 points reproduced exactly",
+  "giveback_join_check_status": "PASS",
+  "giveback_join_rows_expected": 192,
+  "giveback_join_rows_matched": 192,
+  "giveback_join_notes": "MFE/MAE CSV has 192 rows (expected 192)"
+}

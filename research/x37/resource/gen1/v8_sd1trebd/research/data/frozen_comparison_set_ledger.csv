@@ -1,0 +1,8 @@
+candidate_id,comparison_role,family_cluster,freeze_order,inclusion_reason,complexity_score
+S_D1_TREND,primary_simple,slow_trend_native,1,Native D1 single feature; simplest viable slow-trend representative and eventual pre-reserve leader.,1
+S_H4_TREND,primary_simple,fast_trend_native,2,Simple native H4 trend frontier retained as genuine faster rival.,1
+S_H4_TREND_Q,nearest_rival,fast_trend_native,3,Nearest calibrated nonlinear rival inside H4 trend cluster.,2
+S_XR_D1EMA,primary_simple,cross_tf_context,4,Simple cross-timeframe rival with broad plateau.,2
+S_XR_D1ROLL,nearest_rival,cross_tf_context,5,Nearest nonlinear cross-timeframe rival.,3
+L2_D1_TREND_AND_H4_VOLQUIET,layered_alternative,layered_defensive,6,Best layered defensive alternative from discovery-only freeze.,4
+L2_D1_VOLHIGH_AND_H4_PULLBACK,layered_backup,layered_defensive,7,Backup layered alternative with materially different permission gate.,4

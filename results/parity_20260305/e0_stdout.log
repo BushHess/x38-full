@@ -1,0 +1,26 @@
+
+========================================================================
+VERDICT: HOLD (exit code 1)
+========================================================================
+lookahead          PASS
+data_integrity     PASS
+backtest           PASS
+cost_sweep         PASS
+invariants         PASS
+churn_metrics      PASS
+regime             INFO
+wfo                FAIL
+bootstrap          INFO
+subsampling        INFO
+sensitivity        INFO
+holdout            PASS
+selection_bias     PASS
+trade_level        INFO
+dd_episodes        INFO
+overlay            SKIP
+
+Reasons:
+- WFO robustness did not meet threshold
+
+Output: /var/www/trading-bots/btc-spot-dev/results/parity_20260305/eval_e0_vs_e0
+E0 exit code: 1

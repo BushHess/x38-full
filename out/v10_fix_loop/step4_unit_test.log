@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.2, pluggy-1.6.0 -- /var/www/trading-bots/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /var/www/trading-bots
+configfile: pyproject.toml
+collecting ... collected 29 items
+
+v10/tests/test_overlayA_cooldown.py::TestOverlayACooldownCycle::test_full_cycle PASSED [  3%]
+v10/tests/test_overlayA_cooldown.py::TestOverlayACooldownCycle::test_gate0_blocks_during_cooldown PASSED [  6%]
+v10/tests/test_overlayA_cooldown.py::TestOverlayACooldownCycle::test_gate0_passes_when_cooldown_zero PASSED [ 10%]
+v10/tests/test_overlayA_cooldown.py::TestNonEmergencyNoEffect::test_trailing_stop_no_cooldown PASSED [ 13%]
+v10/tests/test_overlayA_cooldown.py::TestNonEmergencyNoEffect::test_fixed_stop_no_cooldown PASSED [ 17%]
+v10/tests/test_overlayA_cooldown.py::TestOverlayDisabled::test_k0_no_cooldown_after_emergency_dd PASSED [ 20%]
+v10/tests/test_overlayA_cooldown.py::TestCounterDecrement::test_decrement_per_bar PASSED [ 24%]
+v10/tests/test_overlayA_cooldown.py::TestCounterDecrement::test_counter_never_negative PASSED [ 27%]
+v10/tests/test_overlayA_cooldown.py::TestConsecutiveEmergencyDD::test_reset_on_second_emergency_dd PASSED [ 31%]
+v10/tests/test_overlayA_cooldown.py::TestExitReasonCleared::test_clear_on_open PASSED [ 34%]
+v10/tests/test_overlayA_cooldown.py::TestConfigParam::test_default_value PASSED [ 37%]
+v10/tests/test_overlayA_cooldown.py::TestConfigParam::test_custom_value PASSED [ 41%]
+v10/tests/test_overlayA_cooldown.py::TestConfigParam::test_zero_disables PASSED [ 44%]
+v10/tests/test_v8_apex.py::TestRegimeTransitions::test_risk_off_to_risk_on PASSED [ 48%]
+v10/tests/test_v8_apex.py::TestRegimeTransitions::test_risk_on_to_risk_off PASSED [ 51%]
+v10/tests/test_v8_apex.py::TestRegimeTransitions::test_caution_without_golden_cross PASSED [ 55%]
+v10/tests/test_v8_apex.py::TestRegimeTransitions::test_hysteresis_prevents_chatter PASSED [ 58%]
+v10/tests/test_v8_apex.py::TestRegimeGating::test_risk_off_blocks_entry PASSED [ 62%]
+v10/tests/test_v8_apex.py::TestRegimeGating::test_risk_on_allows_entry_path PASSED [ 65%]
+v10/tests/test_v8_apex.py::TestTrailingStop::test_fixed_stop_before_trail_activation PASSED [ 68%]
+v10/tests/test_v8_apex.py::TestTrailingStop::test_trailing_stop_after_activation PASSED [ 72%]
+v10/tests/test_v8_apex.py::TestTrailingStop::test_no_exit_when_above_both_stops PASSED [ 75%]
+v10/tests/test_v8_apex.py::TestTrailingStop::test_trail_tightens_after_high_profit PASSED [ 79%]
+v10/tests/test_v8_apex.py::TestEmergencyDD::test_triggers_at_threshold PASSED [ 82%]
+v10/tests/test_v8_apex.py::TestEmergencyDD::test_no_trigger_below_threshold PASSED [ 86%]
+v10/tests/test_v8_apex.py::TestEmergencyDD::test_uses_position_entry_nav_not_equity_peak PASSED [ 89%]
+v10/tests/test_v8_apex.py::TestVDOFallback::test_taker_buy_source PASSED [ 93%]
+v10/tests/test_v8_apex.py::TestVDOFallback::test_ohlcv_proxy_when_no_taker_data PASSED [ 96%]
+v10/tests/test_v8_apex.py::TestVDOFallback::test_proxy_label_in_name PASSED [100%]
+
+=============================== warnings summary ===============================
+btc-spot/v10/tests/test_overlayA_cooldown.py: 10 warnings
+btc-spot/v10/tests/test_v8_apex.py: 12 warnings
+  /var/www/trading-bots/btc-spot/v10/strategies/v8_apex.py:160: RuntimeWarning: invalid value encountered in divide
+    rs = np.where(al > 1e-12, ag / al, 100.0)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 29 passed, 22 warnings in 0.32s ========================

@@ -1,0 +1,37 @@
+{
+  "candidate": {
+    "unused_fields": [],
+    "unused_raw": [
+      "atr_mult",
+      "atr_period",
+      "entry_n",
+      "exit_n",
+      "min_rebalance_weight_delta",
+      "min_weight",
+      "slope_lookback",
+      "slow_period",
+      "target_vol",
+      "vol_lookback"
+    ],
+    "allowlist": [
+      "atr_mult",
+      "atr_period",
+      "entry_n",
+      "exit_n",
+      "min_rebalance_weight_delta",
+      "min_weight",
+      "slope_lookback",
+      "slow_period",
+      "target_vol",
+      "vol_lookback"
+    ],
+    "status": "PASS"
+  },
+  "baseline": {
+    "unused_fields": [],
+    "unused_raw": [],
+    "allowlist": [],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

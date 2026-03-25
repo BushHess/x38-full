@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/var/www/trading-bots/btc-spot-dev/research/eval_e5_ema1d21/src/run_factorial_7s.py", line 58, in <module>
+    from Latch.config import CostModel, BARS_PER_YEAR_4H
+ModuleNotFoundError: No module named 'Latch'

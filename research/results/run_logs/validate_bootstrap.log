@@ -1,0 +1,132 @@
+/var/www/trading-bots/btc-spot-dev/research/validate_bootstrap.py:29: UserWarning: Importing from 'research' package — this is research code. For production use, import from the appropriate production module instead (e.g., 'monitoring.regime_monitor').
+  from research.lib.vcbb import (
+======================================================================
+VCBB VALIDATION: Volatility-Conditioned Block Bootstrap
+======================================================================
+
+Loading data...
+  H4 bars: 17838
+  Transitions: 17837
+  Warmup index: 2190
+  Block size: 60 (10 days)
+  Context: 90 (15 days)
+  K: 50
+
+  Real data diagnostics:
+    abs_acf_60: 0.1114
+    abs_acf_120: 0.1077
+    abs_acf_180: 0.0885
+    cond_vol_ratio: 1.6859
+    rolling_vol_acf_60: 0.8617
+    block_ret_acf1: 0.1033
+
+Precomputing VCBB state...
+  Done in 0.061s
+  Valid block starts: 17689
+  Vol range: [0.002627, 0.044197]
+
+======================================================================
+TEST 1: VOL CLUSTERING PRESERVATION
+======================================================================
+Paths: 200
+  ... 50/200 (4209.1s)
+  ... 100/200 (7894.3s)
+  ... 150/200 (11111.1s)
+  ... 200/200 (12315.3s)
+
+Metric                         Real     Uniform        VCBB    Recovery   Verdict
+------------------------------------------------------------------------------
+  abs_acf_60                 0.1114      0.0826      0.0847        76%      PASS
+  abs_acf_120                0.1077      0.0650      0.0646        60%      PASS
+  abs_acf_180                0.0885      0.0407      0.0412        47%      PASS
+  cond_vol_ratio             1.6859      1.5395      1.5534        81%      PASS
+  rolling_vol_acf_60         0.8617      0.8653      0.8656       100%      FAIL
+
+  Overall: SOME FAIL
+  [Test 1 took 12315.3s]
+
+======================================================================
+TEST 2: STATISTICAL SOUNDNESS
+======================================================================
+Paths: 200
+  ... 50/200 (529.9s)
+  ... 100/200 (1046.1s)
+  ... 150/200 (1647.8s)
+  ... 200/200 (2065.0s)
+
+  2a. Marginal Distribution (within 20% of real data)
+  Stat            Real    VCBB med     Rel err   Verdict
+  -------------------------------------------------------
+  mean        0.000091    0.000103      13.0%      PASS
+  std         0.013959    0.013609       2.5%      PASS
+  skew       -0.497705   -0.463954       6.8%      PASS
+  kurt       15.686964   15.098166       3.8%      PASS
+
+  2b. Block return ACF(1): -0.0058  (threshold: |.| < 0.15)  PASS
+  2c. Vol bin coverage: 20/20 = 100%  (threshold: >90%)  PASS
+  2d. Block diversity: VCBB 16969 vs Uniform 17197 unique starts = 99%  (threshold: >50%)  PASS
+
+  Overall: ALL PASS
+  [Test 2 took 2066.0s]
+
+======================================================================
+TEST 3: VTREND IMPACT ASSESSMENT
+======================================================================
+Paths: 2000, N=120, VDO=on
+  ... 200/2000 (24s, ETA 220s)
+  ... 400/2000 (48s, ETA 193s)
+  ... 600/2000 (72s, ETA 168s)
+  ... 800/2000 (96s, ETA 145s)
+  ... 1000/2000 (120s, ETA 120s)
+  ... 1200/2000 (144s, ETA 96s)
+  ... 1400/2000 (168s, ETA 72s)
+  ... 1600/2000 (191s, ETA 48s)
+  ... 1800/2000 (215s, ETA 24s)
+  ... 2000/2000 (238s, ETA 0s)
+
+Metric            Real   Uni med  VCBB med  Uni P(C>0)  VCBB P(C>0)  Real pct_U  Real pct_V
+-----------------------------------------------------------------------------------------------
+  sharpe          1.28      0.54      0.54       90.8%        90.8%       96.7%       96.7%
+  cagr           52.68     14.18     14.18       80.3%        80.3%       96.0%       96.0%
+  mdd            41.53     60.98     60.98        0.0%         0.0%        4.0%        4.0%
+  calmar          1.27      0.23      0.23        0.0%         0.0%       97.5%       97.5%
+
+  MDD Tail Risk:
+    P(MDD > 50%): Uniform 81.2%  VCBB 81.2%
+    P(MDD > 60%): Uniform 52.6%  VCBB 52.6%
+    P(MDD > 70%): Uniform 25.1%  VCBB 25.1%
+    P(MDD > 80%): Uniform 8.1%  VCBB 8.1%
+
+  Median trades: Uniform 229  VCBB 229  Real 211
+
+  [INFORMATIONAL — no pass/fail criteria]
+  [Test 3 took 238.4s]
+
+======================================================================
+TEST 4: K SENSITIVITY SWEEP
+======================================================================
+
+  K            |r|ACF@60     CondVol  RolVol ACF
+  ---------------------------------------------
+  uniform         0.0842      1.5490      0.8642
+  20              0.0813      1.5464      0.8664
+  50              0.0842      1.5490      0.8642
+  100             0.0799      1.5353      0.8623
+  200             0.0858      1.5327      0.8654
+
+  All K beat uniform on |r|ACF@60: FAIL
+  [Test 4 took 491.0s]
+
+Results saved to /var/www/trading-bots/btc-spot-dev/research/results/vcbb_validation.json
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+  Test 1 (Vol Clustering):   FAIL
+  Test 2 (Soundness):        PASS
+  Test 3 (VTREND Impact):    INFORMATIONAL
+  Test 4 (K Sensitivity):    INFORMATIONAL
+
+  Overall: SOME FAIL
+
+  Total time: 15111s

@@ -1,0 +1,52 @@
+{
+  "best_discrete_frac": 0.9,
+  "best_discrete_sharpe_25": 1.6742,
+  "best_continuous_design": "B2_mf60",
+  "best_continuous_sharpe_25": 1.9193,
+  "continuous_beats_discrete": true,
+  "mdd_from_exposure_pct": 85.0,
+  "mdd_from_timing_pct": 15.0,
+  "mdd_mechanism": "PARTIAL_TIMING (better Sharpe, worse MDD than exposure-matched)",
+  "cost_interaction": "increasing",
+  "cost_dsh_corr": 0.953,
+  "crossover_bps": null,
+  "candidates_for_wfo": [
+    {
+      "name": "discrete_pf90",
+      "type": "discrete",
+      "partial_frac": 0.9,
+      "design": null,
+      "params": {
+        "threshold": 0.6867
+      }
+    },
+    {
+      "name": "B2_mf60",
+      "type": "continuous",
+      "partial_frac": null,
+      "design": "B2",
+      "params": {
+        "lo": 0.5046131754658909,
+        "hi": 0.7558158071180028,
+        "max_frac": 0.6
+      }
+    },
+    {
+      "name": "B2_mf80",
+      "type": "continuous",
+      "partial_frac": null,
+      "design": "B2",
+      "params": {
+        "lo": 0.5046131754658909,
+        "hi": 0.7558158071180028,
+        "max_frac": 0.8
+      }
+    }
+  ],
+  "gate_A": true,
+  "gate_B": true,
+  "overall_best": "B2_mf60",
+  "overall_best_type": "continuous",
+  "overall_best_sharpe_25": 1.9193,
+  "base_sharpe_25": 1.6022
+}

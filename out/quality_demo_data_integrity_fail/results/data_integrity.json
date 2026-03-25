@@ -1,0 +1,136 @@
+{
+  "status": "fail",
+  "pass": false,
+  "hard_fail": true,
+  "hard_fail_reasons": [
+    "duplicate_timestamps",
+    "ohlc_invalid_rows",
+    "missing_bars_pct_exceeds_threshold",
+    "warmup_missing_severe"
+  ],
+  "policy": {
+    "missing_bars_fail_pct": 0.5,
+    "gap_multiplier": 1.5,
+    "warmup_fail_coverage_pct": 50.0,
+    "issue_rows_cap": 200
+  },
+  "dataset": "/tmp/di_bad.csv",
+  "window": {
+    "start": "2020-01-04",
+    "end": "2020-01-05",
+    "report_start_ms": 1578096000000,
+    "report_start_utc": "2020-01-04 00:00:00 UTC",
+    "load_start_ms": 1577836800000,
+    "load_start_utc": "2020-01-01 00:00:00 UTC",
+    "load_end_ms": 1578268799999,
+    "load_end_utc": "2020-01-05 23:59:59 UTC",
+    "required_warmup_days": 3
+  },
+  "counts": {
+    "rows_checked": 5,
+    "intervals_checked": 2,
+    "issues_total": 6,
+    "issues_written": 6,
+    "fail_issues": 5,
+    "warning_issues": 1,
+    "timestamp_not_increasing": 0,
+    "duplicate_timestamps": 1,
+    "ohlc_invalid_rows": 1,
+    "volume_invalid_rows": 0,
+    "max_missing_bars_pct_estimated": 40.0
+  },
+  "nan_inf_by_column": {
+    "nan": {
+      "close": 0,
+      "high": 0,
+      "low": 0,
+      "open": 0,
+      "volume": 0
+    },
+    "inf": {
+      "close": 0,
+      "high": 0,
+      "low": 0,
+      "open": 0,
+      "volume": 0
+    }
+  },
+  "intervals": [
+    {
+      "timeframe": "4h",
+      "rows": 4,
+      "bar_seconds": 14400.0,
+      "bar_seconds_source": "config",
+      "timestamp_not_increasing": 0,
+      "duplicate_timestamps": 1,
+      "gap_count": 1,
+      "max_gap_seconds": 43200.0,
+      "missing_bars_estimated": 2,
+      "missing_bars_pct_estimated": 40.0,
+      "ohlc_invalid_rows": 1,
+      "volume_invalid_rows": 0,
+      "nan_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "inf_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "timezone_drift_events": 0,
+      "warmup": {
+        "required_days": 3,
+        "available_days": 1.0,
+        "coverage_pct": 33.333333,
+        "severity": "fail"
+      }
+    },
+    {
+      "timeframe": "1d",
+      "rows": 1,
+      "bar_seconds": 86400.0,
+      "bar_seconds_source": "config",
+      "timestamp_not_increasing": 0,
+      "duplicate_timestamps": 0,
+      "gap_count": 0,
+      "max_gap_seconds": 0.0,
+      "missing_bars_estimated": 0,
+      "missing_bars_pct_estimated": 0.0,
+      "ohlc_invalid_rows": 0,
+      "volume_invalid_rows": 0,
+      "nan_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "inf_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      },
+      "timezone_drift_events": 0,
+      "warmup": {
+        "required_days": 3,
+        "available_days": 1.0,
+        "coverage_pct": 33.333333,
+        "severity": "fail"
+      }
+    }
+  ],
+  "issue_type_counts": {
+    "duplicate_timestamp": 2,
+    "gap_detected": 1,
+    "ohlc_invalid": 1,
+    "warmup_missing_severe": 2
+  }
+}

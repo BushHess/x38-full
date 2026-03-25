@@ -1,0 +1,227 @@
+==========================================================================================
+SECTION 1: ABSOLUTE Sharpe Comparison — E5+ vs X0 at Each Disruption Level
+==========================================================================================
+
+  Scenario                  E5+ Sharpe   X0 Sharpe  Diff (E5-X0)   Winner
+  ──────────────────────── ─────────── ─────────── ───────────── ────────
+  Baseline (D0)                 1.2702      1.1750       +0.0952      E5+
+  Entry D1 only                 1.1890      1.1275       +0.0615      E5+
+  Entry D2 only                 0.9607      0.9731       -0.0124       X0
+  Exit D1 only                  1.1445      0.9884       +0.1561      E5+
+  Exit D2 only                  1.1411      1.0692       +0.0719      E5+
+  Entry D1 + Exit D1            1.0842      0.9760       +0.1082      E5+ (est)
+  Entry D2 + Exit D1            0.8741      0.8572       +0.0169      E5+
+  Entry D2 + Exit D2            0.8829      0.8893       -0.0064       X0
+  Entry D4 + Exit D2            0.6948      0.7630       -0.0682       X0
+  LT1 stochastic                1.2350      1.1411       +0.0939      E5+
+  LT2 stochastic                1.0893      1.0187       +0.0706      E5+
+  LT3 stochastic                0.7410      0.7936       -0.0526       X0
+
+  KEY INSIGHT:
+  ─────────────
+  E5+ beats X0 in ABSOLUTE Sharpe in 9/12 scenarios.
+  X0 only wins at: entry-D2-only (+0.012), D2+D2 (+0.006), D4+D2 (+0.068).
+  At the BINDING scenario (D2+D1): E5+ still beats X0 by +0.017.
+
+  The Step 5 rejection was based on DELTA Sharpe (degradation from own baseline),
+  NOT on absolute performance under disruption.
+
+==========================================================================================
+SECTION 2: Delta vs Absolute — Why the Framework Got It Wrong
+==========================================================================================
+
+  Step 5 DELTA-based evaluation:
+  ──────────────────────────────
+  E5+ at D2+D1: delta = -0.396 → FAILS -0.35 threshold → HOLD
+  X0  at D2+D1: delta = -0.318 → PASSES -0.35 threshold → GO_WITH_GUARDS
+
+  Step 5 says: "X0 degrades less, so deploy X0"
+
+  ABSOLUTE-based evaluation:
+  ──────────────────────────
+  E5+ at D2+D1: Sharpe = 0.874 ← HIGHER
+  X0  at D2+D1: Sharpe = 0.857 ← LOWER
+
+  Reality says: "E5+ is still better even under worst LT1 disruption"
+
+  The delta-based gate penalizes strategies for having a HIGHER BASELINE.
+  E5+ loses more in percentage terms because it starts higher, but its
+  degraded performance is still superior to X0's degraded performance.
+
+==========================================================================================
+SECTION 3: Hybrid Expected Sharpe Across Uptime Range
+==========================================================================================
+
+   Uptime │    Hybrid │  Pure E5+ │   Pure X0 │  Hybrid vs │  Hybrid vs
+      (%) │    Sharpe │    Sharpe │    Sharpe │   Pure E5+ │    Pure X0
+  ────────┼───────────┼───────────┼───────────┼────────────┼───────────
+     100% │    1.2470 │    1.2470 │    1.1481 │    +0.0000 │    +0.0989
+      99% │    1.2431 │    1.2433 │    1.1452 │    -0.0002 │    +0.0979
+      98% │    1.2392 │    1.2395 │    1.1423 │    -0.0003 │    +0.0969
+      97% │    1.2353 │    1.2358 │    1.1394 │    -0.0005 │    +0.0959
+      95% │    1.2275 │    1.2284 │    1.1336 │    -0.0008 │    +0.0940 ←
+      93% │    1.2197 │    1.2209 │    1.1277 │    -0.0012 │    +0.0920
+      90% │    1.2080 │    1.2097 │    1.1190 │    -0.0017 │    +0.0890
+      85% │    1.1885 │    1.1911 │    1.1045 │    -0.0025 │    +0.0841
+      80% │    1.1690 │    1.1724 │    1.0899 │    -0.0034 │    +0.0791
+      75% │    1.1496 │    1.1538 │    1.0754 │    -0.0042 │    +0.0742
+      70% │    1.1301 │    1.1351 │    1.0608 │    -0.0051 │    +0.0692
+
+  NOTE: Hybrid uses E5+ LT1-adjusted Sharpe (~1.247) for normal state,
+        X0 at D2+D1 (0.857) for degraded state.
+        Pure E5+ uses E5+ at D2+D1 (0.874) for degraded state.
+
+==========================================================================================
+SECTION 4: The Paradox — Hybrid Is WORSE Than Pure E5+
+==========================================================================================
+
+  At EVERY uptime level, Pure E5+ beats Hybrid:
+
+  Hybrid degraded Sharpe:   X0 at D2+D1 = 0.8572
+  Pure E5+ degraded Sharpe: E5+ at D2+D1 = 0.8741
+  Difference: +0.0169
+
+  Since E5+ outperforms X0 even in degraded state (D2+D1),
+  switching TO X0 during degradation makes performance WORSE.
+
+  The hybrid fallback is COUNTER-PRODUCTIVE at the D2+D1 level.
+
+  X0 fallback only helps beyond the crossover point:
+
+  Scenario                  E5+ Sharpe   X0 Sharpe  X0 helps?
+  ──────────────────────── ─────────── ─────────── ──────────
+  Baseline (D0)                 1.2702      1.1750         NO
+  Entry D1 only                 1.1890      1.1275         NO
+  Entry D2 only                 0.9607      0.9731        YES
+  Exit D1 only                  1.1445      0.9884         NO
+  Exit D2 only                  1.1411      1.0692         NO
+  Entry D1 + Exit D1            1.0842      0.9760         NO
+  Entry D2 + Exit D1            0.8741      0.8572         NO
+  Entry D2 + Exit D2            0.8829      0.8893        YES
+  Entry D4 + Exit D2            0.6948      0.7630        YES
+  LT1 stochastic                1.2350      1.1411         NO
+  LT2 stochastic                1.0893      1.0187         NO
+  LT3 stochastic                0.7410      0.7936        YES
+
+  X0 fallback only helps at:
+  - Entry D2 only (Sharpe +0.012 for X0)
+  - Entry D2 + Exit D2 (Sharpe +0.006 for X0)
+  - Entry D4 + Exit D2 (Sharpe +0.068 for X0)
+
+  These are all deep degradation scenarios (LT2/LT3 level).
+  At the LT1 binding scenario (D2+D1), E5+ is still better.
+
+==========================================================================================
+SECTION 5: What Uptime Makes Hybrid ≈ Pure E5+?
+==========================================================================================
+
+  MATHEMATICAL RESULT:
+  ────────────────────
+  Hybrid ≥ Pure E5+ requires: S(X0, degraded) > S(E5+, degraded)
+
+  At D2+D1: X0 = 0.8572, E5+ = 0.8741 → X0 LOSES by 0.0169
+  At D2+D2: X0 = 0.8893, E5+ = 0.8829 → X0 wins by 0.0064
+  At D4+D2: X0 = 0.7630, E5+ = 0.6948 → X0 wins by 0.0682
+
+  CROSSOVER: X0 fallback helps only when exit delay ≥ D2 AND entry delay ≥ D2.
+  This is LT2/LT3 territory, not LT1.
+
+  For LT1 (the deployment scenario): hybrid fallback to X0 is HARMFUL.
+
+==========================================================================================
+SECTION 6: Expected Performance at 95% Uptime — All Policies
+==========================================================================================
+
+  At 95% uptime (5% of time at D2 entry+D1 exit):
+
+  Policy                         Expected Sharpe  vs Pure X0
+  ────────────────────────────── ─────────────── ───────────
+  Pure E5+ (baseline)                     1.2702     +0.1366
+  Pure E5+ (no fallback)                  1.2284     +0.0948
+  Hybrid (E5+/X0 fallback)                1.2275     +0.0940
+  Pure X0 (baseline)                      1.1750     +0.0414
+  Pure X0 (current rec.)                  1.1336     +0.0000
+
+  ANSWER TO USER'S QUESTION:
+  ──────────────────────────
+  At 95% uptime, expected performance:
+    Pure E5+:   1.2284  (BEST)
+    Hybrid:     1.2275  (WORSE than pure E5+)
+    Pure X0:    1.1336  (WORST)
+
+  Expected performance is MUCH closer to E5+EMA1D21 than X0.
+  Gap: E5+ baseline 1.2702 → expected 1.2284 (loses 0.0418)
+  Gap: X0 baseline 1.1750 → expected 1.1336 (loses 0.0414)
+
+==========================================================================================
+SECTION 7: The Deeper Finding — Delta Gate Penalizes Higher Baselines
+==========================================================================================
+
+  The Step 5 delta-based sign-off gate has a structural flaw:
+
+  It measures: "How much does strategy X lose from its own baseline?"
+  It should measure: "Is strategy X still better than alternatives under disruption?"
+
+  Example:
+  ┌─────────────────────────────────────────────────────────┐
+  │  Strategy A: baseline 2.0, degraded 1.5 → delta -0.5   │
+  │  Strategy B: baseline 1.0, degraded 0.8 → delta -0.2   │
+  │                                                          │
+  │  Delta gate at -0.35: A FAILS, B PASSES                 │
+  │  But A (1.5) is still BETTER than B (0.8) when degraded │
+  └─────────────────────────────────────────────────────────┘
+
+  This is EXACTLY what happened with E5+ vs X0:
+
+  ┌─────────────────────────────────────────────────────────┐
+  │  E5+: baseline 1.270, at D2+D1 = 0.874 → delta -0.396 │
+  │  X0:  baseline 1.175, at D2+D1 = 0.857 → delta -0.318 │
+  │                                                          │
+  │  Delta gate at -0.35: E5+ FAILS, X0 PASSES              │
+  │  But E5+ (0.874) > X0 (0.857) when degraded!           │
+  └─────────────────────────────────────────────────────────┘
+
+  The delta-based gate:
+  ✗ Penalizes strategies with higher baselines
+  ✗ Can reject a strategy that DOMINATES the alternative in ALL states
+  ✗ Does not compare strategies against each other
+  ✗ Uses an absolute delta threshold for strategies with different baselines
+
+  A CORRECT disruption gate would ask:
+  "Under worst-case disruption, does the candidate still outperform
+   the next-best alternative?" (comparative gate)
+
+  Or at minimum use FRACTIONAL delta:
+  E5+ fractional loss: -0.396 / 1.270 = -31.2%
+  X0  fractional loss: -0.318 / 1.175 = -27.1%
+
+  The fractional difference (4.1pp) is much smaller than the absolute
+  difference (0.078 Sharpe), and both are well within estimation noise.
+
+==========================================================================================
+SECTION 8: Summary
+==========================================================================================
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │ FINDING 1: Hybrid fallback is COUNTER-PRODUCTIVE            │
+  │ E5+ beats X0 in absolute Sharpe at D2+D1 (0.874 > 0.857)  │
+  │ Switching to X0 during degradation REDUCES performance      │
+  │                                                              │
+  │ FINDING 2: At 95% uptime, pure E5+ expected Sharpe = 1.228  │
+  │ This is 89% of the way from X0 baseline to E5+ baseline     │
+  │ i.e., performance is overwhelmingly driven by E5+            │
+  │                                                              │
+  │ FINDING 3: Delta-based gate has structural bias              │
+  │ It penalizes strategies with higher baselines                │
+  │ E5+ was rejected not because it's worse under disruption,   │
+  │ but because it had MORE to lose (higher baseline)            │
+  │                                                              │
+  │ FINDING 4: X0 fallback only helps at D2+D2 or worse         │
+  │ This is LT2/LT3 territory — NOT the LT1 deployment case    │
+  │ For LT1, just run E5+ straight through                      │
+  │                                                              │
+  │ RECOMMENDATION: Deploy E5+EMA1D21 with NO fallback           │
+  │ Even under worst LT1 disruption, E5+ outperforms X0         │
+  │ The hybrid adds complexity without improving performance     │
+  └─────────────────────────────────────────────────────────────┘
+

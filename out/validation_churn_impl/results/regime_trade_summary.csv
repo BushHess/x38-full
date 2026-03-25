@@ -1,0 +1,5 @@
+label,regime,n_trades,total_pnl,win_rate,avg_pnl
+baseline,AnalyticalRegime.BULL,2,1655.992096,0.5,827.996048
+baseline,AnalyticalRegime.CHOP,1,-273.12292,0.0,-273.12292
+candidate,AnalyticalRegime.BULL,2,1655.992096,0.5,827.996048
+candidate,AnalyticalRegime.CHOP,1,-273.12292,0.0,-273.12292

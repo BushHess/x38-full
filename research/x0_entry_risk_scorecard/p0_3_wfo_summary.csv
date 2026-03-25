@@ -1,0 +1,3 @@
+strategy_id,eligible_windows,total_windows,pnl_order_pass_rate,win_rate_order_pass_rate,both_order_pass_rate
+X0,4,8,1.0,1.0,1.0
+X0_E5EXIT,5,8,1.0,0.8,0.8

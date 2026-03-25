@@ -1,0 +1,5 @@
+key,label,scenario,start,end,runtime_sec,sharpe,cagr_pct,max_drawdown_mid_pct,trades,win_rate_pct,profit_factor,avg_exposure,total_return_pct,final_nav_mid,fees_total
+e0,E0 VTREND baseline,harsh,2019-01-01,2026-02-20,0.076,1.2653,52.04,41.61,192,40.1,1.6137,0.4682,1891.73,199173.14,58985.54
+full,Full Q-VDO-RH,harsh,2019-01-01,2026-02-20,0.107,1.1507,42.79,45.0,154,42.21,1.6357,0.4013,1171.95,127195.45,31417.56
+a5,A5 VDO + adaptive theta,harsh,2019-01-01,2026-02-20,0.083,1.2552,49.22,44.67,162,41.98,1.7293,0.4229,1642.16,174216.25,39636.99
+a3,A3 ratio mode + adaptive theta,harsh,2019-01-01,2026-02-20,0.081,1.2572,49.33,44.39,162,41.98,1.73,0.4227,1651.1,175109.73,39834.12

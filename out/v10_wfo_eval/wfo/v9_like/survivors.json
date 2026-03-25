@@ -1,0 +1,210 @@
+[
+  {
+    "params": {
+      "emergency_dd_pct": 0.28,
+      "emergency_ref": "post_cost",
+      "entry_cooldown_bars": 3,
+      "fixed_stop_pct": 0.12,
+      "rsi_method": "ewm_span",
+      "trail_atr_mult": 3.0
+    },
+    "windows_tested": 2,
+    "windows_passed": 2,
+    "pass_rate": 1.0,
+    "median_test_score": 20.13,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 300.2,
+        "test_score": 20.13,
+        "test_return_pct": 5.42,
+        "test_mdd_pct": 23.39,
+        "passed": true
+      },
+      {
+        "window_id": 5,
+        "train_score": 26.22,
+        "test_score": -1000000.0,
+        "test_return_pct": 29.74,
+        "test_mdd_pct": 14.58,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.28,
+      "emergency_ref": "post_cost",
+      "entry_cooldown_bars": 3,
+      "fixed_stop_pct": 0.18,
+      "rsi_method": "ewm_span",
+      "trail_atr_mult": 3.0
+    },
+    "windows_tested": 5,
+    "windows_passed": 5,
+    "pass_rate": 1.0,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 0,
+        "train_score": 300.2,
+        "test_score": -1000000.0,
+        "test_return_pct": 43.29,
+        "test_mdd_pct": 22.2,
+        "passed": true
+      },
+      {
+        "window_id": 1,
+        "train_score": 215.82,
+        "test_score": -1000000.0,
+        "test_return_pct": 17.18,
+        "test_mdd_pct": 22.67,
+        "passed": true
+      },
+      {
+        "window_id": 2,
+        "train_score": 256.22,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 3,
+        "train_score": 291.2,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 62.05,
+        "test_score": -1000000.0,
+        "test_return_pct": 12.33,
+        "test_mdd_pct": 12.91,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "post_cost",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.18,
+      "rsi_method": "ewm_span",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 4,
+    "windows_passed": 3,
+    "pass_rate": 0.75,
+    "median_test_score": -1000000.0,
+    "window_details": [
+      {
+        "window_id": 3,
+        "train_score": 283.67,
+        "test_score": -1000000.0,
+        "test_return_pct": 0.0,
+        "test_mdd_pct": 0.0,
+        "passed": true
+      },
+      {
+        "window_id": 4,
+        "train_score": 59.76,
+        "test_score": -1000000.0,
+        "test_return_pct": 8.02,
+        "test_mdd_pct": 17.02,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 89.27,
+        "test_score": 605.16,
+        "test_return_pct": 82.87,
+        "test_mdd_pct": 13.09,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 195.58,
+        "test_score": -1000000.0,
+        "test_return_pct": -11.37,
+        "test_mdd_pct": 43.31,
+        "passed": false
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "post_cost",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.15,
+      "rsi_method": "ewm_span",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 3,
+    "windows_passed": 2,
+    "pass_rate": 0.6667,
+    "median_test_score": -144.82,
+    "window_details": [
+      {
+        "window_id": 4,
+        "train_score": 52.24,
+        "test_score": -1000000.0,
+        "test_return_pct": 8.02,
+        "test_mdd_pct": 17.02,
+        "passed": true
+      },
+      {
+        "window_id": 7,
+        "train_score": 89.27,
+        "test_score": 605.16,
+        "test_return_pct": 82.87,
+        "test_mdd_pct": 13.09,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 195.58,
+        "test_score": -144.82,
+        "test_return_pct": -27.73,
+        "test_mdd_pct": 43.36,
+        "passed": false
+      }
+    ]
+  },
+  {
+    "params": {
+      "emergency_dd_pct": 0.31,
+      "emergency_ref": "post_cost",
+      "entry_cooldown_bars": 2,
+      "fixed_stop_pct": 0.12,
+      "rsi_method": "ewm_span",
+      "trail_atr_mult": 2.5
+    },
+    "windows_tested": 2,
+    "windows_passed": 1,
+    "pass_rate": 0.5,
+    "median_test_score": 605.16,
+    "window_details": [
+      {
+        "window_id": 7,
+        "train_score": 89.27,
+        "test_score": 605.16,
+        "test_return_pct": 82.87,
+        "test_mdd_pct": 13.09,
+        "passed": true
+      },
+      {
+        "window_id": 8,
+        "train_score": 195.58,
+        "test_score": -132.11,
+        "test_return_pct": -24.68,
+        "test_mdd_pct": 41.15,
+        "passed": false
+      }
+    ]
+  }
+]

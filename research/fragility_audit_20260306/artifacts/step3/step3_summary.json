@@ -1,0 +1,82 @@
+{
+  "step": 3,
+  "phase": "replay_fragility",
+  "seed": 20260306,
+  "n_draws": 2000,
+  "K_values": [
+    1,
+    2,
+    3
+  ],
+  "outage_hours": [
+    24,
+    72,
+    168
+  ],
+  "delay_bars": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "nav0": 10000.0,
+  "backtest_years": 6.5,
+  "fee_model": "harsh_50bps_rt",
+  "period": "1546300800000 to 1771545600000",
+  "candidates": {
+    "E0": {
+      "replay_regress_pass": true,
+      "baseline_sharpe": 1.137891990982726,
+      "baseline_cagr_native": 0.6182793979994246,
+      "baseline_n_trades": 192,
+      "miss_k1_sharpe_p5": 1.1325899849500332,
+      "outage_168h_sharpe_worst": 1.0737842212677682,
+      "delay_4_delta_sharpe": -0.3362120238929167
+    },
+    "E5": {
+      "replay_regress_pass": true,
+      "baseline_sharpe": 1.229858244767157,
+      "baseline_cagr_native": 0.672325892282476,
+      "baseline_n_trades": 207,
+      "miss_k1_sharpe_p5": 1.223120353095641,
+      "outage_168h_sharpe_worst": 1.1604192062982288,
+      "delay_4_delta_sharpe": -0.4534264258663615
+    },
+    "SM": {
+      "replay_regress_pass": true,
+      "baseline_sharpe": 0.8160701575880366,
+      "baseline_cagr_native": 0.1819474107009913,
+      "baseline_n_trades": 65,
+      "miss_k1_sharpe_p5": 0.8061086998854397,
+      "outage_168h_sharpe_worst": 0.7394336612215289,
+      "delay_4_delta_sharpe": -0.03301742369120597
+    },
+    "LATCH": {
+      "replay_regress_pass": true,
+      "baseline_sharpe": 0.8251266460406624,
+      "baseline_cagr_native": 0.14562092693235829,
+      "baseline_n_trades": 65,
+      "miss_k1_sharpe_p5": 0.8148440204261574,
+      "outage_168h_sharpe_worst": 0.7496843247665587,
+      "delay_4_delta_sharpe": -0.032834825293466485
+    },
+    "E0_plus_EMA1D21": {
+      "replay_regress_pass": false,
+      "baseline_sharpe": 1.1836613716944673,
+      "baseline_cagr_native": 0.6673220692120858,
+      "baseline_n_trades": 174,
+      "miss_k1_sharpe_p5": 1.1768922190312554,
+      "outage_168h_sharpe_worst": 1.1189061056680627,
+      "delay_4_delta_sharpe": -0.3856091958730189
+    },
+    "E5_plus_EMA1D21": {
+      "replay_regress_pass": false,
+      "baseline_sharpe": 1.2800583413288134,
+      "baseline_cagr_native": 0.7261775760097144,
+      "baseline_n_trades": 188,
+      "miss_k1_sharpe_p5": 1.2708202628268264,
+      "outage_168h_sharpe_worst": 1.2095172199960187,
+      "delay_4_delta_sharpe": -0.5118483134727108
+    }
+  }
+}

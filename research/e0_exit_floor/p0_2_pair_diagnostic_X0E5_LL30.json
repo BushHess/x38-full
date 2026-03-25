@@ -1,0 +1,65 @@
+{
+  "label_a": "X0E5_LL30",
+  "label_b": "X0_E5EXIT",
+  "profile": {
+    "n_bars": 15647,
+    "equal_rate_tol": 0.9916916980890905,
+    "near_equal_1bp_rate": 0.9916916980890905,
+    "near_equal_10bp_rate": 0.9925225282801815,
+    "same_direction_rate": 0.9927781683389787,
+    "return_correlation": 0.9935043148288372,
+    "exposure_agreement_rate": 0.9931616284271746
+  },
+  "classification": {
+    "pair_class": "near_identical",
+    "subsampling_reliable": false,
+    "primary_reason": "near_equal_1bp=99.2%, corr=0.994"
+  },
+  "boot_sharpe_p": 0.4775,
+  "boot_sharpe_ci_lower": -0.09907869201356195,
+  "boot_sharpe_ci_upper": 0.09342127318765583,
+  "boot_sharpe_ci_width": 0.1924999652012178,
+  "boot_sharpe_observed_delta": -0.001437837463576841,
+  "boot_geo_p": 0.433,
+  "boot_geo_ci_lower": -1.8304058043733346e-05,
+  "boot_geo_ci_upper": 1.4869582705043776e-05,
+  "sub_p": 0.01804453544919371,
+  "sub_ci_lower": -0.003035330476488445,
+  "sub_ci_upper": -0.0030046893028063213,
+  "sub_support": 0.0,
+  "consensus_gap_pp": 41.49554645508063,
+  "consensus_ok": false,
+  "dsr_a": {
+    "27": 0.9688936067014415,
+    "54": 0.9437601978424052,
+    "100": 0.9132265890947496,
+    "200": 0.8696258652666172,
+    "500": 0.7984145385002616,
+    "700": 0.7690274655520628
+  },
+  "dsr_b": {
+    "27": 0.9691550197159495,
+    "54": 0.9441846013743065,
+    "100": 0.9138215960723808,
+    "200": 0.8704275957715404,
+    "500": 0.7994844222115767,
+    "700": 0.7701873444311254
+  },
+  "caveats": [
+    "Subsampling unreliable: near_equal_1bp_rate=99.2% > 80% threshold",
+    "Subsampling support=0.00 (expected for available effect sizes)",
+    "Very high return correlation (0.994) \u2014 strategies may be near-equivalent"
+  ],
+  "suggested_route": "no_action_default",
+  "route_reason": "near_identical pair, no anomalous signal",
+  "bootstrap_config": {
+    "n_bootstrap": 2000,
+    "block_sizes": [
+      10,
+      20,
+      40
+    ],
+    "seed": 1337
+  },
+  "timestamp_utc": "2026-03-16T20:40:59.892101+00:00"
+}
