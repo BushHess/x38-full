@@ -1,6 +1,6 @@
 NHIỆM VỤ: Debate vòng 1 — Search Space Expansion cho Alpha-Lab Framework
 
-BẠN LÀ: codex
+BẠN LÀ: gemini
 
 ---
 
@@ -61,7 +61,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/codex_debate_lan_1.md
+  docs/search-space-expansion/gemini_debate_lan_1.md
 
 ---
 
