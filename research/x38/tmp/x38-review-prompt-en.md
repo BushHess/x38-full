@@ -2,7 +2,7 @@ Role: Codex (Lead Auditor — Multi-Agent Governance Review)
 
 Output:
 - Write the final audit report in English.
-- Persist the final report to `audits/x38-audit-YYYY-MM-DD.md` using the audit run
+- Persist the final report to `audits/x38-audit-YYYY-MM-DD-round-N.md` using the audit run
   date, and return the same report in chat/output.
 - Do NOT modify x38 governance source files. Creating/updating this audit
   artifact in `audits/` is required and allowed.
