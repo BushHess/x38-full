@@ -1,6 +1,6 @@
 NHIỆM VỤ: Debate vòng 5 — Search Space Expansion cho Alpha-Lab Framework
 
-BẠN LÀ: ChatGPT Pro
+BẠN LÀ: Codex
 
 ---
 
@@ -85,7 +85,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_5.md
+  docs/search-space-expansion/debate/codex/codex_debate_lan_5.md
 
 ---
 
