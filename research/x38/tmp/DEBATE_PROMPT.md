@@ -1,4 +1,4 @@
-NHIỆM VỤ: Debate vòng 1 — Search Space Expansion cho Alpha-Lab Framework
+NHIỆM VỤ: Debate vòng 2 — Search Space Expansion cho Alpha-Lab Framework
 
 BẠN LÀ: gemini
 
@@ -13,22 +13,28 @@ Yêu cầu gốc:
   docs/search-space-expansion/request.md
 
 Bốn proposal ban đầu:
-    docs/search-space-expansion/gemini_propone.md
-    docs/search-space-expansion/codex_propone.md
-    docs/search-space-expansion/claude_propone.md
-    docs/search-space-expansion/chatgptpro_propone.md
+    docs/search-space-expansion/debate/gemini/gemini_propone.md
+    docs/search-space-expansion/debate/codex/codex_propone.md
+    docs/search-space-expansion/debate/claude/claude_propone.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_propone.md
+
+Debate vòng 1:
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_1.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_1.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_1.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_1.md
 
 ---
 
 ĐỌC BẮT BUỘC TRƯỚC KHI VIẾT
 
-1. docs/search-space-expansion/DEBATE_FORMAT.md     — format đầu ra bắt buộc
-2. docs/search-space-expansion/request.md           — yêu cầu gốc
-3. Bốn proposal ở trên                              — nội dung cần phản biện
-4. {PREVIOUS_FILES}                                 — nếu vòng 2+
-5. docs/online_vs_offline.md                        — offline/online invariant
-6. docs/design_brief.md                             — thiết kế tổng quan
-7. debate/rules.md                                  — quy tắc tranh luận
+1. docs/search-space-expansion/template/DEBATE_FORMAT.md                — format đầu ra bắt buộc
+2. docs/search-space-expansion/request.md                               — yêu cầu gốc
+3. Bốn proposal ở trên                                                  — nội dung cần phản biện
+4. Các debate files vòng trước từ cả 4 agents                           — nếu vòng 2+
+5. docs/online_vs_offline.md                                            — offline/online invariant
+6. docs/design_brief.md                                                 — thiết kế tổng quan
+7. debate/rules.md                                                      — quy tắc tranh luận
 
 ---
 
@@ -61,7 +67,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/gemini_debate_lan_1.md
+  docs/search-space-expansion/debate/gemini/gemini_debate_lan_2.md
 
 ---
 

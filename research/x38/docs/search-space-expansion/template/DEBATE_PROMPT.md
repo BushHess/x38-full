@@ -32,10 +32,10 @@ Yêu cầu gốc:
   docs/search-space-expansion/request.md
 
 Bốn proposal ban đầu:
-  docs/search-space-expansion/gemini_propone.md
-  docs/search-space-expansion/codex_propone.md
-  docs/search-space-expansion/claude_propone.md
-  docs/search-space-expansion/chatgptpro_propone.md
+  docs/search-space-expansion/debate/gemini/gemini_propone.md
+  docs/search-space-expansion/debate/codex/codex_propone.md
+  docs/search-space-expansion/debate/claude/claude_propone.md
+  docs/search-space-expansion/debate/chatgptpro/chatgptpro_propone.md
 
 {PREVIOUS_FILES}
 
@@ -43,7 +43,7 @@ Bốn proposal ban đầu:
 
 ĐỌC BẮT BUỘC TRƯỚC KHI VIẾT
 
-1. docs/search-space-expansion/DEBATE_FORMAT.md  — format đầu ra bắt buộc
+1. docs/search-space-expansion/template/DEBATE_FORMAT.md  — format đầu ra bắt buộc
 2. docs/search-space-expansion/request.md        — yêu cầu gốc
 3. Bốn proposal ở trên                          — nội dung cần phản biện
 4. {PREVIOUS_FILES}                              — nếu vòng 2+
@@ -82,7 +82,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/{AGENT}_debate_lan_{N}.md
+  docs/search-space-expansion/debate/{AGENT}/{AGENT}_debate_lan_{N}.md
 
 ---
 
@@ -113,10 +113,10 @@ Thay:
 - `{PREVIOUS_FILES}` =
   ```
   Debate vòng 1 (đọc tất cả):
-    docs/search-space-expansion/gemini_debate_lan_1.md
-    docs/search-space-expansion/codex_debate_lan_1.md
-    docs/search-space-expansion/claude_debate_lan_1.md
-    docs/search-space-expansion/chatgptpro_debate_lan_1.md
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_1.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_1.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_1.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_1.md
   ```
 
 ### Gửi vòng 3 cho Codex
@@ -127,14 +127,14 @@ Thay:
 - `{PREVIOUS_FILES}` =
   ```
   Debate vòng 1:
-    docs/search-space-expansion/gemini_debate_lan_1.md
-    docs/search-space-expansion/codex_debate_lan_1.md
-    docs/search-space-expansion/claude_debate_lan_1.md
-    docs/search-space-expansion/chatgptpro_debate_lan_1.md
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_1.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_1.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_1.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_1.md
 
   Debate vòng 2:
-    docs/search-space-expansion/gemini_debate_lan_2.md
-    docs/search-space-expansion/codex_debate_lan_2.md
-    docs/search-space-expansion/claude_debate_lan_2.md
-    docs/search-space-expansion/chatgptpro_debate_lan_2.md
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_2.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_2.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_2.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_2.md
   ```

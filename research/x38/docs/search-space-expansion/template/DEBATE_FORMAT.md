@@ -26,11 +26,11 @@ author: {agent_name}
 date: {YYYY-MM-DD}
 status: OPEN
 sources:
-  - ./request.md
-  - ./gemini_propone.md
-  - ./codex_propone.md
-  - ./claude_propone.md
-  - ./chatgptpro_propone.md
+  - ../../request.md
+  - ../gemini/gemini_propone.md
+  - ../codex/codex_propone.md
+  - ../claude/claude_propone.md
+  - ../chatgptpro/chatgptpro_propone.md
   # Thêm sources khác nếu cần
 tracking_rules:
   - Convergence Ledger là nguồn chân lý cho các điểm đã chốt.

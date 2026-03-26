@@ -6,11 +6,11 @@ author: gemini
 date: 2026-03-25
 status: OPEN
 sources:
-  - ./request.md
+  - ../../request.md
   - ./gemini_propone.md
-  - ./codex_propone.md
-  - ./claude_propone.md
-  - ./chatgptpro_propone.md
+  - ../codex/codex_propone.md
+  - ../claude/claude_propone.md
+  - ../chatgptpro/chatgptpro_propone.md
 tracking_rules:
   - Convergence Ledger là nguồn chân lý cho các điểm đã chốt.
   - Vòng sau chỉ bàn các mục trong Open Issues Register.

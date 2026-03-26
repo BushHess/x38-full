@@ -6,18 +6,18 @@ author: chatgptpro
 date: 2026-03-25
 status: OPEN
 sources:
-  - ./request.md
-  - ./gemini_propone.md
-  - ./codex_propone.md
-  - ./claude_propone.md
+  - ../../request.md
+  - ../gemini/gemini_propone.md
+  - ../codex/codex_propone.md
+  - ../claude/claude_propone.md
   - ./chatgptpro_propone.md
-  - ../design_brief.md
-  - ../../EXECUTION_PLAN.md
-  - ../online_vs_offline.md
-  - ../../debate/017-epistemic-search-policy/findings-under-review.md
-  - ../validation_mapping_table.md
-  - ../v6_v7_spec_patterns.md
-  - ../../../STRATEGY_STATUS_MATRIX.md
+  - ../../../design_brief.md
+  - ../../../../EXECUTION_PLAN.md
+  - ../../../online_vs_offline.md
+  - ../../../../debate/017-epistemic-search-policy/findings-under-review.md
+  - ../../../validation_mapping_table.md
+  - ../../../v6_v7_spec_patterns.md
+  - ../../../../../../STRATEGY_STATUS_MATRIX.md
 tracking_rules:
   - Convergence Ledger là nguồn chân lý cho các điểm đã chốt ở vòng hiện tại.
   - Các vòng sau chỉ được bàn các mục trong Open Issues Register, trừ khi tạo REOPEN-* với bằng chứng mới.
