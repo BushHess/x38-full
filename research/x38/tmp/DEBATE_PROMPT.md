@@ -1,6 +1,6 @@
 NHIỆM VỤ: Debate vòng 2 — Search Space Expansion cho Alpha-Lab Framework
 
-BẠN LÀ: gemini
+BẠN LÀ: ChatGPT Pro
 
 ---
 
@@ -67,7 +67,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/gemini/gemini_debate_lan_2.md
+  docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_2.md
 
 ---
 
