@@ -1,6 +1,6 @@
 # NHIỆM VỤ: Debate vòng 6 — Search Space Expansion cho Alpha-Lab Framework
 
-## BẠN LÀ: ChatGPT Pro
+## BẠN LÀ: Codex
 
 ---
 
@@ -8,6 +8,8 @@
 
 Bốn agent (Gemini, Codex, Claude Code, ChatGPT Pro) đang tranh biện về cơ chế
 khám phá thuật toán (search space expansion) cho Alpha-Lab Framework (x38).
+
+Thư mục làm việc: /var/www/trading-bots/btc-spot-dev/research/x38
 
 Yêu cầu gốc:
   docs/search-space-expansion/request.md
@@ -91,7 +93,7 @@ Vòng 2+:
 ## ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_6.md
+  docs/search-space-expansion/debate/codex/codex_debate_lan_6.md
 
 ---
 
