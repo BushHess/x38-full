@@ -1,10 +1,10 @@
-NHIỆM VỤ: Debate vòng 5 — Search Space Expansion cho Alpha-Lab Framework
+# NHIỆM VỤ: Debate vòng 5 — Search Space Expansion cho Alpha-Lab Framework
 
-BẠN LÀ: Codex
+## BẠN LÀ: Codex
 
 ---
 
-BỐI CẢNH
+## BỐI CẢNH
 
 Bốn agent (Gemini, Codex, Claude Code, ChatGPT Pro) đang tranh biện về cơ chế
 khám phá thuật toán (search space expansion) cho Alpha-Lab Framework (x38).
@@ -44,7 +44,7 @@ Debate vòng 4:
 
 ---
 
-ĐỌC BẮT BUỘC TRƯỚC KHI VIẾT
+## ĐỌC BẮT BUỘC TRƯỚC KHI VIẾT
 
 1. docs/search-space-expansion/template/DEBATE_FORMAT.md                — format đầu ra bắt buộc
 2. docs/search-space-expansion/request.md                               — yêu cầu gốc
@@ -56,7 +56,7 @@ Debate vòng 4:
 
 ---
 
-NHIỆM VỤ CỤ THỂ
+## NHIỆM VỤ CỤ THỂ
 
 Vòng 1:
   - Đọc tất cả 4 proposals.
@@ -82,21 +82,32 @@ Vòng 2+:
 
 ---
 
-ĐẦU RA
+## ĐẦU RA
 
 Lưu vào file:
   docs/search-space-expansion/debate/codex/codex_debate_lan_5.md
 
 ---
 
-ĐIỀU KIỆN DỪNG
+## POST-DEBATE
+
+1. Agent được chỉ định viết tài liệu tổng hợp tự chứa (self-contained synthesis).
+2. Synthesis tuân theo format `final-resolution.md` của x38.
+3. Đưa vào `debate/{NNN-slug}/` như topic thường, với:
+   - 4-agent debate rounds = evidence (không debate lại)
+   - Closure-audit bởi 1 x38 agent
+4. Các OI bị DEFER → mở issue trong topic tương ứng hoặc topic mới.
+
+---
+
+## ĐIỀU KIỆN DỪNG
 
 Khi TẤT CẢ OI-* đã chuyển sang CONVERGED hoặc DEFER ở cả 4 agents:
   → Debate kết thúc.
   → Nội dung Convergence Ledger + Interim Merge Direction của vòng cuối
     chính là kết luận chung.
 
-# USE FOR CODEX
+## USE FOR CODEX
 
 MULTI-AGENT REVIEW (lightweight):
 Use a small review council on the SAME disagreement set.
