@@ -1087,9 +1087,9 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | Design brief | DONE | `docs/design_brief.md` |
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
-| Debate topics defined | DONE | 18 topics (000 SPLIT + 004/007/001 CLOSED + 14 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 39 findings phân bổ vào 16 sub-topics (F-01→F-33 + BR-01/02 + ESP-01→04). 12 convergence notes (C-01→C-12) giữ tại 000. |
-| Debate execution | IN PROGRESS | Topic 004 CLOSED (2026-03-21, 6 rounds, 23/23 resolved). Topic 007 CLOSED (2026-03-23, 4 rounds, 4/4 Converged). Topic 001 CLOSED (2026-03-23, 6 rounds, 3/3 resolved). 15 topics remaining (14 OPEN + 1 SPLIT). |
+| Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010/018 CLOSED + 12 OPEN). Xem `debate/debate-index.md`. |
+| Debate findings collected | DONE | 56 findings phân bổ vào 17 sub-topics (F-01→F-33 + BR-01/02 + ESP-01→04 + CA-01/02 + ER-01/02 + SSE-D-01→11 + 7 downstream SSE issues). 12 convergence notes (C-01→C-12) giữ tại 000. |
+| Debate execution | IN PROGRESS | 6 topics CLOSED: 004, 007, 001, 002, 010, 018. 56 debate rounds done. 12 topics remaining (12 OPEN + 1 SPLIT). |
 | Drafts | SEEDED | `architecture_spec.md` seeded from 001/004/007 closures. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
@@ -1101,15 +1101,18 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 **Topic SPLIT**:
 - **000** (framework architecture): SPLIT (2026-03-22) — 29 findings phân bổ vào 11 sub-topics. File `debate/000-framework-proposal/findings-under-review.md` giữ lại index + convergence notes C-01→C-12.
 
-**Topics CLOSED**:
+**Topics CLOSED** (6):
 - **004** (meta-knowledge): CLOSED (2026-03-21). 6 rounds, 23/23 resolved. Xem `debate/004-meta-knowledge/final-resolution.md`.
 - **007** (philosophy-mission): CLOSED (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`.
 - **001** (campaign-model): CLOSED (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`.
+- **002** (contamination-firewall): CLOSED (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`.
+- **010** (clean-oos-certification): CLOSED (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`.
+- **018** (search-space-expansion): CLOSED (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (7 Converged + 3 Defer). Xem `debate/018-search-space-expansion/final-resolution.md`.
 
-**Topics OPEN** (14 topics, 3 waves):
-- **Wave 2** (10 topics song song): 002, 005, 006, 008, 009, 010, 011, 012, 013, 015
-- **Wave 2.5** (2 topics song song): 016 (bounded-recalibration) — chờ 001(closed) + 002 + 010 + 011 + 015; 017 (epistemic-search-policy) — chờ 002 + 008 + 010 + 013
-- **Wave 3**: 003 (protocol-engine) — chờ 001(closed) + 002 + 004(closed) + 015 + 016 + 017; 014 (execution) — chờ 003 + 005
+**Topics OPEN** (12 topics, 3 waves):
+- **Wave 2** (8 topics song song): 005, 006, 008, 009, 011, 012, 013, 015
+- **Wave 2.5** (2 topics song song): 016 (bounded-recalibration) — chờ 001(closed) + 002(closed) + 010(closed) + 011 + 015; 017 (epistemic-search-policy) — chờ 002(closed) + 008 + 010(closed) + 013
+- **Wave 3**: 003 (protocol-engine) — chờ 001(closed) + 002(closed) + 004(closed) + 015 + 016 + 017; 014 (execution) — chờ 003 + 005
 
 **Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → 10 remaining Wave 2 topics song song → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
 

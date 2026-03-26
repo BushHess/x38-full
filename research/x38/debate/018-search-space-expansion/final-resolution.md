@@ -17,10 +17,11 @@ features or architectures. The VDO origin story — an accidental AI discovery
 with no preserved prompt — motivated the request (`request.md`).
 
 Four agents submitted independent proposals then debated over 7 rounds. The
-debate produced two tiers of mechanisms (Exploration + Recognition), a
-backbone pipeline from pre-lock ideation through freeze, and a 7-field
-breadth-activation interface contract. All mechanisms fold into existing
-topics (006/015/017/013/008/003); no new Topic 018 is created.
+debate produced two tiers of mechanisms: Tier 1 (pre-lock deterministic
+generation + optional bounded AI ideation) and Tier 2 (post-lock deterministic
+recognition — zero AI in execution). The backbone pipeline from pre-lock
+through freeze, and a 7-field breadth-activation interface contract were
+agreed. All mechanisms fold into existing topics (006/015/017/013/008/003).
 
 **Final tally**: 7 Converged, 0 Judgment call, 3 Defer (routed to downstream
 topics). All 10 issues resolved. No open items. 11 architectural decisions
