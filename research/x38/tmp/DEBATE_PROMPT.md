@@ -1,4 +1,4 @@
-NHIỆM VỤ: Debate vòng 3 — Search Space Expansion cho Alpha-Lab Framework
+NHIỆM VỤ: Debate vòng 4 — Search Space Expansion cho Alpha-Lab Framework
 
 BẠN LÀ: ChatGPT Pro
 
@@ -29,6 +29,12 @@ Debate vòng 2:
     docs/search-space-expansion/debate/codex/codex_debate_lan_2.md
     docs/search-space-expansion/debate/claude/claude_debate_lan_2.md
     docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_2.md
+
+Debate vòng 3:
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_3.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_3.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_3.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_3.md
 
 ---
 
@@ -73,7 +79,7 @@ Vòng 2+:
 ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_3.md
+  docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_4.md
 
 ---
 
