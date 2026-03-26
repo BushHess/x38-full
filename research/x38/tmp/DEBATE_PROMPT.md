@@ -1,6 +1,6 @@
 # NHIỆM VỤ: Debate vòng 7 — Search Space Expansion cho Alpha-Lab Framework
 
-## BẠN LÀ: Claude Code
+## BẠN LÀ: Codex
 
 ---
 
@@ -99,7 +99,7 @@ Vòng 2+:
 ## ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/claude/claude_debate_lan_7.md
+  docs/search-space-expansion/debate/codex/codex_debate_lan_7.md
 
 ---
 
