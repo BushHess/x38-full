@@ -28,9 +28,9 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 017 | **OPEN** (2026-03-24). Epistemic search policy. Wave 2.5. 4 findings (ESP-01→ESP-04). |
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
-| Topic 018 | **CLOSED** (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (7 Converged + 3 Defer). Search-space expansion. Xem `debate/018-search-space-expansion/final-resolution.md`. |
+| Topic 018 | **CLOSED** (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (10 Converged, 3 routed downstream). Search-space expansion. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Debate rounds thực hiện | **56** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 018: 28 = 4 agents × 7 rounds). 12 topics remaining (12 OPEN + 1 SPLIT). |
-| Specs drafted | SEEDED (1): `architecture_spec.md` seeded from 001/002/004/007/010 closures. §6 Clean OOS Flow filled. Formal drafting not started. |
+| Specs drafted | SEEDED (2): `architecture_spec.md` seeded from 001/002/004/007/010 closures (§6 Clean OOS Flow filled); `meta_spec.md` seeded from 002/004/007 closures. Formal drafting not started. |
 | Specs published | ZERO |
 
 ---

@@ -1091,7 +1091,7 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010/018 CLOSED + 12 OPEN). Xem `debate/debate-index.md`. |
 | Debate findings collected | DONE | 56 findings phân bổ vào 17 sub-topics (F-01→F-33 + BR-01/02 + ESP-01→04 + CA-01/02 + ER-01/02 + SSE-D-01→11 + 7 downstream SSE issues). 12 convergence notes (C-01→C-12) giữ tại 000. |
 | Debate execution | IN PROGRESS | 6 topics CLOSED: 004, 007, 001, 002, 010, 018. 56 debate rounds done. 12 topics remaining (12 OPEN + 1 SPLIT). |
-| Drafts | SEEDED | `architecture_spec.md` seeded from 001/004/007 closures. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
+| Drafts | SEEDED (2) | `architecture_spec.md` seeded from 001/002/004/007/010 closures; `meta_spec.md` seeded from 002/004/007 closures. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
 **V8 online results đã có** — không còn lý do chờ V8.
@@ -1108,7 +1108,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 - **001** (campaign-model): CLOSED (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`.
 - **002** (contamination-firewall): CLOSED (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`.
 - **010** (clean-oos-certification): CLOSED (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`.
-- **018** (search-space-expansion): CLOSED (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (7 Converged + 3 Defer). Xem `debate/018-search-space-expansion/final-resolution.md`.
+- **018** (search-space-expansion): CLOSED (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (10 Converged, 3 routed downstream). Xem `debate/018-search-space-expansion/final-resolution.md`.
 
 **Topics OPEN** (12 topics, 3 waves):
 - **Wave 2** (8 topics song song): 005, 006, 008, 009, 011, 012, 013, 015

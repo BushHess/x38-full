@@ -64,9 +64,9 @@ Stage 3 là bottleneck. Không parallel → mỗi session mất >2 ngày cho fea
 
 **Evidence**:
 - PLAN.md §1.3: "Exhaustive scan (50K+ configs), parallel compute"
-- V6: 2,219 configs scanned within conversation (scan.py)
-- V8: 1,234 configs (stage1_feature_registry.csv)
-- v10 backtest engine: ~3.6s per run (est. từ research scripts)
+- research/x37/docs/gen1/RESEARCH_PROMPT_V6/ [extra-archive]: V6 scanned 2,219 configs within conversation (scan.py)
+- research/x37/docs/gen1/RESEARCH_PROMPT_V8/ [extra-archive]: V8 scanned 1,234 configs (stage1_feature_registry.csv)
+- btc-spot-dev/v10/core/engine.py [extra-archive]: v10 backtest engine ~3.6s per run (est. từ research scripts)
 - docs/research/RESEARCH_RULES.md [extra-archive]: Pattern B (vectorized) vs Pattern A (engine)
 
 **Câu hỏi mở**:
