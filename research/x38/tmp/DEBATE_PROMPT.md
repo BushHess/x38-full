@@ -1,6 +1,6 @@
-# NHIỆM VỤ: Debate vòng 6 — Search Space Expansion cho Alpha-Lab Framework
+# NHIỆM VỤ: Debate vòng 7 — Search Space Expansion cho Alpha-Lab Framework
 
-## BẠN LÀ: Codex
+## BẠN LÀ: Claude Code
 
 ---
 
@@ -50,6 +50,12 @@ Debate vòng 5:
     docs/search-space-expansion/debate/claude/claude_debate_lan_5.md
     docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_5.md
 
+Debate vòng 6:
+    docs/search-space-expansion/debate/gemini/gemini_debate_lan_6.md
+    docs/search-space-expansion/debate/codex/codex_debate_lan_6.md
+    docs/search-space-expansion/debate/claude/claude_debate_lan_6.md
+    docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_6.md
+
 ---
 
 ## ĐỌC BẮT BUỘC TRƯỚC KHI VIẾT
@@ -93,7 +99,7 @@ Vòng 2+:
 ## ĐẦU RA
 
 Lưu vào file:
-  docs/search-space-expansion/debate/codex/codex_debate_lan_6.md
+  docs/search-space-expansion/debate/claude/claude_debate_lan_7.md
 
 ---
 
