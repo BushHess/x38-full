@@ -152,3 +152,33 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 |----------|---------|-----------|--------|
 | X38-CA-01 | Convergence measurement framework | Thiếu sót | Open |
 | X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Open |
+
+---
+
+## Deferred from Search-Space Expansion (2026-03-26)
+
+The following items were routed to Topic 013 by `docs/search-space-expansion/debate/final-resolution.md`.
+They are **not new findings** — they are implementation obligations deferred from architecture-level
+decisions that already converged in the search-space-expansion debate.
+
+### SSE-D-09: Exact correction law default
+
+- **Source**: search-space-expansion NEW-01 ChatGPT Pro (DEFER)
+- **Architecture decision (locked)**: Breadth-activation contract requires
+  `scan_phase_correction_method` declaration (SSE-D-04 field 5). Coupling between
+  multiplicity control and breadth expansion is locked.
+- **What 013 owns**: Default correction formula (Holm/FDR/cascade/other).
+  Recommendation for v1 default. Threshold calibration.
+- **Evidence**: `docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_4.md` CL-13;
+  `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-19 point 1.
+
+### SSE-D-04/05 residuals: Exact equivalence thresholds + anomaly thresholds
+
+- **Source**: search-space-expansion SSE-D-04 field 4, SSE-D-05 (DEFER residual)
+- **Architecture decision (locked)**: Hybrid equivalence (structural pre-bucket +
+  behavioral nearest-rival) requires distance thresholds. 5 anomaly axes require
+  numeric thresholds for surprise queue admission.
+- **What 013 owns**: Exact equivalence distance thresholds (behavioral ρ cutoff,
+  structural hash granularity). Robustness bundle minimum requirements.
+  Shared with 017 for anomaly axis thresholds.
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 fields 4/6.

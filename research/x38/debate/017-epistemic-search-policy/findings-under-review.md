@@ -364,3 +364,34 @@ Budget governor v1:
 | X38-ESP-02 | CandidatePhenotype & StructuralPrior contracts | Thiếu sót | Open |
 | X38-ESP-03 | Inter-campaign promotion ladder | Judgment call | Open |
 | X38-ESP-04 | Budget governor & anti-ratchet | Thiếu sót | Open |
+
+---
+
+## Deferred from Search-Space Expansion (2026-03-26)
+
+The following items were routed to Topic 017 by `docs/search-space-expansion/debate/final-resolution.md`.
+They are **not new findings** — they are implementation obligations deferred from architecture-level
+decisions that already converged in the search-space-expansion debate.
+
+### SSE-D-08 (shared with 015): Contradiction consumption semantics
+
+- **Source**: search-space-expansion OI-05 (DEFER)
+- **Architecture decision (locked)**: Contradiction registry is descriptor-level,
+  shadow-only (MK-17). 015 owns row schema/storage; 017 owns consumption.
+- **What 017 owns**: How surprise queue and proof bundle reference contradiction
+  entries. Contradiction resurrection as anomaly axis (SSE-D-05 axis 5).
+  Interaction with cell-elite archive (shadow entries vs active candidates).
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14.
+
+### SSE-D-04/05 residuals: Exact cell-axis values + anomaly thresholds
+
+- **Source**: search-space-expansion SSE-D-04 field 1, SSE-D-05 (DEFER residual)
+- **Architecture decision (locked)**: 4 mandatory cell axes (`mechanism_family`,
+  `architecture_depth`, `turnover_bucket`, `timeframe_binding`). 5 anomaly axes
+  for surprise queue admission (≥1 non-peak-score). 5-component proof bundle.
+- **What 017 owns**: Exact values/categories for each cell axis. Numeric thresholds
+  for each anomaly axis. Proof bundle consumption rules. Cell-elite capacity and
+  surprise slot allocation (capped 20% per debate evidence).
+  Shared with 013 for equivalence/correction thresholds.
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 1;
+  `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-17.

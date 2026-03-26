@@ -126,3 +126,46 @@ Alpha-Lab cần classification tương tự:
 |----------|---------|-----------|--------|
 | X38-D-14 | State pack specification — 18 artifacts (từ gen4) | Thiếu sót | Open |
 | X38-D-17 | Semantic change classification (từ gen4) | Thiếu sót | Open |
+
+---
+
+## Deferred from Search-Space Expansion (2026-03-26)
+
+The following items were routed to Topic 015 by `docs/search-space-expansion/debate/final-resolution.md`.
+They are **not new findings** — they are implementation obligations deferred from architecture-level
+decisions that already converged in the search-space-expansion debate.
+
+### SSE-D-07: 3-layer lineage field enumeration + invalidation matrix
+
+- **Source**: search-space-expansion OI-04 (DEFER)
+- **Architecture decision (locked)**: Discovery lineage splits into 3 layers with
+  different invalidation semantics: `feature_lineage`, `candidate_genealogy`,
+  `proposal_provenance`.
+- **What 015 owns**: Exact field enumeration for each layer. Invalidation matrix
+  (which artifact changes trigger which lineage invalidations). Raw lineage is
+  always preserved; derived artifacts (coverage_map, cell_id, equivalence_clusters)
+  are invalidated per SSE-D-04 field 7.
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-13;
+  `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-04.
+
+### SSE-D-08: Contradiction row schema + retention + reconstruction-risk
+
+- **Source**: search-space-expansion OI-05 (DEFER)
+- **Architecture decision (locked)**: Contradiction registry is descriptor-level,
+  shadow-only (MK-17 ceiling). Cross-campaign memory in v1 limited to shadow storage.
+- **What 015 owns**: Row schema for contradiction entries. Retention policy (how long,
+  what triggers purge). Reconstruction-risk handling for phenotype layer.
+- **Shared with 017**: 017 owns contradiction consumption semantics (how surprise queue
+  and proof bundle reference contradiction entries). 015 owns storage contract.
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14;
+  `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-05.
+
+### SSE-D-04 field 7: Exact invalidation cascade details
+
+- **Source**: search-space-expansion SSE-D-04 (DEFER residual)
+- **Architecture decision (locked)**: Taxonomy/domain/cost-model change invalidates
+  `coverage_map`, `cell_id`, `equivalence_clusters`, `contradiction_registry`.
+  Raw lineage preserved.
+- **What 015 owns**: Exact invalidation targets, cascade ordering, and relationship
+  to F-17 semantic change classification.
+- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 7.
