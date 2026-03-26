@@ -364,34 +364,77 @@ Budget governor v1:
 | X38-ESP-02 | CandidatePhenotype & StructuralPrior contracts | Thiếu sót | Open |
 | X38-ESP-03 | Inter-campaign promotion ladder | Judgment call | Open |
 | X38-ESP-04 | Budget governor & anti-ratchet | Thiếu sót | Open |
+| X38-SSE-08-CON | Contradiction consumption semantics (từ Topic 018) | Thiếu sót | Open |
+| X38-SSE-04-CELL | Cell-axis values + anomaly thresholds (từ Topic 018) | Thiếu sót | Open |
 
 ---
 
-## Deferred from Search-Space Expansion (2026-03-26)
+## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-The following items were routed to Topic 017 by `docs/search-space-expansion/debate/final-resolution.md`.
-They are **not new findings** — they are implementation obligations deferred from architecture-level
-decisions that already converged in the search-space-expansion debate.
+Architecture-level decisions converged in Topic 018. These issues represent
+implementation obligations deferred to Topic 017 as owner.
+Source: `debate/018-search-space-expansion/final-resolution.md`.
 
-### SSE-D-08 (shared with 015): Contradiction consumption semantics
+---
 
-- **Source**: search-space-expansion OI-05 (DEFER)
-- **Architecture decision (locked)**: Contradiction registry is descriptor-level,
-  shadow-only (MK-17). 015 owns row schema/storage; 017 owns consumption.
-- **What 017 owns**: How surprise queue and proof bundle reference contradiction
-  entries. Contradiction resurrection as anomaly axis (SSE-D-05 axis 5).
-  Interaction with cell-elite archive (shadow entries vs active candidates).
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14.
+## SSE-D-08/017: Contradiction consumption semantics
 
-### SSE-D-04/05 residuals: Exact cell-axis values + anomaly thresholds
+- **issue_id**: X38-SSE-08-CON
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, OI-05, shared with 015)
+- **current_status**: Open
 
-- **Source**: search-space-expansion SSE-D-04 field 1, SSE-D-05 (DEFER residual)
-- **Architecture decision (locked)**: 4 mandatory cell axes (`mechanism_family`,
-  `architecture_depth`, `turnover_bucket`, `timeframe_binding`). 5 anomaly axes
-  for surprise queue admission (≥1 non-peak-score). 5-component proof bundle.
-- **What 017 owns**: Exact values/categories for each cell axis. Numeric thresholds
-  for each anomaly axis. Proof bundle consumption rules. Cell-elite capacity and
-  surprise slot allocation (capped 20% per debate evidence).
-  Shared with 013 for equivalence/correction thresholds.
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 1;
-  `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-17.
+**Nội dung**:
+
+Topic 018 locked: contradiction registry is descriptor-level, shadow-only (MK-17).
+Topic 015 owns row schema/storage. Topic 017 owns consumption semantics.
+
+Topic 017 owns:
+1. How surprise queue references contradiction entries (resurrection trigger)
+2. How proof bundle incorporates contradiction profile (5th component)
+3. Contradiction resurrection as anomaly axis (SSE-D-05 axis 5)
+4. Interaction with cell-elite archive (shadow entries vs active candidates)
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-08
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14
+
+**Câu hỏi mở**:
+- When does a contradiction entry qualify for resurrection (new evidence threshold)?
+- How does shadow-only status interact with cell-elite archive slot allocation?
+- Does contradiction resurrection override budget governor anti-ratchet?
+
+---
+
+## SSE-D-04/05/017: Cell-axis values + anomaly thresholds + proof bundle consumption
+
+- **issue_id**: X38-SSE-04-CELL
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, SSE-D-04/05)
+- **current_status**: Open
+
+**Nội dung**:
+
+Topic 018 locked: 4 mandatory cell axes (`mechanism_family`, `architecture_depth`,
+`turnover_bucket`, `timeframe_binding`). 5 anomaly axes for surprise queue admission
+(≥1 non-peak-score). 5-component proof bundle minimum.
+
+Topic 017 owns:
+1. Exact values/categories for each of the 4 cell axes
+2. Numeric thresholds for each of the 5 anomaly axes
+3. Proof bundle consumption rules (what constitutes "passing" a proof component)
+4. Cell-elite capacity per cell and surprise slot allocation (capped 20% per evidence)
+5. Shared with 013: equivalence/correction thresholds
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-04 field 1, SSE-D-05
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 1
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-17
+
+**Câu hỏi mở**:
+- How many categories per cell axis? (e.g., mechanism_family: {momentum, mean_reversion, ...})
+- Anomaly thresholds: absolute (ρ < 0.3) or relative (< cell median)?
+- Proof bundle: pass/fail per component or composite score?
+- Cell-elite capacity: fixed K per cell or adaptive?

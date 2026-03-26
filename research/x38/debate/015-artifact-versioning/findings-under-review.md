@@ -126,46 +126,108 @@ Alpha-Lab cần classification tương tự:
 |----------|---------|-----------|--------|
 | X38-D-14 | State pack specification — 18 artifacts (từ gen4) | Thiếu sót | Open |
 | X38-D-17 | Semantic change classification (từ gen4) | Thiếu sót | Open |
+| X38-SSE-07 | Discovery lineage field enumeration + invalidation (từ Topic 018) | Thiếu sót | Open |
+| X38-SSE-08 | Contradiction row schema + retention (từ Topic 018) | Thiếu sót | Open |
+| X38-SSE-04-INV | Invalidation cascade details (từ Topic 018) | Thiếu sót | Open |
 
 ---
 
-## Deferred from Search-Space Expansion (2026-03-26)
+## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-The following items were routed to Topic 015 by `docs/search-space-expansion/debate/final-resolution.md`.
-They are **not new findings** — they are implementation obligations deferred from architecture-level
-decisions that already converged in the search-space-expansion debate.
+Architecture-level decisions converged in Topic 018. These issues represent
+implementation obligations deferred to Topic 015 as owner.
+Source: `debate/018-search-space-expansion/final-resolution.md`.
 
-### SSE-D-07: 3-layer lineage field enumeration + invalidation matrix
+---
 
-- **Source**: search-space-expansion OI-04 (DEFER)
-- **Architecture decision (locked)**: Discovery lineage splits into 3 layers with
-  different invalidation semantics: `feature_lineage`, `candidate_genealogy`,
-  `proposal_provenance`.
-- **What 015 owns**: Exact field enumeration for each layer. Invalidation matrix
-  (which artifact changes trigger which lineage invalidations). Raw lineage is
-  always preserved; derived artifacts (coverage_map, cell_id, equivalence_clusters)
-  are invalidated per SSE-D-04 field 7.
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-13;
-  `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-04.
+## SSE-D-07: Discovery lineage field enumeration + invalidation matrix
 
-### SSE-D-08: Contradiction row schema + retention + reconstruction-risk
+- **issue_id**: X38-SSE-07
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, OI-04)
+- **current_status**: Open
 
-- **Source**: search-space-expansion OI-05 (DEFER)
-- **Architecture decision (locked)**: Contradiction registry is descriptor-level,
-  shadow-only (MK-17 ceiling). Cross-campaign memory in v1 limited to shadow storage.
-- **What 015 owns**: Row schema for contradiction entries. Retention policy (how long,
-  what triggers purge). Reconstruction-risk handling for phenotype layer.
-- **Shared with 017**: 017 owns contradiction consumption semantics (how surprise queue
-  and proof bundle reference contradiction entries). 015 owns storage contract.
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14;
-  `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-05.
+**Nội dung**:
 
-### SSE-D-04 field 7: Exact invalidation cascade details
+Topic 018 locked the architecture: discovery lineage splits into 3 layers with
+different invalidation semantics: `feature_lineage`, `candidate_genealogy`,
+`proposal_provenance` (SSE-D-07).
 
-- **Source**: search-space-expansion SSE-D-04 (DEFER residual)
-- **Architecture decision (locked)**: Taxonomy/domain/cost-model change invalidates
-  `coverage_map`, `cell_id`, `equivalence_clusters`, `contradiction_registry`.
-  Raw lineage preserved.
-- **What 015 owns**: Exact invalidation targets, cascade ordering, and relationship
-  to F-17 semantic change classification.
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 7.
+Topic 015 owns:
+1. Exact field enumeration for each of the 3 layers
+2. Invalidation matrix: which artifact changes trigger which lineage invalidations
+3. Raw lineage preservation rule (raw always preserved; derived artifacts invalidated)
+
+**Constraint (locked by Topic 018)**: Derived artifacts (`coverage_map`, `cell_id`,
+`equivalence_clusters`) are invalidated when taxonomy/domain/cost-model changes.
+Raw lineage preserved unconditionally.
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-07
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-13
+- `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-04
+
+**Câu hỏi mở**:
+- How do `feature_lineage` fields differ from `candidate_genealogy` fields?
+- What invalidation triggers apply to each layer independently?
+- Relationship to F-14 state pack (enumeration) and F-17 semantic change (invalidation)?
+
+---
+
+## SSE-D-08: Contradiction row schema + retention + reconstruction-risk
+
+- **issue_id**: X38-SSE-08
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, OI-05)
+- **current_status**: Open
+
+**Nội dung**:
+
+Topic 018 locked: contradiction registry is descriptor-level, shadow-only (MK-17
+ceiling). Cross-campaign memory in v1 limited to shadow storage (SSE-D-08).
+
+Topic 015 owns:
+1. Row schema for contradiction entries
+2. Retention policy (how long entries persist, what triggers purge)
+3. Reconstruction-risk handling for phenotype layer
+
+**Shared with 017**: Topic 017 owns contradiction consumption semantics (how
+surprise queue and proof bundle reference entries). Topic 015 owns storage contract.
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-08
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-14
+- `docs/search-space-expansion/debate/codex/codex_debate_lan_5.md` OI-05
+
+**Câu hỏi mở**:
+- What fields constitute a contradiction entry (candidate_id, descriptor, evidence_hash, ...)?
+- Time-based retention or evidence-based (purge when superseded by new data)?
+- How does reconstruction-risk gate interact with F-17 classification?
+
+---
+
+## SSE-D-04/7: Invalidation cascade details
+
+- **issue_id**: X38-SSE-04-INV
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, SSE-D-04 field 7)
+- **current_status**: Open
+
+**Nội dung**:
+
+Topic 018 locked: taxonomy/domain/cost-model change invalidates `coverage_map`,
+`cell_id`, `equivalence_clusters`, `contradiction_registry`. Raw lineage preserved.
+
+Topic 015 owns: exact invalidation targets, cascade ordering, and relationship
+to F-17 semantic change classification.
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-04 field 7
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 field 7
+
+**Câu hỏi mở**:
+- Does invalidation cascade in order or is it parallel (all at once)?
+- Which F-17 semantic change categories trigger which specific invalidations?

@@ -2,7 +2,8 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-25 — Topic 010 CLOSED (6 rounds, 4/4 resolved: 3 Converged + 1 Judgment call).
+**Cập nhật**: 2026-03-26 — Topic 018 CLOSED (7 rounds, 4 agents, 10/10 resolved: 7 Converged + 3 Defer).
+Previous: 2026-03-25 — Topic 010 CLOSED (6 rounds, 4/4 resolved: 3 Converged + 1 Judgment call).
 Previous: 2026-03-25 — Topic 002 CLOSED (6 rounds, 7/7 resolved: 3 Converged + 4 Judgment call).
 Previous: 2026-03-24 — Topic 017 added (epistemic search policy, Wave 2.5).
 Previous: 2026-03-23 — Topic 001 CLOSED (6 rounds, 3/3 resolved: 2 Converged + 1 Judgment call).
@@ -33,8 +34,9 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 (2) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 (4) |
+| X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs — 7 Converged + 3 Defer. 4-agent debate (claude_code, codex, gemini, chatgptpro). Evidence: `docs/search-space-expansion/debate/` |
 
-**Totals**: 18 topics (5 CLOSED, 1 SPLIT, 12 OPEN). 39 findings distributed.
+**Totals**: 19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 49 findings distributed.
 
 ## Debate Waves
 

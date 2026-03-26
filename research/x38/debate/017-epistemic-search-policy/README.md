@@ -99,6 +99,8 @@ Scope KHÔNG bao gồm:
 - ESP-02: CandidatePhenotype & StructuralPrior contracts
 - ESP-03: Inter-campaign promotion ladder
 - ESP-04: Budget governor & anti-ratchet mechanism
+- SSE-08-CON: Contradiction consumption semantics (từ Topic 018)
+- SSE-04-CELL: Cell-axis values + anomaly thresholds (từ Topic 018)
 
 ## Dependencies
 
@@ -169,6 +171,6 @@ Scope KHÔNG bao gồm:
 
 | File | Purpose |
 |------|---------|
-| `findings-under-review.md` | 4 findings: ESP-01, ESP-02, ESP-03, ESP-04 |
+| `findings-under-review.md` | 6 findings: ESP-01, ESP-02, ESP-03, ESP-04 + 2 from Topic 018 (SSE-08-CON, SSE-04-CELL) |
 | `claude_code/` | Critique from Claude Code |
 | `codex/` | Critique from Codex |

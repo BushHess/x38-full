@@ -20,6 +20,9 @@ vô hiệu hóa** (F-17).
 **Findings**:
 - F-14: State pack specification — session artifact enumeration (từ gen4)
 - F-17: Semantic change classification (từ gen4)
+- SSE-07: Discovery lineage field enumeration + invalidation (từ Topic 018)
+- SSE-08: Contradiction row schema + retention (từ Topic 018)
+- SSE-04-INV: Invalidation cascade details (từ Topic 018)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
 - C-05: Semantic boundary DIAGNOSIS hội tụ; exact boundary cần debate
@@ -53,6 +56,6 @@ vô hiệu hóa** (F-17).
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-14, F-17 |
+| `findings-under-review.md` | 5 findings: F-14, F-17 + 3 from Topic 018 (SSE-07, SSE-08, SSE-04-INV) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

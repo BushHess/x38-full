@@ -17,6 +17,8 @@ Topic 013 định nghĩa **thuật toán** xác định khi nào sessions đã h
 **Findings**:
 - F-30: Convergence measurement framework (distance metrics, statistical tests)
 - F-31: Stop conditions & diminishing returns detection
+- SSE-09: Scan-phase correction law default (từ Topic 018)
+- SSE-04-THR: Equivalence + anomaly thresholds (từ Topic 018)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
 - C-04: x38 hiện KHÔNG có bounded recalibration path
@@ -45,6 +47,6 @@ Không có tension đã biết tại thời điểm mở topic.
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-30, F-31 |
+| `findings-under-review.md` | 4 findings: F-30, F-31 + 2 from Topic 018 (SSE-09, SSE-04-THR) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

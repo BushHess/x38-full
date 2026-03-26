@@ -152,33 +152,74 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 |----------|---------|-----------|--------|
 | X38-CA-01 | Convergence measurement framework | Thiếu sót | Open |
 | X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Open |
+| X38-SSE-09 | Scan-phase correction law default (từ Topic 018) | Thiếu sót | Open |
+| X38-SSE-04-THR | Equivalence + anomaly thresholds (từ Topic 018) | Thiếu sót | Open |
 
 ---
 
-## Deferred from Search-Space Expansion (2026-03-26)
+## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-The following items were routed to Topic 013 by `docs/search-space-expansion/debate/final-resolution.md`.
-They are **not new findings** — they are implementation obligations deferred from architecture-level
-decisions that already converged in the search-space-expansion debate.
+Architecture-level decisions converged in Topic 018. These issues represent
+implementation obligations deferred to Topic 013 as owner.
+Source: `debate/018-search-space-expansion/final-resolution.md`.
 
-### SSE-D-09: Exact correction law default
+---
 
-- **Source**: search-space-expansion NEW-01 ChatGPT Pro (DEFER)
-- **Architecture decision (locked)**: Breadth-activation contract requires
-  `scan_phase_correction_method` declaration (SSE-D-04 field 5). Coupling between
-  multiplicity control and breadth expansion is locked.
-- **What 013 owns**: Default correction formula (Holm/FDR/cascade/other).
-  Recommendation for v1 default. Threshold calibration.
-- **Evidence**: `docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_4.md` CL-13;
-  `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-19 point 1.
+## SSE-D-09: Scan-phase correction law default
 
-### SSE-D-04/05 residuals: Exact equivalence thresholds + anomaly thresholds
+- **issue_id**: X38-SSE-09
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, NEW-01 ChatGPT Pro)
+- **current_status**: Open
 
-- **Source**: search-space-expansion SSE-D-04 field 4, SSE-D-05 (DEFER residual)
-- **Architecture decision (locked)**: Hybrid equivalence (structural pre-bucket +
-  behavioral nearest-rival) requires distance thresholds. 5 anomaly axes require
-  numeric thresholds for surprise queue admission.
-- **What 013 owns**: Exact equivalence distance thresholds (behavioral ρ cutoff,
-  structural hash granularity). Robustness bundle minimum requirements.
-  Shared with 017 for anomaly axis thresholds.
-- **Evidence**: `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 fields 4/6.
+**Nội dung**:
+
+Topic 018 locked: breadth-activation contract requires `scan_phase_correction_method`
+declaration (SSE-D-04 field 5). Coupling between multiplicity control and breadth
+expansion is locked.
+
+Topic 013 owns:
+1. Default correction formula (Holm/FDR/cascade/other)
+2. Recommendation for v1 default
+3. Threshold calibration methodology
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-09
+- `docs/search-space-expansion/debate/chatgptpro/chatgptpro_debate_lan_4.md` CL-13
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_5.md` CL-19 point 1
+
+**Câu hỏi mở**:
+- Holm (step-down) vs BH (FDR) vs cascade — which suits Alpha-Lab's false discovery risk profile?
+- Should the default be conservative (Holm) or balanced (BH)?
+- How does correction interact with cell-elite's diversity preservation?
+
+---
+
+## SSE-D-04/05: Equivalence + anomaly thresholds
+
+- **issue_id**: X38-SSE-04-THR
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (deferred from Topic 018, SSE-D-04/05)
+- **current_status**: Open
+
+**Nội dung**:
+
+Topic 018 locked: hybrid equivalence (structural pre-bucket + behavioral
+nearest-rival) and 5 anomaly axes for surprise queue admission.
+
+Topic 013 owns:
+1. Behavioral equivalence distance threshold (paired-return ρ cutoff)
+2. Structural hash granularity for pre-bucketing
+3. Robustness bundle minimum requirements (what "minimum" means numerically)
+4. Shared with 017: anomaly axis thresholds (what counts as "outlier" on each axis)
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md` SSE-D-04 field 4, SSE-D-06
+- `docs/search-space-expansion/debate/claude/claude_debate_lan_6.md` CL-19 fields 4/6
+
+**Câu hỏi mở**:
+- ρ > 0.95 or ρ > 0.99 for behavioral equivalence?
+- How does the structural pre-bucket interact with 006's feature family taxonomy?
+- Are anomaly thresholds absolute or relative to cell population?
