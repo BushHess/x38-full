@@ -35,7 +35,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 
 ---
 
-## 2. Critical Path (updated 2026-03-22)
+## 2. Critical Path (updated 2026-03-26)
 
 ```
 Phase 0 (evidence) ──→ Phase 1 (topic 004) ──→ DONE
@@ -47,13 +47,14 @@ Phase 0 (evidence) ──→ Phase 1 (topic 004) ──→ DONE
                            ↓
 Wave 1:    007 (philosophy)              ← CLOSED (2026-03-23)
                ↓
-Wave 2:    008, 009, 010, 011, 012       ← song song
-           001, 002, 005, 006             ← song song
-           013 (convergence)              ← song song, soft-dep 001
-           015 (artifact/version)         ← song song, soft-dep 007, 008
+Wave 2:    008, 009, 010✅, 011, 012      ← song song
+           001✅, 002✅, 005, 006          ← song song
+           013 (convergence)              ← song song, soft-dep 001✅
+           015 (artifact/version)         ← song song, soft-dep 007✅, 008
                ↓
-Wave 2.5:  016 (bounded recalibration)   ← chờ 001 + 002 + 010 + 011 + 015
-           017 (epistemic search policy) ← chờ 002 + 008 + 010 + 013
+Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
+           017 (epistemic search policy) ← chờ 002✅ + 008 + 010✅ + 013
+           018 (search-space expansion)  ← CLOSED (2026-03-26, 4-agent debate)
                ↓
 Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005

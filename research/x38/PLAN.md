@@ -789,9 +789,10 @@ Vai trò kép:
 1. ~~Topic **004**~~ — **CLOSED** (2026-03-21). 6 rounds, 23/23 resolved.
 2. ~~Topic **000**~~ — **SPLIT** (2026-03-22). 29 findings → 11 sub-topics.
 3. ~~Topic **007**~~ — **CLOSED** (2026-03-23). 4 rounds, 4/4 Converged.
-4. Wave 2 (11 topics) — song song, 007 đã closed.
+4. Wave 2 (11 topics, 3 CLOSED: ~~001~~, ~~002~~, ~~010~~; 8 remaining) — song song, 007 đã closed.
 5. Wave 2.5: Topic **016** (bounded recalibration) + **017** (epistemic search policy) — song song, sau Wave 2 prerequisites.
 6. Wave 3: Topic **003** (protocol) + **014** (execution) — cuối cùng.
+7. ~~Topic **018**~~ — **CLOSED** (2026-03-26). 7 rounds, 4 agents, search-space expansion.
 
 Chi tiết từng topic — xem Phần 5.
 
@@ -1114,7 +1115,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 - **Wave 2.5** (2 topics song song): 016 (bounded-recalibration) — chờ 001(closed) + 002(closed) + 010(closed) + 011 + 015; 017 (epistemic-search-policy) — chờ 002(closed) + 008 + 010(closed) + 013
 - **Wave 3**: 003 (protocol-engine) — chờ 001(closed) + 002(closed) + 004(closed) + 015 + 016 + 017; 014 (execution) — chờ 003 + 005
 
-**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → 10 remaining Wave 2 topics song song → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
+**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → 8 remaining Wave 2 topics song song (001/002/010 CLOSED) → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng. Topic 018 (search-space expansion) CLOSED ngoài wave chính.
 
 ### Execution Plan
 
