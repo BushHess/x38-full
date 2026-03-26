@@ -102,7 +102,7 @@ closure (`final-resolution.md` §Decision 4).
 | 004 | MK-14 | Boundary contract between firewall and meta-knowledge interface — firewall enforcement must not block legitimate MK updates | 004 closed; residual interface constraint owned within this topic |
 | 009 | F-11 | Session immutability (chmod) vs contamination firewall (typed schema + state machine) — two enforcement mechanisms for overlapping concerns, risk of conflicting rules | 009 owns immutability mechanism; 002 owns firewall mechanism |
 | 016 | C-12 | Bounded recalibration prima facie incompatible with current firewall design — recalibration may require loosening firewall categories | 016 owns decision |
-| 017 | ESP-02 | Reconstruction-risk gate extends firewall to phenotype layer: descriptor bundles that de facto identify a winner = contamination. No 5th category added; gap rules via `UNMAPPED` governance. | 002 gap fix **RESOLVED** (no category expansion); 017 defines phenotype contracts + reconstruction-risk gate within existing 4-category + UNMAPPED boundary. |
+| 017 | ESP-02 | Reconstruction-risk gate extends firewall to phenotype layer: descriptor bundles that de facto identify a winner = contamination. No 5th category added; gap rules via `UNMAPPED` governance. | 002 gap fix **RESOLVED** (no category expansion); 017 defines phenotype contracts + reconstruction-risk gate within existing 3-category + UNMAPPED boundary (3 after STOP_DISCIPLINE→ANTI_PATTERN consolidation, Facet C). |
 
 ## Bảng tổng hợp
 

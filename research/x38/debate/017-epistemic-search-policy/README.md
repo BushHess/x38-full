@@ -105,13 +105,17 @@ Scope KHÔNG bao gồm:
 ## Dependencies
 
 - **Hard upstream** (must close before 017 debate):
-  - Topic 002 (contamination firewall) — need firewall rules to define
-    reconstruction-risk gate and STRUCTURAL_PRIOR admissibility
+  - Topic 002 (contamination firewall, **CLOSED** 2026-03-25) — firewall rules
+    frozen: 3 F-06 categories, NO STRUCTURAL_PRIOR category, permanent
+    UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype operates within this boundary.
   - Topic 008 (architecture & identity) — need pillar count decision (F-02)
     and identity model (F-13) before ESP positioning
   - Topic 010 (Clean OOS) — need power floors (F-24) for promotion ladder
   - Topic 013 (convergence analysis) — need convergence metrics (CA-01) for
     descriptor-space coverage measurement
+- **Provisional upstream** (routed findings, contingent on re-closure):
+  - Topic 018 (search-space expansion, REOPENED) — SSE-08-CON and SSE-04-CELL
+    routed from 018. Provisional until 018 re-closes under standard 2-agent debate.
 - **Hard downstream** (017 must close before):
   - Topic 003 (protocol engine) — pipeline stages need to incorporate
     cell-elite archive, descriptor tagging, epistemic_delta.json
@@ -143,7 +147,8 @@ Scope KHÔNG bao gồm:
     quá lỏng = lách firewall
   - v1 promotion chỉ đến REPLICATED_SHADOW (same-dataset ceiling) — worth
     building storage infrastructure cho cái chưa activate ngay?
-  - STRUCTURAL_PRIOR category cần gì từ Topic 002?
+  - ~~STRUCTURAL_PRIOR category cần gì từ Topic 002?~~ **RESOLVED**: 002 CLOSED,
+    NO category expansion. Phenotype priors within UNMAPPED + Tier 2 + SHADOW.
   - Mục tiêu: resolve inter-campaign memory contracts. Expected outcome:
     v1 = build storage (OBSERVED + REPLICATED_SHADOW), defer activation logic.
 
@@ -159,13 +164,15 @@ Scope KHÔNG bao gồm:
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 008 | F-02 | F-02 asks "3 pillars enough?" — 017 proposes ESP as sub-component (v1) → pillar (v2). Pillar count depends on 008 framing. | 008 owns pillar decision; 017 provides substance. If 008 decides 3 sufficient, 017 substance folds into Protocol Engine. |
-| 002 | F-04 | Reconstruction-risk gate extends firewall: phenotype bundles that de facto identify a winner = contamination. Needs firewall category for STRUCTURAL_PRIOR. Topic 002 **actively owns** ~10 Tier-2 priors gap (MK-07 → "final fix depends on 002 debate"). ESP-02's STRUCTURAL_PRIOR aligns with 002's existing workload. | 002 owns admissibility + gap fix; 017 defines phenotype requirements + reconstruction-risk gate. |
+| 002 | F-04 | Reconstruction-risk gate extends firewall enforcement to phenotype layer. **RESOLVED**: Topic 002 CLOSED (2026-03-25) — NO vocabulary expansion, NO STRUCTURAL_PRIOR category (Facet A). Permanent: UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype operates within this boundary. | 002 CLOSED; 017 designs within 3-category + UNMAPPED constraint. |
 | 003 | F-05 | Cell-elite archive replaces Stage 4 global pruning. epistemic_delta.json adds Stage 8 output. Descriptor tagging adds Stage 3 output. | 003 owns pipeline structure; 017 defines what ESP component feeds into stages. |
 | 006 | F-08 | Descriptor taxonomy for phenotypes overlaps feature family taxonomy. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. |
 | 013 | CA-01 | Coverage metrics in convergence analysis overlap ESP coverage tracking. | 013 owns convergence metrics; 017 defines coverage obligations for budget governor. |
 | 010 | F-24 | Power floors for Clean OOS reused for promotion ladder gates. | 010 owns power rules; 017 consumes them for promotion decisions. |
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 must enumerate; F-17 must classify invalidation. | 015 owns enumeration + invalidation; 017 defines contracts. |
+| 004 | C3 | "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments may constitute a budget split. | 017 must reconcile with C3 constraint. |
 | 016 | BR-01 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). | 017 scope explicitly excludes parameter values. If 016 allows recalibration, ESP treats recalibrated algo as new phenotype. |
+| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values routed from 018 (REOPENED). Provisional. | 017 owns consumption/values; 018 provides context (provisional). |
 
 ## Files
 

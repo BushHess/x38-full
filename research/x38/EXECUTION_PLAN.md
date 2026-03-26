@@ -1,7 +1,7 @@
 # X38 Execution Plan
 
 **Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (56 rounds done —
-topic 004, 007, 001, 002, 010, 018 CLOSED; 12 topics còn lại: 12 OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
+topic 004, 007, 001, 002, 010 CLOSED; 018 REOPENED; 12 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
 **Cập nhật lần cuối**: 2026-03-26
@@ -25,11 +25,11 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 016 | **OPEN** (2026-03-23). Bounded recalibration path. Wave 2.5. 2 findings (BR-01, BR-02). |
 | Topic 007 | **CLOSED** (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`. |
 | Topic 001 | **CLOSED** (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`. |
-| Topic 017 | **OPEN** (2026-03-24). Epistemic search policy. Wave 2.5. 4 findings (ESP-01→ESP-04). |
+| Topic 017 | **OPEN** (2026-03-24). Epistemic search policy. Wave 2.5. 6 findings (ESP-01→ESP-04 + SSE-08-CON, SSE-04-CELL from Topic 018). |
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
-| Topic 018 | **CLOSED** (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (10 Converged, 3 routed downstream). Search-space expansion. Xem `debate/018-search-space-expansion/final-resolution.md`. |
-| Debate rounds thực hiện | **56** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 018: 28 = 4 agents × 7 rounds). 12 topics remaining (12 OPEN + 1 SPLIT). |
+| Topic 018 | **REOPENED** (2026-03-26). Prior 4-agent debate (7 rounds, extra-canonical) revoked — standard 2-agent debate required per x38_RULES.md §5. Prior decisions (SSE-D-01→11) are input evidence, not authoritative. Downstream routings provisional. |
+| Debate rounds thực hiện | **56** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 018: 28 extra-canonical rounds NOT counted as standard debate). 13 topics remaining (12 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
 | Specs drafted | SEEDED (2): `architecture_spec.md` seeded from 001/002/004/007/010 closures (§6 Clean OOS Flow filled); `meta_spec.md` seeded from 002/004/007 closures. Formal drafting not started. |
 | Specs published | ZERO |
 
@@ -47,14 +47,14 @@ Phase 0 (evidence) ──→ Phase 1 (topic 004) ──→ DONE
                            ↓
 Wave 1:    007 (philosophy)              ← CLOSED (2026-03-23)
                ↓
-Wave 2:    008, 009, 010✅, 011, 012      ← song song
+Wave 2:    018 (search-space expansion)  ← REOPENED (ưu tiên sớm, routes to 6 downstream topics)
+           008, 009, 010✅, 011, 012      ← song song
            001✅, 002✅, 005, 006          ← song song
            013 (convergence)              ← song song, soft-dep 001✅
            015 (artifact/version)         ← song song, soft-dep 007✅, 008
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
            017 (epistemic search policy) ← chờ 002✅ + 008 + 010✅ + 013
-           018 (search-space expansion)  ← CLOSED (2026-03-26, 4-agent debate)
                ↓
 Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005

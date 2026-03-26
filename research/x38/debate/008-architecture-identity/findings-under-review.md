@@ -34,11 +34,12 @@ Framework được xây trên 3 trụ cột bắt buộc:
    (bảo vệ selection cleanliness, không chỉ chặn AI peek —
    RESEARCH_PROMPT_V6.md line 284-292 [extra-archive]).
 
-3. **Meta-Updater** — sau mỗi campaign chỉ cập nhật 4 loại: provenance/audit/
-   serialization rules, split hygiene heuristics, stop-discipline conditions,
-   anti-patterns (methodology-level). KHÔNG BAO GIỜ cập nhật priors về đáp án.
-   Mọi lesson làm nghiêng cán cân family/architecture/calibration-mode đều bị
-   coi là contamination.
+3. **Meta-Updater** — sau mỗi campaign chỉ cập nhật 3 loại (per Topic 002
+   closure, Facet C — STOP_DISCIPLINE consolidated into ANTI_PATTERN):
+   provenance/audit/serialization rules, split hygiene heuristics,
+   anti-patterns incl. stop-discipline (methodology-level). KHÔNG BAO GIỜ cập
+   nhật priors về đáp án. Mọi lesson làm nghiêng cán cân
+   family/architecture/calibration-mode đều bị coi là contamination.
 
 **Evidence**:
 - PLAN.md:664 [x38 internal]: "3 thành phần bắt buộc: contamination firewall,
@@ -171,7 +172,7 @@ cùng protocol version (hoặc flag rõ cross-protocol comparison).
 - **issue_id**: X38-SSE-04-IDV
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
-- **opened_in_round**: 0 (routed from Topic 018 closure)
+- **opened_in_round**: 0 (routed from Topic 018, REOPENED 2026-03-26 — provisional)
 - **current_status**: Open
 - **source**: Topic 018 (Search-Space Expansion), SSE-D-04 field 3 + correction note
 
@@ -208,6 +209,8 @@ owner topic.
 |-------|---------|---------|-----------------|
 | 007 | F-01 | Philosophy (F-01) must settle before pillars (F-02) can be finalized — if 007 redefines framework scope, pillar count or identity may change | 007 owns decision; 008 adapts. **RESOLVED**: 007 CLOSED, F-01 frozen. |
 | 017 | ESP-01→04 | Topic 017 proposes Epistemic Search Policy as sub-component (v1) → pillar (v2). Provides concrete answer to F-02 "3 pillars enough?" question. If 008 decides 3 sufficient, ESP substance folds into Protocol Engine without architectural promotion. | 008 owns pillar decision; 017 provides substance. |
+| 010 | D-23 | Pre-existing candidate treatment Scenario 1 (same-family rediscovery) deferred to 008 F-13 — identity schema must support same-family comparison. Two consumption demands on F-13: (a) 010's same-family comparison, (b) 018's candidate equivalence vocabulary (SSE-04-IDV). | 008 owns identity schema; 010 consumes. |
+| 018 | SSE-04-IDV | Candidate-level identity vocabulary routed from Topic 018 (REOPENED). SSE-D-04 field 3 requires `identity_vocabulary` declaration. Routing provisional until 018 re-closes under standard 2-agent debate. | 008 owns interface; 018 provides substance (provisional). |
 
 ## Bảng tổng hợp
 

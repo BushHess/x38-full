@@ -24,6 +24,8 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 - **Upstream**: Topic 001 (campaign model) + Topic 002 (contamination firewall)
   + Topic 004 (CLOSED) + Topic 015 (artifact spec inform stage outputs)
   + Topic 016 (bounded recalibration — phải CLOSED trước 003)
+  + Topic 017 (epistemic search policy — cell-elite archive, descriptor tagging,
+    epistemic_delta.json ảnh hưởng pipeline stage design; phải CLOSED trước 003)
 - **Downstream**: Topic 014 (execution — cần biết stages trước khi define execution),
   Specs (protocol_spec.md)
 - **CRITICAL**: Đây là topic tích hợp — debate SAU CÙNG trong Wave 3
@@ -43,7 +45,8 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 |-------|---------|---------|-----------------|
 | 015 | F-14 | Artifact enumeration (state pack) split from 003 but stage outputs must conform to artifact spec — protocol stages define WHEN, artifact spec defines WHAT | 015 owns artifact spec; 003 consumes it |
 | 016 | F-35 | Bounded recalibration may require protocol stages to support mid-campaign parameter updates — incompatible with current freeze-at-Stage-7 design | 016 must CLOSE before 003 debate; 016 owns decision |
-| 002 | F-04 | Firewall enforcement gates protocol transitions — if firewall rejects a lesson mid-pipeline, protocol must handle gracefully | 002 owns firewall rules; 003 adapts |
+| 002 | F-04 | Firewall enforcement gates protocol transitions — if firewall rejects a lesson mid-pipeline, protocol must handle gracefully | 002 CLOSED; 003 adapts to frozen firewall rules |
+| 007 | D-25 | F-25 regime-aware policy: internal conditional logic ALLOWED; external classifiers, post-freeze switching FORBIDDEN. Specific ablation gate thresholds for testing regime-aware structures deferred to 003. | 007 CLOSED; 003 owns ablation gate thresholds |
 
 ## Files
 

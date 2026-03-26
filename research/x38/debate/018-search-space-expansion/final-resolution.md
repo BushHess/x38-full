@@ -417,6 +417,6 @@ These were never disputed across all 4 agents and all 7 rounds:
 
 ---
 
-**Topic 018 — CLOSED. Decisions signed off after closure audit (`closure-audit.md`).**
+**Topic 018 — ~~CLOSED~~ REOPENED (2026-03-26). Prior closure revoked; standard 2-agent debate required. Decisions above are input evidence, not authoritative.**
 
 **Canonical location**: `debate/018-search-space-expansion/final-resolution.md`

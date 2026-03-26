@@ -59,16 +59,18 @@ mới F-30→F-33), rebalance tách F-14/F-17 từ 003 sang 015, và Topic 016
 ## Dependency graph
 
 ```
-Wave 1:    007 (philosophy)              ← NỀN TẢNG, debate đầu tiên
+Wave 1:    007 (philosophy)              ← CLOSED (2026-03-23)
                ↓
-Wave 2:    008, 009, 010, 011, 012       ← song song sau 007
-           001, 002, 005, 006             ← song song sau 007
-           013 (convergence)              ← song song, soft-dep 001
-           015 (artifact/version)         ← song song, soft-dep 007, 008
+Wave 2:    018 (search-space expansion)  ← REOPENED (ưu tiên sớm, routes to 6 downstream)
+           008, 009, 010✅, 011, 012     ← song song sau 007
+           001✅, 002✅, 005, 006        ← song song sau 007
+           013 (convergence)              ← song song, soft-dep 001✅
+           015 (artifact/version)         ← song song, soft-dep 007✅, 008
                ↓
-Wave 2.5:  016 (bounded recalibration)   ← chờ 001 + 002 + 010 + 011 + 015
+Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
+           017 (epistemic search policy) ← chờ 002✅ + 008 + 010✅ + 013
                ↓
-Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016
+Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
 ```
 

@@ -169,8 +169,9 @@ Knowledge object rút ra từ phenotype patterns, dùng để ảnh hưởng sea
   ~10 Tier 2 structural priors have no category home. Topic 002 declined category
   expansion; permanent `UNMAPPED + Tier 2 + SHADOW` governance path chosen.
   `STRUCTURAL_PRIOR` as 5th whitelist category was NOT added. Phenotype-derived
-  structural priors from ESP-02 operate within existing 4-category + UNMAPPED
-  boundary, subject to reconstruction-risk gate.
+  structural priors from ESP-02 operate within existing 3-category + UNMAPPED
+  boundary (3 categories after STOP_DISCIPLINE→ANTI_PATTERN consolidation),
+  subject to reconstruction-risk gate.
 - research/x37/docs/gen1/RESEARCH_PROMPT_V6/CONTAMINATION_LOG_V2.md [extra-archive]: every online session leaked answer
   priors through "methodology" lessons — phenotype contract prevents this by
   enforcing forbidden_payload at schema level
@@ -183,8 +184,10 @@ Knowledge object rút ra từ phenotype patterns, dùng để ảnh hưởng sea
   K depends on |S|.
 - Phenotype descriptor dimensions: fixed taxonomy hay extensible? Fixed simpler
   but may not cover all strategy types.
-- STRUCTURAL_PRIOR: new firewall category hay subcategory của existing?
-  (Topic 002 must decide)
+- ~~STRUCTURAL_PRIOR: new firewall category hay subcategory của existing?~~
+  **RESOLVED by Topic 002 closure (2026-03-25)**: Facet A decided NO vocabulary
+  expansion, NO STRUCTURAL_PRIOR category. Permanent path: UNMAPPED + Tier 2 +
+  SHADOW. Phenotype-derived priors operate within existing 3 categories.
 
 ---
 
@@ -348,13 +351,15 @@ Budget governor v1:
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 008 | F-02 | 017 proposes ESP as sub-component (v1) -> pillar (v2). If 008 decides 3 pillars sufficient, ESP substance folds into Protocol Engine without architectural promotion. | 008 owns pillar decision; 017 provides substance regardless of framing. |
-| 002 | F-04 | Reconstruction-risk gate extends firewall enforcement to phenotype layer. STRUCTURAL_PRIOR may need 5th whitelist category. Topic 002 **actively owns** the ~10 Tier-2 priors gap (MK-07 amendment → 002 debate outcome). ESP-02's STRUCTURAL_PRIOR proposal aligns directly with 002's existing workload. | 002 owns admissibility + gap fix; 017 defines phenotype requirements + reconstruction-risk gate. |
+| 002 | F-04 | Reconstruction-risk gate extends firewall enforcement to phenotype layer. **RESOLVED**: Topic 002 CLOSED (2026-03-25) — NO vocabulary expansion, NO STRUCTURAL_PRIOR category (Facet A). Permanent path: UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype contracts operate within this boundary. | 002 CLOSED; 017 designs phenotype within 3-category + UNMAPPED constraint. |
 | 003 | F-05 | Cell-elite archive changes Stage 4 design. epistemic_delta.json adds Stage 8 mandatory output. Descriptor tagging adds Stage 3 output. | 003 owns pipeline structure; 017 defines ESP component contracts. |
 | 006 | F-08 | Phenotype descriptor taxonomy overlaps feature family taxonomy. | 006 owns feature-level; 017 owns strategy-level. Must not conflict. |
 | 010 | F-24 | Power floors for promotion ladder reuse Clean OOS power methodology. | 010 owns power rules; 017 consumes. |
 | 013 | CA-01 | Coverage metrics overlap. Budget governor interacts with stop conditions. | 013 owns convergence/stop; 017 defines coverage obligations. |
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 (state pack) must enumerate them; F-17 (semantic change) must classify when changes to ESP artifacts invalidate results. | 015 owns artifact enumeration + invalidation rules; 017 defines artifact contracts + mandatory status. |
+| 004 | C3 | Topic 004 C3 (converged): "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments (coverage_floor + exploit) are a form of budget split. Argument: ordering within frontier ≠ budget split; requires debate. | 017 must reconcile ESP-04 v1 implementation with C3 "all search is frontier" constraint. |
 | 016 | BR-01 | ESP MUST NOT suggest parameter directions — that would be answer-level influence, incompatible with firewall (C-12). ESP treats recalibrated algo as new phenotype entry. | Explicit scope exclusion in 017. |
+| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values/anomaly thresholds routed from Topic 018 (REOPENED). Provisional until 018 re-closes under standard 2-agent debate. | 017 owns consumption/values; 018 provides architectural context (provisional). |
 
 ## Bảng tổng hợp
 
@@ -371,9 +376,10 @@ Budget governor v1:
 
 ## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-Architecture-level decisions converged in Topic 018. These issues represent
-implementation obligations deferred to Topic 017 as owner.
-Source: `debate/018-search-space-expansion/final-resolution.md`.
+Architecture-level decisions proposed in Topic 018 (**REOPENED** 2026-03-26 —
+prior 4-agent closure revoked; standard 2-agent debate required). These issues
+represent implementation obligations contingent on Topic 018's re-closure.
+Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
 
 ---
 
@@ -387,7 +393,7 @@ Source: `debate/018-search-space-expansion/final-resolution.md`.
 
 **Nội dung**:
 
-Topic 018 locked: contradiction registry is descriptor-level, shadow-only (MK-17).
+Topic 018 proposed (provisional): contradiction registry is descriptor-level, shadow-only (MK-17).
 Topic 015 owns row schema/storage. Topic 017 owns consumption semantics.
 
 Topic 017 owns:
@@ -417,7 +423,7 @@ Topic 017 owns:
 
 **Nội dung**:
 
-Topic 018 locked: 4 mandatory cell axes (`mechanism_family`, `architecture_depth`,
+Topic 018 proposed (provisional): 4 mandatory cell axes (`mechanism_family`, `architecture_depth`,
 `turnover_bucket`, `timeframe_binding`). 5 anomaly axes for surprise queue admission
 (≥1 non-peak-score). 5-component proof bundle minimum.
 

@@ -123,7 +123,7 @@ All 3 corrections reflected in `final-resolution.md` SSE-D-04 correction note.
 
 ## 9. Identified Issues
 
-None. All POST-DEBATE requirements satisfied:
+None at time of original audit. All POST-DEBATE requirements satisfied:
 
 - [x] Self-contained synthesis in `final-resolution.md`
 - [x] Placed in `debate/018-search-space-expansion/` as standard topic
@@ -136,3 +136,21 @@ None. All POST-DEBATE requirements satisfied:
 ---
 
 **Audit verdict: PASS. Topic 018 closure is complete.**
+
+---
+
+## Addendum: REOPENED (2026-03-26)
+
+**Topic 018 has been REOPENED** the same day it was closed. Reason: the prior
+4-agent debate procedure was not covered by `x38_RULES.md` §5 (2 canonical
+participants: claude_code + codex). Human researcher decision: conduct standard
+2-agent debate before accepting any decisions as authoritative.
+
+**Impact on this audit**: The audit above documents the extra-canonical closure
+process and remains valid as a record of what the 4-agent debate produced. However:
+- The audit verdict ("PASS. closure is complete") applies to the **prior closure
+  only** and is no longer operative.
+- `final-resolution.md` decisions (SSE-D-01→11) are now **input evidence**, not
+  authoritative.
+- Downstream routings are **provisional** pending re-closure under standard rules.
+- Registry sync (§7) figures are outdated: now 5 CLOSED (not 6), 13 OPEN (not 12).

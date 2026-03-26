@@ -2,12 +2,13 @@
 
 **Topic ID**: X38-T-18
 **Opened**: 2026-03-25
-**Closed**: 2026-03-26
-**Author**: claude_code (architect), codex (advisor), gemini (advisor), chatgptpro (advisor)
+**Status**: **REOPENED** (2026-03-26) — prior 4-agent closure revoked; standard 2-agent debate required
+**Author**: claude_code (architect) + codex (advisor) — standard x38 participants
 **Origin**: `docs/search-space-expansion/request.md` — VDO accidental discovery
 exposed gap in x38: strong on validation, weak on discovery.
 
-10 Open Issues from 4-agent debate (7 rounds). All resolved.
+10 Open Issues for standard 2-agent re-evaluation. **0/10 debated under x38 rules.**
+Prior 4-agent debate (7 rounds) serves as input evidence [extra-canonical].
 Evidence archive: `docs/search-space-expansion/debate/` (4 proposals + 4×7 rounds).
 
 **Issue ID prefix**: `SSE-` (Search-Space Expansion), mapped to `OI-` register.
@@ -20,8 +21,8 @@ Evidence archive: `docs/search-space-expansion/debate/` (4 proposals + 4×7 roun
 - **classification**: Judgment call
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 2
-- **current_status**: Converged
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R5 (2026-03-26)
 
 **Nội dung**: Discovery mechanisms fold into 6 existing topics
 (006/015/017/013/008/003). No Topic 018 umbrella for substance.
@@ -37,8 +38,8 @@ if downstream closure report reveals explicit unresolved gap.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 1
-- **current_status**: Converged
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R5 (2026-03-26)
 
 **Nội dung**: Bounded ideation (4 hard rules: results-blind, compile-only,
 OHLCV-only, provenance-tracked) replaces SSS. Grammar depth-1 seed is mandatory
@@ -55,8 +56,8 @@ capability with conditional cold-start activation.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 2
-- **current_status**: Converged
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R5 (2026-03-26)
 
 **Nội dung**: Recognition topology: surprise_queue → equivalence_audit →
 proof_bundle → freeze. 5 anomaly axes + 5-component proof bundle minimum.
@@ -72,8 +73,8 @@ proof_bundle → freeze. 5 anomaly axes + 5-component proof bundle minimum.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 2
-- **current_status**: Converged (routed)
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged, routed)
+- **prior_closed_at**: R5 (2026-03-26)
 - **routed_to**: Topic 015 (X38-SSE-07)
 
 **Nội dung**: Semantic split locked: `feature_lineage`, `candidate_genealogy`,
@@ -87,8 +88,8 @@ proof_bundle → freeze. 5 anomaly axes + 5-component proof bundle minimum.
 - **classification**: Judgment call
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 2
-- **current_status**: Converged (routed)
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged, routed)
+- **prior_closed_at**: R5 (2026-03-26)
 - **routed_to**: Topics 015 (X38-SSE-08) + 017 (X38-SSE-08-CON)
 
 **Nội dung**: Contradiction registry = descriptor-level, shadow-only (MK-17
@@ -102,8 +103,8 @@ ceiling). Storage contract → 015. Consumption semantics → 017.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 4
-- **current_status**: Converged
-- **closed_at**: R6 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R6 (2026-03-26)
 
 **Nội dung**: 7-field breadth-activation contract. Protocol MUST declare all 7
 interface fields before breadth activation. Exact values deferred downstream.
@@ -116,8 +117,8 @@ interface fields before breadth activation. Exact values deferred downstream.
 - **classification**: Judgment call
 - **opened_at**: 2026-03-25
 - **opened_in_round**: 2
-- **current_status**: Converged
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R5 (2026-03-26)
 
 **Nội dung**: Domain-seed = optional provenance hook. No replay semantics, no
 session format. Composition provenance preserved via lineage.
@@ -130,8 +131,8 @@ session format. Composition provenance preserved via lineage.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 4
-- **current_status**: Converged
-- **closed_at**: R6 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R6 (2026-03-26)
 
 **Nội dung**: Hybrid equivalence: deterministic structural pre-bucket +
 behavioral nearest-rival audit. No LLM judge. Gemini's AST-only position
@@ -145,8 +146,8 @@ withdrawn R6.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 3
-- **current_status**: Converged (routed)
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged, routed)
+- **prior_closed_at**: R5 (2026-03-26)
 - **routed_to**: Topic 013 (X38-SSE-09)
 
 **Nội dung**: Breadth coupling locked via SSE-D-04 field 5. Exact correction
@@ -160,8 +161,8 @@ formula → 013. Invalidation → 015.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 3
-- **current_status**: Converged
-- **closed_at**: R5 (2026-03-26)
+- **current_status**: Open (prior 4-agent: Converged)
+- **prior_closed_at**: R5 (2026-03-26)
 
 **Nội dung**: APE v1 = template parameterization only. No free-form code
 generation (correctness guarantee absent).
@@ -181,17 +182,15 @@ generation (correctness guarantee absent).
 | 017 | X38-ESP-01/02 | Coverage/surprise/proof integration | SSE-D-05 topology within 017 scope |
 | 003 | — | Stage wiring + breadth-activation blocker | SSE-D-04 breadth gate at protocol_lock |
 
-## Bảng tổng hợp
+## Prior 4-Agent Outcomes (archived, non-authoritative)
 
-**Governance vocabulary note**: This topic used a 4-agent debate procedure not
-covered by x38_RULES.md §5 (which defines 2 canonical participants). The
-original dossier used `Defer` as a terminal issue state; this has been
-normalized to `Converged (routed)` per canonical closure vocabulary
-(x38_RULES.md §4: "mọi issue Converged hoặc Judgment call"). All 4 agents
-agreed on routing substance; no issue remains unresolved in this topic.
+**Governance note**: The table below records outcomes from the prior 4-agent debate
+(not per x38_RULES.md §5). These are **input evidence** for the standard 2-agent
+re-debate, not binding decisions. The original `Defer` states were normalized to
+`Converged (routed)` per canonical vocabulary.
 
-| Issue ID | Finding | Phân loại | Status |
-|----------|---------|-----------|--------|
+| Issue ID | Finding | Phân loại | Prior 4-agent status |
+|----------|---------|-----------|---------------------|
 | SSE-D-01 | Ownership fold: no Topic 018 umbrella | Judgment call | Converged |
 | SSE-D-02/03 | Bounded ideation + conditional cold-start | Thiếu sót | Converged |
 | SSE-D-05 | Recognition stack minimum | Thiếu sót | Converged |
@@ -202,3 +201,5 @@ agreed on routing substance; no issue remains unresolved in this topic.
 | SSE-D-06 | Hybrid equivalence | Thiếu sót | Converged |
 | SSE-D-09 | Multiplicity control coupling | Thiếu sót | Converged (routed → 013) |
 | SSE-D-11 | APE v1 = parameterization only | Thiếu sót | Converged |
+
+**Current live status**: 0/10 issues debated under standard x38 2-agent rules. All issues Open for re-evaluation.

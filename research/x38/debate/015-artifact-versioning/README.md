@@ -51,6 +51,7 @@ vô hiệu hóa** (F-17).
 | 003 | F-05 | Protocol stages define WHEN artifacts are produced; F-14 defines WHAT is produced — if 003 changes stage boundaries, artifact enumeration may need updating | 003 owns stage structure; 015 adapts artifact spec |
 | 011 | F-28 | F-17 classifies sizing change as semantic change (new version), but F-28 proposes unit-exposure canonicalization pushing sizing to deployment — if adopted, F-17 classification table must be amended | 011 owns boundary decision (F-28); 015 amends F-17 accordingly |
 | 016 | C-12 | Bounded recalibration (if adopted) may create semantic changes mid-campaign that F-17 must classify — current classification assumes freeze-once model | 016 owns decision |
+| 018 | SSE-07, SSE-08, SSE-04-INV | Discovery lineage, contradiction registry, and invalidation cascade details routed from Topic 018 (REOPENED). Provisional until 018 re-closes under standard 2-agent debate. | 015 owns implementation; 018 provides context (provisional). |
 
 ## Files
 

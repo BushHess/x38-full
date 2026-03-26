@@ -792,7 +792,7 @@ Vai trò kép:
 4. Wave 2 (11 topics, 3 CLOSED: ~~001~~, ~~002~~, ~~010~~; 8 remaining) — song song, 007 đã closed.
 5. Wave 2.5: Topic **016** (bounded recalibration) + **017** (epistemic search policy) — song song, sau Wave 2 prerequisites.
 6. Wave 3: Topic **003** (protocol) + **014** (execution) — cuối cùng.
-7. ~~Topic **018**~~ — **CLOSED** (2026-03-26). 7 rounds, 4 agents, search-space expansion.
+7. Topic **018** — **REOPENED** (2026-03-26). Prior 4-agent debate (extra-canonical) revoked; standard 2-agent debate required. Wave 2 (early priority).
 
 Chi tiết từng topic — xem Phần 5.
 
@@ -1088,9 +1088,9 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | Design brief | DONE | `docs/design_brief.md` |
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
-| Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010/018 CLOSED + 12 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 56 findings phân bổ vào 17 sub-topics (F-01→F-33 + BR-01/02 + ESP-01→04 + CA-01/02 + ER-01/02 + SSE-D-01→11 + 7 downstream SSE issues). 12 convergence notes (C-01→C-12) giữ tại 000. |
-| Debate execution | IN PROGRESS | 6 topics CLOSED: 004, 007, 001, 002, 010, 018. 56 debate rounds done. 12 topics remaining (12 OPEN + 1 SPLIT). |
+| Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010 CLOSED + 018 REOPENED + 12 OPEN). Xem `debate/debate-index.md`. |
+| Debate findings collected | DONE | 56 findings distributed across 17 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
+| Debate execution | IN PROGRESS | 5 topics CLOSED: 004, 007, 001, 002, 010. 018 REOPENED (prior extra-canonical rounds not counted). 56 debate rounds done. 13 topics remaining (12 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
 | Drafts | SEEDED (2) | `architecture_spec.md` seeded from 001/002/004/007/010 closures; `meta_spec.md` seeded from 002/004/007 closures. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
@@ -1102,20 +1102,22 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 **Topic SPLIT**:
 - **000** (framework architecture): SPLIT (2026-03-22) — 29 findings phân bổ vào 11 sub-topics. File `debate/000-framework-proposal/findings-under-review.md` giữ lại index + convergence notes C-01→C-12.
 
-**Topics CLOSED** (6):
+**Topics CLOSED** (5):
 - **004** (meta-knowledge): CLOSED (2026-03-21). 6 rounds, 23/23 resolved. Xem `debate/004-meta-knowledge/final-resolution.md`.
 - **007** (philosophy-mission): CLOSED (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`.
 - **001** (campaign-model): CLOSED (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`.
 - **002** (contamination-firewall): CLOSED (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`.
 - **010** (clean-oos-certification): CLOSED (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`.
-- **018** (search-space-expansion): CLOSED (2026-03-26). 7 rounds, 4 agents, 10/10 resolved (10 Converged, 3 routed downstream). Xem `debate/018-search-space-expansion/final-resolution.md`.
+
+**Topic REOPENED** (1):
+- **018** (search-space-expansion): **REOPENED** (2026-03-26). Prior 4-agent debate (extra-canonical) revoked — standard 2-agent debate required per x38_RULES.md §5. Prior decisions are input evidence, not authoritative. Downstream routings provisional.
 
 **Topics OPEN** (12 topics, 3 waves):
 - **Wave 2** (8 topics song song): 005, 006, 008, 009, 011, 012, 013, 015
 - **Wave 2.5** (2 topics song song): 016 (bounded-recalibration) — chờ 001(closed) + 002(closed) + 010(closed) + 011 + 015; 017 (epistemic-search-policy) — chờ 002(closed) + 008 + 010(closed) + 013
 - **Wave 3**: 003 (protocol-engine) — chờ 001(closed) + 002(closed) + 004(closed) + 015 + 016 + 017; 014 (execution) — chờ 003 + 005
 
-**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → 8 remaining Wave 2 topics song song (001/002/010 CLOSED) → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng. Topic 018 (search-space expansion) CLOSED ngoài wave chính.
+**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → 018 REOPENED (ưu tiên sớm Wave 2, routes to 6 downstream topics) + 8 remaining Wave 2 topics song song (001/002/010 CLOSED) → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
 
 ### Execution Plan
 

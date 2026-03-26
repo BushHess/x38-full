@@ -59,6 +59,9 @@ Freeze checkpoint: sau Stage 7, stages 1-6 dirs trở thành read-only.
 - **Deliverable template**: SPEC_REQUEST_PROMPT pattern thành built-in component?
 - Provenance tracking: automatic hay manual?
 - WFO fold structure: cố định semiannual hay configurable per campaign?
+- **Deferred from Topic 007 D-25**: Ablation gate thresholds for testing
+  regime-aware structures — 007 froze the prohibition (no external classifiers,
+  no post-freeze switching) but deferred specific thresholds to 003.
 - **Scan-phase multiple testing**: Stage 3 scan 50K+ configs → massive multiple
   comparison problem. Workspace hiện có DSR (`research/lib/dsr.py`) và M_eff
   (`research/lib/effective_dof.py`), nhưng cả hai là **post-selection** tools
@@ -76,6 +79,7 @@ Freeze checkpoint: sau Stage 7, stages 1-6 dirs trở thành read-only.
 | 015 | F-14 | Artifact enumeration (state pack) split from 003 but stage outputs must conform to artifact spec — protocol stages define WHEN, artifact spec defines WHAT | 015 owns artifact spec; 003 consumes it |
 | 016 | F-35 | Bounded recalibration may require protocol stages to support mid-campaign parameter updates — incompatible with current freeze-at-Stage-7 design | 016 must CLOSE before 003 debate; 016 owns decision |
 | 002 | F-04 | Firewall enforcement gates protocol transitions — if firewall rejects a lesson mid-pipeline, protocol must handle gracefully | 002 owns firewall rules; 003 adapts |
+| 007 | D-25 | F-25 regime-aware policy froze prohibition (no external classifiers, no post-freeze switching). Ablation gate thresholds deferred to 003. | 007 CLOSED; 003 owns thresholds. |
 | 017 | ESP-01 | Cell-elite archive replaces Stage 4 global pruning. Descriptor tagging adds Stage 3 output. epistemic_delta.json adds Stage 8 mandatory output. Local probes change Stage 5 search strategy. | 003 owns pipeline structure; 017 defines ESP component contracts. 017 must CLOSE before 003 debate. |
 
 ## Bảng tổng hợp

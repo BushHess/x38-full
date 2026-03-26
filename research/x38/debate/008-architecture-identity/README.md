@@ -36,7 +36,9 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
-| 007 | F-01 | Philosophy (F-01) must settle before pillars (F-02) can be finalized — if 007 redefines framework scope, pillar count or identity may change | 007 owns decision; 008 adapts |
+| 007 | F-01 | Philosophy (F-01) must settle before pillars (F-02) can be finalized — if 007 redefines framework scope, pillar count or identity may change | 007 owns decision; 008 adapts. **RESOLVED**: 007 CLOSED, F-01 frozen. |
+| 010 | D-23 | Pre-existing candidate treatment Scenario 1 deferred to 008 F-13 (identity schema). | 008 owns identity schema; 010 CLOSED, consumes result. |
+| 018 | SSE-04-IDV | Candidate-level identity vocabulary routed from 018 (REOPENED). Provisional until 018 re-closes. | 008 owns interface; 018 provides substance. |
 
 ## Files
 

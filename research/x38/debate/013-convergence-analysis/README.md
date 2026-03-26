@@ -41,7 +41,11 @@ Topic 013 định nghĩa **thuật toán** xác định khi nào sessions đã h
 
 ## Cross-topic tensions
 
-Không có tension đã biết tại thời điểm mở topic.
+| Topic | Finding | Tension | Resolution path |
+|-------|---------|---------|-----------------|
+| 017 | ESP-01, ESP-04 | Coverage metrics overlap. Budget governor interacts with stop conditions. | 013 owns convergence/stop; 017 defines coverage obligations. |
+| 018 | SSE-09, SSE-04-THR | Scan-phase correction law + equivalence/anomaly thresholds routed from Topic 018 (REOPENED). Provisional until 018 re-closes. | 013 owns implementation; 018 provides context (provisional). |
+| 008 | SSE-04-IDV | 013's equivalence thresholds (SSE-04-THR) must be compatible with 008's identity vocabulary (SSE-04-IDV) — both from SSE-D-04 contract. | 008 owns identity interface; 013 owns semantic rules. |
 
 ## Files
 

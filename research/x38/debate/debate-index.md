@@ -39,7 +39,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **REOPENED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs (0 debated under x38 rules). Prior 4-agent debate = input evidence, not authoritative. Standard 2-agent debate required. |
 
-**Totals**: 19 topics (5 CLOSED, 1 SPLIT, 13 OPEN). 58 findings distributed.
+**Totals**: 19 topics (5 CLOSED, 1 SPLIT, 1 REOPENED, 12 OPEN). 56 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 REOPENED — downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **provisional** until 018 re-closes under
 standard 2-agent debate.
@@ -113,25 +113,25 @@ convergence notes liên quan — không lặp lại full text.
 ## Dependencies (detailed)
 
 ```
-007 (philosophy) ← foundation for all
+007 (philosophy) ← foundation for all — CLOSED✅
     ↓
 018 (search-space) ← soft-dep from 007✅, 004✅ (REOPENED — ưu tiên sớm trong Wave 2)
-008 (architecture) ← soft-dep from 007 (pillars depend on philosophy); SSE-04-IDV provisional on 018
-009 (data) ← soft-dep from 007, 008
-010 (clean-oos) ← soft-dep from 007 (3-tier claims define certification)
-011 (deployment) ← soft-dep from 007, 010
-012 (quality) ← soft-dep from 007, 008
-001 (campaign) ← soft-dep from 007
-002 (firewall) ← soft-dep from 007, 008
-005 (core-engine) ← soft-dep from 007, 008
-006 (feature-engine) ← soft-dep from 007, 008
-013 (convergence) ← soft-dep from 007, 001
-015 (artifact/version) ← soft-dep from 007, 008
+008 (architecture) ← soft-dep from 007✅; SSE-04-IDV provisional on 018
+009 (data) ← soft-dep from 007✅, 008
+010 (clean-oos) ← soft-dep from 007✅ — CLOSED✅
+011 (deployment) ← soft-dep from 007✅, 010✅
+012 (quality) ← soft-dep from 007✅, 008
+001 (campaign) ← soft-dep from 007✅ — CLOSED✅
+002 (firewall) ← soft-dep from 007✅, 008 — CLOSED✅
+005 (core-engine) ← soft-dep from 007✅, 008
+006 (feature-engine) ← soft-dep from 007✅, 008
+013 (convergence) ← soft-dep from 007✅, 001✅
+015 (artifact/version) ← soft-dep from 007✅, 008
     ↓
 016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013 + 018(provisional routings)
+017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013; provisional input: 018 (SSE-08-CON, SSE-04-CELL)
     ↓
-003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017
+003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017
 014 (execution) ← soft-dep from 003, 005
 ```
 

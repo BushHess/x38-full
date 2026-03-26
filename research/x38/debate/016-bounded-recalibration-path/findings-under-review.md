@@ -165,8 +165,9 @@ Maintenance pipeline: Monitoring → recalibration protocol → re-certify
 
 **Clean OOS interaction (critical)**:
 
-Bất kể phương án nào, Clean OOS reserve đã bị tiêu tốn cho certification ban đầu
-(F-12: reserve opened EXACTLY ONCE). Options:
+Bất kể phương án nào, Clean OOS reserve tuân theo Reserve Rollover Invariant
+(Topic 010 D-21: attempt N+1 starts strictly after attempt N's `reserve_end_*`;
+INCONCLUSIVE triggers new reserve window on strictly new data). Options:
 
 1. **New reserve**: Chờ thêm data accumulate → mở reserve mới cho recalibration.
    Nhưng bao lâu? Power rules (F-24) apply.
@@ -179,7 +180,7 @@ Bất kể phương án nào, Clean OOS reserve đã bị tiêu tốn cho certif
 
 **Evidence**:
 - F-03 (Topic 001): Campaign → Session model
-- F-12 (Topic 010): Clean OOS protocol — reserve opened EXACTLY ONCE
+- F-12 (Topic 010): Clean OOS protocol — Reserve Rollover Invariant (D-21: sequential windows, not single-use)
 - F-24 (Topic 010): Clean OOS power rules — pre-registered thresholds
 - F-16 (Topic 001): Campaign transition guardrails — 5 gen4 guardrails
 - F-31 (Topic 013): Stop conditions — adding session after convergence = violation?
