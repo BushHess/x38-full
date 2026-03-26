@@ -2,7 +2,10 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-26 — Topic 018 CLOSED (7 rounds, 4 agents, 10/10 resolved: 7 Converged + 3 Defer).
+**Cập nhật**: 2026-03-26 — Topic 018 REOPENED (governance: 4-agent extra-canonical debate
+does not satisfy x38_RULES.md §5; requires standard 2-agent debate. Downstream routing
+provisional until re-closure).
+Previous: 2026-03-26 — Topic 018 CLOSED (7 rounds, 4 agents, 10/10 resolved: 7 Converged + 3 Defer).
 Previous: 2026-03-25 — Topic 010 CLOSED (6 rounds, 4/4 resolved: 3 Converged + 1 Judgment call).
 Previous: 2026-03-25 — Topic 002 CLOSED (6 rounds, 7/7 resolved: 3 Converged + 4 Judgment call).
 Previous: 2026-03-24 — Topic 017 added (epistemic search policy, Wave 2.5).
@@ -34,22 +37,26 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
-| X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs — 10 Converged (3 routed to downstream). 4-agent debate (claude_code, codex, gemini, chatgptpro). Evidence: `docs/search-space-expansion/debate/` [extra-canonical] |
+| X38-T-18 | Search-space expansion | 2026-03-25 | **REOPENED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs (0 debated under x38 rules). Prior 4-agent debate = input evidence, not authoritative. Standard 2-agent debate required. |
 
-**Totals**: 19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 58 findings distributed.
+**Totals**: 19 topics (5 CLOSED, 1 SPLIT, 13 OPEN). 58 findings distributed.
+**Note**: Topic 018 REOPENED — downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
+SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **provisional** until 018 re-closes under
+standard 2-agent debate.
 
 ## Debate Waves
 
 ```
 Wave 1:    007 (philosophy)              ← NỀN TẢNG, debate đầu tiên
                ↓
-Wave 2:    008, 009, 010, 011, 012       ← song song sau 007
-           001, 002, 005, 006             ← song song sau 007
-           013 (convergence)              ← song song, soft-dep 001
-           015 (artifact/version)         ← song song, soft-dep 007, 008
+Wave 2:    018 (search-space expansion)   ← REOPENED, ưu tiên sớm (routes to 6 downstream topics)
+           008, 009, 010, 011, 012       ← song song sau 007 (008: SSE-04-IDV provisional until 018)
+           001, 002, 005, 006             ← song song sau 007 (006: SSE-D-03 provisional until 018)
+           013 (convergence)              ← song song, soft-dep 001 (SSE-09/04-THR provisional until 018)
+           015 (artifact/version)         ← song song, soft-dep 007, 008 (SSE-07/08/04-INV provisional until 018)
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001 + 002 + 010 + 011 + 015
-           017 (epistemic search policy) ← chờ 002 + 008 + 010 + 013
+           017 (epistemic search policy) ← chờ 002 + 008 + 010 + 013 (SSE-08-CON/04-CELL provisional until 018)
                ↓
 Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
@@ -108,7 +115,8 @@ convergence notes liên quan — không lặp lại full text.
 ```
 007 (philosophy) ← foundation for all
     ↓
-008 (architecture) ← soft-dep from 007 (pillars depend on philosophy)
+018 (search-space) ← soft-dep from 007✅, 004✅ (REOPENED — ưu tiên sớm trong Wave 2)
+008 (architecture) ← soft-dep from 007 (pillars depend on philosophy); SSE-04-IDV provisional on 018
 009 (data) ← soft-dep from 007, 008
 010 (clean-oos) ← soft-dep from 007 (3-tier claims define certification)
 011 (deployment) ← soft-dep from 007, 010
@@ -121,7 +129,7 @@ convergence notes liên quan — không lặp lại full text.
 015 (artifact/version) ← soft-dep from 007, 008
     ↓
 016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013
+017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013 + 018(provisional routings)
     ↓
 003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017
 014 (execution) ← soft-dep from 003, 005

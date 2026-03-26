@@ -4,20 +4,20 @@ MODE A - Opening Critique
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 1 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-1_opening-critique.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-1_rebuttal.md
+Round: 1 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-1_opening-critique.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-1_rebuttal.md
 
 Read Prompt A in `debate/prompt_template.md` for the canonical round structure.
 
 HEADER (mandatory):
-  # Round 1 — Rebuttal: Clean OOS & Certification
-  **Topic**: 010 — Clean OOS & Certification
+  # Round 1 — Rebuttal: Architecture Pillars & Identity
+  **Topic**: 008 — Architecture Pillars & Identity
   **Author**: codex
-  **Date**: 2026-03-25
+  **Date**: 2026-03-26
   **Responds to**: `claude_code/round-1_opening-critique.md`
-  **Scope**: X38-D-12 (Clean OOS protocol), X38-D-21 (INCONCLUSIVE verdict),
-             X38-D-23 (Pre-existing candidates), X38-D-24 (Power rules)
+  **Scope**: X38-D-02 (Three pillars), X38-D-09 (Directory structure),
+             X38-D-13 (Three-identity-axis model), X38-SSE-04-IDV (Candidate-level identity vocabulary)
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -49,19 +49,24 @@ ENVIRONMENT REMINDER:
 - Do not assume `/var/www/trading-bots/` is the git root. Git root is `/var/www/trading-bots/btc-spot-dev/`.
 
 Task:
-- Review X38-D-12, X38-D-21, X38-D-23, X38-D-24 as four separate issues
+- Review X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV as four separate issues
   (not facets of a single finding).
 - Give each issue a verdict, but put the most depth on the arguments
   that could actually change the design.
 - Key battlegrounds for this topic:
-  (a) F-12: Clean OOS minimum duration — 6 months floor? Trade-frequency dependent?
-      Module vs pipeline integration? FAIL → research-again provenance handling?
-  (b) F-21: INCONCLUSIVE as first-class verdict — upper bound on consecutive
-      INCONCLUSIVE before escalation? Difference from FAIL path?
-  (c) F-23: Pre-existing candidates — shadow-only per MK-17? Parallel Clean OOS?
-      Scope boundary (x38 design vs operational decision)?
-  (d) F-24: Power rules — pre-registered vs per-campaign? Formal power analysis
-      vs heuristic? Regime classification criteria? Specific thresholds?
+  (a) F-02: Three pillars sufficiency — 3 enough or need 4th?
+      ESP (Topic 017) as sub-component vs architectural pillar?
+      Meta-Updater scope: methodology-level only? What counts as contamination?
+      Reproducibility/audit trail: already covered by Protocol Engine or separate?
+  (b) F-09: Directory structure — knowledge/ at root vs src/?
+      Data in-project copies vs external path? Venv riêng vs shared?
+      campaigns/ as sole growth axis — scalability implications?
+  (c) F-13: Three-identity-axis model — 3 axes (constitution, program, system)
+      vs 2 axes (campaign + session)? When does protocol_version change?
+      Governance review weight? Cross-protocol convergence analysis rules?
+  (d) SSE-04-IDV: Candidate-level equivalence vocabulary — belongs in 008 (identity)
+      or 013 (convergence)? If 008: X38-D-13 scope expansion? Structural pre-bucket
+      definition (descriptor hash, parameter family, AST-hash)?
 - For each issue addressed: classification + evidence pointer + critique.
 - Split verdicts are allowed, for example:
   "accept observation, reject mechanism".
@@ -74,20 +79,20 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 6 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-6_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-6_reviewer-reply.md
+Round: 2 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-2_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-2_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 6 — Reviewer Reply: Clean OOS & Certification
-  **Topic**: 010 — Clean OOS & Certification
+  # Round 2 — Reviewer Reply: Architecture Pillars & Identity
+  **Topic**: 008 — Architecture Pillars & Identity
   **Author**: codex
-  **Date**: 2026-03-25
-  **Responds to**: `claude_code/round-6_author-reply.md`
-  **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
+  **Date**: 2026-03-26
+  **Responds to**: `claude_code/round-2_author-reply.md`
+  **Scope**: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -141,14 +146,14 @@ multi-role stack is usually unnecessary here.
 
 ```
 Role: Codex (advisor for closure)
-Task: Judgment-call memo for debate/010-clean-oos-certification/, after Round {ROUND_NUM}
-Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/judgment-call-memo.md
+Task: Judgment-call memo for debate/008-architecture-identity/, after Round {ROUND_NUM}
+Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/judgment-call-memo.md
 Read-only — do not modify existing files.
 
 Additionally read all round files in:
-  - debate/010-clean-oos-certification/claude_code/
-  - debate/010-clean-oos-certification/codex/
+  - debate/008-architecture-identity/claude_code/
+  - debate/008-architecture-identity/codex/
 
 Produce:
 
@@ -156,14 +161,14 @@ Produce:
    | Issue ID | Finding | Final positions | Agreement level | Recommended resolution |
 
    Issues to assess separately:
-   - X38-D-12: Clean OOS protocol (Phase 2 lifecycle, minimum duration, auto-trigger,
-     FAIL → research-again provenance)
-   - X38-D-21: INCONCLUSIVE verdict state (first-class status, upper bound,
-     difference from FAIL path)
-   - X38-D-23: Pre-existing candidates (shadow-only treatment, parallel validation,
-     scope boundary)
-   - X38-D-24: Power rules (pre-registered thresholds, dimensions, formal power
-     analysis vs heuristic, regime classification)
+   - X38-D-02: Three pillars sufficiency (3 vs 4, ESP as sub-component vs pillar,
+     Meta-Updater scope boundaries, reproducibility/audit trail coverage)
+   - X38-D-09: Directory structure (knowledge/ placement, data/ location,
+     venv policy, campaigns/ growth model, docs/ necessity)
+   - X38-D-13: Three-identity-axis model (3 axes vs 2, protocol_version trigger,
+     governance review weight, cross-protocol convergence rules)
+   - X38-SSE-04-IDV: Candidate-level identity vocabulary (scope ownership 008 vs 013,
+     structural pre-bucket definition, interaction with SSE-D-06 hybrid equivalence)
 
    Agreement levels:
    - Converged: §7(a)(b)(c) complete
@@ -179,12 +184,14 @@ Produce:
    - Which issues still have incomplete steel-man?
 
 3. CROSS-TOPIC IMPACT CHECK
-   - Topic 003 (protocol engine): does Clean OOS protocol integrate cleanly
-     with 8-stage pipeline, or does it require a separate Phase 2 mechanism?
-   - Topic 016 (bounded recalibration): do verdict states account for
-     recalibrated candidates?
-   - Topic 017 (epistemic search policy): are power floors consistent with
-     promotion ladder requirements?
+   - Topic 017 (epistemic search policy): does pillar decision (F-02) affect
+     whether ESP becomes a 4th pillar or Protocol Engine sub-component?
+   - Topic 015 (artifact versioning): does identity model (F-13) create
+     protocol_version dependency for artifact invalidation rules?
+   - Topic 013 (convergence analysis): does candidate vocabulary (SSE-04-IDV)
+     ownership affect convergence measurement? Cross-protocol comparison rules?
+   - Topic 009 (data integrity): does directory structure (F-09) constrain
+     data location or immutability enforcement?
 
 4. STATUS DRIFT CHECK
    - Compare `findings-under-review.md` against actual round outcomes.

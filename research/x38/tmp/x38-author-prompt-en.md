@@ -4,16 +4,16 @@
 
 ```
 Role: Claude Code (architect / opening critic)
-Mode: opening | Round: 1 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-1_opening-critique.md
+Mode: opening | Round: 1 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-1_opening-critique.md
 
 HEADER (mandatory):
-  # Round 1 — Opening Critique: Clean OOS & Certification
-  **Topic**: 010-clean-oos-certification
+  # Round 1 — Opening Critique: Architecture Pillars & Identity
+  **Topic**: 008-architecture-identity
   **Author**: claude_code
-  **Date**: 2026-03-25
-  **Scope**: X38-D-12 (Clean OOS protocol), X38-D-21 (INCONCLUSIVE verdict),
-             X38-D-23 (Pre-existing candidates), X38-D-24 (Power rules)
+  **Date**: 2026-03-27
+  **Scope**: X38-D-02 (Three pillars), X38-D-09 (Directory structure),
+             X38-D-13 (Three-identity-axis model), X38-SSE-04-IDV (Candidate-level identity vocabulary)
   **Input documents**: (list all files read)
 
 ENVIRONMENT REMINDER:
@@ -27,10 +27,10 @@ PREAMBLE (2-4 paragraphs):
   - Establish architect role
   - State burden of proof (→ rules.md §5)
   - Critical context + scope boundaries
-  - Note: Topic 010 has 4 separate findings (F-12, F-21, F-23, F-24),
-    each with its own issue ID. They are related (Clean OOS protocol,
-    verdict states, pre-existing candidates, power rules) but debated
-    as independent issues, not facets of a single finding.
+  - Note: Topic 008 has 4 findings (F-02, F-09, F-13, SSE-04-IDV),
+    each with its own issue ID. They are related (architecture pillars,
+    directory structure, identity model, candidate-level vocabulary) but
+    debated as independent issues, not facets of a single finding.
 
 PER-ISSUE (for each Open issue):
   ## {Issue ID}: {Title} — {ACCEPT/REJECT/SPLIT/DEFER to V2+}
@@ -51,20 +51,20 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 6 | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/codex/round-5_reviewer-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/010-clean-oos-certification/claude_code/round-6_author-reply.md
+Mode: reply | Round: 2 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-1_rebuttal.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-2_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 6 — Author Reply: Clean OOS & Certification
-  **Topic**: 010 — Clean OOS & Certification
+  # Round 2 — Author Reply: Architecture Pillars & Identity
+  **Topic**: 008 — Architecture Pillars & Identity
   **Author**: claude_code
-  **Date**: 2026-03-25
-  **Responds to**: `codex/round-5_reviewer-reply.md`
-  **Scope**: X38-D-12, X38-D-21, X38-D-23, X38-D-24
+  **Date**: 2026-03-27
+  **Responds to**: `codex/round-1_rebuttal.md`
+  **Scope**: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
 
 MANDATORY RULE REMINDER:
     1. §4: Attack the argument, not the conclusion.
@@ -103,8 +103,8 @@ STATUS TABLE: updated per rules.md §11.
 
 ```
 Role: Claude Code (architect / closure)
-Mode: closure | Scope: X38-D-12, X38-D-21, X38-D-23, X38-D-24 (Clean OOS & Certification)
-Topic: 010 — Clean OOS & Certification
+Mode: closure | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Topic: 008 — Architecture Pillars & Identity
 
 ENVIRONMENT REMINDER:
 - Follow `research/x38/AGENTS.md` for repo/environment boundaries.
@@ -130,28 +130,28 @@ PREREQUISITES (verify before proceeding):
     to the author's final arguments.
 
 STEP 1 — CREATE `final-resolution.md`:
-  Path: debate/010-clean-oos-certification/final-resolution.md
+  Path: debate/008-architecture-identity/final-resolution.md
   Use Template D (prompt_template.md). Include:
-  - Decisions table: X38-D-12, X38-D-21, X38-D-23, X38-D-24 with
+  - Decisions table: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV with
     Resolution, Type, Round closed
   - Key design decisions (for drafts/):
-    - Clean OOS protocol (Phase 2 lifecycle, minimum duration, auto-trigger)
-    - Verdict taxonomy (CONFIRMED / FAIL / INCONCLUSIVE)
-    - Pre-existing candidate treatment (shadow-only? parallel validation?)
-    - Power rules (pre-registered thresholds, dimensions, INCONCLUSIVE auto-path)
+    - Three pillars sufficiency (3 vs 4, ESP as pillar vs Protocol Engine sub-component)
+    - Directory structure (knowledge/ location, data/ location, venv policy)
+    - Identity model (3-axis vs 2-axis, protocol_version trigger conditions)
+    - Candidate-level equivalence vocabulary (scope owner, structural pre-bucket definition)
   - Unresolved tradeoffs (for human review)
-  - Cross-topic impact: Topic 003 (protocol stages), Topic 016 (recalibration
-    interaction with verdicts), Topic 017 (power floors for promotion ladder)
+  - Cross-topic impact: Topic 017 (ESP pillar decision), Topic 015 (identity →
+    versioning), Topic 013 (candidate vocabulary ownership), Topic 009 (data location)
   - Draft impact table
 
 STEP 2 — UPDATE `findings-under-review.md`:
-  Path: debate/010-clean-oos-certification/findings-under-review.md
+  Path: debate/008-architecture-identity/findings-under-review.md
   - Update `current_status` for each issue (Converged / Judgment call)
   - Record round and date closed
   - Do NOT create ad-hoc fields — use existing schema only
 
 STEP 3 — UPDATE `debate-index.md` + topic `README.md`:
-  - Change topic 010 status → CLOSED
+  - Change topic 008 status → CLOSED
   - Sync summary with final-resolution.md
 
 STEP 3b — Sync closure status across global files:
@@ -162,18 +162,18 @@ STEP 3b — Sync closure status across global files:
       (blockquote: date, rounds, resolution summary, dependency list)
 
 STEP 3c — Check downstream unblocking:
-    Topic 010 closure may unblock:
-    - Topic 016 (bounded recalibration) — needs 001✅ + 002✅ + 010 + 011 + 015
-    - Topic 017 (epistemic search policy) — needs 002✅ + 008 + 010 + 013
+    Topic 008 closure may unblock:
+    - Topic 017 (epistemic search policy) — needs 002✅ + 008 + 010✅ + 013
     Update EXECUTION_PLAN.md dependency notes if applicable.
 
 STEP 4 — CREATE/UPDATE draft spec in `drafts/`:
   - Convert converged design decisions to spec sections
   - Each decision must trace: Issue ID → final-resolution.md → evidence
-  - architecture_spec.md §6 (Clean OOS Flow) is the primary target
+  - architecture_spec.md is the primary target (pillars, directory, identity)
+  - meta_spec.md secondary (Meta-Updater scope from F-02 pillar 3)
 
 STEP 5 — VERIFY no status drift:
-  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 010 = CLOSED
+  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 008 = CLOSED
   - No orphaned Open issues remain in findings-under-review.md
 
 Nếu còn bước nào nữa mà tôi chưa nêu ra, hãy nhắc tôi bổ sung.

@@ -1,11 +1,16 @@
-# Final Resolution — Search-Space Expansion
+# Final Resolution — Search-Space Expansion ⚠️ SUPERSEDED
+
+> **⚠️ NON-AUTHORITATIVE**: Topic 018 REOPENED (2026-03-26). This document
+> records decisions from the prior 4-agent extra-canonical debate. It serves
+> as **input reference** for the new standard 2-agent debate, not as binding
+> decisions. All SSE-D-* decisions and downstream routings are provisional.
 
 **Topic ID**: X38-T-18
 **Opened**: 2026-03-25
-**Closed**: 2026-03-26
-**Rounds**: 7 / 6 (R7 = bookkeeping/termination only; max_rounds_per_topic = 6 per §13)
-**Participants**: claude_code (architect), codex (advisor), gemini (advisor), chatgptpro (advisor)
-**Evidence archive**: `docs/search-space-expansion/debate/` (4 proposals + 4×7 debate rounds)
+**Previously closed**: 2026-03-26 (reopened same day)
+**Rounds (prior)**: 7 / 6 (R7 = bookkeeping/termination only; max_rounds_per_topic = 6 per §13)
+**Participants (prior)**: claude_code (architect), codex (advisor), gemini (advisor), chatgptpro (advisor)
+**Evidence archive**: `docs/search-space-expansion/debate/` (4 proposals + 4×7 debate rounds) [extra-canonical]
 
 ---
 
