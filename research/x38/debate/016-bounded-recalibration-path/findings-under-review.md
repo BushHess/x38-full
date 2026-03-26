@@ -41,7 +41,7 @@ hay không?**
 1. **Proportionality**: Nếu degradation chỉ do drift nhẹ (e.g., optimal trail
    dịch nhẹ), full re-discovery (N sessions × M configs) là
    disproportionate. Cost: weeks of compute + new campaign overhead.
-2. **Operational reality**: btc-spot-dev đã có trail sweep [extra-archive]
+2. **Operational reality**: research/results/trail_sweep/trail_sweep.json [extra-archive]
    (full parameter range, monotonic tradeoff) — recalibrate trail là
    operational choice, không phải algorithm redesign.
 3. **Practical precedent**: F-27 (deployment boundary) đã đề xuất tách

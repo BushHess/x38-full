@@ -24,7 +24,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-05 | Core engine design | 2026-03-22 | OPEN | `005-core-engine/` | F-07 (1) |
 | X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08 (1) |
 | X38-T-07 | Philosophy & mission claims | 2026-03-22 | **CLOSED** (2026-03-23) | `007-philosophy-mission/` | F-01, F-20, F-22, F-25 (4) — 4/4 Converged |
-| X38-T-08 | Architecture & identity | 2026-03-22 | OPEN | `008-architecture-identity/` | F-02, F-09, F-13 (3) |
+| X38-T-08 | Architecture & identity | 2026-03-22 | OPEN | `008-architecture-identity/` | F-02, F-09, F-13 + SSE-04-IDV (4) |
 | X38-T-09 | Data integrity | 2026-03-22 | OPEN | `009-data-integrity/` | F-10, F-11 (2) |
 | X38-T-10 | Clean OOS & certification | 2026-03-22 | **CLOSED** (2026-03-25) | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) — 3 Converged + 1 Judgment call |
 | X38-T-11 | Deployment boundary | 2026-03-22 | OPEN | `011-deployment-boundary/` | F-26, F-27, F-28, F-29 (4) |
@@ -36,7 +36,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs — 10 Converged (3 routed to downstream). 4-agent debate (claude_code, codex, gemini, chatgptpro). Evidence: `docs/search-space-expansion/debate/` [extra-canonical] |
 
-**Totals**: 19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 57 findings distributed.
+**Totals**: 19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 58 findings distributed.
 
 ## Debate Waves
 

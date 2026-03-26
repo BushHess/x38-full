@@ -23,8 +23,8 @@ recognition — zero AI in execution). The backbone pipeline from pre-lock
 through freeze, and a 7-field breadth-activation interface contract were
 agreed. All mechanisms fold into existing topics (006/015/017/013/008/003).
 
-**Final tally**: 7 Converged, 0 Judgment call, 3 Defer (routed to downstream
-topics). All 10 issues resolved. No open items. 11 architectural decisions
+**Final tally**: 10 Converged (3 routed to downstream topics), 0 Judgment call.
+All 10 issues resolved. No open items. 11 architectural decisions
 (SSE-D-01 through SSE-D-11) produced from 10 OIs.
 
 **Round symmetry note (§14b)**: All 4 agents submitted rounds 1–7. R7 exceeds
@@ -48,9 +48,9 @@ synthesis uses canonical **SSE-D-NN** IDs with per-agent evidence pointers.
 | SSE-D-04 | 7-field breadth-activation contract | Protocol MUST declare all 7 interface fields before breadth activation; exact values deferred to downstream owners | Converged | R6 |
 | SSE-D-05 | Recognition stack minimum | Topology: surprise_queue → equivalence_audit → proof_bundle → freeze; 5 anomaly axes + 5-component proof bundle minimum | Converged | R5 |
 | SSE-D-06 | Hybrid equivalence | Deterministic structural pre-bucket + behavioral nearest-rival audit on common comparison domain; no LLM judge | Converged | R6 |
-| SSE-D-07 | 3-layer lineage | DEFER: semantic split locked (feature / candidate / proposal); field enumeration + invalidation to Topic 015 | Defer | R5 |
-| SSE-D-08 | Contradiction registry | DEFER: descriptor-level, shadow-only (MK-17 ceiling); row schema + retention to Topics 015/017 | Defer | R5 |
-| SSE-D-09 | Multiplicity control coupling | DEFER: breadth coupling locked via SSE-D-04; exact correction formula to Topic 013, invalidation to Topic 015 | Defer | R5 |
+| SSE-D-07 | 3-layer lineage | Routed: semantic split locked (feature / candidate / proposal); field enumeration + invalidation to Topic 015 | Converged (routed) | R5 |
+| SSE-D-08 | Contradiction registry | Routed: descriptor-level, shadow-only (MK-17 ceiling); row schema + retention to Topics 015/017 | Converged (routed) | R5 |
+| SSE-D-09 | Multiplicity control coupling | Routed: breadth coupling locked via SSE-D-04; exact correction formula to Topic 013, invalidation to Topic 015 | Converged (routed) | R5 |
 | SSE-D-10 | Domain-seed = optional provenance hook | Hook only — no replay semantics, no session format; composition provenance preserved via lineage | Converged | R5 |
 | SSE-D-11 | APE v1 = parameterization only | Template parameterization + compile-time ideation; no free-form code generation in v1 (correctness guarantee absent) | Converged | R5 |
 
@@ -287,7 +287,7 @@ Stage 8: Holdout + reserve + epistemic delta
 | 4 | CDAP / domain catalog as core mechanism | SSE-D-10: hook only |
 | 5 | Full EPC lifecycle / activation ladder | MK-17 shadow-only ceiling |
 
-### Deferred to downstream topic owners (DEFER OIs)
+### Routed to downstream topic owners (Converged-routed OIs)
 
 | # | Artifact / Mechanism | Owner | Source |
 |---|---------------------|-------|--------|
@@ -362,12 +362,12 @@ These were never disputed across all 4 agents and all 7 rounds:
 | OI-01 | Pre-lock generation lane ownership | Judgment call | **Converged** (SSE-D-01) | "Downstream chưa echo owner split → chỉ là slogan" | Authority-order reversal: upstream routes owners BEFORE downstream confirms. REOPEN-\* exists for gaps. Object boundaries explicit in SSE-D-01. |
 | OI-02 | Bounded ideation / cold-start | Thiếu sót | **Converged** (SSE-D-02, SSE-D-03) | "SSS trực tiếp tái tạo VDO origin" | VDO value từ composition + 16/16 robustness, không từ session format. 4/4 aligned R3+. Contamination risk killed SSS. |
 | OI-03 | Surprise lane / recognition inventory | Thiếu sót | **Converged** (SSE-D-05) | "IC + orthogonality đủ" | IC = feature screening (overfitting risk on in-sample). Candidate recognition cần 5 anomaly axes + 5-component proof bundle. Thresholds = 017/013. |
-| OI-04 | 3-layer lineage | Thiếu sót | **Defer** (SSE-D-07) | "Field list chưa xong → issue phải active ở đây" | Semantic split locked (feature/candidate/proposal have different invalidation semantics). Field enumeration = 015 scope. |
-| OI-05 | Cross-campaign contradiction memory | Judgment call | **Defer** (SSE-D-08) | "Row schema chưa close → issue phải active ở đây" | MK-17 shadow-only ceiling locked. Row schema/retention = 015/017 scope. |
+| OI-04 | 3-layer lineage | Thiếu sót | **Converged (routed)** (SSE-D-07) | "Field list chưa xong → issue phải active ở đây" | Semantic split locked (feature/candidate/proposal have different invalidation semantics). Field enumeration = 015 scope. |
+| OI-05 | Cross-campaign contradiction memory | Judgment call | **Converged (routed)** (SSE-D-08) | "Row schema chưa close → issue phải active ở đây" | MK-17 shadow-only ceiling locked. Row schema/retention = 015/017 scope. |
 | OI-06 | Breadth-expansion interface contract | Thiếu sót | **Converged** (SSE-D-04) | "Exact correction/taxonomy defaults phải freeze ngay tại topic này" | 7/7 interface obligations identified and routed. Exact values = downstream owners. Interface ≠ content. |
 | OI-08 | Cell + equivalence + correction method | Thiếu sót | **Converged** (SSE-D-06) | "AST-hash + parameter distance đủ cho equivalence" | Behavioral redundancy determines economic independence — AST misses economic duplicates. Hybrid preserves determinism. Gemini R6 withdrew AST-only. |
 | OI-07 | Domain-seed hook | Judgment call | **Converged** (SSE-D-10) | "Cross-domain cross-pollination là core mechanism" | Composition provenance, not session format. Hook preserves trail without creating infrastructure. |
-| NEW-01 (GPT) | Multiplicity control | Thiếu sót | **Defer** (SSE-D-09) | "Coupling → default law phải khóa ngay" | Coupling locked via SSE-D-04 field 5. Exact formula = 013 scope. |
+| NEW-01 (GPT) | Multiplicity control | Thiếu sót | **Converged (routed)** (SSE-D-09) | "Coupling → default law phải khóa ngay" | Coupling locked via SSE-D-04 field 5. Exact formula = 013 scope. |
 | NEW-01 (Claude) | APE v1 scope | Thiếu sót | **Converged** (SSE-D-11) | "Code generation tạo structural innovation" | Correctness guarantee chưa có; parameterization + compile-time ideation đủ cho v1. |
 
 ---
@@ -399,9 +399,9 @@ These were never disputed across all 4 agents and all 7 rounds:
 
 ## Closure Audit Checklist
 
-- [x] All OIs resolved: 7 CONVERGED + 3 DEFER = 10/10
+- [x] All OIs resolved: 10 CONVERGED (3 routed) = 10/10
 - [x] No Judgment calls required (all substance-aligned 4/4)
-- [x] DEFER items routed to downstream topics with explicit owner
+- [x] Routed items have downstream topic owners explicitly assigned
 - [x] §14b symmetry: all 4 agents have equal substantive rounds
 - [x] Steel-man completed for every CONVERGED issue
 - [x] Cross-topic tensions documented with resolution paths

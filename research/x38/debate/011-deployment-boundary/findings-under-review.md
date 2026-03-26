@@ -62,7 +62,7 @@ vụ Y."
 - F-12: PENDING_CLEAN_OOS auto-trigger pattern (same pattern, different trigger)
 - btc-spot-dev monitoring/regime_monitor.py [extra-archive]: precedent thực tế (RED khi 6m MDD
   > 55% hoặc 12m MDD > 70%)
-- X22 (Cost Sensitivity): performance thay đổi lớn theo cost → monitoring
+- research/x22/REPORT.md [extra-archive]: performance thay đổi lớn theo cost → monitoring
   cần track realized cost, không chỉ algorithm metrics
 
 **Câu hỏi mở**:
@@ -111,11 +111,12 @@ thêm complexity, thêm debate topics, thêm thời gian build.
 > x38 chỉ specify interface cho monitoring trigger (F-26).
 
 **Evidence**:
-- Cost sensitivity study [extra-archive]: cost optimization impact lớn hơn hầu hết
+- research/x22/REPORT.md [extra-archive]: cost optimization impact lớn hơn hầu hết
   algorithm improvements — operational lever, không phải research output
-- Trail sweep study [extra-archive]: trail parameter changes là operational choice,
-  không phải algorithm discovery
-- Position sizing [extra-archive]: vol-target sizing chưa optimize riêng —
+- research/results/trail_sweep/trail_sweep.json [extra-archive]: trail parameter changes
+  là operational choice, không phải algorithm discovery
+- research/x21/ (Conviction Sizing, CLOSE) [extra-archive]: entry features IC = -0.039,
+  fixed sizing f=0.30 remains optimal — vol-target sizing chưa optimize riêng,
   deployment concern
 - PLAN.md:86-90: x38 scope nói "không chỉ BTC" nhưng không nói về deployment
 
@@ -222,9 +223,8 @@ F-29 nối hai finding thành interface design rõ ràng.
 **Evidence**:
 - F-17 (X38-D-17): classification table (CẦN version mới vs KHÔNG CẦN)
 - F-27 (X38-D-27): deployment levers chưa có boundary contract
-- X22 cost sensitivity [extra-archive] cho thấy cost optimization impact
-  lớn hơn hầu hết algorithm improvements (btc-spot-dev [extra-archive], không thuộc x38
-  authority)
+- research/x22/REPORT.md [extra-archive]: cost optimization impact
+  lớn hơn hầu hết algorithm improvements (không thuộc x38 authority)
 
 **Câu hỏi mở**:
 - `parameter_manifold_id` chưa có spec — Stage 6 plateau output cần define

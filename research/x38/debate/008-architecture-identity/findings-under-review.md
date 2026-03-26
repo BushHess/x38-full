@@ -41,8 +41,8 @@ Framework được xây trên 3 trụ cột bắt buộc:
    coi là contamination.
 
 **Evidence**:
-- Expert feedback (2026-03-18): "Ba thứ là bắt buộc: contamination firewall,
-  protocol engine, meta-updater."
+- PLAN.md:664 [x38 internal]: "3 thành phần bắt buộc: contamination firewall,
+  protocol engine, meta-updater" (expert feedback session, 2026-03-18).
 - research/x37/docs/gen1/RESEARCH_PROMPT_V6/PROMPT_FOR_V6_HANDOFF.md:19 [extra-archive]: "Transfer only meta-knowledge [...],
   DO NOT transfer data-derived specifics."
 - research/x37/x37_RULES.md §7 [extra-archive]: phase gating đã tồn tại dưới dạng rules, cần codify.
