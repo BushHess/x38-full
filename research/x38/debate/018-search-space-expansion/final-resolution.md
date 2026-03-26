@@ -123,7 +123,7 @@ breadth-expansion activation is permitted:
 |---|-------|-------|-------------|
 | 1 | `descriptor_core_v1` | 017 | 4 mandatory cell axes: `mechanism_family`, `architecture_depth`, `turnover_bucket`, `timeframe_binding` |
 | 2 | `common_comparison_domain` | 013 | Default v1: `paired_daily_returns_after_costs` on shared evaluation segment |
-| 3 | `identity_vocabulary` | 008 (TBD) | Deterministic structural pre-bucket (descriptor hash, parameter family, AST-hash as subset) |
+| 3 | `identity_vocabulary` | **UNRESOLVED** — 008 candidate per X38-D-13, but scope gap identified (see correction note below) | Deterministic structural pre-bucket (descriptor hash, parameter family, AST-hash as subset) |
 | 4 | `equivalence_method` | 013 + 008 | 2-layer hybrid: structural pre-bucket + behavioral nearest-rival. No LLM |
 | 5 | `scan_phase_correction_method` | 013 | Required declaration; exact default (Holm/FDR/cascade) deferred to 013 |
 | 6 | `minimum_robustness_bundle` | 017 + 013 | 5-component proof bundle minimum (see SSE-D-05) |

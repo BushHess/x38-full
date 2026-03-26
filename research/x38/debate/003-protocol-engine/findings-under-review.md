@@ -45,9 +45,11 @@ Freeze checkpoint: sau Stage 7, stages 1-6 dirs trở thành read-only.
 **Evidence**:
 - RESEARCH_PROMPT_V6.md §Stages 1-8 [extra-archive]: definition.
 - x37_RULES.md §7.1-7.4 [extra-archive]: gating rules, minimum evidence, checkpoints.
-- **V8 spec_1 (2026-03-19)**: 866-line research reproduction spec uses explicit
+- research/x37/resource/gen1/v8_sd1trebd/spec/spec_1_research_reproduction_v8.md [extra-archive]:
+  866-line research reproduction spec uses explicit
   **Input → Logic → Output → Decision Rule** structure for every step.
-- **V8 SPEC_REQUEST_PROMPT (2026-03-19)**: 263-line meta-prompt — pattern:
+- research/x37/docs/gen1/RESEARCH_PROMPT_V8/SPEC_REQUEST_PROMPT.md [extra-archive]:
+  263-line meta-prompt — pattern:
   meta-prompt generates spec-writing instructions → AI writes spec → checklist verifies.
 
 **Câu hỏi mở**:

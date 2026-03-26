@@ -43,9 +43,9 @@ Framework được xây trên 3 trụ cột bắt buộc:
 **Evidence**:
 - Expert feedback (2026-03-18): "Ba thứ là bắt buộc: contamination firewall,
   protocol engine, meta-updater."
-- PROMPT_FOR_V6_HANDOFF.md line 19 [extra-archive]: "Transfer only meta-knowledge [...],
+- research/x37/docs/gen1/RESEARCH_PROMPT_V6/PROMPT_FOR_V6_HANDOFF.md:19 [extra-archive]: "Transfer only meta-knowledge [...],
   DO NOT transfer data-derived specifics."
-- x37_RULES.md §7 [extra-archive]: phase gating đã tồn tại dưới dạng rules, cần codify.
+- research/x37/x37_RULES.md §7 [extra-archive]: phase gating đã tồn tại dưới dạng rules, cần codify.
 
 **Câu hỏi mở**: 3 trụ cột có đủ? Có cần trụ thứ 4 (ví dụ: reproducibility
 engine, audit trail engine)? Hay 3 trụ đã bao trùm?
@@ -107,8 +107,8 @@ Venv riêng (không share với /var/www/trading-bots/.venv/).
 Data là copies (mỗi campaign gắn liền với exact snapshot).
 
 **Evidence**:
-- RESEARCH_RULES.md [extra-archive]: research self-contained pattern.
-- x37 architecture [extra-archive]: sessions/, shared/, analysis/ — similar concept.
+- docs/research/RESEARCH_RULES.md [extra-archive]: research self-contained pattern.
+- research/x37/README.md [extra-archive]: sessions/, shared/, analysis/ — similar concept.
 
 **Câu hỏi mở**:
 - `knowledge/` nên ở root hay trong `src/`?
@@ -155,14 +155,50 @@ ghi rõ protocol version nó tuân thủ. Convergence analysis chỉ so sánh ca
 cùng protocol version (hoặc flag rõ cross-protocol comparison).
 
 **Evidence**:
-- gen4/core/research_constitution_v4.0.yaml §identity [extra-archive]: "Three identity axes, separated and independent"
-- gen4/core/README_EN.md [extra-archive]: system version lifecycle overview
+- research/x37/docs/gen4/core/research_constitution_v4.0.yaml §identity [extra-archive]: "Three identity axes, separated and independent"
+- research/x37/docs/gen4/core/README_EN.md [extra-archive]: system version lifecycle overview
 - x38 F-03 (Campaign model): chỉ có campaign/session, thiếu protocol versioning
 
 **Câu hỏi mở**:
 - Có cần 3 trục đầy đủ hay 2 trục (protocol_version + campaign/session) đủ?
 - Protocol version thay đổi khi nào? Chỉ khi debate kết thúc và spec published?
 - Cần governance review (như gen4) cho mỗi protocol change, hay lightweight hơn?
+
+---
+
+## X38-SSE-04-IDV: Candidate-level identity vocabulary (routed from Topic 018)
+
+- **issue_id**: X38-SSE-04-IDV
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-26
+- **opened_in_round**: 0 (routed from Topic 018 closure)
+- **current_status**: Open
+- **source**: Topic 018 (Search-Space Expansion), SSE-D-04 field 3 + correction note
+
+**Nội dung**:
+
+Topic 018's 7-field breadth-activation interface contract (SSE-D-04) requires
+`identity_vocabulary` (field 3) to be declared before breadth activation. The
+correction note (`debate/018-search-space-expansion/final-resolution.md:146-150`)
+states that candidate-level `identity_vocabulary` ownership is "TBD by synthesis"
+because X38-D-13 covers protocol/campaign/session identity axes, not
+candidate-equivalence vocabulary.
+
+This topic must determine whether candidate-level equivalence vocabulary
+(deterministic structural pre-bucket: descriptor hash, parameter family,
+AST-hash as subset) belongs within Topic 008's scope or requires a different
+owner topic.
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md:122-130` [x38 internal]:
+  7-field breadth-activation table, field 3 marked UNRESOLVED
+- `debate/018-search-space-expansion/final-resolution.md:146-150` [x38 internal]:
+  correction note — "TBD by synthesis", X38-D-13 scope insufficient
+
+**Câu hỏi mở**:
+- Candidate-level equivalence vocabulary thuộc 008 (identity) hay 013 (convergence)?
+- Nếu thuộc 008: X38-D-13 cần mở rộng scope sang candidate-equivalence?
+- Nếu thuộc 013: field 3 owner cần cập nhật trong SSE-D-04?
 
 ---
 
@@ -180,3 +216,4 @@ cùng protocol version (hoặc flag rõ cross-protocol comparison).
 | X38-D-02 | Ba trụ cột kiến trúc | Judgment call | Open |
 | X38-D-09 | Cấu trúc thư mục target | Thiếu sót | Open |
 | X38-D-13 | Three-identity-axis model (từ gen4) | Thiếu sót | Open |
+| X38-SSE-04-IDV | Candidate-level identity vocabulary (from T018) | Thiếu sót | Open |

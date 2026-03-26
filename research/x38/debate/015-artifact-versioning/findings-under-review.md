@@ -42,8 +42,8 @@ Artifacts gen4 **không cần** trong Alpha-Lab offline:
 - `forward_daily_returns.csv`, `forward_equity_curve.csv` (same)
 
 **Evidence**:
-- gen4/core/STATE_PACK_SPEC_v4.0_EN.md [extra-archive]: 18 required files
-- gen4/core/FORWARD_DECISION_POLICY_EN.md [extra-archive]: how artifacts are used in decisions
+- research/x37/docs/gen4/core/STATE_PACK_SPEC_v4.0_EN.md [extra-archive]: 18 required files
+- research/x37/docs/gen4/core/FORWARD_DECISION_POLICY_EN.md [extra-archive]: how artifacts are used in decisions
 - x38 F-09: directory structure shows `sessions/s001/...` without enumeration
 
 **Câu hỏi mở**:
@@ -99,8 +99,8 @@ Alpha-Lab cần classification tương tự:
 | Logging, formatting, CLI | Không ảnh hưởng results | No invalidation |
 
 **Evidence**:
-- gen4/core/research_constitution_v4.0.yaml §semantic_change [extra-archive]: full classification + bit-identical test
-- btc-spot-dev MEMORY.md [extra-archive]: D1→H4 fix invalidated 195 scripts (real example)
+- research/x37/docs/gen4/core/research_constitution_v4.0.yaml §semantic_change [extra-archive]: full classification + bit-identical test
+- /root/.claude/projects/-var-www-trading-bots/memory/MEMORY.md [extra-archive]: D1→H4 fix invalidated 195 scripts (real example)
 - x38 F-11: covers session immutability but not framework code changes
 
 **Câu hỏi mở**:

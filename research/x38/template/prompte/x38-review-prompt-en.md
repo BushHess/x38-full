@@ -1,3 +1,5 @@
+Thư mục chứa x38:/var/www/trading-bots/btc-spot-dev/research/x38
+
 # x38 Codex Repository Audit — Prompt Template
 
 Supplementary prompt for OpenAI Codex (VSCode IDE) to audit the x38 research
@@ -6,6 +8,27 @@ repository for governance integrity, status consistency, and debate artifact hea
 x38 is a **blueprint repository** — it produces architecture specs, not code.
 Audit axes reflect this: the goal is debate/draft/publish readiness, not
 "codebase health" or "implementation feasibility."
+
+---
+
+## Repository Topology — mandatory
+
+x38 is a **subtree** inside a larger monorepo, not a standalone repository.
+
+- **Monorepo root**: the git repository (see `AGENTS.md` § Environment Boundaries
+  for the concrete absolute path).
+- **x38 governance root**: `research/x38/` (relative to monorepo root).
+- **Path convention in this prompt**: every path is relative to `research/x38/`
+  unless the step explicitly involves a shell or git command.
+- For **file reads/writes**, operate only inside `research/x38/`.
+- For **git history / diffs**, run from monorepo root and scope to x38, e.g.:
+  `git diff {DIFF_RANGE} --name-only -- research/x38`
+- **Audit artifacts**:
+  - `audits/x38-audit-YYYY-MM-DD.md` when cwd is `research/x38/`
+  - `research/x38/audits/x38-audit-YYYY-MM-DD.md` when cwd is monorepo root
+- Do **not** inventory unrelated monorepo paths (e.g., `strategies/`, `v10/`,
+  `validation/`) unless an x38 cross-reference explicitly points outside
+  `research/x38/`.
 
 ---
 
@@ -48,7 +71,8 @@ Audit axes reflect this: the goal is debate/draft/publish readiness, not
 8. Valid topic statuses: OPEN | DEBATING | CLOSED | SPLIT.
    Read wave structure dynamically from debate-index.md; do not hardcode topic
    counts or wave membership from this template.
-9. Do NOT inventory the whole repo unless a mismatch forces broader scan.
+9. Do NOT inventory the whole monorepo unless an x38 cross-reference forces
+   a broader scan outside `research/x38/`.
 ```
 
 ---
@@ -82,8 +106,8 @@ Agent mode recommended. Subagents optional for parallel audit axes.
 
 ```
 Role: Codex (governance auditor)
-Scope: Full repository audit
-Focus: {FOCUS_PATHS} (or entire repo if omitted)
+Scope: Full x38 subtree audit (research/x38/), not monorepo-wide
+Focus: {FOCUS_PATHS} (or entire x38 subtree if omitted)
 Output:
 - English report only.
 - Do not modify x38 governance source files unless the human explicitly asks for remediation.
@@ -240,15 +264,15 @@ Scope: Maintenance audit on recent changes
 Diff range: {DIFF_RANGE} (default: HEAD~5..HEAD)
 Output: Report only — do not modify x38 governance source files.
 
-1. Identify changed files:
-   git diff {DIFF_RANGE} --name-only
+1. Identify changed files (from monorepo root, scoped to x38):
+   git diff {DIFF_RANGE} --name-only -- research/x38
 
 2. For each changed file:
    a. If in docs/: change contradicts topic-dir findings or design_brief.md?
    b. If under debate/<topic-dir>/: change conflicts with other rounds,
       findings-under-review.md, or final-resolution.md?
-   c. If root governance doc (AGENTS.md, x38_RULES.md, PLAN.md,
-      EXECUTION_PLAN.md): change breaks cross-references?
+   c. If x38 subtree-root governance doc (AGENTS.md, x38_RULES.md, PLAN.md,
+      EXECUTION_PLAN.md — all under research/x38/): change breaks cross-references?
    d. If prompt template or wrapper changed: is canonical workflow still aligned
       across debate/prompt_template.md and template/prompte/?
    e. Terminology still consistent after the change?

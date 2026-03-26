@@ -761,7 +761,7 @@ Vai trò kép:
 
 | 008 | Architecture & identity | F-02, F-09, F-13 | **OPEN** (2026-03-22, Wave 2) |
 | 009 | Data integrity | F-10, F-11 | **OPEN** (2026-03-22, Wave 2) |
-| 010 | Clean OOS & certification | F-12, F-21, F-23, F-24 | **OPEN** (2026-03-22, Wave 2) |
+| 010 | Clean OOS & certification | F-12, F-21, F-23, F-24 | **CLOSED** (2026-03-25) |
 | 011 | Deployment boundary | F-26, F-27, F-28, F-29 | **OPEN** (2026-03-22, Wave 2) |
 | 012 | Quality assurance | F-18, F-19 | **OPEN** (2026-03-22, Wave 2) |
 | 013 | Convergence analysis | F-30, F-31 | **OPEN** (2026-03-22, Wave 2) |

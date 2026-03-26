@@ -102,10 +102,10 @@ All 3 DEFER OIs + 3 additional residuals properly routed with:
 | Registry | Entry exists | Correct |
 |----------|-------------|---------|
 | `debate-index.md` Topic Registry | X38-T-18 row added | Yes — status CLOSED, findings count, evidence pointer |
-| `debate-index.md` Totals | "19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 49 findings" | Yes |
+| `debate-index.md` Totals | "19 topics (6 CLOSED, 1 SPLIT, 12 OPEN). 57 findings distributed" | Yes — updated from 49→56 after T-018 OIs routed, then 56→57 after SSE-04-IDV added to T008 |
 | `018-search-space-expansion/README.md` | Created | Yes — scope, findings, dependencies, cross-topic tensions, files |
 | `018-search-space-expansion/final-resolution.md` | Created (canonical) | Yes — corrected counts, proper Topic ID |
-| `docs/search-space-expansion/debate/final-resolution.md` | Updated | Yes — pointer to canonical location |
+| `docs/search-space-expansion/debate/final-resolution.md` | Updated | Yes — pointer stub referencing canonical `debate/018-search-space-expansion/final-resolution.md` |
 
 ---
 

@@ -14,6 +14,7 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 - F-02: Ba trụ cột kiến trúc (Contamination Firewall, Protocol Engine, Meta-Updater)
 - F-09: Cấu trúc thư mục target (`/var/www/trading-bots/alpha-lab/`)
 - F-13: Three-identity-axis model (protocol versioning từ gen4)
+- X38-SSE-04-IDV: Candidate-level identity vocabulary (routed from Topic 018)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
 - C-11: Authority chain: design_brief + PLAN primary, F-04 supporting enforcement
@@ -41,6 +42,6 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 3 findings: F-02, F-09, F-13 |
+| `findings-under-review.md` | 4 findings: F-02, F-09, F-13 + 1 from Topic 018 (SSE-04-IDV) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

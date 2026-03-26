@@ -92,9 +92,9 @@ Firewall cần formal exception:
 - F-04 (Topic 002): Typed schema + whitelist — current enforcement mechanism
 - F-27 (Topic 011): Deployment boundary — operational levers outside x38
 - F-29 (Topic 011): algo_version / deploy_version split
-- Trail sweep evidence [extra-archive]: full parameter range monotonic tradeoff,
+- research/results/trail_sweep/trail_sweep.json [extra-archive]: full parameter range monotonic tradeoff,
   default balanced — trail change is operational, not structural
-- X22 (Cost Sensitivity) [extra-archive]: Performance shifts with cost regime,
+- research/x22/REPORT.md [extra-archive]: Performance shifts with cost regime,
   cost optimization is deployment concern
 
 **Câu hỏi mở**:

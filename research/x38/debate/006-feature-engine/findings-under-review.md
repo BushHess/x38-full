@@ -49,10 +49,10 @@ Scanner enumerate: feature × lookback × tail × mode × quantile → có thể
 Serialization: stage1_registry.parquet (typed, compact cho 50K+ rows).
 
 **Evidence**:
-- V5 resource [extra-archive]: 261 features, 8 role categories, scan manifest.
-- V6 resource [extra-archive]: 2,219 configs, threshold modes (fixed zero, expanding, calibration).
-- V6 CONTAMINATION_LOG_V2.md [extra-archive]: feature inventories từ 6 rounds — total ~100+ unique features.
-- RESEARCH_PROMPT_V6.md §Stage 1 [extra-archive]: "Export the full machine-readable Stage 1 registry."
+- research/x37/resource/gen1/v5_sfq70/ [extra-archive]: 261 features, 8 role categories, scan manifest.
+- research/x37/resource/gen1/v6_ret168/ [extra-archive]: 2,219 configs, threshold modes (fixed zero, expanding, calibration).
+- research/x37/docs/gen1/RESEARCH_PROMPT_V6/CONTAMINATION_LOG_V2.md [extra-archive]: feature inventories từ 6 rounds — total ~100+ unique features.
+- research/x37/docs/gen1/RESEARCH_PROMPT_V6/RESEARCH_PROMPT_V6.md §Stage 1 [extra-archive]: "Export the full machine-readable Stage 1 registry."
 
 **Câu hỏi mở**:
 - Decorator pattern vs config-driven (YAML/JSON define features)?

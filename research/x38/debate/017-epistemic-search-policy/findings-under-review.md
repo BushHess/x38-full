@@ -171,7 +171,7 @@ Knowledge object rút ra từ phenotype patterns, dùng để ảnh hưởng sea
   `STRUCTURAL_PRIOR` as 5th whitelist category was NOT added. Phenotype-derived
   structural priors from ESP-02 operate within existing 4-category + UNMAPPED
   boundary, subject to reconstruction-risk gate.
-- V4->V8 contamination logs [extra-archive]: every online session leaked answer
+- research/x37/docs/gen1/RESEARCH_PROMPT_V6/CONTAMINATION_LOG_V2.md [extra-archive]: every online session leaked answer
   priors through "methodology" lessons — phenotype contract prevents this by
   enforcing forbidden_payload at schema level
 

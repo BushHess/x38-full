@@ -26,7 +26,7 @@
 
 F-03 (Campaign Model) nói "convergence analysis chéo giữa sessions" nhưng **không
 định nghĩa thuật toán** để đo convergence. V4→V8 cho thấy 5 sessions, 5 winners
-khác family — CONVERGENCE_STATUS_V3 [extra-archive] kết luận "hội tụ ở family level, phân kỳ ở
+khác family — research/x37/docs/gen1/RESEARCH_PROMPT_V8/CONVERGENCE_STATUS_V3.md [extra-archive] kết luận "hội tụ ở family level, phân kỳ ở
 exact winner". Nhưng kết luận này dựa trên human judgment, không phải metric.
 
 Framework cần **convergence algorithm** cụ thể, bao gồm:
@@ -63,7 +63,7 @@ V4→V8 cho thấy convergence có thể xảy ra ở levels khác nhau:
 Framework cần hỗ trợ partial convergence — không chỉ binary.
 
 **Evidence**:
-- CONVERGENCE_STATUS_V3.md [extra-archive]: 5 sessions diverge ở exact winner,
+- research/x37/docs/gen1/RESEARCH_PROMPT_V8/CONVERGENCE_STATUS_V3.md [extra-archive]: 5 sessions diverge ở exact winner,
   partial convergence ở "D1 slow" family
 - x38 F-03: "convergence analysis" mentioned nhưng không defined
 - x38 F-15: metric scoping (session vs campaign vs cross-campaign) ảnh hưởng
@@ -126,8 +126,8 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
   hơn new-data campaigns
 
 **Evidence**:
-- V4→V8: 5 sessions, cuối cùng dừng bằng human judgment (PROMPT_FOR_V8_HANDOFF
-  line 62 [extra-archive]: same-file iteration có giới hạn)
+- V4→V8: 5 sessions, cuối cùng dừng bằng human judgment (research/x37/docs/gen1/RESEARCH_PROMPT_V8/PROMPT_FOR_V8_HANDOFF.md:62
+  [extra-archive]: same-file iteration có giới hạn)
 - x38 F-03: stop conditions là câu hỏi mở
 - x38 F-16: gen4 cooldown 180d — không áp dụng offline nhưng concept tương tự
 - MK-17 (topic 004, RESOLVED): shadow-only trên same dataset
