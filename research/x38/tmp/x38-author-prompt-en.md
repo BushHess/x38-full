@@ -4,16 +4,19 @@
 
 ```
 Role: Claude Code (architect / opening critic)
-Mode: opening | Round: 1 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-1_opening-critique.md
+Mode: opening | Round: 1 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-1_opening-critique.md
 
 HEADER (mandatory):
-  # Round 1 — Opening Critique: Architecture Pillars & Identity
-  **Topic**: 008-architecture-identity
+  # Round 1 — Opening Critique: Search-Space Expansion
+  **Topic**: 018-search-space-expansion
   **Author**: claude_code
   **Date**: 2026-03-27
-  **Scope**: X38-D-02 (Three pillars), X38-D-09 (Directory structure),
-             X38-D-13 (Three-identity-axis model), X38-SSE-04-IDV (Candidate-level identity vocabulary)
+  **Scope**: SSE-D-01 (Lane ownership), SSE-D-02/03 (Bounded ideation / cold-start),
+             SSE-D-04 (Breadth-expansion contract), SSE-D-05 (Surprise lane),
+             SSE-D-06 (Cell + equivalence), SSE-D-07 (3-layer lineage),
+             SSE-D-08 (Contradiction memory), SSE-D-09 (Multiplicity control),
+             SSE-D-10 (Domain-seed hook), SSE-D-11 (APE v1 scope)
   **Input documents**: (list all files read)
 
 ENVIRONMENT REMINDER:
@@ -27,10 +30,10 @@ PREAMBLE (2-4 paragraphs):
   - Establish architect role
   - State burden of proof (→ rules.md §5)
   - Critical context + scope boundaries
-  - Note: Topic 008 has 4 findings (F-02, F-09, F-13, SSE-04-IDV),
-    each with its own issue ID. They are related (architecture pillars,
-    directory structure, identity model, candidate-level vocabulary) but
-    debated as independent issues, not facets of a single finding.
+  - Note: Topic 018 has 10 OIs (SSE-D-01 through SSE-D-11), each with
+    its own issue ID. Prior 4-agent debate (extra-canonical) serves as
+    input evidence. Standard 2-agent re-debate required per x38_RULES.md §5.
+    Debate each OI independently; prior Converged status is non-authoritative.
 
 PER-ISSUE (for each Open issue):
   ## {Issue ID}: {Title} — {ACCEPT/REJECT/SPLIT/DEFER to V2+}
@@ -51,20 +54,20 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 4 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-3_reviewer-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-4_author-reply.md
+Mode: reply | Round: 4 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-3_reviewer-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-4_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 4 — Author Reply: Architecture Pillars & Identity
-  **Topic**: 008 — Architecture Pillars & Identity
+  # Round 4 — Author Reply: Search-Space Expansion
+  **Topic**: 018 — Search-Space Expansion
   **Author**: claude_code
   **Date**: 2026-03-27
   **Responds to**: `codex/round-3_reviewer-reply.md`
-  **Scope**: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
+  **Scope**: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
 
 MANDATORY RULE REMINDER:
     1. §4: Attack the argument, not the conclusion.
@@ -103,8 +106,8 @@ STATUS TABLE: updated per rules.md §11.
 
 ```
 Role: Claude Code (architect / closure)
-Mode: closure | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Topic: 008 — Architecture Pillars & Identity
+Mode: closure | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Topic: 018 — Search-Space Expansion
 
 ENVIRONMENT REMINDER:
 - Follow `research/x38/AGENTS.md` for repo/environment boundaries.
@@ -130,28 +133,35 @@ PREREQUISITES (verify before proceeding):
     to the author's final arguments.
 
 STEP 1 — CREATE `final-resolution.md`:
-  Path: debate/008-architecture-identity/final-resolution.md
+  Path: debate/018-search-space-expansion/final-resolution.md
   Use Template D (prompt_template.md). Include:
-  - Decisions table: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV with
+  - Decisions table: SSE-D-01 through SSE-D-11 with
     Resolution, Type, Round closed
   - Key design decisions (for drafts/):
-    - Three pillars sufficiency (3 vs 4, ESP as pillar vs Protocol Engine sub-component)
-    - Directory structure (knowledge/ location, data/ location, venv policy)
-    - Identity model (3-axis vs 2-axis, protocol_version trigger conditions)
-    - Candidate-level equivalence vocabulary (scope owner, structural pre-bucket definition)
+    - Lane ownership fold (018 umbrella vs downstream distribution)
+    - Bounded ideation rules + cold-start activation (SSE-D-02/03)
+    - Surprise lane recognition topology (SSE-D-05)
+    - 3-layer lineage semantic split (SSE-D-07, routed → 015)
+    - Contradiction memory: descriptor-level, shadow-only (SSE-D-08, routed → 015/017)
+    - Breadth-expansion 7-field interface contract (SSE-D-04)
+    - Domain-seed hook provenance (SSE-D-10)
+    - Hybrid equivalence method (SSE-D-06)
+    - Multiplicity control coupling (SSE-D-09, routed → 013)
+    - APE v1 scope boundary (SSE-D-11)
   - Unresolved tradeoffs (for human review)
-  - Cross-topic impact: Topic 017 (ESP pillar decision), Topic 015 (identity →
-    versioning), Topic 013 (candidate vocabulary ownership), Topic 009 (data location)
+  - Cross-topic impact: Topic 006 (generation_mode), Topic 015 (lineage + invalidation),
+    Topic 017 (surprise/proof integration), Topic 013 (multiplicity correction),
+    Topic 008 (identity vocabulary), Topic 003 (breadth-activation blocker)
   - Draft impact table
 
 STEP 2 — UPDATE `findings-under-review.md`:
-  Path: debate/008-architecture-identity/findings-under-review.md
+  Path: debate/018-search-space-expansion/findings-under-review.md
   - Update `current_status` for each issue (Converged / Judgment call)
   - Record round and date closed
   - Do NOT create ad-hoc fields — use existing schema only
 
 STEP 3 — UPDATE `debate-index.md` + topic `README.md`:
-  - Change topic 008 status → CLOSED
+  - Change topic 018 status → CLOSED
   - Sync summary with final-resolution.md
 
 STEP 3b — Sync closure status across global files:
@@ -162,18 +172,23 @@ STEP 3b — Sync closure status across global files:
       (blockquote: date, rounds, resolution summary, dependency list)
 
 STEP 3c — Check downstream unblocking:
-    Topic 008 closure may unblock:
-    - Topic 017 (epistemic search policy) — needs 002✅ + 008 + 010✅ + 013
+    Topic 018 closure may unblock:
+    - Topic 006 (feature engine) — SSE-D-03 generation_mode routing
+    - Topic 015 (artifact versioning) — SSE-D-07/08 lineage + contradiction
+    - Topic 017 (epistemic search policy) — SSE-D-05 topology + SSE-D-08-CON
+    - Topic 013 (convergence analysis) — SSE-D-09 multiplicity control
+    - Topic 008 (architecture identity) — SSE-D-04 identity_vocabulary
+    - Topic 003 (protocol engine) — SSE-D-04 breadth-activation blocker
     Update EXECUTION_PLAN.md dependency notes if applicable.
 
 STEP 4 — CREATE/UPDATE draft spec in `drafts/`:
   - Convert converged design decisions to spec sections
   - Each decision must trace: Issue ID → final-resolution.md → evidence
-  - architecture_spec.md is the primary target (pillars, directory, identity)
-  - meta_spec.md secondary (Meta-Updater scope from F-02 pillar 3)
+  - discovery_spec.md is the primary target (bounded ideation, surprise lane, APE)
+  - architecture_spec.md secondary (breadth-expansion contract, lineage routing)
 
 STEP 5 — VERIFY no status drift:
-  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 008 = CLOSED
+  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 018 = CLOSED
   - No orphaned Open issues remain in findings-under-review.md
 
 Nếu còn bước nào nữa mà tôi chưa nêu ra, hãy nhắc tôi bổ sung.

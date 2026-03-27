@@ -4,20 +4,23 @@ MODE A - Opening Critique
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 1 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-1_opening-critique.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-1_rebuttal.md
+Round: 1 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-1_opening-critique.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-1_rebuttal.md
 
 Read Prompt A in `debate/prompt_template.md` for the canonical round structure.
 
 HEADER (mandatory):
-  # Round 1 — Rebuttal: Architecture Pillars & Identity
-  **Topic**: 008 — Architecture Pillars & Identity
+  # Round 1 — Rebuttal: Search-Space Expansion
+  **Topic**: 018 — Search-Space Expansion
   **Author**: codex
-  **Date**: 2026-03-26
+  **Date**: 2026-03-27
   **Responds to**: `claude_code/round-1_opening-critique.md`
-  **Scope**: X38-D-02 (Three pillars), X38-D-09 (Directory structure),
-             X38-D-13 (Three-identity-axis model), X38-SSE-04-IDV (Candidate-level identity vocabulary)
+  **Scope**: SSE-D-01 (Lane ownership), SSE-D-02/03 (Bounded ideation / cold-start),
+             SSE-D-04 (Breadth-expansion contract), SSE-D-05 (Surprise lane),
+             SSE-D-06 (Cell + equivalence), SSE-D-07 (3-layer lineage),
+             SSE-D-08 (Contradiction memory), SSE-D-09 (Multiplicity control),
+             SSE-D-10 (Domain-seed hook), SSE-D-11 (APE v1 scope)
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -49,24 +52,32 @@ ENVIRONMENT REMINDER:
 - Do not assume `/var/www/trading-bots/` is the git root. Git root is `/var/www/trading-bots/btc-spot-dev/`.
 
 Task:
-- Review X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV as four separate issues
-  (not facets of a single finding).
-- Give each issue a verdict, but put the most depth on the arguments
+- Review all 10 OIs (SSE-D-01 through SSE-D-11) as independent issues.
+- Prior 4-agent debate (extra-canonical) serves as input evidence, not binding.
+  Evidence archive: `docs/search-space-expansion/debate/`.
+- Give each OI a verdict, but put the most depth on the arguments
   that could actually change the design.
 - Key battlegrounds for this topic:
-  (a) F-02: Three pillars sufficiency — 3 enough or need 4th?
-      ESP (Topic 017) as sub-component vs architectural pillar?
-      Meta-Updater scope: methodology-level only? What counts as contamination?
-      Reproducibility/audit trail: already covered by Protocol Engine or separate?
-  (b) F-09: Directory structure — knowledge/ at root vs src/?
-      Data in-project copies vs external path? Venv riêng vs shared?
-      campaigns/ as sole growth axis — scalability implications?
-  (c) F-13: Three-identity-axis model — 3 axes (constitution, program, system)
-      vs 2 axes (campaign + session)? When does protocol_version change?
-      Governance review weight? Cross-protocol convergence analysis rules?
-  (d) SSE-04-IDV: Candidate-level equivalence vocabulary — belongs in 008 (identity)
-      or 013 (convergence)? If 008: X38-D-13 scope expansion? Structural pre-bucket
-      definition (descriptor hash, parameter family, AST-hash)?
+  (a) SSE-D-01: Lane ownership — fold discovery into 6 existing topics
+      or keep Topic 018 umbrella? Object boundary clarity?
+  (b) SSE-D-02/03: Bounded ideation — 4 hard rules sufficient?
+      Grammar depth-1 seed as default vs registry_only? Cold-start activation conditions?
+  (c) SSE-D-04: Breadth-expansion interface — 7-field contract completeness?
+      Protocol must declare all 7 before breadth activation — enforceable?
+  (d) SSE-D-05: Surprise lane — recognition topology (surprise_queue →
+      equivalence_audit → proof_bundle → freeze). 5 anomaly axes sufficient?
+  (e) SSE-D-06: Hybrid equivalence — deterministic structural pre-bucket +
+      behavioral nearest-rival audit. No LLM judge. Method soundness?
+  (f) SSE-D-07: 3-layer lineage — semantic split (feature_lineage,
+      candidate_genealogy, proposal_provenance). Routing to Topic 015 correct?
+  (g) SSE-D-08: Contradiction memory — descriptor-level, shadow-only (MK-17).
+      Storage → 015, consumption → 017. Split routing correct?
+  (h) SSE-D-09: Multiplicity control — breadth coupling via SSE-D-04 field 5.
+      Routing to Topic 013 correct?
+  (i) SSE-D-10: Domain-seed hook — optional provenance, no replay semantics.
+      Sufficient or needs stronger contract?
+  (j) SSE-D-11: APE v1 scope — template parameterization only, no free-form
+      code generation. Scope boundary correct?
 - For each issue addressed: classification + evidence pointer + critique.
 - Split verdicts are allowed, for example:
   "accept observation, reject mechanism".
@@ -79,20 +90,20 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 4 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-4_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-4_reviewer-reply.md
+Round: 4 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-4_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-4_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 4 — Reviewer Reply: Architecture Pillars & Identity
-  **Topic**: 008 — Architecture Pillars & Identity
+  # Round 4 — Reviewer Reply: Search-Space Expansion
+  **Topic**: 018 — Search-Space Expansion
   **Author**: codex
-  **Date**: 2026-03-26
+  **Date**: 2026-03-27
   **Responds to**: `claude_code/round-4_author-reply.md`
-  **Scope**: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
+  **Scope**: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -146,14 +157,16 @@ multi-role stack is usually unnecessary here.
 
 ```
 Role: Codex (advisor for closure)
-Task: Judgment-call memo for debate/008-architecture-identity/, after Round {ROUND_NUM}
-Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/judgment-call-memo.md
+Task: Judgment-call memo for debate/018-search-space-expansion/, after Round {ROUND_NUM}
+Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/judgment-call-memo.md
 Read-only — do not modify existing files.
 
 Additionally read all round files in:
-  - debate/008-architecture-identity/claude_code/
-  - debate/008-architecture-identity/codex/
+  - debate/018-search-space-expansion/claude_code/
+  - debate/018-search-space-expansion/codex/
+Additionally read prior extra-canonical evidence:
+  - docs/search-space-expansion/debate/ (4-agent archive, non-authoritative)
 
 Produce:
 
@@ -161,14 +174,16 @@ Produce:
    | Issue ID | Finding | Final positions | Agreement level | Recommended resolution |
 
    Issues to assess separately:
-   - X38-D-02: Three pillars sufficiency (3 vs 4, ESP as sub-component vs pillar,
-     Meta-Updater scope boundaries, reproducibility/audit trail coverage)
-   - X38-D-09: Directory structure (knowledge/ placement, data/ location,
-     venv policy, campaigns/ growth model, docs/ necessity)
-   - X38-D-13: Three-identity-axis model (3 axes vs 2, protocol_version trigger,
-     governance review weight, cross-protocol convergence rules)
-   - X38-SSE-04-IDV: Candidate-level identity vocabulary (scope ownership 008 vs 013,
-     structural pre-bucket definition, interaction with SSE-D-06 hybrid equivalence)
+   - SSE-D-01: Pre-lock generation lane ownership (fold into 6 topics vs umbrella)
+   - SSE-D-02/03: Bounded ideation + conditional cold-start (4 hard rules, 2 generation modes)
+   - SSE-D-04: Breadth-expansion interface contract (7-field completeness)
+   - SSE-D-05: Surprise lane / recognition inventory (topology, 5 anomaly axes)
+   - SSE-D-06: Cell + equivalence + correction method (hybrid: structural + behavioral)
+   - SSE-D-07: 3-layer lineage (semantic split, routing → 015)
+   - SSE-D-08: Cross-campaign contradiction memory (shadow-only, routing → 015/017)
+   - SSE-D-09: Multiplicity control (breadth coupling, routing → 013)
+   - SSE-D-10: Domain-seed hook (optional provenance, no replay)
+   - SSE-D-11: APE v1 scope (template parameterization only)
 
    Agreement levels:
    - Converged: §7(a)(b)(c) complete
@@ -184,14 +199,18 @@ Produce:
    - Which issues still have incomplete steel-man?
 
 3. CROSS-TOPIC IMPACT CHECK
-   - Topic 017 (epistemic search policy): does pillar decision (F-02) affect
-     whether ESP becomes a 4th pillar or Protocol Engine sub-component?
-   - Topic 015 (artifact versioning): does identity model (F-13) create
-     protocol_version dependency for artifact invalidation rules?
-   - Topic 013 (convergence analysis): does candidate vocabulary (SSE-04-IDV)
-     ownership affect convergence measurement? Cross-protocol comparison rules?
-   - Topic 009 (data integrity): does directory structure (F-09) constrain
-     data location or immutability enforcement?
+   - Topic 006 (feature engine): does generation_mode (SSE-D-03) affect
+     registry acceptance of auto-generated features?
+   - Topic 015 (artifact versioning): do lineage (SSE-D-07) and contradiction
+     registry (SSE-D-08) create new invalidation rules?
+   - Topic 017 (epistemic search policy): does surprise topology (SSE-D-05) and
+     contradiction consumption (SSE-D-08-CON) affect ESP scope?
+   - Topic 013 (convergence analysis): does multiplicity control (SSE-D-09)
+     affect correction formula and breadth-expansion accounting?
+   - Topic 008 (architecture identity): does identity_vocabulary (SSE-D-04 field 3)
+     interact with X38-D-13 candidate-level vocabulary?
+   - Topic 003 (protocol engine): does breadth-activation blocker (SSE-D-04)
+     affect stage wiring or protocol_lock enforcement?
 
 4. STATUS DRIFT CHECK
    - Compare `findings-under-review.md` against actual round outcomes.
