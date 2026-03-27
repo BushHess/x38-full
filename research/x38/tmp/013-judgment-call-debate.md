@@ -515,3 +515,529 @@ Nếu buộc phải chốt theo thực chất hiện tại, tôi nghiêng về:
 > "Downstream consume" không đủ để 013 né các semantic commitments tối thiểu của
 > chính output mình; nhưng "không uniquely derived từ x38" cũng không đủ để cấm
 > freeze một conventional v1 constant khi repo đã có governance class cho việc đó.
+
+Round 5: ChatGPT Pro (phản biện Round 1–4)
+Đánh giá tổng thể
+
+Tôi phản bác quán tính A / A / A / A của Round 1–3. Round 4 đúng khi phá false dichotomy ở CA-01, đúng khi bóc tách provenance ở CA-02, và đúng khi đẩy SSE-09 ra khỏi trạng thái “ngại freeze exact constants”. Nhưng Round 4 vẫn còn hai chỗ chưa sạch:
+(1) nó chưa chỉ ra rằng rationale hiện tại cho ρ > 0.95 bị lỗi số học;
+(2) nó over-correct ở SSE-04-THR item 3 khi cố tách quá gọn “013 local numerics” khỏi “017 consumption”, trong khi record hiện tại mô tả hai surface này chồng lấn đáng kể.
+
+1) CA-01 — Tôi đứng về phía Round 4: A/B hiện tại là framing sai; câu trả lời đúng là Hybrid C
+
+Round 1–3 đẩy quá xa theo hướng “013 chỉ own measurement law; routing thuộc 001/003/010”. Cách nói đó thiếu một lớp nghĩa bắt buộc: Topic 013 phải own semantic tối thiểu của chính output convergence mà nó sinh ra. Lý do không chỉ vì F-30 hỏi “PARTIALLY_CONVERGED có đủ để move forward không”, mà còn vì Topic 010 chỉ auto-trigger PENDING_CLEAN_OOS khi (winner exists) AND (enough new data), và Clean OOS làm việc với một frozen_spec_ref, tức là một winner đủ cụ thể để đem đi chứng nhận. PARTIALLY_CONVERGED ở nghĩa family-level / below exact-winner stability không thể tự nó làm phát sinh điều kiện winner exists; còn FULLY_CONVERGED có thể làm được điều đó. Đây là semantic contract của output, không phải toàn bộ routing matrix.
+
+Vì vậy, cái 013 phải freeze là: metric law, category law, và minimal winner-eligibility semantics. Còn mapping đầy đủ từ state sang action cụ thể — continue sessions, open same-data HANDOFF, hay chuyển sang Clean OOS ngay — vẫn là cross-topic integration giữa 001/003/010 tiêu thụ output của 013. Topic 001 đã freeze routing contract và defer numeric thresholds sang 013; Topic 003 own pipeline gate/stage ordering chứ không hề được source nào giao luôn ownership của “convergence-state -> action” boundary. Nói gọn: 013 không own full routing matrix, nhưng cũng không được phép rút về “measurement law only”.
+
+Câu freeze đúng hơn là:
+NOT_CONVERGED = chưa có winner-stability signal; PARTIALLY_CONVERGED = có agreement hữu ích nhưng chưa đủ để xem như winner exists; FULLY_CONVERGED = đủ điều kiện winner-eligibility cho Phase 2 nếu đồng thời thỏa điều kiện new-data của Topic 010. Đây là Hybrid C, không phải A thuần.
+
+2) CA-02 — Hướng ship v1 defaults là đúng, nhưng Round 2–3 nói về {3,3,5,2} quá thô; Round 4 đúng ở điểm này
+
+Tôi không nghiêng sang chờ evidence rồi mới có defaults; đó là bootstrap trap thật. Repo cũng đã có governance class cho conventional thresholds và CONV:UNCALIBRATED style defaults. Nhưng final wording phải ngừng đối xử {same_data_ceiling=3, S_min=3, S_max=5, M=2} như một khối đồng chất. S_min = 3 có cơ sở cấu trúc vì observation ΔW đầu tiên chỉ có sau session 3; ε_cost = ε_noise là một v1 default sạch để stop-law không bị externalize một nửa ra ngoài; M = 2 là bootstrap choice bị couple với S_max = 5; còn S_max = 5 và same_data_ceiling = 3 là phần phụ thuộc mạnh nhất vào directional inference từ online history, nên phải ghi đúng provenance là provisional / recalibration-required.
+
+Điểm Round 4 nhấn đúng là: không phải mọi con số trong bộ này cùng một cấp chứng cứ. Tôi bổ sung thêm: final-resolution không nên chỉ ghi “provisional defaults”, mà nên ghi per-constant provenance. Nếu không, topic sẽ đóng bằng một cụm số nhìn như có cùng độ chắc, trong khi record không ủng hộ điều đó. Về thực chất, đây vẫn là “A” theo outcome vận hành, nhưng là A có phân tầng provenance, không phải A trơn.
+
+3) SSE-09 — Ở đây tôi bác sự dè dặt còn sót lại: freeze exact v1 constants luôn
+
+Round 4 đúng: nói “exact constants không uniquely derived từ x38 data” không đủ để giữ chúng mở, vì repo đã có threshold governance cho fixed conventional constants và hiện tại cũng đang dùng các alpha-style gates với provenance rõ ràng. validation/thresholds.py nêu rõ các lớp STAT / LIT / CONV / CONV:UNCALIBRATED; cùng file đó đã freeze WFO_WILCOXON_ALPHA = 0.10 và WFO_BOOTSTRAP_CI_ALPHA = 0.05. Vậy để lại Holm α = 0.05 và BH q = 0.10 ở trạng thái “human to decide later” chỉ vì chưa có x38-specific calibration là đang áp tiêu chuẩn chặt hơn chính governance mà repo đang dùng.
+
+Điểm cần nói cho thật: Holm α_FWER = 0.05 không “align” theo nghĩa bằng số với per-test α = 0.10; nó align ở governance logic vì đây là hai lớp error-control khác nhau. Một cái là family-wise guard nghiêm hơn cho scan phase; cái kia là per-test gate trong WFO. Vì vậy, formulation đúng là: freeze v1 default = Holm, freeze Holm α_FWER = 0.05, freeze BH q_FDR = 0.10 như conventional v1 constants, đồng thời ghi rõ chúng không phải x38-calibrated constants. Ở issue này, quán tính dè dặt của Codex round 6 nên dừng lại ở status, không nên kéo sang nội dung.
+
+4) SSE-04-THR — Đây mới là chỗ cần phản biện mạnh nhất
+
+Tôi đồng ý với Round 4 rằng cách đóng của Round 2–3 là quá dễ dãi. Nhưng tôi không đồng ý với cách Round 4 sửa nó theo hướng “item 3 là residue nội bộ của 013”. Record hiện tại không cho phép kết luận sạch như vậy. Topic 013’s own finding ghi 013 owns: behavioral threshold, hash granularity, robustness bundle minimum requirements, anomaly thresholds shared with 017. Nhưng Topic 017’s own finding lại ghi 017 owns: anomaly thresholds và proof bundle consumption rules (what constitutes ‘passing’ a proof component). Còn Topic 018 freeze working minimum inventory và route “thresholds and proof-consumption rules” xuống 017/013 như một downstream surface chung. Nói cách khác: item 3 không thể sweep hết sang 017, nhưng cũng không thể reclaim gọn về 013. Nó là shared 013×017 interface debt.
+
+Item 1 (ρ > 0.95) có thể freeze như một conventional v1 cutoff, nhưng phải sửa lý do. Rationale hiện tại ở round 6 nói ρ > 0.95 “implies < 5% independent variance”; đó là sai số học nếu diễn giải theo R², vì 1 - ρ² ≈ 0.0975, tức gần 9.75%, không phải dưới 5%. Sai chỗ này không bắt buộc phải lật threshold từ 0.95 sang 0.99, nhưng nó buộc ta phải bỏ pseudo-derivation đó đi. Cách viết trung thực hơn là: ρ > 0.95 là một high-similarity v1 cutoff có tính conventional, đặt phía trên mốc ρ ≈ 0.92 từng được nêu như ví dụ “high but still meaningfully different”, chứ không phải một ngưỡng được nội suy sạch từ variance decomposition.
+
+Item 2 (hash granularity) cũng chỉ nên freeze ở mức design contract, không nên giả vờ “normalized AST” đã được settle algebraically. Cái 013 cần freeze là minimum invariance surface: invariant với whitespace/comment/import-order; bucket theo structure của signal-generation logic + parameter schema; loại parameter values khỏi bucket; behavioral audit xử lý cross-bucket functional equivalence. Cách này khớp với việc Topic 008 chỉ freeze interface và giao semantic details cho 013, còn Topic 018 chỉ freeze AST-hash subset như một thành phần của hybrid method.
+
+Vì vậy, status đúng cho SSE-04-THR không phải “A thuần”. Nó là: freeze item 1 với rationale sửa lại; freeze item 2 ở design-contract level; carry item 3 như shared 013×017 interface debt; carry item 4 như shared 013×017 thresholds. Nói “items 3-4 blocked by 017” là quá tay; nói “item 3 là residue nội bộ của 013” cũng quá tay. Cả hai đều làm record sạch giả.
+
+Kết luận
+
+Tôi không chấp nhận kết quả gói gọn A / A / A / A. Cái gần sự thật hơn là:
+
+CA-01 = Hybrid C: 013 freeze measurement law + category semantics + minimal winner-eligibility semantics; full routing vẫn là cross-topic integration.
+CA-02 = A có phân tầng provenance: ship defaults để phá bootstrap, nhưng phải ghi provenance theo từng constant.
+SSE-09 = A mạnh: freeze exact conventional v1 constants luôn.
+SSE-04-THR = Mixed: freeze 1–2, nhưng 3–4 là shared interface surface; riêng item 3 không được sweep hết sang 017.
+
+Bất kỳ formulation nào gọn hơn thế ở thời điểm này đều là cosmetic convergence, không phải hội tụ thật.
+
+========
+
+Round 6: Claude Code (phản biện Round 1–5)
+
+## Lời nói đầu: Tự kiểm điểm Round 3
+
+Trước khi phản biện các vòng khác, tôi phải thừa nhận hai lỗi của chính
+mình ở Round 3:
+
+1. **Lỗi số học ρ>0.95**: Tôi viết "0.95 nghĩa là <5% independent variance
+   (1−R²≈0.0975)" — câu này tự mâu thuẫn. 0.0975 ≈ 9.75%, không phải <5%.
+   Round 5 bắt đúng lỗi này. Tôi chấp nhận hoàn toàn: pseudo-derivation đó
+   phải bỏ.
+2. **CA-01 chấp nhận A quá nhanh**: Round 3 của tôi đã defend Position A mà
+   không phân biệt "013 không own governance routing" (đúng) với "013 không
+   own winner-eligibility semantics" (sai). Đây là hai việc khác nhau, và tôi
+   gộp chúng lại vì quán tính từ Round 1-2.
+
+---
+
+## Đánh giá tổng thể: Convergence ở đâu?
+
+Sau 5 vòng, trajectory suy luận cho thấy:
+
+- **CA-01**: Round 1-3 ngả A → Round 4-5 shift sang Hybrid C. Tôi kiểm tra
+  lại record và thấy Hybrid C đúng. Đây là genuine correction, không phải
+  drift.
+- **CA-02**: Tất cả đều ngả A, nhưng precision tăng dần: Round 2 gộp cả
+  khối → Round 3 flag M=2 → Round 4 tách provenance từng số → Round 5
+  confirm. Đây là refinement trên cùng hướng.
+- **SSE-09**: Converged từ Round 1. Chỉ thêm precision (α_FWER ≠ α_per-test).
+- **SSE-04-THR**: Chỗ duy nhất còn tension thực sự: Round 4 nói item 3 là
+  "013 residue", Round 5 nói "shared interface debt". Đây là disagreement
+  thật, cần giải quyết.
+
+---
+
+### 1) CA-01 — Tôi rút lại Position A, đồng ý Hybrid C
+
+**Lý do tôi thay đổi** (không phải vì Round 4-5 nói vậy, mà vì record):
+
+Tôi đã đọc lại Topic 010 final-resolution (line 55-57): "`(winner exists)
+AND (enough new data)`". "Winner exists" là precondition cho Clean OOS. Nếu
+013 chỉ export {NOT/PARTIALLY/FULLY_CONVERGED} mà không define cái nào
+implies "winner exists", thì 010 không có gì để consume — nó phải tự diễn
+giải output của 013, tức là 010 đang own semantics thay 013.
+
+Đây vi phạm nguyên tắc cơ bản: topic sinh output phải own semantics tối
+thiểu của output đó. 013 sinh convergence-state → 013 phải nói
+convergence-state nào đủ cho winner-eligibility.
+
+**Tuy nhiên, tôi muốn sharpen Hybrid C hơn cả Round 4 và 5**:
+
+Round 4-5 nói "FULLY_CONVERGED = đủ điều kiện winner-eligibility cho Phase 2
+nếu đồng thời thỏa điều kiện new-data của Topic 010." Nhưng "đủ điều kiện"
+(eligible) là necessary hay sufficient?
+
+- **Necessary**: FULLY_CONVERGED là bắt buộc để "winner exists" = true, nhưng
+  010 có thể thêm điều kiện riêng (ví dụ: clean OOS power floor).
+- **Sufficient**: FULLY_CONVERGED tự nó → "winner exists" = true.
+
+Record ủng hộ **necessary, not sufficient**: Topic 010 đã freeze rằng Clean
+OOS trigger cần CẢ "(winner exists) AND (enough new data)" — hai điều kiện
+độc lập. Ngoài ra, 010 đã freeze method-first power contract (D-24) mà
+017 consume cho promotion decisions. Vậy "winner exists" cần FULLY_CONVERGED
+nhưng có thể cần thêm quality gates từ topics khác.
+
+**Câu freeze tôi đề xuất** (sửa so với Round 4-5):
+
+> "Topic 013 freezes: measurement law (Kendall's W), derivation procedure,
+> multi-level categories, and minimal winner-eligibility semantics:
+> - FULLY_CONVERGED = necessary condition for 'winner exists' in the sense
+>   of Topic 010's Clean OOS trigger. Not sufficient alone — additional
+>   quality preconditions may be imposed by consuming topics.
+> - PARTIALLY_CONVERGED = useful agreement signal but does NOT satisfy
+>   winner-eligibility. Suitable for narrowing, same-data HANDOFF, or
+>   continued research.
+> - NOT_CONVERGED = no winner-stability signal.
+>
+> Full routing matrix (what action follows from each state) remains
+> cross-topic integration between 001, 003, 010, and 013."
+
+Sự khác biệt so với Round 4-5: tôi ghi rõ FULLY_CONVERGED là **necessary,
+not sufficient**. Điều này ngăn 013 vô tình claim authority mà 010 đã own
+(quality preconditions, power floors).
+
+---
+
+### 2) CA-02 — Đồng ý provenance-tiered A; bổ sung coupling constraint
+
+Round 4 đúng về provenance tiers. Round 5 confirm. Tôi không có disagreement
+về hướng. Nhưng tôi muốn preserve và strengthen điểm tôi đã nêu ở Round 3
+mà Round 4-5 acknowledge nhưng không incorporate rõ vào formulation:
+
+**M và S_max là coupled, không phải independent**. Round 3 đã giải thích:
+M=2 được chọn vì nó là giá trị lớn nhất compatible với S_max=5 (cần ít nhất
+3 observations trong window S_min..S_max, và M≤3 nhưng cần "second chance"
+→ M=2). Nếu future evidence nâng S_max lên 7, M nên re-evaluate lên 3.
+
+Round 4 nói "M = 2 là conventional bootstrap choice, coupled với S_max" —
+đúng nhưng chưa prescriptive. final-resolution nên ghi coupling constraint
+explicit:
+
+> "M is coupled to S_max: M ≤ (S_max − S_min + 1). If S_max is revised
+> upward after calibration, M must be re-evaluated."
+
+Về provenance tiers, tôi đồng ý với Round 4's classification:
+- S_min=3: **structure-implied** (ΔW observation bắt đầu từ session 3)
+- ε_cost=ε_noise: **v1 simplification** (clean, internalized)
+- M=2: **constrained conventional** (coupled với S_max)
+- S_max=5, ceiling=3: **provisional** (paradigm-inferred, CONV:UNCALIBRATED)
+
+Không có disagreement mới. Convergence ở CA-02 là thật.
+
+---
+
+### 3) SSE-09 — Converged; không có phản biện mới
+
+Tất cả 5 vòng đều đồng ý:
+- v1 default = Holm
+- α_FWER = 0.05 (conventional, stricter than per-test vì FWER compounds)
+- BH q_FDR = 0.10 = upgrade path contingent on 017
+- Provenance: conventional v1 constants, not x38-calibrated
+
+Round 3 của tôi đã flag asymmetry α_FWER=0.05 vs α_per-test=0.10. Round 5
+acknowledge. Formulation mà tôi đề xuất ở Round 3 vẫn stand:
+
+> "v1 default = Holm at α_FWER = 0.05 (stricter than per-test α = 0.10
+> because family-wise errors compound across scan phase). BH at q_FDR = 0.10
+> is the documented upgrade path. Fixed conventional v1 constants."
+
+Không có tension còn lại. SSE-09 đã fully converged từ Round 3.
+
+---
+
+### 4) SSE-04-THR — Chỗ duy nhất còn tension thật; tôi đề xuất resolution
+
+**Round 4 vs Round 5 tension**: Round 4 nói item 3 là "residue nội bộ 013".
+Round 5 nói "shared 013×017 interface debt". Ai đúng?
+
+Tôi đã verify trong record:
+
+- Topic 013 finding (line 215-219): "013 owns: ... 3. Robustness bundle
+  minimum requirements (what 'minimum' means numerically)"
+- Topic 017 finding (line 430-435): "017 owns: ... 3. Proof bundle
+  consumption rules (what constitutes 'passing' a proof component)"
+- Topic 018 final-resolution (line 135): "Thresholds and proof-consumption
+  rules: 017/013 own"
+
+Nhìn kỹ: "robustness bundle minimum requirements" (013) ≠ "proof bundle
+consumption rules" (017). Nhưng chúng INTERACT:
+
+- 013 muốn freeze "minimum" (bao nhiêu bootstrap replicates, bao nhiêu
+  window OOS tests, etc.) → nhưng "minimum" phụ thuộc vào 017 cần gì để
+  evaluate proof.
+- 017 muốn freeze "passing" (ngưỡng pass/fail cho mỗi component) → nhưng
+  "passing" phụ thuộc vào 013 cung cấp artifacts gì.
+
+Đây là circular dependency thật, không phải framing issue.
+
+**Tôi đề xuất tách item 3 thành hai phần**:
+
+- **Item 3a** (013 CAN freeze now): minimum inventory list = 5 components
+  từ Topic 018 (nearest_rival_audit, plateau_stability_extract, etc.) +
+  minimum statistical conventions cho từng component mà KHÔNG phụ thuộc
+  017 (ví dụ: bootstrap replicates ≥ 10,000 là conventional). Đây là
+  013-internal deliverable.
+- **Item 3b** (shared): whether item 3a's minimums are SUFFICIENT for 017's
+  consumption framework → 013×017 interface surface. 017 có thể nâng floor.
+
+Cách này tốt hơn cả Round 4 lẫn Round 5 vì:
+- Nó không sweep hết sang 017 (sửa Round 2-3)
+- Nó không claim hết về 013 (sửa Round 4)
+- Nó không gọi chung "shared debt" mà chỉ ra CÁI GÌ shared cái gì không
+  (sửa Round 5)
+
+**Về items 1-2**:
+
+- Item 1 (ρ>0.95): Freeze với provenance sửa lại. PHẢI bỏ pseudo-derivation
+  "1−R²≈0.0975 < 5%". Round 5 đúng: cách viết trung thực là "ρ > 0.95 là
+  high-similarity v1 cutoff, conventional, đặt trên ρ ≈ 0.92 (cross-timescale
+  reference mà ta muốn phân biệt), không phải variance-derived."
+- Item 2 (hash granularity): Đồng ý Round 3-5: freeze ở design-contract
+  level (whitespace/comment/import-order-invariant, bucket theo structure +
+  parameter schema, exclude values). Đừng giả vờ normalized AST đã settle.
+
+**Tổng hợp SSE-04-THR**:
+- Item 1: FREEZE (conventional threshold, sửa provenance)
+- Item 2: FREEZE (design-contract level)
+- Item 3a: FREEZE (013-internal minimum inventory + statistical conventions)
+- Item 3b: DEFERRED (013×017 shared — sufficiency question)
+- Item 4: DEFERRED (013×017 shared — anomaly thresholds)
+
+---
+
+## Đánh giá convergence tổng thể
+
+| Issue | Round 1-3 | Round 4-5 | Round 6 (tôi) | Status |
+|-------|-----------|-----------|---------------|--------|
+| CA-01 | A | Hybrid C | Hybrid C (necessary not sufficient) | **CONVERGED** — 3 agent đồng ý Hybrid C, tôi thêm precision (necessary/sufficient) |
+| CA-02 | A trơn | A phân tầng | A phân tầng + coupling constraint | **CONVERGED** — direction đồng nhất, chỉ khác precision level |
+| SSE-09 | A | A mạnh | A mạnh | **CONVERGED** — từ Round 3, không có dissent |
+| SSE-04-THR | A (freeze 1-2, carry 3-4) | Mixed (3≠4) | Mixed (tách 3→3a+3b) | **NEAR-CONVERGED** — cần xác nhận item 3 split |
+
+**Đánh giá trung thực**: 3/4 issues đã genuinely converged. SSE-04-THR gần
+converged — disagreement còn lại chỉ là granularity của item 3 (gọi chung
+"shared debt" hay tách 3a/3b), không phải direction.
+
+Tôi tin rằng nếu Round 7 confirm hoặc refine item 3 split, toàn bộ 4 issues
+sẽ converge. Không có issue nào còn risk bị flip direction.
+
+========
+
+Round 7: Nhận định của CodeX (phản biện Round 1–6)
+
+## Đánh giá tổng thể
+
+Round 6 là vòng mạnh nhất từ đầu đến giờ vì nó sửa hai lỗi thật:
+
+1. rút lại cách chốt `CA-01` theo kiểu "013 chỉ own measurement law";
+2. rút lại pseudo-derivation sai số học cho `ρ > 0.95`.
+
+Tuy nhiên, tôi **chưa** đồng ý với câu "3/4 issues đã converged, 1 issue near-converged"
+theo nghĩa có thể xem như đã xong phần lập luận. Hướng lớn hiện nay phần nhiều là
+đúng, nhưng vẫn còn ba chỗ dễ bị đóng sớm:
+
+1. `CA-01`: Round 4–6 đã sửa đúng hướng, nhưng vẫn có xu hướng nói rộng tay quá
+   từ "semantic tối thiểu của output convergence" sang gần như "định nghĩa
+   winner exists".
+2. `CA-02`: đã nhìn ra provenance tiers, nhưng vẫn chưa tách đủ rõ
+   **observability constraint** với **governance default**.
+3. `SSE-04-THR`: đã nhìn ra item 3 không thể sweep hết sang 017, nhưng vẫn có
+   nguy cơ giả vờ đã gần freeze numerics trong khi record chưa cho các con số đó.
+
+Tôi đi từng issue.
+
+---
+
+### 1) CA-01 — Đồng ý Hybrid C, nhưng phải hạ claim từ "winner semantics" xuống đúng boundary
+
+Tôi đồng ý với Round 4–6 rằng `A` thuần là sai. Record không cho phép 013 rút về
+"measurement law only", vì chính finding của 013 hỏi:
+
+- `PARTIALLY_CONVERGED` có đủ để chuyển sang Clean OOS hay không?
+  (`debate/013-convergence-analysis/findings-under-review.md:72-75`)
+
+và Topic 010 đã freeze:
+
+- `PENDING_CLEAN_OOS` chỉ sinh khi `(winner exists) AND (enough new data)`
+  (`debate/010-clean-oos-certification/final-resolution.md:55-57`)
+
+Thêm nữa, `design_brief.md` và `PLAN.md` đều mô tả Clean OOS là giai đoạn
+**sau khi winner chính thức được công nhận** qua HANDOFF convergence
+(`docs/design_brief.md:109-115,133-136`; `PLAN.md:475-477,563-564`).
+
+Nhưng tôi không thích cách Round 5–6 nói gần như:
+
+> `FULLY_CONVERGED` = necessary condition for "winner exists"
+
+Vấn đề ở đây là cụm `"winner exists"` trong Topic 010 là một **predicate downstream**,
+không phải một output primitive của Topic 013. 013 nên freeze:
+
+- ý nghĩa của các trạng thái convergence;
+- và **điều kiện phía convergence** để downstream có thể xét winner.
+
+013 **không nên** vô tình claim rằng chỉ cần `FULLY_CONVERGED` là đủ để định nghĩa
+trọn vẹn `"winner chính thức"` hay `"winner exists"` ở nghĩa operational đầy đủ.
+Lý do:
+
+- Topic 001 own HANDOFF routing contract
+  (`debate/001-campaign-model/final-resolution.md:112-121,162-170`);
+- Topic 010 own Clean OOS trigger/governance;
+- `winner chính thức` trong `design_brief.md` xuất hiện ở cuối Giai đoạn 1, tức là
+  nằm trong một chuỗi nghiên cứu/governance rộng hơn chỉ riêng convergence metric
+  (`docs/design_brief.md:109-115`).
+
+**Cách nói sạch hơn**:
+
+- `PARTIALLY_CONVERGED` **không đủ** cho winner-recognition / Clean OOS progression.
+- `FULLY_CONVERGED` là **convergence-side prerequisite** để downstream topics
+  có thể công nhận winner và mở đường cho Clean OOS.
+- Quyết định downstream action cụ thể, cũng như predicate vận hành đầy đủ của
+  `"winner exists"`, vẫn do các topic tiêu thụ output của 013 quyết định.
+
+Nói cách khác: Round 4–6 đúng khi bác `A` thuần, nhưng nên dừng ở
+**"013 owns convergence-side prerequisite semantics"**, không nên trượt sang
+**"013 owns winner semantics"** theo nghĩa rộng.
+
+Đây là Hybrid C, nhưng là một bản **hẹp hơn và trung thực hơn** so với wording
+ở Round 5–6.
+
+---
+
+### 2) CA-02 — Đồng ý ship v1 defaults, nhưng cần tách `S_min=3` khỏi nhóm "defaults"
+
+Ở issue này tôi vẫn không nghiêng về Position B. Chờ evidence rồi mới có số sẽ
+tự nhốt topic vào bootstrap trap.
+
+Nhưng ngay cả Round 6 vẫn còn một độ mờ: nó nói rất đúng về provenance tiers,
+song vẫn dễ khiến người đọc hiểu rằng `{same_data_ceiling=3, S_min=3, S_max=5, M=2}`
+là cùng một lớp object.
+
+Tôi cho rằng cần tách thành 4 loại khác nhau:
+
+1. `S_min = 3` không thực sự là một "default threshold" cùng loại với các số còn lại.
+   Nó là **observability constraint** do định nghĩa `ΔW` kéo theo:
+   quan sát marginal-gain đầu tiên chỉ xuất hiện sau session 3
+   (`claude_code/round-6_author-reply.md:266-277`).
+   Nếu đổi stop law, `S_min` mới đổi; còn với stop law hiện tại, đây gần như là
+   hệ quả cấu trúc.
+2. `ε_cost = ε_noise` là **internalization default** hợp lý để Topic 013 không
+   externalize nửa stop law ra ngoài
+   (`claude_code/round-6_author-reply.md:291-311`).
+3. `M = 2` và `S_max = 5` là một **cặp coupled provisional defaults** ở cấp
+   session-level. Round 3 và Round 6 nhìn đúng chỗ này: `M` không đứng độc lập;
+   nếu `S_max` thay đổi, `M` phải xem lại.
+4. `same_data_ceiling = 3` là một **campaign-level ceiling**, khác hẳn trục
+   với `S_max/M`. Nó không nên bị nhét vào cùng một review gate như thể chỉ là
+   một phần của stop window.
+
+Điểm tôi muốn siết lại là:
+
+- `S_min=3` = structure-implied;
+- `ε_cost=ε_noise` = v1 simplifying default;
+- `M=2` + `S_max=5` = coupled provisional session defaults;
+- `same_data_ceiling=3` = provisional campaign ceiling.
+
+Nếu không tách như vậy, final wording sẽ vẫn tạo cảm giác "một cụm số có cùng
+độ chắc", trong khi record không ủng hộ điều đó
+(`debate/013-convergence-analysis/findings-under-review.md:100-145`;
+`docs/online_vs_offline.md:40-92`).
+
+Vì vậy, outcome vận hành vẫn là `A`, nhưng phải ghi là:
+
+> `A với phân tầng provenance + phân trục session/campaign`, chứ không chỉ
+> "A có provenance tiers" một cách chung chung.
+
+---
+
+### 3) SSE-09 — Tôi đồng ý freeze exact constants, nhưng bác thêm một kiểu rationalization lỏng
+
+Đây là issue tôi thấy đã gần như xong về substantive direction:
+
+- v1 default = Holm
+- `α_FWER = 0.05`
+- `BH q = 0.10` là documented upgrade path contingent on 017
+
+Record đủ mạnh cho việc freeze này vì:
+
+- threshold governance của repo cho phép rõ `STAT / LIT / CONV / CONV:UNCALIBRATED`
+  (`validation/thresholds.py:1-15`);
+- repo đã có các fixed constants kiểu alpha/resample ở nơi khác
+  (`validation/thresholds.py:49-66`);
+- finding của 013 route chính topic này default formula + v1 default + methodology
+  (`debate/013-convergence-analysis/findings-under-review.md:180-197`).
+
+Tuy nhiên, tôi muốn bác một rationalization vẫn còn lặp lại qua vài vòng:
+
+> "`BH q = 0.10` align với project's per-test `α = 0.10`"
+
+Nói vậy chỉ đúng ở mức rất lỏng. `q_FDR` và `α_per-test` là **khác loại error control**.
+Con số `0.10` trùng nhau không phải là một lập luận mạnh. Freeze `q = 0.10`
+nên được biện minh như một **conventional v1 constant** và như một documented
+upgrade path tương thích với governance hiện hữu, chứ không nên được viết như
+thể numeric equality với per-test alpha tự nó là evidence.
+
+Ở issue này, tôi đồng ý với direction của Round 4–6, nhưng nếu viết final wording,
+nên nói:
+
+> `Holm α_FWER = 0.05` và `BH q_FDR = 0.10` là các conventional v1 constants,
+> không phải x38-calibrated constants; sự trùng số `0.10` với per-test alpha
+> không phải là căn cứ chính, chỉ là một symmetry dễ chấp nhận về governance.
+
+Tóm lại: `SSE-09` là issue **thực chất đã converged**. Phần còn lại chỉ là làm
+lập luận sạch hơn, không phải đổi hướng.
+
+---
+
+### 4) SSE-04-THR — Round 6 đúng khi tách item 3, nhưng vẫn nói hơi quá về mức độ hội tụ
+
+Đây vẫn là issue cần giữ đầu lạnh nhất.
+
+Tôi đồng ý với ba điểm sau:
+
+1. `ρ > 0.95` có thể freeze như conventional high-similarity v1 cutoff,
+   nhưng phải bỏ hẳn pseudo-derivation kiểu `<5% independent variance`.
+2. Hash granularity chỉ nên freeze ở **design-contract level**, không được giả
+   vờ normalized-AST algebra đã settle.
+3. Item 3 **không thể** sweep hết sang 017, vì finding của 013 ghi rõ:
+   `013 owns ... robustness bundle minimum requirements (what "minimum" means numerically)`
+   (`debate/013-convergence-analysis/findings-under-review.md:207-223`).
+
+Nhưng tôi cũng không đồng ý hoàn toàn với cách Round 6 kết luận
+"near-converged" như thể chỉ còn chỉnh wording nhẹ.
+
+**Cái đã rõ từ record**:
+
+- Topic 018 đã freeze minimum inventory 5 proof components
+  (`debate/018-search-space-expansion/final-resolution.md:125-136`);
+- Topic 017 own `proof bundle consumption rules (what constitutes "passing" a proof component)`
+  (`debate/017-epistemic-search-policy/findings-under-review.md:416-435`);
+- Topic 013 own `what "minimum" means numerically`
+  (`debate/013-convergence-analysis/findings-under-review.md:207-223`).
+
+Từ đó, split hợp lý là:
+
+- **Item 3a (013)**: numeric production floor cho từng proof artifact
+  trước khi artifact đó được xem là đã được tạo ra một cách tối thiểu.
+- **Item 3b (017 / shared interface)**: pass/fail consumption, sufficiency,
+  promotion consequences.
+
+Tôi đồng ý với split này. Nhưng tôi **không** đồng ý với việc Round 6 bắt đầu
+gợi ý ví dụ kiểu `bootstrap replicates ≥ 10,000` rồi xem đó như chỗ đã có thể
+điền được. Con số như vậy có thể hợp lý ở repo-wide validation practice
+(`validation/thresholds.py:60-66`), nhưng **chưa thấy** được route vào record
+013 như numeric freeze cho item 3.
+
+Vì vậy, cần tách hai mức hội tụ:
+
+1. **Converged về ownership/boundary**:
+   - item 1 thuộc 013;
+   - item 2 thuộc 013 ở design-contract level;
+   - item 3 phải tách 3a/3b, không sweep hết sang 017;
+   - item 4 shared với 017.
+2. **Chưa converged về exact numeric content của item 3a**:
+   record hiện tại chưa cung cấp bộ minimum numerics đủ sạch để nói là đã close.
+
+Đây là khác biệt quan trọng. Nếu nói "issue gần converged" mà không chỉ ra
+chỗ chưa converged là **numeric content**, người đọc sẽ tưởng chỉ còn chuyện
+biên tập câu chữ. Không phải vậy.
+
+**Kết luận chặt hơn cho SSE-04-THR**:
+
+- Item 1: FREEZE
+- Item 2: FREEZE
+- Item 3a: ownership đã rõ, numeric content chưa freeze sạch
+- Item 3b: shared/interface with 017
+- Item 4: shared with 017
+
+Nói cách khác, Round 6 đúng ở hướng split, nhưng nói quá về mức độ closure.
+
+---
+
+## Kết luận
+
+Tôi **không** quay lại `A / A / A / A` kiểu Round 1–3.
+Nhưng tôi cũng **không** thấy cần tiếp tục giữ tất cả ở trạng thái mơ hồ như
+Round 4 đã làm ở một vài chỗ.
+
+Lập trường hiện tại của tôi là:
+
+- `CA-01`: **Hybrid C**, nhưng phrasing đúng phải là
+  `013 owns convergence-side prerequisite semantics`, không phải full
+  downstream winner semantics.
+- `CA-02`: **A**, nhưng phải tách `S_min=3` khỏi nhóm defaults và tách riêng
+  session-level vs campaign-level provenance.
+- `SSE-09`: **A mạnh**, freeze exact conventional v1 constants luôn.
+- `SSE-04-THR`: **Mixed**; split item 3 thành `3a/3b` là đúng về ownership,
+  nhưng exact numerics cho `3a` chưa thật sự converged.
+
+Vì vậy, tôi bác câu của Round 6 rằng "3/4 issues đã genuinely converged".
+Cách nói trung thực hơn là:
+
+| Issue | Đánh giá của tôi |
+|-------|------------------|
+| CA-01 | Direction converged, wording boundary chưa sạch hẳn |
+| CA-02 | Direction converged, provenance model cần siết thêm |
+| SSE-09 | Converged |
+| SSE-04-THR | Ownership converged; numeric closure chưa converged |
+
+Nếu cần một câu chốt ngắn gọn:
+
+> Hướng chung bây giờ phần lớn đã đúng, nhưng **chưa** được quyền gọi là
+> "hội tụ hoàn toàn". Thứ đã hội tụ là boundary reasoning của 3 issue đầu và
+> ownership split của `SSE-04-THR`; thứ chưa hội tụ là exact phrasing ở `CA-01`
+> và exact numeric closure của `SSE-04-THR item 3a`.
