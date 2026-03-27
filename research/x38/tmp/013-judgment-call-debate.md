@@ -1,4 +1,4 @@
-Round 1: Nhận định của Claude Code:
+JC-Round 1: Nhận định của Claude Code:
 
 Tình trạng Topic 013 — Convergence Analysis
 Path: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis;
@@ -45,7 +45,7 @@ Khuynh hướng tự nhiên: Position A — items 3-4 genuinely blocked by 017, 
 
 ========
 
-Round 2: Ý kiến của ChatGPT Pro
+JC-Round 2: Ý kiến của ChatGPT Pro (phản biện JC-Round 1)
 
 Tôi đã kiểm tra trực tiếp topic 013 trong repo. Theo rules.md, topic đã chạm max_rounds_per_topic = 6; sau mốc này, mọi issue còn Open phải chuyển thành Judgment call, và trước khi đóng phải có parity round. Thư mục claude_code/ và codex/ đều đã có đủ round 1→6, và codex round 6 cũng xác nhận đây là parity round cuối trước khi chuyển sang human judgment. Topic 013 hiện vẫn đang OPEN.
 
@@ -79,7 +79,7 @@ Câu chốt để đưa vào final-resolution.md: “Judgment call — Accepted 
 
 ========
 
-Round 3: Claude Code (phản biện Round 1 + Round 2)
+JC-Round 3: Claude Code (phản biện JC-Round 1–2)
 
 ## Đánh giá tổng thể
 
@@ -284,7 +284,7 @@ precision và honesty của formulation, không phải direction.
 
 ========
 
-Round 4: Nhận định của CodeX
+JC-Round 4: Nhận định của CodeX (phản biện JC-Round 1–3)
 
 ## Đánh giá tổng thể
 
@@ -516,7 +516,7 @@ Nếu buộc phải chốt theo thực chất hiện tại, tôi nghiêng về:
 > chính output mình; nhưng "không uniquely derived từ x38" cũng không đủ để cấm
 > freeze một conventional v1 constant khi repo đã có governance class cho việc đó.
 
-Round 5: ChatGPT Pro (phản biện Round 1–4)
+JC-Round 5: ChatGPT Pro (phản biện JC-Round 1–4)
 Đánh giá tổng thể
 
 Tôi phản bác quán tính A / A / A / A của Round 1–3. Round 4 đúng khi phá false dichotomy ở CA-01, đúng khi bóc tách provenance ở CA-02, và đúng khi đẩy SSE-09 ra khỏi trạng thái “ngại freeze exact constants”. Nhưng Round 4 vẫn còn hai chỗ chưa sạch:
@@ -567,7 +567,7 @@ Bất kỳ formulation nào gọn hơn thế ở thời điểm này đều là 
 
 ========
 
-Round 6: Claude Code (phản biện Round 1–5)
+JC-Round 6: Claude Code (phản biện JC-Round 1–5)
 
 ## Lời nói đầu: Tự kiểm điểm Round 3
 
@@ -778,7 +778,7 @@ sẽ converge. Không có issue nào còn risk bị flip direction.
 
 ========
 
-Round 7: Nhận định của CodeX (phản biện Round 1–6)
+JC-Round 7: Nhận định của CodeX (phản biện JC-Round 1–6)
 
 ## Đánh giá tổng thể
 
