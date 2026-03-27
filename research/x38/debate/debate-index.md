@@ -2,7 +2,7 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-27 — Topic 008 CLOSED (4 rounds, 4/4 resolved: 4 Converged).
+**Cập nhật**: 2026-03-27 — Topic 008 CLOSED (8 rounds, 4/4 resolved: 4 Converged).
 Previous: 2026-03-26 — Topic 018 REOPENED (governance: 4-agent extra-canonical debate
 does not satisfy x38_RULES.md §5; requires standard 2-agent debate. Downstream routing
 provisional until re-closure).
@@ -52,14 +52,14 @@ Wave 1:    007 (philosophy)              ← NỀN TẢNG, debate đầu tiên
                ↓
 Wave 2:    018 (search-space expansion)   ← REOPENED, ưu tiên sớm (routes to 6 downstream topics)
            008✅, 009, 010✅, 011, 012    ← song song sau 007 (008: SSE-04-IDV provisional until 018)
-           001, 002, 005, 006             ← song song sau 007 (006: SSE-D-03 provisional until 018)
-           013 (convergence)              ← song song, soft-dep 001 (SSE-09/04-THR provisional until 018)
-           015 (artifact/version)         ← song song, soft-dep 007, 008 (SSE-07/08/04-INV provisional until 018)
+           001✅, 002✅, 005, 006          ← song song sau 007 (006: SSE-D-03 provisional until 018)
+           013 (convergence)              ← song song, soft-dep 001✅ (SSE-09/04-THR provisional until 018)
+           015 (artifact/version)         ← song song, soft-dep 007✅, 008✅ (SSE-07/08/04-INV provisional until 018)
                ↓
-Wave 2.5:  016 (bounded recalibration)   ← chờ 001 + 002 + 010 + 011 + 015
-           017 (epistemic search policy) ← chờ 002 + 008 + 010 + 013 (SSE-08-CON/04-CELL provisional until 018)
+Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
+           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013 (SSE-08-CON/04-CELL provisional until 018)
                ↓
-Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
+Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
 ```
 

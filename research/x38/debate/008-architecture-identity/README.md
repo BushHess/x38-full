@@ -26,7 +26,7 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 
 ## Debate result
 
-4 rounds (author) / 3 rounds (reviewer). All 4 findings Converged (Round 2).
+4 rounds (author) / 4 rounds (reviewer). All 4 findings Converged (Round 2).
 See `final-resolution.md` for full decisions.
 
 **Key decisions**:
@@ -50,4 +50,4 @@ See `final-resolution.md` for full decisions.
 | `final-resolution.md` | Closure record — 4/4 Converged, key design decisions |
 | `findings-under-review.md` | 4 findings: F-02, F-09, F-13 + 1 from Topic 018 (SSE-04-IDV) |
 | `claude_code/` | Phản biện từ Claude Code (R1-R4) |
-| `codex/` | Phản biện từ Codex (R1-R3) |
+| `codex/` | Phản biện từ Codex (R1-R4) |

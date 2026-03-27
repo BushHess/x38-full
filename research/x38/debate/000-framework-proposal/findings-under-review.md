@@ -46,18 +46,18 @@ O-01→O-05 (debate-index.md) giữ lại toàn bộ substance.
 | Issue ID | Finding | Topic mới | Phân loại | Status |
 |----------|---------|-----------|-----------|--------|
 | X38-D-01 | Triết lý: kế thừa methodology, không đáp án | **007** (philosophy-mission) | Judgment call | **CLOSED** |
-| X38-D-02 | Ba trụ cột kiến trúc | **008** (architecture-identity) | Judgment call | Open |
+| X38-D-02 | Ba trụ cột kiến trúc | **008** (architecture-identity) | Judgment call | **CLOSED** |
 | X38-D-03 | Campaign → Session model | **001** (campaign-model) | Judgment call | **CLOSED** |
-| X38-D-04 | Contamination firewall — machine-enforced | **002** (contamination-firewall) | Thiếu sót | Open |
+| X38-D-04 | Contamination firewall — machine-enforced | **002** (contamination-firewall) | Thiếu sót | **CLOSED** |
 | X38-D-05 | Protocol engine — 8 stages | **003** (protocol-engine) | Judgment call | Open |
 | X38-D-06 | Meta-knowledge inheritance | **004** (meta-knowledge) | Thiếu sót | **CLOSED** |
 | X38-D-07 | Core engine — rebuild từ đầu | **005** (core-engine) | Judgment call | Open |
 | X38-D-08 | Feature engine — registry pattern | **006** (feature-engine) | Thiếu sót | Open |
-| X38-D-09 | Cấu trúc thư mục target | **008** (architecture-identity) | Thiếu sót | Open |
+| X38-D-09 | Cấu trúc thư mục target | **008** (architecture-identity) | Thiếu sót | **CLOSED** |
 | X38-D-10 | Data management — copies, không symlinks | **009** (data-integrity) | Judgment call | Open |
 | X38-D-11 | Session immutability — filesystem-level | **009** (data-integrity) | Thiếu sót | Open |
-| X38-D-12 | Clean OOS via future data | **010** (clean-oos-certification) | Judgment call | Open |
-| X38-D-13 | Three-identity-axis model (từ gen4) | **008** (architecture-identity) | Thiếu sót | Open |
+| X38-D-12 | Clean OOS via future data | **010** (clean-oos-certification) | Judgment call | **CLOSED** |
+| X38-D-13 | Three-identity-axis model (từ gen4) | **008** (architecture-identity) | Thiếu sót | **CLOSED** |
 | X38-D-14 | State pack specification (từ gen4) | **015** (artifact-versioning) | Thiếu sót | Open |
 | X38-D-15 | Two cumulative scopes (từ gen4) | **001** (campaign-model) | Judgment call | **CLOSED** |
 | X38-D-16 | Campaign transition guardrails (từ gen4) | **001** (campaign-model) | Thiếu sót | **CLOSED** |

@@ -1,9 +1,9 @@
 # Meta-Knowledge Governance Spec — Draft
 
-**Status**: SEEDED (from Topics 002, 004, 007 closures — 2026-03-25)
-**Last updated**: 2026-03-25
-**Dependencies**: 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008
-**Publishable when**: ALL dependencies CLOSED
+**Status**: SEEDED (from Topics 002, 004, 007, 008 closures — 2026-03-27)
+**Last updated**: 2026-03-27
+**Dependencies**: 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED)
+**Publishable when**: ALL dependencies CLOSED (**all 4 deps now CLOSED** — eligible for DRAFTING phase)
 
 ---
 
@@ -97,11 +97,41 @@ per MK-17. No LEGACY tier.
 
 ---
 
-## 8. Session Architecture Identity
+## 8. Protocol Version Impact on Meta-Knowledge (Topic 008)
 
-> Pending: Topic 008 (architecture & identity)
+> Source: `debate/008-architecture-identity/final-resolution.md` §Decision 3
+> Cross-ref: `architecture_spec.md` §2.2 (protocol version identity)
 
-_Stub._
+### 8.1 Protocol Version and Meta-Knowledge Scope
+
+`campaign.json` carries a mandatory `protocol_version` field (Topic 008 D-13).
+This has two implications for meta-knowledge governance:
+
+1. **Cross-protocol comparison flagging**: When convergence analysis compares
+   campaigns with different `protocol_version` values, the comparison MUST be
+   explicitly flagged. Meta-lessons derived from cross-protocol comparisons
+   carry inherently lower confidence.
+
+2. **Meta-Updater scope**: The Meta-Updater operates post-campaign. It may
+   only update methodology-level lessons (provenance/audit, split hygiene,
+   anti-patterns — per §5.1 content gate). The `protocol_version` field
+   provides provenance for WHEN a lesson was generated, enabling future
+   audit of whether lessons from older protocol versions remain valid after
+   protocol changes.
+
+### 8.2 Candidate Identity and Meta-Knowledge
+
+Candidate-level identity (Topic 008 SSE-04-IDV) uses structural pre-bucket
+fields (descriptor hash, parameter family, AST-hash subset). These fields
+are NOT meta-knowledge — they are scan artifact metadata. The Meta-Updater
+does not consume or update candidate identity fields. The boundary is:
+- Meta-knowledge = methodology-level lessons (what the Meta-Updater writes)
+- Candidate identity = structural facts about scan outputs (what convergence
+  analysis and ESP consume)
+
+This boundary aligns with MK-14 (Topic 004): the firewall separates
+methodology from data-derived specifics. Candidate structural hashes are
+data-derived and therefore outside meta-knowledge scope.
 
 ---
 
@@ -118,3 +148,5 @@ _Stub._
 | §5.3 GAP/AMBIGUITY | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 5 |
 | §6 Challenge & Expiry | X38-MK-09, X38-MK-10 | `debate/004-meta-knowledge/final-resolution.md` §Decided table |
 | §7 Bootstrap | X38-MK-15 | `debate/004-meta-knowledge/final-resolution.md` §Decided table |
+| §8.1 Protocol Version Impact | X38-D-13 | `debate/008-architecture-identity/final-resolution.md` §Decision 3 |
+| §8.2 Candidate Identity Boundary | X38-SSE-04-IDV | `debate/008-architecture-identity/final-resolution.md` §Decision 4 |

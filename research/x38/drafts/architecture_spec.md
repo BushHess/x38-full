@@ -1,8 +1,8 @@
 # Architecture Spec — Draft
 
-**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 010 closures — 010 section added 2026-03-25)
-**Last updated**: 2026-03-25
-**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 010(CLOSED) + 008 + 009 + 011 + 013 + 016 + 017
+**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010 closures — 008 sections added 2026-03-27)
+**Last updated**: 2026-03-27
+**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 009 + 011 + 013 + 016 + 017
 **Publishable when**: ALL dependencies CLOSED
 
 ---
@@ -99,19 +99,133 @@ Consistent with F-17 semantic change classification (Topic 015).
 
 ---
 
-## 2. Session Lifecycle
+## 2. Identity Model & Provenance (Topic 008)
 
-> Pending: Topic 008 (architecture & identity)
+> Source: `debate/008-architecture-identity/final-resolution.md`
 
-_Stub — to be filled after Topic 008 closure._
+### 2.1 Three Pillars — v1 Architecture (X38-D-02 → final-resolution.md §Decision 1)
+
+Three architectural pillars are sufficient for v1:
+
+| Pillar | Responsibility | Lifecycle phase |
+|--------|---------------|-----------------|
+| **Contamination Firewall** | Typed schema + state machine + filesystem guardrail | Pre-campaign (what crosses campaign boundary) |
+| **Protocol Engine** | 8-stage pipeline, phase gating, freeze checkpoint | Intra-campaign (how discovery runs) |
+| **Meta-Updater** | Lesson lifecycle, 3-tier taxonomy, challenge/expiry | Post-campaign (what meta-knowledge survives) |
+
+ESP (Epistemic Search Policy, Topic 017) is a Protocol Engine sub-component
+governing search within Stages 3-6, not a 4th pillar. Responsibility mapping
+(which pillar owns which obligation) is documentation, not an architectural
+boundary. Revisiting the pillar count requires future evidence of an invariant
+that no existing pillar can own without breaking another.
+
+### 2.2 Protocol Version Identity (X38-D-13 → final-resolution.md §Decision 3)
+
+`campaign.json` MUST declare a `protocol_version` field at creation time.
+
+**Three identity axes** (adapted from gen4 evidence, offline-native):
+
+| Axis | Alpha-Lab carrier | Changes when |
+|------|-------------------|-------------|
+| Protocol version | `protocol_version` in `campaign.json` | Protocol code or gating logic changes |
+| Campaign lineage | `inherits_from` in `campaign.json` | New campaign opens (HANDOFF or new-data) |
+| Session identity | Session directory + immutable artifacts | Each independent session within a campaign |
+
+**Cross-protocol comparison rule**: Convergence analysis MUST flag when
+comparing campaigns with different `protocol_version` values. Topic 001's
+routing contract (`debate/001-campaign-model/final-resolution.md:121-143`)
+enforces: if protocol identity changes AND results change → HANDOFF.
+
+**Change-trigger taxonomy**: Deferred to Topics 003 (protocol content) and 015
+(semantic change classification). What constitutes a version increment (major
+vs minor vs no-increment) will be defined by those topics' change-impact
+tables (`debate/015-artifact-versioning/findings-under-review.md:92-99`).
+
+### 2.3 Candidate-Level Identity Contract (X38-SSE-04-IDV → final-resolution.md §Decision 4)
+
+A candidate-level identity contract is a required architectural obligation,
+sitting alongside (not inside) the macro provenance schema above.
+
+**Structural pre-bucket fields** (declared by Topic 008):
+- Descriptor hash
+- Parameter family
+- AST-hash subset
+
+**Ownership split**:
+- Topic 008: existence obligation + structural field list
+- Topic 013: equivalence semantics (behavioral thresholds, hash granularity)
+- Topic 017: consumption patterns (phenotype reconstruction-risk gate,
+  cell-elite deduplication)
+
+This contract serves Topic 010's deferred Scenario 1 (same-family
+rediscovery) without overloading the macro provenance axes and satisfies
+Topic 018's field 3 (`identity_vocabulary`) routing obligation.
 
 ---
 
-## 3. Directory Structure
+## 3. Directory Structure (Topic 008)
 
-> Pending: Topic 008
+> Source: `debate/008-architecture-identity/final-resolution.md` §Decision 2
+> Confirmed tree: `docs/design_brief.md:150-167`
 
-_Stub._
+### 3.1 Target Layout (X38-D-09 → final-resolution.md §Decision 2)
+
+```
+/var/www/trading-bots/alpha-lab/
+├── pyproject.toml              # uv project, separate venv
+├── CLAUDE.md                   # AI context
+├── README.md
+│
+├── src/alpha_lab/
+│   ├── core/                   # types, data, engine, cost, metrics, audit
+│   ├── features/               # registry, compute, threshold, signal, families/
+│   ├── discovery/              # 8-stage protocol pipeline
+│   ├── validation/             # wfo, bootstrap, plateau, ablation, regime, gates
+│   ├── campaign/               # campaign, session, convergence, contamination, knowledge, oos
+│   └── cli/                    # main, run_session, run_campaign, new_campaign, report
+│
+├── data/btcusdt/               # Data copies (SHA-256), NOT symlinks
+│   ├── bars_2017_2026q1.csv
+│   └── checksums.json
+│
+├── campaigns/                  # Campaign outputs (grow over time)
+│   ├── c001_btc_2017_2026q1/
+│   │   ├── campaign.json       # Protocol, data ref, status, inherits_from, protocol_version
+│   │   ├── sessions/s001/...   # Per-session artifacts (immutable after verdict)
+│   │   ├── convergence/        # Cross-session analysis
+│   │   └── contamination.json  # Union contamination map
+│   └── c002_btc_2017_2026q3/
+│
+├── knowledge/                  # Accumulated meta-knowledge (mutable)
+│   ├── lessons.json
+│   ├── lesson_history.json
+│   └── campaigns_summary.json
+│
+└── tests/
+    ├── unit/
+    ├── integration/
+    └── regression/
+```
+
+### 3.2 Design Principles
+
+- **Code != Data != Results != Knowledge**: When the project grows, only
+  `campaigns/` grows. Code, data snapshots, and knowledge are stable.
+- **Separate venv**: Alpha-Lab uses its own virtualenv, not shared with
+  `/var/www/trading-bots/.venv/`.
+- **Data as copies**: Each campaign binds to an exact data snapshot via
+  SHA-256 checksum. No symlinks (reproducibility via co-location).
+- **`knowledge/` at root**: Mutable meta-knowledge state, not source code.
+  Placed at root for visibility and independent versioning.
+
+### 3.3 Campaign-to-Data Checksum Contract
+
+`campaign.json` MUST carry an explicit checksum or manifest reference to its
+bound data snapshot. The invariant is snapshot identity via SHA-256 — not a
+particular storage topology. Whether the system uses shared snapshots with
+manifest or per-campaign copies is an operational policy decision.
+
+Source: `docs/design_brief.md:96-103,179-182`; `PLAN.md:445-447,581-599`.
 
 ---
 
@@ -277,9 +391,11 @@ No universal binding dimension set or numeric thresholds frozen in V1.
 
 ### 6.5 Pre-existing Candidate Treatment (X38-D-23 → final-resolution.md §Decision 5)
 
-**Scenario 1 — Same-family rediscovery**: Deferred to Topic 008 (F-13,
-identity schema). Topic 010 does not own family-identity lookup fields. If
-Topic 008 exports a same-family relation, it may be consumed for
+**Scenario 1 — Same-family rediscovery**: **Answered by Topic 008 (CLOSED
+2026-03-27)**. Campaign lineage via `inherits_from` in `campaign.json`
+(§2.2, D-13) provides the `program_lineage_id`-equivalent carrier.
+Candidate-level structural identity via SSE-04-IDV (§2.3) provides the
+same-family comparison contract. Topic 010 consumes both interfaces for
 below-certification convergence signaling only. Clean OOS still required; no
 automatic certification uplift.
 
@@ -298,7 +414,7 @@ contradiction, does not create a new x38 winner.
 | Interface | Owner | 010 provides/consumes |
 |---|---|---|
 | Pipeline integration (Phase 2 placement) | Topic 003 (F-05) | 010 provides: Phase 2 protocol; 003 consumes |
-| Identity schema (same-family comparison) | Topic 008 (F-13) | 010 consumes: `program_lineage_id` for Scenario 1 |
+| Identity schema (same-family comparison) | Topic 008 (F-13) | 010 consumes: campaign lineage via `inherits_from` (D-13) + candidate-level identity via SSE-04-IDV for Scenario 1 |
 | Recalibration/certification interaction | Topic 016 | 016 consumes: verdict taxonomy; defines re-certification rules |
 | Power-floor methodology | Topic 017 (ESP-03) | 017 consumes: D-24 method-first contract |
 | Contradiction semantic rule | Topic 007 (closed) | 010 consumes: MUST-surface rule for Scenario 2 |
@@ -310,7 +426,7 @@ contradiction, does not create a new x38 winner.
 > Source: `debate/002-contamination-firewall/final-resolution.md`
 > See also: `meta_spec.md` for content rules (MK-14 boundary contract)
 
-### 7.1 Typed Schema with 4 Whitelist Categories (X38-D-04 → final-resolution.md §Decision 1)
+### 7.1 Typed Schema with 3 Whitelist Categories (X38-D-04 → final-resolution.md §Decision 1)
 
 `MetaLesson` typed schema with category enum enforcement. 3 F-06 whitelist
 categories (permanent, no expansion in v1):
@@ -416,3 +532,8 @@ _Stub — to be filled after Topic 017 closure. Key sections:_
 | §6.4 Power Rules — Method-First | X38-D-24 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 4 |
 | §6.5 Pre-existing Candidate Treatment | X38-D-23 | `debate/010-clean-oos-certification/final-resolution.md` §Decision 5 |
 | §6.6 Cross-Topic Interfaces | X38-D-12/D-21/D-23/D-24 | `debate/010-clean-oos-certification/final-resolution.md` §Cross-topic impact |
+| §2.1 Three Pillars | X38-D-02 | `debate/008-architecture-identity/final-resolution.md` §Decision 1 |
+| §2.2 Protocol Version Identity | X38-D-13 | `debate/008-architecture-identity/final-resolution.md` §Decision 3 |
+| §2.3 Candidate-Level Identity | X38-SSE-04-IDV | `debate/008-architecture-identity/final-resolution.md` §Decision 4 |
+| §3.1 Target Layout | X38-D-09 | `debate/008-architecture-identity/final-resolution.md` §Decision 2 |
+| §3.3 Checksum Contract | X38-D-09 | `debate/008-architecture-identity/final-resolution.md` §Decision 2 |

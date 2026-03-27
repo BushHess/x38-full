@@ -2,7 +2,7 @@
 
 **Topic ID**: X38-T-08
 **Closed**: 2026-03-27
-**Rounds**: 4 (author) / 3 (reviewer) — see §Round symmetry
+**Rounds**: 4 (author) / 4 (reviewer)
 **Participants**: claude_code, codex
 
 ## Decisions
@@ -24,13 +24,13 @@ All four issues converged via full §7 process: §7(a)+(b) in
 
 Author (claude_code): 4 rounds (R1 opening-critique, R2 author-reply, R3
 author-reply, R4 author-reply).
-Reviewer (codex): 3 rounds (R1 rebuttal, R2 reviewer-reply, R3 reviewer-reply).
+Reviewer (codex): 4 rounds (R1 rebuttal, R2 reviewer-reply, R3 reviewer-reply,
+R4 reviewer-reply).
 
-Asymmetry is acceptable per §14b exception (b): all four issues reached
-`Converged` in Round 2 (§7c confirmations in `codex/round-2_reviewer-reply.md`).
-Round 3 contained only procedural correction acknowledgment and convergence
-reconfirmation. Round 4 contained only closure readiness confirmation. Neither
-round introduced new arguments or changed any convergence point.
+Rounds are symmetric (4/4). All four issues reached `Converged` in Round 2
+(§7c confirmations in `codex/round-2_reviewer-reply.md`). Rounds 3-4 contained
+only procedural correction, convergence reconfirmation, and closure readiness
+verification. No new arguments or convergence changes after Round 2.
 
 ---
 
@@ -220,8 +220,8 @@ These were never disputed and are carried forward as frozen law:
 
 | Draft | Sections affected | Action needed |
 |-------|------------------|---------------|
-| `architecture_spec.md` | §2 (Session Lifecycle) | **Create**: `protocol_version` + `inherits_from` in `campaign.json`, cross-protocol flagging |
+| `architecture_spec.md` | §2 (Identity Model & Provenance) | **Create**: `protocol_version` + `inherits_from` in `campaign.json`, cross-protocol flagging |
 | `architecture_spec.md` | §3 (Directory Structure) | **Create**: confirmed tree from F-09, checksum contract, venv policy |
 | `architecture_spec.md` | §6.5 (Pre-existing Candidates) | **Verify**: Scenario 1 consumption path answered by D-13 + SSE-04-IDV |
 | `architecture_spec.md` | Traceability table | **Add**: D-02, D-09, D-13, SSE-04-IDV entries |
-| `meta_spec.md` | §8 (Session Architecture Identity) | **Create**: `protocol_version` impact on meta-knowledge governance |
+| `meta_spec.md` | §8 (Protocol Version Impact on Meta-Knowledge) | **Create**: `protocol_version` impact on meta-knowledge governance |

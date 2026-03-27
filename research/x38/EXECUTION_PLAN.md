@@ -1,6 +1,6 @@
 # X38 Execution Plan
 
-**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (63 rounds done —
+**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (64 rounds done —
 topic 004, 007, 001, 002, 010, 008 CLOSED; 018 REOPENED; 11 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
@@ -29,8 +29,8 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
 | Topic 018 | **REOPENED** (2026-03-26). Prior 4-agent debate (7 rounds, extra-canonical) revoked — standard 2-agent debate required per x38_RULES.md §5. Prior decisions (SSE-D-01→11) are input evidence, not authoritative. Downstream routings provisional. |
-| Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 3 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
-| Debate rounds thực hiện | **63** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 7, topic 018: 28 extra-canonical rounds NOT counted as standard debate). 12 topics remaining (11 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
+| Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
+| Debate rounds thực hiện | **64** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 018: 28 extra-canonical rounds NOT counted as standard debate). 12 topics remaining (11 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
 | Specs drafted | SEEDED (2): `architecture_spec.md` seeded from 001/002/004/007/008/010 closures (§2-3 from 008, §6 from 010); `meta_spec.md` seeded from 002/004/007/008 closures. Formal drafting not started. |
 | Specs published | ZERO |
 
@@ -52,12 +52,12 @@ Wave 2:    018 (search-space expansion)  ← REOPENED (ưu tiên sớm, routes t
            008✅, 009, 010✅, 011, 012     ← song song
            001✅, 002✅, 005, 006          ← song song
            013 (convergence)              ← song song, soft-dep 001✅
-           015 (artifact/version)         ← song song, soft-dep 007✅, 008
+           015 (artifact/version)         ← song song, soft-dep 007✅, 008✅
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
            017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013
                ↓
-Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
+Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
                ↓
 Phase 4:   Specs (5-6 documents)
@@ -198,7 +198,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 
 | Topic | Slug | Findings | Ước lượng | Notes |
 |-------|------|----------|-----------|-------|
-| **008** | architecture-identity | F-02, F-09, F-13, SSE-04-IDV | ~~1-2 rounds~~ **CLOSED** (4 rounds) | 3 pillars, directory, identity, candidate vocabulary. 4/4 Converged |
+| **008** | architecture-identity | F-02, F-09, F-13, SSE-04-IDV | ~~1-2 rounds~~ **CLOSED** (8 rounds) | 3 pillars, directory, identity, candidate vocabulary. 4/4 Converged |
 | **009** | data-integrity | F-10, F-11 | 1 round | Data copies, session immutability |
 | **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Clean OOS protocol, verdict taxonomy, power rules, pre-existing candidates. 3 Converged + 1 Judgment call |
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
