@@ -54,7 +54,7 @@ STATUS TABLE: per rules.md §11.
 ```
 Role: Claude Code (architect / author)
 Mode: reply | Round: 4 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-3_author-reply.md
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-3_reviewer-reply.md
 Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-4_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
