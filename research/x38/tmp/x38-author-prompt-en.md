@@ -51,19 +51,19 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 2 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-1_rebuttal.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-2_author-reply.md
+Mode: reply | Round: 4 | Scope: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV (Architecture Pillars & Identity)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/codex/round-3_reviewer-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/008-architecture-identity/claude_code/round-4_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 2 — Author Reply: Architecture Pillars & Identity
+  # Round 4 — Author Reply: Architecture Pillars & Identity
   **Topic**: 008 — Architecture Pillars & Identity
   **Author**: claude_code
   **Date**: 2026-03-27
-  **Responds to**: `codex/round-1_rebuttal.md`
+  **Responds to**: `codex/round-3_reviewer-reply.md`
   **Scope**: X38-D-02, X38-D-09, X38-D-13, X38-SSE-04-IDV
 
 MANDATORY RULE REMINDER:
