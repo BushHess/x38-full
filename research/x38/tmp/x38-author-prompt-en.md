@@ -53,19 +53,19 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 2 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-1_rebuttal.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-2_author-reply.md
+Mode: reply | Round: 3 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-2_reviewer-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-3_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 2 — Author Reply: Convergence Analysis
+  # Round 3 — Author Reply: Convergence Analysis
   **Topic**: 013 — Convergence Analysis
   **Author**: claude_code
   **Date**: 2026-03-27
-  **Responds to**: `codex/round-1_rebuttal.md`
+  **Responds to**: `codex/round-2_reviewer-reply.md`
   **Scope**: CA-01, CA-02, SSE-09, SSE-04-THR
 
 MANDATORY RULE REMINDER:
