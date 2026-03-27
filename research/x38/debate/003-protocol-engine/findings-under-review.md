@@ -114,14 +114,23 @@ Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
 Topic 018 decided (confirmed 2026-03-27): breadth-activation contract requires protocol
 to declare all 7 fields at `protocol_lock` before activation is permitted.
 
-The 7 mandatory fields (from SSE-D-04):
-1. `identity_vocabulary` — resolved via Topic 008 Decision 4 (SSE-04-IDV)
-2. `generation_mode` — routed to Topic 006 (SSE-D-03)
-3. `identity_vocabulary` interface — routed to Topic 008 (SSE-04-IDV)
-4. `equivalence_axes` + `anomaly_axes` — routed to Topic 013 (SSE-04-THR)
-5. `scan_phase_correction_method` — routed to Topic 013 (SSE-09)
-6. `contradiction_storage` — routed to Topic 015 (SSE-08)
-7. `invalidation_cascade` — routed to Topic 015 (SSE-04-INV)
+The 7 mandatory fields (from SSE-D-04, canonical source:
+`debate/018-search-space-expansion/final-resolution.md:88-96`):
+1. `descriptor` — what the candidate looks like (structural identity)
+2. `comparison_domain` — which candidates compare against each other
+3. `identity_vocabulary` — how to name/hash candidates
+4. `equivalence_method` — how to determine if two candidates are "the same"
+5. `scan_phase_correction_method` — multiplicity correction for breadth expansion
+6. `robustness_bundle` — which proof components required
+7. `invalidation_scope` — what gets invalidated when a field changes
+
+Downstream ownership routing (which topics resolve exact values for each field):
+- Field 3 `identity_vocabulary`: resolved via Topic 008 Decision 4 (SSE-04-IDV)
+- Field 4 `equivalence_method` axes + anomaly thresholds: routed to Topic 013 (SSE-04-THR)
+- Field 5 `scan_phase_correction_method`: routed to Topic 013 (SSE-D-09)
+- Field 7 `invalidation_scope` cascade rules: routed to Topic 015 (SSE-04-INV)
+- `generation_mode` (SSE-D-03, separate decision): routed to Topic 006
+- `contradiction_storage` (SSE-D-08, separate decision): routed to Topic 015
 
 Topic 003 owns:
 1. Protocol gate that enforces 7-field declaration at `protocol_lock`

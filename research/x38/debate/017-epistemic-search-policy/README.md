@@ -108,9 +108,13 @@ Scope KHÔNG bao gồm:
   - Topic 002 (contamination firewall, **CLOSED** 2026-03-25) — firewall rules
     frozen: 3 F-06 categories, NO STRUCTURAL_PRIOR category, permanent
     UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype operates within this boundary.
-  - Topic 008 (architecture & identity) — need pillar count decision (F-02)
-    and identity model (F-13) before ESP positioning
-  - Topic 010 (Clean OOS) — need power floors (F-24) for promotion ladder
+  - Topic 008 (architecture & identity, **CLOSED** 2026-03-27) — pillar count
+    decision frozen: 3 pillars sufficient for v1 (Decision 1). ESP folds into
+    Protocol Engine as sub-component, not 4th pillar. Identity model (F-13)
+    resolved via D-13 + SSE-04-IDV (Decision 4).
+  - Topic 010 (Clean OOS, **CLOSED** 2026-03-25) — power floors (F-24) frozen:
+    method-first power contract (D-24). Topic 010 is now a satisfied dependency
+    for 017. ESP-03 consumes D-24's method-first contract for promotion ladder.
   - Topic 013 (convergence analysis) — need convergence metrics (CA-01) for
     descriptor-space coverage measurement
 - **Confirmed upstream** (routed findings):
@@ -163,12 +167,12 @@ Scope KHÔNG bao gồm:
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
-| 008 | F-02 | F-02 asks "3 pillars enough?" — 017 proposes ESP as sub-component (v1) → pillar (v2). Pillar count depends on 008 framing. | 008 owns pillar decision; 017 provides substance. If 008 decides 3 sufficient, 017 substance folds into Protocol Engine. |
+| 008 | F-02 | F-02 asks "3 pillars enough?" — 017 proposes ESP as sub-component (v1) → pillar (v2). **RESOLVED**: Topic 008 CLOSED (2026-03-27) — Decision 1 froze 3 pillars sufficient for v1. ESP folds into Protocol Engine as sub-component, not 4th pillar. | 008 CLOSED; pillar decision frozen. 017 substance folds into Protocol Engine. |
 | 002 | F-04 | Reconstruction-risk gate extends firewall enforcement to phenotype layer. **RESOLVED**: Topic 002 CLOSED (2026-03-25) — NO vocabulary expansion, NO STRUCTURAL_PRIOR category (Facet A). Permanent: UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype operates within this boundary. | 002 CLOSED; 017 designs within 3-category + UNMAPPED constraint. |
 | 003 | F-05 | Cell-elite archive replaces Stage 4 global pruning. epistemic_delta.json adds Stage 8 output. Descriptor tagging adds Stage 3 output. | 003 owns pipeline structure; 017 defines what ESP component feeds into stages. |
 | 006 | F-08 | Descriptor taxonomy for phenotypes overlaps feature family taxonomy. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. |
 | 013 | CA-01 | Coverage metrics in convergence analysis overlap ESP coverage tracking. | 013 owns convergence metrics; 017 defines coverage obligations for budget governor. |
-| 010 | F-24 | Power floors for Clean OOS reused for promotion ladder gates. | 010 owns power rules; 017 consumes them for promotion decisions. |
+| 010 | F-24 | Power floors for promotion ladder reuse Clean OOS power methodology. **RESOLVED**: Topic 010 CLOSED (2026-03-25) — D-24 method-first power contract frozen. Topic 010 is now a satisfied dependency for 017. | 010 CLOSED; 017 consumes D-24's method-first contract for promotion decisions. |
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 must enumerate; F-17 must classify invalidation. | 015 owns enumeration + invalidation; 017 defines contracts. |
 | 004 | C3 | "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments may constitute a budget split. | 017 must reconcile with C3 constraint. |
 | 016 | BR-01 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). | 017 scope explicitly excludes parameter values. If 016 allows recalibration, ESP treats recalibrated algo as new phenotype. |

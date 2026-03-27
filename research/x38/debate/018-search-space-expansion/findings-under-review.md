@@ -7,7 +7,7 @@
 **Origin**: `docs/search-space-expansion/request.md` — VDO accidental discovery
 exposed gap in x38: strong on validation, weak on discovery.
 
-10 issues resolved (10 Converged + 1 Judgment call). **10/10 debated, 6 rounds (standard 2-agent).**
+10 OIs resolved → 11 decisions (OI-02 expands to SSE-D-02 + SSE-D-03). 10 Converged + 1 Judgment call. **10/10 OIs debated, 6 rounds (standard 2-agent).**
 6 rounds completed (2026-03-27). Prior 4-agent debate (7 rounds) served as input evidence [extra-canonical].
 Evidence archive: `docs/search-space-expansion/debate/` (4 proposals + 4×7 rounds).
 
@@ -172,7 +172,7 @@ generation (correctness guarantee absent).
 | 013 | X38-CA-01 | Multiplicity correction for breadth expansion | SSE-D-04 field 5 (scan_phase_correction_method) |
 | 015 | X38-D-14/17 | Lineage + invalidation for discovery pipeline | SSE-D-07 routes 3-layer lineage to 015 |
 | 017 | X38-ESP-01/02 | Coverage/surprise/proof integration | SSE-D-05 topology within 017 scope |
-| 003 | — | Stage wiring + breadth-activation blocker | SSE-D-04 breadth gate at protocol_lock |
+| 003 | X38-SSE-D-04 | Stage wiring + breadth-activation blocker | SSE-D-04 breadth gate at protocol_lock |
 
 ## Prior 4-Agent Outcomes (archived, non-authoritative)
 
@@ -197,5 +197,5 @@ SSE-D-05 reclassified from Converged to Judgment call per human researcher decis
 | SSE-D-09 | Multiplicity control coupling | Thiếu sót | Converged (routed → 013) |
 | SSE-D-11 | APE v1 = parameterization only | Thiếu sót | Converged |
 
-**Current live status**: 10/10 issues resolved under standard x38 2-agent rules.
+**Current live status**: 10/10 OIs resolved → 11 decisions (OI-02 expands to SSE-D-02 + SSE-D-03) under standard x38 2-agent rules.
 10 Converged + 1 Judgment call. Topic CLOSED 2026-03-27.

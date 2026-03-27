@@ -350,11 +350,11 @@ Budget governor v1:
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
-| 008 | F-02 | 017 proposes ESP as sub-component (v1) -> pillar (v2). If 008 decides 3 pillars sufficient, ESP substance folds into Protocol Engine without architectural promotion. | 008 owns pillar decision; 017 provides substance regardless of framing. |
+| 008 | F-02 | 017 proposes ESP as sub-component (v1) -> pillar (v2). **RESOLVED**: Topic 008 CLOSED (2026-03-27) — Decision 1 froze 3 pillars sufficient for v1. ESP folds into Protocol Engine as sub-component, not 4th pillar. | 008 CLOSED; pillar decision frozen. 017 substance folds into Protocol Engine. |
 | 002 | F-04 | Reconstruction-risk gate extends firewall enforcement to phenotype layer. **RESOLVED**: Topic 002 CLOSED (2026-03-25) — NO vocabulary expansion, NO STRUCTURAL_PRIOR category (Facet A). Permanent path: UNMAPPED + Tier 2 + SHADOW. ESP-02 phenotype contracts operate within this boundary. | 002 CLOSED; 017 designs phenotype within 3-category + UNMAPPED constraint. |
 | 003 | F-05 | Cell-elite archive changes Stage 4 design. epistemic_delta.json adds Stage 8 mandatory output. Descriptor tagging adds Stage 3 output. | 003 owns pipeline structure; 017 defines ESP component contracts. |
 | 006 | F-08 | Phenotype descriptor taxonomy overlaps feature family taxonomy. | 006 owns feature-level; 017 owns strategy-level. Must not conflict. |
-| 010 | F-24 | Power floors for promotion ladder reuse Clean OOS power methodology. | 010 owns power rules; 017 consumes. |
+| 010 | F-24 | Power floors for promotion ladder reuse Clean OOS power methodology. **RESOLVED**: Topic 010 CLOSED (2026-03-25) — D-24 method-first power contract frozen. Topic 010 is now a satisfied dependency for 017. | 010 CLOSED; 017 consumes D-24's method-first contract for promotion decisions. |
 | 013 | CA-01 | Coverage metrics overlap. Budget governor interacts with stop conditions. | 013 owns convergence/stop; 017 defines coverage obligations. |
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 (state pack) must enumerate them; F-17 (semantic change) must classify when changes to ESP artifacts invalidate results. | 015 owns artifact enumeration + invalidation rules; 017 defines artifact contracts + mandatory status. |
 | 004 | C3 | Topic 004 C3 (converged): "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments (coverage_floor + exploit) are a form of budget split. Argument: ordering within frontier ≠ budget split; requires debate. | 017 must reconcile ESP-04 v1 implementation with C3 "all search is frontier" constraint. |

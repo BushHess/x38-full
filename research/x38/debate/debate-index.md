@@ -39,7 +39,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
-| X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved (10 Converged + 1 Judgment call). 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
+| X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved → 11 decisions (OI-02 expands to D-02+D-03). 10 Converged + 1 Judgment call. 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
 
 **Totals**: 19 topics (7 CLOSED, 1 SPLIT, 11 OPEN). 58 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,

@@ -180,10 +180,10 @@ Evidence: `claude_code/round-2_author-reply.md:200-257`,
   these, the identity contract remains structurally defined but semantically
   incomplete.
 
-- **SSE-04-IDV provisional status**: Routed from Topic 018, which is REOPENED.
-  Provisional until 018 re-closes under standard 2-agent debate. If 018's
-  re-debate changes the 7-field breadth-activation contract, field 3 ownership
-  may need revision.
+- **SSE-04-IDV status**: Routed from Topic 018. Topic 018 re-closed (2026-03-27)
+  under standard 2-agent debate — 7-field breadth-activation contract confirmed
+  unchanged (SSE-D-04). Field 3 ownership (`identity_vocabulary`) resolved
+  authoritatively via Topic 008 Decision 4 (SSE-04-IDV). No longer provisional.
 
 ---
 
