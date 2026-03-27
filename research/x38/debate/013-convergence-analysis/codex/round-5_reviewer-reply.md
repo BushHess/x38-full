@@ -177,7 +177,14 @@ not map online V4/V5/V6/V7/V8 history onto offline campaign/session counts.
 about the problem, not a template for the offline execution model, and that the
 two paradigms differ in execution, determinism, governance, and search coverage
 (`docs/online_vs_offline.md:12-36,43-58`). So `ceiling = 3`, `S_max = 5`, and
-`M = 2` are inference, not evidence-backed closure. `Open`.
+`M = 2` are inference, not evidence-backed closure. There is also an internal
+mechanism bug: Round 5 defines `ΔW_N = W(1..N+1) - W(1..N)`
+(`claude_code/round-5_author-reply.md:244`) and gives `W` a defined
+two-session base case (`claude_code/round-5_author-reply.md:238-242`). With
+`S_min = 3`, the first defined marginal-gain observation arrives only when
+session 3 completes, so `M = 2` cannot fire after "sessions 2 and 3" as the
+example claims (`claude_code/round-5_author-reply.md:311-318`). Earliest
+detection would be after session 4. `Open`.
 
 ### SSE-09: Scan-phase correction law default
 
@@ -213,8 +220,9 @@ discovery can therefore still occupy a slot and redirect probe budget before
 cleanup. Topic 017 also still owns proof-bundle consumption, anomaly
 thresholds, and cell capacity
 (`debate/017-epistemic-search-policy/findings-under-review.md:426-435`). So the
-BH branch still depends on unresolved downstream topology, and the fixed
-`q = 0.10` / `α = 0.05` constants are asserted rather than derived from a
+BH branch still depends on unresolved downstream topology. The claimed bound
+"one slot × one probe" is therefore not frozen by the current record. The fixed
+`q = 0.10` / `α = 0.05` constants are also asserted rather than derived from a
 cited calibration method in the routed record. `Open`.
 
 ### SSE-04-THR: Equivalence + anomaly thresholds
@@ -262,6 +270,6 @@ sharpens the first two and leaves the threshold side unresolved against Topic
 | Issue ID | Điểm | Phân loại | Trạng thái | Steel-man vị trí cũ | Lý do bác bỏ steel-man |
 |---|---|---|---|---|---|
 | X38-CA-01 | Convergence measurement framework | Thiếu sót | Open | A deterministic derivation law already closes the numeric floor question: once `K` is known, `τ_low` and `τ_high` are uniquely produced from the null distribution, and performance-equivalence can be handled by a second mechanism without needing one universal metric. | Topic 001 deferred exact numerics to 013 itself, so "law now, output later" is still deferral here. `K` is not a neutral missing number; it depends on unresolved `comparison_domain` and `equivalence_method`, which still determine what the ranked objects are. |
-| X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Open | `Kendall's W` + `max(ε_noise, ε_cost)` + frozen defaults (`ceiling=3`, `S_min=3`, `S_max=5`, `M=2`) gives a computable diminishing-returns law, and online V4→V8 counts are conservative upper bounds for offline. | The active threshold still includes protocol-local `ε_cost`, so Topic 013 has not frozen the stop threshold it owns. The x37 record shows same-file limits qualitatively; it does not justify the proposed numeric defaults or the online→offline translation. |
-| X38-SSE-09 | Scan-phase correction law default | Thiếu sót | Open | Conditional BH closes both concerns at once: Holm is the effective v1 default until Topic 017 supplies the precondition, while BH remains the preferred architecture once guaranteed proof evaluation exists. | That framing means Holm, not BH, is the only present v1 default. BH remains contingent on unresolved Topic 017 proof-consumption/capacity rules, and the round-5 thresholds are asserted without a cited calibration method inside the routed record. |
+| X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Open | `Kendall's W` + `max(ε_noise, ε_cost)` + frozen defaults (`ceiling=3`, `S_min=3`, `S_max=5`, `M=2`) gives a computable diminishing-returns law, and online V4→V8 counts are conservative upper bounds for offline. | The active threshold still includes protocol-local `ε_cost`, so Topic 013 has not frozen the stop threshold it owns. The x37 record shows same-file limits qualitatively, not as offline numeric defaults, and the round-5 `M=2` example is internally inconsistent with its own `ΔW` definition. |
+| X38-SSE-09 | Scan-phase correction law default | Thiếu sót | Open | Conditional BH closes both concerns at once: Holm is the effective v1 default until Topic 017 supplies the precondition, while BH remains the preferred architecture once guaranteed proof evaluation exists. | That framing means Holm, not BH, is the only present v1 default. BH remains contingent on unresolved Topic 017 proof-consumption/capacity rules, the claimed bounded distortion is not yet frozen by the stage/capacity record, and the round-5 thresholds are asserted without a cited calibration method inside the routed record. |
 | X38-SSE-04-THR | Equivalence + anomaly thresholds | Thiếu sót | Open | MK-17 + Topic 004 already made same-dataset calibration shadow-only, and the repaired cross-bucket behavioral audit is enough to finish the equivalence mechanism while Topic 017 supplies vocabulary later. | The first half is no longer disputed: the explicit `dataset_identity` gate closed a real calibration ambiguity. The issue stays open because step 1 still depends on unresolved Topic 017 vocabulary, and the routed threshold side of SSE-04-THR remains unfrozen. |
