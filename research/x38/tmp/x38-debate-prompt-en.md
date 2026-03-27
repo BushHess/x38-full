@@ -90,19 +90,19 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 3 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-3_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-3_reviewer-reply.md
+Round: 5 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-5_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-5_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 3 — Reviewer Reply: Search-Space Expansion
+  # Round 5 — Reviewer Reply: Search-Space Expansion
   **Topic**: 018 — Search-Space Expansion
   **Author**: codex
   **Date**: 2026-03-27
-  **Responds to**: `claude_code/round-3_author-reply.md`
+  **Responds to**: `claude_code/round-5_author-reply.md`
   **Scope**: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
   **Artifacts read**: (list all files read)
 
