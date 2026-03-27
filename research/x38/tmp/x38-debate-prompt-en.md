@@ -4,23 +4,22 @@ MODE A - Opening Critique
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 1 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-1_opening-critique.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-1_rebuttal.md
+Round: 1 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-1_opening-critique.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-1_rebuttal.md
 
 Read Prompt A in `debate/prompt_template.md` for the canonical round structure.
 
 HEADER (mandatory):
-  # Round 1 — Rebuttal: Search-Space Expansion
-  **Topic**: 018 — Search-Space Expansion
+  # Round 1 — Rebuttal: Convergence Analysis
+  **Topic**: 013 — Convergence Analysis
   **Author**: codex
   **Date**: 2026-03-27
   **Responds to**: `claude_code/round-1_opening-critique.md`
-  **Scope**: SSE-D-01 (Lane ownership), SSE-D-02/03 (Bounded ideation / cold-start),
-             SSE-D-04 (Breadth-expansion contract), SSE-D-05 (Surprise lane),
-             SSE-D-06 (Cell + equivalence), SSE-D-07 (3-layer lineage),
-             SSE-D-08 (Contradiction memory), SSE-D-09 (Multiplicity control),
-             SSE-D-10 (Domain-seed hook), SSE-D-11 (APE v1 scope)
+  **Scope**: CA-01 (Convergence measurement framework),
+             CA-02 (Stop conditions & diminishing returns),
+             SSE-09 (Scan-phase correction law default),
+             SSE-04-THR (Equivalence + anomaly thresholds)
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -52,32 +51,30 @@ ENVIRONMENT REMINDER:
 - Do not assume `/var/www/trading-bots/` is the git root. Git root is `/var/www/trading-bots/btc-spot-dev/`.
 
 Task:
-- Review all 10 OIs (SSE-D-01 through SSE-D-11) as independent issues.
-- Prior 4-agent debate (extra-canonical) serves as input evidence, not binding.
-  Evidence archive: `docs/search-space-expansion/debate/`.
-- Give each OI a verdict, but put the most depth on the arguments
+- Review all 4 findings (CA-01, CA-02, SSE-09, SSE-04-THR) as independent issues.
+- 2 original findings (CA-01, CA-02) from gap analysis. 2 routed from
+  Topic 018 (SSE-09, SSE-04-THR) — CLOSED 2026-03-27, architectural context
+  available in `debate/018-search-space-expansion/final-resolution.md`.
+- Give each finding a verdict, but put the most depth on the arguments
   that could actually change the design.
 - Key battlegrounds for this topic:
-  (a) SSE-D-01: Lane ownership — fold discovery into 6 existing topics
-      or keep Topic 018 umbrella? Object boundary clarity?
-  (b) SSE-D-02/03: Bounded ideation — 4 hard rules sufficient?
-      Grammar depth-1 seed as default vs registry_only? Cold-start activation conditions?
-  (c) SSE-D-04: Breadth-expansion interface — 7-field contract completeness?
-      Protocol must declare all 7 before breadth activation — enforceable?
-  (d) SSE-D-05: Surprise lane — recognition topology (surprise_queue →
-      equivalence_audit → proof_bundle → freeze). 5 anomaly axes sufficient?
-  (e) SSE-D-06: Hybrid equivalence — deterministic structural pre-bucket +
-      behavioral nearest-rival audit. No LLM judge. Method soundness?
-  (f) SSE-D-07: 3-layer lineage — semantic split (feature_lineage,
-      candidate_genealogy, proposal_provenance). Routing to Topic 015 correct?
-  (g) SSE-D-08: Contradiction memory — descriptor-level, shadow-only (MK-17).
-      Storage → 015, consumption → 017. Split routing correct?
-  (h) SSE-D-09: Multiplicity control — breadth coupling via SSE-D-04 field 5.
-      Routing to Topic 013 correct?
-  (i) SSE-D-10: Domain-seed hook — optional provenance, no replay semantics.
-      Sufficient or needs stronger contract?
-  (j) SSE-D-11: APE v1 scope — template parameterization only, no free-form
-      code generation. Scope boundary correct?
+  (a) CA-01: Convergence measurement — granularity level (family vs
+      param vs performance)? Distance metric (voting, Sharpe overlap,
+      top-K Jaccard, rank correlation)? Statistical test (bootstrap,
+      permutation, majority voting)? Multi-level convergence
+      (FULLY_CONVERGED vs PARTIALLY_CONVERGED)?
+  (b) CA-02: Stop conditions — within-campaign threshold (information gain,
+      novel candidate rate, winner stability)? Cross-campaign same-data
+      ceiling? MK-17 shadow-only interaction (accelerated diminishing
+      returns)? Who decides to exceed ceilings (human only vs framework
+      suggest)?
+  (c) SSE-09: Scan-phase correction law — Holm (step-down) vs BH (FDR)
+      vs cascade? Conservative vs balanced default for v1?
+      Interaction with cell-elite diversity preservation?
+  (d) SSE-04-THR: Equivalence + anomaly thresholds — behavioral ρ cutoff
+      (0.95 vs 0.99)? Structural hash granularity for pre-bucketing?
+      Anomaly axis thresholds (absolute vs relative to cell population)?
+      Interaction with 006 feature family taxonomy?
 - For each issue addressed: classification + evidence pointer + critique.
 - Split verdicts are allowed, for example:
   "accept observation, reject mechanism".
@@ -90,20 +87,20 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 6 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-6_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-6_reviewer-reply.md
+Round: 2 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-2_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-2_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 6 — Reviewer Reply: Search-Space Expansion
-  **Topic**: 018 — Search-Space Expansion
+  # Round 2 — Reviewer Reply: Convergence Analysis
+  **Topic**: 013 — Convergence Analysis
   **Author**: codex
   **Date**: 2026-03-27
-  **Responds to**: `claude_code/round-6_author-reply.md`
-  **Scope**: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
+  **Responds to**: `claude_code/round-2_author-reply.md`
+  **Scope**: CA-01, CA-02, SSE-09, SSE-04-THR
   **Artifacts read**: (list all files read)
 
 MANDATORY RULE REMINDER:
@@ -157,16 +154,16 @@ multi-role stack is usually unnecessary here.
 
 ```
 Role: Codex (advisor for closure)
-Task: Judgment-call memo for debate/018-search-space-expansion/, after Round {ROUND_NUM}
-Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/judgment-call-memo.md
+Task: Judgment-call memo for debate/013-convergence-analysis/, after Round {ROUND_NUM}
+Scope: CA-01, CA-02, SSE-09, SSE-04-THR
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/judgment-call-memo.md
 Read-only — do not modify existing files.
 
 Additionally read all round files in:
-  - debate/018-search-space-expansion/claude_code/
-  - debate/018-search-space-expansion/codex/
-Additionally read prior extra-canonical evidence:
-  - docs/search-space-expansion/debate/ (4-agent archive, non-authoritative)
+  - debate/013-convergence-analysis/claude_code/
+  - debate/013-convergence-analysis/codex/
+Additionally read prior routed-issue context:
+  - debate/018-search-space-expansion/final-resolution.md (SSE-09, SSE-04-THR routing source)
 
 Produce:
 
@@ -174,16 +171,10 @@ Produce:
    | Issue ID | Finding | Final positions | Agreement level | Recommended resolution |
 
    Issues to assess separately:
-   - SSE-D-01: Pre-lock generation lane ownership (fold into 6 topics vs umbrella)
-   - SSE-D-02/03: Bounded ideation + conditional cold-start (4 hard rules, 2 generation modes)
-   - SSE-D-04: Breadth-expansion interface contract (7-field completeness)
-   - SSE-D-05: Surprise lane / recognition inventory (topology, 5 anomaly axes)
-   - SSE-D-06: Cell + equivalence + correction method (hybrid: structural + behavioral)
-   - SSE-D-07: 3-layer lineage (semantic split, routing → 015)
-   - SSE-D-08: Cross-campaign contradiction memory (shadow-only, routing → 015/017)
-   - SSE-D-09: Multiplicity control (breadth coupling, routing → 013)
-   - SSE-D-10: Domain-seed hook (optional provenance, no replay)
-   - SSE-D-11: APE v1 scope (template parameterization only)
+   - CA-01: Convergence measurement framework (distance metrics, statistical tests, multi-level convergence)
+   - CA-02: Stop conditions & diminishing returns (within-campaign, cross-campaign, MK-17 interaction)
+   - SSE-09: Scan-phase correction law default (Holm/FDR/cascade, v1 recommendation)
+   - SSE-04-THR: Equivalence + anomaly thresholds (behavioral ρ cutoff, structural hash, anomaly axes)
 
    Agreement levels:
    - Converged: §7(a)(b)(c) complete
@@ -199,18 +190,12 @@ Produce:
    - Which issues still have incomplete steel-man?
 
 3. CROSS-TOPIC IMPACT CHECK
-   - Topic 006 (feature engine): does generation_mode (SSE-D-03) affect
-     registry acceptance of auto-generated features?
-   - Topic 015 (artifact versioning): do lineage (SSE-D-07) and contradiction
-     registry (SSE-D-08) create new invalidation rules?
-   - Topic 017 (epistemic search policy): does surprise topology (SSE-D-05) and
-     contradiction consumption (SSE-D-08-CON) affect ESP scope?
-   - Topic 013 (convergence analysis): does multiplicity control (SSE-D-09)
-     affect correction formula and breadth-expansion accounting?
-   - Topic 008 (architecture identity): does identity_vocabulary (SSE-D-04 field 3)
-     interact with X38-D-13 candidate-level vocabulary?
-   - Topic 003 (protocol engine): does breadth-activation blocker (SSE-D-04)
-     affect stage wiring or protocol_lock enforcement?
+   - Topic 017 (epistemic search policy): do convergence metrics (CA-01) and
+     stop conditions (CA-02) affect ESP coverage obligations and budget governor?
+   - Topic 003 (protocol engine): does the convergence algorithm affect pipeline
+     stop logic and stage wiring?
+   - Topic 008 (architecture identity): do equivalence thresholds (SSE-04-THR)
+     interact with identity vocabulary (SSE-04-IDV)?
 
 4. STATUS DRIFT CHECK
    - Compare `findings-under-review.md` against actual round outcomes.

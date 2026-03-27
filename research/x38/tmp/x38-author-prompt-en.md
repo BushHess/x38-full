@@ -4,19 +4,18 @@
 
 ```
 Role: Claude Code (architect / opening critic)
-Mode: opening | Round: 1 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-1_opening-critique.md
+Mode: opening | Round: 1 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-1_opening-critique.md
 
 HEADER (mandatory):
-  # Round 1 — Opening Critique: Search-Space Expansion
-  **Topic**: 018-search-space-expansion
+  # Round 1 — Opening Critique: Convergence Analysis
+  **Topic**: 013-convergence-analysis
   **Author**: claude_code
   **Date**: 2026-03-27
-  **Scope**: SSE-D-01 (Lane ownership), SSE-D-02/03 (Bounded ideation / cold-start),
-             SSE-D-04 (Breadth-expansion contract), SSE-D-05 (Surprise lane),
-             SSE-D-06 (Cell + equivalence), SSE-D-07 (3-layer lineage),
-             SSE-D-08 (Contradiction memory), SSE-D-09 (Multiplicity control),
-             SSE-D-10 (Domain-seed hook), SSE-D-11 (APE v1 scope)
+  **Scope**: CA-01 (Convergence measurement framework),
+             CA-02 (Stop conditions & diminishing returns),
+             SSE-09 (Scan-phase correction law default),
+             SSE-04-THR (Equivalence + anomaly thresholds)
   **Input documents**: (list all files read)
 
 ENVIRONMENT REMINDER:
@@ -30,10 +29,10 @@ PREAMBLE (2-4 paragraphs):
   - Establish architect role
   - State burden of proof (→ rules.md §5)
   - Critical context + scope boundaries
-  - Note: Topic 018 has 10 OIs (SSE-D-01 through SSE-D-11), each with
-    its own issue ID. Prior 4-agent debate (extra-canonical) serves as
-    input evidence. Standard 2-agent re-debate required per x38_RULES.md §5.
-    Debate each OI independently; prior Converged status is non-authoritative.
+  - Note: Topic 013 has 4 findings: 2 original (CA-01, CA-02) + 2 routed
+    from Topic 018 (SSE-09, SSE-04-THR). Routed issues carry architectural
+    context from Topic 018 closure (CLOSED 2026-03-27, standard 2-agent
+    debate). Debate each finding independently.
 
 PER-ISSUE (for each Open issue):
   ## {Issue ID}: {Title} — {ACCEPT/REJECT/SPLIT/DEFER to V2+}
@@ -54,20 +53,20 @@ STATUS TABLE: per rules.md §11.
 
 ```
 Role: Claude Code (architect / author)
-Mode: reply | Round: 6 | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/codex/round-5_reviewer-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/018-search-space-expansion/claude_code/round-6_author-reply.md
+Mode: reply | Round: 2 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-1_rebuttal.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-2_author-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 6 — Author Reply: Search-Space Expansion
-  **Topic**: 018 — Search-Space Expansion
+  # Round 2 — Author Reply: Convergence Analysis
+  **Topic**: 013 — Convergence Analysis
   **Author**: claude_code
   **Date**: 2026-03-27
-  **Responds to**: `codex/round-5_reviewer-reply.md`
-  **Scope**: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11
+  **Responds to**: `codex/round-1_rebuttal.md`
+  **Scope**: CA-01, CA-02, SSE-09, SSE-04-THR
 
 MANDATORY RULE REMINDER:
     1. §4: Attack the argument, not the conclusion.
@@ -106,8 +105,8 @@ STATUS TABLE: updated per rules.md §11.
 
 ```
 Role: Claude Code (architect / closure)
-Mode: closure | Scope: SSE-D-01, SSE-D-02/03, SSE-D-04, SSE-D-05, SSE-D-06, SSE-D-07, SSE-D-08, SSE-D-09, SSE-D-10, SSE-D-11 (Search-Space Expansion)
-Topic: 018 — Search-Space Expansion
+Mode: closure | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Topic: 013 — Convergence Analysis
 
 ENVIRONMENT REMINDER:
 - Follow `research/x38/AGENTS.md` for repo/environment boundaries.
@@ -133,35 +132,31 @@ PREREQUISITES (verify before proceeding):
     to the author's final arguments.
 
 STEP 1 — CREATE `final-resolution.md`:
-  Path: debate/018-search-space-expansion/final-resolution.md
+  Path: debate/013-convergence-analysis/final-resolution.md
   Use Template D (prompt_template.md). Include:
-  - Decisions table: SSE-D-01 through SSE-D-11 with
+  - Decisions table: CA-01, CA-02, SSE-09, SSE-04-THR with
     Resolution, Type, Round closed
   - Key design decisions (for drafts/):
-    - Lane ownership fold (018 umbrella vs downstream distribution)
-    - Bounded ideation rules + cold-start activation (SSE-D-02/03)
-    - Surprise lane recognition topology (SSE-D-05)
-    - 3-layer lineage semantic split (SSE-D-07, routed → 015)
-    - Contradiction memory: descriptor-level, shadow-only (SSE-D-08, routed → 015/017)
-    - Breadth-expansion 7-field interface contract (SSE-D-04)
-    - Domain-seed hook provenance (SSE-D-10)
-    - Hybrid equivalence method (SSE-D-06)
-    - Multiplicity control coupling (SSE-D-09, routed → 013)
-    - APE v1 scope boundary (SSE-D-11)
+    - Convergence measurement framework (distance metrics, statistical tests,
+      multi-level convergence granularity)
+    - Stop conditions & diminishing returns (within-campaign, cross-campaign,
+      MK-17 shadow-only interaction)
+    - Scan-phase correction law default (Holm/FDR/cascade, v1 recommendation)
+    - Equivalence + anomaly thresholds (behavioral ρ cutoff, structural hash
+      granularity, anomaly axis thresholds)
   - Unresolved tradeoffs (for human review)
-  - Cross-topic impact: Topic 006 (generation_mode), Topic 015 (lineage + invalidation),
-    Topic 017 (surprise/proof integration), Topic 013 (multiplicity correction),
-    Topic 008 (identity vocabulary), Topic 003 (breadth-activation blocker)
+  - Cross-topic impact: Topic 017 (coverage metrics, budget governor),
+    Topic 003 (pipeline stop logic), Topic 008 (identity vocabulary compatibility)
   - Draft impact table
 
 STEP 2 — UPDATE `findings-under-review.md`:
-  Path: debate/018-search-space-expansion/findings-under-review.md
+  Path: debate/013-convergence-analysis/findings-under-review.md
   - Update `current_status` for each issue (Converged / Judgment call)
   - Record round and date closed
   - Do NOT create ad-hoc fields — use existing schema only
 
 STEP 3 — UPDATE `debate-index.md` + topic `README.md`:
-  - Change topic 018 status → CLOSED
+  - Change topic 013 status → CLOSED
   - Sync summary with final-resolution.md
 
 STEP 3b — Sync closure status across global files:
@@ -172,23 +167,19 @@ STEP 3b — Sync closure status across global files:
       (blockquote: date, rounds, resolution summary, dependency list)
 
 STEP 3c — Check downstream unblocking:
-    Topic 018 closure may unblock:
-    - Topic 006 (feature engine) — SSE-D-03 generation_mode routing
-    - Topic 015 (artifact versioning) — SSE-D-07/08 lineage + contradiction
-    - Topic 017 (epistemic search policy) — SSE-D-05 topology + SSE-D-08-CON
-    - Topic 013 (convergence analysis) — SSE-D-09 multiplicity control
-    - Topic 008 (architecture identity) — SSE-D-04 identity_vocabulary
-    - Topic 003 (protocol engine) — SSE-D-04 breadth-activation blocker
+    Topic 013 closure may unblock:
+    - Topic 017 (epistemic search policy) — hard-dep on 013 (convergence/stop conditions)
+    - Topic 003 (protocol engine) — indirect via 017
     Update EXECUTION_PLAN.md dependency notes if applicable.
 
 STEP 4 — CREATE/UPDATE draft spec in `drafts/`:
   - Convert converged design decisions to spec sections
   - Each decision must trace: Issue ID → final-resolution.md → evidence
-  - discovery_spec.md is the primary target (bounded ideation, surprise lane, APE)
-  - architecture_spec.md secondary (breadth-expansion contract, lineage routing)
+  - methodology_spec.md is the primary target (convergence algorithm, stop conditions)
+  - architecture_spec.md secondary (correction law, equivalence thresholds)
 
 STEP 5 — VERIFY no status drift:
-  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 018 = CLOSED
+  - README.md, debate-index.md, EXECUTION_PLAN.md all reflect 013 = CLOSED
   - No orphaned Open issues remain in findings-under-review.md
 
 Nếu còn bước nào nữa mà tôi chưa nêu ra, hãy nhắc tôi bổ sung.
