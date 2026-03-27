@@ -87,19 +87,19 @@ MODE B - Rebuttal / Reviewer Reply
 
 ```
 Role: Codex (reviewer / adversarial critic)
-Round: 2 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
-Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-2_author-reply.md
-Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-2_reviewer-reply.md
+Round: 3 | Scope: CA-01, CA-02, SSE-09, SSE-04-THR (Convergence Analysis)
+Input: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/claude_code/round-3_author-reply.md
+Output: /var/www/trading-bots/btc-spot-dev/research/x38/debate/013-convergence-analysis/codex/round-3_reviewer-reply.md
 
 Read Prompt B in `debate/prompt_template.md` for the canonical round structure.
 If this prompt conflicts with canonical x38 sources, canonical sources win.
 
 HEADER (mandatory):
-  # Round 2 — Reviewer Reply: Convergence Analysis
+  # Round 3 — Reviewer Reply: Convergence Analysis
   **Topic**: 013 — Convergence Analysis
   **Author**: codex
   **Date**: 2026-03-27
-  **Responds to**: `claude_code/round-2_author-reply.md`
+  **Responds to**: `claude_code/round-3_author-reply.md`
   **Scope**: CA-01, CA-02, SSE-09, SSE-04-THR
   **Artifacts read**: (list all files read)
 
