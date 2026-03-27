@@ -2,7 +2,8 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-26 — Topic 018 REOPENED (governance: 4-agent extra-canonical debate
+**Cập nhật**: 2026-03-27 — Topic 008 CLOSED (4 rounds, 4/4 resolved: 4 Converged).
+Previous: 2026-03-26 — Topic 018 REOPENED (governance: 4-agent extra-canonical debate
 does not satisfy x38_RULES.md §5; requires standard 2-agent debate. Downstream routing
 provisional until re-closure).
 Previous: 2026-03-26 — Topic 018 CLOSED (7 rounds, 4 agents, 10/10 resolved: 7 Converged + 3 Defer).
@@ -27,7 +28,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-05 | Core engine design | 2026-03-22 | OPEN | `005-core-engine/` | F-07 (1) |
 | X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08 (1) |
 | X38-T-07 | Philosophy & mission claims | 2026-03-22 | **CLOSED** (2026-03-23) | `007-philosophy-mission/` | F-01, F-20, F-22, F-25 (4) — 4/4 Converged |
-| X38-T-08 | Architecture & identity | 2026-03-22 | OPEN | `008-architecture-identity/` | F-02, F-09, F-13 + SSE-04-IDV (4) |
+| X38-T-08 | Architecture & identity | 2026-03-22 | **CLOSED** (2026-03-27) | `008-architecture-identity/` | F-02, F-09, F-13 + SSE-04-IDV (4) — 4/4 Converged |
 | X38-T-09 | Data integrity | 2026-03-22 | OPEN | `009-data-integrity/` | F-10, F-11 (2) |
 | X38-T-10 | Clean OOS & certification | 2026-03-22 | **CLOSED** (2026-03-25) | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) — 3 Converged + 1 Judgment call |
 | X38-T-11 | Deployment boundary | 2026-03-22 | OPEN | `011-deployment-boundary/` | F-26, F-27, F-28, F-29 (4) |
@@ -39,7 +40,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **REOPENED** (2026-03-26) | `018-search-space-expansion/` | 10 OIs (0 debated under x38 rules). Prior 4-agent debate = input evidence, not authoritative. Standard 2-agent debate required. |
 
-**Totals**: 19 topics (5 CLOSED, 1 SPLIT, 1 REOPENED, 12 OPEN). 56 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 19 topics (6 CLOSED, 1 SPLIT, 1 REOPENED, 11 OPEN). 56 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 REOPENED — downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **provisional** until 018 re-closes under
 standard 2-agent debate.
@@ -50,7 +51,7 @@ standard 2-agent debate.
 Wave 1:    007 (philosophy)              ← NỀN TẢNG, debate đầu tiên
                ↓
 Wave 2:    018 (search-space expansion)   ← REOPENED, ưu tiên sớm (routes to 6 downstream topics)
-           008, 009, 010, 011, 012       ← song song sau 007 (008: SSE-04-IDV provisional until 018)
+           008✅, 009, 010✅, 011, 012    ← song song sau 007 (008: SSE-04-IDV provisional until 018)
            001, 002, 005, 006             ← song song sau 007 (006: SSE-D-03 provisional until 018)
            013 (convergence)              ← song song, soft-dep 001 (SSE-09/04-THR provisional until 018)
            015 (artifact/version)         ← song song, soft-dep 007, 008 (SSE-07/08/04-INV provisional until 018)
@@ -116,20 +117,20 @@ convergence notes liên quan — không lặp lại full text.
 007 (philosophy) ← foundation for all — CLOSED✅
     ↓
 018 (search-space) ← soft-dep from 007✅, 004✅ (REOPENED — ưu tiên sớm trong Wave 2)
-008 (architecture) ← soft-dep from 007✅; SSE-04-IDV provisional on 018
-009 (data) ← soft-dep from 007✅, 008
+008 (architecture) ← soft-dep from 007✅; SSE-04-IDV provisional on 018 — CLOSED✅
+009 (data) ← soft-dep from 007✅, 008✅
 010 (clean-oos) ← soft-dep from 007✅ — CLOSED✅
 011 (deployment) ← soft-dep from 007✅, 010✅
-012 (quality) ← soft-dep from 007✅, 008
+012 (quality) ← soft-dep from 007✅, 008✅
 001 (campaign) ← soft-dep from 007✅ — CLOSED✅
-002 (firewall) ← soft-dep from 007✅, 008 — CLOSED✅
-005 (core-engine) ← soft-dep from 007✅, 008
-006 (feature-engine) ← soft-dep from 007✅, 008
+002 (firewall) ← soft-dep from 007✅, 008✅ — CLOSED✅
+005 (core-engine) ← soft-dep from 007✅, 008✅
+006 (feature-engine) ← soft-dep from 007✅, 008✅
 013 (convergence) ← soft-dep from 007✅, 001✅
-015 (artifact/version) ← soft-dep from 007✅, 008
+015 (artifact/version) ← soft-dep from 007✅, 008✅
     ↓
 016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002✅ + 008 + 010✅ + 013; provisional input: 018 (SSE-08-CON, SSE-04-CELL)
+017 (epistemic-SP)  ← HARD-dep from 002✅ + 008✅ + 010✅ + 013; provisional input: 018 (SSE-08-CON, SSE-04-CELL)
     ↓
 003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017
 014 (execution) ← soft-dep from 003, 005

@@ -1,10 +1,10 @@
 # X38 Execution Plan
 
-**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (56 rounds done —
-topic 004, 007, 001, 002, 010 CLOSED; 018 REOPENED; 12 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
+**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (63 rounds done —
+topic 004, 007, 001, 002, 010, 008 CLOSED; 018 REOPENED; 11 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
-**Cập nhật lần cuối**: 2026-03-26
+**Cập nhật lần cuối**: 2026-03-27
 
 ---
 
@@ -29,8 +29,9 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
 | Topic 018 | **REOPENED** (2026-03-26). Prior 4-agent debate (7 rounds, extra-canonical) revoked — standard 2-agent debate required per x38_RULES.md §5. Prior decisions (SSE-D-01→11) are input evidence, not authoritative. Downstream routings provisional. |
-| Debate rounds thực hiện | **56** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 018: 28 extra-canonical rounds NOT counted as standard debate). 13 topics remaining (12 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
-| Specs drafted | SEEDED (2): `architecture_spec.md` seeded from 001/002/004/007/010 closures (§6 Clean OOS Flow filled); `meta_spec.md` seeded from 002/004/007 closures. Formal drafting not started. |
+| Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 3 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
+| Debate rounds thực hiện | **63** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 7, topic 018: 28 extra-canonical rounds NOT counted as standard debate). 12 topics remaining (11 OPEN + 1 REOPENED; Topic 000 SPLIT into sub-topics). |
+| Specs drafted | SEEDED (2): `architecture_spec.md` seeded from 001/002/004/007/008/010 closures (§2-3 from 008, §6 from 010); `meta_spec.md` seeded from 002/004/007/008 closures. Formal drafting not started. |
 | Specs published | ZERO |
 
 ---
@@ -48,13 +49,13 @@ Phase 0 (evidence) ──→ Phase 1 (topic 004) ──→ DONE
 Wave 1:    007 (philosophy)              ← CLOSED (2026-03-23)
                ↓
 Wave 2:    018 (search-space expansion)  ← REOPENED (ưu tiên sớm, routes to 6 downstream topics)
-           008, 009, 010✅, 011, 012      ← song song
+           008✅, 009, 010✅, 011, 012     ← song song
            001✅, 002✅, 005, 006          ← song song
            013 (convergence)              ← song song, soft-dep 001✅
            015 (artifact/version)         ← song song, soft-dep 007✅, 008
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
-           017 (epistemic search policy) ← chờ 002✅ + 008 + 010✅ + 013
+           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013
                ↓
 Wave 3:    003 (protocol)                ← chờ 001 + 002 + 004(closed) + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
@@ -197,7 +198,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 
 | Topic | Slug | Findings | Ước lượng | Notes |
 |-------|------|----------|-----------|-------|
-| **008** | architecture-identity | F-02, F-09, F-13 | 1-2 rounds | 3 pillars, directory, identity |
+| **008** | architecture-identity | F-02, F-09, F-13, SSE-04-IDV | ~~1-2 rounds~~ **CLOSED** (4 rounds) | 3 pillars, directory, identity, candidate vocabulary. 4/4 Converged |
 | **009** | data-integrity | F-10, F-11 | 1 round | Data copies, session immutability |
 | **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Clean OOS protocol, verdict taxonomy, power rules, pre-existing candidates. 3 Converged + 1 Judgment call |
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
@@ -235,7 +236,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - Key: Epistemic search policy — intra-campaign illumination, phenotype/structural
   prior contracts, promotion ladder, budget governor
 - Ước lượng: 2-3 rounds
-- Phụ thuộc: 002✅ + 008 + 010✅ + 013 (2/4 satisfied)
+- Phụ thuộc: 002✅ + 008✅ + 010✅ + 013 (3/4 satisfied)
 - **Phải close TRƯỚC 003**: cell-elite archive, descriptor tagging, và
   epistemic_delta.json ảnh hưởng protocol pipeline stage design.
 - 016 và 017 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
@@ -276,10 +277,10 @@ execution/operational concerns cần spec riêng — quyết định sau debate)
 
 | # | Spec | Phụ thuộc topics | Effort | Nội dung |
 |---|------|-------------------|--------|----------|
-| 1 | `meta_spec.md` | 002 + 004 + 007 + 008 | 1-2 sessions | 3-tier taxonomy, lifecycle, challenge/expiry, storage, firewall content rules |
-| 2 | `engine_spec.md` | 005 + 008 | 1 session | Core backtest types, data, engine, cost, metrics, audit |
-| 3 | `feature_spec.md` | 006 + 008 | 1 session | Feature registry, families, calibration, scan strategy |
-| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008 + 009 + 010 + 011 + **013** + **016** + **017** | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)** |
+| 1 | `meta_spec.md` | 002 + 004 + 007 + 008✅ | 1-2 sessions | 3-tier taxonomy, lifecycle, challenge/expiry, storage, firewall content rules |
+| 2 | `engine_spec.md` | 005 + 008✅ | 1 session | Core backtest types, data, engine, cost, metrics, audit |
+| 3 | `feature_spec.md` | 006 + 008✅ | 1 session | Feature registry, families, calibration, scan strategy |
+| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008✅ + 009 + 010 + 011 + **013** + **016** + **017** | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)** |
 | 5 | `protocol_spec.md` | 003 + 012 + **014** + **015** + **017** | 2 sessions | 8-stage pipeline, gating, freeze, **artifacts, change classification**, deliverable templates, quality gates, **execution model, checkpointing**, **cell-elite archive, epistemic_delta.json** |
 
 **Constraint quan trọng**: Contamination Firewall logic chia giữa `architecture_spec`

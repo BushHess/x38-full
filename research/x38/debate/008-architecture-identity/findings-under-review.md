@@ -19,7 +19,8 @@
 - **classification**: Judgment call
 - **opened_at**: 2026-03-18
 - **opened_in_round**: 0
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_at**: 2026-03-27 (Round 2)
 
 **Nội dung**:
 
@@ -59,7 +60,8 @@ engine, audit trail engine)? Hay 3 trụ đã bao trùm?
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-18
 - **opened_in_round**: 0
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_at**: 2026-03-27 (Round 2)
 
 **Nội dung**:
 
@@ -124,7 +126,8 @@ Data là copies (mỗi campaign gắn liền với exact snapshot).
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, gen4 evidence import)
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_at**: 2026-03-27 (Round 2)
 - **source**: x37/docs/gen4 — Research Operating Kit v4.0 [extra-archive]
 
 **Nội dung**:
@@ -173,7 +176,8 @@ cùng protocol version (hoặc flag rõ cross-protocol comparison).
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 0 (routed from Topic 018, REOPENED 2026-03-26 — provisional)
-- **current_status**: Open
+- **current_status**: Converged
+- **closed_at**: 2026-03-27 (Round 2)
 - **source**: Topic 018 (Search-Space Expansion), SSE-D-04 field 3 + correction note
 
 **Nội dung**:
@@ -216,7 +220,7 @@ owner topic.
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
-| X38-D-02 | Ba trụ cột kiến trúc | Judgment call | Open |
-| X38-D-09 | Cấu trúc thư mục target | Thiếu sót | Open |
-| X38-D-13 | Three-identity-axis model (từ gen4) | Thiếu sót | Open |
-| X38-SSE-04-IDV | Candidate-level identity vocabulary (from T018) | Thiếu sót | Open |
+| X38-D-02 | Ba trụ cột kiến trúc | Judgment call | Converged (R2) |
+| X38-D-09 | Cấu trúc thư mục target | Thiếu sót | Converged (R2) |
+| X38-D-13 | Three-identity-axis model (từ gen4) | Thiếu sót | Converged (R2) |
+| X38-SSE-04-IDV | Candidate-level identity vocabulary (from T018) | Thiếu sót | Converged (R2) |

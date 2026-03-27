@@ -439,6 +439,17 @@ family, architecture, hoặc calibration-mode đều bị coi là contamination.
 > "Transfer only meta-knowledge (lessons about methodology and structure),
 > DO NOT transfer data-derived specifics."
 
+> **Topic 008 CLOSED (2026-03-27)**: Architecture pillars, directory structure,
+> identity model, and candidate-level identity vocabulary frozen. 4 rounds, 4/4
+> Converged. Key decisions: 3 pillars sufficient for v1 (ESP folds into Protocol
+> Engine), directory tree confirmed with tighter checksum contract,
+> `protocol_version` added to `campaign.json` (bump taxonomy deferred to
+> 003/015), candidate-level identity contract alongside D-13 (008 interface,
+> 013 semantics, 017 consumption). See
+> `debate/008-architecture-identity/final-resolution.md`. Dependencies:
+> 003 (`protocol_version` feeds pipeline), 013 (candidate identity semantics),
+> 015 (change-trigger taxonomy), 017 (ESP pillar assignment + consumption).
+
 ### 2.2 Campaign → Session Model
 
 ```

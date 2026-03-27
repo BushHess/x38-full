@@ -417,7 +417,7 @@ Evidence chính là `v10/core/` (code). Không cần đọc thêm x37.
 | V8 stage1_feature_registry.csv | 1.5MB | 1,234 feature configs (V8) | Noted |
 | V8 frozen_stage1_feature_manifest.csv | ~200 dòng | 29 families (V8) | Noted |
 
-### Topics 007-012 — 007 **CLOSED** (2026-03-23), 010 **CLOSED** (2026-03-25), 008-009/011-012 OPEN (Wave 2)
+### Topics 007-012 — 007 **CLOSED** (2026-03-23), 008 **CLOSED** (2026-03-27), 010 **CLOSED** (2026-03-25), 009/011-012 OPEN (Wave 2)
 
 Các topic mới từ split. Evidence coverage chưa đánh giá riêng — sử dụng
 evidence đã đọc từ Phase 0 (topic 000) làm baseline. Đánh giá bổ sung

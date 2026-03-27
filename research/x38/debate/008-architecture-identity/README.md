@@ -2,7 +2,7 @@
 
 **Topic ID**: X38-T-08
 **Opened**: 2026-03-22
-**Status**: OPEN
+**Status**: **CLOSED** (2026-03-27)
 **Split from**: Topic 000 (cross-cutting)
 
 ## Scope
@@ -24,13 +24,16 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 - **Upstream**: Topic 007 (philosophy — F-01 phải settled trước khi chốt pillars)
 - **Downstream**: Topics 001, 002, 005, 006 (cần biết architecture để design chi tiết)
 
-## Debate plan
+## Debate result
 
-- Ước lượng: 1-2 rounds
-- Key battles:
-  - F-02: 3 trụ cột có đủ? Cần trụ thứ 4 (reproducibility engine, audit trail)?
-  - F-09: Knowledge ở root hay src/? Data trong hay ngoài project?
-  - F-13: Cần 3 trục identity hay 2 trục đủ? Protocol version thay đổi khi nào?
+4 rounds (author) / 3 rounds (reviewer). All 4 findings Converged (Round 2).
+See `final-resolution.md` for full decisions.
+
+**Key decisions**:
+- D-02: 3 pillars sufficient for v1 (ESP folds into Protocol Engine)
+- D-09: Directory tree stands; tighten checksum contract in campaign.json
+- D-13: Add `protocol_version` to campaign.json; bump taxonomy deferred to 003/015
+- SSE-04-IDV: Candidate-level identity contract alongside D-13 (not 4th macro axis)
 
 ## Cross-topic tensions
 
@@ -44,6 +47,7 @@ identity/versioning. Quyết định tại đây define "xương sống" vật l
 
 | File | Mục đích |
 |------|----------|
+| `final-resolution.md` | Closure record — 4/4 Converged, key design decisions |
 | `findings-under-review.md` | 4 findings: F-02, F-09, F-13 + 1 from Topic 018 (SSE-04-IDV) |
-| `claude_code/` | Phản biện từ Claude Code |
-| `codex/` | Phản biện từ Codex |
+| `claude_code/` | Phản biện từ Claude Code (R1-R4) |
+| `codex/` | Phản biện từ Codex (R1-R3) |
