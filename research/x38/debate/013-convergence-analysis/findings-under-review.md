@@ -145,7 +145,7 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 017 | ESP-01, ESP-04 | Coverage metrics in ESP overlap convergence measurement (CA-01). Budget governor coverage obligation interacts with campaign stop conditions (CA-02): coverage floor chưa đạt → extend campaign? | 013 owns convergence metrics and stop conditions; 017 defines coverage obligations for budget governor. |
-| 018 | SSE-09, SSE-04-THR | Scan-phase correction law + equivalence/anomaly thresholds routed from Topic 018 (REOPENED). Provisional until 018 re-closes under standard 2-agent debate. | 013 owns implementation; 018 provides architectural context (provisional). |
+| 018 | SSE-09, SSE-04-THR | Scan-phase correction law + equivalence/anomaly thresholds routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 013 owns implementation; 018 provides architectural context (confirmed). |
 | 008 | SSE-04-IDV | 013's equivalence thresholds (SSE-04-THR) must be compatible with 008's identity vocabulary (SSE-04-IDV) — both are components of SSE-D-04 7-field contract field 3+4. | 008 owns identity vocabulary interface; 013 owns semantic equivalence rules. |
 
 ## Bảng tổng hợp
@@ -161,10 +161,10 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 
 ## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-Architecture-level decisions proposed in Topic 018 (**REOPENED** 2026-03-26 —
-prior 4-agent closure revoked; standard 2-agent debate required). These issues
-represent implementation obligations contingent on Topic 018's re-closure.
-Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
+Architecture-level decisions from Topic 018 (**CLOSED** 2026-03-27 —
+standard 2-agent debate completed, 10 Converged + 1 Judgment call). These issues
+represent confirmed implementation obligations.
+Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
 
 ---
 
@@ -178,7 +178,7 @@ Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): breadth-activation contract requires `scan_phase_correction_method`
+Topic 018 decided (confirmed 2026-03-27): breadth-activation contract requires `scan_phase_correction_method`
 declaration (SSE-D-04 field 5). Coupling between multiplicity control and breadth
 expansion is locked.
 
@@ -209,7 +209,7 @@ Topic 013 owns:
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): hybrid equivalence (structural pre-bucket + behavioral
+Topic 018 decided (confirmed 2026-03-27): hybrid equivalence (structural pre-bucket + behavioral
 nearest-rival) and 5 anomaly axes for surprise queue admission.
 
 Topic 013 owns:

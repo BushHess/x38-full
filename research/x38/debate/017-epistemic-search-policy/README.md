@@ -113,9 +113,9 @@ Scope KHÔNG bao gồm:
   - Topic 010 (Clean OOS) — need power floors (F-24) for promotion ladder
   - Topic 013 (convergence analysis) — need convergence metrics (CA-01) for
     descriptor-space coverage measurement
-- **Provisional upstream** (routed findings, contingent on re-closure):
-  - Topic 018 (search-space expansion, REOPENED) — SSE-08-CON and SSE-04-CELL
-    routed from 018. Provisional until 018 re-closes under standard 2-agent debate.
+- **Confirmed upstream** (routed findings):
+  - Topic 018 (search-space expansion, CLOSED 2026-03-27) — SSE-08-CON and SSE-04-CELL
+    routed from 018. Routing confirmed.
 - **Hard downstream** (017 must close before):
   - Topic 003 (protocol engine) — pipeline stages need to incorporate
     cell-elite archive, descriptor tagging, epistemic_delta.json
@@ -172,7 +172,7 @@ Scope KHÔNG bao gồm:
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 must enumerate; F-17 must classify invalidation. | 015 owns enumeration + invalidation; 017 defines contracts. |
 | 004 | C3 | "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments may constitute a budget split. | 017 must reconcile with C3 constraint. |
 | 016 | BR-01 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). | 017 scope explicitly excludes parameter values. If 016 allows recalibration, ESP treats recalibrated algo as new phenotype. |
-| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values routed from 018 (REOPENED). Provisional. | 017 owns consumption/values; 018 provides context (provisional). |
+| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values routed from 018 (CLOSED 2026-03-27). Confirmed. | 017 owns consumption/values; 018 provides context (confirmed). |
 
 ## Files
 

@@ -1,5 +1,9 @@
 # Closure Audit — Topic 018: Search-Space Expansion
 
+> **SUPERSEDED** by standard 2-agent debate closure (2026-03-27). This file
+> documents the prior extra-canonical audit only. The current authoritative
+> closure-audit record is `codex/judgment-call-memo.md`.
+
 **Auditor**: claude_code (architect)
 **Date**: 2026-03-26
 **Synthesis**: `final-resolution.md` in this directory

@@ -1,6 +1,6 @@
 # Architecture Spec — Draft
 
-**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010 closures — 008 sections added 2026-03-27)
+**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010, 018 closures — 018 §12-13 added 2026-03-27)
 **Last updated**: 2026-03-27
 **Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 009 + 011 + 013 + 016 + 017
 **Publishable when**: ALL dependencies CLOSED
@@ -511,6 +511,63 @@ _Stub — to be filled after Topic 017 closure. Key sections:_
 
 ---
 
+## §12 Breadth-Expansion Contract (SSE-D-04)
+
+> Seeded from Topic 018 closure (2026-03-27)
+> Cross-ref: §2.3 candidate-level identity (008), §9 convergence analysis (013), §11 epistemic search policy (017)
+
+_Stub — seeded from Topic 018 closure. Key content:_
+
+### 12.1 7-Field Interface Contract
+
+Protocol MUST declare all 7 interface fields before breadth activation:
+
+1. `descriptor` — structural identity of the candidate
+2. `comparison_domain` — which candidates compare against each other
+3. `identity_vocabulary` — naming/hashing scheme (ownership: 008 interface + structural pre-bucket, 013 semantics, 017 consumption)
+4. `equivalence_method` — how to determine if two candidates are "the same"
+5. `scan_phase_correction_method` — multiplicity correction for breadth expansion (formula → 013)
+6. `robustness_bundle` — which proof components are required
+7. `invalidation_scope` — what gets invalidated when a field changes (details → 015)
+
+Exact values for each field deferred to downstream topics. Protocol-level obligation: declare all 7, not leave any implicit.
+
+### 12.2 Breadth-Activation Blocker
+
+Breadth activation is blocked at `protocol_lock` until all 7 fields are declared. This is a hard gate — no implicit defaults, no partial declarations.
+
+**Trace**: SSE-D-04 → `debate/018-search-space-expansion/final-resolution.md` Decision 3
+
+---
+
+## §13 Discovery Pipeline Routing (SSE-D-01)
+
+> Seeded from Topic 018 closure (2026-03-27)
+> Cross-ref: all discovery-related sections in this spec and other specs
+
+_Stub — seeded from Topic 018 closure. Key content:_
+
+### 13.1 No Topic 018 Umbrella
+
+Topic 018 does not own any substance. All discovery mechanisms are distributed to existing topics:
+
+| Mechanism | Owner topic | Routing issue |
+|-----------|-----------|---------------|
+| Generation modes (grammar, registry) | 006 (feature engine) | SSE-D-03 |
+| 3-layer lineage + contradiction storage | 015 (artifact versioning) | SSE-D-07, SSE-D-08 |
+| Recognition topology + proof inventory | 017 (epistemic search) | SSE-D-05, SSE-D-08-CON |
+| Multiplicity correction | 013 (convergence analysis) | SSE-D-09 |
+| Identity vocabulary | 008 (architecture identity) | SSE-D-04 field 3 |
+| Breadth-activation gate | 003 (protocol engine) | SSE-D-04 |
+
+### 13.2 Governance
+
+New discovery topic only if downstream closure reports reveal an explicit unresolved gap. Existing routing confirmed by standard 2-agent debate (2026-03-27).
+
+**Trace**: SSE-D-01 → `debate/018-search-space-expansion/final-resolution.md` Decision 1
+
+---
+
 ## Traceability
 
 | Section | Issue ID | Source |
@@ -537,3 +594,6 @@ _Stub — to be filled after Topic 017 closure. Key sections:_
 | §2.3 Candidate-Level Identity | X38-SSE-04-IDV | `debate/008-architecture-identity/final-resolution.md` §Decision 4 |
 | §3.1 Target Layout | X38-D-09 | `debate/008-architecture-identity/final-resolution.md` §Decision 2 |
 | §3.3 Checksum Contract | X38-D-09 | `debate/008-architecture-identity/final-resolution.md` §Decision 2 |
+| §12.1 7-Field Interface Contract | SSE-D-04 | `debate/018-search-space-expansion/final-resolution.md` Decision 3 |
+| §12.2 Breadth-Activation Blocker | SSE-D-04 | `debate/018-search-space-expansion/final-resolution.md` Decision 3 |
+| §13.1 Discovery Pipeline Routing | SSE-D-01 | `debate/018-search-space-expansion/final-resolution.md` Decision 1 |

@@ -1,45 +1,10 @@
-# Final Resolution — Search-Space Expansion ⚠️ SUPERSEDED
-
-> **⚠️ NON-AUTHORITATIVE**: Topic 018 REOPENED (2026-03-26). This document
-> records decisions from the prior 4-agent extra-canonical debate. It serves
-> as **input reference** for the new standard 2-agent debate, not as binding
-> decisions. All SSE-D-* decisions and downstream routings are provisional.
+# Final Resolution — Search-Space Expansion
 
 **Topic ID**: X38-T-18
-**Opened**: 2026-03-25
-**Previously closed**: 2026-03-26 (reopened same day)
-**Rounds (prior)**: 7 / 6 (R7 = bookkeeping/termination only; max_rounds_per_topic = 6 per §13)
-**Participants (prior)**: claude_code (architect), codex (advisor), gemini (advisor), chatgptpro (advisor)
-**Evidence archive**: `docs/search-space-expansion/debate/` (4 proposals + 4×7 debate rounds) [extra-canonical]
-
----
-
-## Summary
-
-This topic addressed the discovery gap in X38: the framework is strong on
-validation and certification but had no mechanism for generating novel
-features or architectures. The VDO origin story — an accidental AI discovery
-with no preserved prompt — motivated the request (`request.md`).
-
-Four agents submitted independent proposals then debated over 7 rounds. The
-debate produced two tiers of mechanisms: Tier 1 (pre-lock deterministic
-generation + optional bounded AI ideation) and Tier 2 (post-lock deterministic
-recognition — zero AI in execution). The backbone pipeline from pre-lock
-through freeze, and a 7-field breadth-activation interface contract were
-agreed. All mechanisms fold into existing topics (006/015/017/013/008/003).
-
-**Final tally**: 10 Converged (3 routed to downstream topics), 0 Judgment call.
-All 10 issues resolved. No open items. 11 architectural decisions
-(SSE-D-01 through SSE-D-11) produced from 10 OIs.
-
-**Round symmetry note (§14b)**: All 4 agents submitted rounds 1–7. R7 exceeds
-max_rounds = 6 (§13) but is bookkeeping only — no OI was OPEN, no REOPEN-\*
-filed. All 4 agents confirmed termination in R7. No §14b asymmetry.
-
-**CL numbering note**: Each agent maintained independent CL numbering schemes
-(Claude CL-01–CL-20, Codex CL-01–CL-09, Gemini CL-10–CL-14, ChatGPT Pro
-CL-01–CL-21). Same IDs across agents refer to different content. This
-synthesis uses canonical **SSE-D-NN** IDs with per-agent evidence pointers.
+**Closed**: 2026-03-27
+**Rounds**: 6
+**Participants**: claude_code, codex
+**Prior debate**: 4-agent extra-canonical (7 rounds, input evidence only)
 
 ---
 
@@ -47,344 +12,347 @@ synthesis uses canonical **SSE-D-NN** IDs with per-agent evidence pointers.
 
 | Issue ID | Finding | Resolution | Type | Round closed |
 |----------|---------|------------|------|-------------|
-| SSE-D-01 | Ownership fold: no Topic 018 | Fold discovery into 006/015/017/013/008/003; new topic only if closure reports reveal explicit unresolved gap | Converged | R5 |
-| SSE-D-02 | Bounded ideation replaces SSS | 4 hard rules (results-blind, compile-only, OHLCV-only, provenance-tracked); no runtime AI infrastructure | Converged | R5 |
-| SSE-D-03 | Grammar depth-1 conditional cold-start | `grammar_depth1_seed` = mandatory capability + default when registry empty; `registry_only` = conditional path when frozen non-empty registry exists | Converged | R5 |
-| SSE-D-04 | 7-field breadth-activation contract | Protocol MUST declare all 7 interface fields before breadth activation; exact values deferred to downstream owners | Converged | R6 |
-| SSE-D-05 | Recognition stack minimum | Topology: surprise_queue → equivalence_audit → proof_bundle → freeze; 5 anomaly axes + 5-component proof bundle minimum | Converged | R5 |
-| SSE-D-06 | Hybrid equivalence | Deterministic structural pre-bucket + behavioral nearest-rival audit on common comparison domain; no LLM judge | Converged | R6 |
-| SSE-D-07 | 3-layer lineage | Routed: semantic split locked (feature / candidate / proposal); field enumeration + invalidation to Topic 015 | Converged (routed) | R5 |
-| SSE-D-08 | Contradiction registry | Routed: descriptor-level, shadow-only (MK-17 ceiling); row schema + retention to Topics 015/017 | Converged (routed) | R5 |
-| SSE-D-09 | Multiplicity control coupling | Routed: breadth coupling locked via SSE-D-04; exact correction formula to Topic 013, invalidation to Topic 015 | Converged (routed) | R5 |
-| SSE-D-10 | Domain-seed = optional provenance hook | Hook only — no replay semantics, no session format; composition provenance preserved via lineage | Converged | R5 |
-| SSE-D-11 | APE v1 = parameterization only | Template parameterization + compile-time ideation; no free-form code generation in v1 (correctness guarantee absent) | Converged | R5 |
+| SSE-D-01 | Pre-lock generation lane ownership | Accepted | Converged | 2 |
+| SSE-D-02 | Bounded ideation (4 hard rules) | Accepted | Converged | 2 |
+| SSE-D-03 | Grammar depth-1 seed + conditional registry_only | Accepted | Converged | 2 |
+| SSE-D-04 | 7-field breadth-activation contract | Accepted | Converged | 2 |
+| SSE-D-05 | Recognition stack: pre-freeze topology + named working minimum inventory | Modified (Judgment call) | Judgment call | 6 |
+| SSE-D-06 | Hybrid equivalence (structural + behavioral, no LLM) | Accepted | Converged | 2 |
+| SSE-D-07 | 3-layer lineage semantic split | Accepted (routed → 015) | Converged | 2 |
+| SSE-D-08 | Contradiction registry: shadow-only, storage → 015, consumption → 017 | Accepted (routed → 015/017) | Converged | 2 |
+| SSE-D-09 | Multiplicity control coupling via SSE-D-04 field 5 | Accepted (routed → 013) | Converged | 2 |
+| SSE-D-10 | Domain-seed = optional provenance hook, no replay | Accepted | Converged | 2 |
+| SSE-D-11 | APE v1 = template parameterization only | Accepted | Converged | 2 |
 
 ---
 
-## Key Design Decisions (for drafts/)
+## Key design decisions (for drafts/)
 
-### Decision 1: Discovery folds into existing topics, no Topic 018 (SSE-D-01)
+### Decision 1: Lane ownership fold (SSE-D-01)
 
-**Accepted position**: Discovery mechanisms distribute across 6 existing topics
-with clear ownership boundaries. New topic created only if a downstream closure
-report reveals an explicit unresolved gap that cannot be assigned to any existing
-topic.
+**Accepted position**: Discovery mechanisms fold into 6 existing topics
+(006/015/017/013/008/003). No Topic 018 umbrella for substance — topic exists
+only as a debate registry entry for the synthesis artifact. Ownership split with
+explicit object boundaries. New topic only if downstream closure reports reveal
+an explicit unresolved gap.
 
-**Rejected alternative**: A dedicated Topic 018 (Search-Space Expansion) to own
-the full generation + recognition + phasing scope.
+**Rejected alternative**: Create a dedicated Topic 018 to own all discovery
+substance, with downstream topics receiving delegated scope.
 
-**Rationale**: Claude's original Topic 018 proposal bundled 6 sub-topics (GFS,
-APE, SSS, CDAP, phase boundary, budget) into one mega-topic. ChatGPT Pro R1
-argued folding is more tractable; Codex R2 confirmed existing topic scopes
-already cover generation (006), lineage (015), coverage (017), wiring (003),
-convergence (013), identity (008). Claude withdrew Topic 018 in R2.
-Evidence: `claude/claude_debate_lan_2.md`, `chatgptpro/chatgptpro_propone.md`,
-`codex/codex_debate_lan_2.md`.
-
-### Decision 2: Bounded ideation replaces SSS (SSE-D-02)
-
-**Accepted position**: Online AI ideation is permitted only as a bounded lane
-with 4 hard rules: (1) results-blind — AI sees OHLCV only, not registry or
-prior results; (2) compile-only — output is spec/proposal, not running code;
-(3) provenance-tracked — every proposal linked to lineage; (4) deterministic
-post-lock — after protocol lock, all execution is offline with no AI in loop.
-
-**Rejected alternative**: SSS (Structured Serendipity Sessions) as first-class
-infrastructure subsystem with M≥3 independent AI sessions per campaign.
-
-**Rationale**: Claude self-identified SSS contamination risk in R1 (AI seeing
-registry = implicit negative priors). ChatGPT Pro R2 declared SSS "dead
-architecturally". All 4 agents converged by R3 on bounded ideation as
-replacement. Evidence: `claude/claude_debate_lan_1.md` §5.4,
-`chatgptpro/chatgptpro_debate_lan_2.md`, `codex/codex_debate_lan_3.md`.
-Cross-ref: `online_vs_offline.md:30-36`.
-
-### Decision 3: Grammar depth-1 conditional cold-start (SSE-D-03)
-
-**Accepted position**: Two generation modes at protocol lock:
-- `grammar_depth1_seed` (default cold-start): grammar defined, seed manifest
-  generated, compile pass verified. Used when registry is empty.
-- `registry_only` (conditional): registry non-empty, frozen, grammar_hash
-  compatible. Used when importing a frozen manifest from prior work.
-
-Depth-1 grammar is a mandatory **capability** (framework must support it);
-activation is conditional on campaign state.
-
-**Rejected alternatives**: (a) Grammar depth-1 mandatory every campaign
-(Gemini R4 — too rigid); (b) Grammar entirely optional (insufficient cold-start
-guarantee).
-
-**Rationale**: ChatGPT Pro R4 "conditional cold-start law" reconciled the
-mandatory-vs-optional tension. Codex R4 confirmed `grammar_depth1_seed` as
-default. Evidence: `chatgptpro/chatgptpro_debate_lan_4.md:104-110`,
-`codex/codex_debate_lan_4.md:115-119`, `gemini/gemini_debate_lan_4.md:54`.
-
-### Decision 4: 7-field breadth-activation contract (SSE-D-04)
-
-**Accepted position**: Protocol MUST declare ALL 7 interface fields before
-breadth-expansion activation is permitted:
-
-| # | Field | Owner | Description |
-|---|-------|-------|-------------|
-| 1 | `descriptor_core_v1` | 017 | 4 mandatory cell axes: `mechanism_family`, `architecture_depth`, `turnover_bucket`, `timeframe_binding` |
-| 2 | `common_comparison_domain` | 013 | Default v1: `paired_daily_returns_after_costs` on shared evaluation segment |
-| 3 | `identity_vocabulary` | **UNRESOLVED** — 008 candidate per X38-D-13, but scope gap identified (see correction note below) | Deterministic structural pre-bucket (descriptor hash, parameter family, AST-hash as subset) |
-| 4 | `equivalence_method` | 013 + 008 | 2-layer hybrid: structural pre-bucket + behavioral nearest-rival. No LLM |
-| 5 | `scan_phase_correction_method` | 013 | Required declaration; exact default (Holm/FDR/cascade) deferred to 013 |
-| 6 | `minimum_robustness_bundle` | 017 + 013 | 5-component proof bundle minimum (see SSE-D-05) |
-| 7 | `invalidation_scope` | 015 | Taxonomy/domain/cost-model change invalidates coverage_map, cell_id, equivalence_clusters, contradiction_registry; raw lineage preserved |
-
-This topic locks the **interface obligation** (which fields must exist); downstream
-topics lock the **content** (what values those fields take).
-
-**Rejected alternatives**: (a) Gemini's 2-field shorthand (insufficient
-coverage — isolated 3:1); (b) Claude R5 CL-19 6-point essay (same substance as
-7 fields but lacked canonical naming — Codex R5 correctly required explicit
-field list).
-
-**Rationale**: Codex R5 OI-06 demanded a concrete field list, not abstract
-direction. Claude R6 reconciled by mapping CL-19's 6 points to Codex's 7-field
-naming 1:1. All 4 agents confirmed substance-identical in R6.
-Evidence: `codex/codex_debate_lan_5.md:170-175`,
-`claude/claude_debate_lan_6.md:76-98`.
-
-**Correction (Claude R7)**: CL-19 reconciliation represents "7/7 interface
-obligations IDENTIFIED and ROUTED to downstream owners" — not "7/7 field
-contents frozen". Candidate-level `identity_vocabulary` owner = TBD by synthesis
-(008 scope per X38-D-13 covers protocol/campaign/session identity axes, not
-candidate equivalence vocabulary). Per `codex/codex_debate_lan_6.md:124,167`.
-
-### Decision 5: Recognition stack minimum (SSE-D-05)
-
-**Accepted position**: Recognition topology and minimum inventory:
-
-**Topology** (post-Stage-3 scan):
-```
-surprise_queue → equivalence_audit → proof_bundle →
-freeze_comparison_set → candidate_phenotype → contradiction_registry
-```
-
-**5 anomaly axes** (queue admission requires ≥1 non-peak-score axis):
-1. Decorrelation outlier (max |ρ| with survivors < threshold)
-2. Plateau width champion (width > N× median)
-3. Cost stability (ranking stable ±2 across ≥3 cost scenarios)
-4. Cross-resolution consistency (stable across timescales)
-5. Contradiction resurrection (revives prior negative evidence)
-
-**5-component proof bundle minimum**:
-1. `nearest_rival_audit` (on common comparison domain)
-2. `plateau_stability_extract`
-3. `cost_sensitivity_test`
-4. `ablation_or_perturbation_test`
-5. `contradiction_profile`
-
-Exact thresholds deferred to 017/013.
-
-**Rejected alternative**: IC-based screening (Claude R1 identified overfitting
-risk — IC on in-sample data; X21 evidence: entry features had zero predictive
-power). Peak-score-only ranking (ChatGPT Pro's "consistency motif" insight:
-VDO's value was 16/16 timescale robustness, not peak score).
-
-**Rationale**: 4/4 aligned by R4 on obligation-level inventory. ChatGPT Pro R4
-provided identical 5+5 list. Codex R4 confirmed minimum interface requirement.
-Evidence: `chatgptpro/chatgptpro_debate_lan_4.md:120-126`,
-`codex/codex_debate_lan_4.md:121-126`.
-
-### Decision 6: Hybrid equivalence (SSE-D-06)
-
-**Accepted position**: 2-layer deterministic hybrid:
-- **Layer 1 (structural pre-bucket)**: Descriptor hash, parameter family,
-  AST-hash as subset. Catches syntactic duplicates. Context-free, stable.
-- **Layer 2 (behavioral nearest-rival)**: Paired-return correlation on common
-  comparison domain. Catches economic duplicates missed by structure alone.
-
-No LLM judge. Both layers fully deterministic (same data + code + seed = same
-result). Preserves Gemini's determinism principle while adding behavioral
-coverage.
-
-**Rejected alternative**: AST-hash only (Gemini position, isolated 3:1).
-
-**Steel-man for AST-only**: "Behavioral equivalence introduces
-evaluation-dependency — changing cost model or evaluation window changes
-equivalence classification. AST-hash + parameter distance is context-free and
-stable."
-
-**Why steel-man doesn't hold**: Correctness, not stability, is the objective.
-Two features with identical AST but different cost treatment are not
-economically equivalent; two features with different implementation but
-paired returns ρ>0.99 ARE economically redundant. Hybrid preserves determinism
-while catching both syntactic and economic duplicates. Gemini R6 withdrew
-AST-only and accepted hybrid. Evidence: `claude/claude_debate_lan_5.md` §3.4,
-`gemini/gemini_debate_lan_6.md:33-37`, `online_vs_offline.md:30-36`.
+**Rationale**: The folding argument (originally from ChatGPT Pro R1 in the
+extra-canonical debate, re-confirmed by both agents in standard debate R1-R2)
+holds: each discovery mechanism maps cleanly to an existing topic's scope.
+Routing table is unnecessary because `x38_RULES.md:84-94` already governs
+downstream authority, and each downstream topic's `findings-under-review.md`
+carries the routed issues. See `claude_code/round-1_opening-critique.md` §SSE-D-01
+(ACCEPT with amendment), `codex/round-1_rebuttal.md` §SSE-D-01 (concurs on
+existing ledgers sufficiency). Converged R2.
 
 ---
 
-## Backbone v1
+### Decision 2: Bounded ideation rules + cold-start activation (SSE-D-02/03)
 
-The complete pre-lock-to-freeze pipeline agreed by all 4 agents:
+**Accepted position**: Bounded ideation replaces SSS (Structured Search Space)
+with 4 hard rules:
+1. **Results-blind** — ideation sees NO results from any session
+2. **Compile-only** — output must compile (syntactically valid strategy spec)
+3. **OHLCV-only** — only OHLCV + volume data as input
+4. **Provenance-tracked** — every generated candidate records its generation method
 
-```
-Pre-lock:
-  [Bounded ideation (SSE-D-02)]  --> proposal_spec (results-blind, compile-only)
-  [Grammar depth-1 seed (SSE-D-03)] --> compiled_manifest
-  Both --> 006 registry compilation (grammar check, dedup)
-           |
-Protocol Lock:
-  generation_mode validation (SSE-D-03):
-    grammar_depth1_seed: grammar defined + manifest generated + compile pass
-    registry_only: registry non-empty + frozen + grammar_hash compatible
-  Breadth gate (SSE-D-04): ALL 7 interface fields declared
-    [descriptor_core_v1, common_comparison_domain, identity_vocabulary,
-     equivalence_method, scan_phase_correction_method,
-     minimum_robustness_bundle, invalidation_scope]
-  |
-  v
-Stage 3: Exhaustive scan (deterministic, offline, no AI)
-  --> Descriptor tagging
-  --> Coverage map (4 mandatory cell axes — SSE-D-04 field 1)
-  --> Cell-elite archive (cell-elite > global top-K)
-  --> Local neighborhood probes
-  |
-Stage 4-6: Layered search + probes (per design_brief)
-  |
-Stage 7: Freeze
-  --> Surprise queue (SSE-D-05: 5 axes, ≥1 non-peak-score)
-  --> Equivalence audit (SSE-D-06: hybrid structural + behavioral)
-  --> Proof bundle (SSE-D-05: 5-component minimum)
-  --> Comparison set (frozen)
-  --> Candidate phenotype
-  --> Contradiction registry (SSE-D-08: descriptor-level, shadow-only)
-  |
-Stage 8: Holdout + reserve + epistemic delta
-```
+Two generation modes at protocol lock:
+- `grammar_depth1_seed` (mandatory default) — deterministic grammar enumeration
+  producing depth-1 seeds from declared building blocks
+- `registry_only` (conditional) — activated when registry is non-empty AND frozen
+  AND `grammar_hash`-compatible (3 conditions, not 2)
+
+Cold-start activation: `grammar_depth1_seed` is always available. `registry_only`
+requires all 3 guards satisfied.
+
+**Rejected alternative**: SSS (Structured Search Space) — reproduces discovery
+origins like VDO. Rejected because seeing registry results creates contamination
+risk that outweighs origin-story value.
+
+**Rationale**: Contamination risk from seeing registry > origin story value.
+Grammar-provenance admissibility policing belongs in Topics 002/004 (firewall),
+not in D-02's lane-input contract. See `claude_code/round-1_opening-critique.md`
+§SSE-D-02/03, `codex/round-1_rebuttal.md` §SSE-D-02 (grammar-provenance →
+002/004), `codex/round-1_rebuttal.md` §SSE-D-03 (3-condition guard).
+`codex/round-2_reviewer-reply.md` §7(c) confirmation. Converged R2.
 
 ---
 
-## Adopted Artifacts
+### Decision 3: Breadth-expansion 7-field interface contract (SSE-D-04)
 
-| # | Artifact / Mechanism | Decision | Owner |
-|---|---------------------|----------|-------|
-| 1 | Bounded ideation lane (4 hard rules) | SSE-D-02 | 006 + 015 |
-| 2 | Grammar depth-1 seed (mandatory capability, conditional cold-start) | SSE-D-03 | 006 |
-| 3 | `generation_mode` validation contract | SSE-D-03 | 006 + 003 |
-| 4 | Ownership split with explicit object boundaries | SSE-D-01 | 006/015/017/013/008/003 |
-| 5 | 7-field breadth-activation interface contract | SSE-D-04 | 003 + 013 + 015 + 017 + 008 |
-| 6 | Hybrid equivalence (structural pre-bucket + behavioral nearest-rival) | SSE-D-06 | 008 + 013 |
-| 7 | 4 mandatory cell axes (`descriptor_core_v1`) | SSE-D-04 | 017 |
-| 8 | 5 anomaly axes + 5-component proof bundle minimum | SSE-D-05 | 017 + 013 |
-| 9 | Recognition topology (surprise → equivalence → proof → freeze) | SSE-D-05 | 017 + 013 + 003 |
-| 10 | Domain-seed = optional provenance hook | SSE-D-10 | 015 |
-| 11 | APE v1 = parameterization only | SSE-D-11 | 006 |
-| 12 | Discovery artifact = machine-readable; lineage canonical (not transcript) | Foundation | 015 + 006 |
-| 13 | Recognition scores consistency motif (cross-timescale), not peak score alone | Foundation | 017 |
+**Accepted position**: Protocol MUST declare all 7 interface fields before
+breadth activation. Fields:
+1. `descriptor` — what the candidate looks like (structural identity)
+2. `comparison_domain` — which candidates compare against each other
+3. `identity_vocabulary` — how to name/hash candidates (ownership: 008 interface
+   + structural pre-bucket, 013 semantics, 017 consumption — per Topic 008
+   Decision 4, SSE-04-IDV)
+4. `equivalence_method` — how to determine if two candidates are "the same"
+5. `scan_phase_correction_method` — multiplicity correction for breadth expansion
+6. `robustness_bundle` — which proof components required
+7. `invalidation_scope` — what gets invalidated when a field changes
 
----
+Exact values for each field deferred to downstream topics. Protocol-level
+obligation: declare all 7, not leave any implicit.
 
-## Deferred Items
+**Rejected alternative**: Fewer fields (e.g., 4-5) with implicit defaults for
+missing concerns. Rejected because implicit defaults create governance gaps
+that surface only at integration time.
 
-### Deferred by design (out of scope for v1)
-
-| # | Artifact / Mechanism | Reason |
-|---|---------------------|--------|
-| 1 | Topic 018 umbrella | SSE-D-01: fold sufficient |
-| 2 | SSS first-class infrastructure | SSE-D-02: replaced by bounded ideation |
-| 3 | GFS depth 2/3, APE code generation, GA/mutation | Compute/correctness risk; v2+ |
-| 4 | CDAP / domain catalog as core mechanism | SSE-D-10: hook only |
-| 5 | Full EPC lifecycle / activation ladder | MK-17 shadow-only ceiling |
-
-### Routed to downstream topic owners (Converged-routed OIs)
-
-| # | Artifact / Mechanism | Owner | Source |
-|---|---------------------|-------|--------|
-| 1 | 3-layer lineage field enumeration + invalidation matrix | 015 | SSE-D-07 (OI-04) |
-| 2 | Contradiction row schema + retention + reconstruction-risk | 015 + 017 | SSE-D-08 (OI-05) |
-| 3 | Exact correction law default (Holm/FDR/cascade) | 013 | SSE-D-09 (NEW-01 GPT) |
-| 4 | Exact invalidation cascade details | 015 | SSE-D-04 field 7 |
-| 5 | Exact cell-axis values + anomaly thresholds | 017 + 013 | SSE-D-04/05 |
-| 6 | Exact equivalence distance thresholds | 013 + 017 | SSE-D-06 |
-| 7 | `generation_mode` state machine implementation | 006 | SSE-D-03 |
-| 8 | Candidate-level `identity_vocabulary` owner assignment | 008 or 013 (TBD) | SSE-D-04 field 3 |
+**Rationale**: Topic 008 closure (2026-03-27) resolved the field 3 owner split
+authoritatively via Decision 4 (SSE-04-IDV). See `claude_code/round-1_opening-critique.md`
+§SSE-D-04 (field 3 owner gap), `codex/round-1_rebuttal.md` §SSE-D-04 (Topic 008
+resolves it), `claude_code/round-2_author-reply.md` §SSE-D-04 (concedes 008
+Decision 4 is authoritative). Converged R2 with full 7-field reconciliation
+in `codex/round-2_reviewer-reply.md`.
 
 ---
 
-## Ownership Routing (directional — downstream topics validate)
+### Decision 4: Surprise lane recognition topology + working minimum inventory (SSE-D-05)
 
-| Topic | Responsibilities from this debate |
-|-------|----------------------------------|
-| 006 | Operator grammar, feature DSL, `generation_mode` state machine + validation, depth-1 seed, compile-to-manifest, parameter sweep, feature descriptor core |
-| 015 | `feature_lineage`, `candidate_genealogy`, `proposal_provenance`, field enumeration, invalidation tables, contradiction row schema + retention |
-| 017 | Coverage map, cell-elite archive, local probes, surprise queue, phenotype/contradiction shadow, budget, cell axis values, anomaly thresholds, proof bundle consumption |
-| 013 | Common comparison domain law, correction law default, convergence/diminishing-returns, equivalence thresholds, robustness bundle requirements |
-| 008 | Protocol/campaign/session identity axes (per X38-D-13); candidate-level equivalence vocabulary TBD |
-| 003 | Stage insertion, required artifacts, freeze/gating wiring, breadth-activation blocker, `protocol_lock` validation |
+**Accepted position (Modified — Judgment call)**:
 
-**Note**: This routing is directional, not authoritative downstream inventory.
-If a downstream topic finds that a routed item does not fit its scope, the
-proper mechanism is REOPEN-\* with evidence, not silent absorption.
+Topic 018 adopts a working minimum inventory for handoff:
+
+**Pre-freeze recognition topology**:
+`surprise_queue → equivalence_audit → proof_bundle → freeze`
+
+Topology stops at freeze — does NOT include post-freeze extensions
+(`freeze_comparison_set → candidate_phenotype → contradiction_registry`).
+Post-freeze stages scoped to downstream topics (017, 003, 015).
+
+**Working minimum inventory** (Judgment call authority):
+- 5 anomaly axes: `decorrelation_outlier`, `plateau_width_champion`,
+  `cost_stability`, `cross_resolution_consistency`, `contradiction_resurrection`
+- 5 proof components: `nearest_rival_audit`, `plateau_stability_extract`,
+  `cost_sensitivity_test`, `dependency_stressor`, `contradiction_profile`
+- Proof item 4: family-level name = `dependency_stressor`;
+  `ablation_or_perturbation_test` is valid alias/concrete form
+- NOT described as immutable historically-converged exact label set
+- Thresholds and proof-consumption rules: 017/013 own
+- Expansion beyond this minimum: requires explicit downstream finding
+
+**Rejected alternative (Reviewer position)**: Narrower mechanism — pre-freeze
+topology + required 5+5 family cardinality without exact naming. Exact naming
+not cleanly settled by authoritative record due to material label drift in
+archive evidence.
+
+**Rejected alternative (Author overreach, corrected R6)**: Topology extending
+past freeze (post-freeze chain), authority narrowing ("do not add, remove, or
+replace" instead of "minimum"), and overclaimed archive provenance ("11 rounds,
+zero challenges"). All three corrections applied per `codex/round-5_reviewer-reply.md`.
+
+**Human Researcher Judgment (BINDING)**:
+
+> Type: Judgment call (Round 6)
+> Decision: Hybrid — Reviewer correct on status (Judgment call, not
+> Converged); Author correct on handoff value (named working minimum
+> inventory needed for downstream consumption).
+>
+> NOTE (Judgment call, round 6): Authoritative evidence locks pre-freeze
+> recognition topology and minimum 5+5 floor, but does not cleanly lock
+> a single exact label set without drift. However, downstream Topics
+> 017/013 need named objects to write thresholds and proof-consumption
+> semantics.
+>
+> Lựa chọn: Topic 018 adopts a working minimum inventory for handoff:
+> - Pre-freeze recognition topology:
+>   surprise_queue → equivalence_audit → proof_bundle → freeze
+> - 5 anomaly axes: decorrelation_outlier, plateau_width_champion,
+>   cost_stability, cross_resolution_consistency, contradiction_resurrection
+> - 5 proof components: nearest_rival_audit, plateau_stability_extract,
+>   cost_sensitivity_test, dependency_stressor, contradiction_profile
+> - Proof item 4: family-level name = dependency_stressor;
+>   ablation_or_perturbation_test is valid alias/concrete form
+> - NOT described as immutable historically-converged exact label set
+> - Topology stops at freeze — does NOT include post-freeze extensions
+>   (freeze_comparison_set → candidate_phenotype → contradiction_registry)
+> - Thresholds and proof-consumption rules: 017/013 own
+> - Expansion beyond this minimum: requires explicit downstream finding
+>
+> Lý do: Archive evidence shows material label drift (4→5 dimensions,
+> component 4 naming inconsistency, ChatGPT Pro deferred exact taxonomy
+> downstream). Pure Converged overstates convergence. Pure unnamed family
+> is operationally too weak for 017/013 handoff. Hybrid gives named
+> working minimum at Judgment call authority level.
+>
+> Decision owner: human researcher
+
+**Rationale**: The debate narrowed from broad disagreement to a precise boundary
+question: count-level vs named inventory. Archive evidence shows label drift
+(Claude R3 used 4 dimensions with "risk-profile", later replaced; ChatGPT Pro
+R5 deferred exact taxonomy; Codex R4/R6 used "dependency stressor" generically
+vs exact `ablation_or_perturbation_test`). Pure Converged overstates what the
+record supports. Pure unnamed family is operationally too weak for 017/013
+handoff (Topic 017 `findings-under-review.md:426-435` presupposes named objects
+for per-axis thresholds).
+
+See: `claude_code/round-3_author-reply.md` (locks 5+5 named list),
+`codex/round-3_reviewer-reply.md` (rejects: non-authoritative source),
+`claude_code/round-4_author-reply.md` (withdraws, defers to closure),
+`codex/round-4_reviewer-reply.md` (count-only vs named),
+`claude_code/round-5_author-reply.md` (restores named from debate record),
+`codex/round-5_reviewer-reply.md` (three overreaches identified),
+`claude_code/round-6_author-reply.md` (corrections applied),
+`codex/round-6_reviewer-reply.md` (final Judgment call recommendation).
 
 ---
 
-## Cross-topic tensions
+### Decision 5: Hybrid equivalence method (SSE-D-06)
 
-| Topic | Finding | Tension | Resolution path |
-|-------|---------|---------|-----------------|
-| 002 (firewall) | X38-D-04 | Bounded ideation must not violate contamination firewall: AI sees OHLCV only, not registry or prior results | SSE-D-02 hard rule 1 (results-blind) enforces; Topic 002 owns content gate |
-| 004 (meta-knowledge) | MK-17 | Same-dataset priors shadow-only — discovery from current campaign cannot become active prior | SSE-D-08 shadow-only; cross-campaign activation deferred to future data |
-| 006 (feature-engine) | X38-D-08 | Feature registry must accept auto-generated features from grammar + bounded ideation | SSE-D-03 `generation_mode` feeds into 006 registry compilation |
-| 008 (identity) | X38-D-13 | Protocol/campaign/session identity axes defined by 008; candidate-level equivalence vocabulary may require 008 scope expansion | SSE-D-04 field 3 routes `identity_vocabulary`; owner TBD |
-| 013 (convergence) | X38-CA-01 | Multiplicity correction required when breadth-expansion introduces many candidates | SSE-D-04 field 5 (`scan_phase_correction_method`); 013 owns formula |
-| 015 (artifact-versioning) | X38-D-14, X38-D-17 | Lineage/provenance artifacts + invalidation scope consumed by discovery pipeline | SSE-D-07 routes 3-layer lineage to 015; SSE-D-04 field 7 routes invalidation |
-| 017 (epistemic-search) | X38-ESP-01, X38-ESP-02 | Coverage/surprise/proof semantics must integrate with ESP policies | SSE-D-05 topology sits within 017 scope; cell-elite replaces global top-K |
-| 003 (protocol-engine) | — | Stage insertion + breadth-activation blocker are new wiring requirements | SSE-D-04 breadth gate + SSE-D-03 `generation_mode` validation at protocol_lock |
+**Accepted position**: Deterministic hybrid equivalence:
+1. **Structural pre-bucket** — descriptor hash, parameter family, AST-hash
+   subset → fast deterministic grouping
+2. **Behavioral nearest-rival audit** — compare performance profiles of
+   structurally-similar candidates → detect functional equivalence despite
+   structural differences
 
----
+No LLM judge. Versioned determinism: thresholds are part of the equivalence
+definition and must be versioned. Thresholds/invalidation details deferred
+downstream.
 
-## Foundation Convergences (not debated — agreed from R1)
+**Rejected alternative**: AST-hash only (Gemini's position in extra-canonical
+debate, withdrawn R6). Pure structural matching misses functional equivalence
+(two structurally different strategies that behave identically).
 
-These were never disputed across all 4 agents and all 7 rounds:
-
-1. X38 is strong on validation, weak on discovery (4/4 R1)
-2. Tier 1 (Exploration) + Tier 2 (Recognition) separation (4/4 R1)
-3. Post-lock execution is deterministic offline — no AI in runtime (4/4 R1)
-4. Discovery artifacts are machine-readable; lineage is canonical (not
-   transcript memory) (4/4 R1)
-5. Cell-elite archive > global top-K for diversity preservation (4/4 R1)
-6. Discovery gates ≠ certification/deployment gates (4/4 R1)
-7. Same-dataset learned priors = shadow-only per MK-17 (4/4 R1, frozen law)
-8. Freeze preserves comparison set + coverage + phenotype, not just winner
-   (4/4 R2)
-9. Recognition scores consistency motif (cross-timescale robustness), not
-   peak score alone — VDO would have been killed without this (4/4 R2)
-10. Codex + ChatGPT Pro proposals form backbone (lineage + cell-elite + gate
-    split + artifact contract) (3/4 R1, Claude R2 concession)
+**Rationale**: Hybrid preserves determinism while catching functional equivalence.
+Topic 008 Decision 4 (SSE-04-IDV) established the ownership split: 008 owns
+interface + structural pre-bucket fields, 013 owns semantics, 017 owns
+consumption. See `claude_code/round-1_opening-critique.md` §SSE-D-06,
+`codex/round-1_rebuttal.md` §SSE-D-06 (versioned determinism),
+`codex/round-2_reviewer-reply.md` §7(c) confirmation. Converged R2.
 
 ---
 
-## Complete Status Table
+### Decision 6: 3-layer lineage semantic split (SSE-D-07, routed → 015)
 
-| Issue ID | Điểm | Phân loại | Trạng thái | Steel-man vị trí cũ | Lý do bác bỏ steel-man |
-|---|---|---|---|---|---|
-| OI-01 | Pre-lock generation lane ownership | Judgment call | **Converged** (SSE-D-01) | "Downstream chưa echo owner split → chỉ là slogan" | Authority-order reversal: upstream routes owners BEFORE downstream confirms. REOPEN-\* exists for gaps. Object boundaries explicit in SSE-D-01. |
-| OI-02 | Bounded ideation / cold-start | Thiếu sót | **Converged** (SSE-D-02, SSE-D-03) | "SSS trực tiếp tái tạo VDO origin" | VDO value từ composition + 16/16 robustness, không từ session format. 4/4 aligned R3+. Contamination risk killed SSS. |
-| OI-03 | Surprise lane / recognition inventory | Thiếu sót | **Converged** (SSE-D-05) | "IC + orthogonality đủ" | IC = feature screening (overfitting risk on in-sample). Candidate recognition cần 5 anomaly axes + 5-component proof bundle. Thresholds = 017/013. |
-| OI-04 | 3-layer lineage | Thiếu sót | **Converged (routed)** (SSE-D-07) | "Field list chưa xong → issue phải active ở đây" | Semantic split locked (feature/candidate/proposal have different invalidation semantics). Field enumeration = 015 scope. |
-| OI-05 | Cross-campaign contradiction memory | Judgment call | **Converged (routed)** (SSE-D-08) | "Row schema chưa close → issue phải active ở đây" | MK-17 shadow-only ceiling locked. Row schema/retention = 015/017 scope. |
-| OI-06 | Breadth-expansion interface contract | Thiếu sót | **Converged** (SSE-D-04) | "Exact correction/taxonomy defaults phải freeze ngay tại topic này" | 7/7 interface obligations identified and routed. Exact values = downstream owners. Interface ≠ content. |
-| OI-08 | Cell + equivalence + correction method | Thiếu sót | **Converged** (SSE-D-06) | "AST-hash + parameter distance đủ cho equivalence" | Behavioral redundancy determines economic independence — AST misses economic duplicates. Hybrid preserves determinism. Gemini R6 withdrew AST-only. |
-| OI-07 | Domain-seed hook | Judgment call | **Converged** (SSE-D-10) | "Cross-domain cross-pollination là core mechanism" | Composition provenance, not session format. Hook preserves trail without creating infrastructure. |
-| NEW-01 (GPT) | Multiplicity control | Thiếu sót | **Converged (routed)** (SSE-D-09) | "Coupling → default law phải khóa ngay" | Coupling locked via SSE-D-04 field 5. Exact formula = 013 scope. |
-| NEW-01 (Claude) | APE v1 scope | Thiếu sót | **Converged** (SSE-D-11) | "Code generation tạo structural innovation" | Correctness guarantee chưa có; parameterization + compile-time ideation đủ cho v1. |
+**Accepted position**: Lineage split into 3 semantic layers:
+1. `feature_lineage` — tracks feature provenance (where did this indicator come from)
+2. `candidate_genealogy` — tracks candidate evolution (parent→child relationships)
+3. `proposal_provenance` — tracks how a candidate was proposed (grammar, template, human)
+
+Field enumeration and invalidation matrix deferred to Topic 015 (X38-SSE-07).
+
+**Rejected alternative**: Single flat lineage record. Rejected because different
+consumers need different lineage facets (firewall needs provenance, convergence
+analysis needs genealogy, feature engine needs feature lineage).
+
+**Rationale**: Semantic split maps cleanly to consumer needs. See
+`claude_code/round-1_opening-critique.md` §SSE-D-07,
+`codex/round-1_rebuttal.md` §SSE-D-07 (concurs, confirms routing).
+Converged R2.
 
 ---
 
-## Agent Contributions (summary)
+### Decision 7: Contradiction memory — shadow-only (SSE-D-08, routed → 015/017)
 
-| Agent | Key contributions | Key corrections |
-|-------|-------------------|-----------------|
-| **Codex** | Discovery lineage foundation (E1-E6, R1-R6); 9-gap analysis (G1-G9); 7-field breadth bundle (R5) — forced explicit interface contract; anti-false-convergence discipline | Withdrew "downstream echo required for upstream convergence" (R6); overclaim corrections on Claude R6 (3 points, all accepted) |
-| **ChatGPT Pro** | Consistency motif insight (VDO = cross-timescale, not peak); discovery ≠ certification gates; interface/downstream split (cleanest R6); conditional cold-start law framing; authority-order reversal argument | Self-corrected Holm push (R4); self-corrected holding_bucket (R4); kept OI-08 open one round too long (R5→R6) |
-| **Claude** | GFS grammar specificity (operator table, depth limits, dedup); SDL 6 surprise criteria; reconciliation CL-19 ↔ 7-field (R6); CL-20 object boundaries | Withdrew SSS (R2), Topic 018 (R2), EPC (R2), APE codegen (R3); acknowledged §7(c) procedural overreach (R6); accepted 3 overclaim corrections from Codex R6 |
-| **Gemini** | Anti-online/anti-LLM discipline (foundation invariant); offline-first philosophy; prompt serialization for lineage | Withdrew AST-only position (R6); premature closure claim (R5) retracted |
+**Accepted position**: Contradiction registry operates at descriptor level,
+shadow-only (MK-17 ceiling from Topic 004). Storage contract → Topic 015
+(X38-SSE-08). Consumption semantics → Topic 017 (X38-SSE-08-CON).
+
+Queue-priority carveout scope classification (whether contradiction resurrection
+gets ORDER_ONLY or different priority in surprise queue) is an unresolved 017
+question, not a 018 decision.
+
+**Rejected alternative**: Active contradiction registry that can influence
+candidate selection. Rejected because MK-17 (same-dataset priors = shadow-only)
+is a settled Topic 004 invariant.
+
+**Rationale**: MK-17 ceiling is binding. Shadow-only means contradictions are
+recorded and surfaced but cannot directly block or promote candidates. See
+`claude_code/round-1_opening-critique.md` §SSE-D-08 (queue-priority probe),
+`codex/round-1_rebuttal.md` §SSE-D-08 (017 treats ORDER_ONLY as active scope),
+`claude_code/round-2_author-reply.md` §SSE-D-08 (concedes scope is 017 question).
+Converged R2.
+
+---
+
+### Decision 8: Multiplicity control coupling (SSE-D-09, routed → 013)
+
+**Accepted position**: Breadth expansion creates a multiple-testing problem.
+Multiplicity control is coupled to SSE-D-04 field 5
+(`scan_phase_correction_method`). The exact correction formula is deferred to
+Topic 013 (X38-SSE-09). Invalidation mechanics deferred to Topic 015.
+
+**Rejected alternative**: Multiplicity correction as a standalone concern
+independent of the breadth-activation contract. Rejected because correction
+must be aware of how many candidates were expanded (field 5 provides this).
+
+**Rationale**: Coupling ensures the correction method knows the expansion scope.
+See `claude_code/round-1_opening-critique.md` §SSE-D-09 (concurs with routing),
+`codex/round-1_rebuttal.md` §SSE-D-09 (confirms coupling).
+`codex/round-2_reviewer-reply.md` §7(c) confirmation. Converged R2.
+
+---
+
+### Decision 9: Domain-seed hook provenance (SSE-D-10)
+
+**Accepted position**: Domain-seed is an optional provenance hook only. No replay
+semantics, no session format, no catalog infrastructure. Composition provenance
+preserved via lineage (SSE-D-07).
+
+**Rejected alternative**: Domain-seed as a full replay mechanism that imports
+online authoring patterns (session format, catalog). Rejected per
+`docs/online_vs_offline.md:71-82`: replay machinery imports online authoring
+without source-backed need for the offline paradigm.
+
+**Rationale**: The offline paradigm (Alpha-Lab) does not need session replay.
+Provenance is preserved through lineage tracking, not through replay capability.
+See `claude_code/round-1_opening-critique.md` §SSE-D-10,
+`codex/round-1_rebuttal.md` §SSE-D-10 (replay = online import).
+Converged R2.
+
+---
+
+### Decision 10: APE v1 scope boundary (SSE-D-11)
+
+**Accepted position**: APE (Automated Parameter Exploration) v1 = template
+parameterization only. No free-form code generation. Correctness guarantee is
+absent in v1 (no verification mechanism exists yet), so generation is limited
+to filling declared template parameters with values from declared ranges.
+
+Free-form code generation is a v2+ capability, gated on a verification mechanism
+being designed and validated.
+
+**Rejected alternative**: APE v1 includes bounded code generation (e.g.,
+indicator composition). Rejected because arbitrary code bypasses the current
+validation/firewall model — there is no compile-time or runtime verification
+that generated code is correct.
+
+**Rationale**: Parameterization-only is the correct v1 scope because it preserves
+the compile-only and provenance-tracked hard rules from SSE-D-02. See
+`claude_code/round-1_opening-critique.md` §SSE-D-11,
+`codex/round-1_rebuttal.md` §SSE-D-11 (bounded auditable generation only).
+`codex/round-2_reviewer-reply.md` §7(c) confirmation. Converged R2.
+
+---
+
+## Unresolved tradeoffs (for human review)
+
+- **SSE-D-05**: Exact label set stability — named inventory adopted at Judgment
+  call authority, not Converged. Future label changes require explicit downstream
+  finding. Archive evidence shows material drift (4→5 dimensions, component 4
+  naming inconsistency). The working minimum inventory is operationally sufficient
+  for 017/013 handoff but should not be treated as immutable.
+
+- No other unresolved tradeoffs remain. All 10 other issues reached Converged
+  with complete steel-man exchanges.
+
+---
+
+## Cross-topic impact
+
+| Downstream topic | Routed from | Impact |
+|------------------|-------------|--------|
+| 006 (feature engine) | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed` |
+| 015 (artifact versioning) | SSE-D-07, SSE-D-08 | 3-layer lineage (X38-SSE-07) + contradiction storage (X38-SSE-08) + identity vocabulary invalidation (X38-SSE-04-INV) |
+| 017 (epistemic search) | SSE-D-05, SSE-D-08-CON | Recognition topology + named inventory for thresholds (SSE-D-05) + contradiction consumption semantics (X38-SSE-08-CON) + cell equivalence (X38-SSE-04-CELL) |
+| 013 (convergence analysis) | SSE-D-09 | Multiplicity correction formula via SSE-D-04 field 5 (X38-SSE-09) + thresholds (X38-SSE-04-THR) |
+| 008 (architecture identity) | SSE-D-04 field 3 | `identity_vocabulary` routing — resolved via Topic 008 Decision 4 (SSE-04-IDV). Topic 008 already CLOSED. |
+| 003 (protocol engine) | SSE-D-04 | Breadth-activation blocker at `protocol_lock` — protocol must declare all 7 fields before activation. Stage 3 scan-phase multiple-testing routed via SSE-D-09→013. |
 
 ---
 
@@ -392,31 +360,14 @@ These were never disputed across all 4 agents and all 7 rounds:
 
 | Draft | Sections affected | Action needed |
 |-------|------------------|---------------|
-| `architecture_spec.md` | Discovery pipeline (pre-lock → freeze) | Create — backbone v1 from this resolution |
-| `architecture_spec.md` | Breadth-activation contract | Create — 7-field interface obligation table |
-| `architecture_spec.md` | Generation modes | Create — `grammar_depth1_seed` / `registry_only` validation |
-| `architecture_spec.md` | Recognition stack | Create — topology, 5 anomaly axes, proof bundle minimum |
-| `architecture_spec.md` | Equivalence | Create — hybrid 2-layer (structural + behavioral) |
-| `meta_spec.md` | Bounded ideation | Create — 4 hard rules, provenance contract |
-| `meta_spec.md` | Contradiction registry | Update — shadow-only per MK-17, descriptor-level |
+| `discovery_spec.md` | §1 Bounded ideation, §2 Recognition stack, §3 APE v1, §4 Domain-seed hook, §5 Hybrid equivalence | Create (new spec) |
+| `architecture_spec.md` | §12 Breadth-expansion contract, §13 Discovery pipeline routing | Seed new sections |
 
 ---
 
-## Closure Audit Checklist
+## Evidence sources
 
-- [x] All OIs resolved: 10 CONVERGED (3 routed) = 10/10
-- [x] No Judgment calls required (all substance-aligned 4/4)
-- [x] Routed items have downstream topic owners explicitly assigned
-- [x] §14b symmetry: all 4 agents have equal substantive rounds
-- [x] Steel-man completed for every CONVERGED issue
-- [x] Cross-topic tensions documented with resolution paths
-- [x] Backbone v1 pipeline complete (pre-lock to freeze)
-- [x] Ownership routing table provided (directional)
-- [x] Corrections from Codex R6 incorporated (3/3 accepted)
-- [x] CL numbering reconciled via canonical SSE-D-NN IDs
-
----
-
-**Topic 018 — ~~CLOSED~~ REOPENED (2026-03-26). Prior closure revoked; standard 2-agent debate required. Decisions above are input evidence, not authoritative.**
-
-**Canonical location**: `debate/018-search-space-expansion/final-resolution.md`
+- **Standard debate**: 12 round files (`claude_code/round-{1-6}*.md` + `codex/round-{1-6}*.md`)
+- **Extra-canonical archive**: `docs/search-space-expansion/debate/` (4 proposals + 4×7 rounds, input evidence only)
+- **Cross-topic evidence**: Topic 008 `final-resolution.md` (SSE-04-IDV), Topic 004 `final-resolution.md` (MK-17), Topic 017 `findings-under-review.md` (per-axis thresholds presuppose named objects)
+- **Codex closure audit**: `codex/judgment-call-memo.md` (2026-03-27, standard 2-agent debate)

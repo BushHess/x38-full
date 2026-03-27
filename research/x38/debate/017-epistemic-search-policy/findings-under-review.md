@@ -359,7 +359,7 @@ Budget governor v1:
 | 015 | F-14, F-17 | ESP introduces 5+ new mandatory artifacts (epistemic_delta.json, coverage_map, phenotype_pack, comparison_set, prior_registry). F-14 (state pack) must enumerate them; F-17 (semantic change) must classify when changes to ESP artifacts invalidate results. | 015 owns artifact enumeration + invalidation rules; 017 defines artifact contracts + mandatory status. |
 | 004 | C3 | Topic 004 C3 (converged): "Budget split = v2+ design. V1: all search is frontier." ESP-04 budget compartments (coverage_floor + exploit) are a form of budget split. Argument: ordering within frontier ≠ budget split; requires debate. | 017 must reconcile ESP-04 v1 implementation with C3 "all search is frontier" constraint. |
 | 016 | BR-01 | ESP MUST NOT suggest parameter directions — that would be answer-level influence, incompatible with firewall (C-12). ESP treats recalibrated algo as new phenotype entry. | Explicit scope exclusion in 017. |
-| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values/anomaly thresholds routed from Topic 018 (REOPENED). Provisional until 018 re-closes under standard 2-agent debate. | 017 owns consumption/values; 018 provides architectural context (provisional). |
+| 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values/anomaly thresholds routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 017 owns consumption/values; 018 provides architectural context (confirmed). |
 
 ## Bảng tổng hợp
 
@@ -376,10 +376,10 @@ Budget governor v1:
 
 ## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-Architecture-level decisions proposed in Topic 018 (**REOPENED** 2026-03-26 —
-prior 4-agent closure revoked; standard 2-agent debate required). These issues
-represent implementation obligations contingent on Topic 018's re-closure.
-Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
+Architecture-level decisions from Topic 018 (**CLOSED** 2026-03-27 —
+standard 2-agent debate completed, 10 Converged + 1 Judgment call). These issues
+represent confirmed implementation obligations.
+Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
 
 ---
 
@@ -393,7 +393,7 @@ Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): contradiction registry is descriptor-level, shadow-only (MK-17).
+Topic 018 decided (confirmed 2026-03-27): contradiction registry is descriptor-level, shadow-only (MK-17).
 Topic 015 owns row schema/storage. Topic 017 owns consumption semantics.
 
 Topic 017 owns:
@@ -423,7 +423,7 @@ Topic 017 owns:
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): 4 mandatory cell axes (`mechanism_family`, `architecture_depth`,
+Topic 018 decided (confirmed 2026-03-27): 4 mandatory cell axes (`mechanism_family`, `architecture_depth`,
 `turnover_bucket`, `timeframe_binding`). 5 anomaly axes for surprise queue admission
 (≥1 non-peak-score). 5-component proof bundle minimum.
 

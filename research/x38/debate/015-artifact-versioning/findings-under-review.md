@@ -119,7 +119,7 @@ Alpha-Lab cần classification tương tự:
 | 011 | F-28 | F-17 classifies sizing change as semantic change (new version), but F-28 proposes unit-exposure canonicalization pushing sizing to deployment — if adopted, F-17 classification table must be amended | 011 owns boundary decision (F-28); 015 amends F-17 accordingly |
 | 016 | C-12 | Bounded recalibration (if adopted) may create semantic changes mid-campaign that F-17 must classify — current classification assumes freeze-once model | 016 owns decision |
 | 017 | ESP-01, ESP-02 | Topic 017 introduces 5+ new mandatory artifacts: epistemic_delta.json (Stage 8), coverage_map (Stages 3/7), phenotype_pack (Stage 7), comparison_set (Stage 7), prior_registry (inter-campaign). F-14 must enumerate these in state pack; F-17 must classify when ESP artifact changes (descriptor taxonomy revision, coverage map format change, phenotype contract change) invalidate prior results. | 017 defines artifact contracts; 015 owns enumeration + invalidation rules |
-| 018 | SSE-07, SSE-08, SSE-04-INV | Discovery lineage, contradiction registry, and invalidation cascade details routed from Topic 018 (REOPENED). Provisional until 018 re-closes under standard 2-agent debate. | 015 owns implementation; 018 provides architectural context (provisional). |
+| 018 | SSE-07, SSE-08, SSE-04-INV | Discovery lineage, contradiction registry, and invalidation cascade details routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 015 owns implementation; 018 provides architectural context (confirmed). |
 
 ## Bảng tổng hợp
 
@@ -135,10 +135,10 @@ Alpha-Lab cần classification tương tự:
 
 ## Issues routed from Topic 018 — Search-Space Expansion (2026-03-26)
 
-Architecture-level decisions proposed in Topic 018 (**REOPENED** 2026-03-26 —
-prior 4-agent closure revoked; standard 2-agent debate required). These issues
-represent implementation obligations contingent on Topic 018's re-closure.
-Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
+Architecture-level decisions from Topic 018 (**CLOSED** 2026-03-27 —
+standard 2-agent debate completed, 10 Converged + 1 Judgment call). These issues
+represent confirmed implementation obligations.
+Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
 
 ---
 
@@ -152,7 +152,7 @@ Source: `debate/018-search-space-expansion/final-resolution.md` (provisional).
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): discovery lineage splits into 3 layers with
+Topic 018 decided (confirmed 2026-03-27): discovery lineage splits into 3 layers with
 different invalidation semantics: `feature_lineage`, `candidate_genealogy`,
 `proposal_provenance` (SSE-D-07).
 
@@ -161,7 +161,7 @@ Topic 015 owns:
 2. Invalidation matrix: which artifact changes trigger which lineage invalidations
 3. Raw lineage preservation rule (raw always preserved; derived artifacts invalidated)
 
-**Constraint (proposed by Topic 018, provisional)**: Derived artifacts (`coverage_map`, `cell_id`,
+**Constraint (decided by Topic 018, confirmed 2026-03-27)**: Derived artifacts (`coverage_map`, `cell_id`,
 `equivalence_clusters`) are invalidated when taxonomy/domain/cost-model changes.
 Raw lineage preserved unconditionally.
 
@@ -187,7 +187,7 @@ Raw lineage preserved unconditionally.
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): contradiction registry is descriptor-level, shadow-only (MK-17
+Topic 018 decided (confirmed 2026-03-27): contradiction registry is descriptor-level, shadow-only (MK-17
 ceiling). Cross-campaign memory in v1 limited to shadow storage (SSE-D-08).
 
 Topic 015 owns:
@@ -220,7 +220,7 @@ surprise queue and proof bundle reference entries). Topic 015 owns storage contr
 
 **Nội dung**:
 
-Topic 018 proposed (provisional): taxonomy/domain/cost-model change invalidates `coverage_map`,
+Topic 018 decided (confirmed 2026-03-27): taxonomy/domain/cost-model change invalidates `coverage_map`,
 `cell_id`, `equivalence_clusters`, `contradiction_registry`. Raw lineage preserved.
 
 Topic 015 owns: exact invalidation targets, cascade ordering, and relationship
