@@ -1096,7 +1096,7 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 
 ## Phần 6 — Status & Logistics
 
-### Current Status (cập nhật 2026-03-22)
+### Current Status (cập nhật 2026-03-27)
 
 | Phase | Status | Mô tả |
 |-------|--------|-------|
@@ -1104,9 +1104,9 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
 | Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010/008/018 CLOSED + 11 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 56 findings distributed across 17 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
+| Debate findings collected | DONE | 58 findings distributed across 17 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
 | Debate execution | IN PROGRESS | 7 topics CLOSED: 004, 007, 001, 002, 010, 008, 018. 76 debate rounds done. 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
-| Drafts | SEEDED (2) | `architecture_spec.md` seeded from 001/002/004/007/008/010 closures; `meta_spec.md` seeded from 002/004/007/008 closures. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
+| Drafts | SEEDED (3) | `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures; `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
 **V8 online results đã có** — không còn lý do chờ V8.
@@ -1117,7 +1117,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 **Topic SPLIT**:
 - **000** (framework architecture): SPLIT (2026-03-22) — 29 findings phân bổ vào 11 sub-topics. File `debate/000-framework-proposal/findings-under-review.md` giữ lại index + convergence notes C-01→C-12.
 
-**Topics CLOSED** (6):
+**Topics CLOSED** (7):
 - **004** (meta-knowledge): CLOSED (2026-03-21). 6 rounds, 23/23 resolved. Xem `debate/004-meta-knowledge/final-resolution.md`.
 - **007** (philosophy-mission): CLOSED (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`.
 - **001** (campaign-model): CLOSED (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`.
@@ -1151,6 +1151,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 | `engine_spec.md` | Core engine design | `drafts/` → `published/` |
 | `feature_spec.md` | Feature engine + registry | `drafts/` → `published/` |
 | `meta_spec.md` | Meta-knowledge governance, lesson lifecycle. Firewall: content rules | `drafts/` → `published/` |
+| `discovery_spec.md` | Discovery mechanisms: bounded ideation, recognition stack, APE v1, domain-seed hook, hybrid equivalence | `drafts/` → `published/` |
 
 ### Isolation Rules
 

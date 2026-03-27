@@ -24,10 +24,10 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-00 | Framework architecture (index) | 2026-03-18 | **SPLIT** (2026-03-22) | `000-framework-proposal/` | Index + convergence notes C-01→C-12 |
 | X38-T-01 | Campaign model | 2026-03-22 | **CLOSED** (2026-03-23) | `001-campaign-model/` | F-03, F-15, F-16 (3) — 2 Converged + 1 Judgment call |
 | X38-T-02 | Contamination firewall | 2026-03-22 | **CLOSED** (2026-03-25) | `002-contamination-firewall/` | F-04 (1) — 3 Converged + 4 Judgment call |
-| X38-T-03 | Protocol engine | 2026-03-22 | OPEN | `003-protocol-engine/` | F-05 (1) |
+| X38-T-03 | Protocol engine | 2026-03-22 | OPEN | `003-protocol-engine/` | F-05 + SSE-D-04 (2) |
 | X38-T-04 | Meta-knowledge governance | 2026-03-18 | **CLOSED** (2026-03-21) | `004-meta-knowledge/` | 23/23 resolved |
 | X38-T-05 | Core engine design | 2026-03-22 | OPEN | `005-core-engine/` | F-07 (1) |
-| X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08 (1) |
+| X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08 + SSE-D-03 (2) |
 | X38-T-07 | Philosophy & mission claims | 2026-03-22 | **CLOSED** (2026-03-23) | `007-philosophy-mission/` | F-01, F-20, F-22, F-25 (4) — 4/4 Converged |
 | X38-T-08 | Architecture & identity | 2026-03-22 | **CLOSED** (2026-03-27) | `008-architecture-identity/` | F-02, F-09, F-13 + SSE-04-IDV (4) — 4/4 Converged |
 | X38-T-09 | Data integrity | 2026-03-22 | OPEN | `009-data-integrity/` | F-10, F-11 (2) |
@@ -41,7 +41,7 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved (10 Converged + 1 Judgment call). 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
 
-**Totals**: 19 topics (7 CLOSED, 1 SPLIT, 11 OPEN). 56 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 19 topics (7 CLOSED, 1 SPLIT, 11 OPEN). 58 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **confirmed** (018 CLOSED 2026-03-27).
 

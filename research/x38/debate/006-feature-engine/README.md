@@ -12,6 +12,7 @@ modes, exhaustive scan strategy, cross-timeframe alignment.
 
 **Findings**:
 - F-08: Feature engine — registry pattern
+- SSE-D-03: Registry acceptance for auto-generated features (từ Topic 018)
 
 ## Dependencies
 
@@ -29,12 +30,15 @@ modes, exhaustive scan strategy, cross-timeframe alignment.
 
 ## Cross-topic tensions
 
-Không có tension đã biết tại thời điểm mở topic.
+| Topic | Finding | Tension | Resolution path |
+|-------|---------|---------|-----------------|
+| 017 | ESP-01, ESP-02 | Phenotype descriptor taxonomy (017) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. Must not conflict. |
+| 018 | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed`. Routed from Topic 018 (CLOSED 2026-03-27). | 006 owns registry acceptance rules; 018 provides generation mode contract (confirmed). |
 
 ## Files
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 1 finding: F-08 |
+| `findings-under-review.md` | 2 findings: F-08 + SSE-D-03 (from Topic 018) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

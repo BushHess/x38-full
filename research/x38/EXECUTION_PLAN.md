@@ -272,16 +272,16 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 
 ### Phase 4 — Soạn Specs
 
-5 specification documents, thứ tự theo dependency (có thể thêm 6th nếu
-execution/operational concerns cần spec riêng — quyết định sau debate):
+6 specification documents, thứ tự theo dependency:
 
 | # | Spec | Phụ thuộc topics | Effort | Nội dung |
 |---|------|-------------------|--------|----------|
 | 1 | `meta_spec.md` | 002 + 004 + 007 + 008✅ | 1-2 sessions | 3-tier taxonomy, lifecycle, challenge/expiry, storage, firewall content rules |
 | 2 | `engine_spec.md` | 005 + 008✅ | 1 session | Core backtest types, data, engine, cost, metrics, audit |
 | 3 | `feature_spec.md` | 006 + 008✅ | 1 session | Feature registry, families, calibration, scan strategy |
-| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008✅ + 009 + 010 + 011 + **013** + **016** + **017** | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)** |
+| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008✅ + 009 + 010 + 011 + **013** + **016** + **017** + **018**✅ | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)**, **breadth-expansion contract, discovery pipeline routing** |
 | 5 | `protocol_spec.md` | 003 + 012 + **014** + **015** + **017** | 2 sessions | 8-stage pipeline, gating, freeze, **artifacts, change classification**, deliverable templates, quality gates, **execution model, checkpointing**, **cell-elite archive, epistemic_delta.json** |
+| 6 | `discovery_spec.md` | 018✅ | 1 session | Bounded ideation, recognition stack, APE v1, domain-seed hook, hybrid equivalence |
 
 **Constraint quan trọng**: Contamination Firewall logic chia giữa `architecture_spec`
 (enforcement mechanism) và `meta_spec` (content rules). MK-14 (firewall boundary)

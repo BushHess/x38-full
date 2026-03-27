@@ -15,6 +15,7 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 
 **Findings**:
 - F-05: Protocol engine — 8 stages (từ Topic 000)
+- SSE-D-04: Breadth-activation blocker at protocol_lock (từ Topic 018)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
 - C-05: Semantic boundary DIAGNOSIS hội tụ; exact boundary cần debate
@@ -47,11 +48,13 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 | 016 | F-35 | Bounded recalibration may require protocol stages to support mid-campaign parameter updates — incompatible with current freeze-at-Stage-7 design | 016 must CLOSE before 003 debate; 016 owns decision |
 | 002 | F-04 | Firewall enforcement gates protocol transitions — if firewall rejects a lesson mid-pipeline, protocol must handle gracefully | 002 CLOSED; 003 adapts to frozen firewall rules |
 | 007 | D-25 | F-25 regime-aware policy: internal conditional logic ALLOWED; external classifiers, post-freeze switching FORBIDDEN. Specific ablation gate thresholds for testing regime-aware structures deferred to 003. | 007 CLOSED; 003 owns ablation gate thresholds |
+| 017 | ESP-01 | Cell-elite archive replaces Stage 4 global pruning. Descriptor tagging adds Stage 3 output. epistemic_delta.json adds Stage 8 mandatory output. Local probes change Stage 5 search strategy. | 003 owns pipeline structure; 017 defines ESP component contracts. 017 must CLOSE before 003 debate. |
+| 018 | SSE-D-04 | Breadth-activation blocker at `protocol_lock` — protocol must declare all 7 fields before activation. Routed from Topic 018 (CLOSED 2026-03-27). Stage 3 scan-phase multiple-testing routed via SSE-D-09→013. | 003 owns protocol gate; 018 provides 7-field contract (confirmed). |
 
 ## Files
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 1 finding: F-05 |
+| `findings-under-review.md` | 2 findings: F-05 + SSE-D-04 (from Topic 018) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

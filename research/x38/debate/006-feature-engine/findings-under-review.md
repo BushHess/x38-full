@@ -74,9 +74,45 @@ Serialization: stage1_registry.parquet (typed, compact cho 50K+ rows).
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 017 | ESP-01, ESP-02 | Phenotype descriptor taxonomy (017) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. Must not conflict. |
+| 018 | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed`. Routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 006 owns registry acceptance rules; 018 provides generation mode contract (confirmed). |
 
 ## Bảng tổng hợp
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
 | X38-D-08 | Feature engine — registry pattern | Thiếu sót | Open |
+| X38-SSE-D-03 | Registry acceptance for auto-generated features (từ Topic 018) | Thiếu sót | Open |
+
+---
+
+## Issue routed from Topic 018 — Search-Space Expansion (2026-03-27)
+
+Architecture-level decision from Topic 018 (**CLOSED** 2026-03-27 —
+standard 2-agent debate completed, 10 Converged + 1 Judgment call). This issue
+represents a confirmed implementation obligation.
+Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
+
+---
+
+## SSE-D-03: Registry acceptance for auto-generated features
+
+- **issue_id**: X38-SSE-D-03
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-27
+- **opened_in_round**: 0 (routed from Topic 018, SSE-D-03)
+- **current_status**: Open
+
+**Nội dung**:
+
+Topic 018 decided (confirmed 2026-03-27): `generation_mode` is a mandatory field in the
+breadth-activation contract (SSE-D-04 field 2). Feature engine registry must accept
+auto-generated features from `grammar_depth1_seed` generation mode.
+
+Topic 006 owns:
+1. Registry acceptance criteria for auto-generated features
+2. Whether decorator pattern or config-driven approach handles generation mode metadata
+3. How generated features integrate with family organization (e.g., separate `families/generated.py` or inline)
+
+**Evidence**:
+- `debate/018-search-space-expansion/final-resolution.md:350` [within-x38]: SSE-D-03 routing confirmed.
+- `debate/018-search-space-expansion/final-resolution.md:42-49` [within-x38]: Cross-topic impact table.
