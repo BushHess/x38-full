@@ -79,3 +79,60 @@ No strict order required, but suggested grouping:
 3. **exp50** — robustness check on the one mechanism that works
 4. **exp51** — only if exp48 doesn't find another selective feature
 5. **exp52** — bridges to production (cost characterization)
+
+---
+
+## Formal Validation (post-experiment phase)
+
+Experiments (exp01-52) are COMPLETE. The next phase validates the one winner
+(vol compression gate) through the formal v10 pipeline.
+
+### Task sequence
+
+```
+Task B (implement + reproduce)  →  Task C (7-gate pipeline)  →  Task D (verdict)
+```
+
+### Task B: Implement & Reproduce
+
+```
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/formal_validation_spec.md
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/task_b_implement_and_reproduce.md
+
+Execute Phase 1 + Phase 2 of the formal validation spec.
+```
+
+Creates `vtrend_e5_ema21_d1_vc` strategy, registers it, and verifies x39 results
+reproduce in the formal v10 engine. Gate: d_Sharpe same sign, within ±30%.
+
+### Task C: Formal Validation Pipeline
+
+```
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/formal_validation_spec.md
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/task_c_formal_validation.md
+
+Execute Phase 3 of the formal validation spec.
+Run the validation pipeline for BOTH thresholds (0.6 and 0.7).
+```
+
+Runs `validate_strategy.py --suite all` for thr=0.6 and thr=0.7 against
+E5-ema21D1 baseline. Gate: not REJECT.
+
+### Task D: Multiple Testing & Final Verdict
+
+```
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/formal_validation_spec.md
+Read /var/www/trading-bots/btc-spot-dev/research/x39/specs/task_d_multiple_testing_and_verdict.md
+
+Execute Phase 4 + Phase 5 of the formal validation spec.
+```
+
+DSR correction (N=52 trials), MDD trade-off analysis, final verdict:
+CONCLUDE / REJECT / INCONCLUSIVE.
+
+### Spec files
+
+- Master spec: `specs/formal_validation_spec.md`
+- Task B: `specs/task_b_implement_and_reproduce.md`
+- Task C: `specs/task_c_formal_validation.md`
+- Task D: `specs/task_d_multiple_testing_and_verdict.md`

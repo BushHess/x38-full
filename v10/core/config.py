@@ -39,6 +39,7 @@ from strategies.vtrend_vp1.strategy import VP1Config
 from strategies.vtrend_vp1_e5exit.strategy import VP1E5ExitConfig
 from strategies.vtrend_vp1_full.strategy import VP1FullConfig
 from strategies.vtrend_qvdo.strategy import VTrendQVDOConfig
+from strategies.vtrend_e5_ema21_d1_vc.strategy import VTrendE5Ema21D1VCConfig
 
 
 # ---------------------------------------------------------------------------
@@ -69,6 +70,7 @@ _VP1_FIELDS = {f.name for f in dataclasses.fields(VP1Config)}
 _VP1_E5EXIT_FIELDS = {f.name for f in dataclasses.fields(VP1E5ExitConfig)}
 _VP1_FULL_FIELDS = {f.name for f in dataclasses.fields(VP1FullConfig)}
 _VTREND_QVDO_FIELDS = {f.name for f in dataclasses.fields(VTrendQVDOConfig)}
+_VTREND_E5_EMA21_D1_VC_FIELDS = {f.name for f in dataclasses.fields(VTrendE5Ema21D1VCConfig)}
 _KNOWN_STRATEGIES = {
     "v8_apex",
     "buy_and_hold",
@@ -95,6 +97,7 @@ _KNOWN_STRATEGIES = {
     "vtrend_vp1_e5exit",
     "vtrend_vp1_full",
     "vtrend_qvdo",
+    "vtrend_e5_ema21_d1_vc",
 }
 _TOP_LEVEL_FIELDS = {"engine", "strategy", "risk"}
 
@@ -226,6 +229,7 @@ def _unknown_yaml_keys(raw: dict[str, Any]) -> list[str]:
             "vtrend_vp1_e5exit": _VP1_E5EXIT_FIELDS,
             "vtrend_vp1_full": _VP1_FULL_FIELDS,
             "vtrend_qvdo": _VTREND_QVDO_FIELDS,
+            "vtrend_e5_ema21_d1_vc": _VTREND_E5_EMA21_D1_VC_FIELDS,
             "buy_and_hold": set(),
         }
         allowed_strategy_fields = {"name"} | strategy_fields_by_name.get(
@@ -365,6 +369,10 @@ def validate_config(config: LiveConfig) -> list[str]:
         for key in config.strategy.params:
             if key not in _VTREND_QVDO_FIELDS:
                 errors.append(f"strategy.{key} is not a valid VTrendQVDOConfig field")
+    elif config.strategy.name == "vtrend_e5_ema21_d1_vc":
+        for key in config.strategy.params:
+            if key not in _VTREND_E5_EMA21_D1_VC_FIELDS:
+                errors.append(f"strategy.{key} is not a valid VTrendE5Ema21D1VCConfig field")
 
     # Risk
     if not (0 < config.risk.max_total_exposure <= 1.0):

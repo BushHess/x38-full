@@ -1,0 +1,61 @@
+{
+  "n_experiments_total": 52,
+  "n_wfo_tests": 4,
+  "wfo_bonferroni_alpha": 0.0125,
+  "m_eff_estimate": 19,
+  "m_eff_method": "rough_grouping",
+  "m_eff_groups": {
+    "A_exit_variants": {
+      "experiments": "exp12,13,19-31",
+      "count": 14,
+      "independent": 3
+    },
+    "B_entry_timing": {
+      "experiments": "exp32-39",
+      "count": 8,
+      "independent": 4
+    },
+    "C_combos": {
+      "experiments": "exp43-47",
+      "count": 5,
+      "independent": 2
+    },
+    "D_validation": {
+      "experiments": "exp40-42,49",
+      "count": 4,
+      "independent": 2
+    },
+    "E_other": {
+      "experiments": "exp01,14-18,48,50-52",
+      "count": 11,
+      "independent": 8
+    }
+  },
+  "thr06": {
+    "sr_observed": 1.350866,
+    "sr_baseline": 1.220985,
+    "T": 2607,
+    "dsr_pvalue_n52": 1.0,
+    "dsr_sr0_n52": 0.103512,
+    "dsr_pvalue_meff": 1.0,
+    "dsr_sr0_meff": 0.084841,
+    "wfo_wilcoxon_p": 0.273438,
+    "wfo_bonferroni_pass": false,
+    "dsr_pass": true,
+    "scenario": "B: DSR PASS + WFO FAIL \u2192 INCONCLUSIVE"
+  },
+  "thr07": {
+    "sr_observed": 1.328507,
+    "sr_baseline": 1.220985,
+    "T": 2607,
+    "dsr_pvalue_n52": 1.0,
+    "dsr_sr0_n52": 0.101407,
+    "dsr_pvalue_meff": 1.0,
+    "dsr_sr0_meff": 0.083117,
+    "wfo_wilcoxon_p": 0.191406,
+    "wfo_bonferroni_pass": false,
+    "dsr_pass": true,
+    "scenario": "B: DSR PASS + WFO FAIL \u2192 INCONCLUSIVE"
+  },
+  "analyst_dof_notes": "DSR trivially PASS at N=52 (p\u22481.0): observed SR ~1.35 >> SR\u2080 ~0.10. Even at N=700, DSR remains 1.0. The vol compression strategy's Sharpe is so far above the null benchmark that multiple testing correction cannot explain the result. M_eff correction (N=19) also trivially passes. WFO Bonferroni FAIL: Wilcoxon p (0.19-0.27) >> corrected \u03b1 (0.0125). This is consistent with the known WFO power limitation at N=8 windows, not evidence against the mechanism."
+}

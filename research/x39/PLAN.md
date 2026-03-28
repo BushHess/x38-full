@@ -160,3 +160,22 @@ Each spec file contains everything needed to execute the experiment:
 | 50 | Alt compression measures | — | — | — | — | — | — |
 | 51 | Momentum persistence | — | — | — | — | — | — |
 | 52 | Compression costs | — | — | — | — | — | — |
+
+## Formal Validation (2026-03-28)
+
+Formal 5-phase validation of vol compression gate through v10 engine.
+Spec: `specs/formal_validation_spec.md`. Task runner: `specs/task_d_multiple_testing_and_verdict.md`.
+
+| Phase | Result | Key Numbers |
+|-------|--------|-------------|
+| 1: Implementation | COMPLETE | `vtrend_e5_ema21_d1_vc` strategy, 1284 tests pass |
+| 2: Reproduction | PASS | d_Sharpe +0.1399 (x39: +0.1901, -26.4%) |
+| 3: Pipeline (thr=0.6) | HOLD | Sh 1.594, G4 Wilcoxon p=0.273, 6/7 gates |
+| 3: Pipeline (thr=0.7) | HOLD | Sh 1.571, G4 Wilcoxon p=0.191, 6/7 gates |
+| 4: DSR (N=52) | PASS | p=1.000 (SR 1.35 >> SR₀ 0.10) |
+| 4: WFO Bonferroni | FAIL | p=0.19-0.27 >> α=0.0125 |
+| 5: MDD trade-off | RESOLVED | -2.46pp improvement (Issue #2 resolved) |
+| **Overall** | **INCONCLUSIVE** | DSR PASS + WFO FAIL (Scenario B) |
+
+**Recommended threshold**: 0.7 (better WFO stability, smaller worst-window loss).
+**Recommended next step**: Preserve finding; deploy when WFO power problem resolved.

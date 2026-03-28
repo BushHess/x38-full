@@ -1,0 +1,7 @@
+scenario,model,total_score,return_term,mdd_penalty,sharpe_term,profit_factor_term,trade_count_term,reject_term,residual
+smart,candidate,214.2135,209.3,-21.287999999999997,14.656,6.5455,5.0,0.0,0.0
+base,candidate,192.2283,190.125,-22.182,13.7328,5.5525,5.0,0.0,0.0
+harsh,candidate,170.0702,170.775,-23.105999999999998,12.7552,4.646,5.0,0.0,0.0
+smart,baseline,197.4331,195.35,-21.432,13.6976,4.8175,5.0,0.0,0.0
+base,baseline,173.918,174.725,-22.5,12.696,3.9970000000000008,5.0,0.0,0.0
+harsh,baseline,149.3135,154.0,-24.581999999999997,11.636,3.2594999999999996,5.0,0.0,0.0

@@ -100,6 +100,10 @@ from strategies.vtrend_x5.strategy import (
     VTrendX5Config,
     VTrendX5Strategy,
 )
+from strategies.vtrend_e5_ema21_d1_vc.strategy import (
+    VTrendE5Ema21D1VCConfig,
+    VTrendE5Ema21D1VCStrategy,
+)
 
 # Registry: strategy_name → (StrategyClass, ConfigClass_or_None)
 STRATEGY_REGISTRY: dict[str, tuple[type[Strategy], type | None]] = {
@@ -127,6 +131,7 @@ STRATEGY_REGISTRY: dict[str, tuple[type[Strategy], type | None]] = {
     "vtrend_vp1_full": (VP1FullStrategy, VP1FullConfig),
     "vtrend_qvdo": (VTrendQVDOStrategy, VTrendQVDOConfig),
     "vtrend_x5": (VTrendX5Strategy, VTrendX5Config),
+    "vtrend_e5_ema21_d1_vc": (VTrendE5Ema21D1VCStrategy, VTrendE5Ema21D1VCConfig),
     "buy_and_hold": (BuyAndHold, None),
 }
 
