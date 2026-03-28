@@ -1,6 +1,6 @@
 # Exp 27: Multi-Lookback Rangepos Consensus
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp23 proved rangepos_84 is FRAGILE as standalone exit (L=84 sharp peak,
@@ -116,4 +116,61 @@ Key analysis:
 - Results: x39/results/exp27_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**33 runs completed. Baseline: Sharpe 1.2965, CAGR 57.77%, MDD 51.32%, 221 trades.**
+
+### Part A — Standalone exit
+
+| Config | Sharpe | d_Sharpe | MDD% | d_MDD | Trades | Supp exits |
+|--------|--------|----------|------|-------|--------|------------|
+| L84 thr=0.25 (best L84) | 1.3427 | +0.0462 | 44.95 | -6.37 | 240 | 35 |
+| mean thr=0.35 (best multi) | 1.3686 | +0.0721 | 49.94 | -1.38 | 249 | 56 |
+| weighted thr=0.30 | 1.3612 | +0.0647 | 48.55 | -2.77 | 238 | 35 |
+| weighted thr=0.25 | 1.3339 | +0.0374 | 46.34 | -4.98 | 231 | 21 |
+
+**Robustness (Sharpe range across thresholds 0.15-0.35):**
+- L=84 single: 0.0868 [1.2559 - 1.3427]
+- MIN: 0.3286 [0.9736 - 1.3022] — WORST, over-triggers massively
+- MEAN: 0.0855 [1.2831 - 1.3686] — similar to L=84
+- WEIGHTED: 0.0668 [1.2944 - 1.3612] — BEST robustness, closest to plateau target
+
+No aggregation achieves the target range < 0.05.
+
+### Part B — AND gate (tq_threshold = -0.10 fixed)
+
+| Config | Sharpe | d_Sharpe | MDD% | d_MDD | Trades | Supp exits | Selectivity |
+|--------|--------|----------|------|-------|--------|------------|-------------|
+| L84 AND rp=0.20 (best L84) | 1.3534 | +0.0569 | 44.24 | -7.08 | 223 | 12 | 83.3% |
+| min AND rp=0.20 (best multi) | 1.3579 | +0.0614 | 48.74 | -2.58 | 238 | 33 | 87.9% |
+| weighted AND rp=0.25 | 1.3454 | +0.0489 | 45.83 | -5.49 | 226 | 16 | 93.8% |
+
+### Key findings
+
+1. **Robustness**: WEIGHTED is most robust (range 0.0668) but still above 0.05 target.
+   MIN is catastrophic (range 0.3286) — over-triggers at higher thresholds.
+   MEAN similar to single L=84 (0.0855 vs 0.0868).
+
+2. **Performance**: Multi-lookback BEATS single L=84 on Sharpe delta
+   (mean_thr=0.35: +0.0721 vs L84_thr=0.25: +0.0462).
+   BUT L=84 wins decisively on MDD (-6.37 pp vs -1.38 pp).
+   **Tradeoff, not strict improvement.**
+
+3. **Exit count**: MIN over-triggers (67-302 supp exits vs L84's 9-95).
+   MEAN/WEIGHTED are conservative (2-66 exits). MIN is too aggressive.
+
+4. **Overlap**: MEAN/WEIGHTED are ~80-100% overlap with L=84 — they are
+   effectively smoothed versions of L=84, not genuinely different signals.
+   MIN is only ~10-26% overlap — genuinely different but destructive.
+
+5. **AND gate**: L84_AND_rp=0.20 remains the best MDD improvement (-7.08 pp)
+   with strong Sharpe (+0.0569). Multi-lookback AND doesn't beat it on MDD.
+
+### Verdict
+
+**MIXED**: Multi-lookback consensus provides marginally better Sharpe than single
+L=84 (best: mean_thr=0.35 +0.0721 vs +0.0462), but at the cost of much smaller
+MDD improvement (-1.38 pp vs -6.37 pp). The hypothesis that multi-lookback would
+be MORE ROBUST is partially confirmed for WEIGHTED (range 0.0668 < L84's 0.0868)
+but none achieve the 0.05 plateau target. MEAN/WEIGHTED are high-overlap with L=84
+(not genuinely new information). MIN captures different exits but destroys
+performance. Single L=84 remains the better practical choice for MDD reduction.

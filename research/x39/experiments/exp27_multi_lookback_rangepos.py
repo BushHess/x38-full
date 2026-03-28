@@ -44,11 +44,14 @@ AND_TQ_THRESHOLD = -0.10  # fixed from exp22 optimum
 AGGREGATIONS = ["min", "mean", "weighted"]
 
 
-def add_rangepos_42(feat: pd.DataFrame) -> None:
-    """Compute rangepos_42 (not in explore.py) and add in-place."""
+def add_rangepos_42(feat: pd.DataFrame, h4: pd.DataFrame) -> None:
+    """Compute rangepos_42 (not in explore.py) and add in-place.
+
+    Uses h4 high/low same as explore.py computes rangepos_84/168.
+    """
     c = feat["close"].values
-    h = feat["high"].values
-    lo = feat["low"].values
+    h = h4["high"].values.astype(np.float64)
+    lo = h4["low"].values.astype(np.float64)
     roll_hi = pd.Series(h).rolling(42, min_periods=42).max().values
     roll_lo = pd.Series(lo).rolling(42, min_periods=42).min().values
     denom = roll_hi - roll_lo
@@ -362,7 +365,7 @@ def main() -> None:
 
     # Compute rangepos_42 and aggregations
     print("Computing rangepos_42 and aggregations...")
-    add_rangepos_42(feat)
+    add_rangepos_42(feat, h4)
     compute_aggregations(feat)
 
     warmup_bar = SLOW_PERIOD
