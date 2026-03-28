@@ -1,6 +1,6 @@
 # Exp 28: Rangepos Velocity Exit
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 ALL 24 experiments (exp01-24) tested feature LEVELS as thresholds: "exit when
@@ -127,4 +127,54 @@ Key analysis:
 - Results: x39/results/exp28_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Overall verdict: PASS** (marginal). Best config improves both Sharpe and MDD but
+deltas are small. Velocity is a WEAKER signal than level (exp12).
+
+### Part A — Velocity-only (15 configs)
+**PASS**: `A_N=6_v=-0.3` — Sharpe 1.3329 (+0.0364), MDD 43.92% (-7.40 pp), 242 trades.
+47 velocity exits, 76.6% selectivity (on losers).
+
+Window sensitivity (best Sharpe per N):
+- N=6:  Sh 1.3329 (+0.0364) at v=-0.3 ← BEST
+- N=12: Sh 1.3051 (+0.0086) at v=-0.4
+- N=24: Sh 1.2806 (-0.0159) at v=-0.4
+
+Shorter windows (N=6) work best. Loose thresholds (v≥-0.1) cause massive
+over-trading (600+ trades) and destroy performance. Tight thresholds (v=-0.4)
+trigger too rarely to matter.
+
+### Part B — Level + Velocity AND gate (9 configs, N=6)
+**PASS**: `B_N=6_L=0.25_v=-0.1` — Sharpe 1.3574 (+0.0609), MDD 44.48% (-6.84 pp),
+229 trades. 23 velocity exits, 87.0% selectivity.
+
+AND gate improves selectivity significantly (87% vs 76.6% velocity-only) with
+fewer false triggers (23 vs 47). Best Part B beats best Part A on Sharpe but
+slightly worse on MDD.
+
+### Part C — Velocity + trendq AND gate (9 configs, N=6)
+**PASS**: `C_N=6_v=-0.2_tq=0.0` — Sharpe 1.3664 (+0.0699), MDD 46.11% (-5.21 pp),
+238 trades. 42 velocity exits, 83.3% selectivity.
+
+Best overall Sharpe improvement across all parts.
+
+### Cross-experiment comparison
+- Exp12 (level rp<0.25): Sharpe 1.3427, MDD 44.95%
+- Exp28 best A (vel):    Sharpe 1.3329, MDD 43.92% → vel WORSE on Sharpe, BETTER on MDD
+- Exp22 best AND (L+tq): Sharpe 1.3534, MDD 44.24%
+- Exp28 best C (vel+tq): Sharpe 1.3664, MDD 46.11% → vel+tq BETTER Sharpe, WORSE MDD
+
+### Key findings
+1. **Velocity provides DIFFERENT information from level** — vel best MDD (43.92%)
+   beats level best MDD (44.95%), but level wins on Sharpe.
+2. **N=6 (1 day) is the only viable window** — N=12/24 peak at tighter thresholds
+   with weaker deltas. NOT a plateau → window-sensitive = fragile.
+3. **Double confirmation (Part B) has highest selectivity** (87-93%) but fewer
+   triggers (8-41) vs velocity-only (47). Tradeoff: precision vs coverage.
+4. **Velocity + trendq (Part C) produces best Sharpe** (+0.0699) but MDD gain is
+   smaller (-5.21 pp vs -7.40 pp for Part A). Returns-focused profile.
+5. **All deltas are small** (<0.07 Sharpe, <8 pp MDD). Velocity is a marginal
+   refinement, not a breakthrough mechanism.
+6. **Selectivity is high across all parts** (76-93% on losers) confirming velocity
+   does target deteriorating trades, but the base trail stop already handles most
+   of the heavy lifting.
