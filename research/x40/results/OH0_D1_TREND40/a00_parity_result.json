@@ -1,0 +1,134 @@
+{
+  "baseline_id": "OH0_D1_TREND40",
+  "league_id": "OHLCV_ONLY",
+  "a00_verdict": "PASS",
+  "cost_model": "simple_per_side",
+  "default_cost_rt_bps": 20,
+  "checks": [
+    {
+      "check": "total_state_transitions",
+      "expected": 130,
+      "actual": 130,
+      "passed": true
+    },
+    {
+      "check": "discovery_transitions",
+      "expected": 61,
+      "actual": 61,
+      "passed": true
+    },
+    {
+      "check": "discovery_sharpe",
+      "expected": 1.6941,
+      "actual": 1.6935,
+      "pct_diff": 0.04,
+      "passed": true
+    },
+    {
+      "check": "discovery_cagr",
+      "expected": 101.2,
+      "actual": 101.2,
+      "pct_diff": 0.0,
+      "passed": true
+    },
+    {
+      "check": "discovery_mdd",
+      "expected": 48.3,
+      "actual": 48.3,
+      "pct_diff": 0.0,
+      "passed": true
+    },
+    {
+      "check": "holdout_transitions",
+      "expected": 34,
+      "actual": 34,
+      "passed": true
+    },
+    {
+      "check": "holdout_sharpe",
+      "expected": 1.0819,
+      "actual": 1.0807,
+      "pct_diff": 0.11,
+      "passed": true
+    },
+    {
+      "check": "holdout_cagr",
+      "expected": 40.8,
+      "actual": 40.8,
+      "pct_diff": 0.0,
+      "passed": true
+    },
+    {
+      "check": "holdout_mdd",
+      "expected": 43.4,
+      "actual": 43.4,
+      "pct_diff": 0.0,
+      "passed": true
+    },
+    {
+      "check": "reserve_transitions",
+      "expected": 35,
+      "actual": 35,
+      "passed": true
+    },
+    {
+      "check": "reserve_sharpe",
+      "expected": 0.8734,
+      "actual": 0.8939,
+      "pct_diff": 2.35,
+      "passed": true
+    },
+    {
+      "check": "reserve_cagr",
+      "expected": 24.2,
+      "actual": 25.5,
+      "pct_diff": 5.37,
+      "passed": true
+    },
+    {
+      "check": "reserve_mdd",
+      "expected": 24.0,
+      "actual": 24.0,
+      "pct_diff": 0.0,
+      "passed": true
+    },
+    {
+      "check": "cost_monotonicity",
+      "expected": "sharpe_50 < sharpe_20",
+      "actual": "1.3521 < 1.4268",
+      "passed": true
+    }
+  ],
+  "segments": {
+    "discovery": {
+      "n_transitions": 61,
+      "sharpe": 1.6935,
+      "cagr_pct": 101.2,
+      "max_dd_pct": 48.3
+    },
+    "holdout": {
+      "n_transitions": 34,
+      "sharpe": 1.0807,
+      "cagr_pct": 40.8,
+      "max_dd_pct": 43.4
+    },
+    "reserve": {
+      "n_transitions": 35,
+      "sharpe": 0.8939,
+      "cagr_pct": 25.5,
+      "max_dd_pct": 24.0
+    }
+  },
+  "metrics_20bps": {
+    "sharpe": 1.4268,
+    "cagr_pct": 68.13,
+    "max_dd_pct": 48.32,
+    "n_transitions": 130,
+    "n_completed_trades": 65
+  },
+  "metrics_50bps": {
+    "sharpe": 1.3521,
+    "cagr_pct": 62.87,
+    "max_dd_pct": 50.89
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "baseline_id": "PF0_E5_EMA21D1",
+  "league_id": "PUBLIC_FLOW",
+  "a01_decay_band": "WATCH",
+  "eras": [
+    {
+      "era": "ERA_1_EARLY",
+      "start": "2020-01-01",
+      "end": "2021-12-31",
+      "sharpe": 2.3343,
+      "sharpe_common": 2.2383,
+      "cagr_pct": 181.09,
+      "max_dd_pct": 25.15,
+      "exposure_pct": 51.87,
+      "n_trades": 54,
+      "expectancy": 2557.57
+    },
+    {
+      "era": "ERA_2_MID",
+      "start": "2022-01-01",
+      "end": "2023-12-31",
+      "sharpe": 0.2489,
+      "sharpe_common": 0.2486,
+      "cagr_pct": 3.07,
+      "max_dd_pct": 36.02,
+      "exposure_pct": 38.36,
+      "n_trades": 52,
+      "expectancy": 289.51
+    },
+    {
+      "era": "ERA_3_RECENT",
+      "start": "2024-01-01",
+      "end": "2026-02-20",
+      "sharpe": 1.1205,
+      "sharpe_common": 1.0779,
+      "cagr_pct": 32.64,
+      "max_dd_pct": 25.6,
+      "exposure_pct": 43.61,
+      "n_trades": 56,
+      "expectancy": 2404.22
+    }
+  ],
+  "rolling_sharpe": [
+    {
+      "midpoint": "2020-09-27",
+      "sharpe": 2.4181
+    },
+    {
+      "midpoint": "2020-12-26",
+      "sharpe": 2.439
+    },
+    {
+      "midpoint": "2021-03-26",
+      "sharpe": 2.7304
+    },
+    {
+      "midpoint": "2021-06-24",
+      "sharpe": 2.5902
+    },
+    {
+      "midpoint": "2021-09-22",
+      "sharpe": 1.6547
+    },
+    {
+      "midpoint": "2021-12-21",
+      "sharpe": 0.4627
+    },
+    {
+      "midpoint": "2022-03-21",
+      "sharpe": 0.4411
+    },
+    {
+      "midpoint": "2022-06-19",
+      "sharpe": -0.2649
+    },
+    {
+      "midpoint": "2022-09-17",
+      "sharpe": -0.7373
+    },
+    {
+      "midpoint": "2022-12-16",
+      "sharpe": -0.3299
+    },
+    {
+      "midpoint": "2023-03-16",
+      "sharpe": 0.3551
+    },
+    {
+      "midpoint": "2023-06-14",
+      "sharpe": 1.6017
+    },
+    {
+      "midpoint": "2023-09-12",
+      "sharpe": 1.4369
+    },
+    {
+      "midpoint": "2023-12-11",
+      "sharpe": 1.5442
+    },
+    {
+      "midpoint": "2024-03-10",
+      "sharpe": 2.2465
+    },
+    {
+      "midpoint": "2024-06-08",
+      "sharpe": 1.9372
+    },
+    {
+      "midpoint": "2024-09-06",
+      "sharpe": 1.6295
+    },
+    {
+      "midpoint": "2024-12-05",
+      "sharpe": 0.7262
+    },
+    {
+      "midpoint": "2025-03-05",
+      "sharpe": 0.9864
+    }
+  ]
+}
