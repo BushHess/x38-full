@@ -1,6 +1,6 @@
 # Exp 47: Acceleration-Weighted Initial Trail
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp33 uses acceleration as a binary gate (enter if accel > 0, block if ≤ 0).
@@ -110,4 +110,55 @@ Key analysis:
 - Results: x39/results/exp47_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: FAIL** — Acceleration magnitude as continuous trail sizing HURTS.
+
+### Summary Table (vs baseline: Sharpe 1.310, CAGR 52.7%, MDD 41.01%)
+```
+Config       | Sharpe | CAGR%  | MDD%  | Trades | d_Sh    | d_MDD
+-------------|--------|--------|-------|--------|---------|------
+baseline     | 1.310  | 52.70  | 41.01 |  197   |   —     |   —
+exp38_only   | 1.460  | 58.11  | 31.19 |  263   | +0.150  | -9.82
+A1 [2.0-3.0] | 1.135  | 42.00  | 40.49 |  243   | -0.175  | -0.52
+A2 [2.0-4.0] | 1.038  | 37.84  | 42.70 |  201   | -0.272  | +1.69
+A3 [2.5-3.5] | 1.187  | 45.86  | 38.70 |  196   | -0.122  | -2.31
+A4 [1.5-3.0] | 1.158  | 42.84  | 36.82 |  271   | -0.152  | -4.19
+B1 [2.0-3.0] | 1.253  | 46.79  | 34.22 |  286   | -0.057  | -6.79
+B2 [2.0-4.0] | 1.265  | 47.88  | 34.01 |  256   | -0.045  | -7.00
+B3 [2.5-3.5] | 1.313  | 50.42  | 33.39 |  261   | +0.004  | -7.62
+B4 [1.5-3.0] | 1.203  | 44.06  | 34.18 |  305   | -0.107  | -6.83
+```
+
+### Key Findings
+
+1. **Option A vs baseline**: ALL 4 configs WORSE on Sharpe (-0.12 to -0.27).
+   Continuous trail sizing actively destroys alpha vs fixed trail=3.0.
+
+2. **Option B vs exp38-only**: ALL 4 configs WORSE on BOTH Sharpe (-0.15 to -0.26)
+   AND MDD (+2.2 to +3.0 pp). Accel-weighting is pure drag on top of decay.
+
+3. **Correlation check**: ALL negative, ALL non-significant (p > 0.29).
+   rho ranges from -0.011 to -0.061. Hypothesis REJECTED: high-acceleration
+   entries do NOT produce better returns than low-acceleration entries.
+
+4. **Distribution**: Good range utilization (85-88%), P10-P90 spread meaningful.
+   The problem is NOT narrow percentiles — accel_pctl differentiates entries
+   effectively, but the differentiation carries NO useful signal for trail sizing.
+
+5. **B vs A (decay on top of accel-weighted)**: Decay helps all 4 pairs
+   (+0.04 to +0.23 Sharpe), confirming exp38's value. But this is exp38
+   doing its usual work — accel-weighting is a drag that decay partially offsets.
+
+6. **B3 "PASS" is misleading**: d_Sharpe=+0.004 vs baseline is noise-level.
+   B3 loses to exp38-only by -0.146 Sharpe. The MDD improvement (-7.62 pp)
+   is entirely from the decay component.
+
+### Conclusion
+
+Acceleration magnitude contains NO information for optimal trail width.
+The connection to exp21 (conviction sizing) is confirmed: entry features
+(including derivatives like ema_spread_roc) have zero predictive power
+over trade outcomes. This is consistent with alpha being GENERIC trend-following
+(plateau slow=60-144) — individual entry timing doesn't predict trade quality.
+
+**exp38 (pure maturity decay from fixed 3.0) remains strictly superior.**
