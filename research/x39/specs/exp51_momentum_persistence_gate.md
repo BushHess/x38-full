@@ -1,6 +1,6 @@
 # Exp 51: Momentum Persistence Entry Gate
 
-## Status: PENDING
+## Status: DONE — FAIL
 
 ## Hypothesis
 Exp33 (accel gate) tested momentum ACCELERATION — the rate of change of
@@ -95,4 +95,35 @@ Key analysis:
 - Results: x39/results/exp51_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: FAIL** — No config improves Sharpe over baseline. Gate is NOT selective.
+
+### Best config
+M=42, min_pers=0.7: Sharpe 1.2983 (+0.0018), CAGR 52.79% (-4.98 pp), MDD 52.79% (+1.47 pp).
+Delta is noise-level (+0.0018 Sharpe). CAGR drops substantially in all configs.
+
+### Key findings
+
+1. **NOT selective (0/12 configs)**: All blocked entry pools have WR >= baseline WR (41.2%).
+   At M=84, blocked WR reaches 46-47% — the gate blocks WINNERS more than losers.
+
+2. **Redundant with D1 EMA(21) regime filter**: Entry bars already have very high persistence
+   (median 0.93-0.98 for M=42/84). When d1_regime_ok=True, ret_168 is almost always
+   persistently positive. The gate adds no new information beyond what d1_regime_ok provides.
+
+3. **Longer lookbacks = worse**: M=84 and M=168 destroy alpha (Sharpe drops 0.13-0.24)
+   because they block entries during regime transitions that are actually profitable.
+
+4. **Low vol-compression overlap (26-32%)**: Persistence and vol compression target different
+   entries. However, since persistence itself has no value, overlap is moot.
+
+5. **One config barely MDD-improves**: M=168, min_pers=0.6 has MDD 47.48% (-3.84 pp) but
+   Sharpe 1.1297 (-0.17). Not a tradeoff worth pursuing.
+
+### Why the hypothesis was wrong
+The hypothesis predicted persistence would be regime-adaptive (permissive in bull, restrictive
+in bear). This IS true — but the existing D1 EMA(21) filter already captures this property.
+ret_168 persistence is collinear with d1_regime_ok. The gate is redundant, not complementary.
+
+### Baseline
+Sharpe 1.2965, CAGR 57.77%, MDD 51.32%, 221 trades, WR 41.2%, exposure 43.0%.

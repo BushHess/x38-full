@@ -1,6 +1,6 @@
 # Exp 50: Alternative Compression Measures — Mechanism Robustness
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 vol_ratio_5_20 (std_5 / std_20) is the only WFO-validated entry filter.
@@ -87,4 +87,29 @@ Key analysis:
 - Results: x39/results/exp50_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: MECHANISM FRAGILE** — 0/4 alternative measures are selective.
+
+Baseline: Sharpe 1.2965, WR 41.2%, 221 trades.
+Thresholds calibrated to block ~30% of entries at each measure's P70.
+
+| Measure | Sharpe | d_Sharpe | Blocked WR | Selective? | Corr w/ vol_ratio_5_20 |
+|---------|--------|----------|------------|------------|------------------------|
+| vol_ratio_5_20 | 1.4470 | +0.1505 | 32.8% | YES | — |
+| atr_ratio_5_20 | 1.2709 | -0.0256 | 47.7% | NO | 0.564 |
+| range_ratio_5_20 | 1.2709 | -0.0256 | 47.7% | NO | 0.564 |
+| bb_pctl | 1.0936 | -0.2029 | 44.7% | NO | -0.201 |
+| vol_ratio_5_50 | 1.3763 | +0.0798 | 42.9% | NO | 0.749 |
+
+Key findings:
+1. **Only vol_ratio_5_20 is selective** (blocked WR 32.8% < 41.2% baseline).
+   All 4 alternatives block winners at equal or higher rate than baseline.
+2. **atr_ratio and range_ratio are identical** (r=1.000) — crypto H4 has no
+   gaps, so true_range ≈ high-low. Functionally one measure, not two.
+3. **bb_pctl anti-correlated** (r=-0.201) — measures absolute vol level,
+   not short/long ratio. Different concept entirely.
+4. **vol_ratio_5_50 closest** (r=0.749, d_Sharpe +0.08) but fails selectivity
+   (blocked WR 42.9% ≈ baseline). Wider window dilutes the signal.
+5. The compression mechanism is **feature-specific**: close-to-close std at
+   exactly 5/20 windows captures something that range-based and ATR-based
+   alternatives do not. This is a caution flag for vol_ratio_5_20's WFO result.

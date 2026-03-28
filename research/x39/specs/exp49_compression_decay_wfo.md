@@ -1,6 +1,6 @@
 # Exp 49: Compression + Maturity Decay Combo Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp44 showed compression + maturity decay is ADDITIVE (ratio 0.79):
@@ -89,4 +89,36 @@ Aggregate:
 - Results: x39/results/exp49_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: COMPRESSION_ONLY** — Decay adds no marginal value on top of compression.
+
+### Compression-only (thr=0.7, Fixed C) — exp42 reproduction
+- WFO: **4/4 (100%)**, mean d_Sharpe **+0.2473**
+- d_Sharpe per window: [+0.33, +0.33, +0.15, +0.18]
+- Mean d_MDD: **-5.52 pp** (improvement)
+
+### Combo results (vs baseline)
+| Config | WFO | Mean d_Sh | d_Sh/window | Mean d_MDD |
+|--------|-----|-----------|-------------|------------|
+| Selected | 3/4 (75%) | +0.133 | [+0.56, +0.09, -0.17, +0.06] | -5.88 pp |
+| Fixed A (1.5/60/180) | 3/4 (75%) | +0.134 | [+0.56, +0.09, -0.17, +0.06] | -4.96 pp |
+| Fixed B (2.0/60/180) | 4/4 (100%) | +0.237 | [+0.51, +0.31, +0.07, +0.06] | -5.25 pp |
+
+### CRITICAL: Marginal decay value (combo - comp-only)
+| Config | Marg wins | Mean marg | Per window |
+|--------|-----------|-----------|------------|
+| Selected | **1/4 FAIL** | -0.115 | [+0.23, -0.24, -0.32, -0.12] |
+| Fixed A | **1/4 FAIL** | -0.113 | [+0.23, -0.24, -0.32, -0.12] |
+| Fixed B | **1/4 FAIL** | -0.011 | [+0.18, -0.02, -0.08, -0.12] |
+
+### Key findings
+1. **Decay only helps in W1 (bear)**, hurts in all other windows → bear-only benefit persists
+2. Compression CANNOT fix decay's regime-dependence — bear mean marginal -0.006, bull mean marginal **-0.220**
+3. Parameter stability STABLE (2 unique: min=1.5/60/180 for W1-3, min=2.0/60/180 for W4)
+4. All combos pass WFO vs baseline, but ALL are **worse** than compression-only
+5. Fixed B (less aggressive decay) is closest to compression-only but still net negative marginal
+
+### Conclusion
+Deploy **compression alone** (thr=0.7). Maturity decay is fundamentally regime-dependent
+regardless of entry population quality. The hypothesis that compression "cleans" the trade
+population enough for decay to work is **rejected**.

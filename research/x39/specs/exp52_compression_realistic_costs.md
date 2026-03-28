@@ -1,6 +1,6 @@
 # Exp 52: Vol Compression at Realistic Costs
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 All x39 experiments use 50 bps RT (harsh). X22 (cost sensitivity research)
@@ -79,4 +79,62 @@ compression at 15 bps should show:
 - Results: x39/results/exp52_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: COST-INDEPENDENT — Genuine quality filter**
+
+Vol compression helps at ALL 7 cost levels (10-50 bps). Unlike churn filters
+(X22), compression is NOT a cost-reduction mechanism.
+
+### d_Sharpe vs Cost (threshold=0.6)
+
+| Cost (bps) | Baseline Sh | +Compression Sh | d_Sharpe | d_MDD (pp) |
+|:----------:|:-----------:|:----------------:|:--------:|:----------:|
+| 10 | 1.5539 | 1.7249 | +0.1710 | +2.71 |
+| 15 | 1.5216 | 1.6950 | +0.1734 | +2.66 |
+| 20 | 1.4893 | 1.6652 | +0.1759 | +2.59 |
+| 25 | 1.4571 | 1.6353 | +0.1782 | +2.54 |
+| 30 | 1.4249 | 1.6055 | +0.1806 | +2.49 |
+| 40 | 1.3606 | 1.5460 | +0.1854 | +2.37 |
+| 50 | 1.2965 | 1.4866 | +0.1901 | +2.27 |
+
+### d_Sharpe vs Cost (threshold=0.7)
+
+| Cost (bps) | Baseline Sh | +Compression Sh | d_Sharpe | d_MDD (pp) |
+|:----------:|:-----------:|:----------------:|:--------:|:----------:|
+| 10 | 1.5539 | 1.7194 | +0.1655 | +0.69 |
+| 15 | 1.5216 | 1.6889 | +0.1673 | +0.65 |
+| 20 | 1.4893 | 1.6585 | +0.1692 | +0.61 |
+| 25 | 1.4571 | 1.6281 | +0.1710 | +0.58 |
+| 30 | 1.4249 | 1.5977 | +0.1728 | +0.55 |
+| 40 | 1.3606 | 1.5370 | +0.1764 | +0.48 |
+| 50 | 1.2965 | 1.4764 | +0.1799 | +0.42 |
+
+### Key Findings
+
+1. **d_Sharpe vs cost**: Weakly INCREASING (ratio 15bps/50bps = 0.91-0.93).
+   Delta is ~91% as large at 15 bps as at 50 bps → nearly cost-independent.
+   Slight increase at higher cost = minor cost-reduction component on top of
+   genuine quality filtering.
+
+2. **Selectivity persists at ALL costs**: Blocked WR < baseline WR at every
+   cost level (e.g., 38.0% vs 43.9% at 15 bps for thr=0.6). Gap is stable
+   (~5-7 pp) regardless of cost → genuine entry quality signal.
+
+3. **No breakeven**: d_Sharpe > 0 at ALL costs for both thresholds. Compression
+   never hurts, unlike churn filters which hurt below ~30 bps.
+
+4. **Optimal threshold stable**: thr=0.6 wins at ALL 7 cost levels. No shift
+   in optimal threshold with cost.
+
+5. **MDD trade-off**: thr=0.6 adds +2.3-2.7 pp MDD. thr=0.7 much better at
+   +0.4-0.7 pp MDD with only ~0.01 less d_Sharpe.
+
+### Contrast with X22 (Churn Filters)
+
+| Mechanism | Value at 15 bps | Value at 50 bps | Cost-dependent? |
+|:---------:|:---------------:|:---------------:|:---------------:|
+| Churn filters (X22) | HURTS | HELPS | YES |
+| Vol compression (exp52) | +0.173 Sharpe | +0.190 Sharpe | NO (~91% retained) |
+
+**Conclusion**: Vol compression captures genuine entry quality information.
+At realistic costs (15-25 bps), deploy compression WITHOUT churn filter.
