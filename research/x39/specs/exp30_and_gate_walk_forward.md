@@ -1,6 +1,6 @@
 # Exp 30: AND-Gate Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp22's AND gate (rp=0.20, tq=-0.10) was optimized on FULL SAMPLE data
@@ -98,4 +98,40 @@ Aggregate:
 - Results: x39/results/exp30_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: FAIL** — AND gate lacks temporal stability.
+
+### Per-window results
+
+| Window | Train selected | Test baseline Sh | Test AND Sh | d_Sharpe | d_MDD (pp) | AND exits |
+|--------|---------------|-----------------|-------------|----------|------------|-----------|
+| W1 (test 2021-07→2023-06) | rp=0.25, tq=0.30 | 0.4722 | 0.5366 | **+0.0644** | **-3.10** | 4 |
+| W2 (test 2022-07→2024-06) | rp=0.20, tq=-0.10 | 0.6441 | 0.7313 | **+0.0872** | **-4.03** | 4 |
+| W3 (test 2023-07→2025-06) | rp=0.20, tq=-0.10 | 1.6301 | 1.5326 | **-0.0975** | +0.00 | 5 |
+| W4 (test 2024-07→2026-02) | rp=0.20, tq=-0.10 | 0.9651 | 0.8526 | **-0.1125** | +3.67 | 4 |
+
+### Aggregate
+
+- **Train-selected**: WFO win rate 2/4 (50%) FAIL, mean d_Sharpe -0.0146 FAIL
+- **Fixed (0.20, -0.10)**: WFO win rate 2/4 (50%) FAIL, mean d_Sharpe -0.0082 FAIL
+- **Parameter stability**: STABLE (2/4 unique configs — W2/W3/W4 all select rp=0.20, tq=-0.10)
+- Fixed ≥ selected in all 4 windows (W1 fixed d_Sh +0.0902 > selected +0.0644)
+
+### Interpretation
+
+1. **AND gate helps in bear markets (W1, W2), hurts in bull markets (W3, W4)**.
+   W1/W2 test periods include 2022 bear market → AND gate exits save capital.
+   W3/W4 test periods are trending up → AND gate exits cut winners prematurely.
+
+2. **Mean d_Sharpe is negative** for both selected and fixed configs.
+   The AND gate's damage in trending periods exceeds its benefit in mean-reverting/bear periods.
+
+3. **Parameters are stable** (rp=0.20, tq=-0.10 selected in 3/4 windows),
+   so the failure is NOT due to overfitting parameters — it's the mechanism itself
+   that is regime-dependent.
+
+4. **MDD improvement is regime-dependent too**: -3.1pp and -4.0pp in bear windows,
+   0.0pp and +3.7pp in bull windows. Not a reliable MDD reducer.
+
+5. The +0.057 Sharpe from exp22 full-sample is a weighted average of period-specific
+   effects that cancel out-of-sample. The AND gate is selection bias, not alpha.

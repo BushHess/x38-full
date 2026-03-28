@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-30 experiments in 9 categories. Each is self-contained with its own spec file.
+31 experiments in 9 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -64,6 +64,7 @@ writes results back to the spec file.
 | 28 | I-velocity | Rangepos velocity exit | specs/exp28_rangepos_velocity_exit.md |
 | 29 | I-velocity | AND-gate trail tightener | specs/exp29_and_gate_trail_tightener.md |
 | 30 | H-validate | AND-gate walk-forward validation | specs/exp30_and_gate_walk_forward.md |
+| 31 | H-validate | Velocity walk-forward validation | specs/exp31_velocity_walk_forward.md |
 
 ## How to run
 
@@ -116,3 +117,4 @@ Each spec file contains everything needed to execute the experiment:
 | 28 | Rangepos velocity exit | — | — | — | — | — | — |
 | 29 | AND-gate trail tightener | — | — | — | — | — | — |
 | 30 | AND-gate walk-forward | — | — | — | — | — | — |
+| 31 | Velocity walk-forward | — | — | — | — | — | — |
