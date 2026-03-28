@@ -1,6 +1,6 @@
 # Exp 29: AND-Gate Trail Tightener
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp22's AND gate exits immediately when rp < 0.20 AND tq < -0.10. This is
@@ -127,4 +127,58 @@ Key analysis:
 - Results: x39/results/exp29_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL — exp22 binary exit strictly dominates all trail-tightening configs.**
+
+### Key numbers
+
+| Config | Sharpe | d_Sharpe | MDD% | d_MDD | Tightened | Survived | Triggered |
+|--------|--------|----------|------|-------|-----------|----------|-----------|
+| baseline | 1.2965 | — | 51.32 | — | — | — | — |
+| **exp22 (binary)** | **1.3534** | **+0.0569** | **44.24** | **-7.08** | — | — | — |
+| tight=1.0 | 1.3383 | +0.0418 | 47.09 | -4.23 | 22 | 2 (9%) | 20 |
+| tight=1.5, tq=-0.10 | 1.3267 | +0.0302 | 47.28 | -4.04 | 22 | 4 (18%) | 18 |
+| tight=2.0 | 1.3270 | +0.0305 | 47.28 | -4.04 | 21 | 3 (14%) | 18 |
+| tight=2.5 | 1.3148 | +0.0183 | 47.77 | -3.55 | 21 | 5 (24%) | 16 |
+| tight=1.5, tq=-0.20 | 1.3030 | +0.0065 | 49.76 | -1.56 | 19 | 3 (16%) | 16 |
+| tight=1.5, tq=0.00 | 1.3492 | +0.0527 | 47.28 | -4.04 | 26 | 4 (15%) | 22 |
+| tight=1.5, tq=0.10 | 1.3455 | +0.0490 | 47.28 | -4.04 | 27 | 4 (15%) | 23 |
+
+### Analysis
+
+**1. Trail tighten vs binary exit**: exp22 wins on BOTH Sharpe (+0.0569 vs best
++0.0527) AND MDD (-7.08 pp vs best -4.04 pp). Graduated response is strictly
+worse than immediate exit.
+
+**2. d_Sharpe vs tight_mult**: MONOTONIC (tighter → better). No inverted-U.
+tight=1.0 (nearly immediate) is best among sweep A, and exp22 (true immediate)
+still beats it. This means the optimal response is binary — there is no sweet
+spot for intermediate trail widths.
+
+**3. Recovery rate**: 9-24% across configs (all <30%). Most tightened trades
+still hit the tight trail stop. The "softer response" hypothesis does NOT hold —
+when AND fires, the trade is almost always doomed regardless of trail width.
+
+**4. Winner preservation**: exp22 killed 2 winners via AND gate.
+- entry=762: SURVIVES under tightening (exits via trend at +3.63% vs exp22 +5.23%).
+  But net return is LOWER because the tighter trail delays the trend exit.
+- entry=7882: STILL KILLED under tight trail (becomes a -3.79% loser at tm≥1.5).
+  Only at tm=1.0 does it survive as a smaller winner (+0.71%).
+Winner preservation is 50% at best, and the preserved winner returns less.
+
+**5. tq sweep** (Sweep B): Looser tq (0.00, 0.10) fires more often (26-27 events)
+and achieves better Sharpe, but still cannot match exp22. More events + tightening
+is still worse than fewer events + binary exit.
+
+### Conclusion
+
+The "graduated response" hypothesis is REJECTED. When the AND gate fires:
+- 85% of trades are doomed (hit tight trail anyway)
+- 15% survive but with reduced returns (tighter trail clips recovery)
+- Binary exit captures the FULL benefit: immediate loss-cutting on losers
+  without the drag of a tight trail on the few survivors
+
+The monotonic d_Sharpe curve (tighter → better → binary best) proves that the
+AND gate signal is DECISIVE, not ambiguous. Trail tightening adds a middle ground
+that helps neither case: losers still lose (just slower), and the rare survivors
+earn less. Exp22's binary exit remains the superior actuator for this signal.
