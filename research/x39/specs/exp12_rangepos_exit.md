@@ -1,6 +1,6 @@
 # Exp 12: Range Position Exit
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 rangepos_84 has NEGATIVE residual correlation at short horizons (fwd_1: -0.023,
@@ -48,4 +48,23 @@ Also: how many exits triggered by rangepos vs trail vs trend?
 - Results: x39/results/exp12_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**PASS** — thr=0.25 best Sharpe, thr=0.20 best MDD.
+
+| Config   | Sharpe | CAGR%  | MDD%   | Trades | RP exits | d_Sharpe | d_MDD   |
+|----------|--------|--------|--------|--------|----------|----------|---------|
+| baseline | 1.2965 | 57.77  | 51.32  | 221    | 0        | —        | —       |
+| thr=0.15 | 1.3129 | 58.55  | 47.77  | 222    | 9        | +0.0164  | -3.55   |
+| thr=0.20 | 1.3390 | 60.14  | 44.24  | 227    | 17       | +0.0425  | -7.08   |
+| thr=0.25 | 1.3427 | 60.21  | 44.95  | 240    | 35       | +0.0462  | -6.37   |
+| thr=0.30 | 1.2559 | 54.16  | 48.65  | 267    | 68       | -0.0406  | -2.67   |
+| thr=0.35 | 1.2729 | 54.99  | 47.34  | 289    | 95       | -0.0236  | -3.98   |
+
+Sweet spot: thr=0.20-0.25. MDD drops ~7 pp, Sharpe +0.04. Higher thresholds
+(0.30+) cut too many winners — Sharpe degrades. Rangepos exit takes over exits
+from both trail and trend at higher thresholds (15% of exits at thr=0.25,
+33% at thr=0.35).
+
+Note: baseline Sharpe here (1.2965) differs from canonical E5-ema21D1 (1.4545)
+because explore.py replay uses simplified logic (no next-open fill, no position
+sizing via vol-target). Deltas are internally consistent.

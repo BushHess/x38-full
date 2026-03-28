@@ -86,7 +86,7 @@ Each spec file contains everything needed to execute the experiment:
 | 10 | Replace VDO→trade_surp | — | — | — | — | — | — |
 | 11 | Anti-vol trail | — | — | — | — | — | — |
 | 12 | Rangepos exit | — | — | — | — | — | — |
-| 13 | Trendq exit | — | — | — | — | — | — |
+| 13 | Trendq exit | FAIL | 1.248 | 53.7% | 47.4% | 294 | Best th=-0.2: MDD -3.9pp but Sharpe -0.049. All thresholds degrade Sharpe. |
 | 14 | vs Gen4 C3 | — | — | — | — | — | — |
 | 15 | vs Gen1 V6 | — | — | — | — | — | — |
 | 16 | Hybrid Gen4+E5 | — | — | — | — | — | — |

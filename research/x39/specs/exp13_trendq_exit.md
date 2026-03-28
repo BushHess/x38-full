@@ -49,4 +49,19 @@ Sharpe, CAGR%, MDD%, trades, win rate, avg holding period. Delta vs baseline.
 - Results: x39/results/exp13_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL** — All thresholds degrade Sharpe vs EMA cross-down baseline.
+
+| threshold | Sharpe | CAGR% | MDD% | trades | avg_held | d_sharpe | d_mdd |
+|-----------|--------|-------|------|--------|----------|----------|-------|
+| baseline  | 1.2965 | 57.77 | 51.32 | 221   | 36.0     | —        | —     |
+| -0.2      | 1.2480 | 53.69 | 47.39 | 294   | 26.6     | -0.049   | -3.93 |
+| -0.1      | 1.1777 | 48.72 | 53.14 | 342   | 22.2     | -0.119   | +1.82 |
+| 0.0       | 1.1199 | 44.81 | 54.86 | 410   | 17.9     | -0.177   | +3.54 |
+| 0.1       | 1.0519 | 40.62 | 53.23 | 477   | 14.9     | -0.245   | +1.91 |
+| 0.2       | 0.8679 | 30.46 | 55.84 | 570   | 12.1     | -0.429   | +4.52 |
+
+threshold=-0.2 improves MDD (-3.93 pp) but still degrades Sharpe.
+Higher thresholds cause excessive exits (trades 221→570, avg hold 36→12 bars),
+cutting trends short and destroying trend-following alpha.
+trendq responds too eagerly to vol spikes — not a viable EMA cross-down replacement.
