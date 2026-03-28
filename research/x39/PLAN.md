@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-18 experiments in 5 categories. Each is self-contained with its own spec file.
+24 experiments in 7 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -52,6 +52,12 @@ writes results back to the spec file.
 | 16 | D-compare | Hybrid Gen4 entry + E5 exit | specs/exp16_hybrid_gen4_e5.md |
 | 17 | E-ensemble | Vote ensemble (2/3 agree) | specs/exp17_vote_ensemble.md |
 | 18 | E-ensemble | OR ensemble (any signal) | specs/exp18_or_ensemble.md |
+| 19 | F-stacked  | Stacked supplementary exits | specs/exp19_stacked_exits.md |
+| 20 | F-stacked  | Rangepos-adaptive trail | specs/exp20_rangepos_adaptive_trail.md |
+| 21 | F-stacked  | ret_168 momentum exit | specs/exp21_ret168_momentum_exit.md |
+| 22 | F-stacked  | AND-gated feature interaction exit | specs/exp22_and_gated_exit.md |
+| 23 | G-robust   | Rangepos lookback robustness | specs/exp23_rangepos_lookback_robustness.md |
+| 24 | F-stacked  | Volume anomaly exit | specs/exp24_volume_anomaly_exit.md |
 
 ## How to run
 
@@ -92,3 +98,9 @@ Each spec file contains everything needed to execute the experiment:
 | 16 | Hybrid Gen4+E5 | — | — | — | — | — | — |
 | 17 | Vote ensemble | — | — | — | — | — | — |
 | 18 | OR ensemble | — | — | — | — | — | — |
+| 19 | Stacked exits | — | — | — | — | — | — |
+| 20 | Rangepos-adaptive trail | — | — | — | — | — | — |
+| 21 | ret_168 momentum exit | — | — | — | — | — | — |
+| 22 | AND-gated exit | — | — | — | — | — | — |
+| 23 | Rangepos lookback robust | — | — | — | — | — | — |
+| 24 | Volume anomaly exit | — | — | — | — | — | — |
