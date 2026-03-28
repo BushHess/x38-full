@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-31 experiments in 9 categories. Each is self-contained with its own spec file.
+39 experiments in 11 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -65,6 +65,14 @@ writes results back to the spec file.
 | 29 | I-velocity | AND-gate trail tightener | specs/exp29_and_gate_trail_tightener.md |
 | 30 | H-validate | AND-gate walk-forward validation | specs/exp30_and_gate_walk_forward.md |
 | 31 | H-validate | Velocity walk-forward validation | specs/exp31_velocity_walk_forward.md |
+| 32 | J-entry    | Pullback-in-trend entry | specs/exp32_pullback_entry.md |
+| 33 | J-entry    | Momentum acceleration gate | specs/exp33_momentum_accel_gate.md |
+| 34 | J-entry    | Volatility compression entry | specs/exp34_vol_compression_entry.md |
+| 35 | J-entry    | D1 EMA slope confirmation | specs/exp35_d1_ema_slope.md |
+| 36 | K-regime   | Regime-split trail multiplier | specs/exp36_regime_split_trail.md |
+| 37 | K-regime   | Adaptive EMA slow period | specs/exp37_adaptive_ema_period.md |
+| 38 | K-regime   | Trend maturity trail decay | specs/exp38_trend_maturity_decay.md |
+| 39 | K-regime   | Dual-clock EMA entry | specs/exp39_dual_clock_entry.md |
 
 ## How to run
 
@@ -118,3 +126,11 @@ Each spec file contains everything needed to execute the experiment:
 | 29 | AND-gate trail tightener | — | — | — | — | — | — |
 | 30 | AND-gate walk-forward | — | — | — | — | — | — |
 | 31 | Velocity walk-forward | — | — | — | — | — | — |
+| 32 | Pullback-in-trend entry | — | — | — | — | — | — |
+| 33 | Momentum accel gate | — | — | — | — | — | — |
+| 34 | Vol compression entry | — | — | — | — | — | — |
+| 35 | D1 EMA slope | — | — | — | — | — | — |
+| 36 | Regime-split trail | — | — | — | — | — | — |
+| 37 | Adaptive EMA period | — | — | — | — | — | — |
+| 38 | Trend maturity decay | — | — | — | — | — | — |
+| 39 | Dual-clock entry | — | — | — | — | — | — |

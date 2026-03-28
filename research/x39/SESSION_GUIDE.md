@@ -64,3 +64,5 @@ No strict order required, but suggested grouping:
 3. Category B (replacements): exp07-10 — more structural changes
 4. Category C (exits): exp11-13 — exit modifications
 5. Category E (ensembles): exp17-18 — depends on knowing individual system performance
+6. Category J (entry logic): exp32-35 — new entry mechanics (pullback, accel, compression, D1 slope)
+7. Category K (regime adapt): exp36-39 — adaptive parameters (trail split, EMA period, maturity, dual-clock)
