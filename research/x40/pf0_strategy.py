@@ -29,9 +29,16 @@ from datetime import datetime, timezone
 import numpy as np
 
 
-_LIVE_START_MS = int(
-    datetime(2020, 1, 1, tzinfo=timezone.utc).timestamp() * 1000
+_DEFAULT_REPORT_START_MS = int(
+    datetime(2019, 1, 1, tzinfo=timezone.utc).timestamp() * 1000
 )
+"""Default report start: 2019-01-01 UTC.
+
+Matches DataFeed(start="2019-01-01", warmup_days=365) used by v10 validation.
+The warmup loads data from ~2018-01-01; reporting (live) starts at 2019-01-01.
+OH0 uses 2020-01-01 (its frozen spec), but PF0's lineage target has 2019-01-01.
+Cross-baseline comparison uses A01 eras which start at 2020-01-01.
+"""
 
 # Frozen strategy parameters
 _SLOW_PERIOD = 120
@@ -93,6 +100,7 @@ def run_pf0_sim(
     d1_close_time: np.ndarray,
     cost_per_side: float = 0.001,
     initial_cash: float = 10_000.0,
+    report_start_ms: int | None = None,
 ) -> PF0Result:
     """Run PF0 E5_ema21D1 H4+D1 simulation.
 
@@ -104,9 +112,11 @@ def run_pf0_sim(
     d1_close, d1_close_time : D1 close prices and timestamps
     cost_per_side : cost per side as fraction (0.001 = 10 bps)
     initial_cash : starting capital
+    report_start_ms : epoch ms for live-period start (None = 2019-01-01 UTC)
     """
     n = len(h4_close)
     c = cost_per_side
+    live_start = report_start_ms if report_start_ms is not None else _DEFAULT_REPORT_START_MS
 
     # ── 1. Indicators (vectorized) ────────────────────────────────────────
 
@@ -132,7 +142,7 @@ def run_pf0_sim(
     peak_px = 0.0
 
     for i in range(1, n):  # skip i=0 (strategy guard: bar_index < 1)
-        if h4_close_time[i] < _LIVE_START_MS:
+        if h4_close_time[i] < live_start:
             continue
 
         ef = ema_f[i]
@@ -207,7 +217,7 @@ def run_pf0_sim(
 
     # ── 5. Metrics (live period) ──────────────────────────────────────────
 
-    live_mask = h4_close_time >= _LIVE_START_MS
+    live_mask = h4_close_time >= live_start
     live_navs = navs[live_mask]
     live_ct = h4_close_time[live_mask]
     live_pos = position[live_mask].astype(np.float64)

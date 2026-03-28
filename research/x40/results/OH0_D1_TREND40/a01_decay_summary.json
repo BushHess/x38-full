@@ -1,6 +1,8 @@
 {
   "baseline_id": "OH0_D1_TREND40",
   "league_id": "OHLCV_ONLY",
+  "cost_model": "simple_per_side",
+  "default_cost_rt_bps": 20,
   "a01_decay_band": "WATCH",
   "eras": [
     {

@@ -1,121 +1,123 @@
 {
   "baseline_id": "PF0_E5_EMA21D1",
   "league_id": "PUBLIC_FLOW",
+  "cost_model": "simple_per_side",
+  "default_cost_rt_bps": 20,
   "a01_decay_band": "WATCH",
   "eras": [
     {
       "era": "ERA_1_EARLY",
       "start": "2020-01-01",
       "end": "2021-12-31",
-      "sharpe": 2.3343,
-      "sharpe_common": 2.2383,
-      "cagr_pct": 181.09,
-      "max_dd_pct": 25.15,
+      "sharpe": 2.4974,
+      "sharpe_common": 2.4041,
+      "cagr_pct": 204.79,
+      "max_dd_pct": 23.33,
       "exposure_pct": 51.87,
       "n_trades": 54,
-      "expectancy": 2557.57
+      "expectancy": 3321.4
     },
     {
       "era": "ERA_2_MID",
       "start": "2022-01-01",
       "end": "2023-12-31",
-      "sharpe": 0.2489,
-      "sharpe_common": 0.2486,
-      "cagr_pct": 3.07,
-      "max_dd_pct": 36.02,
+      "sharpe": 0.519,
+      "sharpe_common": 0.5136,
+      "cagr_pct": 11.35,
+      "max_dd_pct": 31.24,
       "exposure_pct": 38.36,
       "n_trades": 52,
-      "expectancy": 289.51
+      "expectancy": 1082.36
     },
     {
       "era": "ERA_3_RECENT",
       "start": "2024-01-01",
       "end": "2026-02-20",
-      "sharpe": 1.1205,
-      "sharpe_common": 1.0779,
-      "cagr_pct": 32.64,
-      "max_dd_pct": 25.6,
+      "sharpe": 1.3959,
+      "sharpe_common": 1.3487,
+      "cagr_pct": 43.57,
+      "max_dd_pct": 21.55,
       "exposure_pct": 43.61,
       "n_trades": 56,
-      "expectancy": 2404.22
+      "expectancy": 5065.15
     }
   ],
   "rolling_sharpe": [
     {
       "midpoint": "2020-09-27",
-      "sharpe": 2.4181
+      "sharpe": 2.5847
     },
     {
       "midpoint": "2020-12-26",
-      "sharpe": 2.439
+      "sharpe": 2.599
     },
     {
       "midpoint": "2021-03-26",
-      "sharpe": 2.7304
+      "sharpe": 2.8782
     },
     {
       "midpoint": "2021-06-24",
-      "sharpe": 2.5902
+      "sharpe": 2.7259
     },
     {
       "midpoint": "2021-09-22",
-      "sharpe": 1.6547
+      "sharpe": 1.7841
     },
     {
       "midpoint": "2021-12-21",
-      "sharpe": 0.4627
+      "sharpe": 0.632
     },
     {
       "midpoint": "2022-03-21",
-      "sharpe": 0.4411
+      "sharpe": 0.6317
     },
     {
       "midpoint": "2022-06-19",
-      "sharpe": -0.2649
+      "sharpe": -0.0377
     },
     {
       "midpoint": "2022-09-17",
-      "sharpe": -0.7373
+      "sharpe": -0.4788
     },
     {
       "midpoint": "2022-12-16",
-      "sharpe": -0.3299
+      "sharpe": -0.0737
     },
     {
       "midpoint": "2023-03-16",
-      "sharpe": 0.3551
+      "sharpe": 0.6467
     },
     {
       "midpoint": "2023-06-14",
-      "sharpe": 1.6017
+      "sharpe": 1.8716
     },
     {
       "midpoint": "2023-09-12",
-      "sharpe": 1.4369
+      "sharpe": 1.7162
     },
     {
       "midpoint": "2023-12-11",
-      "sharpe": 1.5442
+      "sharpe": 1.819
     },
     {
       "midpoint": "2024-03-10",
-      "sharpe": 2.2465
+      "sharpe": 2.5176
     },
     {
       "midpoint": "2024-06-08",
-      "sharpe": 1.9372
+      "sharpe": 2.219
     },
     {
       "midpoint": "2024-09-06",
-      "sharpe": 1.6295
+      "sharpe": 1.8977
     },
     {
       "midpoint": "2024-12-05",
-      "sharpe": 0.7262
+      "sharpe": 1.0395
     },
     {
       "midpoint": "2025-03-05",
-      "sharpe": 0.9864
+      "sharpe": 1.2787
     }
   ]
 }
