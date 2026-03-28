@@ -1,6 +1,6 @@
 # Exp 33: Momentum Acceleration Gate
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 EMA spread (ema_fast - ema_slow) / ema_slow measures trend STRENGTH.
@@ -74,4 +74,35 @@ Win rate of blocked entries (would they have been winners or losers?).
 - Results: x39/results/exp33_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: PASS** — lb=12, min_accel=0.0 improves Sharpe (+0.1515) AND MDD (-10.31 pp).
+
+### Baseline
+Sharpe 1.2965, CAGR 57.77%, MDD 51.32%, 221 trades, WR 41.2%, exposure 43.0%.
+
+### Best configs (lb=12 family dominates)
+
+| lookback | min_accel | Sharpe  | CAGR%  | MDD%   | trades | WR%  | exp%  | d_Sharpe | d_MDD   |
+|----------|-----------|---------|--------|--------|--------|------|-------|----------|---------|
+| 12       | 0.0       | 1.4480  | 59.70  | 41.01  | 166    | 42.8 | 33.6  | +0.1515  | -10.31  |
+| 12       | 0.001     | 1.4163  | 57.14  | 37.03  | 162    | 43.2 | 32.3  | +0.1198  | -14.29  |
+| 12       | 0.002     | 1.3871  | 54.90  | 36.13  | 158    | 43.0 | 31.2  | +0.0906  | -15.19  |
+
+### Key observations
+1. **lb=12 is the sweet spot**: lb=3/6 too noisy, lb=24 too laggy.
+2. **MDD improvement is large** (-10 to -15 pp) across all lb=12 configs.
+3. **CAGR tradeoff**: min_accel=0.0 barely loses CAGR (+1.93%), higher thresholds trade CAGR for MDD.
+4. **Blocked entry WR ≈ baseline WR** (~41%). Gate is NOT selectively blocking losers —
+   improvement comes from better entry TIMING and reduced exposure, not selectivity.
+5. All configs reduce trade count (221 → 155-175) and exposure (43% → 30-34%).
+6. lb=3/6 configs with min_accel=0.0 also improve Sharpe but sacrifice more CAGR.
+
+### Blocked entry analysis
+Blocked entries have nearly identical win rate to the baseline (38.7-42.6% vs 41.2%).
+The gate blocks both winners and losers roughly equally. The performance improvement
+is a timing effect: entering during acceleration means shorter losers and better
+entry prices, not fewer losers.
+
+### Caveat
+Full-sample only. 12 configs tested → selection bias risk. Requires WFO validation
+before any promotion decision.
