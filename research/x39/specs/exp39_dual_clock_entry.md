@@ -1,6 +1,6 @@
 # Exp 39: Dual-Clock EMA Entry
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Current E5-ema21D1 uses a single EMA pair (30/120). This is a single "clock"
@@ -108,4 +108,68 @@ in the baseline?
 - Results: x39/results/exp39_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: FAIL** — No dual-clock config meaningfully improves on single-clock baseline.
+
+Note: warmup bar = 530 (to cover EMA(480) in config E), so baseline numbers differ
+slightly from the canonical E5-ema21D1 stats (warmup 365d ≈ bar 2190 from 2017).
+All configs evaluated under identical conditions.
+
+### Baseline (single clock 30/120, same warmup)
+Sharpe 1.2952, CAGR 57.03%, MDD 51.32%, 214 trades, exposure 42.7%
+
+### Results summary
+```
+Config  fast    slow    exit       Sharpe  CAGR%  MDD%   trades  d_Sh     d_MDD
+─────────────────────────────────────────────────────────────────────────────────
+A1      15/60   30/120  fast_exit  1.2824  52.94  37.87  213     -0.0128  -13.45
+A2      15/60   30/120  any_exit   1.2727  52.35  38.97  214     -0.0225  -12.35
+B1      15/60   60/240  fast_exit  1.2306  46.75  38.39  175     -0.0646  -12.93
+B2      15/60   60/240  any_exit   1.2392  47.19  38.39  175     -0.0560  -12.93
+C1      20/84   60/240  fast_exit  1.2909  51.41  44.92  169     -0.0043   -6.40
+C2      20/84   60/240  any_exit   1.2992  51.86  44.92  169     +0.0040   -6.40
+D1      30/120  60/240  fast_exit  1.2958  53.44  52.54  173     +0.0006   +1.22
+D2      30/120  60/240  any_exit   1.3041  53.92  52.49  173     +0.0089   +1.17
+E1      15/60  120/480  fast_exit  1.0758  37.26  40.44  164     -0.2194  -10.88
+E2      15/60  120/480  any_exit   1.0758  37.26  40.44  164     -0.2194  -10.88
+```
+
+### Key findings
+
+1. **C2 technically PASS** (Sharpe +0.004, MDD -6.40 pp) but the Sharpe delta is
+   negligible (+0.3%) while CAGR drops -5.17 pp. This is a MDD-only improvement
+   achieved by filtering 169→169 trades (from 214 baseline) — the "improvement"
+   is from reduced exposure (34.7% vs 42.7%), not better entry selection.
+
+2. **MDD improves dramatically in configs A/B** (-12 to -13 pp) but at the cost of
+   Sharpe degradation. Faster entry clocks (15/60) generate many signals that get
+   blocked by the slow clock — reducing exposure and thus both returns AND drawdown.
+
+3. **D1/D2 configs (30/120 + 60/240)** are closest to baseline because the fast clock
+   IS the baseline. Adding slow 60/240 barely changes Sharpe (+0.001 to +0.009)
+   but doesn't improve MDD either (+1.2 pp worse).
+
+4. **E configs (slow=120/480)** destroy performance: Sharpe -0.22, CAGR -20 pp.
+   The ultra-slow clock blocks too many valid entries (1424 blocked, agreement 11.4%).
+
+5. **Blocked-trade analysis (D1 config)**: Blocked trades avg_ret=2.19% vs allowed
+   avg_ret=2.38%. The slow clock filters out SLIGHTLY worse trades but the
+   difference is marginal (0.19 pp). Win rates are actually HIGHER for blocked
+   trades (44.8% vs 39.5%) — the blocked trades are frequent small winners that
+   get replaced by nothing.
+
+6. **Agreement rates**: 11-32% depending on config. The two clocks disagree most of
+   the time, confirming the hypothesis that different timescales see different trends.
+   But the DISAGREEMENT entries are not systematically bad — they're a mix.
+
+7. **Exit mode matters little**: fast_exit vs any_exit produces nearly identical results
+   in most configs (B1≈B2, D1≈D2, E1=E2). This suggests the trail stop dominates
+   exit timing, not the EMA clock reversal.
+
+### Conclusion
+Dual-clock confirmation is a MDD-vs-return tradeoff, not a strict improvement.
+The MDD reduction comes from reduced exposure (fewer entries pass dual filter),
+not from genuinely better entry selection. Consistent with ρ=0.92 cross-timescale
+finding: timescales are too correlated for the second clock to provide independent
+information. The slow clock is largely redundant as a filter — it blocks entries
+semi-randomly rather than selectively removing bad ones.
