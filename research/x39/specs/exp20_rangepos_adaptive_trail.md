@@ -1,6 +1,6 @@
 # Exp 20: Rangepos-Adaptive Trail
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 E5 uses fixed trail_mult = 3.0. Exp11 tested D1 anti-vol for dynamic trail
@@ -92,4 +92,47 @@ For each config AND baseline:
 - Results: x39/results/exp20_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL**: All 9 adaptive trail configs degrade both Sharpe and MDD vs baseline.
+
+### Summary Table (deltas vs baseline)
+
+| Config | tight | wide | Sharpe | d_Sharpe | CAGR% | d_MDD pp | Trades | trail_median |
+|--------|-------|------|--------|----------|-------|----------|--------|-------------|
+| base   | 3.0   | 3.0  | 1.2965 | —        | 57.77 | —        | 221    | 3.000       |
+| A      | 1.5   | 3.0  | 1.1566 | -0.1399  | 48.01 | +5.46    | 274    | 2.730       |
+| B      | 1.5   | 3.5  | 1.2078 | -0.0887  | 51.64 | +3.08    | 248    | 3.135       |
+| C      | 1.5   | 4.0  | 1.1239 | -0.1726  | 46.67 | +7.38    | 227    | 3.538       |
+| D      | 2.0   | 3.0  | 1.1675 | -0.1290  | 49.03 | +5.15    | 252    | 2.817       |
+| E      | 2.0   | 3.5  | 1.2039 | -0.0926  | 51.81 | +5.44    | 228    | 3.223       |
+| F      | 2.0   | 4.0  | 1.1305 | -0.1660  | 47.43 | +6.67    | 215    | 3.625       |
+| G      | 2.5   | 3.0  | 1.1810 | -0.1155  | 50.13 | +4.92    | 237    | 2.908       |
+| H      | 2.5   | 3.5  | 1.1508 | -0.1457  | 48.63 | +0.99    | 219    | 3.313       |
+| I      | 2.5   | 4.0  | 1.1890 | -0.1075  | 51.12 | +2.28    | 200    | 3.714       |
+
+Best d_Sharpe: none positive. Closest: I (-0.1075). Best d_MDD: H (+0.99 pp, barely worse).
+
+### Trade exit timing (vs baseline)
+
+Tighter configs (A, D, G) exit EARLIER (up to 121/200 matched trades). Wider configs
+(F, H, I) exit LATER (up to 74/184). This confirms the mechanism works as designed —
+it just doesn't help.
+
+Key pattern: configs with median trail < 3.0 generate MORE trades (churn) and degrade
+Sharpe. Configs with median trail > 3.0 hold longer but suffer worse drawdowns.
+The fixed trail=3.0 sits at a sweet spot that continuous modulation cannot improve.
+
+### Trail_mult distribution
+
+rangepos_84 during trades is skewed high (median ~0.82 for close-to-range-top). This
+means adaptive trail spends most time near wide_mult, explaining why F/H medians (3.625,
+3.313) exceed baseline 3.0 despite midpoint=3.0. The asymmetry confirms sanity but
+reveals the modulator is not centered — most in-trade bars are near range highs.
+
+### Interpretation
+
+This result is consistent with exp11 (D1 anti-vol trail → FAIL, d_Sharpe +0.003) and
+the trail sweep finding from X16: trail width is NOT the bottleneck. The fixed trail=3.0
+is already near-optimal, and continuous adaptation adds noise without improving the
+return/risk tradeoff. rangepos_84 has exit value (exp12: +0.046 Sharpe as binary exit)
+but not trail-width-modulation value.

@@ -1,6 +1,6 @@
 # Exp 23: Rangepos Lookback Robustness
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp12 used rangepos_84 with threshold 0.25 as supplementary exit and achieved
@@ -88,4 +88,50 @@ Key analysis (AFTER collecting all results):
 - Results: x39/results/exp23_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: FRAGILE** — rangepos exit performance depends heavily on lookback choice.
+L=84 is a sharp peak, not part of a plateau.
+
+### Exp12 reproduction
+L=84, thr=0.25: Sharpe 1.3427 (+0.0462), MDD 44.95% (-6.37 pp) — **confirmed**.
+
+### Lookback sensitivity at threshold=0.25
+| L   | Sharpe | d_Sharpe | MDD%  | d_MDD  | RP exits |
+|-----|--------|----------|-------|--------|----------|
+| 42  | 1.1902 | -0.1063  | 49.94 | -1.38  | 156      |
+| 63  | 1.2716 | -0.0249  | 49.09 | -2.23  | 90       |
+| 84  | 1.3427 | +0.0462  | 44.95 | -6.37  | 35       |
+| 126 | 1.2771 | -0.0194  | 54.78 | +3.46  | 13       |
+| 168 | 1.2766 | -0.0199  | 52.69 | +1.37  | 8        |
+
+Sharpe range = 0.1525 across lookbacks — far above 0.05 plateau threshold.
+Only L=84 beats baseline on Sharpe. L=126/168 barely trigger (<15 exits).
+
+### Best overall configs
+- **Best Sharpe**: L=84, thr=0.25 → Sh 1.3427 (+0.0462), MDD 44.95% (-6.37)
+- **Best MDD**: L=84, thr=0.20 → MDD 44.24% (-7.08), Sh 1.3390 (+0.0425)
+- 5/20 configs improve BOTH Sharpe AND MDD (all at L=63 or L=84)
+
+### Threshold sensitivity per lookback
+| L   | Best thr | Best Sh | Worst Sh | Sh range |
+|-----|----------|---------|----------|----------|
+| 42  | 0.15     | 1.2910  | 1.0998   | 0.1912   |
+| 63  | 0.15     | 1.3274  | 1.1454   | 0.1820   |
+| 84  | 0.25     | 1.3427  | 1.2559   | 0.0868   |
+| 126 | 0.20     | 1.2954  | 1.2336   | 0.0618   |
+| 168 | 0.20     | 1.2847  | 1.2766   | 0.0081   |
+
+Shorter lookbacks are MORE sensitive to threshold (higher Sh range).
+Optimal threshold shifts: L=42/63 prefer thr=0.15, L=84 prefers 0.25, L=126/168 prefer 0.20.
+
+### Key findings
+1. **L=84 is a sharp optimum, not a plateau.** Moving to L=63 or L=126 at thr=0.25
+   loses all Sharpe improvement. This is a fragility signal.
+2. **Shorter lookbacks (42, 63) trigger too many exits** — L=42 at thr=0.30 fires 211
+   rangepos exits (56% of all exits), destroying trend-following alpha via churn.
+3. **Longer lookbacks (126, 168) are near-inert** — too few triggers to matter
+   (1-14 exits). Rangepos becomes decoration, not mechanism.
+4. **L=84 sweet spot**: enough triggers to help (9-68 exits), not so many as to churn.
+   This is likely because 84 bars = 14 days ≈ half a typical BTC swing cycle.
+5. **L=84, thr=0.20 is arguably better** than thr=0.25: slightly lower Sharpe
+   (1.3390 vs 1.3427) but better MDD (44.24% vs 44.95%). Tradeoff, not dominance.

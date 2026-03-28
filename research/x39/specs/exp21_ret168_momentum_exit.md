@@ -1,6 +1,6 @@
 # Exp 21: ret_168 Momentum Exit
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 ret_168 (28-day momentum) is the STRONGEST residual predictor in the x39 scan:
@@ -85,4 +85,62 @@ For each config AND baseline:
 - Results: x39/results/exp21_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+### Summary table
+
+| Config     | Sharpe | CAGR%  | MDD%   | Trades | WR%  | AvgHeld | ret168 exits | d_Sharpe | d_CAGR | d_MDD |
+|------------|--------|--------|--------|--------|------|---------|--------------|----------|--------|-------|
+| baseline   | 1.3098 | 52.70  | 41.01  | 197    | 40.6 | 36.4    | 0            | —        | —      | —     |
+| thr=-0.15  | 1.3276 | 53.64  | 39.71  | 202    | 41.6 | 35.4    | 7            | +0.0178  | +0.94  | -1.30 |
+| thr=-0.10  | 1.2974 | 51.81  | 42.69  | 212    | 40.1 | 33.5    | 22           | -0.0124  | -0.89  | +1.68 |
+| thr=-0.05  | 1.2086 | 46.33  | 40.57  | 269    | 37.2 | 25.8    | 92           | -0.1012  | -6.37  | -0.44 |
+| thr=0.00   | 0.9086 | 30.36  | 47.58  | 399    | 29.8 | 16.4    | 242          | -0.4012  | -22.34 | +6.57 |
+| thr=+0.05  | 0.3320 | 5.65   | 74.71  | 656    | 23.5 | 9.1     | 526          | -0.9778  | -47.05 | +33.7 |
+| thr=+0.10  | -0.3201| -15.42 | 90.95  | 946    | 21.0 | 5.5     | 858          | -1.6299  | -68.12 | +49.9 |
+
+### Exit attribution
+- baseline:  trail 179 (91%), trend 18 (9%), ret168 0 (0%)
+- thr=-0.15: trail 179 (89%), trend 16 (8%), ret168 7 (3%)
+- thr=-0.10: trail 175 (83%), trend 15 (7%), ret168 22 (10%)
+- thr=-0.05: trail 164 (61%), trend 13 (5%), ret168 92 (34%)
+- thr=0.00+: ret168 dominates (61-91%), destroys performance
+
+### Timing analysis (all thresholds)
+ret_168 ALWAYS exits earlier than trail/trend would have (100% of cases).
+- thr=-0.15: median 33 bars earlier, mean avoided PnL -0.42 pp (hurts slightly)
+- thr=-0.10: median 10 bars earlier, mean avoided PnL +2.25 pp (helps)
+- thr=-0.05: median 16 bars earlier, mean avoided PnL -2.40 pp (hurts on average)
+- thr=0.00: median 23 bars earlier, mean avoided PnL -4.44 pp (cuts winners hard)
+
+### Selectivity
+- thr=-0.15: ret168 WR 57% vs trail/trend 41% (7 exits — too few to conclude)
+- thr=-0.10: ret168 WR 32% vs trail/trend 41% (exits more losers — good)
+- thr=-0.05 to +0.10: ret168 WR 18-25% vs trail/trend 43-46% — cuts losers
+  AND winners indiscriminately. Lower win rate because ret168 exits small
+  trades before they have time to develop.
+
+### Verdict: FAIL (marginal)
+thr=-0.15 is the only config that improves BOTH Sharpe (+0.018) and MDD (-1.3 pp),
+but the improvement is tiny (1.4% relative Sharpe) and based on only 7 ret168 exits.
+This is noise, not a robust edge.
+
+All other thresholds degrade performance. The pattern is clear and monotonic:
+higher threshold → more ret168 exits → more premature exits of developing
+trends → catastrophic destruction of CAGR and Sharpe.
+
+**Root cause**: ret_168 is a LAGGING indicator (28-day lookback). By the time
+it signals momentum reversal, the trail stop has ALREADY done its job for
+sharp reversals. For gradual topping patterns, ret_168 exits BEFORE the
+trail stop — but in doing so, it also exits profitable consolidation-then-
+continuation patterns. The avoided_PnL analysis confirms: mean avoided PnL
+is NEGATIVE for most thresholds, meaning ret_168 exits trades that would have
+been MORE profitable if held to trail/trend exit.
+
+The selectivity is anti-selective at conservative thresholds (thr=-0.15 exits
+MORE winners than losers) and becomes loser-selective at aggressive thresholds
+but at catastrophic cost to overall returns.
+
+**Conclusion**: ret_168 as supplementary exit adds NO robust value to E5-ema21D1.
+The trail stop + EMA cross-down exit system is already sufficient. ret_168's
+28-day lookback is too slow to add useful information that the trail stop
+(reactive to recent price) doesn't already capture.

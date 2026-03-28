@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-24 experiments in 7 categories. Each is self-contained with its own spec file.
+30 experiments in 9 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -58,6 +58,12 @@ writes results back to the spec file.
 | 22 | F-stacked  | AND-gated feature interaction exit | specs/exp22_and_gated_exit.md |
 | 23 | G-robust   | Rangepos lookback robustness | specs/exp23_rangepos_lookback_robustness.md |
 | 24 | F-stacked  | Volume anomaly exit | specs/exp24_volume_anomaly_exit.md |
+| 25 | H-validate | AND-gate lookback robustness | specs/exp25_and_gate_lookback_robustness.md |
+| 26 | H-validate | AND-gate fine grid | specs/exp26_and_gate_fine_grid.md |
+| 27 | H-validate | Multi-lookback rangepos consensus | specs/exp27_multi_lookback_rangepos.md |
+| 28 | I-velocity | Rangepos velocity exit | specs/exp28_rangepos_velocity_exit.md |
+| 29 | I-velocity | AND-gate trail tightener | specs/exp29_and_gate_trail_tightener.md |
+| 30 | H-validate | AND-gate walk-forward validation | specs/exp30_and_gate_walk_forward.md |
 
 ## How to run
 
@@ -104,3 +110,9 @@ Each spec file contains everything needed to execute the experiment:
 | 22 | AND-gated exit | — | — | — | — | — | — |
 | 23 | Rangepos lookback robust | — | — | — | — | — | — |
 | 24 | Volume anomaly exit | — | — | — | — | — | — |
+| 25 | AND-gate lookback robust | — | — | — | — | — | — |
+| 26 | AND-gate fine grid | — | — | — | — | — | — |
+| 27 | Multi-lookback rangepos | — | — | — | — | — | — |
+| 28 | Rangepos velocity exit | — | — | — | — | — | — |
+| 29 | AND-gate trail tightener | — | — | — | — | — | — |
+| 30 | AND-gate walk-forward | — | — | — | — | — | — |

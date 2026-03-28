@@ -1,6 +1,6 @@
 # Exp 22: AND-Gated Feature Interaction Exit
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp12 (rangepos exit) and exp13 (trendq exit) tested single features as
@@ -91,4 +91,62 @@ For each config AND baseline:
 - Results: x39/results/exp22_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**PASS** — AND gate (rp=0.20, tq=-0.10) is best config.
+
+### Best AND config: rp=0.20, tq=-0.10
+| Metric | Baseline | AND best | Delta |
+|--------|----------|----------|-------|
+| Sharpe | 1.2965 | 1.3534 | **+0.0569** |
+| CAGR% | 57.77 | 61.24 | +3.47 |
+| MDD% | 51.32 | 44.24 | **-7.08 pp** |
+| Trades | 221 | 223 | +2 |
+| AND exits | — | 12 | — |
+| Selectivity | — | 83.3% | — |
+
+### vs single-feature controls
+| Config | d_Sharpe | d_MDD | Supp exits | Selectivity |
+|--------|----------|-------|------------|-------------|
+| **AND rp=0.20,tq=-0.10** | **+0.0569** | **-7.08** | 12 | 83.3% |
+| rangepos-only rp=0.25 | +0.0462 | -6.37 | 35 | 91.4% |
+| trendq-only tq=-0.20 | -0.0756 | -0.51 | 104 | 78.8% |
+
+AND gate **beats rangepos-only** on both Sharpe (+0.0107) and MDD (-0.71 pp),
+with **fewer interventions** (12 vs 35). Trendq-only remains FAIL.
+
+### Heatmap: d_sharpe
+```
+tq\rp      0.20    0.25    0.30    0.35
+-0.30   -0.0149 -0.0132 -0.0339 -0.0267
+-0.10   +0.0569 +0.0311 -0.0063 -0.0164
+ 0.10   +0.0446 +0.0406 -0.0298 -0.0214
+ 0.30   +0.0425 +0.0458 -0.0410 -0.0262
+```
+
+### Heatmap: d_mdd (negative = improvement)
+```
+tq\rp      0.20    0.25    0.30    0.35
+-0.30    +2.14   +2.14   +3.25   +3.25
+-0.10    -7.08   -5.43   -3.11   -3.11
+ 0.10    -7.08   -6.97   -4.49   -4.49
+ 0.30    -7.08   -6.37   -2.67   -2.96
+```
+
+### Key findings
+1. **Tight rp wins**: rp=0.20 row dominates. Loose rp (0.30, 0.35) degrades Sharpe.
+2. **tq=-0.30 too strict**: AND gate barely fires (6-19 exits), no MDD improvement.
+3. **tq >= -0.10 needed**: MDD improvement appears at tq=-0.10 and persists through tq=0.30.
+4. **Non-linear interaction confirmed**: AND(rp=0.20, tq=-0.10) beats BOTH single features.
+   rangepos-only needs 35 exits for lesser improvement. AND gets more with 12.
+5. **Selectivity**: tightest configs hit 100% loser selectivity (6-8 exits, all losers).
+   Best config at 83.3% — 2/12 AND exits were on winners (acceptable cost).
+6. **Overlap**: At AND(rp=0.20, tq=-0.10), 9/12 exits overlap with both single-feature
+   thresholds, 3/12 are rangepos-only overlap. Zero AND-unique exits at this config.
+   True AND-unique exits only appear at loose thresholds (rp>=0.30, tq>=0.10).
+
+### Interpretation
+The AND gate works because it **raises the bar for trendq** — trendq fires eagerly
+(104 exits alone) but AND forces it to wait for rangepos confirmation. The tight
+rp=0.20 filter is what creates value: it only exits when price is genuinely low in
+its range AND momentum is deteriorating. The 12-exit count is very selective — almost
+surgical — compared to rangepos-only's 35 exits.

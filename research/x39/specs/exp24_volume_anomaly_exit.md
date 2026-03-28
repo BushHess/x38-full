@@ -1,6 +1,6 @@
 # Exp 24: Volume Anomaly Exit
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 All exp01-18 supplementary exits used PRICE-BASED features (rangepos, trendq,
@@ -106,4 +106,94 @@ For each config AND baseline:
 - Results: x39/results/exp24_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL — both variants. Volume anomaly exits do NOT help E5-ema21D1.**
+
+### Baseline
+Sharpe 1.3098, CAGR 52.70%, MDD 41.01%, 197 trades, 43.5% exposure.
+Exits: trail=179 (91%), trend=18 (9%).
+
+### Variant A: Liquidity Dropout (vpr_z)
+
+| threshold | Sharpe | CAGR% | MDD% | trades | d_Sharpe | d_MDD | vol exits |
+|-----------|--------|-------|------|--------|----------|-------|-----------|
+| -2.0      | 1.2452 | 48.87 | 41.01 | 211  | -0.0646  |  0.00 |  17       |
+| -1.5      | 0.9799 | 33.52 | 46.31 | 352  | -0.3299  | +5.30 | 187       |
+| -1.0      | 0.0854 | -2.20 | 76.58 | 787  | -1.2244  | +35.57| 701       |
+| -0.5      | -1.3063| -33.31| 96.35 | 1277 | -2.6161  | +55.34| 1241      |
+|  0.0      | -2.7214| -52.15| 99.62 | 1644 | -4.0312  | +58.61| 1624      |
+
+Every threshold hurts. Even the most conservative (z=-2.0, only 17 exits) loses
+0.065 Sharpe. More aggressive thresholds are catastrophic — vpr_z=0.0 generates
+1624 exits (8x baseline trades), MDD 99.6%.
+
+### Variant B: Participation Anomaly (trade_surprise_168)
+
+| threshold | Sharpe | CAGR% | MDD% | trades | d_Sharpe | d_MDD | vol exits |
+|-----------|--------|-------|------|--------|----------|-------|-----------|
+| -0.15     | -0.2277| -12.17| 89.80| 774    | -1.5375  | +48.79| 674       |
+| -0.10     | -0.6348| -22.24| 92.19| 947    | -1.9446  | +51.18| 874       |
+| -0.05     | -1.1771| -32.81| 95.27| 1139   | -2.4869  | +54.26| 1086      |
+|  0.00     | -1.6171| -39.74| 97.84| 1320   | -2.9269  | +56.83| 1281      |
+|  0.05     | -2.3078| -48.75| 99.36| 1517   | -3.6176  | +58.35| 1489      |
+
+Even worse than Variant A. The most conservative threshold (-0.15) still generates
+674 exits and destroys the strategy (Sharpe -0.23, MDD 90%).
+
+### Information Overlap with rangepos_84
+
+Volume exits are nearly 100% independent from rangepos_84 exits:
+- Variant A (vpr_z=-2.0): 0/17 overlap (0%) with rangepos_84 < 0.25
+- Variant A (vpr_z=-1.5): 2/187 overlap (1%)
+- Variant B (all thresholds): 1-2% overlap
+
+Volume features occupy a genuinely different information domain. But this
+independence doesn't help — the domain has no predictive power for exits.
+
+### Timing Analysis
+
+Variant A (vpr_z=-2.0): all 17 exits fire EARLIER than trail/trend (100%).
+Median 18 bars earlier (3 days). But mean avoided PnL = -3.48 pp — volume
+exits are **early but wrong**, cutting winning trades short.
+
+The key trade: bar 7270→7326 exits +28.94% but counterfactual holds to +67.91%.
+Volume dropout during a strong rally triggers premature exit.
+
+### Selectivity Analysis
+
+Variant A (vpr_z=-2.0): 76% of volume exits are WINNERS (avg +13.23%).
+This is the opposite of useful selectivity — the signal preferentially exits
+profitable trades. Liquidity drops during strong moves are structural (price
+moves fast → fewer volume per range unit), not fragility signals.
+
+Variant B: 45% winners at ts168=-0.15, declining to 33% at ts168=0.05.
+Better selectivity but still cuts too many trades indiscriminately.
+
+### Regime Analysis
+
+Variant A (vpr_z=-2.0): 13/17 exits in pre-2022, 0 in 2022 bear, 4 post-2022.
+Liquidity dropout is regime-dependent — more common in high-volatility bull runs.
+
+Variant B: more evenly distributed but heavier post-2022 (92% vs 82% pre-2022
+at ts168=-0.15). Trade surprise is noisier in the more liquid post-2022 market.
+
+### Diagnosis
+
+Both features trigger exits FAR too frequently when used as exit signals.
+The fundamental problem: **volume anomalies are common during trend-following
+trades**. Strong trends inherently create volume/liquidity anomalies (fast moves
+thin the book, large directional flow concentrates participation). Using these
+as exit signals is self-defeating — they fire precisely when the strategy is
+working as designed.
+
+This is the mirror of the entry gate findings (exp03: liquidity, exp04:
+trade_surprise — both failed as entry gates). Volume features have no
+predictive power for E5-ema21D1 in either direction (entry or exit).
+
+### Conclusion
+
+Volume-domain features are informationally independent from price-domain features
+(0-2% overlap with rangepos_84) but carry zero useful signal for supplementary
+exits. The hypothesis that volume features "detect structural changes that PRECEDE
+price moves" is rejected — in practice, volume anomalies are CONSEQUENCES of
+price moves, not predictors.

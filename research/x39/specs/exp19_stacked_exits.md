@@ -1,6 +1,6 @@
 # Exp 19: Stacked Supplementary Exits
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp12 proved that rangepos_84 < 0.25 as supplementary exit improves E5-ema21D1
@@ -87,4 +87,43 @@ For each config AND baseline:
 - Results: x39/results/exp19_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**ALL FAIL** — No stacked exit beats rangepos-only on both Sharpe AND MDD.
+
+### Baseline & rangepos-only (warmup bar 2195)
+| Config | Sharpe | CAGR% | MDD% | Trades |
+|--------|--------|-------|------|--------|
+| baseline | 1.3100 | 52.72 | 41.01 | 197 |
+| rp_only (0.25) | 1.3122 | 52.30 | 38.68 | 213 |
+
+Rangepos-only confirms exp12: +0.0022 Sharpe, −2.33 pp MDD. 30 rp exits (14%).
+
+### Variant A — ret_168 momentum: FAIL
+Best config (thr=−0.10): Sharpe 1.2998, MDD 39.67%. 22 fb exits, 0 overlap.
+All thresholds degrade Sharpe vs rp_only. Higher thresholds catastrophic
+(thr=0.10: Sharpe −0.36, 841 fb exits overwhelm the strategy).
+
+### Variant B — trendq_84 trend quality: MIXED (marginal)
+Best config (thr=−0.40): Sharpe 1.2553, MDD 37.73%. 31 fb exits, 6 overlap.
+MDD improves −0.95 pp vs rp_only but Sharpe degrades −0.057. Not a net win.
+
+### Variant C — d1_rangevol84_rank365 vol regime: FAIL
+All thresholds massively degrade performance. Even most selective (thr=0.90):
+Sharpe 0.9257, MDD 51.31%, 301 fb exits. Vol regime exit fires too often.
+
+### Overlap analysis
+Jaccard overlap 0.00–0.09 across all configs → features ARE complementary
+(different failure modes). But complementarity does NOT help because:
+
+1. **Selectivity is the bottleneck**: rangepos fires 30 times (14%); even the
+   most conservative Feature B thresholds fire 22-31 times, cutting winners.
+2. **Fat-tail alpha concentration**: top 5% trades = 129.5% of profits (X31-A).
+   Any additional mid-trade exit increases the probability of cutting a winner.
+3. **rangepos is uniquely effective**: it captures "price falling within range"
+   without trend deterioration false positives. Momentum/quality/vol signals
+   are too correlated with normal trend-following drawdowns.
+
+### Conclusion
+Stacking supplementary exits does NOT compound. rangepos_84 < 0.25 is the
+only viable supplementary exit for E5-ema21D1. The mechanism is singular,
+not stackable — adding more exit channels destroys selectivity.
