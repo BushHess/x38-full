@@ -69,3 +69,13 @@ No strict order required, but suggested grouping:
 8. Category L (WFO validation): exp40-42 — temporal robustness of exp33/34/38 winners (PRIORITY)
 9. Category M (combos): exp43-45 — stack proven entry + exit mechanisms
 10. Category N (next-gen): exp46-47 — regime-adaptive decay, continuous trail sizing
+11. Category O (screen): exp48 — batch selectivity screen for pending features (EFFICIENCY)
+12. Category P (final): exp49-50,52 — compression refinements, combo WFO, cost sensitivity
+13. Category Q (new entry): exp51 — momentum persistence gate (last novel entry concept)
+
+## Recommended execution order for exp48-52
+1. **exp48** FIRST — screens remaining features cheaply. Results inform whether exp51 is redundant.
+2. **exp49** — the biggest remaining question (does compression rescue maturity decay WFO?)
+3. **exp50** — robustness check on the one mechanism that works
+4. **exp51** — only if exp48 doesn't find another selective feature
+5. **exp52** — bridges to production (cost characterization)

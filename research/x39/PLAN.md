@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-47 experiments in 14 categories. Each is self-contained with its own spec file.
+52 experiments in 17 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -81,6 +81,11 @@ writes results back to the spec file.
 | 45 | M-combo    | Triple stack (accel+comp+decay) | specs/exp45_triple_stack.md |
 | 46 | N-next     | Regime-adaptive maturity decay | specs/exp46_regime_adaptive_decay.md |
 | 47 | N-next     | Accel-weighted initial trail | specs/exp47_accel_weighted_trail.md |
+| 48 | O-screen   | Selectivity batch screen (Cat-A features) | specs/exp48_selectivity_batch_screen.md |
+| 49 | P-final    | Compression + maturity decay WFO | specs/exp49_compression_decay_wfo.md |
+| 50 | P-final    | Alternative compression measures robustness | specs/exp50_alt_compression_measures.md |
+| 51 | Q-newentry | Momentum persistence gate | specs/exp51_momentum_persistence_gate.md |
+| 52 | P-final    | Compression at realistic costs | specs/exp52_compression_realistic_costs.md |
 
 ## How to run
 
@@ -134,19 +139,24 @@ Each spec file contains everything needed to execute the experiment:
 | 29 | AND-gate trail tightener | — | — | — | — | — | — |
 | 30 | AND-gate walk-forward | — | — | — | — | — | — |
 | 31 | Velocity walk-forward | — | — | — | — | — | — |
-| 32 | Pullback-in-trend entry | — | — | — | — | — | — |
-| 33 | Momentum accel gate | — | — | — | — | — | — |
-| 34 | Vol compression entry | — | — | — | — | — | — |
-| 35 | D1 EMA slope | — | — | — | — | — | — |
-| 36 | Regime-split trail | — | — | — | — | — | — |
-| 37 | Adaptive EMA period | — | — | — | — | — | — |
+| 32 | Pullback-in-trend entry | FAIL | 1.300 | 51.1 | 43.5 | 167 | MDD improves, CAGR drops all 12 configs |
+| 33 | Momentum accel gate | PASS* | 1.448 | 59.7 | 41.0 | 166 | +0.15Sh -10MDD. *WFO FAIL exp41 |
+| 34 | Vol compression entry | MIXED | 1.487 | 68.4 | 53.6 | 197 | +0.19Sh. Selective. **WFO PASS exp42** |
+| 35 | D1 EMA slope | MARGINAL | 1.346 | 54.4 | 40.3 | 189 | +0.036Sh. Not actionable |
+| 36 | Regime-split trail | MARGINAL | 1.316 | 57.6 | 47.0 | 274 | +0.026Sh. Only 1/12 passes |
+| 37 | Adaptive EMA period | FAIL | 1.309 | 51.9 | 37.6 | 189 | All 6 lose Sharpe |
 | 38 | Trend maturity decay | PASS | +0.150 | +5.41 | -9.82 | 263 | min=1.5/start=60/end=180 |
-| 39 | Dual-clock entry | — | — | — | — | — | — |
-| 40 | Maturity decay WFO | — | — | — | — | — | — |
-| 41 | Accel gate WFO | — | — | — | — | — | — |
-| 42 | Vol compression WFO | — | — | — | — | — | — |
-| 43 | Accel + maturity combo | — | — | — | — | — | — |
-| 44 | Compression + maturity | — | — | — | — | — | — |
-| 45 | Triple stack | — | — | — | — | — | — |
-| 46 | Regime-adaptive decay | — | — | — | — | — | — |
-| 47 | Accel-weighted trail | — | — | — | — | — | — |
+| 39 | Dual-clock entry | FAIL | 1.295 | 57.0 | 51.3 | 214 | No improvement. ρ=0.92 too correlated |
+| 40 | Maturity decay WFO | **FAIL** | — | — | — | — | 2/4 win, d_Sh=-0.16. Bear-only |
+| 41 | Accel gate WFO | **FAIL** | — | — | — | — | 1/4 win, d_Sh=-0.24. Hurts everywhere |
+| 42 | Vol compression WFO | **PASS** | — | — | — | — | 4/4 win, d_Sh=+0.26. SELECTIVE |
+| 43 | Accel + maturity combo | MARGINAL | 1.450 | 49.8 | 37.4 | 177 | Doesn't beat exp38 alone |
+| 44 | Compression + maturity | ADDITIVE | 1.543 | 60.8 | 31.5 | 240 | +0.233Sh. Ratio 0.79 |
+| 45 | Triple stack | FAIL | 1.387 | 46.2 | 36.9 | 170 | Accel gate is weak link |
+| 46 | Regime-adaptive decay | FAIL | — | — | — | — | 0/9 beat fixed decay |
+| 47 | Accel-weighted trail | FAIL | — | — | — | — | Zero IC, all configs degrade Sharpe |
+| 48 | Selectivity batch screen | — | — | — | — | — | — |
+| 49 | Comp + decay WFO | — | — | — | — | — | — |
+| 50 | Alt compression measures | — | — | — | — | — | — |
+| 51 | Momentum persistence | — | — | — | — | — | — |
+| 52 | Compression costs | — | — | — | — | — | — |
