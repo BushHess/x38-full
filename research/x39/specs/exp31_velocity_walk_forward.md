@@ -1,6 +1,6 @@
 # Exp 31: Velocity Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp28 found that rangepos VELOCITY (rate of change) provides marginal but real
@@ -128,4 +128,53 @@ derived from x39 feature space. Full-sample improvements are selection bias.
 - Results: x39/results/exp31_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: INCONCLUSIVE → x39 CLOSED.**
+
+Config C fixed (vel=-0.20, tq=0.00) barely crosses mean d_Sharpe > 0 (+0.0018) with 2/4 win rate,
+triggering INCONCLUSIVE rather than outright FAIL. All other configs FAIL both criteria.
+
+### Per-window d_Sharpe (all configs):
+
+| Window | Baseline Sh | A sel d_Sh | A fix d_Sh | C sel d_Sh | C fix d_Sh | exp30 d_Sh |
+|--------|------------|------------|------------|------------|------------|------------|
+| W1 (bear) | 0.4722 | +0.0431 | +0.0431 | +0.0624 | +0.0972 | +0.0644 |
+| W2 (bear) | 0.6441 | -0.1595 | -0.1595 | -0.4634 | -0.0750 | +0.0872 |
+| W3 (bull) | 1.6301 | -0.2093 | -0.2093 | -0.7795 | -0.1396 | -0.0975 |
+| W4 (bull) | 0.9651 | -0.0773 | -0.0773 | -0.1147 | +0.1245 | -0.1125 |
+
+### Aggregate:
+
+| Config | WFO Win Rate | Mean d_Sharpe | Mean d_MDD | Verdict |
+|--------|-------------|---------------|------------|---------|
+| A selected (vel=-0.30 all 4 windows) | 1/4 (25%) | -0.1007 | -0.44 pp | **FAIL** |
+| A fixed (vel=-0.30) | 1/4 (25%) | -0.1007 | -0.44 pp | **FAIL** |
+| C selected (vel=-0.10,tq=0.20 W1-3; vel=-0.30,tq=-0.20 W4) | 1/4 (25%) | -0.3238 | +0.22 pp | **FAIL** |
+| C fixed (vel=-0.20, tq=0.00) | 2/4 (50%) | +0.0018 | -2.16 pp | **INCONCLUSIVE** |
+
+### Key findings:
+
+1. **Velocity is WORSE than the AND gate (exp30)**: exp30 selected got 2/4 wins (bear+/bull-).
+   Velocity A selected only wins W1, loses W2/W3/W4. Mean d_Sharpe -0.10 vs exp30's -0.01.
+
+2. **NOT the same regime pattern as exp30**: exp30 showed clear bear+/bull- (helps in drawdowns, hurts in trends).
+   Velocity A hurts in BOTH bear (W2: -0.16) and bull (W3: -0.21, W4: -0.08). Only W1 is positive.
+   → Velocity failure is not purely regime-structural; it's a general degradation.
+
+3. **Config C selected CATASTROPHICALLY overfits**: vel=-0.10, tq=0.20 triggers 55-64 exits in
+   W2/W3 test periods (vs 21 for A). Over-suppression destroys alpha (W3: d_Sharpe -0.78).
+
+4. **Config C fixed is the ONLY non-disaster**: fixed params avoid train-selection overfit,
+   giving MDD improvement (-2.16pp mean) but d_Sharpe ≈ 0 (not positive enough to be useful).
+
+5. **Parameter stability is STABLE** (A: 1 unique, C: 2 unique) — but stable parameters
+   that consistently hurt is worse than unstable parameters.
+
+### Conclusion:
+Velocity-based supplementary exit FAILS walk-forward validation. The +0.0364 / +0.0699
+Sharpe improvements found in exp28 full-sample are period-specific (predominantly W1 bear crash).
+
+**x39 supplementary exit research line is CLOSED.** E5-ema21D1's exit mechanism
+(ATR trail + EMA cross-down) cannot be improved by supplementary exits derived from
+x39's feature space (rangepos level, trendq, velocity). All full-sample improvements
+are selection bias or regime-specific artifacts.
