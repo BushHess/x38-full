@@ -1,6 +1,6 @@
 # Exp 35: D1 EMA Slope Confirmation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Current D1 regime filter is binary: close > D1 EMA(21) → regime OK.
@@ -81,4 +81,60 @@ and d1_slope_ok becoming true simultaneously).
 - Results: x39/results/exp35_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Baseline** (365-day warmup): Sharpe 1.3098, CAGR 52.70%, MDD 41.01%, 197 trades.
+
+### Best config: lb=3, ms=0.0
+
+Only config improving BOTH Sharpe AND MDD:
+
+| Metric | Baseline | lb=3, ms=0.0 | Delta |
+|--------|----------|---------------|-------|
+| Sharpe | 1.3098 | 1.3457 | +0.0359 |
+| CAGR% | 52.70 | 54.41 | +1.71 |
+| MDD% | 41.01 | 40.28 | -0.73 pp |
+| Trades | 197 | 189 | -8 |
+| Win rate | 40.6% | 41.3% | +0.7 pp |
+| Blocked | — | 67 | — |
+| Blocked WR | — | 34.3% | GOOD (< 40.6%) |
+
+### Sweep summary (16 configs)
+
+- **1/16 PASS** (lb=3, ms=0.0): Sharpe +0.036, MDD -0.73pp. Marginal.
+- **0/16 PASS at ms>0**: every non-zero min_slope degrades Sharpe.
+- **MDD-only improvements** (lb=10-15): MDD -1.2 to -4.9pp but Sharpe -0.02 to -0.12.
+  Best MDD: lb=15, ms=0.005 → MDD 36.16% (-4.85pp) but Sharpe 1.2422 (-0.068).
+- **Aggressive filtering kills returns**: lb=3, ms=0.01 → Sharpe 0.992 (-0.318), 128 trades.
+
+### Slope distribution at baseline entries
+
+Most baseline entries already have rising D1 EMA:
+- lb=3: only 12.2% would be blocked at ms=0.0 (declining EMA at entry).
+- lb=5: 25.4% blocked at ms=0.0. lb=10: 32.0%. lb=15: 30.5%.
+- Median slope at entries: lb=3: 0.72%, lb=5: 1.21%, lb=10: 2.39%, lb=15: 3.54%.
+
+### Entry delay (regime onset → slope onset)
+
+Short lookback (lb=3) at ms=0.0: median 6 H4 bars (24h), 36/162 onsets missed entirely.
+Longer lookbacks have higher missed rates (53-65/162) but lower median delay (0-6 bars)
+because longer lookbacks smooth slope toward zero crossing.
+
+### Selectivity
+
+lb=3, ms=0.0 is the only config with clearly GOOD selectivity (blocked WR 34.3% < baseline 40.6%).
+Most other configs block entries with WR ≈ 40-52% (similar to or worse than baseline).
+
+### Conclusion
+
+**MARGINAL PASS — not actionable.** The best config (lb=3, ms=0.0 = "require non-declining
+D1 EMA") provides +0.036 Sharpe and -0.73pp MDD, blocking ~8 of 197 entries. The improvement
+is real but too small to justify adding a parameter. The binary regime filter (price > EMA)
+already captures nearly all the value.
+
+The slope requirement generally HURTS because it introduces lag: by the time the EMA turns
+upward, the best entries are already past. The D1 EMA is a lagging indicator; requiring its
+DERIVATIVE to be positive adds a second layer of lag that filters out more good entries
+than bad ones.
+
+**Key insight**: D1 EMA regime filter's value comes from level (price > EMA), not slope.
+Second-order confirmation (direction of direction) is too laggy for 4h-resolution entries.
