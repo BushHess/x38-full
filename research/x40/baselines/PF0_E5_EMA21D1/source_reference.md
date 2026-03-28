@@ -54,21 +54,26 @@ parity run. Exact values depend on pf0_strategy.py — re-run A00 to refresh.
 
 | Metric | Value |
 |--------|-------|
+| Sharpe | 1.6634 |
+| CAGR | 74.88% |
+| MDD | 36.30% |
 | Trades | 188 |
-
-(Full metrics populated after first A00 run.)
+| Win rate | 44.15% |
+| Avg exposure | 0.4448 |
+| Profit factor | 1.8965 |
 
 ### At 50 bps RT (lineage parity reference)
 
-| Metric | v10 target | pf0_strategy |
-|--------|-----------|--------------|
-| Trades | 188 | 188 (exact) |
-| Sharpe | 1.4545 | ~1.45 (within 10%) |
-| CAGR | 61.60% | ~62% (within 10%) |
-| MDD | 40.97% | ~41% (within 10%) |
+| Metric | v10 target | pf0_strategy | diff |
+|--------|-----------|--------------|------|
+| Trades | 188 | 188 | exact |
+| Sharpe | 1.4545 | 1.4541 | 0.03% |
+| CAGR | 61.60% | 61.57% | 0.04% |
+| MDD | 40.97% | 40.98% | 0.02% |
+| Win rate | 42.02% | 42.02% | 0.00% |
 
-Metrics differ due to cost model change (simple per-side vs v10 spread+slip+fee).
-Trade count is exact because signals are cost-independent.
+Near-perfect parity despite different cost models. Trade count exact because
+signals are cost-independent.
 
 ## Source metric domain
 
@@ -103,7 +108,7 @@ Key implementation details:
 - Signal generation matches v10 on_bar logic: evaluate at bar close, pending
   signal executes at next bar open.
 - Warmup handling: indicators computed on all bars, signals only from first
-  bar where close_time >= 2020-01-01 (matching v10 no_trade warmup rollback).
+  bar where close_time >= report_start (default 2019-01-01, matching v10).
 - NAV tracking: cash + btc * close_price at each bar close.
 
 ## Known non-authoritative documents

@@ -33,16 +33,16 @@ Không ngoại lệ. x40 KHÔNG sửa `v10/`, `strategies/`, `validation/`, `tes
 Ngoài các import chung (xem `RESEARCH_RULES.md` §3), x40 có thêm:
 
 ```python
-# Baseline strategies (READ-ONLY, dùng cho replay)
-from strategies.vtrend.strategy import VTrendStrategy, VTrendConfig
-from strategies.vtrend_e5_ema21_d1.strategy import VTrendE5Ema21D1Strategy, VTrendE5Ema21D1Config
-
-# v10 engine (Pattern A replay)
+# v10 data loading (cho cả OH0 và PF0)
 from v10.core.data import DataFeed
-from v10.core.engine import BacktestEngine
-from v10.core.types import SCENARIOS, BacktestResult, EquitySnap, Trade
-from v10.core.metrics import compute_metrics
+
+# Self-contained baseline simulators (Pattern B)
+from research.x40.oh0_strategy import run_oh0_sim
+from research.x40.pf0_strategy import run_pf0_sim
 ```
+
+x40 KHÔNG import từ `strategies/` hay `v10.core.engine`. Cả hai baselines đều
+tự chứa (Pattern B). DataFeed chỉ dùng để load CSV, không dùng BacktestEngine.
 
 ---
 
@@ -51,7 +51,7 @@ from v10.core.metrics import compute_metrics
 | ID | League | Source | Status |
 |----|--------|--------|--------|
 | `OH0_D1_TREND40` | `OHLCV_ONLY` | `x37/resource/gen1/v8_sd1trebd/spec/spec_2_system_S_D1_TREND.md` | Control baseline |
-| `PF0_E5_EMA21D1` | `PUBLIC_FLOW` | `strategies/vtrend_e5_ema21_d1/` + `results/full_eval_e5_ema21d1/` | Incumbent (HOLD) |
+| `PF0_E5_EMA21D1` | `PUBLIC_FLOW` | `research/x40/pf0_strategy.py` (self-contained) | Incumbent (HOLD) |
 
 **League rule**: Không so sánh cross-league trừ khi ghi rõ là diagnostic.
 
@@ -87,8 +87,14 @@ Xem `DEFERRED.md` cho full specs.
 
 ## 6. Runner pattern
 
-x40 dùng **Pattern A** (BacktestEngine + Strategy class) cho replay.
-OH0 cần strategy class riêng vì nó là native D1, không dùng H4.
+Cả hai baselines đều dùng **Pattern B** (vectorized indicators + sequential
+position loop, self-contained). Không dùng BacktestEngine.
+
+- OH0: `oh0_strategy.py` — D1 vectorized sim
+- PF0: `pf0_strategy.py` — H4+D1 vectorized sim
+
+Cost model: simple per-side fraction, **default 20 bps RT** cho cả hai.
+Cost sweep [10, 20, 30, 50, 75, 100] bps RT cho sensitivity analysis.
 
 ```bash
 cd /var/www/trading-bots/btc-spot-dev

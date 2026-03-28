@@ -4,7 +4,7 @@
   "a00_verdict": "PASS",
   "cost_model": "simple_per_side",
   "default_cost_rt_bps": 20,
-  "pf0_strategy_sha256": "3f4ea9636f91622533c944105a78753913a855b01b7b5e31006474b17dea78f2",
+  "pf0_strategy_sha256": "361c4c4f0164c8f30ebb02b0877f3c8362ff1e89dbeef896d9e60ab5fbac7d11",
   "lineage_source_sha256": "d9d1a10bd1b6bc9ec14e6cbee12f8f52a68905b83deb39d6411901bdaa49b4d9",
   "lineage_source_match": true,
   "checks": [

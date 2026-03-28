@@ -19,7 +19,8 @@ import hashlib
 import json
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -27,10 +28,12 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from research.x40.oh0_strategy import SegmentMetrics
+from research.x40.oh0_strategy import compute_segment_metrics
+from research.x40.oh0_strategy import run_oh0_sim
+from research.x40.pf0_strategy import PF0Result
+from research.x40.pf0_strategy import run_pf0_sim
 from v10.core.data import DataFeed
-
-from research.x40.oh0_strategy import SegmentMetrics, compute_segment_metrics, run_oh0_sim
-from research.x40.pf0_strategy import PF0Result, run_pf0_sim
 
 DATA_PATH = str(ROOT / "data" / "bars_btcusdt_2016_now_h1_4h_1d.csv")
 RESULTS_DIR = ROOT / "research" / "x40" / "results"
@@ -43,7 +46,7 @@ COST_SWEEP_BPS_RT = [10, 20, 30, 50, 75, 100]
 
 
 def _date_to_ms(date_str: str) -> int:
-    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=UTC)
     return int(dt.timestamp() * 1000)
 
 
@@ -108,9 +111,8 @@ PF0_LINEAGE_SHA256 = (
     "d9d1a10bd1b6bc9ec14e6cbee12f8f52a68905b83deb39d6411901bdaa49b4d9"
 )
 
-# Trade count must be exact (signals are cost-independent)
 # Metrics tolerance is wider because simple cost model ≠ v10 spread+slip+fee
-PF0_TRADE_COUNT_EXACT = True
+# Trade count must be exact (signals are cost-independent)
 PF0_METRIC_TOL = 0.10  # 10% for cross-model parity
 
 
@@ -345,13 +347,13 @@ def replay_pf0() -> dict[str, object]:
     # --- Run at 50 bps (simple) for lineage parity ---
     result_50 = _run_pf0(h4a, d1a, cost_per_side=0.0025)
 
-    print(f"\n  Default 20 bps RT:")
+    print("\n  Default 20 bps RT:")
     print(f"    Sharpe={result_20.sharpe:.4f}, CAGR={result_20.cagr_pct:.2f}%, "
           f"MDD={result_20.max_dd_pct:.2f}%, Trades={result_20.n_trades}")
     print(f"    Win rate={result_20.win_rate_pct:.2f}%, "
           f"Exposure={result_20.avg_exposure:.4f}, PF={result_20.profit_factor:.4f}")
 
-    print(f"\n  Lineage parity 50 bps RT (simple cost):")
+    print("\n  Lineage parity 50 bps RT (simple cost):")
     print(f"    Sharpe={result_50.sharpe:.4f}, CAGR={result_50.cagr_pct:.2f}%, "
           f"MDD={result_50.max_dd_pct:.2f}%, Trades={result_50.n_trades}")
 
@@ -399,7 +401,7 @@ def replay_pf0() -> dict[str, object]:
 
     # --- Cost sweep ---
     print("\n  Cost sweep:")
-    sweep_data: dict[str, dict[str, float]] = {}
+    sweep_data: dict[str, dict[str, object]] = {}
     for rt_bps in COST_SWEEP_BPS_RT:
         cps = rt_bps / 20_000.0  # RT bps → per-side fraction
         r = _run_pf0(h4a, d1a, cost_per_side=cps)

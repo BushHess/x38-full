@@ -1,0 +1,22 @@
+profiles:
+  - comparison_profile_id: CP_PRIMARY_50_DAILYUTC
+    round_trip_cost_bps: 50
+    metric_domain: daily_utc_mark_to_market
+    execution_assumptions:
+      - spot
+      - long_only
+      - no_leverage
+      - no_borrow
+    headline_allowed: true
+    notes: Primary x40 decision profile
+
+  - comparison_profile_id: CP_SENS_20_DAILYUTC
+    round_trip_cost_bps: 20
+    metric_domain: daily_utc_mark_to_market
+    execution_assumptions:
+      - spot
+      - long_only
+      - no_leverage
+      - no_borrow
+    headline_allowed: false
+    notes: Sensitivity-only profile

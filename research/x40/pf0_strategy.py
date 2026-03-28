@@ -24,13 +24,13 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC
+from datetime import datetime
 
 import numpy as np
 
-
 _DEFAULT_REPORT_START_MS = int(
-    datetime(2019, 1, 1, tzinfo=timezone.utc).timestamp() * 1000
+    datetime(2019, 1, 1, tzinfo=UTC).timestamp() * 1000
 )
 """Default report start: 2019-01-01 UTC.
 
@@ -134,8 +134,13 @@ def run_pf0_sim(
     # ── 2. Signal generation (strategy logic at bar close) ────────────────
     #
     # Matches v10 engine: on_bar at close → pending signal → next-open fill.
-    # During warmup (close_time < LIVE_START): no signals (v10 rolls back
+    # During warmup (close_time < live_start): no signals (v10 rolls back
     # strategy state, so _in_position stays False throughout warmup).
+    #
+    # NOTE: regime monitor exit (enable_regime_monitor) intentionally omitted.
+    # Frozen config has enable_regime_monitor=False — monitor path is dead code
+    # in the original. If monitors are ever needed, add both entry guard and
+    # exit path here.
 
     signal = np.zeros(n, dtype=np.int8)  # 0=hold, 1=entry, -1=exit
     in_pos = False
@@ -404,7 +409,7 @@ def compute_segment_metrics(
 
 
 def _fmt_ms(ms: int) -> str:
-    return datetime.fromtimestamp(ms / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+    return datetime.fromtimestamp(ms / 1000, tz=UTC).strftime("%Y-%m-%d")
 
 
 # ── Indicator helpers ─────────────────────────────────────────────────────

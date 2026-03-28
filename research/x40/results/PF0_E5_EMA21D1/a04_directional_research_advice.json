@@ -1,0 +1,26 @@
+{
+  "baseline_id": "PF0_E5_EMA21D1",
+  "study": "A04",
+  "cost_rt_bps": 20,
+  "direction": "BOTH",
+  "reason": "Both entry signal and exit ceiling present",
+  "entry_value_sharpe": 0.3741,
+  "exit_value_sharpe": 0.7449,
+  "exit_ceiling_sharpe": 4.7696,
+  "oracle_capture_pct": 0.3429,
+  "significant_entry_features": [],
+  "counterfactual": {
+    "C0_actual": 1.6634,
+    "C1_shuffle_entry": 1.2893,
+    "C2_timestop": 0.9264,
+    "C3_shuffle_exit": 0.9185,
+    "C4_oracle_exit": 6.433
+  },
+  "recommendation": "Next x39 sprint: focus on BOTH side.",
+  "prior_work_reference": {
+    "X21_entry_IC_cv": -0.039,
+    "X13_exit_oracle_ceiling_sharpe": 0.845,
+    "X14_X18_exit_capture_pct": "10-14%",
+    "PF1_VC07_conditional_entry_d_sharpe": "+0.116 to +0.140"
+  }
+}

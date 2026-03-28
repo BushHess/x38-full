@@ -19,7 +19,8 @@ import math
 import sys
 from collections.abc import Sequence
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -28,15 +29,11 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from v10.core.data import DataFeed
-
 from research.x40.oh0_strategy import run_oh0_sim
-from research.x40.pf0_strategy import (
-    PF0Result,
-    SegmentMetrics as PF0SegmentMetrics,
-    compute_segment_metrics as pf0_compute_segment,
-    run_pf0_sim,
-)
+from research.x40.pf0_strategy import SegmentMetrics as PF0SegmentMetrics
+from research.x40.pf0_strategy import compute_segment_metrics as pf0_compute_segment
+from research.x40.pf0_strategy import run_pf0_sim
+from v10.core.data import DataFeed
 
 DATA_PATH = str(ROOT / "data" / "bars_btcusdt_2016_now_h1_4h_1d.csv")
 RESULTS_DIR = ROOT / "research" / "x40" / "results"
@@ -61,7 +58,7 @@ ROLLING_STEP_DAYS = 3 * 30     # ~3 months
 
 
 def _date_to_ms(date_str: str) -> int:
-    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=UTC)
     return int(dt.timestamp() * 1000)
 
 
@@ -70,7 +67,7 @@ def _date_to_end_of_day_ms(date_str: str) -> int:
 
 
 def _ms_to_date(ms: int) -> str:
-    return datetime.fromtimestamp(ms / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+    return datetime.fromtimestamp(ms / 1000, tz=UTC).strftime("%Y-%m-%d")
 
 
 # ---------------------------------------------------------------------------

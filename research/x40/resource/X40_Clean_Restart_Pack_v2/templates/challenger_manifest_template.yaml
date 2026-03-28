@@ -1,0 +1,18 @@
+schema_version: 1
+challenger_id: PF1_E5_VC07
+league: PUBLIC_FLOW
+target_baseline_id: PF0_E5_EMA21D1
+source_project: x39
+source_artifacts: []
+promotion_stage: FILTER
+research_state: SCREEN_PASS
+formal_state: FORMAL_HOLD
+x40_route: KEEP_TRACKED
+tier3_route: NOT_APPLICABLE
+primary_comparison_profile_id: CP_PRIMARY_50_DAILYUTC
+mechanism_summary: Volatility compression entry gate
+known_failure_modes: []
+recommended_action: adjudicate_a06
+expiry_policy: AFTER_NEXT_A06
+owner: TBD
+manifest_path: runs/PF1_E5_VC07/intake/challenger_manifest.yaml

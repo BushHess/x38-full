@@ -1,6 +1,7 @@
 # PF0_E5_EMA21D1 — Frozen Specification
 
-Source: `strategies/vtrend_e5_ema21_d1/strategy.py` (authoritative code).
+Source: `research/x40/pf0_strategy.py` (self-contained, Pattern B).
+Lineage: `strategies/vtrend_e5_ema21_d1/strategy.py` (original, parity verified 2026-03-28).
 
 ## Identity
 

@@ -1,0 +1,6 @@
+scenario,sharpe,mean_return,win_rate,n_trades,description
+C0_actual,1.6634,0.0265,0.4415,188,Actual PF0 strategy
+C1_shuffle_entry,1.2893,--,--,128,"Random qualifying entry + actual exit (N=500, p=0.014)"
+C2_timestop,0.9264,0.0105,0.5745,188,Actual entry + median time-stop (h=28)
+C3_shuffle_exit,0.9185,--,--,188,"Actual entry + shuffled holding (N=500, p=0.000)"
+C4_oracle_exit,6.4330,0.0821,0.8617,188,Actual entry + exit at peak

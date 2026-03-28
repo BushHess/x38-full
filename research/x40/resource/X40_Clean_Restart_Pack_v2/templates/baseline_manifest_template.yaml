@@ -1,0 +1,14 @@
+schema_version: 1
+baseline_id: OH0_D1_TREND40
+baseline_version: 1
+league: OHLCV_ONLY
+source_lineage: x37/gen1/v8/S_D1_TREND
+system_role: control_baseline
+qualification_state: B0_INCUMBENT
+durability_state: WATCH
+freeze_cutoff_utc: null
+primary_comparison_profile_id: CP_PRIMARY_50_DAILYUTC
+data_surface_used_by_logic:
+  - close
+manifest_path: runs/OH0_D1_TREND40/a01/baseline_manifest.yaml
+notes: []

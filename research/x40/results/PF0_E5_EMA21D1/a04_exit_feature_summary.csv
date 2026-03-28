@@ -1,0 +1,14 @@
+metric,value,description
+oracle_mean_return,0.0821,Mean return if exiting at peak
+actual_mean_return,0.0265,Mean actual trade return
+mean_leftover,0.0556,Mean (oracle - actual) per trade
+median_leftover,0.0498,Median leftover
+pct_oracle_captured,0.3429,Fraction of oracle captured (where oracle > 0)
+winner_mean_leftover,0.0628,Leftover for 83 winners
+loser_mean_leftover,0.0499,Leftover for 105 losers
+median_bars_held,28,Median H4 bars
+mean_bars_held,37.0,Mean H4 bars
+ic_bars_held_vs_return,0.6987,"Spearman IC, p=0.0000"
+mean_peak_fraction,0.5116,Fraction through trade where peak occurs
+ic_midtrade_unreal_vs_remain,0.0502,"Mid-trade unrealized vs remaining, p=0.4941"
+ic_midtrade_dd_vs_remain,0.1581,"Mid-trade drawdown vs remaining, p=0.0303"
