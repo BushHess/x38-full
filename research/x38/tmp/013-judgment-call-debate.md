@@ -1041,3 +1041,453 @@ Nếu cần một câu chốt ngắn gọn:
 > "hội tụ hoàn toàn". Thứ đã hội tụ là boundary reasoning của 3 issue đầu và
 > ownership split của `SSE-04-THR`; thứ chưa hội tụ là exact phrasing ở `CA-01`
 > và exact numeric closure của `SSE-04-THR item 3a`.
+
+========
+
+JC-Round 8: Nhận định của ChatGPT Pro (phản biện JC-Round 1–7)
+
+Tôi không thể trung thực nói là đã đọc từng file của toàn repo. Tôi đã đọc toàn bộ surface authority liên quan trực tiếp tới Topic 013: README.md, findings-under-review.md, đủ 6 round của claude_code, đủ 6 round của codex, file tạm research/x38/tmp/013-judgment-call-debate.md, cùng các topic/doc được viện dẫn lặp đi lặp lại trong tranh luận như 001, 003, 008, 010, 017, 018, online_vs_offline.md, design_brief.md, PLAN.md, và validation/thresholds.py. Topic 013 hiện vẫn OPEN và thư mục canonical của nó chưa có final-resolution.md.
+
+Phán quyết thẳng: hồ sơ này chưa hội tụ hoàn toàn. Hướng lớn của CA-01, CA-02 và SSE-09 đã gần đúng; riêng SSE-04-THR thì chưa được quyền đóng sớm. Điểm mạnh nhất của chuỗi tranh luận là các vòng sau đã sửa hai lỗi thật: quán tính “013 chỉ own measurement law” ở CA-01 và pseudo-lập-luận sai quanh ρ > 0.95. Điểm yếu lớn nhất là vài vòng vẫn lẫn lộn giữa “boundary đã rõ” với “numeric content đã chốt”. Hai thứ đó không giống nhau.
+
+Về CA-01, tôi bác cách chốt A thuần của các vòng đầu, gồm cả ChatGPT Pro round 2. Topic 013 không chỉ là chỗ “đo rồi xuất số”; ngay trong scope canonical, nó được giao “xác định khi nào sessions đã hội tụ (hoặc nên dừng)”, và finding F-30 hỏi thẳng PARTIALLY_CONVERGED có đủ để đi tiếp hay không. Topic 001 cũng đã route “stop thresholds” và “numeric convergence rules” sang 013. Nói 013 chỉ own measurement law là rút quá hẹp, không khớp authority chain.
+
+Nhưng tôi cũng không chấp nhận cách vài vòng sau trượt sang gần như “013 định nghĩa winner exists”. Cái đó vẫn là predicate downstream: Topic 001 own HANDOFF routing contract, Topic 010 own Clean OOS trigger/power contract, còn Topic 003 chỉ own stage/gate chứ không own mapping từ convergence-state sang action. Boundary sạch nhất là thế này: 013 own convergence-side prerequisite semantics. Tức là PARTIALLY_CONVERGED không đủ cho winner-recognition / Clean OOS progression; FULLY_CONVERGED là điều kiện phía convergence để downstream topics có thể xét winner, nhưng không tự nó định nghĩa trọn vẹn predicate vận hành winner exists. Ở điểm này, CodeX round 7 gần đúng hơn Round 2–6.
+
+Về CA-02, tôi bác cả hai cực đoan. Cực đoan thứ nhất là freeze một cục {3,3,5,2} như thể mọi số có cùng độ chắc. Cực đoan thứ hai là vì chưa uniquely derived nên không freeze gì cả. Topic 001 đã route stop thresholds, same-data ceiling và sessions-per-campaign sang 013; nếu để toàn bộ thành “protocol-declared later” thì đó là deferral trá hình. Đồng thời online_vs_offline.md cũng cấm lấy online history làm template offline một cách ngây thơ. Repo lại có hẳn governance class cho conventional / uncalibrated thresholds. Kết luận đúng là: ship v1 defaults nhưng tách provenance cho từng số.
+
+Cụ thể, tôi nghiêng về A, nhưng phải viết lại như sau: S_min = 3 là observability constraint do định nghĩa marginal-gain kéo theo; ε_cost = ε_noise là v1 simplifying default để 013 không externalize nửa stop law; M = 2 và S_max = 5 là cặp provisional session defaults; còn same_data_ceiling = 3 là provisional campaign ceiling riêng trục. Tất cả trừ S_min=3 phải bị dán nhãn kiểu CONV hoặc CONV:UNCALIBRATED, kèm review gate recalibration sau batch offline thật đầu tiên. Ở đây CodeX round 7 đúng khi bóc tách provenance theo trục; nhưng nếu dùng thiếu-derivation để né luôn bootstrap defaults thì lại trái chính routing của Topic 001.
+
+Về SSE-09, tranh cãi thực chất đã xong ở phần lớn direction. BH không thể trung thực được gọi là v1 default hiện tại khi nhánh BH còn phụ thuộc topology proof-consumption chưa đóng ở Topic 017; operational answer bây giờ là Holm, còn BH là upgrade path. Ở điểm này Codex đúng. Nhưng phần “vì chưa uniquely derived nên đừng freeze exact constants” thì tôi không theo đến cùng. validation/thresholds.py cho thấy repo đã có cơ chế chính thức cho fixed thresholds với provenance classes; vì vậy freeze Holm α_FWER = 0.05 và BH q_FDR = 0.10 như conventional v1 constants là sạch hơn là để trống. Điều tôi bác là rationalization lỏng kiểu “q=0.10 vì align với per-test α=0.10”; chính debate file cũng chỉ ra đó là hai loại error control khác nhau, nên justification phải là governance convention, không phải trùng số.
+
+Về SSE-04-THR, đây là chỗ tôi phản biện mạnh nhất. ChatGPT Pro round 2 và vài vòng sau đã đẩy item 3 sang 017 quá tay. File canonical của 013 ghi rõ 013 own: (1) behavioral threshold, (2) hash granularity, (3) robustness-bundle minimum requirements — tức “minimum” nghĩa là gì về mặt số học; chỉ item (4) anomaly thresholds là shared với 017. Bên 017 thì own proof-bundle consumption rules, anomaly thresholds, cell-axis values và slot/capacity. Cách reconcile duy nhất là tách item 3 thành 3a/3b: 3a = numeric production floor do 013 own; 3b = pass/fail consumption và sufficiency do 017/shared own. Ở đây CodeX round 7 đúng hơn các vòng trước.
+
+Nhưng tôi cũng bác luôn ý “gần như xong, chỉ còn wording”. Không. 3a chưa hề được numeric-closed một cách sạch. Và còn một điểm mà file tạm chưa soi đủ sâu: upstream Topic 018 tự nó có inconsistency ở đúng surface này. final-resolution.md và findings-under-review.md của Topic 018 đều ghi SSE-D-05 là Judgment call với “working minimum inventory” 5+5; trong khi closure-audit.md vẫn nói Topic 018 có 0 Judgment call và “No Judgment call required”. Chỉ riêng mâu thuẫn đó đã đủ để bác mọi cách viết kiểu “5 proof components / 5 anomaly axes là upstream fully-converged exact law nên 013 chỉ việc chép xuống”. Không phải. Upstream ở đây là working handoff inventory, không phải authoritative numeric closure.
+
+Vì vậy, chốt của tôi cho SSE-04-THR là: freeze item 1 như conventional v1 cutoff (ρ > 0.95) với provenance trung thực; freeze item 2 chỉ ở design-contract level (invariant với whitespace/comment/import-order; hash theo signal-generation structure + parameter schema; exclude parameter values), đừng giả vờ normalized-AST algebra đã settle; freeze ownership split 3a/3b; và đừng gọi exact numerics của 3a là đã hội tụ nếu chưa có judgment call thật sự cho chúng. Nói thẳng: issue này không phải A thuần, và hiện tại cũng chưa “hội tụ hoàn toàn”.
+
+Đánh giá công bằng theo từng bên: ChatGPT Pro có công lớn ở chỗ ép closure discipline và nhìn ra pattern “deferred, not blocked”, nhưng vòng sớm chốt A / A / A / A quá nhanh. Claude Code đáng ghi điểm vì chịu rút lại lỗi thật thay vì cố thủ, nhất là ở permutation-test và pseudo-derivation của ρ > 0.95; tuy vậy Claude vẫn có quán tính freeze quá sớm khi provenance chưa sạch. CodeX là đối trọng tốt nhất của hồ sơ này: phá false dichotomy ở CA-01, phá false completeness ở SSE-04-THR, bóc tách provenance ở CA-02. Điểm tôi không theo CodeX đến cùng là thái độ quá dè chừng với conventional defaults; repo của chính nó đã cho phép loại threshold đó nếu gắn provenance đúng.
+
+Nếu phải chốt thành một “vòng phản biện” có tính hành động ngay bây giờ, tôi chốt thế này:
+CA-01: chọn Hybrid C hẹp — 013 own convergence-side prerequisite semantics, không own full winner/action semantics.
+CA-02: chọn A, nhưng bắt buộc tách provenance thành 4 lớp thay vì một cục số đồng chất.
+SSE-09: chọn A mạnh — Holm@0.05 là v1 default, BH@0.10 là documented upgrade path, cả hai là conventional constants chứ không phải x38-calibrated.
+SSE-04-THR: chọn Mixed — freeze 1–2, freeze split 3a/3b, nhưng không được viết như thể 3a exact numerics đã hội tụ.
+
+Nói gọn hơn nữa: hướng chung bây giờ phần lớn đã đúng, nhưng câu “hội tụ hoàn toàn” thì chưa xứng đáng. Chỗ chưa xứng đáng không nằm ở toán lõi của CA-01/CA-02/SSE-09 nữa; nó nằm ở việc có dám gọi SSE-04-THR item 3a là đã đóng khi record chưa thật sự kiếm được numeric closure cho nó hay không. Ở điểm đó, tôi bác quán tính đồng thuận.
+
+========
+
+JC-Round 9: Claude Code (phản biện JC-Round 1–8)
+
+## Tự kiểm điểm trước
+
+Round 6 là lần đóng góp gần nhất của tôi. Tôi đã rút hai lỗi thật (CA-01
+Position A, pseudo-derivation ρ>0.95), đề xuất Hybrid C (necessary/sufficient),
+và tách item 3→3a/3b. Bây giờ tôi cần đánh giá Round 7-8 trên cơ sở record,
+không phải trên momentum.
+
+Điều quan trọng nhất tôi thấy sau khi đọc 8 vòng: **cuộc tranh luận này đang
+tiếp cận giới hạn diminishing returns**. Tôi sẽ nói thẳng chỗ nào còn substance
+thật, chỗ nào chỉ còn là refinement câu chữ mà nhiều vòng thêm sẽ không thay
+đổi outcome.
+
+---
+
+### 1) CA-01 — Converged. Tôi rút lại necessary/sufficient framing.
+
+Round 4 phá đúng false dichotomy A/B. Round 7 thu hẹp đúng Hybrid C từ “winner-
+eligibility semantics” xuống “convergence-side prerequisite semantics”. Round 8
+confirm.
+
+Nhưng tôi cần thừa nhận: cái necessary/sufficient distinction mà tôi đưa vào
+ở Round 6 (“FULLY_CONVERGED = necessary, not sufficient”) là **over-refinement
+không thay đổi operational outcome**. So sánh hai formulation:
+
+- Round 6 (tôi): “FULLY_CONVERGED = necessary condition for 'winner exists'.
+  Not sufficient alone.”
+- Round 7 (CodeX): “013 owns convergence-side prerequisite semantics. FULLY_
+  CONVERGED opens the door for downstream winner-recognition.”
+
+Cả hai dẫn đến cùng ba hệ quả vận hành:
+1. PARTIALLY_CONVERGED không mở Clean OOS.
+2. FULLY_CONVERGED cho phép downstream xét winner.
+3. Downstream topics thêm điều kiện riêng.
+
+“Necessary condition” là ngôn ngữ logic. “Convergence-side prerequisite” là ngôn
+ngữ operational. Cả hai đúng. Không cái nào thay đổi cái 013 phải giao.
+
+Tôi rút lại insistence vào necessary/sufficient framing. Round 7 đã nói đủ sạch.
+
+**Phản bác duy nhất cho Round 7**: CodeX nói “wording boundary chưa sạch hẳn” —
+tôi nghĩ đây là overcautious. Record cho đủ thông tin để viết final-resolution:
+
+> 013 freezes: measurement law (Kendall's W), derivation procedure (null
+> distribution → τ_low, τ_high), multi-level categories, and convergence-side
+> prerequisite semantics: FULLY_CONVERGED là prerequisite phía convergence để
+> downstream có thể xét winner-recognition; PARTIALLY_CONVERGED là agreement
+> signal hữu ích nhưng không thỏa winner-eligibility; NOT_CONVERGED = chưa có
+> stability signal. Full routing matrix vẫn là cross-topic integration
+> (001×003×010).
+
+Ai không đồng ý với câu này cần chỉ ra operational consequence khác biệt, không
+chỉ preference về phrasing.
+
+**Verdict: CONVERGED. Ready for final-resolution.**
+
+---
+
+### 2) CA-02 — Direction converged. Một con số cần flag mạnh hơn.
+
+4-tier provenance split đã mature qua Round 4→7. Tôi đồng ý.
+
+Nhưng tôi muốn flag điều mà **chưa round nào nói thẳng**: `same_data_ceiling=3`
+có provenance YẾU NHẤT trong toàn bộ set, yếu hơn cả S_max=5.
+
+Record nói gì:
+- `findings-under-review.md` line ~130: “Trần mặc định same-data campaigns?
+  (2? 3?)” — đây là **open question**, không phải proposal.
+- V4→V8 evidence: 5 SESSIONS trong campaign, không phải 5 CAMPAIGNS trên same
+  data. Hai concept hoàn toàn khác nhau.
+- S_max=5 ít nhất có paradigm inference từ V4→V8 session count.
+- `same_data_ceiling=3` — tôi không tìm được bất kỳ argument nào trong debate
+  record giải thích tại sao 3 chứ không phải 2 hay 4.
+
+Điều này KHÔNG thay đổi direction (vẫn ship defaults, vẫn label provisional).
+Nhưng nếu ta đang làm per-constant provenance trung thực, phải tách:
+
+- S_max=5: provisional (paradigm inference từ V4→V8)
+- same_data_ceiling=3: **pure convention — no supporting argument in debate
+  record**
+
+Đây là phân biệt thật, không phải nitpick. S_max=5 có rationale (yếu). ceiling=3
+không có rationale nào cả, chỉ là một con số được đề xuất trong bộ defaults.
+
+Round 7 đúng khi tách session-level vs campaign-level. Tôi bổ sung: campaign-
+level ceiling cần provenance label riêng, yếu hơn cả nhóm provisional.
+
+**Verdict: Direction CONVERGED. same_data_ceiling cần flag rõ hơn trong final
+wording.**
+
+---
+
+### 3) SSE-09 — Fully converged. Không có phản biện mới.
+
+8 vòng đồng ý:
+- v1 = Holm, α_FWER=0.05
+- BH q_FDR=0.10 = upgrade path contingent on 017
+- Conventional v1 constants, not x38-calibrated
+- q=0.10 trùng α_per-test=0.10 là coincidence, không phải justification
+
+**Verdict: CONVERGED từ Round 3-4. Ready for final-resolution.**
+
+---
+
+### 4) SSE-04-THR — Issue duy nhất có substance thật còn lại
+
+**Items 1-2**: Ready to freeze. Tất cả 8 vòng đồng ý. ρ>0.95 với honest
+provenance (conventional cutoff, không phải variance-derived). Hash ở design-
+contract level (whitespace/comment/import-order invariant; structure + parameter
+schema; exclude values). Không có dissent.
+
+**Item 3 split (3a/3b)**: Split đúng. Round 6 đề xuất, Round 7-8 confirm.
+
+**Nhưng tôi cần nói thẳng điều mà chưa vòng nào articulate đủ rõ: item 3a là
+một EMPTY ASSIGNMENT.**
+
+Lý do:
+- 013's canonical debate chạy hết 6 rounds mà KHÔNG BAO GIỜ sản xuất specific
+  numeric minimums cho robustness bundle requirements.
+- Finding ghi “013 owns what 'minimum' means numerically” — đây là ownership
+  assignment, không phải numeric deliverable.
+- Judgment call có thể freeze ownership. Judgment call KHÔNG THỂ chế tạo numeric
+  content mà debate không produce.
+
+Đây tạo ra dilemma cho closure:
+- **Option X**: Giữ 013 mở để resolve 3a numerics. Nhưng max_rounds=6 đã hết.
+  Không thể debate thêm.
+- **Option Y**: Close 013 với 3a ownership frozen, numerics explicitly UNRESOLVED.
+  Chấp nhận đây là gap trong delivery của 013.
+- **Option Z**: Close 013, file 3a numerics như deliverable cho human researcher
+  hoặc future integration topic.
+
+Tôi nghiêng về **Option Y/Z** (chúng tương đương trong thực hành), dùng pattern
+“Deferred, not blocked” mà Round 2 đã đề xuất đúng:
+
+- Item 3a ownership: FROZEN (013 owns)
+- Item 3a numerics: DEFERRED — debate không sản xuất, human researcher hoặc
+  integration topic sẽ specify
+- Item 3b: DEFERRED (shared 013×017)
+- Item 4: DEFERRED (shared 013×017)
+
+Đây là cách trung thực duy nhất. 013 đã deliver: measurement law, category
+semantics, prerequisite semantics, stop-law structure, defaults with provenance,
+correction method. 013 KHÔNG deliver: numeric minimum requirements cho robustness
+bundle. Thừa nhận gap này sạch hơn là giả vờ “near-converged” rồi để item 3a
+treo vô thời hạn.
+
+**Phản bác Round 8 về Topic 018 “inconsistency”**:
+
+Round 8 nói: “closure-audit.md nói 0 Judgment call trong khi final-resolution
+chứa Judgment call — upstream authority tự mâu thuẫn.” Tôi đã verify. Giải thích
+thực tế đơn giản hơn nhiều:
+
+- closure-audit.md audit 4-agent debate ban đầu (trước reopening).
+- ADDENDUM ở line 146-161 ghi rõ: Topic 018 đã REOPENED cùng ngày để conduct
+  standard 2-agent debate per rules.md §5.
+- Standard 2-agent debate's final-resolution.md chứa Judgment call on SSE-D-05
+  (working minimum inventory).
+- “Inconsistency” là document-versioning artifact từ quá trình reopening, không
+  phải substantive contradiction.
+
+Working minimum inventory (5 proof components, 5 anomaly axes) IS authoritative —
+nó đến từ standard 2-agent debate. Nhưng Round 8's broader point vẫn đúng: đây
+là output của Judgment call, không phải converged finding. 013 nên treat nó như
+working handoff, không phải authoritative numeric law.
+
+**Verdict: Ownership converged. Numerics cho 3a = acknowledged gap, dùng Deferred
+pattern. SSE-04-THR ready for final-resolution NẾU human researcher chấp nhận
+item 3a gap.**
+
+---
+
+## Meta-assessment: Diminishing returns
+
+Sau 8 vòng, tôi nhận thấy pattern rõ ràng:
+
+| Vòng | Đóng góp chính |
+|------|---------------|
+| 1-3 | Establish direction (A/A/A/A), nhưng quá nhanh |
+| 4 | Break false dichotomy CA-01, tách provenance CA-02. **Đóng góp lớn nhất.** |
+| 5 | Confirm Round 4, flag ρ arithmetic error. Additive. |
+| 6 | Self-correct CA-01, split item 3. Additive. |
+| 7 | Narrow Hybrid C, separate session/campaign. Refinement. |
+| 8 | Comprehensive review, flag 018 inconsistency. Diminishing. |
+
+Trajectory rõ: substance mới giảm dần từ Round 4. Round 7-8 chủ yếu refine
+phrasing và bảo vệ positions đã established. Round 9 (vòng này) cũng vậy — tôi
+chỉ thực sự thêm hai điểm mới: (a) same_data_ceiling provenance, (b) item 3a
+là empty assignment cần acknowledged gap.
+
+**Mục đích của JC-debate là cung cấp đủ thông tin để human researcher quyết
+định.** Ở thời điểm này, cả 4 issues đều có đủ information cho human decision:
+
+1. CA-01: Hybrid C, wording clear.
+2. CA-02: A with 4+1 tier provenance.
+3. SSE-09: A strong.
+4. SSE-04-THR: Freeze 1-2, freeze 3a ownership + defer 3a numerics, defer 3b+4.
+
+Tiếp tục thêm vòng sẽ refine phrasing nhưng không thay đổi decisions. Tôi
+khuyến nghị human researcher chốt dựa trên material hiện có.
+
+**Điểm cuối — đánh giá công bằng từng bên**:
+
+- **ChatGPT Pro**: Đóng góp lớn nhất ở closure discipline (“Deferred, not
+  blocked”) và ép tách provenance. Điểm yếu: Round 2 chốt A/A/A/A quá sớm;
+  Round 8 overplay Topic 018 inconsistency.
+- **CodeX**: Đối trọng mạnh nhất. Phá false dichotomy CA-01, phá false
+  completeness SSE-04-THR, bóc tách provenance đúng chỗ. Điểm yếu: đôi khi
+  quá dè chừng với conventional defaults mà repo đã có governance cho.
+- **Claude Code** (tôi): Chịu rút lại lỗi thật (ρ pseudo-derivation, CA-01
+  Position A). Đề xuất item 3 split. Điểm yếu: Round 1-3 bị quán tính, chấp
+  nhận A quá nhanh; Round 6 over-refine với necessary/sufficient.
+
+========
+
+JC-Round 10: Nhận định của CodeX (phản biện JC-Round 1–9)
+
+## Đánh giá tổng thể
+
+Round 9 là bản tổng hợp mạnh nhất cho đến hiện tại. Tôi đồng ý với hai ý lớn:
+
+1. debate này đã chạm **diminishing returns**;
+2. thứ còn thiếu chủ yếu không còn là toán lõi của `CA-01/CA-02/SSE-09`, mà là
+   **provenance honesty** và **gap accounting**.
+
+Nhưng tôi không đồng ý để Round 9 thành "consensus cuối" mà không sửa hai chỗ
+nói quá tay:
+
+1. `same_data_ceiling = 3` **không phải** "pure convention — no supporting
+   argument in debate record";
+2. `SSE-04-THR item 3a` **không phải** "empty assignment" theo nghĩa design
+   surface trống; cái trống là **exact numeric content**, không phải boundary.
+
+Hai điểm này nghe nhỏ, nhưng nếu bỏ qua thì final wording sẽ lại làm hồ sơ
+"sạch giả": hoặc làm một con số yếu trông như vô cớ, hoặc làm một gap nội dung
+trông như chỉ còn nhãn ownership.
+
+---
+
+### 1) CA-01 — Tôi đồng ý hướng hiện tại; chỗ này không còn phản biện substantive mới
+
+Ở issue này, Round 7–9 đã sửa đúng hai cực đoan trước đó:
+
+- bác `A` thuần kiểu "013 chỉ own measurement law";
+- đồng thời không trượt sang kiểu "013 own full winner semantics".
+
+Record đủ rõ để giữ boundary hẹp:
+
+- Topic 013 own thuật toán/convergence outputs
+  (`debate/013-convergence-analysis/README.md:11-15`);
+- finding F-30 hỏi thẳng `PARTIALLY_CONVERGED` có đủ để đi tiếp hay không
+  (`debate/013-convergence-analysis/findings-under-review.md:72-76`);
+- Topic 010 chỉ auto-trigger `PENDING_CLEAN_OOS` khi `(winner exists) AND
+  (enough new data)` (`debate/010-clean-oos-certification/final-resolution.md:53-57`);
+- design docs mô tả Clean OOS là giai đoạn sau khi nghiên cứu đã ra
+  `winner chính thức` (`research/x38/docs/design_brief.md:113-145`;
+  `research/x38/PLAN.md:470-540`).
+
+Vì vậy, tôi không thấy còn substance để tranh lại direction của Round 7–9.
+Điều cần giữ trong final wording chỉ là:
+
+- `PARTIALLY_CONVERGED` không đủ cho Clean OOS progression / winner-recognition;
+- `FULLY_CONVERGED` là convergence-side prerequisite cao nhất mà 013 export;
+- predicate vận hành đầy đủ và action routing vẫn là downstream governance.
+
+Nói ngắn: `CA-01` không cần thêm một vòng triết học mới. Chỗ này **ready for
+judgment-call closure**.
+
+---
+
+### 2) CA-02 — Tôi bác Round 9 ở đúng một điểm: `same_data_ceiling=3` không phải "không có argument", mà là argument yếu + lẫn đơn vị
+
+Round 9 nói `same_data_ceiling=3` yếu hơn `S_max=5`, thậm chí gần như "pure
+convention". Hướng flag-weakness là đúng, nhưng câu đó vẫn nói quá.
+
+**Vì sao?** Vì debate record thực ra CÓ một lập luận, dù rất yếu:
+
+- `claude_code/round-5_author-reply.md:299-307` cố gắng nhóm V4→V8 thành
+  **3 effective same-data campaigns**: `(V4 multi-round)`, `(V5-V6)`,
+  `(V7-V8)`, rồi từ đó đề xuất `ceiling = 3`.
+
+Nói vậy có thuyết phục không? Tôi cho là **không đủ sạch**. Nhưng nói là
+"không có argument nào" cũng không đúng.
+
+Vấn đề thật của `same_data_ceiling=3` là sâu hơn:
+
+1. lập luận đó là **post-hoc grouping** của archive history, không phải một
+   derivation rule đã được freeze ở authority chain;
+2. nó dùng đơn vị `campaign` theo kiểu hồi cứu, trong khi `PLAN.md:511-512`
+   lại nhớ record theo đơn vị **session**:
+   "V4→V8 đã chạy 5 sessions (vượt trần 4 ban đầu...)";
+3. tức là cùng một evidence base đang bị đọc theo **hai hệ đếm khác nhau**
+   (`3 campaigns` vs `5 sessions / ceiling 4`).
+
+Đây mới là chỗ cần nói thẳng. Không phải `same_data_ceiling=3` vô cớ, mà là:
+
+> nó là heuristic yếu nhất trong toàn bộ CA-02 vì archive hiện đang trộn
+> session-history và campaign-equivalence, nên provenance của con số `3`
+> vừa yếu vừa không đơn vị-hóa sạch.
+
+Do đó, tôi đề nghị sửa wording của Round 9 theo hướng:
+
+- `S_min = 3`: structure-implied trong stop law đã chọn;
+- `ε_cost = ε_noise`: simplifying v1 default;
+- `M = 2` + `S_max = 5`: coupled provisional session defaults;
+- `same_data_ceiling = 3`: **weak cross-archive heuristic**, dựa trên analogical
+  reading của x37, confidence còn thấp hơn `S_max = 5`, và phải bị ghi rõ là
+  đơn vị/archive mapping chưa sạch.
+
+Đây là phản biện substantive, không phải câu chữ. Nếu final-resolution chỉ ghi
+"pure convention" thì nó xóa mất một phần record; còn nếu ghi "evidence-backed"
+thì lại quá tay. Câu đúng nằm ở giữa.
+
+---
+
+### 3) SSE-09 — Không còn điểm đáng phản biện
+
+Ở issue này, tôi không thấy còn disagreement thật:
+
+- v1 default = `Holm`;
+- `α_FWER = 0.05`;
+- `BH q_FDR = 0.10` là documented upgrade path;
+- các con số này là **conventional v1 constants**, không phải x38-derived calibration
+  (`validation/thresholds.py:1-15,49-66`;
+  `debate/013-convergence-analysis/findings-under-review.md:180-197`).
+
+Điểm duy nhất cần tiếp tục giữ sạch là:
+
+- đừng rationalize `q=0.10` bằng việc nó "trùng" per-test `α=0.10`;
+- similarity về số không phải căn cứ chính vì hai hệ error-control khác nhau.
+
+Ngoài việc đó ra, `SSE-09` đã xong.
+
+---
+
+### 4) SSE-04-THR — Tôi đồng ý với Round 9 về "numeric gap", nhưng bác cụm "empty assignment"
+
+Đây là chỗ Round 9 đúng hướng nhưng wording vẫn lệch một nhịp.
+
+Round 9 nói `item 3a` là "empty assignment". Tôi không đồng ý nếu hiểu câu này
+theo nghĩa **design surface trống**. Record hiện tại đã freeze được khá nhiều:
+
+- Topic 018 authoritative final-resolution đã chốt **working minimum inventory**
+  5 anomaly axes + 5 proof components ở mức Judgment call authority
+  (`debate/018-search-space-expansion/final-resolution.md:125-176`);
+- cùng file đó nói rõ thresholds và proof-consumption rules là downstream 017/013
+  (`debate/018-search-space-expansion/final-resolution.md:132,157-158`);
+- Topic 013 finding nói rõ item 3 là
+  `robustness bundle minimum requirements (what "minimum" means numerically)`
+  (`debate/013-convergence-analysis/findings-under-review.md:207-223`);
+- Topic 017 finding nói rõ họ own `proof bundle consumption rules`
+  (`debate/017-epistemic-search-policy/findings-under-review.md:424-435`).
+
+Từ đó suy ra:
+
+- `3a/3b` split là hợp lý và hữu ích;
+- cái **đã frozen** là question-form và boundary;
+- cái **chưa frozen** là exact numeric floors cho `3a`.
+
+Cho nên câu đúng hơn không phải "empty assignment", mà là:
+
+> `item 3a` là **defined-but-unfilled numeric slot**.
+
+Sự khác biệt quan trọng vì:
+
+- nếu gọi nó là "empty assignment", người đọc dễ hiểu nhầm rằng 013 còn chưa
+  xác định được mình phải định nghĩa CÁI GÌ;
+- trong khi record thực ra đã xác định khá rõ: phải định nghĩa minimum numerics
+  cho inventory đã được 018 bàn giao.
+
+Tôi đồng ý với Round 9 ở phần kết luận thực dụng:
+
+- item 1 có thể freeze như conventional v1 cutoff (`ρ > 0.95`) với provenance honest;
+- item 2 có thể freeze ở design-contract level;
+- item 3a exact numerics chưa có closure sạch;
+- item 3b và item 4 là shared/deferred surface với 017.
+
+Nhưng final wording nên ghi là:
+
+- **boundary converged**;
+- **exact numeric content của 3a chưa converged**;
+- đây là **acknowledged delivery gap**, không phải ambiguity về ownership.
+
+Tôi cũng đồng ý với Round 9 rằng Round 8 đã overplay "Topic 018 inconsistency":
+`closure-audit.md` của 018 tự ghi rất rõ là **SUPERSEDED** bởi standard 2-agent
+closure (`debate/018-search-space-expansion/closure-audit.md:1-4,165-176`).
+Vậy working minimum inventory của 018 là authority đủ mạnh cho handoff naming;
+thứ nó không cho là exact numerics downstream.
+
+---
+
+## Kết luận
+
+Tôi không thấy lý do trung thực nào để lật hướng hiện tại của hồ sơ. Nhưng tôi
+cũng không chấp nhận việc ép nó thành "hội tụ hoàn toàn" nếu hai chỗ trên chưa
+được nói đúng.
+
+Nếu phải chốt ngắn gọn sau Round 10, tôi chốt như sau:
+
+- `CA-01`: operationally converged. Hybrid C hẹp là đúng.
+- `CA-02`: chốt `A`, nhưng phải flag riêng `same_data_ceiling=3` là heuristic
+  yếu và đơn vị/archive mapping còn lẫn, không chỉ nói "pure convention".
+- `SSE-09`: fully converged.
+- `SSE-04-THR`: chốt split `3a/3b`; item `3a` không "empty", mà là
+  **defined-but-unfilled numeric slot**.
+
+Nói cách khác:
+
+> Hồ sơ này đã đủ cho **human judgment closure**, nhưng chưa nên được mô tả như
+> "mọi phần đã hội tụ về nội dung". Phần chưa hội tụ còn lại không nằm ở
+> ownership nữa; nó nằm ở vài numeric slots mà debate đã định hình được câu hỏi
+> nhưng chưa sản xuất được câu trả lời.
