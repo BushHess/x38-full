@@ -1,6 +1,6 @@
 # Exp 36: Regime-Split Trail Multiplier
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp30 showed the AND gate works in bear (W1/W2) but hurts in bull (W3/W4).
@@ -88,4 +88,33 @@ regime. Does the adaptation reduce the bull/bear asymmetry seen in exp30?
 - Results: x39/results/exp36_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: PASS (marginal) — lo=2.0/hi=3.0 is the only config that improves both Sharpe AND MDD.**
+
+### Baseline (fixed trail=3.0)
+Sharpe 1.2905, CAGR 57.13%, MDD 51.32%, 218 trades, exposure 43.0%
+
+### Best config: trail_low=2.0, trail_high=3.0
+- Sharpe 1.3162 (+0.0257), CAGR 57.55% (+0.42), MDD 47.04% (-4.28 pp)
+- 274 trades, win rate 38.3%, avg held 27.3 bars, exposure 40.9%
+- Exits: 175 low-vol (63.9%), 99 high-vol (36.1%)
+- Avg trail width: low=1076, high=1825
+
+### Sanity check
+(3.0, 3.0) exactly matches baseline: d_sharpe=0.0000 ✓
+
+### Key observations
+1. **Only lo=2.0/hi=3.0 passes** — all other configs DEGRADE both Sharpe and MDD vs baseline.
+2. **Wider high-vol trail HURTS**: trail_high > 3.0 consistently destroys Sharpe (-0.10 to -0.21).
+   The hypothesis that wider trail prevents whipsaw in high-vol is WRONG — it delays exits
+   and gives back more profit. Trail=3.0 is already at or near the optimal width for high-vol.
+3. **Tighter low-vol trail helps MDD** but at the cost of more trades (274 vs 218) and lower
+   win rate (38.3% vs 41.3%). The MDD improvement (-4.28 pp) comes from faster exit in
+   low-vol environments where reversals are orderly.
+4. **Sharpe gain is small (+0.026)** — within noise. Not a robust improvement.
+5. **Regime split ~55%/45%**: low_vol 54.5%, high_vol 45.5% (near symmetric as expected with
+   median split). Exit distribution skews toward low-vol as trail_low decreases (tighter trail
+   triggers more often).
+6. The improvement is essentially: "use trail=2.0 half the time, trail=3.0 half the time" —
+   which is close to an average trail of 2.5. This is consistent with the known trail sweep
+   result where trail=2.0-3.0 are all viable with different return/risk profiles.

@@ -1,6 +1,6 @@
 # Exp 37: Adaptive EMA Slow Period
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 EMA slow_period=120 (20 days) is fixed. BTC exhibits distinctly different
@@ -93,4 +93,43 @@ in bull vs bear regimes. Does the adaptation meaningfully change behavior?
 - Results: x39/results/exp37_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL**: No adaptive EMA config improves Sharpe over fixed slow=120 baseline.
+
+### Baseline
+| Sharpe | CAGR% | MDD% | Trades | Win% | Exposure% |
+|--------|-------|------|--------|------|-----------|
+| 1.3098 | 52.70 | 41.01 | 197 | 40.6 | 43.5 |
+
+### Sweep Results (delta vs baseline)
+
+| Config | Sharpe | d_Sharpe | CAGR% | d_CAGR | MDD% | d_MDD | Trades | Mean Slow |
+|--------|--------|----------|-------|--------|------|-------|--------|-----------|
+| min=60/max=120 | 1.1095 | -0.2003 | 41.52 | -11.18 | 38.76 | -2.25 | 211 | 88.6 |
+| min=60/max=144 | 1.2659 | -0.0439 | 49.74 | -2.96 | 38.83 | -2.18 | 202 | 100.1 |
+| min=60/max=168 | 1.1666 | -0.1432 | 44.15 | -8.55 | 38.73 | -2.28 | 204 | 111.6 |
+| min=84/max=120 | 1.2150 | -0.0948 | 47.25 | -5.45 | 40.27 | -0.74 | 199 | 101.2 |
+| min=84/max=144 | 1.3071 | -0.0027 | 52.09 | -0.61 | 40.50 | -0.51 | 193 | 112.6 |
+| min=84/max=168 | 1.3087 | -0.0011 | 51.90 | -3.38 | 37.63 | -3.38 | 189 | 124.1 |
+
+### Key Findings
+
+1. **All 6 adaptive configs lose Sharpe** vs fixed slow=120. Best: min=84/max=168 at -0.0011 (negligible).
+2. **MDD improves for all configs** (−0.5 to −3.4 pp), but Sharpe cost eliminates the benefit.
+3. **Adaptation direction is correct** — bull regimes get shorter periods (diff -1 to -3 bars),
+   but the effect size is tiny (~2% of the period range).
+4. **Best configs cluster near baseline**: min=84/max=144 and min=84/max=168 have mean slow
+   ~113-124 (close to fixed 120), explaining near-zero delta.
+5. **Wider adaptation hurts more**: min=60 configs lose 0.04-0.20 Sharpe. Shorter periods
+   in low-vol regimes generate more false crossovers, not faster trend detection.
+
+### Interpretation
+
+The slow_period plateau (60-144, spread 0.017 Sharpe from x-series) means ALL fixed values
+in this range perform similarly. Switching between them adds noise from the time-varying EMA
+but captures no new information. The mathematical premise (SNR-dependent optimal smoothing)
+is correct in theory but the regime signal (rv_pctl) doesn't separate trend-quality regimes
+with enough precision — bull and bear mean slow periods differ by only 1-3 bars.
+
+**Conclusion**: Fixed slow_period=120 remains optimal. Adaptive EMA is a tradeoff
+(MDD improvement at Sharpe cost), not an improvement.
