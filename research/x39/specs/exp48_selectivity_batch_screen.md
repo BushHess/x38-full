@@ -1,6 +1,6 @@
 # Exp 48: Selectivity Batch Screen — Pending Entry Filters
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp42 (vol compression WFO) established the critical criterion for robust
@@ -85,4 +85,56 @@ Per feature (aggregate):
 - Results: x39/results/exp48_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Date**: 2026-03-28
+**Baseline**: 221 trades, WR=41.2%, span=8.37 years
+
+### Full-sample selectivity + per-window regime robustness
+
+| Feature | Sel (full) | Rgm (P50) | Best sel | Verdict |
+|---------|-----------|-----------|----------|---------|
+| trendq_84 | **5/5** | **3/4** | +4.2pp (P50) | **PROMOTE** |
+| vol_per_range | 0/5 | 0/4 | -1.3pp | CLOSE (anti-selective) |
+| trade_surprise_168 | 4/5 | 2/4 | +3.4pp (P25) | CLOSE (regime-dependent) |
+| d1_taker_imbal_12 | 4/5 | 2/4 | +2.7pp (P33) | CLOSE (regime-dependent) |
+| body_consist_6 | 0/5 | 3/4 | -0.2pp | CLOSE (not selective) |
+| relvol_168 | 3/5 | 2/4 | +1.9pp (P75) | CLOSE (regime-dependent) |
+| range_vol_84 | 1/5 | 0/4 | -3.5pp | CLOSE (anti-selective) |
+
+### trendq_84 detail (the only PROMOTE)
+
+**Full-sample** (gate: trendq_84 > threshold):
+- P25 (0.108): pass WR 42.4%, blocked WR 37.5%, sel +3.7pp
+- P33 (0.245): pass WR 42.6%, blocked WR 38.4%, sel +2.8pp
+- P50 (0.465): pass WR 45.5%, blocked WR 36.9%, sel +4.2pp
+- P67 (0.739): pass WR 46.6%, blocked WR 38.5%, sel +2.7pp
+- P75 (0.946): pass WR 52.7%, blocked WR 37.3%, sel +3.8pp
+
+**Per-window at P50** (threshold=0.465):
+- W1 (2021-07 → 2023-06): N=49, blocked WR 30.0%, sel +4.7pp [SEL]
+- W2 (2022-07 → 2024-06): N=62, blocked WR 35.5%, sel +0.0pp [---]
+- W3 (2023-07 → 2025-06): N=59, blocked WR 40.5%, sel +3.5pp [SEL]
+- W4 (2024-07 → 2026-02): N=41, blocked WR 40.0%, sel +6.3pp [SEL]
+
+### Interpretation
+
+1. **trendq_84 is the only selective + regime-robust feature.** It blocks
+   entries where momentum-quality is low (ret_84 / realized_vol_84 < threshold).
+   Blocked entries have 3-5pp lower win rate across most temporal regimes.
+   W2 is the lone zero-selectivity window but not anti-selective.
+
+2. **6/7 features CLOSE.** Consistent with exp01/exp33/exp51 precedent:
+   most features lack selectivity. Vol compression (exp34/42) remains the
+   only prior selective feature. trendq_84 is the second discovery.
+
+3. **trade_surprise_168 and d1_taker_imbal_12** showed full-sample selectivity
+   (4/5) but failed regime-robustness (2/4). Their selectivity is temporal —
+   strong in recent windows, absent in earlier ones.
+
+4. **Anti-selective features**: vol_per_range and range_vol_84 block BETTER
+   entries (negative selectivity). These should never be used as entry gates.
+
+5. **trendq_84 PROMOTE does NOT mean deploy.** It means: proceed to full
+   WFO validation (separate task, outside x39). The selectivity screen is
+   necessary but not sufficient — WFO must confirm that the threshold
+   selected in-sample generalizes out-of-sample.

@@ -155,7 +155,7 @@ Each spec file contains everything needed to execute the experiment:
 | 45 | Triple stack | FAIL | 1.387 | 46.2 | 36.9 | 170 | Accel gate is weak link |
 | 46 | Regime-adaptive decay | FAIL | — | — | — | — | 0/9 beat fixed decay |
 | 47 | Accel-weighted trail | FAIL | — | — | — | — | Zero IC, all configs degrade Sharpe |
-| 48 | Selectivity batch screen | — | — | — | — | — | — |
+| 48 | Selectivity batch screen | **1/7 PROMOTE** | — | — | — | 221 | trendq_84 only: sel 5/5, rgm 3/4. 6 CLOSE |
 | 49 | Comp + decay WFO | — | — | — | — | — | — |
 | 50 | Alt compression measures | — | — | — | — | — | — |
 | 51 | Momentum persistence | — | — | — | — | — | — |
