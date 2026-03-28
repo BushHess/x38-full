@@ -1,6 +1,6 @@
 # Exp 46: Regime-Adaptive Maturity Decay
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp38's maturity decay uses FIXED decay parameters (start=60, end=180).
@@ -88,4 +88,47 @@ Key analysis:
 - Results: x39/results/exp46_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**FAIL**: No adaptive config beats fixed decay (60/180) on Sharpe. 0/9 configs improve.
+
+### Key numbers
+
+| Config | Sharpe | CAGR% | MDD% | Trades | d_Sh vs fixed |
+|--------|--------|-------|------|--------|---------------|
+| no_decay (baseline) | 1.3098 | 52.70 | 41.01 | 197 | -0.1498 |
+| **fixed(60,180)** | **1.4596** | **58.11** | **31.19** | **263** | **0.0000** |
+| LV(60,240)/HV(30,120) | 1.2902 | 49.11 | 32.86 | 274 | -0.1694 |
+| LV(60,240)/HV(30,180) | 1.3503 | 52.41 | 34.73 | 262 | -0.1093 |
+| LV(60,240)/HV(60,120) | 1.3935 | 54.54 | 32.86 | 267 | -0.0661 |
+| LV(90,240)/HV(30,120) | 1.2685 | 48.00 | 34.39 | 272 | -0.1911 |
+| LV(90,240)/HV(30,180) | 1.3329 | 51.51 | 36.21 | 260 | -0.1267 |
+| LV(90,240)/HV(60,120) | 1.3716 | 53.39 | 34.39 | 265 | -0.0880 |
+| LV(90,300)/HV(30,120) | 1.2311 | 46.11 | 34.39 | 271 | -0.2285 |
+| LV(90,300)/HV(30,180) | 1.2899 | 49.28 | 36.21 | 260 | -0.1697 |
+| LV(90,300)/HV(60,120) | 1.3338 | 51.43 | 34.39 | 264 | -0.1258 |
+
+### Why it failed
+
+1. **Faster HV decay HURTS**: All 9 configs show HV Sharpe worse than fixed
+   (best HV Sharpe 2.18 vs fixed 2.33). In high-vol regimes, BTC trends are
+   actually STRONG (HV Sharpe ~2x LV Sharpe) — tightening the trail sooner
+   cuts the best alpha.
+
+2. **Slower LV decay also HURTS**: 7/9 configs show LV Sharpe worse than fixed.
+   Only LV(60,240)/HV(30,180) and LV(90,240)/HV(30,180) slightly improve LV
+   Sharpe (+0.02, +0.06), but the HV degradation dominates.
+
+3. **The hazard-rate hypothesis is wrong for BTC**: The assumption was that
+   high-vol → higher trend termination hazard → faster decay optimal. But BTC
+   trends in high-vol regimes are actually the MOST profitable (HV Sharpe 2.33
+   vs LV Sharpe 1.10). Fixed decay (60/180) is already near-optimal because
+   it gives ALL regimes uniform room, and the high-vol regime — where alpha
+   concentrates — benefits from NOT being tightened prematurely.
+
+4. **Regime split increases DOF without benefit**: 2 extra params (split the
+   schedule) + 0 Sharpe gain = pure overfitting risk.
+
+### Conclusion
+Fixed decay (start=60, end=180) captures the optimal average across regimes.
+Volatility-conditioned decay is a complexity increase with negative return.
+The decay schedule does not need regime adaptation.

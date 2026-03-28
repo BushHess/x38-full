@@ -1,6 +1,6 @@
 # Exp 41: Momentum Acceleration Gate Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp33 showed +0.1515 Sharpe and -10.31pp MDD (best: lb=12, min_accel=0.0).
@@ -79,4 +79,34 @@ selective. If it only helps in bear → regime-dependent timing, not robust.
 - Results: x39/results/exp41_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**Verdict: FAIL** — Accel gate lacks temporal stability. exp33's +0.1515 Sharpe is period-specific.
+
+### Parameter stability
+lb=12, min_accel=0.0 selected in **4/4 windows** (perfectly STABLE). Fixed = selected in every window.
+
+### WFO results (fixed = selected = lb=12, min_accel=0.0)
+| Window | Test period | Baseline Sh | Gated Sh | d_Sharpe | d_MDD (pp) | Blocked | Blocked WR |
+|--------|-------------|-------------|----------|----------|------------|---------|------------|
+| W1 | 2021-07→2023-06 (bear-ish) | 0.4788 | 0.2101 | **-0.2687** | +0.00 | 237 | 18.1% |
+| W2 | 2022-07→2024-06 (bear) | 0.6722 | 0.7368 | **+0.0646** | +3.57 | 288 | 26.0% |
+| W3 | 2023-07→2025-06 (bull) | 1.7250 | 1.4461 | **-0.2789** | -1.15 | 271 | 46.9% |
+| W4 | 2024-07→2026-02 (bull) | 0.9068 | 0.4403 | **-0.4665** | +8.83 | 168 | 53.6% |
+
+- **WFO win rate**: 1/4 = 25% (FAIL, need ≥75%)
+- **Mean d_Sharpe**: -0.2374 (FAIL, need >0)
+- **Mean d_MDD**: +2.81 pp (worse)
+- **Mean d_exposure**: -10.4 pp (gate blocks ~25% of exposure uniformly)
+
+### Regime analysis
+- Bear mean d_Sh: -0.1021
+- Bull mean d_Sh: -0.3727
+- **ASYMMETRIC**: gate hurts MORE in bull markets. Not bear-only benefit — it hurts everywhere.
+
+### Critical insight
+Blocked WR increases from 18.1% (W1, bear) to 53.6% (W4, bull). In bull markets the gate
+blocks entries that would have been winners (blocked WR > baseline WR ~41%). The timing
+mechanism from exp33 is an artifact of the training period composition, not a robust signal.
+
+The gate reduces exposure by ~10pp uniformly but the entries it blocks are NOT selectively
+bad — in bull regimes they're selectively GOOD. This is the opposite of useful timing.

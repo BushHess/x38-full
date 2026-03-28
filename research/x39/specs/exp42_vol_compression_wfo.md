@@ -1,6 +1,6 @@
 # Exp 42: Volatility Compression Entry Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp34 showed ALL 6 thresholds improve Sharpe (best threshold=0.6: +0.1901).
@@ -76,4 +76,40 @@ predictive power can still have conditional timing value within a strategy.
 - Results: x39/results/exp42_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: PASS** — Vol compression gate has temporal stability across all 4 WFO windows.
+
+### WFO Results (all 3 configs PASS: 4/4 win rate AND mean d_Sharpe > 0)
+
+| Config | WFO Win Rate | Mean d_Sharpe | Mean d_MDD |
+|--------|-------------|---------------|------------|
+| Train-selected | 4/4 (100%) | +0.1703 | -2.05 pp |
+| Fixed A (0.6) | 4/4 (100%) | +0.2625 | -4.65 pp |
+| Fixed B (0.7) | 4/4 (100%) | +0.2532 | -4.75 pp |
+
+### Per-window detail (Fixed A = 0.6)
+
+| Window | Test Period | d_Sharpe | d_MDD | Blocked | Blocked WR | Baseline WR |
+|--------|------------|----------|-------|---------|------------|-------------|
+| W1 (bear-ish) | 2021-07→2023-06 | +0.3973 | -10.00 pp | 69 | 23.2% | 34.7% |
+| W2 (bear) | 2022-07→2024-06 | +0.3037 | -3.55 pp | 86 | 32.6% | 34.4% |
+| W3 (bull) | 2023-07→2025-06 | +0.1634 | -4.30 pp | 68 | 33.8% | 45.6% |
+| W4 (bull) | 2024-07→2026-02 | +0.1857 | -0.76 pp | 43 | 32.6% | 43.9% |
+
+### Key findings
+
+1. **Parameter stability: STABLE** — threshold=0.6 selected 3/4 windows (W1 picked 0.9, others 0.6).
+2. **Selectivity: ALL SELECTIVE** — blocked entry WR < baseline WR in ALL 4 windows.
+   Blocked entries are genuinely worse trades, not random filtering.
+3. **Regime-robust**: Helps in both bear (+0.35 mean d_Sh) and bull (+0.17 mean d_Sh).
+   Bear windows benefit more (larger losers to block), but bull windows still positive.
+4. **vol_ratio distribution is stable**: median ~0.47, <0.6 fraction ~61%, <0.7 fraction ~68-70%
+   across all windows. No regime-dependent skew in the feature distribution itself.
+5. **Fixed A (0.6) > Fixed B (0.7)** on Sharpe (+0.2625 vs +0.2532) but B wins slightly on MDD
+   (-4.75 vs -4.65 pp). Both are excellent.
+
+### Methodological finding
+Unconditional residual scan (explore.py) showed zero predictive power for vol_ratio_5_20.
+Yet within E5-ema21D1, it has strong CONDITIONAL timing value — preferentially blocking
+entries that would have been losers. Features with zero marginal correlation can still
+have conditional value within a strategy context.

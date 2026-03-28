@@ -1,6 +1,6 @@
 # Exp 45: Triple Stack — Accel + Compression + Maturity Decay
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Three mechanisms passed or showed promise in x39:
@@ -99,4 +99,47 @@ Key analysis:
 - Results: x39/results/exp45_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+### Summary Table (d_Sharpe vs baseline Sharpe=1.3098)
+
+| Config | Sharpe | CAGR% | MDD% | Trades | WinRate | d_Sharpe |
+|--------|--------|-------|------|--------|---------|----------|
+| ref_baseline | 1.3098 | 52.70 | 41.01 | 197 | 40.6% | — |
+| ref_accel_only | 1.3419 | 48.08 | 41.01 | 149 | 42.3% | +0.0321 |
+| ref_comp_only | 1.4321 | 58.44 | 38.42 | 182 | 43.4% | +0.1223 |
+| ref_decay_only | 1.4596 | 58.11 | 31.19 | 263 | 39.5% | +0.1498 |
+| duo_accel_decay | 1.4501 | 49.75 | 37.41 | 177 | 45.8% | +0.1403 |
+| duo_comp_decay | 1.5426 | 60.81 | 31.48 | 240 | 41.2% | +0.2328 |
+| duo_accel_comp | 1.3584 | 48.35 | 29.69 | 140 | 44.3% | +0.0486 |
+| **triple_A** | 1.3243 | 42.63 | 35.17 | 163 | 44.2% | +0.0145 |
+| **triple_B** | 1.3289 | 43.14 | 34.66 | 166 | 45.8% | +0.0191 |
+| **triple_C** | 1.3516 | 45.15 | 36.99 | 157 | 45.2% | +0.0418 |
+| **triple_D** | 1.3865 | 46.23 | 36.90 | 170 | 47.1% | +0.0767 |
+
+### Key findings
+
+1. **Additivity: ALL triples REDUNDANT.** Best triple (triple_D) d_Sharpe=+0.077,
+   ratio=0.252 vs sum-of-singles (+0.304). Marginal over best duo: **-0.156**.
+
+2. **Trade count OK.** All triples >= 140 trades. No X7 trap.
+
+3. **Overlap: MODERATE.** 27.5% of blocked entries fail BOTH gates. 45.4% fail
+   accel only, 27.1% fail compression only. Gates are partially complementary
+   but the accel gate's contribution is destructive when stacked.
+
+4. **Win rate improves** (triple_D 47.1% vs baseline 40.6%) but CAGR collapses
+   (-6.47pp) — accel gate removes too many profitable entries.
+
+5. **Best duo (comp+decay) dominates.** Sharpe 1.5426, CAGR 60.81%, MDD 31.48%.
+   No triple configuration comes close.
+
+### Verdict: **TRIPLE FAILS**
+
+The accel gate (exp33) is the weak link. It contributes the smallest single delta
+(+0.032 Sharpe) and when stacked with compression, the combined entry filter
+kills CAGR by removing profitable-but-decelerating entries. Compression+decay
+(duo_comp_decay) is strictly superior to any triple stack.
+
+The accel gate's benefit is subsumed by the compression gate — entries blocked by
+accel that pass compression tend to be profitable. Adding accel on top of
+compression destroys value.

@@ -1,6 +1,6 @@
 # Exp 40: Trend Maturity Decay Walk-Forward Validation
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp38 showed +0.150 Sharpe and -9.82pp MDD (best config: trail_min=1.5,
@@ -84,4 +84,39 @@ Aggregate:
 - Results: x39/results/exp40_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+**VERDICT: FAIL** — Maturity decay lacks temporal stability. exp38's +0.150 Sharpe is period-specific.
+
+### Per-window results
+
+| Window | Test period | Baseline Sh | Selected config | Sel d_Sh | Fix d_Sh | Sel d_MDD | Fix d_MDD |
+|--------|------------|-------------|-----------------|----------|----------|-----------|-----------|
+| W1 | 2021-07→2023-06 (bear) | 0.4722 | min=2.0,s=60,e=120 | **+0.1485** | **+0.3455** | -4.42pp | -10.00pp |
+| W2 | 2022-07→2024-06 (bear→bull) | 0.6441 | min=1.5,s=60,e=120 | -0.3381 | -0.0630 | -3.10pp | -5.04pp |
+| W3 | 2023-07→2025-06 (bull) | 1.6301 | min=1.5,s=60,e=120 | -0.4758 | -0.2038 | -2.92pp | -4.49pp |
+| W4 | 2024-07→2026-02 (bull) | 0.9651 | min=2.0,s=60,e=120 | +0.0411 | -0.1252 | +4.67pp | +5.81pp |
+
+### Aggregate
+
+- **Train-selected**: WFO 2/4 (50%) FAIL, mean d_Sharpe=-0.1561 FAIL
+- **Fixed (1.5/60/180)**: WFO 1/4 (25%) FAIL, mean d_Sharpe=-0.0116 FAIL
+- **Parameter stability**: STABLE (2 unique configs: min=2.0/1.5, both s=60, e=120)
+- **Fixed vs selected**: Fixed wins 3/4 windows (less aggressive decay = less damage)
+
+### Key findings
+
+1. **Same pattern as exp30 AND gate**: bear-only benefit. W1 (bear) is the only
+   clear win for both selected and fixed. Bull windows (W3/W4) lose Sharpe.
+2. **MDD improvement is real but comes at Sharpe cost**: Fixed config improves MDD
+   in 3/4 windows but loses Sharpe in 3/4. The MDD-Sharpe tradeoff is unfavorable OOS.
+3. **Tighter decay = more damage**: Selected configs (min=1.5-2.0, end=120) are more
+   aggressive than fixed (min=1.5, end=180). More aggressive decay → bigger Sharpe loss
+   in bull markets (W3: -0.4758 selected vs -0.2038 fixed).
+4. **Mechanism diagnosis**: In bull markets, tight trails cut winning trends prematurely.
+   The "trends age and mean-revert" premise is weaker in strong bull regimes where
+   mature trends continue profitably. This is the SAME fat-tail alpha concentration
+   constraint seen in X12-X19.
+5. **Hypothesis rejected**: maturity decay is NOT more temporally stable than the AND gate,
+   despite being structural rather than feature-based. Both suffer from the same
+   fundamental issue: any mechanism that shortens winning trades hurts in regimes
+   where trend continuation is the dominant alpha source.

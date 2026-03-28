@@ -1,6 +1,6 @@
 # Exp 43: Acceleration Gate + Maturity Decay Combination
 
-## Status: PENDING
+## Status: DONE
 
 ## Hypothesis
 Exp33 (accel gate) and exp38 (maturity decay) both PASS full-sample with
@@ -92,4 +92,54 @@ Also: how many entries pass BOTH gates? How many pass exp33 but not exp38
 - Results: x39/results/exp43_results.csv
 
 ## Result
-_(to be filled by experiment session)_
+
+### Baseline
+| Metric | Value |
+|--------|-------|
+| Sharpe | 1.3098 |
+| CAGR | 52.70% |
+| MDD | 41.01% |
+| Trades | 197 |
+
+### Reference singles
+| Config | Sharpe | d_Sharpe | CAGR% | d_CAGR | MDD% | d_MDD | Trades |
+|--------|--------|----------|-------|--------|------|-------|--------|
+| exp33_only (lb=12, ma=0.0) | 1.3419 | +0.0321 | 48.08 | -4.62 | 41.01 | 0.00 | 149 |
+| exp38_only (min=1.5, s=60, e=180) | 1.4596 | +0.1498 | 58.11 | +5.41 | 31.19 | -9.82 | 263 |
+
+### Combination configs
+| Config | Sharpe | d_Sharpe | CAGR% | MDD% | d_MDD | Trades | Additivity Ratio |
+|--------|--------|----------|-------|------|-------|--------|------------------|
+| combo_A (lb=12, min=1.5, s=60, e=180) | 1.4501 | +0.1403 | 49.75 | 37.41 | -3.60 | 177 | 0.771 [ADDITIVE] |
+| combo_B (lb=12, min=1.5, s=60, e=240) | 1.4199 | +0.1101 | 48.40 | 37.82 | -3.19 | 172 | 0.605 [PARTIAL] |
+| combo_C (lb=12, min=2.0, s=60, e=180) | 1.4047 | +0.0949 | 48.53 | 39.98 | -1.03 | 167 | 0.522 [PARTIAL] |
+| combo_D (lb=12, min=2.0, s=60, e=240) | 1.3576 | +0.0478 | 46.44 | 39.69 | -1.32 | 165 | 0.263 [REDUNDANT] |
+| combo_E (lb=6, min=1.5, s=60, e=180) | 1.3525 | +0.0427 | 45.76 | 35.83 | -5.18 | 185 | 0.235 [REDUNDANT] |
+| combo_F (lb=24, min=1.5, s=60, e=180) | 1.2325 | -0.0773 | 39.25 | 39.98 | -1.03 | 176 | -0.425 [REDUNDANT] |
+
+### Gate overlap
+- Base entry signals: 3,910
+- Pass accel gate (lb=12): 2,221
+- Blocked by accel gate: 1,689 (43.2%)
+- Maturity decay modifies EXIT, not entry — structurally independent
+
+### Additivity analysis
+- Sum of individual deltas: +0.1819 Sharpe
+- Best combo (A): +0.1403 → ratio 0.771 (near-additive for Sharpe)
+- CAGR: combo HURTS (all combos lose CAGR vs baseline; exp33 costs -4.62pp CAGR via trade suppression)
+- MDD: combo captures only 37% of exp38's MDD improvement (exp33 adds 0 MDD benefit, combo dilutes exp38)
+
+### Verdict: MARGINAL
+
+**Best combo (A) does NOT beat exp38-only.** Sharpe 1.4501 vs 1.4596 (-0.0095).
+exp38 alone dominates on ALL metrics: higher Sharpe, higher CAGR (+58.11% vs +49.75%),
+lower MDD (31.19% vs 37.41%).
+
+The accel gate (exp33) is **net-harmful** in combination:
+1. Blocks 43% of entries → kills CAGR (all combos lose 3-13pp CAGR vs baseline)
+2. Blocked entries include good trades → dilutes exp38's exit improvement
+3. Exposure drops from 40.3% (exp38) to 29.6% (combo_A) — severe under-investment
+
+**Conclusion**: exp38 (maturity decay) is the strictly better single mechanism.
+Adding exp33 (accel gate) is NOT additive in practice — the entry suppression
+destroys CAGR and dilutes MDD gains. Use exp38 alone.
