@@ -2,7 +2,7 @@
 
 **Topic ID**: X38-T-13
 **Opened**: 2026-03-22
-**Status**: OPEN
+**Status**: **CLOSED** (2026-03-28)
 **Origin**: Gap analysis — convergence algorithm chưa có topic riêng
 
 ## Scope
@@ -47,10 +47,29 @@ Topic 013 định nghĩa **thuật toán** xác định khi nào sessions đã h
 | 018 | SSE-09, SSE-04-THR | Scan-phase correction law + equivalence/anomaly thresholds routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 013 owns implementation; 018 provides context (confirmed). |
 | 008 | SSE-04-IDV | 013's equivalence thresholds (SSE-04-THR) must be compatible with 008's identity vocabulary (SSE-04-IDV) — both from SSE-D-04 contract. | 008 owns identity interface; 013 owns semantic rules. |
 
+## Closure note
+
+**CLOSED 2026-03-28** (6 rounds canonical + 12 rounds 3-agent JC-debate).
+4/4 issues resolved as Judgment call. Human researcher ratified 3-agent consensus.
+
+Key decisions:
+- CA-01: Hybrid C convergence framework (Kendall's W, multi-level categories,
+  convergence-side prerequisite semantics)
+- CA-02: Bootstrap defaults with 5-tier provenance model (ship provisional,
+  recalibrate after first offline campaign)
+- SSE-09: Holm at alpha_FWER=0.05, BH upgrade path contingent on Topic 017
+- SSE-04-THR: Freeze items 1-2 + methodology, defer numerics to 013x017 integration
+
+Unblocks: Topic 017 (epistemic search policy) — hard-dep on 013 NOW SATISFIED.
+
+See `final-resolution.md` for authoritative decisions.
+
 ## Files
 
 | File | Mục đích |
 |------|----------|
+| `final-resolution.md` | Authoritative closure document |
+| `judgment-call-decisions.md` | Binding input (ratified JC decisions) |
 | `findings-under-review.md` | 4 findings: F-30, F-31 + 2 from Topic 018 (SSE-09, SSE-04-THR) |
-| `claude_code/` | Phản biện từ Claude Code |
-| `codex/` | Phản biện từ Codex |
+| `claude_code/` | Phản biện từ Claude Code (6 rounds) |
+| `codex/` | Phản biện từ Codex (6 rounds + judgment-call-memo.md audit) |

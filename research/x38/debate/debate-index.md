@@ -2,7 +2,10 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-27 — Topic 018 CLOSED (6 rounds standard 2-agent. 10 Converged + 1 Judgment call.
+**Cập nhật**: 2026-03-28 — Topic 013 CLOSED (6 rounds canonical + 12 rounds JC-debate. 4 Judgment call.
+Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law,
+equivalence thresholds. Unblocks Topic 017).
+Previous: 2026-03-27 — Topic 018 CLOSED (6 rounds standard 2-agent. 10 Converged + 1 Judgment call.
 Downstream routing confirmed to 006/015/017/013/008/003).
 Previous: 2026-03-27 — Topic 008 CLOSED (8 rounds, 4/4 resolved: 4 Converged).
 Previous: 2026-03-26 — Topic 018 REOPENED (governance: 4-agent extra-canonical debate
@@ -34,14 +37,14 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-10 | Clean OOS & certification | 2026-03-22 | **CLOSED** (2026-03-25) | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) — 3 Converged + 1 Judgment call |
 | X38-T-11 | Deployment boundary | 2026-03-22 | OPEN | `011-deployment-boundary/` | F-26, F-27, F-28, F-29 (4) |
 | X38-T-12 | Quality assurance | 2026-03-22 | OPEN | `012-quality-assurance/` | F-18, F-19 (2) |
-| X38-T-13 | Convergence analysis | 2026-03-22 | OPEN | `013-convergence-analysis/` | CA-01, CA-02 + SSE-09, SSE-04-THR (4) |
+| X38-T-13 | Convergence analysis | 2026-03-22 | **CLOSED** (2026-03-28) | `013-convergence-analysis/` | CA-01, CA-02 + SSE-09, SSE-04-THR (4) — 4 Judgment call |
 | X38-T-14 | Execution & resilience | 2026-03-22 | OPEN | `014-execution-resilience/` | ER-01, ER-02 (2) |
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved → 11 decisions (OI-02 expands to D-02+D-03). 10 Converged + 1 Judgment call. 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
 
-**Totals**: 19 topics (7 CLOSED, 1 SPLIT, 11 OPEN). 58 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 19 topics (8 CLOSED, 1 SPLIT, 10 OPEN). 58 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **confirmed** (018 CLOSED 2026-03-27).
 
@@ -53,11 +56,11 @@ Wave 1:    007 (philosophy)              ← NỀN TẢNG, debate đầu tiên
 Wave 2:    018✅ (search-space expansion)  ← CLOSED (2026-03-27), routings confirmed to 6 downstream topics
            008✅, 009, 010✅, 011, 012    ← song song sau 007 (008: SSE-04-IDV confirmed, 018✅)
            001✅, 002✅, 005, 006          ← song song sau 007 (006: SSE-D-03 confirmed, 018✅)
-           013 (convergence)              ← song song, soft-dep 001✅ (SSE-09/04-THR confirmed, 018✅)
+           013✅ (convergence)             ← CLOSED (2026-03-28), unblocks 017 (SSE-09/04-THR confirmed, 018✅)
            015 (artifact/version)         ← song song, soft-dep 007✅, 008✅ (SSE-07/08/04-INV confirmed, 018✅)
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
-           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013 (SSE-08-CON/04-CELL confirmed, 018✅)
+           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013✅ (SSE-08-CON/04-CELL confirmed, 018✅) — ALL DEPS SATISFIED
                ↓
 Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
@@ -126,11 +129,11 @@ convergence notes liên quan — không lặp lại full text.
 002 (firewall) ← soft-dep from 007✅, 008✅ — CLOSED✅
 005 (core-engine) ← soft-dep from 007✅, 008✅
 006 (feature-engine) ← soft-dep from 007✅, 008✅
-013 (convergence) ← soft-dep from 007✅, 001✅
+013 (convergence) ← soft-dep from 007✅, 001✅ — CLOSED✅ (2026-03-28)
 015 (artifact/version) ← soft-dep from 007✅, 008✅
     ↓
 016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002✅ + 008✅ + 010✅ + 013; confirmed input: 018✅ (SSE-08-CON, SSE-04-CELL)
+017 (epistemic-SP)  ← HARD-dep from 002✅ + 008✅ + 010✅ + 013✅; confirmed input: 018✅ (SSE-08-CON, SSE-04-CELL) — ALL DEPS SATISFIED
     ↓
 003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017
 014 (execution) ← soft-dep from 003, 005

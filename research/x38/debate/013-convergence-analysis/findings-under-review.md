@@ -20,7 +20,7 @@
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-22
 - **opened_in_round**: 0
-- **current_status**: Open
+- **current_status**: Judgment call
 
 **Nội dung**:
 
@@ -76,6 +76,8 @@ Framework cần hỗ trợ partial convergence — không chỉ binary.
 - Convergence metric có cần asset-agnostic không? (BTC có ít families; equities
   có thể có hàng trăm)
 
+**Closed**: Round 6, 2026-03-28
+
 ---
 
 ## F-31: Stop conditions & diminishing returns detection
@@ -84,7 +86,7 @@ Framework cần hỗ trợ partial convergence — không chỉ binary.
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-22
 - **opened_in_round**: 0
-- **current_status**: Open
+- **current_status**: Judgment call
 
 **Nội dung**:
 
@@ -138,6 +140,8 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 - ε threshold cho diminishing returns: fixed hay relative?
 - Ai quyết định vượt trần: human only hay framework có thể suggest?
 
+**Closed**: Round 6, 2026-03-28
+
 ---
 
 ## Cross-topic tensions
@@ -152,10 +156,10 @@ MK-17 quy định: trên cùng dataset, empirical priors là shadow-only. Nghĩa
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
-| X38-CA-01 | Convergence measurement framework | Thiếu sót | Open |
-| X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Open |
-| X38-SSE-09 | Scan-phase correction law default (từ Topic 018) | Thiếu sót | Open |
-| X38-SSE-04-THR | Equivalence + anomaly thresholds (từ Topic 018) | Thiếu sót | Open |
+| X38-CA-01 | Convergence measurement framework | Thiếu sót | Judgment call |
+| X38-CA-02 | Stop conditions & diminishing returns | Thiếu sót | Judgment call |
+| X38-SSE-09 | Scan-phase correction law default (từ Topic 018) | Thiếu sót | Judgment call |
+| X38-SSE-04-THR | Equivalence + anomaly thresholds (từ Topic 018) | Thiếu sót | Judgment call |
 
 ---
 
@@ -174,7 +178,7 @@ Source: `debate/018-search-space-expansion/final-resolution.md` (authoritative).
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 0 (deferred from Topic 018, NEW-01 ChatGPT Pro)
-- **current_status**: Open
+- **current_status**: Judgment call
 
 **Nội dung**:
 
@@ -197,6 +201,8 @@ Topic 013 owns:
 - Should the default be conservative (Holm) or balanced (BH)?
 - How does correction interact with cell-elite's diversity preservation?
 
+**Closed**: Round 6, 2026-03-28
+
 ---
 
 ## SSE-D-04/05: Equivalence + anomaly thresholds
@@ -205,7 +211,7 @@ Topic 013 owns:
 - **classification**: Thiếu sót
 - **opened_at**: 2026-03-26
 - **opened_in_round**: 0 (deferred from Topic 018, SSE-D-04/05)
-- **current_status**: Open
+- **current_status**: Judgment call
 
 **Nội dung**:
 
@@ -226,3 +232,5 @@ Topic 013 owns:
 - ρ > 0.95 or ρ > 0.99 for behavioral equivalence?
 - How does the structural pre-bucket interact with 006's feature family taxonomy?
 - Are anomaly thresholds absolute or relative to cell population?
+
+**Closed**: Round 6, 2026-03-28

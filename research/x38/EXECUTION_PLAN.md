@@ -1,10 +1,10 @@
 # X38 Execution Plan
 
-**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (76 rounds done —
-topic 004, 007, 001, 002, 010, 008, 018 CLOSED; 11 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
+**Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (88 rounds done —
+topic 004, 007, 001, 002, 010, 008, 018, 013 CLOSED; 10 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
-**Cập nhật lần cuối**: 2026-03-27
+**Cập nhật lần cuối**: 2026-03-28
 
 ---
 
@@ -30,7 +30,8 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
 | Topic 018 | **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed to 006/015/017/013/008/003. Prior 4-agent debate (7 rounds, extra-canonical) served as input evidence. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
-| Debate rounds thực hiện | **76** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 018: 12 standard + 28 extra-canonical rounds not counted). 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
+| Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
+| Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 10 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
 | Specs drafted | SEEDED (3): `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures (§12-13 from 018); `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started. |
 | Specs published | ZERO |
 
@@ -51,11 +52,11 @@ Wave 1:    007 (philosophy)              ← CLOSED (2026-03-23)
 Wave 2:    018✅ (search-space expansion) ← CLOSED (2026-03-27, routings confirmed)
            008✅, 009, 010✅, 011, 012     ← song song
            001✅, 002✅, 005, 006          ← song song
-           013 (convergence)              ← song song, soft-dep 001✅
+           013✅ (convergence)             ← CLOSED (2026-03-28), unblocks 017
            015 (artifact/version)         ← song song, soft-dep 007✅, 008✅
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
-           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013
+           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013✅ — ALL DEPS SATISFIED
                ↓
 Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017
            014 (execution)               ← chờ 003 + 005
@@ -207,7 +208,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 | **002** | contamination-firewall | F-04 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Typed schema, state machine. 3 categories permanent (STOP_DISCIPLINE → ANTI_PATTERN), UNMAPPED governance |
 | **005** | core-engine | F-07 | 1 round | Rebuild vs vendor |
 | **006** | feature-engine | F-08 | 1 round | Registry pattern |
-| **013** | convergence-analysis | F-30, F-31 | 1-2 rounds | Convergence metrics, stop conditions |
+| **013** | convergence-analysis | CA-01, CA-02 + SSE-09, SSE-04-THR | ~~1-2 rounds~~ **CLOSED** (6+12 rounds) | Convergence metrics, stop conditions. 4/4 Judgment call. Unblocks 017. |
 | **015** | artifact-versioning | F-14, F-17 | 1-2 rounds | State pack, semantic change |
 
 > **Note**: 11 topics CÓ THỂ debate song song. Dependencies giữa chúng là
@@ -236,7 +237,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - Key: Epistemic search policy — intra-campaign illumination, phenotype/structural
   prior contracts, promotion ladder, budget governor
 - Ước lượng: 2-3 rounds
-- Phụ thuộc: 002✅ + 008✅ + 010✅ + 013 (3/4 satisfied)
+- Phụ thuộc: 002✅ + 008✅ + 010✅ + 013✅ (4/4 satisfied — ALL DEPS MET)
 - **Phải close TRƯỚC 003**: cell-elite archive, descriptor tagging, và
   epistemic_delta.json ảnh hưởng protocol pipeline stage design.
 - 016 và 017 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
@@ -279,7 +280,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 | 1 | `meta_spec.md` | 002 + 004 + 007 + 008✅ | 1-2 sessions | 3-tier taxonomy, lifecycle, challenge/expiry, storage, firewall content rules |
 | 2 | `engine_spec.md` | 005 + 008✅ | 1 session | Core backtest types, data, engine, cost, metrics, audit |
 | 3 | `feature_spec.md` | 006 + 008✅ | 1 session | Feature registry, families, calibration, scan strategy |
-| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008✅ + 009 + 010 + 011 + **013** + **016** + **017** + **018**✅ | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)**, **breadth-expansion contract, discovery pipeline routing** |
+| 4 | `architecture_spec.md` | 001 + 002 + 004 + 007 + 008✅ + 009 + 010 + 011 + **013**✅ + **016** + **017** + **018**✅ | 2-3 sessions | Campaign model, session lifecycle, directory, data, immutability, Clean OOS, firewall enforcement, deployment boundary, **convergence analysis**, **bounded recalibration path**, **epistemic search policy (phenotype contracts, promotion ladder)**, **breadth-expansion contract, discovery pipeline routing** |
 | 5 | `protocol_spec.md` | 003 + 012 + **014** + **015** + **017** | 2 sessions | 8-stage pipeline, gating, freeze, **artifacts, change classification**, deliverable templates, quality gates, **execution model, checkpointing**, **cell-elite archive, epistemic_delta.json** |
 | 6 | `discovery_spec.md` | 018✅ | 1 session | Bounded ideation, recognition stack, APE v1, domain-seed hook, hybrid equivalence |
 

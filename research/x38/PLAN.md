@@ -775,11 +775,11 @@ Vai trò kép:
 | 010 | Clean OOS & certification | F-12, F-21, F-23, F-24 | **CLOSED** (2026-03-25) |
 | 011 | Deployment boundary | F-26, F-27, F-28, F-29 | **OPEN** (2026-03-22, Wave 2) |
 | 012 | Quality assurance | F-18, F-19 | **OPEN** (2026-03-22, Wave 2) |
-| 013 | Convergence analysis | F-30, F-31 | **OPEN** (2026-03-22, Wave 2) |
+| 013 | Convergence analysis | F-30, F-31 + SSE-09, SSE-04-THR | **CLOSED** (2026-03-28) |
 | 014 | Execution & resilience | F-32, F-33 | **OPEN** (2026-03-22, Wave 3 — chờ 003+005) |
 | 015 | Artifact & version management | F-14, F-17 | **OPEN** (2026-03-22, Wave 2) |
 | 016 | Bounded recalibration path | BR-01, BR-02 | **OPEN** (2026-03-23, Wave 2.5 — chờ 001+002+010+011+015) |
-| 017 | Epistemic search policy | ESP-01, ESP-02, ESP-03, ESP-04 | **OPEN** (2026-03-24, Wave 2.5 — chờ 002+008+010+013) |
+| 017 | Epistemic search policy | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL | **OPEN** (2026-03-24, Wave 2.5 — deps satisfied: 002✅+008✅+010✅+013✅) |
 
 **Dependencies** (synced with `debate/debate-index.md`):
 
@@ -1008,6 +1008,10 @@ mới mà không sửa pipeline.
 ### 013 — Convergence Analysis
 
 > **Source of truth**: `debate/013-convergence-analysis/`
+
+> Topic 013 CLOSED 2026-03-28 (6 rounds canonical + 12 rounds JC-debate). Hybrid C convergence framework,
+> bootstrap defaults with 5-tier provenance, Holm correction law,
+> equivalence thresholds. Unblocks Topic 017.
 
 **Câu hỏi**: Framework toán học/thống kê nào để đo convergence giữa N sessions
 và xác định stop conditions?

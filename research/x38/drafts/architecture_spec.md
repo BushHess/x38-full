@@ -1,8 +1,8 @@
 # Architecture Spec — Draft
 
-**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010, 018 closures — 018 §12-13 added 2026-03-27)
-**Last updated**: 2026-03-27
-**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 009 + 011 + 013 + 016 + 017
+**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010, 013, 018 closures — 013 §9 added 2026-03-28)
+**Last updated**: 2026-03-28
+**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 013(CLOSED) + 009 + 011 + 016 + 017
 **Publishable when**: ALL dependencies CLOSED
 
 ---
@@ -480,10 +480,76 @@ _Stub._
 
 ## 9. Convergence Analysis
 
-> Pending: Topic 013 (convergence analysis)
-> Cross-ref: §1.2 metric scopes (from Topic 001)
+> Source: `debate/013-convergence-analysis/final-resolution.md`
+> Cross-ref: §1.2 metric scopes (from Topic 001), §12.1 field 5 scan_phase_correction_method (from Topic 018)
 
-_Stub._
+### 9.1 Scan-Phase Correction Law (X38-SSE-09 -> final-resolution.md Decision 3)
+
+**v1 operational default**: Holm (step-down) procedure at alpha_FWER = 0.05.
+
+- **Holm alpha_FWER = 0.05**: Conservative family-wise error rate. One false discovery
+  can redirect an entire cell's probe budget, so family-wise control is appropriate.
+- **BH q_FDR = 0.10**: Documented upgrade path. Activated only after Topic 017 closes
+  the required proof-consumption guarantee. Until then, BH is NOT a v1 default.
+- **Provenance**: Fixed conventional v1 constants, not x38-derived calibration.
+
+**Correction -> cell-elite ordering**: Correction precedes diversity preservation.
+Holm filters at scan-phase entry (Stage 4); cell-elite diversity operates on
+post-correction survivors within cells. Ordering: scan -> correct -> admit to cell ->
+within-cell competition -> diversity preservation.
+
+**Clarification**: alpha_FWER = 0.05 does NOT numerically "align" with per-test
+alpha = 0.10 -- they are different error-control layers.
+
+### 9.2 Equivalence Thresholds (X38-SSE-04-THR -> final-resolution.md Decision 4)
+
+**Behavioral equivalence** (FROZEN):
+- rho > 0.95 paired-return correlation cutoff (conventional v1 choice).
+- Does NOT claim variance-decomposition justification.
+- Placed above E5 cross-timescale rho ~ 0.92 (timescale variants should remain distinct).
+
+**Structural hash granularity** (FROZEN, design-contract level):
+- Minimum invariance surface: invariant with whitespace, comments, import order.
+- Bucket by: structure of signal-generation logic (entry + exit) + sorted parameter
+  schema (names + types).
+- Exclude: parameter values from hash bucket.
+- Behavioral audit handles cross-bucket functional equivalence.
+- Compatible with Topic 008 (interface + structural pre-bucket fields, §2.3) and
+  Topic 018 (AST-hash subset as hybrid method component, §12.1 field 3).
+- Exact normalization algebra: implementation-defined for v1.
+
+### 9.3 Robustness Bundle Minimum Requirements (SSE-04-THR items 3a/3b)
+
+**Ownership** (FROZEN): Topic 013 owns "what 'minimum' means numerically."
+
+**Exact numerics** (DEFERRED): structurally blocked by circular dependency with
+Topic 017. 013 needs 017's consumption framework to set meaningful floors; 017
+needs 013's production to set passing criteria.
+
+Upstream input: Topic 018's working minimum inventory (5 proof components, 5 anomaly
+axes) at judgment-call authority -- working handoff, not authoritative numeric law.
+
+**Item 3b — Consumption sufficiency**: shared 013x017 surface. DEFERRED.
+
+### 9.4 Anomaly Axis Thresholds (SSE-04-THR item 4)
+
+**Methodology** (FROZEN): hybrid relative/absolute approach with sparsity guard for
+small cell populations. Thresholds are relative to cell population but fall back to
+absolute minimums below a population-size floor.
+
+**Exact per-axis numerics** (DEFERRED): owned by Topic 017. Resolve in 013x017
+integration.
+
+### 9.5 Cross-Topic Interfaces
+
+| Interface | Owner | 013 provides/consumes |
+|---|---|---|
+| Convergence-state + stall output | 013 (provides) | Consumed by 003 (stop logic), 010 (winner predicate), 001 (HANDOFF triggers) |
+| Stop thresholds + ceiling | 013 (provides) | Consumed by 001 (bounded scope) |
+| Scan-phase correction (field 5) | 013 (provides) | Consumed by 003 (breadth-activation gate) |
+| Proof-consumption guarantee | 017 (provides) | 013 consumes: BH upgrade activation |
+| Coverage floor -> stop interaction | 013x017 (noted) | Cross-topic tension, no action now |
+| Feature family taxonomy | 006 (provides) | 013 consumes: hash pre-bucket compatibility (deferred) |
 
 ---
 
@@ -499,7 +565,7 @@ _Stub._
 ## 11. Epistemic Search Policy
 
 > Pending: Topic 017 (epistemic search policy)
-> Cross-ref: §9 convergence analysis (coverage metrics overlap), §7 firewall (reconstruction-risk gate), §1.2 metric scopes (V1 third scope stays narrow)
+> Cross-ref: §9 convergence analysis (CLOSED — coverage metrics overlap, scan-phase correction), §7 firewall (reconstruction-risk gate), §1.2 metric scopes (V1 third scope stays narrow)
 > Note: Topic 004 C3 (converged) established "Budget split = v2+ design. V1: all search is frontier." ESP builds on this foundation.
 
 _Stub — to be filled after Topic 017 closure. Key sections:_
@@ -596,4 +662,9 @@ New discovery topic only if downstream closure reports reveal an explicit unreso
 | §3.3 Checksum Contract | X38-D-09 | `debate/008-architecture-identity/final-resolution.md` §Decision 2 |
 | §12.1 7-Field Interface Contract | SSE-D-04 | `debate/018-search-space-expansion/final-resolution.md` Decision 3 |
 | §12.2 Breadth-Activation Blocker | SSE-D-04 | `debate/018-search-space-expansion/final-resolution.md` Decision 3 |
+| §9.1 Scan-Phase Correction Law | X38-SSE-09 | `debate/013-convergence-analysis/final-resolution.md` Decision 3 |
+| §9.2 Equivalence Thresholds | X38-SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` Decision 4 |
+| §9.3 Robustness Bundle Minimums | X38-SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` Decision 4 |
+| §9.4 Anomaly Axis Thresholds | X38-SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` Decision 4 |
+| §9.5 Cross-Topic Interfaces | X38-CA-01/CA-02/SSE-09/SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` |
 | §13.1 Discovery Pipeline Routing | SSE-D-01 | `debate/018-search-space-expansion/final-resolution.md` Decision 1 |
