@@ -66,3 +66,6 @@ No strict order required, but suggested grouping:
 5. Category E (ensembles): exp17-18 — depends on knowing individual system performance
 6. Category J (entry logic): exp32-35 — new entry mechanics (pullback, accel, compression, D1 slope)
 7. Category K (regime adapt): exp36-39 — adaptive parameters (trail split, EMA period, maturity, dual-clock)
+8. Category L (WFO validation): exp40-42 — temporal robustness of exp33/34/38 winners (PRIORITY)
+9. Category M (combos): exp43-45 — stack proven entry + exit mechanisms
+10. Category N (next-gen): exp46-47 — regime-adaptive decay, continuous trail sizing

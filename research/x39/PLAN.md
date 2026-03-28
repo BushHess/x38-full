@@ -28,7 +28,7 @@ E5-ema21D1: Sharpe 1.4545, CAGR 61.60%, MDD 40.97%, 188 trades, 50 bps RT.
 
 ## Experiments
 
-39 experiments in 11 categories. Each is self-contained with its own spec file.
+47 experiments in 14 categories. Each is self-contained with its own spec file.
 Run ONE experiment per session. Each session reads its spec, runs the test,
 writes results back to the spec file.
 
@@ -73,6 +73,14 @@ writes results back to the spec file.
 | 37 | K-regime   | Adaptive EMA slow period | specs/exp37_adaptive_ema_period.md |
 | 38 | K-regime   | Trend maturity trail decay | specs/exp38_trend_maturity_decay.md |
 | 39 | K-regime   | Dual-clock EMA entry | specs/exp39_dual_clock_entry.md |
+| 40 | L-wfo      | Maturity decay walk-forward | specs/exp40_maturity_decay_wfo.md |
+| 41 | L-wfo      | Accel gate walk-forward | specs/exp41_accel_gate_wfo.md |
+| 42 | L-wfo      | Vol compression walk-forward | specs/exp42_vol_compression_wfo.md |
+| 43 | M-combo    | Accel gate + maturity decay | specs/exp43_accel_maturity_combo.md |
+| 44 | M-combo    | Compression + maturity decay | specs/exp44_compression_maturity_combo.md |
+| 45 | M-combo    | Triple stack (accel+comp+decay) | specs/exp45_triple_stack.md |
+| 46 | N-next     | Regime-adaptive maturity decay | specs/exp46_regime_adaptive_decay.md |
+| 47 | N-next     | Accel-weighted initial trail | specs/exp47_accel_weighted_trail.md |
 
 ## How to run
 
@@ -134,3 +142,11 @@ Each spec file contains everything needed to execute the experiment:
 | 37 | Adaptive EMA period | — | — | — | — | — | — |
 | 38 | Trend maturity decay | PASS | +0.150 | +5.41 | -9.82 | 263 | min=1.5/start=60/end=180 |
 | 39 | Dual-clock entry | — | — | — | — | — | — |
+| 40 | Maturity decay WFO | — | — | — | — | — | — |
+| 41 | Accel gate WFO | — | — | — | — | — | — |
+| 42 | Vol compression WFO | — | — | — | — | — | — |
+| 43 | Accel + maturity combo | — | — | — | — | — | — |
+| 44 | Compression + maturity | — | — | — | — | — | — |
+| 45 | Triple stack | — | — | — | — | — | — |
+| 46 | Regime-adaptive decay | — | — | — | — | — | — |
+| 47 | Accel-weighted trail | — | — | — | — | — | — |
