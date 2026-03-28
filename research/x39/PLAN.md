@@ -132,5 +132,5 @@ Each spec file contains everything needed to execute the experiment:
 | 35 | D1 EMA slope | — | — | — | — | — | — |
 | 36 | Regime-split trail | — | — | — | — | — | — |
 | 37 | Adaptive EMA period | — | — | — | — | — | — |
-| 38 | Trend maturity decay | — | — | — | — | — | — |
+| 38 | Trend maturity decay | PASS | +0.150 | +5.41 | -9.82 | 263 | min=1.5/start=60/end=180 |
 | 39 | Dual-clock entry | — | — | — | — | — | — |
