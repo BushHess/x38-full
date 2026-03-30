@@ -27,6 +27,8 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
   + Topic 016 (bounded recalibration — phải CLOSED trước 003)
   + Topic 017 (epistemic search policy — cell-elite archive, descriptor tagging,
     epistemic_delta.json ảnh hưởng pipeline stage design; phải CLOSED trước 003)
+  + Topic 019 (discovery feedback loop — may add human checkpoints or AI analysis
+    hooks to pipeline stages; phải CLOSED trước 003)
 - **Downstream**: Topic 014 (execution — cần biết stages trước khi define execution),
   Specs (protocol_spec.md)
 - **CRITICAL**: Đây là topic tích hợp — debate SAU CÙNG trong Wave 3
@@ -50,6 +52,7 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 | 007 | D-25 | F-25 regime-aware policy: internal conditional logic ALLOWED; external classifiers, post-freeze switching FORBIDDEN. Specific ablation gate thresholds for testing regime-aware structures deferred to 003. | 007 CLOSED; 003 owns ablation gate thresholds |
 | 017 | ESP-01 | Cell-elite archive replaces Stage 4 global pruning. Descriptor tagging adds Stage 3 output. epistemic_delta.json adds Stage 8 mandatory output. Local probes change Stage 5 search strategy. | 003 owns pipeline structure; 017 defines ESP component contracts. 017 must CLOSE before 003 debate. |
 | 018 | SSE-D-04 | Breadth-activation blocker at `protocol_lock` — protocol must declare all 7 fields before activation. Routed from Topic 018 (CLOSED 2026-03-27). Stage 3 scan-phase multiple-testing routed via SSE-D-09→013. | 003 owns protocol gate; 018 provides 7-field contract (confirmed). |
+| 019 | DFL-01/03 | Discovery loop may add human-feedback checkpoints or AI analysis hooks between/after pipeline stages. Report interface (DFL-02) may produce artifacts alongside pipeline outputs. | 003 owns pipeline structure; 019 defines interaction contracts. 019 must CLOSE before 003 debate. |
 
 ## Files
 

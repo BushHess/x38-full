@@ -1100,16 +1100,16 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 
 ## Phần 6 — Status & Logistics
 
-### Current Status (cập nhật 2026-03-27)
+### Current Status (cập nhật 2026-03-29)
 
 | Phase | Status | Mô tả |
 |-------|--------|-------|
 | Design brief | DONE | `docs/design_brief.md` |
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
-| Debate topics defined | DONE | 19 topics (000 SPLIT + 004/007/001/002/010/008/018 CLOSED + 11 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 58 findings distributed across 17 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
-| Debate execution | IN PROGRESS | 7 topics CLOSED: 004, 007, 001, 002, 010, 008, 018. 76 debate rounds done. 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
+| Debate topics defined | DONE | 20 topics (000 SPLIT + 004/007/001/002/010/008/018/013 CLOSED + 11 OPEN). Xem `debate/debate-index.md`. |
+| Debate findings collected | DONE | 63 findings distributed across 18 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
+| Debate execution | IN PROGRESS | 8 topics CLOSED: 004, 007, 001, 002, 010, 008, 018, 013. 88 debate rounds done. 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
 | Drafts | SEEDED (3) | `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures; `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
@@ -1121,22 +1121,30 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 **Topic SPLIT**:
 - **000** (framework architecture): SPLIT (2026-03-22) — 29 findings phân bổ vào 11 sub-topics. File `debate/000-framework-proposal/findings-under-review.md` giữ lại index + convergence notes C-01→C-12.
 
-**Topics CLOSED** (7):
+**Topics CLOSED** (8):
 - **004** (meta-knowledge): CLOSED (2026-03-21). 6 rounds, 23/23 resolved. Xem `debate/004-meta-knowledge/final-resolution.md`.
 - **007** (philosophy-mission): CLOSED (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`.
 - **001** (campaign-model): CLOSED (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`.
 - **002** (contamination-firewall): CLOSED (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`.
 - **010** (clean-oos-certification): CLOSED (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`.
 - **008** (architecture-identity): CLOSED (2026-03-27). 8 rounds, 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`.
-
-- **018** (search-space-expansion): **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed. Xem `debate/018-search-space-expansion/final-resolution.md`.
+- **018** (search-space-expansion): CLOSED (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed. Xem `debate/018-search-space-expansion/final-resolution.md`.
+- **013** (convergence-analysis): CLOSED (2026-03-28). 6+12 rounds, 4/4 Judgment call. Hybrid C convergence framework. Unblocks 017. Xem `debate/013-convergence-analysis/final-resolution.md`.
 
 **Topics OPEN** (11 topics, 3 waves):
-- **Wave 2** (7 topics song song): 005, 006, 009, 011, 012, 013, 015
-- **Wave 2.5** (2 topics song song): 016 (bounded-recalibration) — chờ 001(closed) + 002(closed) + 010(closed) + 011 + 015; 017 (epistemic-search-policy) — chờ 002(closed) + 008(closed) + 010(closed) + 013
-- **Wave 3**: 003 (protocol-engine) — chờ 001(closed) + 002(closed) + 004(closed) + 015 + 016 + 017; 014 (execution) — chờ 003 + 005
+- **Wave 2** (6 topics song song): 005, 006, 009, 011, 012, 015
+- **Wave 2.5** (3 topics song song): 016 (bounded-recalibration) — chờ 001✅ + 002✅ + 010✅ + 011 + 015; 017 (epistemic-search-policy) — chờ 002✅ + 008✅ + 010✅ + 013✅ — ALL DEPS SATISFIED; 019 (discovery-feedback-loop) — chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED
+- **Wave 3**: 003 (protocol-engine) — chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017 + 019; 014 (execution) — chờ 003 + 005
 
-**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 7 remaining Wave 2 topics song song (001/002/008/010 CLOSED) → 016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
+> **Topic 019 OPENED 2026-03-29** — Discovery feedback loop. Gap identified during
+> Topic 018 closure audit: framework designed validation infrastructure but missed
+> the discovery mechanism. 100% of project alpha came from human intuition informed
+> by data analysis, not grammar enumeration. Topic 019 designs the Human-AI
+> collaborative loop: AI analysis layer (data + results), human-facing reporting,
+> feedback capture, contamination boundary, deliberation-gated code authoring.
+> 5 findings (DFL-01→DFL-05). Wave 2.5, all deps satisfied, song song với 017.
+
+**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017 + 019 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
 
 ### Execution Plan
 
