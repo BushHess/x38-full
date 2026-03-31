@@ -4,7 +4,8 @@
 **Opened**: 2026-03-22 (activated from PLANNED)
 **Author**: claude_code (architect)
 
-1 finding về feature engine design.
+2 findings về feature engine design.
+F-38 added 2026-03-31 (gap audit).
 
 ---
 
@@ -69,18 +70,70 @@ Serialization: stage1_registry.parquet (typed, compact cho 50K+ rows).
 
 ---
 
+## F-38: Feature family ontology — definition and extension mechanism
+
+- **issue_id**: X38-D-38
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0 (gap audit)
+- **current_status**: Open
+
+**Chẩn đoán**:
+
+F-08 lists 6 feature families (trend, volatility, location, flow, structure,
+cross_tf) nhưng không define:
+
+1. **Thế nào là "family"?** — taxonomy criteria. Hai features thuộc cùng family
+   khi nào? Chia theo mechanism (momentum vs mean-reversion), data source
+   (price vs volume), timeframe, hay computation type?
+
+2. **Ai define family mới?** — Extension mechanism. Khi human researcher propose
+   feature mới không fit existing 6 families (e.g., on-chain metrics nếu mở rộng
+   sang crypto), protocol nào để thêm family?
+
+3. **Family ↔ Convergence**: Topic 013 (convergence analysis) dùng "family-level
+   convergence" (V4→V8 "hội tụ ở cấp family: D1 slow signals"). Nhưng nếu family
+   definition không formal, convergence measurement bị ambiguous — hai agents có
+   thể classify cùng feature vào families khác nhau.
+
+4. **Family ↔ ESP cell-axis**: Topic 017 ESP-01 proposes `mechanism_family` as
+   cell axis cho cell-elite archive. Cell axis cần categorical values — nhưng
+   F-08 families ≠ mechanism families (e.g., "trend" family includes both
+   momentum AND trend-following, which are different mechanisms).
+
+**Câu hỏi cần debate**:
+
+| Position | Mô tả | Tradeoff |
+|----------|--------|----------|
+| A: Fixed taxonomy (6 families) | Freeze current 6 families. No extension mechanism. New features must fit existing families | Simple, deterministic. But constrains search space for non-OHLCV assets |
+| B: Extensible taxonomy with governance | 6 families as v1 default. Extension via protocol-level proposal (pre-Stage 1, human-approved, provenance-tracked) | Flexible, but extension = protocol change → new campaign (per D-16) |
+| C: Flat registry, no families | Features individually tagged with descriptors (per ESP-01). "Family" is a derived grouping, not a structural category | Maximum flexibility, but no grouping for convergence analysis |
+
+**Evidence**:
+- F-08: 6 families listed without formal definition criteria
+- Topic 013 CA-01: "family-level convergence" — requires formal family definition
+- Topic 017 ESP-01: `mechanism_family` as cell axis — requires categorical values
+- CONVERGENCE_STATUS_V3.md [extra-archive]: "hội tụ ở cấp family (D1 slow)" — but
+  "D1 slow" is not one of F-08's families, it's an ad hoc grouping
+- F-36 (Topic 003): multi-asset pipeline → different assets may need different
+  family taxonomies
+
+---
+
 ## Cross-topic tensions
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 017 | ESP-01, ESP-02 | Phenotype descriptor taxonomy (017) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. Must not conflict. |
 | 018 | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed`. Routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 006 owns registry acceptance rules; 018 provides generation mode contract (confirmed). |
+| 019 | DFL-08 (Stage 4) | Feature candidate graduation path feeds discovery loop features into F-08 registry with `source: discovery_loop` + provenance chain. Registry must accept this new source type alongside grammar-generated features. | 006 owns registry schema; 019 defines discovery-to-registry interface (DFL-08). |
 
 ## Bảng tổng hợp
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
 | X38-D-08 | Feature engine — registry pattern | Thiếu sót | Open |
+| X38-D-38 | Feature family ontology — definition and extension | Thiếu sót | Open |
 | X38-SSE-D-03 | Registry acceptance for auto-generated features (từ Topic 018) | Thiếu sót | Open |
 
 ---

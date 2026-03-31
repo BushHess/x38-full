@@ -36,12 +36,15 @@ Tier 1 (deps on Tier 0, DONE):
 
 Tier 2 (deps on Tier 0+1):
   03-identity-versioning   depends_on: [01, 02, 04]
-  11-engine-design         depends_on: [01]  ← 005+014 merged, self-contained
+  11-engine-design         depends_on: [01], soft_depends_on: [10-protocol-engine]
+                           ← 005+014 merged. Engine API (005) self-contained.
+                             Execution orchestration (014) may need revision
+                             after protocol stages (010) finalize.
   12-feature-engine        depends_on: [08]
   13-data-integrity        depends_on: [01]
 
 Tier 3 (cross-cutting):
-  16-bounded-recalibration depends_on: [02, 04, 06, 03]
+  16-bounded-recalibration depends_on: [02, 04, 06, 03, 14-deployment]
   17-epistemic-search      depends_on: [04, 06, 07]
 
 Tier 4 (integration):
@@ -153,9 +156,51 @@ Domain 10-protocol-engine (old Topic 003) gets a dedicated `## Constraints Regis
 
 ---
 
+## Solution 5: Reopening Protocol
+
+### Principle
+A DECIDED or INTEGRATED finding may need to reopen when new evidence
+contradicts it, a downstream domain discovers an incompatibility, or
+a circular dependency resolution invalidates prior assumptions.
+
+### Conditions for reopening
+
+A finding MAY be reopened if ANY of:
+1. **New evidence**: a completed analysis (DFL-06/07) produces results
+   that contradict the finding's rationale
+2. **Downstream conflict**: a consuming domain discovers the finding
+   creates an unresolvable contradiction with another DECIDED finding
+3. **Circular resolution**: a joint session (Solution 2) produces a
+   result incompatible with the finding
+
+A finding MUST NOT be reopened merely because:
+- An agent disagrees with the decision (debate is closed)
+- A new team member would have decided differently (respect prior work)
+
+### Reopening workflow
+
+1. **Request**: Human researcher files reopening request with: finding ID,
+   reason, new evidence, impact assessment
+2. **Impact analysis**: List all downstream consumers (domain constraints,
+   spec sections) that would be affected
+3. **Status rollback**:
+   - Finding: DECIDED → OPEN (or INTEGRATED → DECIDED if only
+     cross-domain verification is needed)
+   - Domain status: may regress (INTEGRATED → DECIDED or DECIDED → ACTIVE)
+   - Downstream domains: affected constraint entries marked UNVERIFIED
+   - Spec sections: affected provenance tags marked REOPENED
+4. **Re-debate**: Finding re-enters `## Open` section of its domain file
+5. **Re-closure**: Normal closure workflow (Solution 3) applies
+
+### Impact on 09-open-questions.md
+
+Reopening events tracked in `## Integration Log` with type: REOPENED.
+
+---
+
 ## Verify Checklist
 
-- [ ] Ordering DAG documented with depends_on/blocks for all ~12 domains
+- [ ] Ordering DAG documented with depends_on/blocks for all ~17 domains
 - [ ] No domain has OPEN findings while its depends_on domains have OPEN findings
 - [ ] C-01 resolved: engine-design is Tier 2, not prematurely scheduled
 - [ ] C-02 resolved: 016/017 have explicit activation triggers

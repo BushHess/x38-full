@@ -31,7 +31,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 018 | **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed to 006/015/017/013/008/003. Prior 4-agent debate (7 rounds, extra-canonical) served as input evidence. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
 | Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
-| Topic 019 | **OPEN** (2026-03-29). Discovery feedback loop. Wave 2.5. 5 findings (DFL-01→DFL-05). Human-AI collaborative discovery loop — analysis layer (results + raw data), reporting, human feedback, contamination boundary, deliberation-gated code authoring. All deps satisfied (018✅, 002✅, 004✅). Song song 017. |
+| Topic 019 | **OPEN** (2026-03-29). Discovery feedback loop. Wave 2.5. 10 findings (DFL-01→DFL-10). Human-AI collaborative discovery loop — analysis layer, reporting, human feedback, contamination boundary, deliberation-gated code authoring, raw data exploration (06/07), feature graduation path (08), SSE-D-02 scope clarification (09), pipeline integration (10: Stage 2.5 Data Characterization). All deps satisfied (018✅, 002✅, 004✅). Song song 017. |
 | Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
 | Specs drafted | SEEDED (3): `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures (§12-13 from 018); `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started. |
 | Specs published | ZERO |
@@ -245,10 +245,11 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - 016, 017, và 019 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
 
 **Topic 019** — `019-discovery-feedback-loop/`
-- Findings: DFL-01, DFL-02, DFL-03, DFL-04, DFL-05 (5 findings)
+- Findings: DFL-01→DFL-10 (10 findings)
 - Key: Human-AI collaborative discovery loop — AI result analysis (data + results),
   human-facing reporting, human feedback capture, contamination boundary,
-  deliberation-gated code authoring
+  deliberation-gated code authoring, raw data exploration (06/07), feature
+  graduation path (08), SSE-D-02 scope clarification (09)
 - Ước lượng: 2-3 rounds
 - Phụ thuộc: 018✅ + 002✅ + 004✅ (3/3 satisfied — ALL DEPS MET)
 - **Phải close TRƯỚC 003**: discovery loop may add protocol interaction points

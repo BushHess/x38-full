@@ -140,7 +140,12 @@ Where DOMAIN is a 2-4 letter code for the concept domain (not the topic number):
 | `EXE` | Execution & resilience |
 | `RCL` | Bounded recalibration |
 | `ESP` | Epistemic search policy |
-| `ART` | Artifact & versioning |
+| `DFL` | Discovery feedback loop |
+
+> **Note**: `ART` (Artifact & versioning) removed — absorbed into `IDV`.
+> `DEP` (Deployment) owns only F-26/F-27 (monitoring, boundary definition).
+> F-28/F-29 (versioning) use `IDV` code, not `DEP`.
+> `DFL` added for Topic 019 findings (DFL-01 through DFL-10).
 
 ### Migration: Create mapping table from old IDs to new IDs during extraction.
 
@@ -166,8 +171,8 @@ Items that fail these criteria become:
 
 ## Verify Checklist
 
-- [ ] All 65 existing findings reclassified with new 5-type system
-- [ ] All 17 former JCs have correct new type + rationale
+- [ ] All ~164 existing findings reclassified with new 5-type system
+- [ ] All 23+ former JCs have correct new type + rationale
 - [ ] All routed findings marked CONSTRAINT (not OPEN)
 - [ ] All finding IDs migrated to X38-{DOMAIN}-{NN} format
 - [ ] Old-to-new ID mapping table complete

@@ -17,7 +17,12 @@ Additionally:
 
 ---
 
-## Solution: Reorganize from 19 topics to 9 concept domains
+## Solution: Reorganize from 19 topics to 17 concept domain files
+
+> 8 consolidated domains (closed topics merged by concept) + 1 tracking file +
+> 8 domain files for open topics. Consolidation happens for closed topics where
+> multi-topic overlap was the problem. Open topics remain ~1:1 because their
+> findings are not yet decided and may shift during debate.
 
 ### New structure
 

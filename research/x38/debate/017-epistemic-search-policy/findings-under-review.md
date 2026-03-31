@@ -361,6 +361,48 @@ Budget governor v1:
 | 016 | BR-01 | ESP MUST NOT suggest parameter directions — that would be answer-level influence, incompatible with firewall (C-12). ESP treats recalibrated algo as new phenotype entry. | Explicit scope exclusion in 017. |
 | 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values/anomaly thresholds routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 017 owns consumption/values; 018 provides architectural context (confirmed). |
 
+---
+
+## 013↔017 Circular Dependency — Resolution Strategy
+
+> **Added 2026-03-31 (gap audit)**. This is NOT a finding — it is a structural
+> note documenting how the circular dependency between Topics 013 and 017 must
+> be resolved before either topic's deferred numerics can be finalized.
+
+**The circle**:
+- Topic 013 (CLOSED) deferred item 3a numerics (robustness bundle minimum),
+  3b (consumption sufficiency), and item 4 (anomaly numerics) because they
+  need Topic 017's consumption framework.
+- Topic 017 (OPEN) needs Topic 013's production metrics to define what
+  constitutes "passing" proof.
+
+**Resolution approach**: Topic 017 debate MUST explicitly address the 013-deferred
+items as **INTERFACE CONTRACTS** — defining:
+
+1. **What 013 produces** (production schema): robustness bundle format, anomaly
+   score format, equivalence metric format. These are already partially defined
+   in 013's final-resolution (structural part frozen).
+
+2. **What 017 consumes** (consumption contract): minimum proof components,
+   passing criteria, cell-elite admission thresholds. This is what 017 must
+   freeze.
+
+3. **Joint reconciliation**: After 017 closes, 013's deferred numerics (3a, 3b,
+   item 4) become resolvable. These must be **explicitly resolved** as a
+   post-017 integration step — NOT silently assumed "done" by 017 closure.
+   Recommended: create a mini-integration finding in Topic 003 (protocol engine)
+   that consumes both 013 and 017 outputs.
+
+4. **BH upgrade path**: 013 froze Holm as v1 default, BH contingent on 017's
+   proof-consumption guarantee. 017 must explicitly state whether it provides
+   this guarantee or BH remains unavailable.
+
+**Who owns this**: Topic 017 debate is the place to break the cycle. Topic 003
+(Wave 3) is the integration point. After 017 closes:
+- 013 deferred items become resolvable
+- 003 performs final integration
+- Specs (architecture_spec, methodology_spec) receive reconciled numerics
+
 ## Bảng tổng hợp
 
 | Issue ID | Finding | Phân loại | Status |

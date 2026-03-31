@@ -132,7 +132,42 @@ Tier 4: PLAN.md
 2. `docs/online_vs_offline.md` — foundational distinction
 3. Relevant `decisions/*.md` files — actual decisions to respect
 
-Rules embedded in PLAN.md (no separate rules files needed for rebuild structure).
+Core rules embedded in PLAN.md (no separate rules files needed for rebuild structure).
+
+---
+
+## Solution 4: Decision Process for Open Findings
+
+### Principle
+The rebuild reorganizes findings and governance but does not change HOW
+decisions are made. Open findings still require debate or deliberation.
+
+### Two decision paths
+
+| Path | When | Process | Output |
+|------|------|---------|--------|
+| **Structured debate** | Contentious findings with 2+ defensible positions | Multi-round agent debate (claude_code vs codex or similar). Same rules as old x38 debates: steel-man, evidence hierarchy, max rounds | CONVERGED or ARBITRATED |
+| **Direct authoring** | Spec-tightening, conventional defaults, or findings where human already has clear direction | Human researcher writes decision directly with rationale | AUTHORED or DEFAULT |
+
+### Rules
+
+1. Findings classified as "Judgment call" in findings-under-review.md → Structured debate
+2. Findings classified as "Thiếu sót" (missing) → Either path, human researcher chooses
+3. If structured debate reaches max rounds without convergence → Human ARBITRATES
+4. All decisions documented in domain file `## Decided` with type tag
+
+### Debate rules (simplified from old debate/rules.md)
+
+Retained from old system:
+- Evidence hierarchy: formal proof > statistical test > empirical observation
+- Steel-man requirement: each side must state opponent's best argument
+- Max 6 rounds per finding before escalation to human
+- Judgment calls decided by human researcher (Tier 3 authority)
+
+Removed from old system:
+- Per-topic cross-tensions tables (replaced by domain constraints)
+- `[extra-archive]` labeling (replaced by in-tree-or-frozen)
+- Wave/tier scheduling (replaced by depends_on DAG)
 
 ---
 
@@ -142,7 +177,7 @@ Rules embedded in PLAN.md (no separate rules files needed for rebuild structure)
 - [ ] debate-index.md archived
 - [ ] PLAN.md has "informational, may lag" header
 - [ ] design_brief.md has "historical input" header
-- [ ] Per-closure update reduced to 2 files max
+- [ ] Per-closure update reduced to 3-4 files (2 substantive + 1-2 status tracking)
 - [ ] No per-domain tensions tables exist
 - [ ] 2-tier authority documented in PLAN.md
 - [ ] `[extra-archive]` rule replaced with in-tree-or-frozen policy

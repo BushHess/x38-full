@@ -2,9 +2,18 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-29 — Topic 019 OPENED (discovery feedback loop, Wave 2.5).
-Human-AI collaborative discovery loop — analysis layer (data + results), reporting,
-human feedback, contamination boundary, deliberation-gated code authoring. 5 findings (DFL-01→DFL-05).
+**Cập nhật**: 2026-03-31 — Gap audit: 5 new findings added (F-36, F-37, F-38, F-39, ER-03),
+F-19 demoted to supporting evidence, 013↔017 resolution strategy added to 017,
+DFL-07 scope note added, B-02 contradiction escalated in 011/015.
+Previous: 2026-03-31 — Topic 019 updated to 12 findings (DFL-01→DFL-12).
+Added: DFL-12 Grammar Depth-2 Composition (search space expansion, operator
+whitelist, SSE-D-02 spirit question). DFL-11 corrected (MI pre-filter NOT free,
+budget K_max is empirical). Decision summary added (14 decisions in 3 tiers).
+Decision-framing added to DFL-01, DFL-02, DFL-06. File structure fixed.
+Previous: 2026-03-31 — Topic 019 updated to 10 findings (DFL-01→DFL-10).
+Added: raw data exploration (06/07), feature graduation path (08), SSE-D-02 scope
+clarification (09), pipeline integration (10: Stage 2.5 Data Characterization).
+Previous: 2026-03-29 — Topic 019 OPENED (discovery feedback loop, Wave 2.5).
 Previous: 2026-03-28 — Topic 013 CLOSED (6 rounds canonical + 12 rounds JC-debate. 4 Judgment call.
 Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law,
 equivalence thresholds. Unblocks Topic 017).
@@ -30,25 +39,25 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-00 | Framework architecture (index) | 2026-03-18 | **SPLIT** (2026-03-22) | `000-framework-proposal/` | Index + convergence notes C-01→C-12 |
 | X38-T-01 | Campaign model | 2026-03-22 | **CLOSED** (2026-03-23) | `001-campaign-model/` | F-03, F-15, F-16 (3) — 2 Converged + 1 Judgment call |
 | X38-T-02 | Contamination firewall | 2026-03-22 | **CLOSED** (2026-03-25) | `002-contamination-firewall/` | F-04 (1) — 3 Converged + 4 Judgment call |
-| X38-T-03 | Protocol engine | 2026-03-22 | OPEN | `003-protocol-engine/` | F-05 + SSE-D-04 (2) |
+| X38-T-03 | Protocol engine | 2026-03-22 | OPEN | `003-protocol-engine/` | F-05, F-36, F-37 + SSE-D-04 (4) |
 | X38-T-04 | Meta-knowledge governance | 2026-03-18 | **CLOSED** (2026-03-21) | `004-meta-knowledge/` | 23/23 resolved |
 | X38-T-05 | Core engine design | 2026-03-22 | OPEN | `005-core-engine/` | F-07 (1) |
-| X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08 + SSE-D-03 (2) |
+| X38-T-06 | Feature engine design | 2026-03-22 | OPEN | `006-feature-engine/` | F-08, F-38 + SSE-D-03 (3) |
 | X38-T-07 | Philosophy & mission claims | 2026-03-22 | **CLOSED** (2026-03-23) | `007-philosophy-mission/` | F-01, F-20, F-22, F-25 (4) — 4/4 Converged |
 | X38-T-08 | Architecture & identity | 2026-03-22 | **CLOSED** (2026-03-27) | `008-architecture-identity/` | F-02, F-09, F-13 + SSE-04-IDV (4) — 4/4 Converged |
 | X38-T-09 | Data integrity | 2026-03-22 | OPEN | `009-data-integrity/` | F-10, F-11 (2) |
 | X38-T-10 | Clean OOS & certification | 2026-03-22 | **CLOSED** (2026-03-25) | `010-clean-oos-certification/` | F-12, F-21, F-23, F-24 (4) — 3 Converged + 1 Judgment call |
 | X38-T-11 | Deployment boundary | 2026-03-22 | OPEN | `011-deployment-boundary/` | F-26, F-27, F-28, F-29 (4) |
-| X38-T-12 | Quality assurance | 2026-03-22 | OPEN | `012-quality-assurance/` | F-18, F-19 (2) |
+| X38-T-12 | Quality assurance | 2026-03-22 | OPEN | `012-quality-assurance/` | F-18, F-39 (2 active) + F-19 (demoted to supporting evidence) |
 | X38-T-13 | Convergence analysis | 2026-03-22 | **CLOSED** (2026-03-28) | `013-convergence-analysis/` | CA-01, CA-02 + SSE-09, SSE-04-THR (4) — 4 Judgment call |
-| X38-T-14 | Execution & resilience | 2026-03-22 | OPEN | `014-execution-resilience/` | ER-01, ER-02 (2) |
+| X38-T-14 | Execution & resilience | 2026-03-22 | OPEN | `014-execution-resilience/` | ER-01, ER-02, ER-03 (3) |
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved → 11 decisions (OI-02 expands to D-02+D-03). 10 Converged + 1 Judgment call. 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
-| X38-T-19 | Discovery feedback loop | 2026-03-29 | OPEN | `019-discovery-feedback-loop/` | DFL-01, DFL-02, DFL-03, DFL-04, DFL-05 (5) |
+| X38-T-19 | Discovery feedback loop | 2026-03-29 | OPEN | `019-discovery-feedback-loop/` | DFL-01→DFL-12 (12) |
 
-**Totals**: 20 topics (8 CLOSED, 1 SPLIT, 11 OPEN). 63 findings distributed (per-topic counts; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 20 topics (8 CLOSED, 1 SPLIT, 11 OPEN). 75 findings distributed (70 original + 5 gap audit; F-19 demoted; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **confirmed** (018 CLOSED 2026-03-27).
 

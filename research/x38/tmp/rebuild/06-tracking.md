@@ -21,22 +21,28 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 ### Structure of 09-open-questions.md
 
 ```markdown
-# Open Questions & Project Tracking
+# Project Status & Open Questions
+
+> This is a TRACKING FILE, not a concept domain.
+> It lives in decisions/ for convenience but does NOT contain findings.
+> Authoritative for: project status, deferred items, circular deps, integration log.
 
 ## Domain Status
 
+> [TEMPLATE — populate with real counts during rebuild Step 0 extraction]
+
 | Domain | Decided | Open | Deferred | Constraints | Status |
 |--------|---------|------|----------|-------------|--------|
-| 01-philosophy | 4 | 0 | 0 | 0 | INTEGRATED |
-| 02-campaign-model | 6 | 0 | 0 | 0 | INTEGRATED |
-| 03-identity-versioning | 5 | 3 | 0 | 3 | ACTIVE |
-| 04-firewall | 10 | 0 | 0 | 0 | INTEGRATED |
-| 05-meta-knowledge | 12 | 0 | 0 | 0 | INTEGRATED |
-| 06-clean-oos | 4 | 0 | 0 | 0 | INTEGRATED |
-| 07-convergence | 6 | 0 | 2 | 0 | DECIDED (deferred items) |
-| 08-search-expansion | 11 | 0 | 0 | 0 | INTEGRATED |
-| 10-protocol-engine | 0 | 1 | 0 | 5+ | BLOCKED |
-| 11-engine-design | 0 | 2 | 0 | 0 | ACTIVE |
+| 01-philosophy | ? | 0 | 0 | 0 | INTEGRATED |
+| 02-campaign-model | ? | 0 | 0 | 0 | INTEGRATED |
+| 03-identity-versioning | ? | ? | 0 | ? | ACTIVE |
+| 04-firewall | ? | 0 | 0 | 0 | INTEGRATED |
+| 05-meta-knowledge | ? | 0 | 0 | 0 | INTEGRATED |
+| 06-clean-oos | ? | 0 | 0 | 0 | INTEGRATED |
+| 07-convergence | ? | 0 | ? | 0 | DECIDED (deferred items) |
+| 08-search-expansion | ? | 0 | 0 | 0 | INTEGRATED |
+| 10-protocol-engine | 0 | ? | 0 | ? | BLOCKED |
+| 11-engine-design | 0 | ? | 0 | 0 | ACTIVE |
 | ... | ... | ... | ... | ... | ... |
 
 ## Deferred Items Registry
@@ -51,16 +57,18 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 | Pair | Interface | Resolution | Status |
 |------|-----------|------------|--------|
-| 07-convergence <-> 17-epistemic-search | metric methodology ↔ consumption criteria | INTERFACE FREEZE | Numerics joint session after both decide methodology |
+| 07-convergence <-> 17-epistemic-search | metric methodology ↔ consumption criteria | PENDING | Cannot freeze until 17 has DECIDED findings. See 03-dependency-rules.md |
 | ... | ... | ... | ... |
 
 ## Integration Log
 
+> [TEMPLATE — backfill from rebuild date forward, not from old topic closure dates.
+>  Old closures happened before domains existed. Integration log starts when
+>  rebuild is executed and new domain files are created.]
+
 | Date | Domain closed | Downstream updates | Verified by |
 |------|--------------|-------------------|-------------|
-| 2026-03-21 | 05-meta-knowledge (was Topic 004) | architecture §7 MK-14 boundary | human |
-| 2026-03-23 | 02-campaign-model (was Topic 001) | 07-convergence constraints, 16-recalibration constraints | human |
-| 2026-03-25 | 04-firewall (was Topic 002) | 17-epistemic constraints, 03-identity constraints | human |
+| (rebuild date) | Initial extraction: 8 closed-topic domains populated | All constraint sections populated | human |
 | ... | ... | ... | ... |
 
 ## Spec Readiness
@@ -123,16 +131,16 @@ x38/
 │   ├── design_brief.md              ← Historical input (informational)
 │   └── evidence/                    ← Frozen external evidence copies
 │
-├── decisions/                       ← AUTHORITATIVE
-│   ├── 01-philosophy.md
-│   ├── 02-campaign-model.md
-│   ├── 03-identity-versioning.md
-│   ├── 04-firewall.md
-│   ├── 05-meta-knowledge.md
-│   ├── 06-clean-oos.md
-│   ├── 07-convergence.md
-│   ├── 08-search-expansion.md
-│   ├── 09-open-questions.md         ← Single ledger (status, deferred, circular, log)
+├── decisions/                       ← AUTHORITATIVE (17 domain files + 1 tracking file)
+│   ├── 01-philosophy.md             ┐
+│   ├── 02-campaign-model.md         │ 8 consolidated domains
+│   ├── 03-identity-versioning.md    │ (closed topics merged
+│   ├── 04-firewall.md               │  by concept)
+│   ├── 05-meta-knowledge.md         │
+│   ├── 06-clean-oos.md              │
+│   ├── 07-convergence.md            │
+│   ├── 08-search-expansion.md       ┘
+│   ├── 00-status.md                 ← TRACKING FILE (not a domain). Status, deferred, circular, log
 │   ├── 10-protocol-engine.md
 │   ├── 11-engine-design.md
 │   ├── 12-feature-engine.md

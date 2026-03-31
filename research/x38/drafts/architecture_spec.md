@@ -1,8 +1,8 @@
 # Architecture Spec — Draft
 
-**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010, 013, 018 closures — 013 §9 added 2026-03-28)
-**Last updated**: 2026-03-28
-**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 013(CLOSED) + 009 + 011 + 016 + 017
+**Status**: DRAFT (seeded from Topic 001, 002, 004, 007, 008, 010, 013, 018 closures — §14 added 2026-03-31 from Topic 019)
+**Last updated**: 2026-03-31
+**Dependencies**: 001(CLOSED) + 002(CLOSED) + 004(CLOSED) + 007(CLOSED) + 008(CLOSED) + 010(CLOSED) + 013(CLOSED) + 009 + 011 + 016 + 017 + 019
 **Publishable when**: ALL dependencies CLOSED
 
 ---
@@ -634,6 +634,198 @@ New discovery topic only if downstream closure reports reveal an explicit unreso
 
 ---
 
+## §14 Discovery Loop Architecture (Topic 019 — PENDING DEBATE)
+
+> **Authority**: This section is a PROPOSAL from Topic 019 (OPEN, 2026-03-29).
+> NOT authoritative until debate closure. May be modified, simplified, or rejected.
+
+> **Motivation**: v1 architecture (§2.1, Three Pillars) provides a validation
+> factory — search + validate within declared space. But 100% of btc-spot-dev
+> alpha came from human intuition outside the framework (DFL-01). §14 adds an
+> R&D lab — a human-AI collaborative discovery loop that is the 4th architectural
+> component alongside the 3 pillars.
+
+### 14.1 Relationship to Three Pillars
+
+The v1 Three Pillars (§2.1) are DEFENSIVE — prevent contamination, enforce
+process, record methodology. They ensure research is HONEST but do not help
+research be PRODUCTIVE. The Discovery Loop is GENERATIVE — it enables the
+creation of new feature concepts that the Three Pillars then validate.
+
+| Component | Role | Phase | Lifecycle |
+|-----------|------|-------|-----------|
+| **Contamination Firewall** (Pillar 1) | Prevent data leakage | Pre-campaign | Defensive |
+| **Protocol Engine** (Pillar 2) | Enforce discovery process | Intra-campaign | Defensive |
+| **Meta-Updater** (Pillar 3) | Record methodology lessons | Post-campaign | Defensive |
+| **Discovery Loop** (New) | Enable human-AI feature invention | Cross-campaign | Generative |
+
+The Discovery Loop is NOT a 4th pillar. Revisiting pillar count requires
+evidence of an invariant that no existing pillar can own (§2.1). The Discovery
+Loop is a CROSS-CUTTING component that interacts with all 3 pillars:
+
+- Uses Contamination Firewall: DFL-04 contamination model classifies every
+  information flow in the loop
+- Uses Protocol Engine: DFL-10 Stage 2.5 inserts into pipeline; DFL-08
+  Stage 5 feeds into normal validation
+- Uses Meta-Updater: Discovery findings become meta-knowledge if they
+  survive campaigns (MK-17 shadow → promotion ladder per 017)
+
+### 14.2 Components
+
+The Discovery Loop consists of 6 sub-components, each defined in
+`drafts/discovery_spec.md` §6-§11:
+
+| Component | Spec Section | Purpose |
+|-----------|-------------|---------|
+| Data Profiling Layer | §6 | Characterize raw data BEFORE grammar design |
+| Grammar Depth-2+ | §7 | Compose features from building blocks |
+| Information-Theoretic Pre-Filter | §8 | Screen features without consuming budget |
+| Statistical Budget Tracker | §9 | Account for finite validation capacity |
+| Human-AI Collaboration Loop | §10 | Structured discovery through deliberation |
+| Feature Graduation Pipeline | §11 | End-to-end path from pattern to registry |
+
+### 14.3 Information Flow
+
+Two parallel discovery paths, converging at validation:
+
+```
+                    ┌──────────────────────────┐
+                    │     RAW DATA             │
+                    │   (13 fields, 4 TFs)     │
+                    └────────────┬─────────────┘
+                                 │
+                    ┌────────────▼─────────────┐
+                    │  §6 DATA PROFILING       │ ← Pipeline (Stage 2.5)
+                    │  data_profile.json       │
+                    └────────────┬─────────────┘
+                                 │
+              ┌──────────────────┼──────────────────┐
+              │                  │                   │
+   PATH A: GRAMMAR         PATH B: HUMAN-AI COLLABORATION
+              │                  │                   │
+    ┌─────────▼────────┐  ┌─────▼──────┐  ┌────────▼────────┐
+    │  §1+§7 GRAMMAR   │  │ §10 AI     │  │  §10 HUMAN      │
+    │  DEPTH-2 SCAN    │  │ ANALYSIS   │  │  INSIGHT        │
+    │  [OHLCV-only]    │  │ LAYER      │  │  (domain        │
+    │  ~140K features  │  │ [all data] │  │   knowledge)    │
+    └─────────┬────────┘  └─────┬──────┘  └────────┬────────┘
+              │                  │                   │
+    ┌─────────▼────────┐  ┌─────▼──────────────▼────┐
+    │  §8 MI PRE-FILTER│  │ HUMAN REVIEW             │
+    │  Top-200 by rank │  │ (Tier 3 authority)       │
+    │  [reduces 140K   │  │ TEMPLATE / GRAMMAR /     │
+    │   to ~200]       │  │ INVESTIGATE / DISCARD    │
+    └─────────┬────────┘  └──────────┬───────────────┘
+              │                      │
+              │           ┌──────────▼───────────────┐
+              │           │ §10.5 DELIBERATION-GATED │
+              │           │ CODE (if novel code       │
+              │           │ needed for human template)│
+              │           └──────────┬───────────────┘
+              │                      │
+    ┌─────────▼──────────┐  ┌────────▼───────────────┐
+    │ HUMAN REVIEW       │  │ Strategy implementation │
+    │ of MI survivors    │  │ (template or novel code)│
+    │ (~200 → ~3-10)    │  │                         │
+    └─────────┬──────────┘  └────────┬───────────────┘
+              │                      │
+              └──────────┬───────────┘
+                         │
+    ┌────────────────────▼──────────────────────────┐
+    │  §9 BUDGET CHECK                              │
+    │  k_tested < budget? → proceed                 │
+    │  k_tested ≥ budget? → WARN, human override    │
+    └────────────────────┬──────────────────────────┘
+                         │
+    ┌────────────────────▼──────────────────────────┐
+    │  VALIDATION PIPELINE (existing, all 7 gates)  │
+    │  [Budget cost: 1 UNIT per feature]            │
+    └────────────────────┬──────────────────────────┘
+                         │
+                PROMOTE / HOLD / REJECT
+```
+
+**Path A** (grammar): automated generation → MI ranking → human review → validation.
+Pre-filter applies. Human-originated templates do NOT go through MI pre-filter.
+
+**Path B** (human-AI): AI analysis + human insight → deliberation → code → validation.
+Human judgment IS the filter. No MI screening needed.
+
+### 14.4 Key Design Properties
+
+| Property | Value | Rationale |
+|----------|-------|-----------|
+| Human always in loop | AI proposes, human decides | Statistical budget requires small K → human filters |
+| Results-aware analysis | AI analysis layer sees everything | Discovery requires pattern detection in results |
+| Results-blind grammar | Automated enumeration stays OHLCV-only | Prevent combinatorial explosion in search |
+| Budget-conscious | Every formal test tracked | N=188, WFO N=8 folds → K_max empirical (possibly 1-3 under WFO) |
+| Provenance end-to-end | Every feature traceable to origin | Contamination firewall integration |
+| Not a 4th pillar | Cross-cutting component | Interacts with all 3 pillars without replacing them |
+
+### 14.5 Capacity Estimate (btc-spot-dev specific)
+
+| Parameter | Value |
+|-----------|-------|
+| Available trades | ~188 |
+| WFO folds | 8 (binding constraint on power) |
+| Grammar depth-2 candidates (OHLCV) | ~140,000 |
+| After MI pre-filter (top-200) | ~200 |
+| After human review | ~3-10 |
+| After full validation | unknown — depends on power |
+
+**Binding constraint**: WFO Wilcoxon with 8 folds has power < 50% at α=0.05
+for a single test with Δ_Sharpe = 0.30. This means the budget is VERY tight
+under the current validation pipeline — possibly K_max ≈ 1-3.
+
+**This is the same problem as E5-ema21D1**: WFO p=0.125 > α=0.10, verdict
+HOLD. The algorithm works but the test cannot confirm it.
+
+**Implication**: v2's discovery capacity is gated by validation power, not by
+discovery technology. Either (a) WFO reform increases power (more folds, longer
+data), (b) trade-level tests supplement WFO, or (c) accept that few features
+can be formally validated from current data. The exact K_max requires a power
+simulation study — it cannot be determined from spec alone.
+
+### 14.6 Module Placement in Directory Structure
+
+Extends §3.1 target layout with 2 new package areas. Exact module boundaries
+are implementation decisions — the names below are ILLUSTRATIVE, not prescribed.
+
+```
+src/alpha_lab/
+├── discovery/              # Extended with v2 capabilities
+│   ├── ...                 # Existing 8-stage pipeline modules
+│   ├── [data profiling]    # §6 — Stage 2.5 characterization
+│   ├── [grammar v2]        # §7 — depth-2 composition engine
+│   ├── [MI pre-filter]     # §8 — information-theoretic screening
+│   ├── [budget tracker]    # §9 — statistical budget accounting
+│   └── [graduation]        # §11 — 5-stage feature graduation
+├── analysis/               # NEW package — AI analysis layer (§10)
+│   ├── [result analysis]   # Result-domain pattern detection
+│   ├── [data analysis]     # Data-domain pattern detection
+│   └── [report generation] # DiscoveryReport (DFL-02 contract)
+```
+
+**Note**: `src/alpha_lab/` does not exist yet. All directory structure is
+from the §3.1 target layout. Module names will be decided during alpha-lab
+implementation, not by this spec.
+
+### 14.7 Cross-Section Interfaces
+
+| Interface | Provider | Consumer |
+|-----------|----------|----------|
+| `data_profile.json` | §6 → pipeline Stage 2.5 | §7 grammar design, §10 AI analysis |
+| Grammar depth-2 features | §7 → feature engine (006) | §8 pre-filter |
+| MI-screened candidates | §8 → graduation pipeline | §11 Stage 1 |
+| Budget state | §9 → budget tracker | §11 Stage 5 (check before validation) |
+| DiscoveryReport | §10 → AI analysis layer | §11 Stage 2-3 (human review) |
+| Feature registry entry | §11 → graduation Stage 4 | F-08 (006) registry |
+| Contamination class | DFL-04 → every stage | §7 firewall (002) |
+
+**Trace**: DFL-01 through DFL-12 → `debate/019-discovery-feedback-loop/findings-under-review.md`
+
+---
+
 ## Traceability
 
 | Section | Issue ID | Source |
@@ -668,3 +860,8 @@ New discovery topic only if downstream closure reports reveal an explicit unreso
 | §9.4 Anomaly Axis Thresholds | X38-SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` Decision 4 |
 | §9.5 Cross-Topic Interfaces | X38-CA-01/CA-02/SSE-09/SSE-04-THR | `debate/013-convergence-analysis/final-resolution.md` |
 | §13.1 Discovery Pipeline Routing | SSE-D-01 | `debate/018-search-space-expansion/final-resolution.md` Decision 1 |
+| §14.1 Relationship to Pillars | DFL-01 | `debate/019-discovery-feedback-loop/findings-under-review.md` (PENDING) |
+| §14.2 Components | DFL-01–DFL-12 | `debate/019-discovery-feedback-loop/findings-under-review.md` (PENDING) |
+| §14.3 Information Flow | DFL-01–DFL-12 | `debate/019-discovery-feedback-loop/findings-under-review.md` (PENDING) |
+| §14.5 Capacity Estimate | DFL-11 | `debate/019-discovery-feedback-loop/findings-under-review.md` (PENDING) |
+| §14.6 Module Placement | DFL-01–DFL-12 | `debate/019-discovery-feedback-loop/findings-under-review.md` (PENDING) |

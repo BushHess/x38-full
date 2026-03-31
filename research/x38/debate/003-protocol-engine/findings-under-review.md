@@ -4,7 +4,8 @@
 **Opened**: 2026-03-22 (activated from PLANNED)
 **Author**: claude_code (architect)
 
-1 finding về protocol engine — 8-stage discovery pipeline.
+3 findings về protocol engine — 8-stage discovery pipeline.
+F-36 and F-37 added 2026-03-31 (gap audit).
 
 **Lưu ý**: F-14 (state pack) và F-17 (semantic change classification) đã tách
 sang Topic 015 (Artifact & Version Management) vì bản chất "records & versioning"
@@ -72,6 +73,94 @@ Freeze checkpoint: sau Stage 7, stages 1-6 dirs trở thành read-only.
 
 ---
 
+## F-36: Multi-asset pipeline adaptation
+
+- **issue_id**: X38-D-36
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0 (gap audit)
+- **current_status**: Open
+
+**Chẩn đoán**:
+
+PLAN.md §Phạm vi: "Không chỉ BTC/USDT. Framework phải hoạt động trên bất kỳ
+asset nào (crypto, equities, FX)." PLAN.md §2.1 Trụ 2: "8 stages là BTC-v1
+protocol baseline — rút từ V6/V7/V8 lineage. KHÔNG phải search ontology phổ quát."
+
+8 stages hiện tại giả định OHLCV data ở H4+D1 resolution. Trên assets khác:
+- **Equities**: order flow data (Level 2, trades & quotes) → Stage 3 feature scan
+  cần feature families ngoài OHLCV (bid-ask spread, order imbalance, trade size
+  distribution). Stage 2 data audit cần schema khác.
+- **FX**: tick data, 24h market, no volume → Stage 3 feature families khác,
+  cross-timeframe alignment khác (no D1 close).
+- **Commodities**: roll dates, contango/backwardation → Stage 2 cần contract
+  management, Stage 3 cần term structure features.
+
+**Không finding nào** hiện tại address câu hỏi: pipeline 8 stages adapt thế nào
+cho input data khác OHLCV?
+
+**Câu hỏi cần debate**:
+
+| Position | Mô tả | Tradeoff |
+|----------|--------|----------|
+| A: Fixed 8 stages, asset-specific config | Cùng pipeline, thay đổi config (feature families, data schema, threshold modes) per asset | Đơn giản, nhưng có thể ép fit |
+| B: Configurable pipeline template | Stage count và ordering configurable per asset class. BTC-v1 = 1 template | Linh hoạt, nhưng thêm complexity |
+| C: v1 = BTC-only, defer multi-asset to v2+ | Ship BTC pipeline, generalize khi có second asset | Fastest v1, nhưng may require rewrite |
+
+**Evidence**:
+- PLAN.md §Phạm vi: multi-asset requirement
+- PLAN.md §2.1 Trụ 2: "BTC-v1 baseline, không phải search ontology phổ quát"
+- Topic 018 SSE-D-02 rule 3: "OHLCV-only" — rule này có apply cho non-OHLCV assets?
+- F-08 (Topic 006): feature families hiện tại = OHLCV-derived (trend, vol, location,
+  flow, structure, cross_tf). Flow proxy ≠ real order flow.
+
+---
+
+## F-37: Human decision points in offline pipeline
+
+- **issue_id**: X38-D-37
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0 (gap audit)
+- **current_status**: Open
+
+**Chẩn đoán**:
+
+Pipeline được mô tả là "deterministic, no AI in execution" (PLAN.md §TL;DR).
+Nhưng nhiều điểm trong pipeline yêu cầu human judgment:
+
+1. **Pre-Stage 1**: Human define search space (feature families, threshold modes,
+   lookback grids). Đây là quyết định lớn nhất — search space quyết định mọi thứ
+   downstream.
+2. **Stage 4→5**: Shortlist → layered search. Human review shortlist trước khi
+   invest compute vào layering? Hay fully automatic?
+3. **Stage 7**: Freeze comparison set. Human approve freeze hay automatic?
+4. **Campaign boundary**: Human quyết định HANDOFF vs STOP vs re-run.
+5. **Clean OOS trigger**: Human chọn thời điểm (đã spec trong F-12/F-21).
+
+Nếu pipeline fully automatic (human chỉ ở boundaries), mỗi session chạy hoàn
+toàn không cần human input — reproducible, scalable. Nhưng human oversight ở
+mid-pipeline có thể catch issues sớm hơn (e.g., Stage 3 scan bỏ qua 1 family
+do feature bug → human review Stage 4 shortlist phát hiện).
+
+**Câu hỏi cần debate**:
+
+| Position | Mô tả | Tradeoff |
+|----------|--------|----------|
+| A: Human at boundaries only | Human: define search space (pre-Stage 1) + approve verdict (post-Stage 8) + campaign decisions. Pipeline stages 1-8 fully automatic | Maximum reproducibility, minimum human bottleneck |
+| B: Human gates at critical stages | Human approve: Stage 4 shortlist, Stage 7 freeze. Rest automatic | Catches mid-pipeline issues, but slower, less reproducible |
+| C: Human optional review + automatic continue | Pipeline auto-continues by default. Human CAN review at any stage but pipeline doesn't WAIT | Balance: reproducible default, human oversight available |
+
+**Evidence**:
+- PLAN.md §TL;DR: "deterministic code pipeline, no AI in execution"
+- Topic 001 D-16: campaign guardrails — human at campaign boundary
+- Topic 010 F-21: "mandatory human review per trigger" — human at Clean OOS
+- F-05: stage gating is artifact-based (automatic), không mention human gates
+- V4-V8 [extra-archive]: every stage had human involvement (AI conversation) —
+  offline pipeline removes AI but question: also remove human?
+
+---
+
 ## Cross-topic tensions
 
 | Topic | Finding | Tension | Resolution path |
@@ -88,6 +177,8 @@ Freeze checkpoint: sau Stage 7, stages 1-6 dirs trở thành read-only.
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
 | X38-D-05 | Protocol engine — 8 stages | Judgment call | Open |
+| X38-D-36 | Multi-asset pipeline adaptation | Thiếu sót | Open |
+| X38-D-37 | Human decision points in offline pipeline | Thiếu sót | Open |
 | X38-SSE-D-04 | Breadth-activation blocker at protocol_lock (từ Topic 018) | Thiếu sót | Open |
 
 ---

@@ -1108,7 +1108,7 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
 | Debate topics defined | DONE | 20 topics (000 SPLIT + 004/007/001/002/010/008/018/013 CLOSED + 11 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 63 findings distributed across 18 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
+| Debate findings collected | DONE | 64 findings distributed across 18 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
 | Debate execution | IN PROGRESS | 8 topics CLOSED: 004, 007, 001, 002, 010, 008, 018, 013. 88 debate rounds done. 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
 | Drafts | SEEDED (3) | `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures; `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
@@ -1142,7 +1142,10 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 > by data analysis, not grammar enumeration. Topic 019 designs the Human-AI
 > collaborative loop: AI analysis layer (data + results), human-facing reporting,
 > feedback capture, contamination boundary, deliberation-gated code authoring.
-> 5 findings (DFL-01→DFL-05). Wave 2.5, all deps satisfied, song song với 017.
+> 10 findings (DFL-01→DFL-10). Wave 2.5, all deps satisfied, song song với 017.
+> DFL-06/07 (2026-03-30): raw data exploration + methodology.
+> DFL-08/09 (2026-03-31): feature graduation path + SSE-D-02 scope clarification.
+> DFL-10 (2026-03-31): pipeline integration — Stage 2.5 Data Characterization.
 
 **Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017 + 019 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
 

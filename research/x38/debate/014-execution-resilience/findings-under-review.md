@@ -4,7 +4,8 @@
 **Opened**: 2026-03-22
 **Author**: claude_code (architect)
 
-2 findings về compute orchestration và pipeline resilience.
+3 findings về compute orchestration và pipeline resilience.
+ER-03 added 2026-03-31 (gap audit).
 
 **Issue ID prefix**: `X38-ER-` (Execution & Resilience).
 
@@ -160,6 +161,55 @@ nếu CLI hỗ trợ resume → pipeline phải checkpointable. Nếu chỉ run/
 
 ---
 
+## F-40: Session concurrency model
+
+- **issue_id**: X38-ER-03
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0 (gap audit)
+- **current_status**: Open
+
+**Chẩn đoán**:
+
+Topic 001 (Campaign model) defines: "N sessions độc lập trên cùng dataset."
+Nhưng "độc lập" chưa address:
+
+1. **Serial hay parallel?** — N sessions chạy tuần tự (s001 xong → s002 bắt đầu)
+   hay song song (s001 và s002 cùng lúc)?
+   - Serial: đơn giản, không resource contention. Nhưng N sessions × Stage 3
+     (50K configs) = N × 2 ngày = chậm.
+   - Parallel: nhanh, nhưng cần resource isolation (RAM, CPU, disk I/O).
+
+2. **Resource sharing**: Nếu parallel — sessions share data (cùng CSV file)?
+   Share feature cache? Hay mỗi session copy riêng (per F-10: "copies not
+   symlinks")?
+
+3. **Independence guarantee**: "Độc lập" nghĩa là KHÔNG information leak giữa
+   sessions. Parallel sessions trên cùng machine: shared filesystem, shared
+   memory? Cần process isolation?
+
+4. **Scale**: N = bao nhiêu? Topic 013 CA-02 says S_min=3, S_max=5. 5 parallel
+   sessions × 50K configs = 250K backtests. Compute resource estimate?
+
+**Câu hỏi cần debate**:
+
+| Position | Mô tả | Tradeoff |
+|----------|--------|----------|
+| A: Serial sessions | s001 → s002 → ... → s00N. Simple. Independence by construction | Slow: N × 2+ days per campaign |
+| B: Parallel sessions, shared data read-only | Sessions read same data copy (chmod 444). Each session writes to own directory. OS-level isolation | Fast, moderate complexity. Data copy is cheap |
+| C: Parallel sessions, full isolation | Each session gets own data copy + own process space. Docker/VM per session | Maximum isolation, highest resource cost |
+| D: v1 serial, v2 parallel | Ship simple, optimize later | Fast v1, but architectural decisions now may block parallelism later |
+
+**Evidence**:
+- Topic 001 D-03: "N sessions độc lập"
+- Topic 013 CA-02: S_min=3, S_max=5 (provisional)
+- F-10 (Topic 009): "copies not symlinks" — suggests data isolation awareness
+- F-11 (Topic 009): session immutability — chmod enforcement
+- ER-01 (this topic): compute orchestration addresses intra-session parallelism
+  (50K configs), NOT inter-session parallelism. ER-03 addresses inter-session.
+
+---
+
 ## Cross-topic tensions
 
 | Topic | Finding | Tension | Resolution path |
@@ -173,3 +223,4 @@ nếu CLI hỗ trợ resume → pipeline phải checkpointable. Nếu chỉ run/
 |----------|---------|-----------|--------|
 | X38-ER-01 | Compute orchestration cho exhaustive scans | Thiếu sót | Open |
 | X38-ER-02 | Pipeline checkpointing & crash recovery | Thiếu sót | Open |
+| X38-ER-03 | Session concurrency model | Thiếu sót | Open |

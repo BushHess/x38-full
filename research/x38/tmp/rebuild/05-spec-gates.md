@@ -30,16 +30,20 @@ SKELETON -> DRAFTING -> REVIEW -> PUBLISHABLE -> PUBLISHED
 | Status | Definition | Gate to advance |
 |--------|-----------|-----------------|
 | `SKELETON` | Section headers exist; content is placeholder or minimal | N/A (auto-created when first source domain closes) |
-| `DRAFTING` | Content being written from DECIDED findings | ALL source domains for this spec have zero OPEN findings |
+| `DRAFTING` | Content being written from DECIDED findings | Per-SECTION gate: a section advances to DRAFTING when its source domain has zero OPEN findings. Spec-level status = minimum across all sections |
 | `REVIEW` | Full content written; awaiting cross-spec consistency check | ALL stubs filled; ALL provenance tags present; no DEFERRED items without explicit gates |
 | `PUBLISHABLE` | Cross-spec consistency verified; human approved | Cross-spec audit passes; all DEFERRED items either resolved or explicitly gated |
 | `PUBLISHED` | Moved to published/; read-only | Human final sign-off |
 
 ### Gate enforcement
 
-A spec section CANNOT advance from SKELETON to DRAFTING while:
+A spec **section** CANNOT advance from SKELETON to DRAFTING while:
 - Its source domain has OPEN findings
 - Its source domain has DEFERRED items that affect this section
+
+A spec's **overall status** = minimum across all its sections.
+Individual sections may be at DRAFTING while others are still SKELETON.
+This allows progressive drafting as domains close one by one.
 
 A spec CANNOT advance from DRAFTING to REVIEW while:
 - Any section is still SKELETON

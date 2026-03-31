@@ -5,7 +5,8 @@
 **Split from**: Topic 000 (X38-T-00)
 **Author**: claude_code (architect)
 
-2 findings về quality assurance và evidence từ online framework evolution.
+2 findings (1 demoted) + 1 new finding về quality assurance.
+F-19 demoted to supporting evidence (2026-03-31 gap audit).
 
 ---
 
@@ -87,11 +88,17 @@ Module N+1 blocked cho đến khi Module N đã VERIFIED.
 
 ## F-19: Online framework evolution — gen2→gen3→gen4 failure modes
 
+> **DEMOTED TO SUPPORTING EVIDENCE** (2026-03-31, gap audit): F-19 is a historical
+> evidence inventory — it has no design question, no stated alternatives, and no
+> decision to make. The evidence it contains is valuable input for Topics 003, 005,
+> and 007, but it does not itself require a debate resolution. Retained as reference
+> material. Does NOT count toward Topic 012's active finding tally.
+
 - **issue_id**: X38-D-19
-- **classification**: Thiếu sót
+- **classification**: ~~Thiếu sót~~ Supporting Evidence (demoted — not a finding)
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate)
-- **current_status**: Open
+- **current_status**: Demoted
 
 **Bối cảnh quan trọng — Online vs Offline**:
 
@@ -143,13 +150,72 @@ Gen4 V1 status: đang trong quá trình seed discovery (online).
 
 ---
 
+---
+
+## F-39: Framework testing strategy — automated correctness assurance
+
+- **issue_id**: X38-D-39
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0 (gap audit)
+- **current_status**: Open
+
+**Chẩn đoán**:
+
+F-18 covers module-level **human review gates** during build. But the framework
+also needs an **automated testing strategy** — tests that run continuously, catch
+regressions, and validate the determinism guarantee.
+
+Hiện tại, chỉ F-18 (review gates) và F-11 (session immutability) address quality.
+Không finding nào address:
+
+1. **Unit testing per module**: core types, engine math, cost model, feature
+   computation — mỗi module cần test suite riêng. Đặc biệt engine math (fill
+   logic, PnL calculation, metrics) cần **test vectors** — fixed input → expected
+   output, verified by hand.
+
+2. **Determinism regression**: Framework claim "deterministic" (PLAN.md §1.3).
+   Cần test suite chạy cùng input + seed → assert bit-identical output. Phát hiện
+   ngay khi code change phá determinism.
+
+3. **Pipeline integration tests**: 8-stage pipeline chạy end-to-end trên small
+   synthetic dataset. Verify: stage gating works, artifacts produced correctly,
+   freeze checkpoint enforced, verdict.json valid.
+
+4. **Contamination firewall tests**: Automated tests verifying firewall blocks
+   parameter leakage — unit tests cho typed schema validation, state machine
+   transitions, category whitelist enforcement.
+
+**Câu hỏi cần debate**:
+
+| Position | Mô tả | Tradeoff |
+|----------|--------|----------|
+| A: Test-first (TDD) | Viết test trước implementation cho mỗi module | Chậm hơn ban đầu, ít bug hơn |
+| B: Test-after per module | Viết code → review → test → gate | Nhanh hơn, nhưng test quality phụ thuộc discipline |
+| C: Minimal + property-based | Ít unit tests, nhiều property-based tests (determinism, monotonicity, boundary) | Ít maintenance, nhưng miss specific bugs |
+
+**Evidence**:
+- F-18: module-level review gates (human process, not automated)
+- F-11: session immutability (filesystem enforcement, not testing)
+- btc-spot-dev/v10/tests/ [extra-archive]: ~370 tests trong v10 — precedent cho engine testing
+- btc-spot-dev/validation/tests/ [extra-archive]: 22 test modules cho validation pipeline
+- V8 spec_2 [extra-archive]: bit-level system spec với test vectors — pattern cho engine testing
+- PLAN.md §1.3: "deterministic" claim cần automated verification
+
+---
+
 ## Cross-topic tensions
 
-Không có tension đã biết tại thời điểm mở topic.
+| Topic | Finding | Tension | Resolution path |
+|-------|---------|---------|-----------------|
+| 005 | F-07 | Engine design (vectorized vs event-loop) determines testing strategy — vectorized engines are easier to test with array assertions, event-loop engines need state-machine testing | 005 owns engine design; 012 adapts testing strategy |
+| 003 | F-05 | Pipeline integration tests need stage definitions finalized | 003 owns stages; 012 designs integration tests against stage contracts |
+| 002 | F-04 | Firewall testing needs typed schema spec finalized | 002 CLOSED; 012 tests against 002's confirmed contracts |
 
 ## Bảng tổng hợp
 
 | Issue ID | Finding | Phân loại | Status |
 |----------|---------|-----------|--------|
 | X38-D-18 | Continuous verification — module-level review gates | Thiếu sót | Open |
-| X38-D-19 | Online framework evolution — gen2→gen3→gen4 failure modes | Thiếu sót | Open |
+| X38-D-19 | Online framework evolution (DEMOTED — supporting evidence) | Supporting Evidence | Demoted |
+| X38-D-39 | Framework testing strategy — automated correctness assurance | Thiếu sót | Open |

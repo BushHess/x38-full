@@ -243,7 +243,7 @@ F-29 nối hai finding thành interface design rõ ràng.
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
 | 010 | F-12 | Clean OOS certification output is input for deployment — but F-27 scope boundary says deployment is outside x38, creating ambiguity about who owns the handoff contract | 010 owns certification verdict; 011 owns the boundary definition |
-| 015 | F-17 | F-17 classifies position sizing change as semantic change needing new version, but F-27/F-28 push sizing to deployment layer — contradictory if sizing is in algo_version | shared — F-28 (unit-exposure) resolves; 011 owns boundary, 015 owns classification |
+| 015 | F-17 | **B-02 CONTRADICTION (HIGH)**: F-17 classifies position sizing change as semantic change needing new algo_version. F-28 (this topic) pushes sizing to deployment layer (deploy_version, NOT algo_version). These are directly contradictory. F-28 proposes resolution via unit-exposure canonicalization, but this decision MUST be explicitly made — colocation does not resolve it. **Both topics must agree on: is sizing an algorithm property or a deployment property?** | **REQUIRES JOINT DECISION**: 011 debate F-28 first (unit-exposure), then 015 amends F-17 classification accordingly. Or vice versa. Cannot be resolved independently. |
 
 ## Bảng tổng hợp
 
