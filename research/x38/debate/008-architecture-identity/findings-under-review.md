@@ -80,9 +80,8 @@ engine, audit trail engine)? Hay 3 trụ đã bao trùm?
 │   ├── campaign/               # campaign, session, convergence, contamination, knowledge, oos
 │   └── cli/                    # main, run_session, run_campaign, new_campaign, report
 │
-├── data/btcusdt/               # Data copies (SHA-256), NOT symlinks
-│   ├── bars_2017_2026q1.csv
-│   └── checksums.json
+├── data/                       # Symlinks or refs to data-pipeline output
+│   └── data_manifest.json      # SHA-256 checksums + path mapping to source
 │
 ├── campaigns/                  # Campaign outputs
 │   ├── c001_btc_2017_2026q1/

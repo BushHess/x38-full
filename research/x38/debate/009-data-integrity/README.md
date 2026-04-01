@@ -8,11 +8,11 @@
 ## Scope
 
 Cơ chế đảm bảo tính toàn vẹn dữ liệu và bất biến của session artifacts.
-Hai mặt của cùng vấn đề: data copies + SHA-256 (đầu vào) và filesystem
-immutability (đầu ra).
+Hai mặt của cùng vấn đề: data-pipeline output + SHA-256 checksum (đầu vào)
+và filesystem immutability (đầu ra).
 
 **Findings**:
-- F-10: Data management — copies, không symlinks
+- F-10: Data management — data-pipeline output + SHA-256 checksum
 - F-11: Session immutability — filesystem-level
 
 ## Dependencies
@@ -24,7 +24,7 @@ immutability (đầu ra).
 
 - Ước lượng: 1 round
 - Key battles:
-  - F-10: 20 copies ~1GB acceptable? Incremental hay full? Git LFS?
+  - F-10: Checksum mismatch policy (fail-closed vs re-snapshot)? Read lock khi pipeline write?
   - F-11: chmod vs hash-based verification? Rollback khi freeze lỗi?
 
 ## Cross-topic tensions

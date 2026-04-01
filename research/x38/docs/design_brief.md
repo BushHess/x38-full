@@ -160,7 +160,7 @@ tất cả sessions freeze trên pre-boundary data trước, rồi mở reserve 
 │   ├── validation/     # WFO, bootstrap, plateau, gates
 │   ├── campaign/       # Campaign + session + meta
 │   └── cli/            # Command-line interface
-├── data/               # Data repository (copies, not symlinks)
+├── data/               # Refs to data-pipeline output + manifest
 ├── campaigns/          # Campaign outputs (grow over time)
 ├── knowledge/          # Accumulated meta-knowledge
 └── tests/              # Unit + integration + regression
@@ -176,9 +176,13 @@ Lý do không vendor từ v10:
 - Clean rewrite = ít bug potential, API tối ưu cho framework
 - Chỉ cần ~6 modules: types, data, engine, cost, metrics, audit
 
-Lý do không symlink data:
-- Mỗi campaign gắn liền với exact data snapshot
-- Symlink → upstream update phá reproducibility
+Data source: `/var/www/trading-bots/data-pipeline/output/` (parquet format).
+- **Research scope**: 5 data types — `spot_klines/`, `futures_metrics/`,
+  `futures_fundingRate/`, `futures_premiumIndexKlines/`, `aggtrades_bulk/`
+- **Loại**: chỉ `bars_multi_4h.parquet` (X20 đã chứng minh multi-asset không hiệu quả)
+- Quyết định dùng/loại từng loại thuộc về kết quả nghiên cứu, không thiết kế trước
+- Mỗi campaign ghi SHA-256 checksum lúc tạo → reproducibility via checksum
+- Không duplicate data — campaign.json trỏ đến data-pipeline output + verify checksum
 
 ---
 

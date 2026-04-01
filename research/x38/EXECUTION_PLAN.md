@@ -202,7 +202,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 | Topic | Slug | Findings | Ước lượng | Notes |
 |-------|------|----------|-----------|-------|
 | **008** | architecture-identity | F-02, F-09, F-13, SSE-04-IDV | ~~1-2 rounds~~ **CLOSED** (8 rounds) | 3 pillars, directory, identity, candidate vocabulary. 4/4 Converged |
-| **009** | data-integrity | F-10, F-11 | 1 round | Data copies, session immutability |
+| **009** | data-integrity | F-10, F-11 | 1 round | Data-pipeline output + checksum, session immutability |
 | **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Clean OOS protocol, verdict taxonomy, power rules, pre-existing candidates. 3 Converged + 1 Judgment call |
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
 | **012** | quality-assurance | F-18, F-19 | 1 round | Verification gates, online evolution |

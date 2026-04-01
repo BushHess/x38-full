@@ -600,7 +600,7 @@ thuật toán mới. Framework phải hỗ trợ chu kỳ đầy đủ:
 │   ├── validation/     # WFO, bootstrap, plateau, ablation, gates
 │   ├── campaign/       # Campaign lifecycle, session, convergence, meta
 │   └── cli/            # Command-line interface
-├── data/               # Data copies (not symlinks), SHA-256 verified
+├── data/               # Refs to data-pipeline output + SHA-256 manifest
 ├── campaigns/          # Campaign outputs (grow over time, immutable after close)
 ├── knowledge/          # Accumulated meta-knowledge (principles only)
 └── tests/              # Unit, integration, regression (engine math + artifact conformance)

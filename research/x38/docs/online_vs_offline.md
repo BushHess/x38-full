@@ -41,7 +41,7 @@ khi thực tế Alpha-Lab cần giải pháp offline riêng cho cùng vấn đ�
 
 | Vấn đề | Online giải quyết bằng | Offline giải quyết bằng |
 |--------|------------------------|-------------------------|
-| **Contamination** | Upload matrix, session boundaries, prompt isolation | Filesystem chmod, data snapshot copy, campaign isolation |
+| **Contamination** | Upload matrix, session boundaries, prompt isolation | Filesystem chmod, data-pipeline checksum binding, campaign isolation |
 | **Winner divergence** | Convergence status doc (human review) | N independent deterministic sessions + statistical convergence test |
 | **Constitution gaps** | Governance review chat (G0→G2) | Meta-Updater code (automated rule update between campaigns) |
 | **Reproducibility** | State pack handoff (manual) | Deterministic pipeline (same input = same output) |

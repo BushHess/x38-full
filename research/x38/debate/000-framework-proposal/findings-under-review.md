@@ -54,7 +54,7 @@ O-01→O-05 (debate-index.md) giữ lại toàn bộ substance.
 | X38-D-07 | Core engine — rebuild từ đầu | **005** (core-engine) | Judgment call | Open |
 | X38-D-08 | Feature engine — registry pattern | **006** (feature-engine) | Thiếu sót | Open |
 | X38-D-09 | Cấu trúc thư mục target | **008** (architecture-identity) | Thiếu sót | **CLOSED** |
-| X38-D-10 | Data management — copies, không symlinks | **009** (data-integrity) | Judgment call | Open |
+| X38-D-10 | Data management — data-pipeline output + SHA-256 checksum | **009** (data-integrity) | Judgment call | Open |
 | X38-D-11 | Session immutability — filesystem-level | **009** (data-integrity) | Thiếu sót | Open |
 | X38-D-12 | Clean OOS via future data | **010** (clean-oos-certification) | Judgment call | **CLOSED** |
 | X38-D-13 | Three-identity-axis model (từ gen4) | **008** (architecture-identity) | Thiếu sót | **CLOSED** |

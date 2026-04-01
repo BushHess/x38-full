@@ -184,9 +184,8 @@ Topic 018's field 3 (`identity_vocabulary`) routing obligation.
 │   ├── campaign/               # campaign, session, convergence, contamination, knowledge, oos
 │   └── cli/                    # main, run_session, run_campaign, new_campaign, report
 │
-├── data/btcusdt/               # Data copies (SHA-256), NOT symlinks
-│   ├── bars_2017_2026q1.csv
-│   └── checksums.json
+├── data/                       # Symlinks or refs to data-pipeline output
+│   └── data_manifest.json      # SHA-256 checksums + path mapping to source
 │
 ├── campaigns/                  # Campaign outputs (grow over time)
 │   ├── c001_btc_2017_2026q1/
@@ -213,8 +212,13 @@ Topic 018's field 3 (`identity_vocabulary`) routing obligation.
   `campaigns/` grows. Code, data snapshots, and knowledge are stable.
 - **Separate venv**: Alpha-Lab uses its own virtualenv, not shared with
   `/var/www/trading-bots/.venv/`.
-- **Data as copies**: Each campaign binds to an exact data snapshot via
-  SHA-256 checksum. No symlinks (reproducibility via co-location).
+- **Data from pipeline**: Each campaign binds to an exact data snapshot via
+  SHA-256 checksum. Data lives at `/var/www/trading-bots/data-pipeline/output/`
+  (parquet format, managed by data-pipeline). Research scope includes all 5
+  data types (`spot_klines`, `futures_metrics`, `futures_fundingRate`,
+  `futures_premiumIndexKlines`, `aggtrades_bulk`). Which data types a campaign
+  uses is determined by research results, not pre-decided. `data_manifest.json`
+  records checksums at campaign-creation time for reproducibility.
 - **`knowledge/` at root**: Mutable meta-knowledge state, not source code.
   Placed at root for visibility and independent versioning.
 

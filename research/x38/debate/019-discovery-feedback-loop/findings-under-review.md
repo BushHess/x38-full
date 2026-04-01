@@ -2060,7 +2060,8 @@ validation exercise, not ongoing pipeline input.
 ### Category C: ETL pipeline correctness (overlaps Stage 2)
 
 The data pipeline (`/var/www/trading-bots/data-pipeline/`) transforms Binance
-API responses into the project's CSV format. Some of these checks overlap with
+API responses into parquet files (`/var/www/trading-bots/data-pipeline/output/`).
+Some of these checks overlap with
 Stage 2 (integrity audit), but are included here because aggregation-level
 errors may not be caught by Stage 2's gap/duplicate/checksum tests:
 

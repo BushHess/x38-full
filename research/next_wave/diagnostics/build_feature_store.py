@@ -47,7 +47,7 @@ from strategies.vtrend_x0_volsize.strategy import (
 
 # ── Constants ─────────────────────────────────────────────────────────────
 DATA = str(ROOT / "data/bars_btcusdt_2016_now_h1_4h_1d.csv")
-BREADTH_DATA = "/var/www/trading-bots/data-pipeline/bars_multi_4h.csv"
+BREADTH_DATA = "/var/www/trading-bots/data-pipeline/output/bars_multi_4h.parquet"
 CASH = 10_000.0
 ANN = math.sqrt(6.0 * 365.25)
 START = "2019-01-01"
@@ -230,7 +230,7 @@ def compute_breadth(breadth_path: str, h4_close_times: np.ndarray,
     Strict no-lookahead: for each BTC H4 bar at time T, we only use
     breadth symbol bars with close_time <= T.
     """
-    bdf = pd.read_csv(breadth_path)
+    bdf = pd.read_parquet(breadth_path)
     # Exclude BTC (it's the anchor, not part of breadth count)
     symbols = sorted(s for s in bdf["symbol"].unique() if s != "BTCUSDT")
     n_btc = len(h4_close_times)

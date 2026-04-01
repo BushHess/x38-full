@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
 ARTIFACTS = Path(__file__).resolve().parent / "artifacts"
-BREADTH_DATA = "/var/www/trading-bots/data-pipeline/bars_multi_4h.csv"
+BREADTH_DATA = "/var/www/trading-bots/data-pipeline/output/bars_multi_4h.parquet"
 
 
 def ema(arr: np.ndarray, period: int) -> np.ndarray:
@@ -74,7 +74,7 @@ def compute_breadth_exact(breadth_path: str, btc_h4_close_times: np.ndarray,
 
     No-lookahead: only uses D1 bars that completed before BTC H4 bar close.
     """
-    bdf = pd.read_csv(breadth_path)
+    bdf = pd.read_parquet(breadth_path)
     symbols = sorted(s for s in bdf["symbol"].unique() if s != "BTCUSDT")
 
     n_btc = len(btc_h4_close_times)

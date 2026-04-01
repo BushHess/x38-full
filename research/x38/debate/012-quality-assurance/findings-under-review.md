@@ -133,7 +133,7 @@ Gen4 V1 status: đang trong quá trình seed discovery (online).
 |-----------|-------------------------------|------------------------------------------|
 | F-01 (triết lý) | NO_ROBUST_CANDIDATE là verdict thực tế | Cùng triết lý, khác enforcement (code vs prompt) |
 | F-03 (campaign) | Gen3 chỉ có 1 session, không campaign | Offline: N independent deterministic sessions + statistical convergence |
-| F-04 (firewall) | `contamination_map.md` ghi nhận leakage | Offline: filesystem chmod + data snapshot copy (machine-enforced) |
+| F-04 (firewall) | `contamination_map.md` ghi nhận leakage | Offline: filesystem chmod + data-pipeline checksum binding (machine-enforced) |
 | F-05 (protocol) | D1a→D1f3 pipeline = AI-interpreted stages | Offline: deterministic code pipeline, stage gating bằng filesystem |
 | F-07 (engine) | AI chat thực hiện backtest inline | Offline: standalone engine, reproducible (same input = same output) |
 | F-16 (transition) | Redesign guardrails = prompt-based rules | Offline: campaign isolation by construction, meta-updater code |

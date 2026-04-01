@@ -46,7 +46,7 @@ Stage 3 là bottleneck. Không parallel → mỗi session mất >2 ngày cho fea
 - **Hybrid**: local cho stages nhỏ, distributed cho Stage 3 nếu cần.
 
 **3. Data sharing**:
-- Bars data (H4+D1 CSV): ~50MB loaded. Nếu mỗi worker load riêng → N×50MB RAM.
+- Bars data (H4+D1 parquet từ data-pipeline): ~50MB loaded. Nếu mỗi worker load riêng → N×50MB RAM.
   Cần shared memory (mmap) hoặc copy-on-write (fork)?
 - Feature cache: computed features shared across configs cùng family?
   Có thể tiết kiệm 60-80% compute nếu features cached.
@@ -180,9 +180,9 @@ Nhưng "độc lập" chưa address:
      (50K configs) = N × 2 ngày = chậm.
    - Parallel: nhanh, nhưng cần resource isolation (RAM, CPU, disk I/O).
 
-2. **Resource sharing**: Nếu parallel — sessions share data (cùng CSV file)?
-   Share feature cache? Hay mỗi session copy riêng (per F-10: "copies not
-   symlinks")?
+2. **Resource sharing**: Nếu parallel — sessions share data (cùng parquet files
+   từ data-pipeline output)? Share feature cache? Per F-10: data-pipeline là
+   shared source, campaign verifies checksum — không cần copy riêng.
 
 3. **Independence guarantee**: "Độc lập" nghĩa là KHÔNG information leak giữa
    sessions. Parallel sessions trên cùng machine: shared filesystem, shared
@@ -196,14 +196,14 @@ Nhưng "độc lập" chưa address:
 | Position | Mô tả | Tradeoff |
 |----------|--------|----------|
 | A: Serial sessions | s001 → s002 → ... → s00N. Simple. Independence by construction | Slow: N × 2+ days per campaign |
-| B: Parallel sessions, shared data read-only | Sessions read same data copy (chmod 444). Each session writes to own directory. OS-level isolation | Fast, moderate complexity. Data copy is cheap |
-| C: Parallel sessions, full isolation | Each session gets own data copy + own process space. Docker/VM per session | Maximum isolation, highest resource cost |
+| B: Parallel sessions, shared data read-only | Sessions read same data-pipeline output (parquet, read-only). Each session writes to own directory. OS-level isolation | Fast, moderate complexity. No data duplication |
+| C: Parallel sessions, full isolation | Each session gets own process space + own data-pipeline snapshot. Docker/VM per session | Maximum isolation, highest resource cost |
 | D: v1 serial, v2 parallel | Ship simple, optimize later | Fast v1, but architectural decisions now may block parallelism later |
 
 **Evidence**:
 - Topic 001 D-03: "N sessions độc lập"
 - Topic 013 CA-02: S_min=3, S_max=5 (provisional)
-- F-10 (Topic 009): "copies not symlinks" — suggests data isolation awareness
+- F-10 (Topic 009): data-pipeline output + SHA-256 checksum — shared data source, campaign verifies integrity
 - F-11 (Topic 009): session immutability — chmod enforcement
 - ER-01 (this topic): compute orchestration addresses intra-session parallelism
   (50K configs), NOT inter-session parallelism. ER-03 addresses inter-session.
