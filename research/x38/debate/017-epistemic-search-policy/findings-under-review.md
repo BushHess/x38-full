@@ -40,10 +40,10 @@ Stage 4 hiện tại (F-05) là "Orthogonal pruning -> shortlist.json (keep/drop
 ledger)" — thực chất là giữ global top-K rồi đi tiếp. Cách này collapse
 diversity quá sớm, biến framework thành máy xếp hạng thay vì máy khám phá.
 
-Evidence: V4->V8 [extra-archive] chạy 5 sessions trên cùng data, mỗi session
-tìm winner khác (cùng "D1 slow" family). Framework không ghi lại coverage map
-hay phenotype distribution — không ai biết vùng nào đã explore kỹ, vùng nào
-bỏ sót.
+Evidence: research/x37/docs/gen1/RESEARCH_PROMPT_V8/CONVERGENCE_STATUS_V3.md:14-41 [extra-archive] —
+8 sessions (V4-R1→R5, V5, V6, V7) trên cùng data, mỗi session tìm winner khác
+(cùng "D1 slow" family). Framework không ghi lại coverage map hay phenotype
+distribution — không ai biết vùng nào đã explore kỹ, vùng nào bỏ sót.
 
 **Đề xuất sửa Stages 3-8**:
 

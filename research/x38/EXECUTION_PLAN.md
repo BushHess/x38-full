@@ -31,9 +31,9 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 018 | **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed to 006/015/017/013/008/003. Prior 4-agent debate (7 rounds, extra-canonical) served as input evidence. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
 | Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
-| Topic 019 | **OPEN** (2026-03-29). Discovery feedback loop. Wave 2.5. 10 findings (DFL-01→DFL-10). Human-AI collaborative discovery loop — analysis layer, reporting, human feedback, contamination boundary, deliberation-gated code authoring, raw data exploration (06/07), feature graduation path (08), SSE-D-02 scope clarification (09), pipeline integration (10: Stage 2.5 Data Characterization). All deps satisfied (018✅, 002✅, 004✅). Song song 017. |
+| Topic 019 | **OPEN** (2026-03-29). Discovery feedback loop. Wave 2.5. 18 findings (DFL-01→DFL-18). DFL-01→12: discovery loop architecture. DFL-13→18: data foundation & quality assurance (added 2026-03-31). 21 decisions in 4 tiers. All deps satisfied (018✅, 002✅, 004✅). Song song 017. |
 | Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
-| Specs drafted | SEEDED (3): `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures (§12-13 from 018); `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started. |
+| Specs drafted | SEEDED (1): `meta_spec.md` seeded from 002/004/007/008 closures (eligible for DRAFTING). DRAFTING (3): `architecture_spec.md` from 001/002/004/007/008/010/013/018 closures (§14 proposal from 019); `discovery_spec.md` from 018 closure (§6-§11 proposals from 019); `methodology_spec.md` from 013 closure. |
 | Specs published | ZERO |
 
 ---
@@ -205,13 +205,13 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 | **009** | data-integrity | F-10, F-11 | 1 round | Data-pipeline output + checksum, session immutability |
 | **010** | clean-oos-certification | F-12, F-21, F-23, F-24 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Clean OOS protocol, verdict taxonomy, power rules, pre-existing candidates. 3 Converged + 1 Judgment call |
 | **011** | deployment-boundary | F-26, F-27, F-28, F-29 | 1-2 rounds | Scope boundary, research contract |
-| **012** | quality-assurance | F-18, F-19 | 1 round | Verification gates, online evolution |
+| **012** | quality-assurance | F-18, F-39 (active) + F-19 (demoted) | 1 round | Verification gates, testing strategy |
 | **001** | campaign-model | F-03, F-15, F-16 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Campaign→Session, transition |
 | **002** | contamination-firewall | F-04 | ~~1-2 rounds~~ **CLOSED** (6 rounds) | Typed schema, state machine. 3 categories permanent (STOP_DISCIPLINE → ANTI_PATTERN), UNMAPPED governance |
 | **005** | core-engine | F-07 | 1 round | Rebuild vs vendor |
-| **006** | feature-engine | F-08 | 1 round | Registry pattern |
+| **006** | feature-engine | F-08, F-38 + SSE-D-03 | 1 round | Registry pattern, feature interaction, auto-generated acceptance |
 | **013** | convergence-analysis | CA-01, CA-02 + SSE-09, SSE-04-THR | ~~1-2 rounds~~ **CLOSED** (6+12 rounds) | Convergence metrics, stop conditions. 4/4 Judgment call. Unblocks 017. |
-| **015** | artifact-versioning | F-14, F-17 | 1-2 rounds | State pack, semantic change |
+| **015** | artifact-versioning | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV | 1-2 rounds | State pack, semantic change, discovery lineage, contradiction schema, invalidation cascade |
 
 > **Note**: 11 topics CÓ THỂ debate song song. Dependencies giữa chúng là
 > soft — debate tiến hành bình thường, minor adjustments sau nếu cần.
@@ -235,7 +235,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
   cần thêm branch. Nếu close sau 003, protocol có thể phải reopen.
 
 **Topic 017** — `017-epistemic-search-policy/`
-- Findings: ESP-01, ESP-02, ESP-03, ESP-04 (4 findings)
+- Findings: ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6 findings)
 - Key: Epistemic search policy — intra-campaign illumination, phenotype/structural
   prior contracts, promotion ladder, budget governor
 - Ước lượng: 2-3 rounds
@@ -245,11 +245,15 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - 016, 017, và 019 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
 
 **Topic 019** — `019-discovery-feedback-loop/`
-- Findings: DFL-01→DFL-10 (10 findings)
+- Findings: DFL-01→DFL-18 (18 findings). DFL-01→12: discovery loop architecture.
+  DFL-13→18: data foundation & quality assurance (added 2026-03-31).
 - Key: Human-AI collaborative discovery loop — AI result analysis (data + results),
   human-facing reporting, human feedback capture, contamination boundary,
   deliberation-gated code authoring, raw data exploration (06/07), feature
-  graduation path (08), SSE-D-02 scope clarification (09)
+  graduation path (08), SSE-D-02 scope clarification (09), pipeline integration (10),
+  statistical budget (11), grammar composition (12), data trustworthiness (13),
+  non-stationarity protocol (14), resolution gap (15), cross-asset context (16),
+  pipeline validation (17), regime-conditional profiling (18)
 - Ước lượng: 2-3 rounds
 - Phụ thuộc: 018✅ + 002✅ + 004✅ (3/3 satisfied — ALL DEPS MET)
 - **Phải close TRƯỚC 003**: discovery loop may add protocol interaction points
@@ -259,15 +263,15 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 #### Wave 3 — Topics 003 + 014 (sau upstream closed)
 
 **Topic 003** — `003-protocol-engine/`
-- Findings: F-05 (1 finding — F-14/F-17 tách sang 015)
-- Key: 8 stages, phase gating, provenance, WFO
-- Ước lượng: 1-2 rounds (giảm sau khi tách F-14/F-17)
+- Findings: F-05, F-36, F-37 + SSE-D-04 (4 findings — F-14/F-17 tách sang 015)
+- Key: 8 stages, phase gating, provenance, WFO, multi-asset adaptation, session isolation
+- Ước lượng: 1-2 rounds
 - Phụ thuộc: 001 + 002 + 004(closed) + 015 + 016 + 017 + 019 (tất cả phải CLOSED)
 - Rủi ro: nếu upstream decisions thay đổi muộn, 003 phải redo
 
 **Topic 014** — `014-execution-resilience/`
-- Findings: F-32, F-33 (2 findings)
-- Key: Compute orchestration, checkpointing, CLI
+- Findings: F-32, F-33, F-40/ER-03 (3 findings)
+- Key: Compute orchestration, checkpointing, session concurrency, CLI
 - Ước lượng: 1-2 rounds
 - Phụ thuộc: 003 + 005 (cần biết stages + engine)
 

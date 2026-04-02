@@ -151,7 +151,7 @@ Finding:
 | Decision | Alternatives | Implication |
 |----------|-------------|-------------|
 | Findings cap per report | (a) Fixed N=10 (b) Dynamic by confidence (c) Uncapped | Cap prevents overwhelm; dynamic needs confidence metric definition |
-| Delivery format | (a) Markdown artifact (b) Interactive (c) Markdown with standard template | Markdown is reproducible and auditable (RESEARCH_RULES.md Pattern A) |
+| Delivery format | (a) Markdown artifact (b) Interactive (c) Markdown with standard template | Markdown is reproducible and auditable (docs/research/RESEARCH_RULES.md:57-101 [extra-archive] — Pattern A) |
 
 **Open questions**:
 - Acknowledgment protocol: Must human acknowledge receipt? Timeout?
@@ -791,13 +791,13 @@ analyses become recurring (per DFL-06 open question), DFL-07 is the
 implementation specification for DFL-01's "data analysis" domain.
 If one-time, DFL-07 is a standalone research methodology.
 
-**Relationship to RESEARCH_RULES.md**: btc-spot-dev already has
-`docs/research/RESEARCH_RULES.md` defining Pattern A (standalone runner)
-and Pattern B (CLI integration) for research studies. DFL-07's workflow
-EXTENDS these patterns, not replaces them:
+**Relationship to RESEARCH_RULES.md** (docs/research/RESEARCH_RULES.md:55-137 [extra-archive]):
+btc-spot-dev already has Pattern A (standalone runner, :57-101) and Pattern B
+(CLI integration, :104-137) for research studies. DFL-07's workflow EXTENDS
+these patterns, not replaces them:
 - Phase 1-2 (SCAN, DEEP DIVE): follow Pattern A (standalone scripts)
 - Phase 3 (VALIDATION): follow Pattern B (integration with validation/)
-- C2 reproducibility requirements: inherit from RESEARCH_RULES.md
+- C2 reproducibility requirements: inherit from docs/research/RESEARCH_RULES.md:55-137 [extra-archive]
 
 **Architecture vs Research Plan boundary**: DFL-07 contains both:
 - **Architecture requirements** (what the framework must support):
@@ -952,8 +952,8 @@ Phase 3: VALIDATION (rigorous, before any feature enters pipeline)
 #### C2. Reproducibility Requirements
 
 - Every analysis produces a **dated artifact** in `research/xNN/` following
-  existing RESEARCH_RULES.md patterns
-- Code: standalone Python script (Pattern A or B from RESEARCH_RULES.md)
+  existing patterns (docs/research/RESEARCH_RULES.md:55-137 [extra-archive])
+- Code: standalone Python script (Pattern A or B from docs/research/RESEARCH_RULES.md:57-137 [extra-archive])
 - Output: markdown report + saved figures (PNG/SVG)
 - All random seeds fixed, all parameters documented
 - Results must be reproducible with `python research/xNN/script.py`
@@ -1313,7 +1313,7 @@ AI analysis layer CANNOT promote features — only surface them.
 ### Stage 5: Registry → Strategy Validation
 
 **Input**: Registered feature from Stage 4
-**Gate**: Normal validation pipeline (all 7 gates from CLAUDE.md)
+**Gate**: Normal validation pipeline (all 7 gates — CLAUDE.md:156-174 [extra-archive])
 **Output**: Strategy using the feature receives PROMOTE/HOLD/REJECT verdict
 
 This stage is NOT new — it is the existing validation pipeline. Included here

@@ -841,7 +841,7 @@ implementation, not by this spec.
 | §5.2 3-Tier Claim Model | X38-D-20 | `debate/007-philosophy-mission/final-resolution.md` §Decision 2 |
 | §5.3 Phase 1 Evidence Taxonomy | X38-D-22 | `debate/007-philosophy-mission/final-resolution.md` §Decision 3 |
 | §5.4 Regime-Aware Policy Boundary | X38-D-25 | `debate/007-philosophy-mission/final-resolution.md` §Decision 4 |
-| §7.1 Typed Schema + 4 Categories | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 1 |
+| §7.1 Typed Schema + 3 Categories | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 1 |
 | §7.2 State Machine Hash-Signing | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 2 |
 | §7.3 Filesystem chmod | X38-D-04 | `debate/002-contamination-firewall/final-resolution.md` §Decision 3 |
 | §7.4 Cross-Spec Interface (MK-14) | X38-D-04 / X38-MK-14 | `debate/002-contamination-firewall/final-resolution.md` + `debate/004-meta-knowledge/final-resolution.md` |

@@ -4,7 +4,7 @@
 **Opened**: 2026-03-22 (activated from PLANNED)
 **Author**: claude_code (architect)
 
-3 findings về protocol engine — 8-stage discovery pipeline.
+4 findings về protocol engine — 8-stage discovery pipeline.
 F-36 and F-37 added 2026-03-31 (gap audit).
 
 **Lưu ý**: F-14 (state pack) và F-17 (semantic change classification) đã tách

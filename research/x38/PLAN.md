@@ -757,10 +757,10 @@ Vai trò kép:
 | 000 | Framework architecture (index) | — | **SPLIT** (2026-03-22) → 11 sub-topics |
 | 001 | Campaign model | F-03, F-15, F-16 | **CLOSED** (2026-03-23, 6 rounds, 3/3 resolved) |
 | 002 | Contamination firewall | F-04 | **CLOSED** (2026-03-25, 6 rounds, 3 Converged + 4 Judgment call) |
-| 003 | Protocol engine | F-05 | **OPEN** (2026-03-22, Wave 3 — chờ 001+002+004+015+016+017) |
+| 003 | Protocol engine | F-05, F-36, F-37 + SSE-D-04 | **OPEN** (2026-03-22, Wave 3 — chờ 001+002+004+015+016+017+019) |
 | 004 | Meta-knowledge governance | F-06 | **CLOSED** (2026-03-21, 6 rounds, 23/23 resolved) |
 | 005 | Core engine design | F-07 | **OPEN** (2026-03-22, Wave 2) |
-| 006 | Feature engine design | F-08 | **OPEN** (2026-03-22, Wave 2) |
+| 006 | Feature engine design | F-08, F-38 + SSE-D-03 | **OPEN** (2026-03-22, Wave 2) |
 | 007 | Philosophy & mission claims | F-01, F-20, F-22, F-25 | **CLOSED** (2026-03-23, 4/4 Converged) |
 
 > **Topic 007 closure** (2026-03-23, 4 rounds, 4/4 Converged):
@@ -774,12 +774,14 @@ Vai trò kép:
 | 009 | Data integrity | F-10, F-11 | **OPEN** (2026-03-22, Wave 2) |
 | 010 | Clean OOS & certification | F-12, F-21, F-23, F-24 | **CLOSED** (2026-03-25) |
 | 011 | Deployment boundary | F-26, F-27, F-28, F-29 | **OPEN** (2026-03-22, Wave 2) |
-| 012 | Quality assurance | F-18, F-19 | **OPEN** (2026-03-22, Wave 2) |
+| 012 | Quality assurance | F-18, F-39 (active) + F-19 (demoted) | **OPEN** (2026-03-22, Wave 2) |
 | 013 | Convergence analysis | F-30, F-31 + SSE-09, SSE-04-THR | **CLOSED** (2026-03-28) |
-| 014 | Execution & resilience | F-32, F-33 | **OPEN** (2026-03-22, Wave 3 — chờ 003+005) |
-| 015 | Artifact & version management | F-14, F-17 | **OPEN** (2026-03-22, Wave 2) |
+| 014 | Execution & resilience | F-32, F-33, F-40/ER-03 | **OPEN** (2026-03-22, Wave 3 — chờ 003+005) |
+| 015 | Artifact & version management | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV | **OPEN** (2026-03-22, Wave 2) |
 | 016 | Bounded recalibration path | BR-01, BR-02 | **OPEN** (2026-03-23, Wave 2.5 — chờ 001+002+010+011+015) |
 | 017 | Epistemic search policy | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL | **OPEN** (2026-03-24, Wave 2.5 — deps satisfied: 002✅+008✅+010✅+013✅) |
+| 018 | Search-space expansion | SSE-D-01→D-11 | **CLOSED** (2026-03-27, 6 rounds, 10 Converged + 1 Judgment call) |
+| 019 | Discovery feedback loop | DFL-01→DFL-18 | **OPEN** (2026-03-29, Wave 2.5 — deps satisfied: 018✅+002✅+004✅) |
 
 **Dependencies** (synced with `debate/debate-index.md`):
 
@@ -791,8 +793,9 @@ Vai trò kép:
     ↓
 016 (bounded-recal) ← HARD-dep from 001 + 002 + 010 + 011 + 015 — Wave 2.5
 017 (epistemic-SP)  ← HARD-dep from 002 + 008 + 010 + 013 — Wave 2.5
+019 (discovery-FL)  ← HARD-dep from 018 + 002 + 004 — Wave 2.5
     ↓
-003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017 — Wave 3
+003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017 + 019 — Wave 3
 014 (execution) ← soft-dep from 003 + 005 — Wave 3
 ```
 
@@ -1108,9 +1111,9 @@ F-14 (what gets recorded) và F-17 (when results become invalid) cùng concern:
 | V8 online results | DONE | V8 session hoàn tất, resource published |
 | Evidence coverage | DONE | `docs/evidence_coverage.md` — Phase 0 DONE (2026-03-21) |
 | Debate topics defined | DONE | 20 topics (000 SPLIT + 004/007/001/002/010/008/018/013 CLOSED + 11 OPEN). Xem `debate/debate-index.md`. |
-| Debate findings collected | DONE | 64 findings distributed across 18 topics (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
+| Debate findings collected | DONE | 81 findings distributed (per-topic counts in `debate/debate-index.md`; excludes Topic 004 MK-series and Topic 000 convergence notes C-01→C-12). |
 | Debate execution | IN PROGRESS | 8 topics CLOSED: 004, 007, 001, 002, 010, 008, 018, 013. 88 debate rounds done. 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
-| Drafts | SEEDED (3) | `architecture_spec.md` seeded from 001/002/004/007/008/010/018 closures; `meta_spec.md` seeded from 002/004/007/008 closures; `discovery_spec.md` seeded from 018 closure. Formal drafting not started — publication gated on ALL dependencies CLOSED. |
+| Drafts | SEEDED (1) + DRAFTING (3) | `meta_spec.md` SEEDED from 002/004/007/008 closures (eligible for DRAFTING). `architecture_spec.md` DRAFTING from 001/002/004/007/008/010/013/018 closures (§14 proposal from 019). `discovery_spec.md` DRAFTING from 018 closure (§6-§11 proposals from 019). `methodology_spec.md` DRAFTING from 013 closure. Publication gated on ALL dependencies CLOSED. |
 | Publication | NOT STARTED | Sau drafts |
 
 **V8 online results đã có** — không còn lý do chờ V8.
@@ -1142,7 +1145,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 > by data analysis, not grammar enumeration. Topic 019 designs the Human-AI
 > collaborative loop: AI analysis layer (data + results), human-facing reporting,
 > feedback capture, contamination boundary, deliberation-gated code authoring.
-> 10 findings (DFL-01→DFL-10). Wave 2.5, all deps satisfied, song song với 017.
+> 18 findings (DFL-01→DFL-18). Wave 2.5, all deps satisfied, song song với 017.
 > DFL-06/07 (2026-03-30): raw data exploration + methodology.
 > DFL-08/09 (2026-03-31): feature graduation path + SSE-D-02 scope clarification.
 > DFL-10 (2026-03-31): pipeline integration — Stage 2.5 Data Characterization.

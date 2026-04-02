@@ -4,7 +4,7 @@
 **Opened**: 2026-03-22 (activated from PLANNED)
 **Author**: claude_code (architect)
 
-2 findings về feature engine design.
+3 findings về feature engine design.
 F-38 added 2026-03-31 (gap audit).
 
 ---
@@ -50,8 +50,8 @@ Scanner enumerate: feature × lookback × tail × mode × quantile → có thể
 Serialization: stage1_registry.parquet (typed, compact cho 50K+ rows).
 
 **Evidence**:
-- research/x37/resource/gen1/v5_sfq70/ [extra-archive]: 261 features, 8 role categories, scan manifest.
-- research/x37/resource/gen1/v6_ret168/ [extra-archive]: 2,219 configs, threshold modes (fixed zero, expanding, calibration).
+- research/x37/resource/gen1/v5_sfq70/spec/research_reproduction_spec_SF_EFF40_Q70_STATIC.md [extra-archive]: 261 features, 8 role categories, scan manifest.
+- research/x37/resource/gen1/v6_ret168/research/stage1_feature_registry_full.csv [extra-archive]: 2,219 configs, threshold modes (fixed zero, expanding, calibration).
 - research/x37/docs/gen1/RESEARCH_PROMPT_V6/CONTAMINATION_LOG_V2.md [extra-archive]: feature inventories từ 6 rounds — total ~100+ unique features.
 - research/x37/docs/gen1/RESEARCH_PROMPT_V6/RESEARCH_PROMPT_V6.md §Stage 1 [extra-archive]: "Export the full machine-readable Stage 1 registry."
 

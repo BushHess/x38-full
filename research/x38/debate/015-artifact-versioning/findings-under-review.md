@@ -22,7 +22,7 @@
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, gen4 evidence import)
 - **current_status**: Open
-- **source**: x37/docs/gen4 — Research Operating Kit v4.0 [extra-archive]
+- **source**: research/x37/docs/gen4/core/STATE_PACK_SPEC_v4.0_EN.md [extra-archive]
 
 **Nội dung**:
 
@@ -61,7 +61,7 @@ Artifacts gen4 **không cần** trong Alpha-Lab offline:
 - **opened_at**: 2026-03-21
 - **opened_in_round**: 0 (pre-debate, gen4 evidence import)
 - **current_status**: Open
-- **source**: x37/docs/gen4 — Research Operating Kit v4.0 [extra-archive]
+- **source**: research/x37/docs/gen4/core/research_constitution_v4.0.yaml §semantic_change [extra-archive]
 
 **Nội dung**:
 
@@ -82,11 +82,6 @@ Gen4 phân loại thay đổi nào cần new `system_version_id` (= invalidate k
 **Classification test**: Chạy frozen algorithm trên cùng data trước và sau change.
 Nếu trade log hoặc PnL path khác **1 bit** → cần version mới.
 
-**Ví dụ thực tế từ btc-spot-dev** [extra-archive]:
-- D1→H4 MTF mapping fix (`<=` → `<`): thay đổi trade log → tất cả kết quả
-  cũ invalid, re-run 195 scripts
-- Thresholds comment fix (W+ ≥ 30 → W+ ≥ 28): comment-only → results vẫn valid
-
 Alpha-Lab cần classification tương tự:
 
 | Thay đổi loại | Ảnh hưởng | Action |
@@ -100,7 +95,6 @@ Alpha-Lab cần classification tương tự:
 
 **Evidence**:
 - research/x37/docs/gen4/core/research_constitution_v4.0.yaml §semantic_change [extra-archive]: full classification + bit-identical test
-- /root/.claude/projects/-var-www-trading-bots/memory/MEMORY.md [extra-archive]: D1→H4 fix invalidated 195 scripts (real example)
 - x38 F-11: covers session immutability but not framework code changes
 
 **Câu hỏi mở**:

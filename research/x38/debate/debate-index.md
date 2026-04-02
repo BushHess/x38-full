@@ -2,10 +2,16 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-03-31 — Gap audit: 5 new findings added (F-36, F-37, F-38, F-39, ER-03),
+**Cập nhật**: 2026-04-01 — Audit sync: Topic 019 updated 12→18 findings (DFL-13→18),
+total 75→81. Propagated gap audit findings to READMEs (003, 006, 012, 014).
+PLAN.md + EXECUTION_PLAN.md partially synced (topic-level detail for 019 added;
+aggregate counts and draft status were NOT updated — corrected 2026-04-01 audit fix).
+architecture_spec traceability typo fixed (4→3 categories).
+methodology_spec.md added to drafts/README. Missing claude_code/codex dirs created (014, 015).
+Previous: 2026-03-31 — Gap audit: 5 new findings added (F-36, F-37, F-38, F-39, ER-03),
 F-19 demoted to supporting evidence, 013↔017 resolution strategy added to 017,
 DFL-07 scope note added, B-02 contradiction escalated in 011/015.
-Previous: 2026-03-31 — Topic 019 updated to 12 findings (DFL-01→DFL-12).
+Previous: 2026-03-31 — Topic 019 updated to 12 findings (DFL-01→DFL-12), later expanded to 18 (DFL-13→DFL-18 added same day).
 Added: DFL-12 Grammar Depth-2 Composition (search space expansion, operator
 whitelist, SSE-D-02 spirit question). DFL-11 corrected (MI pre-filter NOT free,
 budget K_max is empirical). Decision summary added (14 decisions in 3 tiers).
@@ -55,9 +61,9 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
 | X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved → 11 decisions (OI-02 expands to D-02+D-03). 10 Converged + 1 Judgment call. 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
-| X38-T-19 | Discovery feedback loop | 2026-03-29 | OPEN | `019-discovery-feedback-loop/` | DFL-01→DFL-12 (12) |
+| X38-T-19 | Discovery feedback loop | 2026-03-29 | OPEN | `019-discovery-feedback-loop/` | DFL-01→DFL-18 (18) |
 
-**Totals**: 20 topics (8 CLOSED, 1 SPLIT, 11 OPEN). 75 findings distributed (70 original + 5 gap audit; F-19 demoted; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 20 topics (8 CLOSED, 1 SPLIT, 11 OPEN). 81 findings distributed (70 original + 5 gap audit + 6 DFL data-foundation; F-19 demoted; excludes Topic 004 MK-series and Topic 000 convergence notes).
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
 SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **confirmed** (018 CLOSED 2026-03-27).
 

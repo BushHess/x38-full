@@ -12,7 +12,8 @@ module-level verification gates và evidence từ gen2→gen3→gen4 failure mod
 
 **Findings**:
 - F-18: Continuous verification — module-level review gates
-- F-19: Online framework evolution — gen2→gen3→gen4 failure modes
+- F-39: Framework testing strategy — automated correctness assurance (gap audit 2026-03-31)
+- F-19: Online framework evolution — gen2→gen3→gen4 failure modes (**DEMOTED** to supporting evidence, 2026-03-31)
 
 ## Dependencies
 
@@ -28,12 +29,16 @@ module-level verification gates và evidence từ gen2→gen3→gen4 failure mod
 
 ## Cross-topic tensions
 
-Không có tension đã biết tại thời điểm mở topic.
+| Topic | Finding | Tension | Resolution path |
+|-------|---------|---------|-----------------|
+| 005 | F-07 | Engine design (vectorized vs event-loop) determines testing strategy | 005 owns engine design; 012 adapts testing strategy |
+| 003 | F-05 | Pipeline integration tests need stage definitions finalized | 003 owns stages; 012 designs integration tests against stage contracts |
+| 002 | F-04 | Firewall testing needs typed schema spec finalized | 002 CLOSED; 012 tests against 002's confirmed contracts |
 
 ## Files
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-18, F-19 |
+| `findings-under-review.md` | 2 active findings: F-18, F-39 + F-19 (demoted to supporting evidence) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

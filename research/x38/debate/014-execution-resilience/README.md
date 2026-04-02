@@ -17,6 +17,7 @@ hóa, khôi phục sau crash, và giao diện vận hành.
 **Findings**:
 - F-32: Compute orchestration cho exhaustive scans
 - F-33: Pipeline checkpointing & crash recovery
+- F-40: Session concurrency model (gap audit 2026-03-31, issue_id X38-ER-03)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
 - (không có convergence note trực tiếp — topic mới từ gap analysis)
@@ -46,6 +47,6 @@ hóa, khôi phục sau crash, và giao diện vận hành.
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-32, F-33 |
+| `findings-under-review.md` | 3 findings: F-32, F-33, F-40 (ER-03) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

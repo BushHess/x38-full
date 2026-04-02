@@ -12,6 +12,7 @@ modes, exhaustive scan strategy, cross-timeframe alignment.
 
 **Findings**:
 - F-08: Feature engine — registry pattern
+- F-38: Feature interaction & conditional logic (gap audit 2026-03-31)
 - SSE-D-03: Registry acceptance for auto-generated features (từ Topic 018)
 
 ## Dependencies
@@ -39,6 +40,6 @@ modes, exhaustive scan strategy, cross-timeframe alignment.
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-08 + SSE-D-03 (from Topic 018) |
+| `findings-under-review.md` | 3 findings: F-08, F-38 + SSE-D-03 (from Topic 018) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |

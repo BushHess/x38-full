@@ -42,9 +42,9 @@ fill), D1↔H4 alignment, cost handling, frozen-spec replay, và artifact
 conformance. KHÔNG bắt discovery pipeline phải chọn lại winner cũ.
 
 **Evidence**:
-- v10/core/ [extra-archive]: 5 files, ~3000 lines total. Framework chỉ dùng subset.
-- RESEARCH_RULES.md [extra-archive]: Pattern B (vectorized) nhanh hơn cho sweeps.
-- V6 spec: 10 test cases with exact expected outputs — dùng cho engine math
+- v10/core/engine.py, v10/core/types.py, v10/core/data.py, v10/core/metrics.py, v10/core/execution.py [extra-archive]: 5 files, ~1200 lines total. Framework chỉ dùng subset.
+- docs/research/RESEARCH_RULES.md [extra-archive]: Pattern B (vectorized) nhanh hơn cho sweeps.
+- research/x37/resource/gen1/v6_ret168/spec/BTCUSDT_S3_H4_RET168_Z0_System_Spec.md [extra-archive]: 10 test cases with exact expected outputs — dùng cho engine math
   regression, không cho discovery pipeline regression.
 
 **Câu hỏi mở**:

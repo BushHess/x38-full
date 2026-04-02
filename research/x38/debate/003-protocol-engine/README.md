@@ -15,6 +15,8 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 
 **Findings**:
 - F-05: Protocol engine — 8 stages (từ Topic 000)
+- F-36: Multi-asset pipeline adaptation (gap audit 2026-03-31)
+- F-37: Offline-first session isolation model (gap audit 2026-03-31)
 - SSE-D-04: Breadth-activation blocker at protocol_lock (từ Topic 018)
 
 **Convergence notes liên quan** (shared reference tại `000-framework-proposal/`):
@@ -58,6 +60,6 @@ classification (F-17) đã chuyển sang Topic 015 (Artifact & Version Managemen
 
 | File | Mục đích |
 |------|----------|
-| `findings-under-review.md` | 2 findings: F-05 + SSE-D-04 (from Topic 018) |
+| `findings-under-review.md` | 4 findings: F-05, F-36, F-37 + SSE-D-04 (from Topic 018) |
 | `claude_code/` | Phản biện từ Claude Code |
 | `codex/` | Phản biện từ Codex |
