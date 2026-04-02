@@ -53,7 +53,7 @@ Tier 3 (cross-cutting):
   17-epistemic-search      depends_on: [04, 06, 07]
   18-discovery-feedback-loop depends_on: [08, 04, 05]
                            ← Topic 019. HARD-dep from 018✅ + 002✅ + 004✅.
-                             All deps SATISFIED. Song song với 016, 017.
+                             All deps SATISFIED. Parallel with 016, 017.
                              18 findings (DFL-01→DFL-18). Feeds discovery_spec §6-§11,
                              architecture_spec §14.
 
@@ -66,7 +66,8 @@ Tier 4 (integration):
 ### Rules
 
 1. **Activation trigger**: A domain activates when ALL items in `depends_on` have zero `OPEN` findings.
-2. **No premature scheduling**: A domain with unmet deps stays in BLOCKED status.
+2. **Soft dependencies**: `soft_depends_on` does NOT block activation. The domain may begin debate, but findings that touch the soft dependency's outputs are marked PROVISIONAL and must be re-verified after the soft dependency closes. Tracked in `00-status.md` Integration Log as type: REVISION_CHECK.
+3. **No premature scheduling**: A domain with unmet deps stays in BLOCKED status.
    - Solves C-01: engine-design (old 005+014) is self-contained now.
    - Solves C-02: 016/017 activate when their deps are met — explicit trigger, not vague "backlog".
 3. **Integration hub rule**: Domain 10-protocol-engine debates LAST. It consumes, does not produce constraints for other domains.
@@ -216,7 +217,7 @@ Reopening events tracked in `## Integration Log` with type: REOPENED.
 - [ ] No domain has OPEN findings while its depends_on domains have OPEN findings
 - [ ] C-01 resolved: engine-design is Tier 2, not prematurely scheduled
 - [ ] C-02 resolved: 016/017 have explicit activation triggers
-- [ ] C-03 resolved: 013<->017 circular in 00-status.md with interface freeze
+- [ ] C-03 resolved: 013<->017 circular DETECTED in 00-status.md, resolution PENDING until 17 has DECIDED findings
 - [ ] C-04 resolved: 3-step closure workflow documented
 - [ ] C-05 resolved: protocol-engine has constraints register
 - [ ] All circular dependencies in 00-status.md

@@ -178,7 +178,7 @@ Each domain file follows this structure:
 - [ ] All ~56 CONVERGED findings placed in correct domain
 - [ ] All 23+ reclassified JCs placed in correct domain
 - [ ] B-02 contradiction visible in single file (03-identity-versioning.md)
-- [ ] B-03 merged: 011 F-27/F-28/F-29 -> 1 multi-part finding
+- [ ] B-03 merged: 011 F-28/F-29 -> 1 multi-part finding in 03-identity-versioning; F-26/F-27 -> 14-deployment
 - [ ] B-04 resolved: 015 native vs imported clearly separated
 - [ ] B-05 merged: 006 F-08 + SSE-D-03
 - [ ] B-06 resolved: 005 + 014 in single file with ordering

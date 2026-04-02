@@ -128,6 +128,49 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 ---
 
+## Step 0: Extraction Methodology
+
+> **Context**: G-05 identified that extraction methodology was undefined.
+> This section defines HOW findings are extracted from the 19 topic directories
+> before the rebuild can execute. Step 0 is the hard prerequisite for everything else.
+
+### Input
+
+All 19 directories under `debate/NNN-slug/`, specifically:
+- `final-resolution.md` (primary source for DECIDED findings)
+- `findings-under-review.md` (primary source for OPEN/DEFERRED findings)
+- Debate round files (secondary source for rationale and evidence)
+
+### Extraction procedure (per topic)
+
+1. **List all findings**: Extract every finding ID (F-NN, SSE-NN, BR-NN, ESP-NN, DFL-NN, ER-NN, etc.) from `final-resolution.md` and `findings-under-review.md`.
+2. **Classify each finding**:
+   - **Status**: DECIDED (in final-resolution with clear decision) | OPEN (in findings-under-review, no decision) | DEFERRED (explicitly deferred with blocked_by)
+   - **Decision type** (per 01-taxonomy.md): CONVERGED | ARBITRATED | AUTHORED | DEFAULT | DEFERRED
+   - **Reclassify JC labels**: Check each "Judgment call" — if it has a clear decision with rationale, reclassify as ARBITRATED or AUTHORED. If binary Converged, verify genuine multi-agent agreement.
+3. **Assign domain**: Map finding to its target domain file (per 02-concept-structure.md mapping table). Findings that span domains go to the PRIMARY domain with a CONSTRAINT cross-reference in the secondary domain.
+4. **Assign new ID**: `X38-{DOMAIN}-{NN}` per 01-taxonomy.md. Sequential within domain. Old IDs preserved in `Source:` field.
+5. **Extract rationale**: 1-2 sentences summarizing WHY this position won (for DECIDED) or what the design question is (for OPEN).
+
+### Output (per domain)
+
+A draft domain file following the format in 02-concept-structure.md:
+- `## Decided`: all DECIDED findings with provenance
+- `## Constraints`: imported decisions from other domains
+- `## Open`: all OPEN findings with positions
+- `## Deferred`: all DEFERRED findings with blocked_by
+
+### Verification pass
+
+After all 19 topics are extracted:
+1. **Count check**: Total extracted findings ≈ ~160 (known estimate). Flag if <140 or >180.
+2. **No orphans**: Every finding in every `final-resolution.md` and `findings-under-review.md` is accounted for.
+3. **No duplicates**: No finding ID appears in two domain files (except as CONSTRAINT cross-ref).
+4. **Cross-reference integrity**: Every `blocked_by` and `depends_on` reference points to a valid finding or domain.
+5. **Populate 00-status.md**: Fill Domain Status table with real counts from extraction.
+
+---
+
 ## Final Directory Structure (complete)
 
 ```
@@ -185,7 +228,7 @@ x38/
 - [ ] Domain Status table populated from current state
 - [ ] Deferred Items Registry populated (minimum: CVG-THR items)
 - [ ] Circular Dependencies populated (minimum: 07<->17)
-- [ ] Integration Log backfilled for all 8 closed topics
+- [ ] Integration Log has initial extraction entry (starts from rebuild date, not old closures)
 - [ ] Spec Readiness table populated
 - [ ] EXECUTION_PLAN.md moved to archive/
 - [ ] debate-index.md moved to archive/

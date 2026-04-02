@@ -35,7 +35,7 @@ PLAN.md                ← Project narrative. Add header: "Status may lag. Check
 
 **Removed**:
 ```
-EXECUTION_PLAN.md      ← DELETE. Replaced by decisions/ + 00-status.md
+EXECUTION_PLAN.md      ← ARCHIVE (move to archive/). Replaced by decisions/ + 00-status.md
 debate-index.md        ← ARCHIVE. Was topic registry; replaced by domain file headers
 ```
 
@@ -134,7 +134,7 @@ Tier 4: PLAN.md
 
 Core rules embedded in PLAN.md (no separate rules files needed for rebuild structure).
 
-> **UPDATE (2026-04-02)**: Topic 019 (18 findings: 14 Thiếu sót + 4 Judgment call)
+> **UPDATE (2026-04-02)**: Topic 019 (18 findings: 14 gaps + 4 judgment calls)
 > is the largest open topic. Its findings will use BOTH decision paths per Solution 4.
 > discovery_spec.md already at DRAFTING (§6-§11 proposals from 019, non-authoritative).
 > methodology_spec.md also added to drafts/README (from 013 closure).
