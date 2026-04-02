@@ -145,6 +145,7 @@ Each domain file follows this structure:
 - **Source**: Topic {NNN}, Round {N}
 - **Rationale**: {Why this position won — 1 sentence for CONVERGED, 2-3 for ARBITRATED}
 - **Consumed by**: {spec section(s)}
+- **genesis_target**: {specs/section | NONE}
 
 ### X38-{DOM}-02: ...
 
@@ -162,6 +163,7 @@ Each domain file follows this structure:
 - **Positions**: A: ... / B: ...
 - **Depends on**: {other findings}
 - **Blocks**: {spec sections}
+- **genesis_target**: {specs/section | NONE}
 
 ## Deferred
 
@@ -169,6 +171,7 @@ Each domain file follows this structure:
 - **Blocked by**: {finding ID or domain}
 - **Unblocks**: {spec section}
 - **Provisional value**: {if any}
+- **genesis_target**: {specs/section | NONE}
 ```
 
 ---
@@ -186,3 +189,4 @@ Each domain file follows this structure:
 - [ ] No finding appears in 2 domain files (except as CONSTRAINT cross-ref)
 - [ ] Topic count reduced from 20 to ~18 concept domain files (8 consolidated + 1 tracking + 9 open)
 - [ ] Topic 019 mapped to `18-discovery-feedback-loop.md` with all 18 DFL findings
+- [ ] Every finding has `genesis_target` field assigned (per 07-genesis-pipeline.md)

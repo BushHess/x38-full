@@ -505,3 +505,67 @@ with different composition (019 contributing 18, gap audit +5, F-19 demoted -1).
 > Category I issues are ALL CORRECTED in blueprint files (2026-04-02).
 > They are logged for audit trail — no open action items remain.
 > Original 45 issues (A-H) unchanged. 5 sync issues (I) added and resolved.
+
+---
+
+## J. GENESIS EXPORT & EXTERNAL IMPORT (3 issues, 2026-04-02)
+
+> Context: Rebuild output target is `alpha_lab/genesis/` (self-contained,
+> asset-agnostic). X40 Pack v2 contains proven operational concepts that
+> x38 has not yet debated. Both directions (export OUT, import IN) need
+> defined mechanisms.
+
+### J-01. No export path to alpha_lab/genesis/
+**Severity**: HIGH
+**Where**: All rebuild documents (missing)
+**Problem**: Rebuild defines x38/decisions/ as output and x38/drafts/ → x38/published/
+as spec lifecycle. But the actual deliverable is `alpha_lab/genesis/` — a self-contained
+architecture specification independent of x38 and btc-spot-dev. No document defines:
+(a) genesis/ directory structure, (b) domain→genesis section mapping, (c) export gate,
+(d) abstraction requirements, (e) export procedure.
+**Impact**: Without export contract, decisions stay trapped in x38's debate structure.
+genesis/ either never materializes or is created ad-hoc without quality gates.
+**Fix**: Define export contract in 07-genesis-pipeline.md (Solutions 1 + 3).
+
+### J-02. X40 state machine concepts not surfaced for x38 debate
+**Severity**: HIGH
+**Where**: All rebuild documents (missing)
+**Problem**: X40 Clean Restart Pack v2 has operationalized 3 formal state machines
+(baseline lifecycle, durability assessment, challenger tracking) that x38's
+narrative-heavy debate process is unlikely to produce independently. Most other X40
+concepts (comparison discipline, promotion ladder, cadence, etc.) will emerge
+naturally during domain debate. But state machines represent a modeling discipline
+that needs explicit introduction.
+**Impact**: genesis/ may lack formal lifecycle definitions for core entities.
+**Fix**: X40 as reference material + 3 state machine concepts recommended for
+Step 0 evaluation in 07-genesis-pipeline.md (Solution 2).
+
+### J-03. No abstraction test for genesis/ self-containment
+**Severity**: HIGH
+**Where**: 05-spec-gates.md (missing)
+**Problem**: Spec lifecycle (SKELETON→PUBLISHED) has no gate ensuring output is
+asset-agnostic and self-contained. A spec can reach PUBLISHED while still containing
+BTC-specific references, strategy names, concrete thresholds, and x38 internal IDs.
+genesis/ requires zero prohibited references, parameterized values, and domain-agnostic
+readability.
+**Impact**: genesis/ would inherit x38's BTC-centric vocabulary, making it unusable
+for other asset classes without manual cleanup.
+**Fix**: Define abstraction test + EXPORTED status in 07-genesis-pipeline.md (Solutions 1 + 3).
+
+### Updated Final Summary
+
+| Category | Count | HIGH | MEDIUM | LOW |
+|----------|-------|------|--------|-----|
+| A. Taxonomy & Labeling | 5 | 1 | 2 | 2 |
+| B. Cross-topic Overlap | 6 | 2 | 3 | 1 |
+| C. Dependency & Ordering | 5 | 2 | 3 | 0 |
+| D. Governance Overhead | 6 | 1 | 3 | 2 |
+| E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
+| F. Status Tracking | 3 | 0 | 3 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
+| I. Post-Blueprint Sync | 5 | 0 | 0 | 0 |
+| J. Genesis Export & Import | 3 | 3 | 0 | 0 |
+| **TOTAL** | **53** | **17** | **22** | **8** |
+
+> 3 new HIGH issues (J-01, J-02, J-03) all addressed by 07-genesis-pipeline.md.

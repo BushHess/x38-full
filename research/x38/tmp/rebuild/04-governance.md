@@ -151,7 +151,7 @@ decisions are made. Open findings still require debate or deliberation.
 
 | Path | When | Process | Output |
 |------|------|---------|--------|
-| **Structured debate** | Contentious findings with 2+ defensible positions | Multi-round agent debate (claude_code vs codex or similar). Same rules as old x38 debates: steel-man, evidence hierarchy, max rounds | CONVERGED or ARBITRATED |
+| **Structured debate** | Contentious findings with 2+ defensible positions | Multi-round canonical debate between the participants declared for that domain. Same rules as old x38 debates: steel-man, evidence hierarchy, max rounds | CONVERGED or ARBITRATED |
 | **Direct authoring** | Spec-tightening, conventional defaults, or findings where human already has clear direction | Human researcher writes decision directly with rationale | AUTHORED or DEFAULT |
 
 ### Rules
@@ -176,6 +176,83 @@ Removed from old system:
 
 ---
 
+## Solution 5: Live Debate Surface + External AI Inputs
+
+### Principle
+Rebuild MUST keep a live debate workspace for remaining open domains. `decisions/`
+stores authoritative state; `debate/` stores round artifacts, counterarguments,
+and external advisory inputs. Without this split, open findings have nowhere to
+be argued after old topic directories are archived.
+
+### Live structure
+
+```text
+x38/
+├── decisions/                  ← authoritative domain state
+├── debate/                     ← LIVE debate workspace for remaining open domains
+│   ├── 03-identity-versioning/
+│   │   ├── README.md           ← canonical participants, current round, issue scope
+│   │   ├── rounds/
+│   │   │   ├── claude_code/round-1.md
+│   │   │   └── codex/round-1.md
+│   │   └── external/
+│   │       └── chatgpt_web/2026-04-02-round-1.md
+│   └── 17-epistemic-search/
+│       └── ...
+└── archive/
+    └── debate/                 ← old topic-based x38 debates (read-only)
+```
+
+### Canonical vs advisory participants
+
+| Role | Writes where | Authority |
+|------|--------------|-----------|
+| **Canonical participants** | `debate/{domain}/rounds/{participant}/...` | Can directly move findings toward CONVERGED / ARBITRATED |
+| **External advisors** | `debate/{domain}/external/{source}/...` | Evidence/advisory only. Never authoritative by themselves |
+| **Human researcher** | `decisions/*.md`, judgment notes | Final arbiter for ARBITRATED / AUTHORED / DEFAULT decisions |
+
+### Rule for ChatGPT web
+
+`chatgpt_web` is treated as an **external advisor**, not a canonical debater, unless
+the project explicitly upgrades to an N-participant governance model. This keeps
+the rebuild compatible with the current x38 debate logic while still allowing
+ChatGPT to contribute real critique.
+
+### Required metadata for external AI artifacts
+
+Every file under `debate/{domain}/external/chatgpt_web/` MUST include:
+- `source: chatgpt_web`
+- `captured_at_utc`
+- `operator`
+- `prompt_source`
+- `repo_snapshot`
+- `context_files`
+- `model_label_if_shown`
+- `browsing_used: yes/no/unknown`
+- Raw response body
+- Normalized claims / issue mapping
+
+### Admissibility rule
+
+An external AI claim becomes binding ONLY when one of:
+1. A canonical participant adopts it in a round artifact with evidence.
+2. A canonical participant rebuts it and records why it fails.
+3. Human researcher cites it in an ARBITRATED / AUTHORED decision.
+
+This prevents ChatGPT-web transcripts from silently becoming canonical state.
+
+### If you want ChatGPT as a true third debater
+
+That is allowed only with an explicit governance upgrade:
+- Domain README declares `canonical_participants: [claude_code, codex, chatgpt_web]`
+- Round parity / closure rules apply to ALL canonical participants
+- `final-resolution.md` records any asymmetry or missing final response
+
+Default recommendation: do NOT do this for rebuild v1. Use ChatGPT web as an
+external advisory lane first; upgrade later only if the extra process cost is justified.
+
+---
+
 ## Verify Checklist
 
 - [ ] EXECUTION_PLAN.md archived (not deleted — moved to archive/)
@@ -188,3 +265,5 @@ Removed from old system:
 - [ ] `[extra-archive]` rule replaced with in-tree-or-frozen policy
 - [ ] Agent onboarding path reduced to 3 docs
 - [ ] debate/rules.md governance rules consolidated into PLAN.md or decisions/ headers
+- [ ] Live `debate/` tree retained for open domains after rebuild
+- [ ] `chatgpt_web` external-advisor lane defined under `debate/{domain}/external/`

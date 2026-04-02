@@ -1,4 +1,4 @@
-# X38 — Alpha-Lab Framework Architecture Design
+# X38 —   Framework Architecture Design
 
 ---
 

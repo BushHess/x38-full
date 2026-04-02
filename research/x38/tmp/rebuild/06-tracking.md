@@ -25,7 +25,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 > This is a TRACKING FILE, not a concept domain.
 > It lives in decisions/ for convenience but does NOT contain findings.
-> Authoritative for: project status, deferred items, circular deps, integration log.
+> Authoritative for: project status, deferred items, circular deps, integration log, spec readiness, export readiness.
 
 ## Domain Status
 
@@ -88,6 +88,35 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | protocol_spec.md | NOT STARTED | N/A | 10-protocol-engine |
 | engine_spec.md | NOT STARTED | N/A | 11-engine-design |
 | feature_spec.md | NOT STARTED | N/A | 12-feature-engine |
+
+## Export Readiness (genesis/)
+
+> Added per 07-genesis-pipeline.md (J-01). Tracks progress toward alpha_lab/genesis/.
+> A section is EXPORTABLE when: source domain INTEGRATED + content ready
+> (standard: spec ≥ REVIEW; lightweight: direct assembly) + abstraction test
+> PASS + no blocking DEFERRED items + genesis_target declared.
+
+| genesis/ section | Source domain(s) | Spec status | Abstraction test | Export status |
+|-----------------|------------------|-------------|------------------|--------------|
+| specs/philosophy.md | 01-philosophy | PENDING | NOT_TESTED | PENDING |
+| specs/campaign_model.md | 02-campaign-model | PENDING | NOT_TESTED | PENDING |
+| specs/identity_versioning.md | 03-identity-versioning | PENDING | NOT_TESTED | PENDING |
+| specs/firewall.md | 04-firewall | PENDING | NOT_TESTED | PENDING |
+| specs/meta_knowledge.md | 05-meta-knowledge | PENDING | NOT_TESTED | PENDING |
+| specs/clean_oos.md | 06-clean-oos | PENDING | NOT_TESTED | PENDING |
+| specs/convergence.md | 07-convergence | PENDING | NOT_TESTED | PENDING |
+| specs/search_expansion.md | 08-search-expansion | PENDING | NOT_TESTED | PENDING |
+| specs/protocol_engine.md | 10-protocol-engine | PENDING | NOT_TESTED | PENDING |
+| specs/engine_design.md | 11-engine-design | PENDING | NOT_TESTED | PENDING |
+| specs/feature_engine.md | 12-feature-engine | PENDING | NOT_TESTED | PENDING |
+| specs/data_integrity.md | 13-data-integrity | PENDING | NOT_TESTED | PENDING |
+| specs/deployment.md | 14-deployment | PENDING | NOT_TESTED | PENDING |
+| specs/quality_assurance.md | 15-quality-assurance | PENDING | NOT_TESTED | PENDING |
+| specs/bounded_recalibration.md | 16-bounded-recalibration | PENDING | NOT_TESTED | PENDING |
+| specs/epistemic_search.md | 17-epistemic-search | PENDING | NOT_TESTED | PENDING |
+| specs/discovery_feedback_loop.md | 18-discovery-feedback-loop | PENDING | NOT_TESTED | PENDING |
+| specs/entity_lifecycle.md | 03, 16 + X40 (state machines) | PENDING | NOT_TESTED | PENDING |
+| README.md | ALL (assembly — written last) | N/A | NOT_TESTED | PENDING |
 ```
 
 ---
@@ -120,6 +149,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 3. **Circular Dependencies**: Updated when detected (during debate or closure).
 4. **Integration Log**: Updated during Step 2 of closure workflow (downstream notification).
 5. **Spec Readiness**: Updated when spec status changes (stub filled, readiness gate met).
+6. **Export Readiness**: Updated when a genesis/ section advances (spec reaches REVIEW, abstraction test run, section exported). Per 07-genesis-pipeline.md.
 
 ### Frequency
 - This file changes ~1-2 times per week during active debate.
@@ -151,6 +181,8 @@ All 19 directories under `debate/NNN-slug/`, specifically:
 3. **Assign domain**: Map finding to its target domain file (per 02-concept-structure.md mapping table). Findings that span domains go to the PRIMARY domain with a CONSTRAINT cross-reference in the secondary domain.
 4. **Assign new ID**: `X38-{DOMAIN}-{NN}` per 01-taxonomy.md. Sequential within domain. Old IDs preserved in `Source:` field.
 5. **Extract rationale**: 1-2 sentences summarizing WHY this position won (for DECIDED) or what the design question is (for OPEN).
+6. **Assign genesis_target**: Map finding to its target section in alpha_lab/genesis/ per 07-genesis-pipeline.md domain→genesis table. Set `NONE` for process/governance findings that do not export.
+7. **Evaluate 3 X40 state machine concepts**: Check 07-genesis-pipeline.md Solution 2. For each (baseline lifecycle, durability, challenger tracking): if existing finding covers it → no action. If not → create new finding in target domain.
 
 ### Output (per domain)
 
@@ -163,11 +195,13 @@ A draft domain file following the format in 02-concept-structure.md:
 ### Verification pass
 
 After all 19 topics are extracted:
-1. **Count check**: Total extracted findings ≈ ~160 (known estimate). Flag if <140 or >180.
+1. **Count check**: Total extracted findings (pre-import) ≈ ~160 (known estimate). Flag if <140 or >180. After X40 import (step 7), total may increase by up to ~10 new findings — report pre-import and post-import counts separately.
 2. **No orphans**: Every finding in every `final-resolution.md` and `findings-under-review.md` is accounted for.
 3. **No duplicates**: No finding ID appears in two domain files (except as CONSTRAINT cross-ref).
 4. **Cross-reference integrity**: Every `blocked_by` and `depends_on` reference points to a valid finding or domain.
 5. **Populate 00-status.md**: Fill Domain Status table with real counts from extraction.
+6. **genesis_target coverage**: Every finding has `genesis_target` assigned (or explicit `NONE`). Per 07-genesis-pipeline.md.
+7. **X40 state machine audit**: 3 concepts from 07-genesis-pipeline.md Solution 2 evaluated — each either covered by existing finding or created as new finding.
 
 ---
 
@@ -201,6 +235,16 @@ x38/
 │   ├── 17-epistemic-search.md
 │   └── 18-discovery-feedback-loop.md ← Topic 019 (18 findings, largest domain)
 │
+├── debate/                          ← LIVE debate workspace for remaining open domains
+│   ├── 03-identity-versioning/
+│   │   ├── README.md                ← canonical participants + round status
+│   │   ├── rounds/
+│   │   │   ├── claude_code/
+│   │   │   └── codex/
+│   │   └── external/
+│   │       └── chatgpt_web/         ← pasted/imported ChatGPT web critiques
+│   └── ... (other active domains with OPEN findings)
+│
 ├── drafts/                          ← Spec drafts (consume decisions/)
 │   ├── README.md                    ← Lifecycle rules + dependency table
 │   ├── architecture_spec.md         ← DRAFTING (§14 proposal from 019)
@@ -218,13 +262,18 @@ x38/
 │
 └── tmp/                             ← Working area
     └── rebuild/                     ← This blueprint
+
+─── OUTPUT TARGET (outside x38/) ───────────────────────────────
+alpha_lab/genesis/                   ← Self-contained deliverable (per 07-genesis-pipeline.md)
+├── README.md
+└── specs/                           ← 18 spec files (1 per domain + entity_lifecycle)
 ```
 
 ---
 
 ## Verify Checklist
 
-- [ ] 00-status.md created with all 5 sections
+- [ ] 00-status.md created with all 6 sections (Domain Status, Deferred Items, Circular Deps, Integration Log, Spec Readiness, Export Readiness)
 - [ ] Domain Status table populated from current state
 - [ ] Deferred Items Registry populated (minimum: CVG-THR items)
 - [ ] Circular Dependencies populated (minimum: 07<->17)
@@ -237,5 +286,8 @@ x38/
 - [ ] F-02 verified: all 018 routing obligations reflected in consumer domain Constraints sections
 - [ ] F-03 verified: all deferred items visible in single registry
 - [ ] 18-discovery-feedback-loop.md included in decisions/ structure (18 DFL findings)
+- [ ] Live `debate/` tree created for open domains
+- [ ] `debate/*/external/chatgpt_web/` lane defined for imported ChatGPT web input
 - [ ] methodology_spec.md included in drafts/ structure
 - [ ] Spec Readiness table reflects DRAFTING status for architecture, discovery, methodology specs
+- [ ] Export Readiness table added with 19 genesis/ sections (per 07-genesis-pipeline.md)

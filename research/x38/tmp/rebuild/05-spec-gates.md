@@ -24,7 +24,7 @@ SEEDED -> DRAFTING -> PUBLISHABLE -> PUBLISHED
 
 ### New lifecycle
 ```
-SKELETON -> PROPOSAL -> DRAFTING -> REVIEW -> PUBLISHABLE -> PUBLISHED
+SKELETON -> PROPOSAL -> DRAFTING -> REVIEW -> PUBLISHABLE -> PUBLISHED -> EXPORTED
 ```
 
 | Status | Definition | Gate to advance |
@@ -35,6 +35,11 @@ SKELETON -> PROPOSAL -> DRAFTING -> REVIEW -> PUBLISHABLE -> PUBLISHED
 | `REVIEW` | Full content written; awaiting cross-spec consistency check | ALL stubs filled; ALL provenance tags present; no DEFERRED items without explicit gates |
 | `PUBLISHABLE` | Cross-spec consistency verified; human approved | Cross-spec audit passes; all DEFERRED items either resolved or explicitly gated |
 | `PUBLISHED` | Moved to published/; read-only | Human final sign-off |
+| `EXPORTED` | Abstraction test passed; written to alpha_lab/genesis/ | Abstraction test (07-genesis-pipeline.md Solution 3): zero prohibited references, parameterized values, domain-agnostic, self-referential within genesis/ |
+
+> **NOTE (2026-04-02)**: EXPORTED added per 07-genesis-pipeline.md (J-01, J-03).
+> A PUBLISHED section that fails the abstraction test stays PUBLISHED but cannot
+> advance to EXPORTED. Fix = parameterize and remove BTC-specific references.
 
 ### Gate enforcement
 
@@ -173,7 +178,7 @@ only after Topic 019 closes. This is consistent with the SEEDED→DRAFTING gate
 
 ## Verify Checklist
 
-- [ ] Spec lifecycle updated to 5-tier (SKELETON/DRAFTING/REVIEW/PUBLISHABLE/PUBLISHED)
+- [ ] Spec lifecycle updated to 7-tier (SKELETON/PROPOSAL/DRAFTING/REVIEW/PUBLISHABLE/PUBLISHED/EXPORTED)
 - [ ] All spec sections have provenance tags
 - [ ] All DEFERRED provenance has GATE line
 - [ ] Ownership map documented — no content in 2 specs
@@ -181,3 +186,5 @@ only after Topic 019 closes. This is consistent with the SEEDED→DRAFTING gate
 - [ ] All stubs have resolution tracking (blocked_by + domain)
 - [ ] meta_spec §2/§3 transcription marked as "ready now" (E-02)
 - [ ] No spec can reach REVIEW with ungated DEFERRED sections
+- [ ] EXPORTED status added with abstraction test gate (per 07-genesis-pipeline.md)
+- [ ] All spec sections have genesis_target (per 07-genesis-pipeline.md, 02-concept-structure.md)
