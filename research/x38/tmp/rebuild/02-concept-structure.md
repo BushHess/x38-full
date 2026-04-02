@@ -17,12 +17,16 @@ Additionally:
 
 ---
 
-## Solution: Reorganize from 19 topics to 17 concept domain files
+## Solution: Reorganize from 20 topics to 18 concept domain files
 
 > 8 consolidated domains (closed topics merged by concept) + 1 tracking file +
-> 8 domain files for open topics. Consolidation happens for closed topics where
+> 9 domain files for open topics. Consolidation happens for closed topics where
 > multi-topic overlap was the problem. Open topics remain ~1:1 because their
 > findings are not yet decided and may shift during debate.
+>
+> **UPDATE (2026-04-02)**: Was 17, now 18 — Topic 019 (DFL, 18 findings) gets
+> its own domain file `18-discovery-feedback-loop.md`. Too large and cross-cutting
+> to merge into another domain.
 
 ### New structure
 
@@ -36,7 +40,7 @@ x38/decisions/
 ├── 06-clean-oos.md
 ├── 07-convergence.md
 ├── 08-search-expansion.md
-└── 09-open-questions.md
+└── 00-status.md
 ```
 
 ### Mapping: Old topics -> New domains
@@ -55,7 +59,7 @@ x38/decisions/
 | 06-clean-oos | 010 (4), parts of 001 | 5-7 | Was "~6" — roughly correct |
 | 07-convergence | 013 (15), parts of 018 | 15-18 | Was "~8" — 013 has 15 findings |
 | 08-search-expansion | 018 (11), routing table | 11-13 | Was "~11" — roughly correct |
-| 09-open-questions | All DEFERRED items, contradictions | variable | N/A — tracking file |
+| 00-status | All DEFERRED items, contradictions | variable | N/A — tracking file |
 
 **Imbalance risk**: 05-meta-knowledge (20-26) and 03-identity-versioning (15-21)
 are very large. Consider splitting if extraction confirms >20 findings in one domain.
@@ -63,22 +67,27 @@ Possible splits:
 - 05-meta-knowledge → 05a-meta-taxonomy + 05b-meta-lifecycle (if >20)
 - 03-identity-versioning → 03a-identity-schema + 03b-versioning-rules (if >20)
 
-### What happens to open topics (003, 005, 006, 009, 011, 012, 014, 015, 016, 017)
+### What happens to open topics (003, 005, 006, 009, 011, 012, 014, 015, 016, 017, 019)
 
 Open topic findings are **not yet decisions**. They go into the relevant domain file under a separate `## Open` section:
 
 | Old open topic | New domain | Findings |
 |----------------|-----------|----------|
-| 003 (protocol engine) | New domain: `10-protocol-engine.md` (kept separate — integration hub) |
-| 005 (core engine) | `11-engine-design.md` (merged with 014) |
-| 006 (feature engine) | `08-search-expansion.md` (SSE-D-03) + new `12-feature-engine.md` (F-08) |
-| 009 (data integrity) | `03-identity-versioning.md` or standalone `13-data-integrity.md` |
-| 011 (deployment) | `03-identity-versioning.md` (F-28/F-29) + `14-deployment.md` (F-26/F-27) |
-| 012 (QA) | `15-quality-assurance.md` (F-18 only; F-19 becomes supporting evidence) |
-| 014 (execution) | `11-engine-design.md` (merged with 005 — solves B-06) |
-| 015 (artifact versioning) | `03-identity-versioning.md` (F-17 merged with 011 F-28/F-29 — solves B-02) |
-| 016 (recalibration) | `16-bounded-recalibration.md` (cross-cutting, kept separate) |
-| 017 (epistemic search) | `17-epistemic-search.md` (cross-cutting, kept separate) |
+| 003 (protocol engine) | New domain: `10-protocol-engine.md` (kept separate — integration hub) | F-05, F-36, F-37 + SSE-D-04 (4 findings) |
+| 005 (core engine) | `11-engine-design.md` (merged with 014) | F-07 (1 finding) |
+| 006 (feature engine) | `08-search-expansion.md` (SSE-D-03) + new `12-feature-engine.md` (F-08, F-38) | F-08, F-38 + SSE-D-03 (3 findings) |
+| 009 (data integrity) | `03-identity-versioning.md` or standalone `13-data-integrity.md` | F-10, F-11 (2 findings) |
+| 011 (deployment) | `03-identity-versioning.md` (F-28/F-29) + `14-deployment.md` (F-26/F-27) | 4 findings |
+| 012 (QA) | `15-quality-assurance.md` (F-18, F-39; F-19 becomes supporting evidence) | F-18, F-39 active (2); F-19 demoted |
+| 014 (execution) | `11-engine-design.md` (merged with 005 — solves B-06) | ER-01, ER-02, ER-03 (3 findings) |
+| 015 (artifact versioning) | `03-identity-versioning.md` (F-17 merged with 011 F-28/F-29 — solves B-02) | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5 findings) |
+| 016 (recalibration) | `16-bounded-recalibration.md` (cross-cutting, kept separate) | BR-01, BR-02 (2 findings) |
+| 017 (epistemic search) | `17-epistemic-search.md` (cross-cutting, kept separate) | ESP-01→04 + SSE-08-CON, SSE-04-CELL (6 findings) |
+| **019 (discovery feedback loop)** | **New domain: `18-discovery-feedback-loop.md`** (cross-cutting, kept separate — largest topic, 18 findings) | **DFL-01→DFL-18 (18 findings)** |
+
+> **UPDATE (2026-04-02)**: Topic 019 added. Gap audit (2026-03-31) added F-36, F-37
+> (→003), F-38 (→006), F-39 (→012), ER-03 (→014). F-19 demoted (→012).
+> Finding counts updated to match debate-index.md 2026-04-01 state.
 
 ### Resolving specific issues
 
@@ -95,8 +104,14 @@ Both F-17 and F-28 move into `03-identity-versioning.md`. This makes the contrad
 > - The merged finding blocks: architecture_spec §8, 03-identity-versioning INTEGRATED status
 
 **B-03 (011 has 4 findings, should be 2)**:
-- F-27 (boundary) + F-28 (unit-exposure) + F-29 (version split) -> merge into 1 multi-part finding in `03-identity-versioning.md`
-- F-26 (monitoring trigger) -> stays separate in `14-deployment.md`
+- F-28 (unit-exposure) + F-29 (version split) -> merge into 1 multi-part finding in `03-identity-versioning.md`
+- F-26 (monitoring trigger) + F-27 (deployment boundary) -> `14-deployment.md`
+
+> **FIX (2026-04-02)**: Original text had F-27 merged with F-28/F-29 into
+> `03-identity-versioning.md`. This contradicted the open topic mapping table
+> which correctly places F-26+F-27 in `14-deployment.md`. F-27 is conceptually
+> about the deployment boundary (same domain as F-26 monitoring), not versioning
+> (F-28/F-29). Corrected to match the mapping table. Missed by audit rounds G/H/I.
 
 **B-04 (015 mixed provenance)**:
 - F-14, F-17 -> `03-identity-versioning.md` under `## Open`
@@ -108,8 +123,10 @@ Both F-17 and F-28 move into `03-identity-versioning.md`. This makes the contrad
 **B-06 (005 vs 014 circularity)**:
 Both merged into `11-engine-design.md`. Single file = single ordering. Engine API decision (from 005) comes first, execution orchestration (from 014) second.
 
-**D-06 (19 topics too many)**:
-Reduced to ~12 concept domains. Open questions consolidated. Process overhead drops.
+**D-06 (20 topics too many)**:
+Reduced to 18 files (8 consolidated domains + 1 tracking file + 9 open-topic domains
+including 019). Open questions consolidated. Process overhead drops. Topic 019's
+18 findings warrant a standalone domain — merging would recreate the B-01 problem.
 
 ---
 
@@ -158,8 +175,8 @@ Each domain file follows this structure:
 
 ## Verify Checklist
 
-- [ ] All 48 CONVERGED findings placed in correct domain
-- [ ] All 17 reclassified JCs placed in correct domain
+- [ ] All ~56 CONVERGED findings placed in correct domain
+- [ ] All 23+ reclassified JCs placed in correct domain
 - [ ] B-02 contradiction visible in single file (03-identity-versioning.md)
 - [ ] B-03 merged: 011 F-27/F-28/F-29 -> 1 multi-part finding
 - [ ] B-04 resolved: 015 native vs imported clearly separated
@@ -167,4 +184,5 @@ Each domain file follows this structure:
 - [ ] B-06 resolved: 005 + 014 in single file with ordering
 - [ ] Each domain file follows standard format
 - [ ] No finding appears in 2 domain files (except as CONSTRAINT cross-ref)
-- [ ] Topic count reduced from 19 to ~12 concept domains
+- [ ] Topic count reduced from 20 to ~18 concept domain files (8 consolidated + 1 tracking + 9 open)
+- [ ] Topic 019 mapped to `18-discovery-feedback-loop.md` with all 18 DFL findings

@@ -80,17 +80,22 @@ Additionally:
 | D-15 | 001 | TBD | Two cumulative scopes — verify if CONVERGED or JC |
 | (others) | 013 | TBD | Topic 013 has 15 findings; verify all JC/Converged splits |
 
-### Actual scale (corrected)
+### Actual scale (updated 2026-04-02)
 
 ```
 Closed topics (8):   ~79 findings (56 Converged + 23+ JC)
-Open topics (10):    ~85 findings
-TOTAL:               ~164 findings
+Open topics (11):    ~81 active findings (per debate-index.md, excl. MK-series/C-notes)
+  - Topic 019 (DFL): 18 findings (largest single topic)
+  - Gap audit (2026-03-31): +5 findings (F-36, F-37, F-38, F-39, ER-03)
+  - F-19 demoted to supporting evidence (net -1)
+TOTAL:               ~160 findings
 
 JC breakdown (23+):  ~8 ARBITRATED, ~7 AUTHORED, ~4 DEFAULT, ~4 DEFERRED
 ```
 
-> **The exact numbers will be known only after full extraction in rebuild Step 1.**
+> **The exact numbers will be known only after full extraction in rebuild Step 0.**
+> Previous estimate (2026-03-29) assumed ~85 open findings. Actual open count
+> is 81 active (debate-index 2026-04-01), with Topic 019 contributing 18.
 
 ---
 
@@ -145,7 +150,8 @@ Where DOMAIN is a 2-4 letter code for the concept domain (not the topic number):
 > **Note**: `ART` (Artifact & versioning) removed — absorbed into `IDV`.
 > `DEP` (Deployment) owns only F-26/F-27 (monitoring, boundary definition).
 > F-28/F-29 (versioning) use `IDV` code, not `DEP`.
-> `DFL` added for Topic 019 findings (DFL-01 through DFL-10).
+> `DFL` added for Topic 019 findings (DFL-01 through DFL-18).
+> Gap audit findings (2026-03-31): F-36, F-37 → `PRO`; F-38 → `FEA`; F-39 → `QAS`; ER-03 → `EXE`.
 
 ### Migration: Create mapping table from old IDs to new IDs during extraction.
 
@@ -171,7 +177,7 @@ Items that fail these criteria become:
 
 ## Verify Checklist
 
-- [ ] All ~164 existing findings reclassified with new 5-type system
+- [ ] All ~160 existing findings reclassified with new 5-type system
 - [ ] All 23+ former JCs have correct new type + rationale
 - [ ] All routed findings marked CONSTRAINT (not OPEN)
 - [ ] All finding IDs migrated to X38-{DOMAIN}-{NN} format

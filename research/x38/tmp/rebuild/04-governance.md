@@ -25,7 +25,7 @@ ONE file is the source of truth for project status. Everything else is derived o
 **Authoritative** (must be accurate):
 ```
 decisions/             ← Domain files ARE the decisions (self-contained)
-09-open-questions.md   ← Deferred items, circular deps, integration log
+00-status.md   ← Deferred items, circular deps, integration log
 ```
 
 **Informational** (may lag, explicitly marked):
@@ -35,7 +35,7 @@ PLAN.md                ← Project narrative. Add header: "Status may lag. Check
 
 **Removed**:
 ```
-EXECUTION_PLAN.md      ← DELETE. Replaced by decisions/ + 09-open-questions.md
+EXECUTION_PLAN.md      ← DELETE. Replaced by decisions/ + 00-status.md
 debate-index.md        ← ARCHIVE. Was topic registry; replaced by domain file headers
 ```
 
@@ -52,7 +52,7 @@ OLD (6 updates):
 NEW (3-4 updates):
 1. Domain file: move finding from `## Open` to `## Decided`
 2. Downstream domain files: add `## Constraints` entry (closure workflow Step 2)
-3. `09-open-questions.md`: update Domain Status table + Integration Log
+3. `00-status.md`: update Domain Status table + Integration Log
 4. (If applicable) Update Deferred Items Registry or Circular Dependencies
 
 > **AUDIT NOTE (2026-03-29)**: Original plan claimed "2 updates". Honest count
@@ -66,7 +66,7 @@ NEW (3-4 updates):
 **Eliminated**. Cross-domain relationships are expressed through:
 - `depends_on` / `blocks` in domain file headers
 - `## Constraints` sections (imported decisions)
-- `09-open-questions.md` for deferred/circular items
+- `00-status.md` for deferred/circular items
 
 No redundant per-domain tension tables to maintain.
 
@@ -133,6 +133,11 @@ Tier 4: PLAN.md
 3. Relevant `decisions/*.md` files — actual decisions to respect
 
 Core rules embedded in PLAN.md (no separate rules files needed for rebuild structure).
+
+> **UPDATE (2026-04-02)**: Topic 019 (18 findings: 14 Thiếu sót + 4 Judgment call)
+> is the largest open topic. Its findings will use BOTH decision paths per Solution 4.
+> discovery_spec.md already at DRAFTING (§6-§11 proposals from 019, non-authoritative).
+> methodology_spec.md also added to drafts/README (from 013 closure).
 
 ---
 

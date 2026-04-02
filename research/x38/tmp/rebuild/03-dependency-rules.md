@@ -22,6 +22,9 @@ Every domain has a `depends_on` list and a `blocks` list. A domain CANNOT begin 
 
 ### Ordering DAG for rebuilt domains
 
+> **UPDATE (2026-04-02)**: Added 18-discovery-feedback-loop (Topic 019, 18 findings).
+> Fixed 10-protocol-engine depends_on to include 18 (per debate-index.md: 003 ← 019).
+
 ```
 Tier 0 (no deps, DONE):
   01-philosophy
@@ -40,15 +43,24 @@ Tier 2 (deps on Tier 0+1):
                            ← 005+014 merged. Engine API (005) self-contained.
                              Execution orchestration (014) may need revision
                              after protocol stages (010) finalize.
+                             ER-03 (session concurrency, gap audit 2026-03-31) added.
   12-feature-engine        depends_on: [08]
+                           ← F-38 (feature family ontology, gap audit 2026-03-31) added.
   13-data-integrity        depends_on: [01]
 
 Tier 3 (cross-cutting):
   16-bounded-recalibration depends_on: [02, 04, 06, 03, 14-deployment]
   17-epistemic-search      depends_on: [04, 06, 07]
+  18-discovery-feedback-loop depends_on: [08, 04, 05]
+                           ← Topic 019. HARD-dep from 018✅ + 002✅ + 004✅.
+                             All deps SATISFIED. Song song với 016, 017.
+                             18 findings (DFL-01→DFL-18). Feeds discovery_spec §6-§11,
+                             architecture_spec §14.
 
 Tier 4 (integration):
-  10-protocol-engine       depends_on: [02, 03, 04, 05, 16, 17]
+  10-protocol-engine       depends_on: [02, 03, 04, 05, 16, 17, 18]
+                           ← 18 (DFL) added: discovery loop adds protocol interaction
+                             points (per debate-index.md line 104-107).
 ```
 
 ### Rules
@@ -76,7 +88,7 @@ Circular dependencies MUST be surfaced and resolved BEFORE either domain closes.
    - **Interface freeze**: Both domains agree on a minimal interface contract. Each domain can close independently as long as the interface is respected. Details deferred to integration.
    - **Merge**: If the circular items are really 1 decision, merge the findings into 1 domain.
 
-3. **Registry**: All circular dependencies tracked in `09-open-questions.md` under `## Circular Dependencies` with resolution status.
+3. **Registry**: All circular dependencies tracked in `00-status.md` under `## Circular Dependencies` with resolution status.
 
 ### Apply to C-03 (013<->017):
 
@@ -120,7 +132,7 @@ When a domain's `## Open` section becomes empty (all findings DECIDED), it does 
   - Verify no contradictions with existing findings
 - For each spec that consumes decisions from this domain:
   - Update spec section from stub to content (or mark as ready)
-- **Tracked in**: `09-open-questions.md` under `## Integration Log`
+- **Tracked in**: `00-status.md` under `## Integration Log`
 
 **Step 3: Status update**
 - Domain status: DECIDED -> INTEGRATED (after Step 2 complete)
@@ -192,7 +204,7 @@ A finding MUST NOT be reopened merely because:
 4. **Re-debate**: Finding re-enters `## Open` section of its domain file
 5. **Re-closure**: Normal closure workflow (Solution 3) applies
 
-### Impact on 09-open-questions.md
+### Impact on 00-status.md
 
 Reopening events tracked in `## Integration Log` with type: REOPENED.
 
@@ -200,11 +212,11 @@ Reopening events tracked in `## Integration Log` with type: REOPENED.
 
 ## Verify Checklist
 
-- [ ] Ordering DAG documented with depends_on/blocks for all ~17 domains
+- [ ] Ordering DAG documented with depends_on/blocks for all ~18 domains (including 18-DFL)
 - [ ] No domain has OPEN findings while its depends_on domains have OPEN findings
 - [ ] C-01 resolved: engine-design is Tier 2, not prematurely scheduled
 - [ ] C-02 resolved: 016/017 have explicit activation triggers
-- [ ] C-03 resolved: 013<->017 circular in 09-open-questions.md with interface freeze
+- [ ] C-03 resolved: 013<->017 circular in 00-status.md with interface freeze
 - [ ] C-04 resolved: 3-step closure workflow documented
 - [ ] C-05 resolved: protocol-engine has constraints register
-- [ ] All circular dependencies in 09-open-questions.md
+- [ ] All circular dependencies in 00-status.md

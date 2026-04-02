@@ -109,7 +109,7 @@ Each concept is owned by exactly 1 spec. Cross-spec references use `## See also`
 |------|------|-------------|
 | `architecture_spec.md` | Campaign model, identity schema, firewall enforcement, deployment boundary, convergence rules, protocol pipeline stages | Discovery mechanisms (-> discovery_spec), meta-knowledge content rules (-> meta_spec) |
 | `meta_spec.md` | 3-tier taxonomy, lesson lifecycle, storage law, derivation test, firewall content rules (whitelist categories) | Firewall enforcement (-> architecture_spec) |
-| `discovery_spec.md` | Recognition stack, equivalence audit, proof bundles, domain seeds, generation modes, APE | Breadth-activation contract interface (-> architecture_spec) |
+| `discovery_spec.md` | Recognition stack, equivalence audit, proof bundles, domain seeds, generation modes, APE, **data profiling, grammar expansion, pre-filter, statistical budget, human-AI loop, feature graduation** (§6-§11 from DFL) | Breadth-activation contract interface (-> architecture_spec), discovery pipeline routing contract (-> architecture_spec §14) |
 | `protocol_spec.md` (future) | 8-stage pipeline, stage gates, artifact enumeration | Engine API (-> engine_spec), feature registry (-> feature_spec) |
 | `engine_spec.md` (future) | Core engine API, vectorized vs event-loop, parallelization | Protocol stages (-> protocol_spec) |
 | `feature_spec.md` (future) | Feature registry pattern, generation mode acceptance | Discovery generation (-> discovery_spec) |
@@ -144,17 +144,29 @@ _Content pending._
 
 ### Current stubs and their resolution paths
 
-| Spec | Section | Waiting on | Domain |
-|------|---------|-----------|--------|
-| architecture §4 | Data Management | X38-DAT-10, X38-DAT-11 | 13-data-integrity |
-| architecture §8 | Deployment Boundary | X38-IDV-27/28/29 (merged) | 03-identity-versioning |
-| architecture §10 | Bounded Recalibration | X38-RCL-34, X38-RCL-35 | 16-bounded-recalibration |
-| architecture §11 | Epistemic Search | X38-ESP-01 through X38-ESP-06 | 17-epistemic-search |
-| meta §2 | Lifecycle | Transcription from X38-MKG-* | 05-meta-knowledge (DONE) |
-| meta §3 | Storage | Transcription from X38-MKG-* | 05-meta-knowledge (DONE) |
+> **UPDATE (2026-04-02)**: Added DFL-sourced sections for discovery_spec and
+> architecture_spec. Status updated to match drafts/README.md 2026-04-01 state.
+
+| Spec | Section | Waiting on | Domain | Status |
+|------|---------|-----------|--------|--------|
+| architecture §4 | Data Management | X38-DAT-10, X38-DAT-11 | 13-data-integrity | SKELETON |
+| architecture §8 | Deployment Boundary | X38-IDV-27/28/29 (merged) | 03-identity-versioning | SKELETON |
+| architecture §10 | Bounded Recalibration | X38-RCL-34, X38-RCL-35 | 16-bounded-recalibration | SKELETON |
+| architecture §11 | Epistemic Search | X38-ESP-01 through X38-ESP-06 | 17-epistemic-search | SKELETON |
+| architecture §14 | Discovery Pipeline Routing | X38-DFL-* (Topic 019) | 18-discovery-feedback-loop | PROPOSAL (non-authoritative) |
+| discovery §1-§5 | v1 (bounded ideation, recognition stack, APE, etc.) | Topic 018 (CLOSED) | 08-search-expansion | DRAFTING (authoritative) |
+| discovery §6-§11 | v2 (data profiling, grammar, pre-filter, budget, loop, graduation) | X38-DFL-01→DFL-18 (Topic 019 OPEN) | 18-discovery-feedback-loop | PROPOSAL (non-authoritative until 019 CLOSED) |
+| meta §2 | Lifecycle | Transcription from X38-MKG-* | 05-meta-knowledge (DONE) | TRANSCRIPTION-READY |
+| meta §3 | Storage | Transcription from X38-MKG-* | 05-meta-knowledge (DONE) | TRANSCRIPTION-READY |
 
 ### Note on meta_spec §2/§3 (E-02)
 Source domain (05-meta-knowledge) is fully DECIDED. These stubs are pure transcription debt — no blocking dependency. Can be filled immediately during rebuild.
+
+### Note on discovery_spec §6-§11 and architecture_spec §14
+These sections contain **proposals** from Topic 019 (DFL-01→DFL-18), explicitly marked
+as non-authoritative in drafts/README.md. They will advance from PROPOSAL to DRAFTING
+only after Topic 019 closes. This is consistent with the SEEDED→DRAFTING gate
+(per-section, source domain must have zero OPEN findings).
 
 ---
 

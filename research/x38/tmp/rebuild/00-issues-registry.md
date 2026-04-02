@@ -295,7 +295,7 @@
 **Problem**: Overclaimed simplification. Honest count is 3-4 updates (still better than 6).
 **Status**: CORRECTED in 04-governance.md (honest count, distinction between substantive vs mechanical updates).
 
-### G-05. 09-open-questions.md extraction process undefined
+### G-05. 00-status.md extraction process undefined
 **Severity**: MEDIUM
 **Where**: 06-tracking.md
 **Problem**: Central ledger design exists but no process for populating it from ~164 scattered findings. Manual extraction is error-prone.
@@ -425,3 +425,83 @@ Integration Log uses dates when domains didn't exist yet.
 10. **H-06**: Spec gate blocks entire spec, should be per-section
 11. **H-07**: No reopening protocol
 12. **H-08**: Decision process for open findings undefined
+
+---
+
+## I. POST-BLUEPRINT SYNC — Gap Audit (2026-04-02)
+
+> Review of changes between blueprint creation (2026-03-29) and current
+> debate state (2026-04-02). Blueprint files updated to address all gaps.
+
+### I-01. Topic 019 missing from concept-structure and DAG
+**Severity**: CRITICAL (was)
+**Where**: 02-concept-structure.md, 03-dependency-rules.md, 06-tracking.md
+**Problem**: Topic 019 (DFL, 18 findings — largest single topic) opened 2026-03-29
+but was not mapped to any concept domain in 02. Not in dependency DAG (03).
+Not in directory structure (06). Protocol-engine depends_on omitted 019.
+**Status**: CORRECTED (2026-04-02). Added `18-discovery-feedback-loop.md` to all 3 files.
+DAG: 10-protocol-engine now depends_on includes 18. Tier 3 (cross-cutting).
+
+### I-02. DFL finding count understated
+**Severity**: HIGH (was)
+**Where**: 01-taxonomy.md
+**Problem**: Stated "DFL-01 through DFL-10". Actual: DFL-01 through DFL-18 (18 findings).
+Topic 019 expanded significantly 2026-03-31 (DFL-11→DFL-18 added: data foundation,
+non-stationarity, cross-asset context, synthetic validation, regime profiling).
+**Status**: CORRECTED (2026-04-02). Updated to DFL-01→DFL-18.
+
+### I-03. Gap audit findings (2026-03-31) not mapped
+**Severity**: HIGH (was)
+**Where**: All blueprint files (no mention of F-36, F-37, F-38, F-39, ER-03)
+**Problem**: Gap audit round 0 (2026-03-31) added 5 new findings to 4 open topics:
+- F-36 (multi-asset pipeline) → 003 → 10-protocol-engine
+- F-37 (human decision points) → 003 → 10-protocol-engine
+- F-38 (feature family ontology) → 006 → 12-feature-engine
+- F-39 (framework testing strategy) → 012 → 15-quality-assurance
+- ER-03 (session concurrency) → 014 → 11-engine-design
+Additionally, F-19 demoted to supporting evidence (resolves A-05).
+**Status**: CORRECTED (2026-04-02). Finding counts updated in 02, 06. Domain
+mappings noted in 01 (taxonomy codes). A-05 noted as resolved.
+
+### I-04. Spec status stale
+**Severity**: MEDIUM (was)
+**Where**: 05-spec-gates.md, 06-tracking.md
+**Problem**: discovery_spec.md expanded to DRAFTING (§6-§11 from 019, non-authoritative).
+architecture_spec.md updated with §14 proposal from 019. methodology_spec.md
+added (from 013 closure). None reflected in blueprint.
+**Status**: CORRECTED (2026-04-02). Stub tracking and spec readiness tables updated.
+Ownership map expanded for discovery_spec (DFL sections).
+
+### I-05. Total finding count estimates outdated
+**Severity**: MEDIUM (was)
+**Where**: 01-taxonomy.md
+**Problem**: Estimated ~85 open findings. Actual: 81 active (debate-index 2026-04-01)
+with different composition (019 contributing 18, gap audit +5, F-19 demoted -1).
+**Status**: CORRECTED (2026-04-02). Updated scale section with accurate breakdown.
+
+### Issues resolved in debate (no blueprint action needed)
+- **A-05** (F-19 not a finding): F-19 demoted to supporting evidence in debate (2026-03-31).
+  Blueprint already planned this. ✓
+- **F-02** (003/006 not synced with 018): Routing propagated to consumer topics (2026-04-01).
+  Partially resolved in debate, but rebuild still needed for full structural fix.
+- **C-03 direction** (013↔017 circular): Resolution strategy added to 017. Consistent
+  with blueprint's PENDING approach.
+
+### Updated Final Summary
+
+| Category | Count | HIGH | MEDIUM | LOW |
+|----------|-------|------|--------|-----|
+| A. Taxonomy & Labeling | 5 | 1 | 2 | 2 |
+| B. Cross-topic Overlap | 6 | 2 | 3 | 1 |
+| C. Dependency & Ordering | 5 | 2 | 3 | 0 |
+| D. Governance Overhead | 6 | 1 | 3 | 2 |
+| E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
+| F. Status Tracking | 3 | 0 | 3 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
+| I. Post-Blueprint Sync | 5 | 0 | 0 | 0 |
+| **TOTAL** | **50** | **14** | **22** | **8** |
+
+> Category I issues are ALL CORRECTED in blueprint files (2026-04-02).
+> They are logged for audit trail — no open action items remain.
+> Original 45 issues (A-H) unchanged. 5 sync issues (I) added and resolved.
