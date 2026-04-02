@@ -54,8 +54,11 @@ Tier 3 (cross-cutting):
   18-discovery-feedback-loop depends_on: [08, 04, 05]
                            ← Topic 019. HARD-dep from 018✅ + 002✅ + 004✅.
                              All deps SATISFIED. Parallel with 016, 017.
-                             18 findings (DFL-01→DFL-18). Feeds discovery_spec §6-§11,
-                             architecture_spec §14.
+                             **SPLIT (2026-04-02)** → 9 sub-domains:
+                             18A (foundations, debate FIRST) → 18B + 18C (parallel)
+                             → 18D1 + 18D2 (parallel) → 18D3 (after 18D2).
+                             18E + 18F + 18G independent (parallel with all).
+                             Feeds discovery_spec §6-§11, architecture_spec §14.
 
 Tier 4 (integration):
   10-protocol-engine       depends_on: [02, 03, 04, 05, 16, 17, 18]

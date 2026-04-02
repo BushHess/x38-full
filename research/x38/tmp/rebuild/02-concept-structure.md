@@ -83,11 +83,18 @@ Open topic findings are **not yet decisions**. They go into the relevant domain 
 | 015 (artifact versioning) | `03-identity-versioning.md` (F-17 merged with 011 F-28/F-29 — solves B-02) | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5 findings) |
 | 016 (recalibration) | `16-bounded-recalibration.md` (cross-cutting, kept separate) | BR-01, BR-02 (2 findings) |
 | 017 (epistemic search) | `17-epistemic-search.md` (cross-cutting, kept separate) | ESP-01→04 + SSE-08-CON, SSE-04-CELL (6 findings) |
-| **019 (discovery feedback loop)** | **New domain: `18-discovery-feedback-loop.md`** (cross-cutting, kept separate — largest topic, 18 findings) | **DFL-01→DFL-18 (18 findings)** |
+| **019 (discovery feedback loop)** | **SPLIT (2026-04-02)** → 9 sub-domains in `18-discovery-feedback-loop.md` | **DFL-01→DFL-18 (18 findings across 9 sub-domains)** |
 
 > **UPDATE (2026-04-02)**: Topic 019 added. Gap audit (2026-03-31) added F-36, F-37
 > (→003), F-38 (→006), F-39 (→012), ER-03 (→014). F-19 demoted (→012).
 > Finding counts updated to match debate-index.md 2026-04-01 state.
+>
+> **UPDATE (2026-04-02, split+regroup)**: Topic 019 SPLIT into 9 sub-topics
+> (019A/B/C/D1/D2/D3/E/F/G) for debate efficiency. Domain file
+> `18-discovery-feedback-loop.md` will contain 9 sub-sections.
+> Extraction maps: DFL-04/05/09→18A, DFL-01/02/03→18B, DFL-06/07→18C,
+> DFL-08/10→18D1, DFL-11→18D2, DFL-12→18D3, DFL-13/17→18E,
+> DFL-14/18→18F, DFL-15/16→18G.
 
 ### Resolving specific issues
 
@@ -188,5 +195,5 @@ Each domain file follows this structure:
 - [ ] Each domain file follows standard format
 - [ ] No finding appears in 2 domain files (except as CONSTRAINT cross-ref)
 - [ ] Topic count reduced from 20 to ~18 concept domain files (8 consolidated + 1 tracking + 9 open)
-- [ ] Topic 019 mapped to `18-discovery-feedback-loop.md` with all 18 DFL findings
+- [ ] Topic 019 mapped to `18-discovery-feedback-loop.md` with all 18 DFL findings across 9 sub-domains (18A/B/C/D1/D2/D3/E/F/G)
 - [ ] Every finding has `genesis_target` field assigned (per 07-genesis-pipeline.md)

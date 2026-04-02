@@ -78,3 +78,21 @@ O-01→O-05 (debate-index.md) giữ lại toàn bộ substance.
 | X38-ESP-02 | CandidatePhenotype & StructuralPrior contracts | **017** (epistemic-search-policy) | Thiếu sót | Open |
 | X38-ESP-03 | Inter-campaign promotion ladder | **017** (epistemic-search-policy) | Judgment call | Open |
 | X38-ESP-04 | Budget governor & anti-ratchet | **017** (epistemic-search-policy) | Thiếu sót | Open |
+| X38-DFL-01 | AI result analysis & pattern surfacing | **019B** (ai-analysis-reporting) | Thiếu sót | Open |
+| X38-DFL-02 | Human-facing report contract | **019B** (ai-analysis-reporting) | Thiếu sót | Open |
+| X38-DFL-03 | Human feedback capture & grammar evolution | **019B** (ai-analysis-reporting) | Judgment call | Open |
+| X38-DFL-04 | Contamination boundary for the discovery loop | **019A** (discovery-foundations) | Thiếu sót | Open |
+| X38-DFL-05 | Deliberation-gated code authoring | **019A** (discovery-foundations) | Judgment call | Open |
+| X38-DFL-06 | Systematic raw data exploration (10 analyses) | **019C** (systematic-data-exploration) | Thiếu sót | Open |
+| X38-DFL-07 | Raw data analysis methodology (6 categories) | **019C** (systematic-data-exploration) | Thiếu sót | Open |
+| X38-DFL-08 | Feature candidate graduation path (5 stages) | **019D1** (pipeline-structure) | Thiếu sót | Open |
+| X38-DFL-09 | SSE-D-02 scope clarification for systematic scan | **019A** (discovery-foundations) | Thiếu sót | Open |
+| X38-DFL-10 | Pipeline integration: Stage 2.5 data characterization | **019D1** (pipeline-structure) | Thiếu sót | Open |
+| X38-DFL-11 | Statistical budget accounting (two-tier screening) | **019D2** (statistical-budget) | Thiếu sót | Open |
+| X38-DFL-12 | Grammar depth-2 composition (search space expansion) | **019D3** (grammar-expansion) | Thiếu sót | Open |
+| X38-DFL-13 | Data trustworthiness & cross-source validation | **019E** (data-quality-validation) | Thiếu sót | Open |
+| X38-DFL-14 | Non-stationarity protocol — DGP change detection | **019F** (regime-dynamics) | Thiếu sót | Open |
+| X38-DFL-15 | Resolution gap assessment & data acquisition scope | **019G** (data-scope) | Judgment call | Open |
+| X38-DFL-16 | Cross-asset context signals for single-asset strategy | **019G** (data-scope) | Judgment call | Open |
+| X38-DFL-17 | Pipeline validation via synthetic known-signal injection | **019E** (data-quality-validation) | Thiếu sót | Open |
+| X38-DFL-18 | Systematic feature regime-conditional profiling | **019F** (regime-dynamics) | Thiếu sót | Open |

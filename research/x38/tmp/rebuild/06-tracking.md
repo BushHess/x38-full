@@ -41,7 +41,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | 06-clean-oos | ? | 0 | 0 | 0 | INTEGRATED |
 | 07-convergence | ? | 0 | ? | 0 | DECIDED (deferred items) |
 | 08-search-expansion | ? | 0 | 0 | 0 | INTEGRATED |
-| 10-protocol-engine | 0 | 4 | 0 | ? | BLOCKED (waits 16,17,18) |
+| 10-protocol-engine | 0 | 4 | 0 | ? | BLOCKED (waits 16,17,18A-D1/D2/D3) |
 | 11-engine-design | 0 | 4 | 0 | 0 | ACTIVE (F-07 + ER-01/02/03) |
 | 12-feature-engine | 0 | 3 | 0 | 1 | ACTIVE (F-08, F-38 + SSE-D-03) |
 | 13-data-integrity | 0 | 2 | 0 | 0 | ACTIVE |
@@ -49,7 +49,17 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | 15-quality-assurance | 0 | 2 | 0 | 0 | ACTIVE (F-18, F-39; F-19 demoted) |
 | 16-bounded-recalibration | 0 | 2 | 0 | 0 | ACTIVE (BR-01, BR-02) |
 | 17-epistemic-search | 0 | 6 | 0 | 2 | ACTIVE (ESP-01→04 + SSE-08-CON, SSE-04-CELL) |
-| 18-discovery-feedback-loop | 0 | 18 | 0 | 0 | ACTIVE (DFL-01→DFL-18, all deps satisfied) |
+| 18-discovery-feedback-loop | — | — | — | — | **SPLIT** (2026-04-02) → 9 sub-domains below |
+| 18A-discovery-foundations | 0 | 3 | 0 | 0 | ACTIVE (DFL-04,05,09; Tier 1 — debate FIRST) |
+| 18B-ai-analysis-reporting | 0 | 3 | 0 | 0 | ACTIVE (DFL-01,02,03; after 18A) |
+| 18C-data-exploration | 0 | 2 | 0 | 0 | ACTIVE (DFL-06,07; after 18A, parallel with 18B) |
+| 18D-discovery-governance | — | — | — | — | **SPLIT** (2026-04-02) → 3 sub-domains below |
+| 18D1-pipeline-structure | 0 | 2 | 0 | 0 | ACTIVE (DFL-08,10; after 18A+B, parallel with 18D2) |
+| 18D2-statistical-budget | 0 | 1 | 0 | 0 | ACTIVE (DFL-11; after 18A, parallel with 18D1) |
+| 18D3-grammar-expansion | 0 | 1 | 0 | 0 | ACTIVE (DFL-12; after 18D2) |
+| 18E-data-pipeline-quality | 0 | 2 | 0 | 0 | ACTIVE (DFL-13,17; independent) — regrouped from 3→2 |
+| 18F-regime-dynamics | 0 | 2 | 0 | 0 | ACTIVE (DFL-14,18; independent) — DFL-14 moved from 18E, tension resolution |
+| 18G-data-scope | 0 | 2 | 0 | 0 | ACTIVE (DFL-15,16; independent) — new, split from 18F |
 
 ## Deferred Items Registry
 
@@ -83,7 +93,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 |------|--------|----------------|------------------|
 | architecture_spec.md | DRAFTING | 4 stubs + 1 proposal | 03-identity, 13-data, 16-recal, 17-esp; §14 proposal from 18-DFL |
 | meta_spec.md | SEEDED (DRAFTING-READY) | 0 (transcription only) | none |
-| discovery_spec.md | DRAFTING (partial) | §1-5 authoritative, §6-11 proposals | 18-discovery-feedback-loop (§6-§11 non-authoritative until 019 CLOSED) |
+| discovery_spec.md | DRAFTING (partial) | §1-5 authoritative, §6-11 proposals | 18A-D1/D2/D3 (§6-§11 non-authoritative until CLOSED); 18E-G independent |
 | methodology_spec.md | DRAFTING | 0 | none (from 013 closure) |
 | protocol_spec.md | NOT STARTED | N/A | 10-protocol-engine |
 | engine_spec.md | NOT STARTED | N/A | 11-engine-design |
@@ -114,7 +124,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | specs/quality_assurance.md | 15-quality-assurance | PENDING | NOT_TESTED | PENDING |
 | specs/bounded_recalibration.md | 16-bounded-recalibration | PENDING | NOT_TESTED | PENDING |
 | specs/epistemic_search.md | 17-epistemic-search | PENDING | NOT_TESTED | PENDING |
-| specs/discovery_feedback_loop.md | 18-discovery-feedback-loop | PENDING | NOT_TESTED | PENDING |
+| specs/discovery_feedback_loop.md | 18A-D1/D2/D3 (architecture) + 18E-G (data) | PENDING | NOT_TESTED | PENDING |
 | specs/entity_lifecycle.md | 03, 16 + X40 (state machines) | PENDING | NOT_TESTED | PENDING |
 | README.md | ALL (assembly — written last) | N/A | NOT_TESTED | PENDING |
 ```
@@ -233,7 +243,7 @@ x38/
 │   ├── 15-quality-assurance.md
 │   ├── 16-bounded-recalibration.md
 │   ├── 17-epistemic-search.md
-│   └── 18-discovery-feedback-loop.md ← Topic 019 (18 findings, largest domain)
+│   └── 18-discovery-feedback-loop.md ← Topic 019 (SPLIT → 9 sub-domains: 18A/B/C/D1/D2/D3/E/F/G, 18 findings total)
 │
 ├── debate/                          ← LIVE debate workspace for remaining open domains
 │   ├── 03-identity-versioning/
@@ -285,7 +295,7 @@ alpha_lab/genesis/                   ← Self-contained deliverable (per 07-gene
 - [ ] F-01 verified: no conflicting status tables exist outside 00-status.md
 - [ ] F-02 verified: all 018 routing obligations reflected in consumer domain Constraints sections
 - [ ] F-03 verified: all deferred items visible in single registry
-- [ ] 18-discovery-feedback-loop.md included in decisions/ structure (18 DFL findings)
+- [ ] 18-discovery-feedback-loop.md included in decisions/ structure (18 DFL findings across 9 sub-domains: 18A/B/C/D1/D2/D3/E/F/G)
 - [ ] Live `debate/` tree created for open domains
 - [ ] `debate/*/external/chatgpt_web/` lane defined for imported ChatGPT web input
 - [ ] methodology_spec.md included in drafts/ structure

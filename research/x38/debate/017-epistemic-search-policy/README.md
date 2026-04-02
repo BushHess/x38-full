@@ -178,6 +178,31 @@ Scope KHÔNG bao gồm:
 | 016 | BR-01 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). | 017 scope explicitly excludes parameter values. If 016 allows recalibration, ESP treats recalibrated algo as new phenotype. |
 | 018 | SSE-08-CON, SSE-04-CELL | Contradiction consumption semantics + cell-axis values routed from 018 (CLOSED 2026-03-27). Confirmed. | 017 owns consumption/values; 018 provides context (confirmed). |
 
+## Debate strategy
+
+**Problem**: 6 findings, ~18 debate items, strong dependency chain through "cell" concept (SSE-04-CELL → ESP-01 → ESP-02 → ESP-04). Cascading parametric decisions — many "what value?" questions depend on structural decisions not yet made.
+
+**Strategy: Two-pass debate**
+
+**Pass 1 — Structural decisions** (resolve first):
+- SSE-04-CELL: 4 axis categories (what dimensions define a cell?)
+- ESP-01: descriptor taxonomy (what does epistemic_delta.json contain?)
+- ESP-02: phenotype/prior schemas (what are the typed contracts?)
+- ESP-03: build-vs-defer for v1 promotion ladder
+- SSE-08-CON: resurrection trigger design
+- 013↔017 interface contracts (circular dependency resolution)
+
+**Pass 2 — Parametric values** (after structural agreement):
+- ESP-04: budget caps, coverage floors, exploit percentage
+- SSE-04-CELL: anomaly thresholds, proof bundle pass criteria
+- ESP-01: mandatory vs advisory status for each output
+- ESP-02: reconstruction-risk threshold value
+
+This avoids the cascading problem: structural decisions are debated without needing numeric values, and numeric values are filled in against an already-agreed structure.
+
+**Alternative: Pre-debate anchor resolution**
+Human researcher resolves SSE-04-CELL axis categories before debate starts. This unlocks the dependency chain and allows remaining decisions to proceed more independently.
+
 ## Files
 
 | File | Purpose |

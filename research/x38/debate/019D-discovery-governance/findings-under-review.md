@@ -1,0 +1,753 @@
+# Findings Under Review — Discovery Governance
+
+**Topic ID**: X38-T-19D
+**Opened**: 2026-04-02
+**Author**: human researcher
+
+4 findings about discovery governance — how discovered features integrate with
+the framework pipeline, how finite statistical power constrains validation,
+and whether grammar should expand to depth-2 composition. Split from Topic 019
+(DFL-08, DFL-10, DFL-11, DFL-12).
+
+**Issue ID prefix**: `X38-DFL-` (Discovery Feedback Loop).
+
+**Convergence notes applicable** (full text at `../000-framework-proposal/findings-under-review.md`):
+- C-01: MK-17 != primary evidence; firewall = main pillar
+- C-02: Shadow-only principle settled
+- C-12: Answer priors banned ALWAYS
+
+**Closed topic invariants** (non-negotiable):
+- Topic 018 SSE-D-02: Bounded ideation = results-blind, compile-only, OHLCV-only, provenance-tracked
+- Topic 018 SSE-D-11: APE v1 = template parameterization only, no code generation
+- Topic 018 SSE-D-05: Recognition stack = pre-freeze topology + named working minimum inventory (Judgment call)
+- Topic 002 F-04: Contamination firewall typed schema + whitelist
+- Topic 004 MK-17: Same-dataset empirical priors = shadow-only
+- Topic 007 F-01: "Inherit methodology, not answers"
+
+**Upstream dependencies within 019 split**:
+- 019A (DFL-04/05/09): Foundational boundary decisions — contamination model,
+  code authoring scope, SSE-D-02 analysis/ideation distinction. DFL-08
+  contamination rules, DFL-11 scope, DFL-12 SSE-D-02 spirit question all
+  depend on 019A outcomes.
+- 019B (DFL-01/02/03): Loop mechanisms — AI analysis layer, report contract,
+  human feedback channels. DFL-08 graduation path connects these components.
+
+---
+
+## DFL-08: Feature Candidate Graduation Path
+
+- **issue_id**: X38-DFL-08
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0
+- **current_status**: Open
+
+**Motivation**:
+
+DFL-06 defines 10 systematic analyses for raw data exploration. DFL-07 defines
+the methodology (statistical methods, visualization, workflow). DFL-01 defines
+the AI analysis layer. DFL-02 defines the report contract. DFL-03 defines human
+feedback channels. F-08 (Topic 006) defines the feature registry.
+
+But NO finding defines the **end-to-end path** from "pattern discovered in raw
+data" to "feature registered and available for strategy generation." Each finding
+covers one segment:
+
+```
+DFL-01 executes DFL-06 analyses (using DFL-07 methodology)
+  → [?1] → DFL-02 report → human review → [?2] → DFL-03 channel
+  → [?3] → F-08 registry → strategy validation
+```
+
+The `[?]` gaps are:
+1. What acceptance criteria must a raw pattern from DFL-06 analysis meet
+   to become a `feature_candidate` and enter a DFL-02 report?
+2. What decision framework does the human use to choose TEMPLATE vs
+   GRAMMAR vs INVESTIGATE vs DISCARD? (DFL-03 defines channels but not
+   decision criteria)
+3. How does a human-approved feature from DFL-03 enter the F-08 registry
+   with correct metadata, provenance, and generation_mode?
+
+Without this path, DFL-06's 10 analyses produce findings that have no defined
+route into the production framework. DFL-06's own open question (line "Feature
+promotion path") explicitly flags this gap.
+
+**Proposal**: A 5-stage graduation path with defined gates between stages.
+
+### Stage 1: Discovery → Candidate
+
+**Input**: DFL-06 analysis output (Phase 1 SCAN) OR DFL-12 grammar depth-2 output
+**Gate**: Top-N by MI rank (N declared before screening, per DFL-11 Tier 0).
+Not a p-value threshold — fixed N avoids passing ~14K features under H0.
+**Output**: `feature_candidate` record with:
+  - `candidate_id`: DFL-FC-YYYYMMDD-NNN
+  - `source_analysis`: which DFL-06 analysis (1-10) produced it
+  - `raw_fields_used`: which of the 13 data fields
+  - `derivation`: formula or transformation applied
+  - `screening_metrics`: IC, MI, p-value from Phase 1
+  - `contamination_class`: process_observation (always, per DFL-04)
+
+**Who runs**: AI analysis layer (DFL-01) during Phase 1 SCAN, or human
+researcher running DFL-06 analyses manually.
+
+### Stage 2: Candidate → Deep Dive Report
+
+**Input**: feature_candidate from Stage 1
+**Gate**: DFL-07 Phase 2 DEEP DIVE passes — pattern survives:
+  - Full distributional analysis (robust across regimes/periods)
+  - Structural break detection (not an artifact of one regime)
+    **→ Extended by DFL-14** (shelf-life classification) **and DFL-18** (regime-conditional profiling)
+  - Null model test (E1/E2 from DFL-07 §E: p_surrogate < 0.05)
+**Output**: Finding entry in DFL-02 DiscoveryReport with:
+  - Full evidence bundle (plots, statistics, null model results)
+  - `suggested_investigation`: specific next step for human
+  - Redundancy assessment: correlation with existing features (VDO, EMA, ATR)
+
+### Stage 3: Report → Human Decision
+
+**Input**: DFL-02 DiscoveryReport finding
+**Gate**: Human reviews report and decides one of:
+  - **INVESTIGATE**: request deeper analysis (loops back to Stage 2, internal to
+    graduation path — does not use a DFL-03 channel)
+  - **TEMPLATE**: create new strategy template using the feature (DFL-03 channel 1)
+  - **GRAMMAR**: propose grammar primitive for the feature (DFL-03 channel 2)
+  - **DISCARD**: insufficient evidence or economic significance (internal decision,
+    no DFL-03 channel)
+**Output**: Human decision record with provenance (which report finding).
+Only TEMPLATE and GRAMMAR exit the graduation path into DFL-03 channels.
+
+**Who decides**: Human researcher (Tier 3 authority per 3-tier model).
+AI analysis layer CANNOT promote features — only surface them.
+
+### Stage 4: Human Decision → Feature Registry
+
+**Input**: Human TEMPLATE or GRAMMAR decision from Stage 3
+**Gate**: Feature must satisfy F-08 (Topic 006) registry acceptance criteria:
+  - Belongs to a declared feature family (or creates new family with justification)
+  - Has defined lookback(s), tail(s), threshold calibration mode
+  - Passes registry_acceptance test for auto-generated features (if via grammar)
+  - DFL-04 contamination class recorded in registry metadata
+**Output**: Feature registered in F-08 registry with:
+  - `source: discovery_loop`
+  - `provenance: DFL-FC-YYYYMMDD-NNN → DFL-report-XXX → human_decision_YYY`
+  - `generation_mode`: `human_template` or `grammar_extension` (extends SSE-D-03
+    vocabulary — SSE-D-03 defines `grammar_depth1_seed` and `registry_only` for
+    automated generation; discovery loop adds these two values for human-originated
+    features. Topic 006 registry must accept the extended vocabulary.)
+
+**Contamination rules**:
+  - TEMPLATE path: provenance-tracked, NOT results-blind (DFL-03 exception)
+  - GRAMMAR path: primitive MUST be results-blind (SSE-D-02 hard rule)
+  - Both paths: feature enters normal validation — no shortcuts
+
+### Stage 5: Registry → Strategy Validation
+
+**Input**: Registered feature from Stage 4
+**Gate**: Normal validation pipeline (all 7 gates — CLAUDE.md:156-174 [extra-archive])
+**Output**: Strategy using the feature receives PROMOTE/HOLD/REJECT verdict
+
+This stage is NOT new — it is the existing validation pipeline. Included here
+to make the end-to-end path explicit and to confirm: discovery loop features
+receive NO special treatment in validation.
+
+### Governance properties
+
+| Property | Value |
+|----------|-------|
+| Human veto | Any stage (Tier 3 authority) |
+| AI authority | Stage 1 (screening) and Stage 2 (deep dive) only |
+| Contamination | Tracked end-to-end via provenance chain |
+| Reversibility | Feature can be de-registered if validation fails |
+| Multiple testing | Stage 5 Holm-corrected across all formally validated features (§9) |
+| Cycle time | Not specified — depends on analysis complexity |
+
+### Interaction with existing findings
+
+| Finding | Role in graduation path |
+|---------|----------------------|
+| DFL-06 | Source: produces raw patterns (Stage 1 input) |
+| DFL-07 | Methodology: defines Phase 1/2/3 workflow (Stage 1-2 methods) |
+| DFL-01 | Executor: AI analysis layer runs Stage 1-2 |
+| DFL-02 | Format: Stage 2 output follows report contract |
+| DFL-03 | Channel: Stage 3 human decision uses feedback channels |
+| DFL-04 | Constraint: contamination rules at every stage |
+| DFL-05 | Code: if feature needs novel code, deliberation-gated authoring applies |
+| F-08 (006) | Destination: Stage 4 registry acceptance |
+| SSE-D-02 (018) | Constraint: grammar extensions must be results-blind |
+| SSE-D-03 (018) | Vocabulary: generation_mode extended with `human_template`, `grammar_extension` |
+
+**Open questions**:
+- Stage 1 gate design: top-N by MI rank (per DFL-11 Tier 0) with N declared
+  before screening. What is the right N? (200? 100? 500?) Should N be
+  calibrated from existing features or fixed a priori?
+- Stage 2 redundancy: if a new feature correlates r > 0.8 with VDO, is it
+  automatically discarded? Or can it replace VDO if strictly superior?
+- Stage 3 latency: how long can a report finding sit without human decision
+  before it expires? (Prevents stale findings accumulating)
+- Batch vs streaming: do features graduate one at a time, or can Stage 1
+  produce a batch that moves through stages together?
+- Feedback loop: if a Stage 5 validation REJECTS a feature, does that
+  information feed back to Stage 1 screening thresholds? (Risk: overfitting
+  the graduation path to past rejections. Also: rejection info flowing to
+  screening = results → analysis pipeline, which DFL-04 must classify.)
+
+---
+
+## DFL-10: Pipeline Integration — Data Characterization as Prerequisite Stage
+
+- **issue_id**: X38-DFL-10
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0
+- **current_status**: Open
+
+**Motivation**:
+
+The current 8-stage pipeline (F-05, Topic 003) has a coverage gap between Stage 2
+and Stage 3:
+
+```
+Stage 2: Data audit (integrity)  →  Stage 3: Single-feature scan (grammar-defined)
+```
+
+Stage 2 checks data INTEGRITY: gaps, duplicates, checksums, anomaly disposition.
+Stage 3 scans features defined by GRAMMAR: exhaustive enumeration of grammar-declared
+building blocks (50K+ configurations from OHLCV primitives).
+
+No stage characterizes the data itself — distributional properties, field coverage,
+temporal structure, or pairwise dependencies (F-05 enumerates 8 stages without a
+profiling step; `003-protocol-engine/findings-under-review.md` lines 29-39). Grammar
+design (which determines Stage 3's search space) proceeds blind to data properties.
+
+**Systematic coverage gap**:
+
+| Metric | Current pipeline | With Stage 2.5 |
+|--------|-----------------|----------------|
+| Fields profiled before grammar design | 0/13 | 13/13 |
+| Fields in grammar (btc-spot-dev) | 5/13 (OHLCV) | 5+/13 (informed expansion) |
+| Numeric fields never analyzed | 3 (`quote_volume`, `num_trades`, `taker_buy_quote_vol`) | 0 |
+| Data properties known before scan | Integrity only | Integrity + distributional + temporal + dependence |
+
+**Evidence**:
+
+1. **Coverage blind spot** (DFL-06): btc-spot-dev has 13 data fields. Grammar
+   covers 5. Three numeric fields have NEVER been statistically profiled. The
+   pipeline cannot discover patterns in data dimensions it does not examine.
+
+2. **Discovery origin**: VDO — the project's most significant filter — was
+   discovered by a human noticing taker volume behavior in raw data. This field
+   was outside grammar scope, found by exploratory observation, not systematic
+   process (Topic 019 README lines 9-11: "100% of project alpha came from
+   human intuition"). A data characterization stage would have surfaced this
+   field's properties systematically before grammar design.
+
+3. **V6/V7 precedent** (P-01, `docs/v6_v7_spec_patterns.md` line 58): Anomaly
+   Disposition Register pattern requires an artifact after Stage 2 and before
+   Stage 3. x38 inherits the pattern name but not the practice of comprehensive
+   data profiling.
+
+4. **Consistent with Topic 018**: SSE-D-02 (CLOSED, authoritative) mandates
+   machine-verifiable evidence first — ideation rules are results-blind,
+   compile-only, OHLCV-only, provenance-tracked. The extra-canonical 4-agent
+   debate additionally rejected "human causal story" as a gate
+   (`docs/search-space-expansion/debate/claude/claude_debate_lan_2.md:219`:
+   "machine-verifiable phải chốt trước; causal story là explanatory layer sau
+   evidence"; note: extra-canonical = input evidence, not standard-debate
+   decision). Data characterization is NOT a causal story — every output is
+   machine-computable descriptive statistics. No "why does this pattern exist?"
+   is required.
+
+**Proposal**: Insert **Stage 2.5 "Data Characterization"** between Stage 2
+(Data audit) and Stage 3 (Single-feature scan).
+
+### Stage 2.5 specification
+
+| Property | Value |
+|----------|-------|
+| **Name** | Data Characterization |
+| **Position** | After Stage 2 (Data audit), before Stage 3 (Feature scan) |
+| **Input** | `audit_report.json` (Stage 2), raw data files |
+| **Output** | `data_profile.json` |
+| **Gate** | Stage 3 BLOCKED until `data_profile.json` exists |
+| **Compute ceiling** | < 30 minutes (profiling, not investigation) |
+| **Scope** | Descriptive statistics only — no causal interpretation, no strategy decisions |
+
+**Scope note**: The specification above is a PROPOSAL from Topic 019, illustrating
+what data characterization could look like. Topic 003 owns pipeline stage design
+and may modify, simplify, or reject any element. The core claim from 019 is that
+a data profiling step is NEEDED before grammar design — the specific implementation
+is 003's decision.
+
+### `data_profile.json` contents
+
+| Section | Contents | Purpose |
+|---------|----------|---------|
+| **field_inventory** | All fields, dtypes, basic stats (count, mean, std, min, max, nulls) | Know what data exists |
+| **distributional_profile** | Per field: normality test, stationarity test, structural break count | Know data properties before grammar design |
+| **pairwise_dependencies** | Rank correlation matrix + nonlinear dependence measure for all numeric field pairs | Identify informative fields and redundancies |
+| **temporal_structure** | Autocorrelation summary per field (significant lags at protocol-defined α) | Know temporal properties for feature design |
+| **coverage_map** | `grammar_fields` vs `all_fields`, `coverage_ratio`, fields NOT in grammar flagged | Make grammar gaps visible to protocol |
+
+### What this is NOT
+
+| Concern | Answer |
+|---------|--------|
+| "Causal story gate" (018 rejected) | No. Machine-computable descriptive statistics. No "why" required. Consistent with 018's "machine-verifiable first" |
+| "Full DFL-06 suite" | No. Stage 2.5 = shallow profiling (< 30 min). DFL-06 = deep investigation (10 analyses, days). "What properties exist?" vs "what exploitable patterns exist?" |
+| "Modifies SSE-D-02" | No. Grammar (Stage 3) remains OHLCV-only. Stage 2.5 profiles ALL fields for awareness. Non-OHLCV findings route to human templates (DFL-03/09) |
+| "Blocks on interpretation" | No. Gate is mechanical: `data_profile.json` exists → Stage 3 unblocked. Coverage ratio is informational |
+| "Replaces parallel observer" | No. DFL-06/07 = deep analysis (DFL-01 layer). Stage 2.5 = pipeline infrastructure. Complementary |
+
+### Interaction with existing findings
+
+| Finding | Relationship |
+|---------|-------------|
+| DFL-06 | Shallow (2.5) vs deep (06). Stage 2.5 output feeds DFL-06 as starting point |
+| DFL-07 | Methodology for deep dives. Not needed for Stage 2.5 (standard descriptive stats) |
+| DFL-08 | Graduation path after discovery. Stage 2.5 is pre-discovery infrastructure |
+| DFL-09 | Scope: analysis ≠ ideation. Stage 2.5 profiles all fields (analysis). Consistent |
+| DFL-01 | AI analysis layer. Stage 2.5 output enriches DFL-01 input |
+| F-05 (003) | 8-stage pipeline. DFL-10 proposes Stage 2.5 → 9 stages. **003 owns this decision** |
+| P-01 (V6) | Anomaly Disposition Register. Stage 2.5 extends this proven pattern |
+
+### Design alternative: expand Stage 2 scope
+
+Instead of inserting Stage 2.5, broaden Stage 2 "Data audit" to include
+characterization:
+
+| Option | Pros | Cons |
+|--------|------|------|
+| **New Stage 2.5** | Clean separation (integrity ≠ profiling). Explicit requirement. Campaign-skippable if data unchanged | 9 stages vs V6's 8. Pipeline amendment needed |
+| **Expand Stage 2** | Keeps 8 stages. "Audit" naturally extends | Overloads scope. Mixes integrity with statistics. Harder to separate concerns |
+
+Judgment call for Topic 003. DFL-10 proposes Stage 2.5 but acknowledges the
+alternative.
+
+**Open questions**:
+- Stage 2.5 vs expanded Stage 2: does 8→9 break design assumptions (state
+  machine hash, directory structure, V6 compatibility)?
+- Coverage_ratio: informational only (logged) or advisory (protocol warning)?
+  Hard gating would force grammar to cover ALL fields, which may be wrong
+  for noisy fields.
+- Campaign reuse: if data is identical between campaigns, can `data_profile.json`
+  be reused? Reuse = efficiency. Re-run = catches data corrections.
+- Method configurability: fixed test battery or protocol-configurable
+  per campaign? (Specific test selection is implementation detail for 003.)
+- DFL-06 integration: does DFL-06 consume Stage 2.5 output, or run
+  independently? Consuming = faster start. Independent = no Stage 2.5
+  dependency for analysis.
+
+---
+
+## DFL-11: Statistical Budget Accounting
+
+- **issue_id**: X38-DFL-11
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0
+- **current_status**: Open
+
+**Motivation**:
+
+DFL-06 proposes 10 systematic analyses. DFL-07 proposes statistical methods
+including MI, IC, permutation tests. DFL-08 proposes a 5-stage graduation path
+with gates. But NO finding addresses the **fundamental statistical constraint**
+on how many features can be discovered and validated from a finite dataset.
+
+**The binding constraint on feature invention is not search technology — it is
+statistical power.**
+
+btc-spot-dev empirical parameters:
+
+```
+N_trades ≈ 188          (E5-ema21D1, 2017-08 → 2026-02, harsh 50bps)
+Timespan: 8.5 years     (single asset, single timeframe family)
+M_eff ≈ 4.35            (Nyholt effective DOF across 16 timescales)
+```
+
+**Multiple testing cost scales with features tested**:
+
+When K features are formally tested, family-wise error control requires
+adjusted significance thresholds:
+
+| Features tested (K) | Bonferroni α_adj | VDO (p=0.031) survives? | Required effect for 80% power |
+|---------------------|-----------------|------------------------|-------------------------------|
+| 1 (human picks VDO) | 0.050 | YES ✓ | Δ_Sharpe ≈ 0.20 |
+| 10 (small grammar) | 0.005 | NO ✗ | Δ_Sharpe ≈ 0.35 |
+| 100 (depth-2 grammar) | 0.0005 | NO ✗ | Δ_Sharpe ≈ 0.50 |
+| 10,000 (GP search) | 0.000005 | NO ✗ | Δ_Sharpe ≈ 0.70 |
+
+**The paradox**: Automated search finds more features, but each feature requires
+stronger evidence to validate. With N=188 trades, there exists a hard ceiling
+on how many features can be fully validated at any useful significance level.
+
+**Validation budget depends on WHICH TEST is the binding gate**:
+
+| Test | Effective N | K_max at Δ=0.30, 80% power | Comment |
+|------|------------|---------------------------|---------|
+| Trade-level paired test | 188 trades | Potentially large (>50) | High power per test |
+| WFO Wilcoxon (8 folds) | 8 folds | **1-3** (power < 50% at K=1!) | Current binding gate |
+| Bootstrap CI | 1000 resamples | Intermediate | Point estimate strong, comparison weak |
+
+**The WFO bottleneck is REAL**: E5-ema21D1 has WFO p=0.125 > α=0.10 →
+HOLD verdict. The algorithm works but the test cannot confirm it at N=8
+folds. This is the ACTUAL binding constraint, not a theoretical concern.
+
+**K_max is an EMPIRICAL question**: The exact budget capacity cannot be
+determined from spec alone. A power simulation study using the project's
+real test statistics, data, and effect sizes is needed to calibrate K_max.
+
+**Why the loop is human-AI, not fully automated**: With tight budget, K must
+be kept small. Human domain judgment is a practical filter (reduce ~200
+pre-filter survivors to ~3-10 for formal testing). The claim that human
+intuition has inherent competitive advantage is plausible but unproven —
+it is a design assumption, not an established fact.
+
+**Proposal**: Explicit statistical budget accounting as a first-class framework
+component, integrated with the discovery loop and validation pipeline.
+
+### Budget model
+
+```
+StatisticalBudget:
+  dataset_params:
+    n_trades: int               # Available trades for validation
+    timespan_years: float       # Calendar time coverage
+    m_eff: float                # Nyholt effective DOF
+  budget:
+    alpha_fwer: float           # Family-wise error rate (default: 0.05)
+    k_tested: int               # Features formally tested so far
+    k_max_estimate: int         # Estimated max at min_detectable_effect
+    min_detectable_effect: float # Minimum Δ_Sharpe for 80% power at current k
+  ledger: list[BudgetEntry]     # Audit trail of every test
+```
+
+### Two-tier screening: pre-filter (reduced cost) vs formal test (full cost)
+
+| Tier | Activity | Budget cost | Purpose |
+|------|----------|-------------|---------|
+| **Tier 0: Pre-filter** | MI ranking, top-N selection, DFL-06 analyses | **Reduced** — see below | Reduce candidate pool from ~140K to ~200 |
+| **Tier 1: Formal test** | DFL-08 Stage 5 validation, WFO, bootstrap CI | **Full — 1 unit** per feature tested | Rigorous validation with error control |
+
+**Tier 0 is NOT free**: MI screening introduces selection bias because MI and
+Sharpe are correlated (both measure the feature-return relationship through
+different lenses). Features selected by high MI are more likely to have high
+Sharpe under H0, inflating Tier 1 false positive rates.
+
+**What Tier 0 achieves**: The practical value is reducing Tier 1 test count
+from ~140K to N (e.g., 200). Holm correction at Tier 1 applies over N tests,
+not 140K. This is "much cheaper" — not "free."
+
+**How to handle the selection bias**: Two approaches (debate should decide):
+
+1. **Permutation calibration**: Compute MI on permuted returns (1000×). Use
+   the permutation-null MI distribution to set a threshold that accounts for
+   the screening effect. Computationally expensive.
+2. **Conservative inflation factor**: Apply a multiplier (e.g., 2×) to Tier 1
+   α to compensate for MI-Sharpe correlation. Calibrate empirically via
+   simulation.
+
+**The exact cost of Tier 0 is an EMPIRICAL question**: Requires a simulation
+study — generate synthetic features with known properties, run the two-tier
+pipeline, measure actual vs nominal false positive rate. This is a CODE task,
+not a spec task.
+
+### Budget lifecycle within DFL-08 graduation path
+
+```
+DFL-06 Analysis (10 analyses)
+  │  [Zero formal units — data profiling, process observations]
+  ▼
+DFL-08 Stage 1: Discovery → Candidate
+  │  Tier 0 pre-filter: top-N by MI rank (N declared before screening)
+  │  [Zero formal units — selection bias acknowledged]
+  ▼
+DFL-08 Stage 2: Candidate → Deep Dive Report
+  │  Distributional analysis, null model test, redundancy
+  │  [Zero formal units — characterization, not formal test]
+  ▼
+DFL-08 Stage 3: Report → Human Decision
+  │  Human reviews, decides: INVESTIGATE / TEMPLATE / GRAMMAR / DISCARD
+  │  [Zero formal units — human judgment]
+  ▼
+DFL-08 Stage 4: Human Decision → Feature Registry
+  │  Feature registered with provenance
+  │  [NO budget cost — registration is bookkeeping]
+  ▼
+DFL-08 Stage 5: Registry → Strategy Validation
+  │  Full validation: WFO, bootstrap, 7 gates
+  │  [COSTS 1 BUDGET UNIT — this is the formal test]
+  │
+  │  Budget check BEFORE running validation:
+  │    if budget.k_tested >= budget.k_max_estimate:
+  │      WARN: "Budget exhausted. Validation will have <50% power.
+  │             Consider: (a) collect more data, (b) accept lower power,
+  │             (c) human override with explicit justification."
+  │
+  ▼
+Budget ledger updated: k_tested += 1, min_detectable_effect recalculated
+```
+
+### Budget accounting rules
+
+1. **Pre-filter = zero formal budget units (selection bias acknowledged)**:
+   DFL-06 analyses, MI screening, IC ranking, DFL-07
+   Phase 1-2 — all zero budget cost. These are characterization, not decisions.
+
+2. **Formal test costs 1 unit**: Each feature that enters full validation
+   (DFL-08 Stage 5) consumes 1 budget unit. The Holm correction adjusts
+   α for all k_tested features.
+
+3. **Human override allowed**: If budget is exhausted, human researcher
+   (Tier 3 authority) may authorize additional tests with explicit
+   justification and acknowledged reduced power. Override is recorded in ledger.
+
+4. **Budget is per-dataset**: When new data arrives (Phase 2 clean OOS or
+   Phase 3 new research), budget resets because N_trades increases.
+   Budget from previous dataset is archived for audit.
+
+5. **Budget is SEPARATE from grammar scan**: Topic 013 SSE-09 Holm correction
+   applies to grammar_depth1_seed scan (50K+ configs). Discovery loop features
+   have their own budget. Rationale: grammar scan tests within a DECLARED
+   space (known combinatorial structure). Discovery loop tests NOVEL features
+   (unknown space). Pooling would either (a) exhaust grammar budget with
+   discovery features or (b) penalize discovery features for grammar's
+   combinatorial explosion.
+
+6. **Redundancy deduction**: If a new feature correlates r > 0.95 with an
+   already-tested feature (behavioral equivalence per Topic 013 SSE-04-THR),
+   it does NOT consume a new budget unit — it's treated as a variant of the
+   existing test. This prevents redundant features from wasting budget.
+
+### Current budget estimate for btc-spot-dev
+
+```
+Dataset: BTC/USDT 2017-08 → 2026-02 (H4+D1, harsh 50bps)
+N_trades = 188, M_eff = 4.35, WFO folds = 8
+```
+
+**Retroactive counting (open question)**:
+
+Pre-framework research (x0-x32) tested many features, but NOT under the
+framework's budget rules. Two options:
+
+| Option | What counts | K_tested | Rationale |
+|--------|-----------|----------|-----------|
+| **Clean start** | Only tests under the framework | 0 | Pre-framework methodology was different. Honest fresh start |
+| **Full accounting** | ALL features ever tested | ~28+ (incl. 22 rejected) | Most conservative. But retroactive FWER invalidates VDO (p=0.031 > 0.05/28) |
+
+**Neither option is satisfying**: Clean start ignores real tests. Full
+accounting retroactively fails known-good features. This is a DESIGN DECISION
+for debate, not a mathematical derivation.
+
+**The binding constraint is WFO power, not K**:
+
+Even at K=1, WFO Wilcoxon with 8 folds has power < 50% for Δ_Sharpe = 0.30.
+E5-ema21D1 has p=0.125 — the test cannot confirm an algorithm that WORKS.
+Adding more features (K > 1) makes this worse, but the constraint is already
+binding at K=1.
+
+**K_max requires a power simulation study**: The exact budget capacity depends
+on the test statistic, effect size distribution, and data properties. A
+simulation study using the project's real WFO setup with synthetic features
+is needed. This is a CODE task.
+
+**Implication**: The budget tracker makes the ceiling VISIBLE. But the ceiling
+itself is determined empirically, not by spec. v2's value is in making the
+constraint explicit and designing the two-tier pipeline around it.
+
+### Interaction with existing findings
+
+| Finding | Interaction |
+|---------|------------|
+| DFL-06 | 10 analyses → all Tier 0 (zero formal units). Produces candidates, not decisions |
+| DFL-07 | Phase 1-2 methodology → Tier 0. Phase 3 WFO → Tier 1 (costs budget) |
+| DFL-08 | Stage 1-4 → Tier 0. Stage 5 → Tier 1. Budget check before Stage 5 |
+| DFL-09 | Scope clarification: non-OHLCV analysis is Tier 0 (zero formal units) |
+| DFL-10 | Stage 2.5 data profiling → Tier 0 (zero formal units). Informs grammar design |
+| DFL-01 | AI analysis layer → Tier 0 (observation, not decision) |
+| DFL-04 | Contamination: budget ledger is a process artifact, not answer prior |
+| SSE-09 (013) | Grammar scan uses separate Holm budget. Discovery loop = disjoint |
+| F-08 (006) | Registry must record `budget_entry_id` for audit trail |
+
+### Open questions
+
+- Is the budget separation (grammar vs discovery) correct? Or should all
+  tests be pooled into one family? Pooling is more conservative but may
+  make grammar scan impractical (50K configs + discovery features).
+- Should the ~6 features already tested in x0-x32 be retroactively counted
+  in the budget? If so, current budget is already partially consumed.
+  Argument for: honest accounting. Argument against: those tests used
+  different methodology (pre-framework), not apples-to-apples.
+- What happens when budget is exhausted but a promising feature exists?
+  Options: (a) wait for more data, (b) human override with reduced power
+  acknowledged, (c) accept lower α_FWER for new features.
+- Should the budget model account for CORRELATED features (effective number
+  of independent tests < k_tested)? Nyholt M_eff could apply to feature
+  space, not just timescale space.
+- BudgetEntry schema: what metadata per test? Minimum: feature_id, test_date,
+  test_metric, p_value, effect_size, verdict, holm_adjusted_alpha.
+
+---
+
+## DFL-12: Grammar Depth-2 Composition
+
+- **issue_id**: X38-DFL-12
+- **classification**: Thiếu sót
+- **opened_at**: 2026-03-31
+- **opened_in_round**: 0
+- **current_status**: Open
+
+**Motivation**:
+
+v1 grammar (SSE-D-02, Topic 018 CLOSED) is depth-1: `feature = f(field, lookback)`.
+This captures single indicators (ema, sma, std, atr) but NOT compositions — features
+that combine two depth-1 features through an operator.
+
+VDO is a composition: `ratio(ema(taker_buy_vol, 14), ema(total_vol, 14))`. Under
+v1, VDO cannot be expressed in grammar — it entered via human insight. But the
+formula itself is a depth-2 composition of two depth-1 features through a `ratio`
+operator. If grammar supported depth-2, VDO's formula (though not the CONCEPT)
+would be in the search space.
+
+**The gap**: No finding in Topic 019 proposes depth-2 composition. DFL-03 discusses
+grammar extension as "new building blocks for grammar_depth1_seed" (adding
+primitives like `volume_ratio`). DFL-09 clarifies scope (analysis vs ideation).
+Neither proposes NEW COMPOSITION OPERATORS that create features from EXISTING
+features. This is a qualitatively different kind of grammar expansion.
+
+**Proposal**: Add composition operators to the grammar, creating depth-2 features.
+
+### Composition operators
+
+| Operator | Signature | Example |
+|----------|-----------|---------|
+| `ratio` | (Series, Series) → Series | `ratio(ema(close,21), ema(close,50))` |
+| `diff` | (Series, Series) → Series | `diff(ema(close,21), sma(close,50))` |
+| `zscore` | (Series, int) → Series | `zscore(ema(close,21), 20)` |
+| `rank` | (Series, int) → Series | `rank(std(close,14), 50)` |
+
+**Excluded operators**:
+- `crossover`: produces BoolSeries (signal), not composable Series
+- `lag`: redundant with lookback parameter extension
+
+### Search space impact
+
+Depth-2 DRAMATICALLY expands the grammar search space:
+
+| Grammar level | Fields | Estimated configs |
+|---------------|--------|-------------------|
+| Depth-1 (v1) | 5 OHLCV | ~300 |
+| Depth-2, binary (ratio, diff) | 5 OHLCV | ~135,000 |
+| Depth-2, unary (zscore, rank) | 5 OHLCV | ~6,000 |
+| **Total depth-2 (OHLCV)** | 5 | **~140,000** |
+
+**Derivation** (binary operators):
+- Depth-1 base features: 6 ops × 5 fields × 10 lookbacks = 300
+- `ratio` (non-commutative): 300 × 299 = 89,700 ordered pairs
+- `diff` (anti-symmetric): C(300,2) = 44,850 unordered pairs
+- Total binary: ~135,000 (before structural pruning)
+
+This is a ~460× expansion from depth-1. The entire pre-filter design (DFL-11
+Tier 0) and budget model (DFL-11) exist to make this tractable.
+
+### SSE-D-02 interaction
+
+Depth-2 composition operates WITHIN the OHLCV-only constraint (SSE-D-02 rule 3).
+Composition operators combine OHLCV-derived features — they do not introduce new
+input fields. `ratio(ema(close,21), ema(volume,14))` uses close and volume, both
+OHLCV fields.
+
+**However**, the combinatorial explosion from ~300 to ~140,000 features raises a
+SPIRIT-of-the-law question: SSE-D-02's OHLCV-only rule was designed to prevent
+search space explosion. Depth-2 achieves explosion WITHIN OHLCV. Does this violate
+the intent of SSE-D-02 even though it satisfies the letter?
+
+### Pruning strategy
+
+~140K features contain structural redundancies:
+- Self-compositions: `ratio(f, f)` = constant → remove
+- Degenerate lookbacks: `zscore(ema(close,3), 3)` → near-constant → remove
+- Expected reduction via structural pruning: ~140K → ~80-100K
+- Further reduction via DFL-11 Tier 0 MI ranking: → top-200
+
+### Key design decision for debate
+
+**The central question**: Should v2 grammar support depth-2 composition?
+
+| Option | Search space | VDO expressible? | Budget impact | Risk |
+|--------|-------------|-------------------|---------------|------|
+| **A: YES, depth-2 in grammar** | ~140K (OHLCV-only) | Formula yes, but OHLCV-only fields | Pre-filter required (DFL-11) | Combinatorial explosion vs budget |
+| **B: NO, depth-2 via human template only** | ~300 (grammar) + unlimited (human) | Only via human insight | No grammar budget impact | Human bottleneck |
+| **C: YES, but depth ≤ 2 and operator whitelist** | ~140K with pruning | Formula yes, OHLCV-only | Bounded expansion | Requires operator review |
+
+Option B is the status quo (v1). Option A/C extend grammar. The debate must
+decide whether the ~460× expansion is justified given the statistical budget
+constraints identified in DFL-11.
+
+### Interaction with other findings
+
+| Finding | Interaction |
+|---------|------------|
+| DFL-03 | Grammar extension channel 2. DFL-12 is a SPECIFIC extension (operators, not primitives) |
+| DFL-08 | Stage 1 input: grammar depth-2 output feeds into graduation pipeline |
+| DFL-09 | Scope: depth-2 composition within OHLCV satisfies SSE-D-02 letter, but spirit? |
+| DFL-11 | Budget: ~140K features → pre-filter essential. Budget K_max constrains formal testing |
+| SSE-D-02 (018) | OHLCV-only: composition uses only OHLCV fields, but search space explodes |
+| F-08 (006) | Feature registry: depth-2 features need `generation_mode: grammar_depth2` |
+
+### Open questions
+
+- Does depth-2 within OHLCV violate the SPIRIT of SSE-D-02, even though it
+  satisfies the letter? If so, should 018 be reopened?
+- Should the operator whitelist be fixed in the spec or extensible by debate?
+- Is depth-2 sufficient, or will depth-3 eventually be needed? If depth-3 is
+  foreseeable, should the design account for it now (general recursion) or later?
+- Should depth-2 generation be deterministic (enumerate all) or sampled
+  (random subset) to manage compute cost?
+
+---
+
+## Cross-topic tensions
+
+| Topic | Finding | Tension | Resolution path |
+|-------|---------|---------|-----------------|
+| 003 | F-05 | Pipeline stages — **DFL-10 proposes Stage 2.5** between Stages 2-3 | 003 owns pipeline stage count. DFL-10 proposes; 003 decides |
+| 006 | F-08 | Feature registry acceptance — DFL-08 Stage 4 + DFL-11 budget metadata | DFL-08 defines interface; DFL-11 proposes budget_spent field; F-08 (006) defines registry schema |
+| 013 | SSE-09 (Holm) | Grammar scan correction vs discovery loop budget — separate pools? | DFL-11 defines discovery-specific budget; 013 owns grammar-scan correction |
+| 015 | F-14 | DFL-10 proposes `data_profile.json` as new artifact | 015 owns artifact enumeration; DFL-10 proposes; 003 mediates |
+| 018 | SSE-D-02 (rule 3, spirit) | Depth-2 composition within OHLCV — ~460x expansion violates spirit? | DFL-12 poses the question; debate decides |
+
+---
+
+## Decision summary — what debate must resolve
+
+Debate for Topic 019D must produce decisions on these questions. All are Tier 2-3
+(depend on 019A Tier 1 foundational decisions being resolved first).
+
+**Tier 2 — Mechanisms**:
+
+| ID | Decision | Finding | Alternatives |
+|----|----------|---------|-------------|
+| D-04 | Should grammar support depth-2 composition operators in v2? | DFL-12 | YES (expand grammar) / NO (human templates only for composition) / YES with operator whitelist |
+| D-05 | Should the pre-filter use top-N ranking or p-value threshold? | DFL-08+DFL-11 | Top-N (fixed, declared) / P-value (data-dependent) / Hybrid |
+| D-07 | Stage 2.5 as new stage or expand Stage 2? | DFL-10 | New Stage 2.5 / Expand Stage 2 / Reject (not needed) |
+
+**Tier 3 — Budget & governance**:
+
+| ID | Decision | Finding | Alternatives |
+|----|----------|---------|-------------|
+| D-09 | Separate budget for discovery vs grammar scan? | DFL-11 | Separate (disjoint families) / Pooled (single FWER) |
+| D-10 | Retroactive counting of pre-framework tests? | DFL-11 | Clean start (k=0) / Full accounting / Partial (selected) |
+| D-11 | How to handle Tier 0 selection bias? | DFL-11 | Permutation calibration / Conservative factor / Simulation study first |
+
+---
+
+## Summary table
+
+| Issue ID | Finding | Classification | Status |
+|----------|---------|---------------|--------|
+| X38-DFL-08 | Feature candidate graduation path (5 stages) | Thiếu sót | Open |
+| X38-DFL-10 | Pipeline integration: Stage 2.5 data characterization | Thiếu sót | Open |
+| X38-DFL-11 | Statistical budget accounting (two-tier screening) | Thiếu sót | Open |
+| X38-DFL-12 | Grammar depth-2 composition (search space expansion) | Thiếu sót | Open |

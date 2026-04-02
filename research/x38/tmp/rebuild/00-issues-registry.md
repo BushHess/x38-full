@@ -479,6 +479,41 @@ Ownership map expanded for discovery_spec (DFL sections).
 with different composition (019 contributing 18, gap audit +5, F-19 demoted -1).
 **Status**: CORRECTED (2026-04-02). Updated scale section with accurate breakdown.
 
+### I-06. Topic 019 split into 6 sub-topics
+**Severity**: INFO (structural change)
+**Where**: debate/019-discovery-feedback-loop/, 06-tracking.md, 02-concept-structure.md, 03-dependency-rules.md
+**Problem**: Topic 019 (18 findings, 3005 lines, 167KB) was too large for effective debate.
+Split into 6 sub-topics (019A-019F) on 2026-04-02:
+  - 019A: Discovery Foundations (DFL-04/05/09, Tier 1, debate FIRST)
+  - 019B: AI Analysis & Reporting (DFL-01/02/03, Tier 2, after 019A)
+  - 019C: Systematic Data Exploration (DFL-06/07, Tier 3, after 019A)
+  - 019D: Discovery Governance (DFL-08/10/11/12, Tier 2-3, after 019A+B)
+  - 019E: Data Quality & Validation (DFL-13/14/17, Tier 4, independent)
+  - 019F: Data Scope & Profiling (DFL-15/16/18, Tier 4, independent)
+**Impact**: Domain file `18-discovery-feedback-loop.md` in decisions/ will contain 6
+sub-sections (18A-18F). Extraction must map findings to sub-domains. 06-tracking.md
+Domain Status table now has 6 rows instead of 1 for domain 18. 10-protocol-engine
+depends_on updated to reference 18A-D (not just 18).
+**Status**: COMPLETED (2026-04-02). All rebuild files updated. SUPERSEDED by I-07.
+
+### I-07. Topic 019 debate efficiency audit — 019D split + 019E/F regroup + 017 strategy
+**Severity**: INFO (structural change)
+**Where**: debate/019D*/, debate/019E*/, debate/019F*/, debate/019G*/, debate/017*/, 06-tracking.md
+**Problem**: Content audit identified 3 debate efficiency issues:
+  1. 019D (753 lines, 4 findings, 6+7 decisions): "3 debates in a trenchcoat" — DFL-11 (budget)
+     would absorb all debate bandwidth, leaving pipeline and grammar under-examined.
+  2. 019E/019F: DFL-14 (non-stationarity) and DFL-18 (regime profiling) have a documented
+     tension (conflicting regime classifications) but were in different topics.
+  3. 017 (488 lines, 6 findings, 18 debate items): cascading parametric decisions through
+     "cell" concept dependency chain.
+**Actions**:
+  - 019D SPLIT → 019D1 (DFL-08+10, pipeline), 019D2 (DFL-11, budget), 019D3 (DFL-12, grammar)
+  - 019E/F REGROUPED: DFL-14 moved 019E→019F, DFL-15+16 moved 019F→019G (new)
+    019E = DFL-13+17 (pipeline quality), 019F = DFL-14+18 (regime dynamics), 019G = DFL-15+16 (data scope)
+  - 017: Two-pass debate strategy added to README (structural first, parametric second)
+**Final sub-topic count**: 10 (019A, 019B, 019C, 019D1, 019D2, 019D3, 019E, 019F, 019G + parent 019 archived)
+**Status**: COMPLETED (2026-04-02).
+
 ### Issues resolved in debate (no blueprint action needed)
 - **A-05** (F-19 not a finding): F-19 demoted to supporting evidence in debate (2026-03-31).
   Blueprint already planned this. ✓
