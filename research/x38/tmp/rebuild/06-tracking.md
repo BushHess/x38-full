@@ -41,23 +41,25 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | 06-clean-oos | ? | 0 | 0 | 0 | INTEGRATED |
 | 07-convergence | ? | 0 | ? | 0 | DECIDED (deferred items) |
 | 08-search-expansion | ? | 0 | 0 | 0 | INTEGRATED |
-| 10-protocol-engine | 0 | 4 | 0 | ? | BLOCKED (waits 16,17,18A-D1/D2/D3) |
+| 10-protocol-engine | 0 | 3 | 0 | 1 | BLOCKED (F-05, F-36, F-37 Open + SSE-D-04 Constraint from 018; waits 03-identity, 16, 17A, 18A, 18D1) |
 | 11-engine-design | 0 | 4 | 0 | 0 | ACTIVE (F-07 + ER-01/02/03) |
-| 12-feature-engine | 0 | 3 | 0 | 1 | ACTIVE (F-08, F-38 + SSE-D-03) |
+| 12-feature-engine | 0 | 2 | 0 | 1 | ACTIVE (F-08, F-38 Open + SSE-D-03 Constraint from 018) |
 | 13-data-integrity | 0 | 2 | 0 | 0 | ACTIVE |
 | 14-deployment | 0 | 2 | 0 | 0 | ACTIVE |
 | 15-quality-assurance | 0 | 2 | 0 | 0 | ACTIVE (F-18, F-39; F-19 demoted) |
-| 16-bounded-recalibration | 0 | 2 | 0 | 0 | ACTIVE (BR-01, BR-02) |
-| 17-epistemic-search | 0 | 6 | 0 | 2 | ACTIVE (ESP-01→04 + SSE-08-CON, SSE-04-CELL) |
+| 16-bounded-recalibration | 0 | 2 | 0 | 0 | BLOCKED (BR-01, BR-02; waits 03-identity, 14-deployment) |
+| 17-epistemic-search | — | — | — | — | **SPLIT** (2026-04-03) → 17A + 17B below |
+| 17A-intra-campaign-esp | 0 | 2 | 0 | 1 | ACTIVE (ESP-01, ESP-04 + SSE-04-CELL; all deps satisfied) |
+| 17B-inter-campaign-esp | 0 | 2 | 0 | 1 | BLOCKED (ESP-02, ESP-03 + SSE-08-CON; waits 17A) |
 | 18-discovery-feedback-loop | — | — | — | — | **SPLIT** (2026-04-02) → 9 sub-domains below |
 | 18A-discovery-foundations | 0 | 3 | 0 | 0 | ACTIVE (DFL-04,05,09; Tier 1 — debate FIRST) |
-| 18B-ai-analysis-reporting | 0 | 3 | 0 | 0 | ACTIVE (DFL-01,02,03; after 18A) |
-| 18C-data-exploration | 0 | 2 | 0 | 0 | ACTIVE (DFL-06,07; after 18A, parallel with 18B) |
+| 18B-ai-analysis-reporting | 0 | 3 | 0 | 0 | BLOCKED (DFL-01,02,03; waits 18A) |
+| 18C-systematic-data-exploration | 0 | 2 | 0 | 0 | BLOCKED (DFL-06,07; waits 18A, parallel with 18B) |
 | 18D-discovery-governance | — | — | — | — | **SPLIT** (2026-04-02) → 3 sub-domains below |
-| 18D1-pipeline-structure | 0 | 2 | 0 | 0 | ACTIVE (DFL-08,10; after 18A+B, parallel with 18D2) |
-| 18D2-statistical-budget | 0 | 1 | 0 | 0 | ACTIVE (DFL-11; after 18A, parallel with 18D1) |
-| 18D3-grammar-expansion | 0 | 1 | 0 | 0 | ACTIVE (DFL-12; after 18D2) |
-| 18E-data-pipeline-quality | 0 | 2 | 0 | 0 | ACTIVE (DFL-13,17; independent) — regrouped from 3→2 |
+| 18D1-pipeline-structure | 0 | 2 | 0 | 0 | BLOCKED (DFL-08,10; waits 18A+B, parallel with 18D2) |
+| 18D2-statistical-budget | 0 | 1 | 0 | 0 | BLOCKED (DFL-11; waits 18A+B, parallel with 18D1) |
+| 18D3-grammar-expansion | 0 | 1 | 0 | 0 | BLOCKED (DFL-12; waits 18D2) |
+| 18E-data-quality-validation | 0 | 2 | 0 | 0 | ACTIVE (DFL-13,17; independent) — regrouped from 3→2 |
 | 18F-regime-dynamics | 0 | 2 | 0 | 0 | ACTIVE (DFL-14,18; independent) — DFL-14 moved from 18E, tension resolution |
 | 18G-data-scope | 0 | 2 | 0 | 0 | ACTIVE (DFL-15,16; independent) — new, split from 18F |
 
@@ -65,15 +67,15 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 | ID | Decision deferred | Blocked by | Unblocks | Provisional value |
 |----|-------------------|------------|----------|-------------------|
-| X38-CVG-THR | Convergence numeric floors | 17-epistemic-search | architecture §9.3 | methodology frozen, numerics TBD |
-| X38-CVG-THR-3a | Robustness minimum numerics | 17-epistemic-search | architecture §9.4 | owned by convergence domain |
+| X38-CVG-THR | Convergence numeric floors | 17A-intra-campaign-esp | architecture §9.3 | methodology frozen, numerics TBD |
+| X38-CVG-THR-3a | Robustness minimum numerics | 17A-intra-campaign-esp | architecture §9.4 | owned by convergence domain |
 | ... | ... | ... | ... | ... |
 
 ## Circular Dependencies
 
 | Pair | Interface | Resolution | Status |
 |------|-----------|------------|--------|
-| 07-convergence <-> 17-epistemic-search | metric methodology ↔ consumption criteria | PENDING | Cannot freeze until 17 has DECIDED findings. See 03-dependency-rules.md |
+| 07-convergence <-> 17A-intra-campaign-esp | metric methodology ↔ consumption criteria | PENDING | Cannot freeze until 17A has DECIDED findings. See 03-dependency-rules.md. 017 SPLIT (2026-04-03): circular dep is with 017A only (v1, consumption framework). 017B (v2, inter-campaign) not involved. |
 | ... | ... | ... | ... |
 
 ## Integration Log
@@ -91,7 +93,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 | Spec | Status | Stubs remaining | Blocking domains |
 |------|--------|----------------|------------------|
-| architecture_spec.md | DRAFTING | 4 stubs + 1 proposal | 03-identity, 13-data, 16-recal, 17-esp; §14 proposal from 18-DFL |
+| architecture_spec.md | DRAFTING | 4 stubs + 1 proposal | 03-identity, 13-data, 16-recal, 17A/17B-esp; §14 proposal from 18-DFL |
 | meta_spec.md | SEEDED (DRAFTING-READY) | 0 (transcription only) | none |
 | discovery_spec.md | DRAFTING (partial) | §1-5 authoritative, §6-11 proposals | 18A-D1/D2/D3 (§6-§11 non-authoritative until CLOSED); 18E-G independent |
 | methodology_spec.md | DRAFTING | 0 | none (from 013 closure) |
@@ -123,7 +125,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 | specs/deployment.md | 14-deployment | PENDING | NOT_TESTED | PENDING |
 | specs/quality_assurance.md | 15-quality-assurance | PENDING | NOT_TESTED | PENDING |
 | specs/bounded_recalibration.md | 16-bounded-recalibration | PENDING | NOT_TESTED | PENDING |
-| specs/epistemic_search.md | 17-epistemic-search | PENDING | NOT_TESTED | PENDING |
+| specs/epistemic_search.md | 17-epistemic-search (17A + 17B) | PENDING | NOT_TESTED | PENDING |
 | specs/discovery_feedback_loop.md | 18A-D1/D2/D3 (architecture) + 18E-G (data) | PENDING | NOT_TESTED | PENDING |
 | specs/entity_lifecycle.md | 03, 16 + X40 (state machines) | PENDING | NOT_TESTED | PENDING |
 | README.md | ALL (assembly — written last) | N/A | NOT_TESTED | PENDING |
@@ -171,12 +173,12 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 ## Step 0: Extraction Methodology
 
 > **Context**: G-05 identified that extraction methodology was undefined.
-> This section defines HOW findings are extracted from the 19 topic directories
+> This section defines HOW findings are extracted from all topic directories
 > before the rebuild can execute. Step 0 is the hard prerequisite for everything else.
 
 ### Input
 
-All 19 directories under `debate/NNN-slug/`, specifically:
+All 32 directories under `debate/NNN-slug/` (19 original + 13 from splits: 017A/B, 019A-G, 019D1-D3), specifically:
 - `final-resolution.md` (primary source for DECIDED findings)
 - `findings-under-review.md` (primary source for OPEN/DEFERRED findings)
 - Debate round files (secondary source for rationale and evidence)
@@ -204,7 +206,7 @@ A draft domain file following the format in 02-concept-structure.md:
 
 ### Verification pass
 
-After all 19 topics are extracted:
+After all 32 topic directories are extracted:
 1. **Count check**: Total extracted findings (pre-import) ≈ ~160 (known estimate). Flag if <140 or >180. After X40 import (step 7), total may increase by up to ~10 new findings — report pre-import and post-import counts separately.
 2. **No orphans**: Every finding in every `final-resolution.md` and `findings-under-review.md` is accounted for.
 3. **No duplicates**: No finding ID appears in two domain files (except as CONSTRAINT cross-ref).
@@ -225,7 +227,7 @@ x38/
 │   ├── design_brief.md              ← Historical input (informational)
 │   └── evidence/                    ← Frozen external evidence copies
 │
-├── decisions/                       ← AUTHORITATIVE (18 domain files + 1 tracking file)
+├── decisions/                       ← AUTHORITATIVE (17 domain files + 1 tracking file = 18 files)
 │   ├── 01-philosophy.md             ┐
 │   ├── 02-campaign-model.md         │ 8 consolidated domains
 │   ├── 03-identity-versioning.md    │ (closed topics merged
@@ -242,7 +244,7 @@ x38/
 │   ├── 14-deployment.md
 │   ├── 15-quality-assurance.md
 │   ├── 16-bounded-recalibration.md
-│   ├── 17-epistemic-search.md
+│   ├── 17-epistemic-search.md       ← Topic 017 (SPLIT → 2 sub-sections: 17A intra-campaign v1, 17B inter-campaign v2; 6 findings total)
 │   └── 18-discovery-feedback-loop.md ← Topic 019 (SPLIT → 9 sub-domains: 18A/B/C/D1/D2/D3/E/F/G, 18 findings total)
 │
 ├── debate/                          ← LIVE debate workspace for remaining open domains
@@ -266,7 +268,7 @@ x38/
 ├── published/                       ← Final specs (read-only)
 │
 ├── archive/                         ← OLD structure (read-only reference)
-│   ├── debate/                      ← All 19 topic directories
+│   ├── debate/                      ← All 32 topic directories (19 original + 13 from splits)
 │   ├── EXECUTION_PLAN.md
 │   └── debate-index.md
 │
@@ -286,7 +288,7 @@ alpha_lab/genesis/                   ← Self-contained deliverable (per 07-gene
 - [ ] 00-status.md created with all 6 sections (Domain Status, Deferred Items, Circular Deps, Integration Log, Spec Readiness, Export Readiness)
 - [ ] Domain Status table populated from current state
 - [ ] Deferred Items Registry populated (minimum: CVG-THR items)
-- [ ] Circular Dependencies populated (minimum: 07<->17)
+- [ ] Circular Dependencies populated (minimum: 07<->17A)
 - [ ] Integration Log has initial extraction entry (starts from rebuild date, not old closures)
 - [ ] Spec Readiness table populated
 - [ ] EXECUTION_PLAN.md moved to archive/
@@ -295,6 +297,7 @@ alpha_lab/genesis/                   ← Self-contained deliverable (per 07-gene
 - [ ] F-01 verified: no conflicting status tables exist outside 00-status.md
 - [ ] F-02 verified: all 018 routing obligations reflected in consumer domain Constraints sections
 - [ ] F-03 verified: all deferred items visible in single registry
+- [ ] 17-epistemic-search.md included in decisions/ structure (6 findings across 2 sub-sections: 17A intra-campaign + 17B inter-campaign)
 - [ ] 18-discovery-feedback-loop.md included in decisions/ structure (18 DFL findings across 9 sub-domains: 18A/B/C/D1/D2/D3/E/F/G)
 - [ ] Live `debate/` tree created for open domains
 - [ ] `debate/*/external/chatgpt_web/` lane defined for imported ChatGPT web input

@@ -8,8 +8,8 @@
 ## Problem Summary
 
 - Topic 014 scheduled before its dependency (003) — C-01
-- Topics 016/017 stuck as "backlog" despite satisfied deps — C-02
-- 013<->017 circular dependency buried in JC, both marked "closed" — C-03
+- Topics 016/017 stuck as "backlog" despite satisfied deps — C-02 (017 now SPLIT: 017A all deps satisfied, 017B waits 017A)
+- 013<->017A circular dependency buried in JC, both marked "closed" — C-03
 - No closure-to-integration workflow — C-04
 - Topic 003 overloaded as integration hub with 16 cross-topic tensions — C-05
 
@@ -44,27 +44,50 @@ Tier 2 (deps on Tier 0+1):
                              Execution orchestration (014) may need revision
                              after protocol stages (010) finalize.
                              ER-03 (session concurrency, gap audit 2026-03-31) added.
-  12-feature-engine        depends_on: [08]
+  12-feature-engine        depends_on: [01, 08]
                            ← F-38 (feature family ontology, gap audit 2026-03-31) added.
+                             01 (topic 007) was soft-dep for topic 006.
   13-data-integrity        depends_on: [01]
+  14-deployment            depends_on: [01, 06]
+                           ← From old 011 (F-26, F-27). Soft-dep on 007✅, 010✅.
+  15-quality-assurance     depends_on: [01]
+                           ← From old 012 (F-18, F-39). Soft-dep on 007✅, 008✅.
 
 Tier 3 (cross-cutting):
   16-bounded-recalibration depends_on: [02, 04, 06, 03, 14-deployment]
-  17-epistemic-search      depends_on: [04, 06, 07]
+  17A-intra-campaign-esp   depends_on: [04, 06, 07, 08] — ALL DEPS SATISFIED
+                           ← ESP-01, ESP-04, SSE-04-CELL (3 findings).
+                             013↔017A circular dep (CVG-THR). 003 needs 17A.
+                             Also depends on topic 008 decisions (in domain 03),
+                             but 03 has OPEN findings — see Note below.
+  17B-inter-campaign-esp   depends_on: [17A] — waits 17A
+                           ← ESP-02, ESP-03, SSE-08-CON (3 findings).
+                             Can run parallel with 10-protocol-engine.
   18-discovery-feedback-loop depends_on: [08, 04, 05]
                            ← Topic 019. HARD-dep from 018✅ + 002✅ + 004✅.
-                             All deps SATISFIED. Parallel with 016, 017.
+                             All deps SATISFIED. Parallel with 016, 17A.
                              **SPLIT (2026-04-02)** → 9 sub-domains:
                              18A (foundations, debate FIRST) → 18B + 18C (parallel)
-                             → 18D1 + 18D2 (parallel) → 18D3 (after 18D2).
+                             18A + 18B → 18D1 + 18D2 (parallel; 18C NOT blocking)
+                             18D2 → 18D3 (sequential).
                              18E + 18F + 18G independent (parallel with all).
                              Feeds discovery_spec §6-§11, architecture_spec §14.
 
 Tier 4 (integration):
-  10-protocol-engine       depends_on: [02, 03, 04, 05, 16, 17, 18]
+  10-protocol-engine       depends_on: [02, 03, 04, 05, 16, 17A, 18A, 18D1]
                            ← 18 (DFL) added: discovery loop adds protocol interaction
                              points (per debate-index.md line 104-107).
 ```
+
+> **DAG limitation — domain 03 implicit dependencies (2026-04-03)**:
+> Several Tier 2+ domains (11-engine-design, 12-feature-engine, 13-data-integrity,
+> 15-quality-assurance, 17A-intra-campaign-esp) have a SATISFIED dependency on
+> Topic 008 (architecture-identity) decisions, which now reside in domain
+> 03-identity-versioning. These are NOT listed in `depends_on` because domain 03
+> also contains OPEN findings from Topics 011 and 015 — listing 03 would trigger
+> false blocking via the activation rule. The Topic 008 decisions are DECIDED and
+> available as CONSTRAINTS. This is a known trade-off of domain-level (vs
+> finding-level) granularity in the DAG.
 
 ### Rules
 
@@ -72,7 +95,7 @@ Tier 4 (integration):
 2. **Soft dependencies**: `soft_depends_on` does NOT block activation. The domain may begin debate, but findings that touch the soft dependency's outputs are marked PROVISIONAL and must be re-verified after the soft dependency closes. Tracked in `00-status.md` Integration Log as type: REVISION_CHECK.
 3. **No premature scheduling**: A domain with unmet deps stays in BLOCKED status.
    - Solves C-01: engine-design (old 005+014) is self-contained now.
-   - Solves C-02: 016/017 activate when their deps are met — explicit trigger, not vague "backlog".
+   - Solves C-02: 016/017A/017B activate when their deps are met — explicit trigger, not vague "backlog".
 3. **Integration hub rule**: Domain 10-protocol-engine debates LAST. It consumes, does not produce constraints for other domains.
    - Solves C-05: 003 is explicitly the final integrator, expected to have many constraints.
 
@@ -94,22 +117,24 @@ Circular dependencies MUST be surfaced and resolved BEFORE either domain closes.
 
 3. **Registry**: All circular dependencies tracked in `00-status.md` under `## Circular Dependencies` with resolution status.
 
-### Apply to C-03 (013<->017):
+### Apply to C-03 (013<->017A):
 
 ```
-CIRCULAR: X38-CVG-THR (convergence numerics) <-> X38-ESP-?? (consumption framework)
+CIRCULAR: X38-CVG-THR (convergence numerics) <-> X38-ESP-01/04 (consumption framework, 017A)
 Status: DETECTED
-Resolution: PENDING — cannot freeze until 17-epistemic-search has DECIDED findings
+Resolution: PENDING — cannot freeze until 17A-intra-campaign-esp has DECIDED findings
+Note: 017 SPLIT (2026-04-03) into 017A (v1) + 017B (v2). Circular dep is with 017A only.
+      017B (inter-campaign) does not interact with convergence numerics.
 ```
 
 > **AUDIT NOTE (2026-03-29)**: Original plan claimed "INTERFACE FREEZE" resolution.
-> This is PREMATURE — Topic 017 has 16 OPEN findings, none decided. Cannot freeze
-> an interface that doesn't exist yet.
+> This is PREMATURE — Topic 017A has 3 OPEN findings (ESP-01, ESP-04, SSE-04-CELL),
+> none decided. Cannot freeze an interface that doesn't exist yet.
 >
 > **Correct approach**:
-> 1. During rebuild extraction: mark X38-CVG-THR as DEFERRED with `blocked_by: 17-epistemic-search`
+> 1. During rebuild extraction: mark X38-CVG-THR as DEFERRED with `blocked_by: 17A-intra-campaign-esp`
 > 2. Domain 07-convergence status = DECIDED (not INTEGRATED) — it has deferred items
-> 3. When 17-epistemic-search decides its consumption framework:
+> 3. When 17A-intra-campaign-esp decides its consumption framework:
 >    - THEN propose interface freeze
 >    - THEN hold joint session to resolve numerics
 >    - THEN both domains can reach INTEGRATED
@@ -219,8 +244,8 @@ Reopening events tracked in `## Integration Log` with type: REOPENED.
 - [ ] Ordering DAG documented with depends_on/blocks for all ~18 domains (including 18-DFL)
 - [ ] No domain has OPEN findings while its depends_on domains have OPEN findings
 - [ ] C-01 resolved: engine-design is Tier 2, not prematurely scheduled
-- [ ] C-02 resolved: 016/017 have explicit activation triggers
-- [ ] C-03 resolved: 013<->017 circular DETECTED in 00-status.md, resolution PENDING until 17 has DECIDED findings
+- [ ] C-02 resolved: 016/017A/017B have explicit activation triggers
+- [ ] C-03 resolved: 013<->017A circular DETECTED in 00-status.md, resolution PENDING until 17A has DECIDED findings
 - [ ] C-04 resolved: 3-step closure workflow documented
 - [ ] C-05 resolved: protocol-engine has constraints register
 - [ ] All circular dependencies in 00-status.md

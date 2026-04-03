@@ -33,7 +33,7 @@ modes, exhaustive scan strategy, cross-timeframe alignment.
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
-| 017 | ESP-01, ESP-02 | Phenotype descriptor taxonomy (017) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. Must not conflict. |
+| 017A/017B | ESP-01 (017A), ESP-02 (017B) | Phenotype descriptor taxonomy (017A/017B) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017A owns strategy-level descriptors, 017B owns phenotype contracts. Must not conflict. |
 | 018 | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed`. Routed from Topic 018 (CLOSED 2026-03-27). | 006 owns registry acceptance rules; 018 provides generation mode contract (confirmed). |
 
 ## Files

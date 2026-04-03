@@ -82,9 +82,87 @@ interface rõ ràng, không tranh luận mơ hồ về "compatibility".
 trước khi Topic 003 (protocol engine) finalize. Nếu 016 close SAU 003, protocol
 có thể phải reopen — tốn thêm rounds không cần thiết.
 
+## Pre-debate burden of proof framework
+
+**Purpose**: Topic 016 is the most burden-heavy topic — proposer must argue
+an exception to the firewall (C-12: prima facie incompatible). This framework
+ensures debate starts with CLEAR evidence obligations, not open-ended discussion.
+
+### Decision tree (strict ordering)
+
+```
+Step 1: BINARY — Allow bounded recalibration? (F-34)
+  ├── NO → Topic CLOSES. Status quo: all degradation → full re-discovery.
+  │         Outcome: F-34=CONTRA, F-35=MOOT.
+  └── YES → Step 2 (ONLY if Step 1 = YES)
+               ↓
+Step 2: Exception boundary — what exactly is allowed? (F-34)
+  - Tầng 2 boundary: parameter-only within declared manifold
+  - Scope lock: which parameters? All or subset?
+  - Firewall contract: formal exception definition
+               ↓
+Step 3: Integration model — how? (F-35)
+  - Phương án A (session in current campaign) / B (maintenance campaign) / C (separate pipeline)
+  - Clean OOS re-certification policy
+```
+
+**Debaters MUST establish Step 1 (YES/NO) BEFORE finalizing Steps 2/3.** However,
+debaters MAY discuss Step 2/3 scenarios in Step 1 arguments if conditional (e.g.,
+"YES, provided Step 2 = Phương án C"). This preserves Step 1 priority while
+allowing full-context reasoning. If Step 1 = NO, Steps 2 and 3 are not debated.
+
+### Burden allocation
+
+**Proposer (PRO recalibration) MUST provide**:
+
+1. **Firewall exception justification**: How does Tầng 2 recalibration NOT
+   violate C-12 (answer priors banned ALWAYS)? The fact that recalibrated
+   params are "within manifold" does not automatically exempt them from the
+   firewall. Proposer must argue why parameter reuse from same algorithm is
+   categorically different from answer priors.
+
+2. **Slippery slope defense**: Concrete, enforceable mechanism that prevents
+   Tầng 2 exception from expanding to Tầng 3 (logic changes). "We'll be
+   disciplined" is not sufficient — must be structural enforcement.
+
+3. **Cost-benefit analysis**: Quantify the cost of full re-discovery (compute,
+   time) vs the risk of firewall exception (contamination, precedent).
+   Use evidence from project: Gen3 V1 cost (4 structural gaps, FAILED),
+   Gen4 expected cost.
+
+4. **Real-world scenario**: At least one concrete scenario where recalibration
+   is clearly superior to full re-discovery. Must include specific degradation
+   metric, specific parameter change, and demonstration that full re-discovery
+   would likely arrive at the same answer at much higher cost.
+
+**Defender (CONTRA, status quo) has**:
+
+- C-12 (answer priors banned ALWAYS) — prima facie case
+- C-04 (no path exists) — design intent
+- F-17 (parameter change = semantic change = new version) — versioning argument
+- F-04 (firewall typed schema + whitelist) — enforcement mechanism
+- rules.md §5: burden on proposer of change
+
+**Burden evaluation**: Proposer must establish preponderance of evidence across
+the 4 dimensions. If proposer presents strong cases on 3/4 AND can steel-man the
+4th, the decision is Judgment call per rules.md §14 — not automatic NO. If
+proposer fails on 2+ requirements, Step 1 = NO by default.
+
+**NOTE**: F-34 is classified as "Judgment call" (cả hai phía có lý). The 4
+requirements structure the debate, not pre-decide the outcome. rules.md §5
+(burden on proposer of change) is operationalized here, but §5 specifies burden
+allocation, not numerical unanimity. Topic 011 F-26 also questions whether "no
+triage path" is itself a design gap — proposer may cite this as upstream evidence.
+
+### Round budget
+
+- Round 1: F-34 binary decision (Step 1). Proposer presents case, defender responds.
+- Round 2: If Step 1 = YES → exception boundary (Step 2). If NO → closure.
+- Round 3 (if needed): Integration model (Step 3) + Clean OOS interaction.
+
 ## Debate plan
 
-- Ước lượng: 2-3 rounds (nhiều tensions cần resolve)
+- Ước lượng: 1-3 rounds (depends on Step 1 outcome — may close in 1 round)
 - Key battles:
   - F-34: Có cho phép bounded recalibration hay không? (binary decision trước)
     Nếu có: exception boundary chính xác là gì? Firewall contract ra sao?

@@ -2,7 +2,15 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-04-01 — Audit sync: Topic 019 updated 12→18 findings (DFL-13→18),
+**Cập nhật**: 2026-04-03 — Quality audit: Topic 017 SPLIT into 017A (intra-campaign ESP, v1)
++ 017B (inter-campaign ESP, v2). 3 findings each. Scheduling benefit: 003 only needs 017A.
+Topic 016: pre-debate burden of proof framework added (decision tree, evidence requirements).
+Topic 019C: debate scope clarification added (focus on D-12 meta-decision, not individual analyses).
+Topic 019F: DFL-14/DFL-18 conflict resolution strategy added (3 options, recommended debate ordering).
+Registry fix: 019 sub-topics (019A-G, 019D1-D3) added to registry (were directories but missing from table).
+019 status OPEN→SPLIT, 019D status SPLIT. Totals: 22→32 entries. 018 routing note clarified: SSE-04-CELL→017A, SSE-08-CON→017B (post-split).
+Previous: 2026-04-02 — Topic 019 SPLIT into 9 sub-topics (019A-G, 019D→019D1/D2/D3). 18 findings, 21 decisions across 4 tiers.
+Previous: 2026-04-01 — Audit sync: Topic 019 updated 12→18 findings (DFL-13→18),
 total 75→81. Propagated gap audit findings to READMEs (003, 006, 012, 014).
 PLAN.md + EXECUTION_PLAN.md partially synced (topic-level detail for 019 added;
 aggregate counts and draft status were NOT updated — corrected 2026-04-01 audit fix).
@@ -59,13 +67,25 @@ added (gap analysis). Topic 003 split: F-14/F-17 → Topic 015.
 | X38-T-14 | Execution & resilience | 2026-03-22 | OPEN | `014-execution-resilience/` | ER-01, ER-02, ER-03 (3) |
 | X38-T-15 | Artifact & version management | 2026-03-22 | OPEN | `015-artifact-versioning/` | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5) |
 | X38-T-16 | Bounded recalibration path | 2026-03-23 | OPEN (backlog) | `016-bounded-recalibration-path/` | BR-01, BR-02 (2) |
-| X38-T-17 | Epistemic search policy | 2026-03-24 | OPEN (backlog) | `017-epistemic-search-policy/` | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6) |
+| X38-T-17 | Epistemic search policy (index) | 2026-03-24 | **SPLIT** (2026-04-03) | `017-epistemic-search-policy/` | Index — 6 findings split into 017A + 017B |
+| X38-T-17A | Intra-campaign ESP (v1) | 2026-04-03 | OPEN (backlog) | `017A-intra-campaign-esp/` | ESP-01, ESP-04, SSE-04-CELL (3) + 013↔017A resolution |
+| X38-T-17B | Inter-campaign ESP (v2) | 2026-04-03 | OPEN (backlog) | `017B-inter-campaign-esp/` | ESP-02, ESP-03, SSE-08-CON (3) |
 | X38-T-18 | Search-space expansion | 2026-03-25 | **CLOSED** (2026-03-27) | `018-search-space-expansion/` | 10 OIs resolved → 11 decisions (OI-02 expands to D-02+D-03). 10 Converged + 1 Judgment call. 6 rounds (standard 2-agent). Downstream routing confirmed to 006/015/017/013/008/003. |
-| X38-T-19 | Discovery feedback loop | 2026-03-29 | OPEN | `019-discovery-feedback-loop/` | DFL-01→DFL-18 (18) |
+| X38-T-19 | Discovery feedback loop (index) | 2026-03-29 | **SPLIT** (2026-04-02) | `019-discovery-feedback-loop/` | Index — 18 findings split into 9 sub-topics (019A-019G + 019D1-D3) |
+| X38-T-19A | Discovery foundations | 2026-04-02 | OPEN | `019A-discovery-foundations/` | DFL-04, DFL-05, DFL-09 (3) — Tier 1 blocker |
+| X38-T-19B | AI analysis & reporting | 2026-04-02 | OPEN | `019B-ai-analysis-reporting/` | DFL-01, DFL-02, DFL-03 (3) |
+| X38-T-19C | Systematic data exploration | 2026-04-02 | OPEN | `019C-systematic-data-exploration/` | DFL-06, DFL-07 (2) |
+| X38-T-19D | Discovery governance (index) | 2026-04-02 | **SPLIT** (2026-04-02) | `019D-discovery-governance/` | Index — 4 findings split into 019D1/D2/D3 |
+| X38-T-19D1 | Pipeline structure | 2026-04-02 | OPEN | `019D1-pipeline-structure/` | DFL-08, DFL-10 (2) |
+| X38-T-19D2 | Statistical budget | 2026-04-02 | OPEN | `019D2-statistical-budget/` | DFL-11 (1) |
+| X38-T-19D3 | Grammar expansion | 2026-04-02 | OPEN | `019D3-grammar-expansion/` | DFL-12 (1) |
+| X38-T-19E | Data quality validation | 2026-04-02 | OPEN | `019E-data-quality-validation/` | DFL-13, DFL-17 (2) |
+| X38-T-19F | Regime dynamics | 2026-04-02 | OPEN | `019F-regime-dynamics/` | DFL-14, DFL-18 (2) + tension resolution |
+| X38-T-19G | Data scope | 2026-04-02 | OPEN | `019G-data-scope/` | DFL-15, DFL-16 (2) |
 
-**Totals**: 20 topics (8 CLOSED, 1 SPLIT, 11 OPEN). 81 findings distributed (70 original + 5 gap audit + 6 DFL data-foundation; F-19 demoted; excludes Topic 004 MK-series and Topic 000 convergence notes).
+**Totals**: 32 entries (8 CLOSED, 4 SPLIT, 20 OPEN). 81 findings distributed (70 original + 5 gap audit + 6 DFL data-foundation; F-19 demoted; excludes Topic 004 MK-series and Topic 000 convergence notes). SPLIT entries (000, 017, 019, 019D) are parent indexes — findings live in sub-topics only.
 **Note**: Topic 018 downstream routings (SSE-04-IDV→008, SSE-07/08/04-INV→015,
-SSE-08-CON/04-CELL→017, SSE-09/04-THR→013) are **confirmed** (018 CLOSED 2026-03-27).
+SSE-04-CELL→017A, SSE-08-CON→017B, SSE-09/04-THR→013) — original routing to 017 confirmed 2026-03-27 (018 CLOSED). Post-split clarification 2026-04-03: SSE-04-CELL→017A, SSE-08-CON→017B.
 
 ## Debate Waves
 
@@ -78,11 +98,18 @@ Wave 2:    018✅ (search-space expansion)  ← CLOSED (2026-03-27), routings co
            013✅ (convergence)             ← CLOSED (2026-03-28), unblocks 017 (SSE-09/04-THR confirmed, 018✅)
            015 (artifact/version)         ← song song, soft-dep 007✅, 008✅ (SSE-07/08/04-INV confirmed, 018✅)
                ↓
-Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
-           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013✅ (SSE-08-CON/04-CELL confirmed, 018✅) — ALL DEPS SATISFIED
-           019 (discovery feedback loop) ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song với 017)
+Wave 2.5:  016 (bounded recalibration)    ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
+           017A (intra-campaign ESP, v1)  ← chờ 002✅ + 008✅ + 010✅ + 013✅ + 018✅ — ALL DEPS SATISFIED
+           019A (discovery foundations)   ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (Tier 1 blocker)
+           019E/019F/019G (independent)   ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
                ↓
-Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017 + 019
+           019B + 019C (after 019A)       ← chờ 019A (Wave 2.5B)
+           019D1 + 019D2 (after 019A+B)   ← chờ 019A + 019B (Wave 2.5C)
+           019D3 (after 019D2)            ← chờ 019D2 (Wave 2.5D, sequential)
+           017B (inter-campaign ESP, v2)  ← chờ 017A (sequential)
+               ↓
+Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A+019D1 (017B can run parallel)
+           [003 needs: 019A (foundations) + 019D1 (DFL-10 Stage 2.5 proposal). Other 019 subs are informational, not blocking.]
            014 (execution)               ← chờ 003 + 005
 ```
 
@@ -97,14 +124,13 @@ minor adjustments sau nếu cần.
 - Topic 015 (artifact/version) có soft-dep trên 007 + 008. Tách từ 003 để
   debate sớm hơn — không cần pipeline stages finalized.
 
-**Wave 2.5** (3 topics): Bounded recalibration path (016), Epistemic search
-policy (017), và Discovery feedback loop (019) là cross-cutting decisions.
-016 chạm 5 Wave 2 topics (001, 002, 010, 011, 015). 017 chạm 4 Wave 2 topics
-(002, 008, 010, 013). 019 kế thừa 018 (bounded ideation, recognition stack) +
-002 (firewall) + 004 (meta-knowledge). Cả ba phải close TRƯỚC 003 — 016 vì
-recalibration branch, 017 vì cell-elite archive và epistemic_delta.json, 019
-vì discovery loop có thể thêm protocol interaction points. 016, 017, và 019
-KHÔNG depend lẫn nhau — debate song song.
+**Wave 2.5** (12 debatable sub-topics: 016, 017A/B, 019A-G/D1-D3): Cross-cutting
+decisions. 016 chạm 5 Wave 2 topics (001, 002, 010, 011, 015). 017A chạm 4
+Wave 2 topics (002, 008, 010, 013). 019 sub-topics kế thừa 018 + 002 + 004.
+016, 017A, 019A, 019E/F/G KHÔNG depend lẫn nhau — debate song song. 019 has
+internal waves: 019A (Tier 1 blocker) → 019B/C → 019D1/D2 → 019D3.
+019E/F/G independent of 019A — debate anytime. 017B depends on 017A (sequential).
+**003 chỉ cần 017A** (v1 pipeline) — 017B (v2 contracts) có thể chạy song song với 003.
 
 **Wave 3** (2 topics): Protocol engine (003) là topic tích hợp, phụ thuộc Campaign
 model (001), Contamination firewall (002), Meta-knowledge (004, đã closed),
@@ -156,10 +182,15 @@ convergence notes liên quan — không lặp lại full text.
 015 (artifact/version) ← soft-dep from 007✅, 008✅
     ↓
 016 (bounded-recal) ← HARD-dep from 001✅ + 002✅ + 010✅ + 011 + 015
-017 (epistemic-SP)  ← HARD-dep from 002✅ + 008✅ + 010✅ + 013✅; confirmed input: 018✅ (SSE-08-CON, SSE-04-CELL) — ALL DEPS SATISFIED
-019 (discovery-FL)  ← HARD-dep from 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song 017)
+017A (intra-ESP)    ← HARD-dep from 002✅ + 008✅ + 010✅ + 013✅ + 018✅ (SSE-04-CELL) — ALL DEPS SATISFIED
+019A (foundations)   ← HARD-dep from 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (Tier 1 blocker)
+019E/F/G (independent) ← HARD-dep from 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
+019B/C              ← HARD-dep from 019A
+019D1/D2            ← HARD-dep from 019A + 019B
+019D3               ← HARD-dep from 019D2 (sequential)
+017B (inter-ESP)    ← HARD-dep from 017A
     ↓
-003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017 + 019
+003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1 (017B can run parallel)
 014 (execution) ← soft-dep from 003, 005
 ```
 
@@ -213,5 +244,5 @@ thì ghi "Không có tension đã biết."
 
 1. **Topic 007** (philosophy-mission) — debate ĐẦU TIÊN — **CLOSED** (2026-03-23)
 2. **Wave 2** (10 remaining topics, 001 closed early) — song song sau khi 007 closed
-3. **Wave 2.5**: Topic 016 (bounded-recalibration) + Topic 017 (epistemic-search-policy) + Topic 019 (discovery-feedback-loop) — song song, sau Wave 2 prerequisites
-4. **Wave 3**: Topic 003 (protocol-engine) + Topic 014 (execution) — cuối cùng
+3. **Wave 2.5**: 016 + 017A + 019A + 019E/F/G (song song, sau Wave 2 prereqs) → 019B/C (sau 019A) → 019D1/D2 (sau 019A+B) → 019D3 (sau 019D2) + 017B (sau 017A)
+4. **Wave 3**: Topic 003 (protocol-engine, cần 017A) + Topic 014 (execution) — cuối cùng

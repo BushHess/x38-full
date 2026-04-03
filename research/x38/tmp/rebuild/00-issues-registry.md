@@ -58,12 +58,12 @@
 **Problem**: Findings organized by debate-topic (process history), not by concept (product).
 | Concept | Findings spread across |
 |---------|----------------------|
-| Firewall | 002, 004, 009, 016, 017 |
+| Firewall | 002, 004, 009, 016, 017A |
 | Identity/Versioning | 008, 011, 015, 018 |
 | Campaign model | 001, 010, 013, 016 |
-| Convergence | 001, 010, 013, 017 |
-| Clean OOS | 001, 010, 016, 017 |
-| Search-space | 003, 006, 008, 013, 015, 017, 018 |
+| Convergence | 001, 010, 013, 017A |
+| Clean OOS | 001, 010, 016, 017A |
+| Search-space | 003, 006, 008, 013, 015, 017A/017B, 018 |
 **Impact**: To understand 1 concept, must read 3-5 final-resolution.md files and mentally assemble.
 **Fix**: Rebuild organizes findings by concept domain, not by debate topic.
 
@@ -112,15 +112,20 @@
 **Severity**: MEDIUM
 **Where**: debate-index.md, topic READMEs
 **Problem**: Both marked "OPEN (backlog)" but hard dependencies are satisfied (002, 008, 010, 013 all CLOSED). No clear activation trigger documented.
-**Impact**: Blocks Topic 003 (Wave 3) because 003 waits on 016+017.
+**Impact**: Blocks Topic 003 (Wave 3) because 003 waits on 016+017A.
 **Fix**: Explicit activation rule: "When deps X, Y, Z all CLOSED -> activate immediately."
+> **UPDATE (2026-04-03)**: Topic 017 SPLIT into 017A + 017B. 017A has ALL deps
+> satisfied (002✅ + 008✅ + 010✅ + 013✅ + 018✅). 003 only needs 017A.
+> C-02 partially resolved for 017A — activation is now possible.
 
-### C-03. Topic 013 <-> Topic 017 circular dependency buried
+### C-03. Topic 013 <-> Topic 017A circular dependency buried
 **Severity**: HIGH
-**Where**: Topic 013 SSE-04-THR judgment call, Topic 017 ESP findings
-**Problem**: 013 needs 017's consumption framework to set numeric floors. 017 needs 013's production metrics to set passing criteria. Topic 013 CLOSED with numerics deferred — but "CLOSED" is misleading because it must reopen or jointly reconcile when 017 closes.
+**Where**: Topic 013 SSE-04-THR judgment call, Topic 017A ESP findings
+**Problem**: 013 needs 017A's consumption framework to set numeric floors. 017A needs 013's production metrics to set passing criteria. Topic 013 CLOSED with numerics deferred — but "CLOSED" is misleading because it must reopen or jointly reconcile when 017A closes.
 **Impact**: Specs embed deferred numerics as if frozen. Implementation will hit "spec says X, but that was deferred".
 **Fix**: Create explicit joint integration issue before either topic's decisions become binding on specs.
+> **UPDATE (2026-04-03)**: Narrowed from 013↔017 to 013↔017A. 017B (inter-campaign)
+> does not interact with convergence numerics. Resolution strategy added to 017A findings.
 
 ### C-04. No closure-to-integration workflow
 **Severity**: MEDIUM
@@ -132,7 +137,7 @@
 ### C-05. Topic 003 overloaded as integration hub
 **Severity**: MEDIUM
 **Where**: Topic 003 (Protocol Engine)
-**Problem**: Depends on outputs from 001, 002, 004, 015, 016, 017, 018. Has 16 cross-topic tensions. Any upstream change forces 003 to reopen. "Wave 3 last" designation makes it most volatile, not most stable.
+**Problem**: Depends on outputs from 001, 002, 004, 015, 016, 017A, 018, 019A/019D1. Has 16+ cross-topic tensions. Any upstream change forces 003 to reopen. "Wave 3 last" designation makes it most volatile, not most stable.
 **Fix**: Create constraints register for 003; schedule strictly after all upstream; accept it as integration point rather than debate topic.
 
 ---
@@ -190,7 +195,7 @@
 | §4 Data Management | Topic 009 (OPEN) |
 | §8 Deployment Boundary | Topic 011 (OPEN) |
 | §10 Bounded Recalibration | Topic 016 (OPEN) |
-| §11 Epistemic Search Policy | Topic 017 (OPEN) |
+| §11 Epistemic Search Policy | Topic 017A/017B (SPLIT from 017) |
 | §12 Breadth-Expansion | Partial (018 seeded) |
 | §13 Discovery Routing | Partial (018 seeded) |
 **Impact**: No gate prevents publishing before stubs are filled.
@@ -262,7 +267,7 @@
 2. **B-01**: Findings scattered by debate-topic, not by concept
 3. **B-02**: Topic 015 vs 011 sizing conflict (unresolved contradiction)
 4. **C-01**: Topic 014 scheduled before its dependency (003)
-5. **C-03**: 013<->017 circular dependency buried, both "closed"
+5. **C-03**: 013<->017A circular dependency buried, both "closed"
 6. **D-01**: 6-file manual sync per closure (persistent drift)
 7. **E-03**: Deferred JCs embedded in specs as if frozen
 
@@ -286,8 +291,8 @@
 ### G-03. Circular dep 013<->017 claimed "INTERFACE FREEZE" prematurely
 **Severity**: HIGH
 **Where**: 03-dependency-rules.md
-**Problem**: Plan proposed INTERFACE FREEZE but Topic 017 has 16 OPEN findings. Cannot freeze interface of undecided domain.
-**Status**: CORRECTED in 03-dependency-rules.md (changed to PENDING, added correct approach).
+**Problem**: Plan proposed INTERFACE FREEZE but Topic 017 had 6 OPEN findings (now SPLIT: 017A has 3, 017B has 3). Cannot freeze interface of undecided domain.
+**Status**: CORRECTED in 03-dependency-rules.md (changed to PENDING, narrowed to 013↔017A).
 
 ### G-04. Governance claimed "2 updates per closure" — actual 3-4
 **Severity**: MEDIUM
@@ -509,18 +514,20 @@ depends_on updated to reference 18A-D (not just 18).
 **Actions**:
   - 019D SPLIT → 019D1 (DFL-08+10, pipeline), 019D2 (DFL-11, budget), 019D3 (DFL-12, grammar)
   - 019E/F REGROUPED: DFL-14 moved 019E→019F, DFL-15+16 moved 019F→019G (new)
-    019E = DFL-13+17 (pipeline quality), 019F = DFL-14+18 (regime dynamics), 019G = DFL-15+16 (data scope)
+    019E = DFL-13+17 (data quality validation), 019F = DFL-14+18 (regime dynamics), 019G = DFL-15+16 (data scope)
   - 017: Two-pass debate strategy added to README (structural first, parametric second)
-**Final sub-topic count**: 10 (019A, 019B, 019C, 019D1, 019D2, 019D3, 019E, 019F, 019G + parent 019 archived)
-**Status**: COMPLETED (2026-04-02).
+    → **SUPERSEDED by K-01**: 017 SPLIT (2026-04-03) into 017A (v1, 3 findings) + 017B (v2, 3 findings).
+    Split replaces two-pass strategy with actual separate debate topics.
+**Final sub-topic count**: 10 (019A, 019B, 019C, 019D1, 019D2, 019D3, 019E, 019F, 019G + parent 019 archived). 017 additionally split into 017A + 017B (not counted here — tracked in K-01).
+**Status**: COMPLETED (2026-04-02). 017 portion SUPERSEDED by K-01 (2026-04-03).
 
 ### Issues resolved in debate (no blueprint action needed)
 - **A-05** (F-19 not a finding): F-19 demoted to supporting evidence in debate (2026-03-31).
   Blueprint already planned this. ✓
 - **F-02** (003/006 not synced with 018): Routing propagated to consumer topics (2026-04-01).
   Partially resolved in debate, but rebuild still needed for full structural fix.
-- **C-03 direction** (013↔017 circular): Resolution strategy added to 017. Consistent
-  with blueprint's PENDING approach.
+- **C-03 direction** (013↔017A circular): Resolution strategy added to 017A. Consistent
+  with blueprint's PENDING approach. 017 SPLIT (2026-04-03) narrows scope to 017A only.
 
 ### Updated Final Summary
 
@@ -534,12 +541,12 @@ depends_on updated to reference 18A-D (not just 18).
 | F. Status Tracking | 3 | 0 | 3 | 0 |
 | G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
-| I. Post-Blueprint Sync | 5 | 0 | 0 | 0 |
-| **TOTAL** | **50** | **14** | **22** | **8** |
+| I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
+| **TOTAL** | **52** | **14** | **22** | **8** |
 
 > Category I issues are ALL CORRECTED in blueprint files (2026-04-02).
 > They are logged for audit trail — no open action items remain.
-> Original 45 issues (A-H) unchanged. 5 sync issues (I) added and resolved.
+> Original 45 issues (A-H) unchanged. 7 sync issues (I) added and resolved.
 
 ---
 
@@ -599,8 +606,280 @@ for other asset classes without manual cleanup.
 | F. Status Tracking | 3 | 0 | 3 | 0 |
 | G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
-| I. Post-Blueprint Sync | 5 | 0 | 0 | 0 |
+| I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
 | J. Genesis Export & Import | 3 | 3 | 0 | 0 |
-| **TOTAL** | **53** | **17** | **22** | **8** |
+| **TOTAL** | **55** | **17** | **22** | **8** |
 
 > 3 new HIGH issues (J-01, J-02, J-03) all addressed by 07-genesis-pipeline.md.
+
+---
+
+## K. POST-BLUEPRINT SYNC — Quality Audit (2026-04-03)
+
+> Review of changes between I-series sync (2026-04-02) and current state (2026-04-03).
+> Topic 017 SPLIT + debate quality improvements to 016, 019C, 019F.
+> Cross-references in 4 downstream topics (003, 006, 015, 016) updated.
+
+### K-01. Topic 017 SPLIT into 017A + 017B
+**Severity**: INFO (structural change)
+**Where**: debate/017*/, debate-index.md, 003/006/015/016 cross-references
+**Problem**: Topic 017 (488 lines, 6 findings, 10 cross-topic tensions) was the
+largest open topic. Split into 2 sub-topics along v1/v2 scope boundary:
+  - 017A: Intra-campaign ESP (v1) — ESP-01, ESP-04, SSE-04-CELL (3 findings)
+  - 017B: Inter-campaign ESP (v2) — ESP-02, ESP-03, SSE-08-CON (3 findings)
+**Scheduling benefit**: 003 only needs 017A. 017B can run parallel with 003.
+**Impact on rebuild**: Domain `17-epistemic-search.md` should contain 2 sub-sections
+(17A intra-campaign, 17B inter-campaign). DAG: 10-protocol-engine depends on 17A
+(not full 17). C-02 partially resolved (017A has explicit activation — all deps
+satisfied). C-03 narrowed (013↔017A, not 013↔017 full).
+**Status**: COMPLETED (2026-04-03). Debate files created, cross-references updated.
+
+### K-02. Topic 016 — pre-debate burden of proof framework
+**Severity**: INFO (debate quality improvement)
+**Where**: debate/016-bounded-recalibration-path/README.md
+**Actions**: Decision tree (Step 1→2→3), 4 proposer requirements with preponderance
+evaluation (not unanimity), conditional reasoning allowed, F-34 Judgment call aligned.
+**Impact on rebuild**: None — debate-level change, not structural. C-02 still applies.
+
+### K-03. Topic 019C — debate scope clarification
+**Severity**: INFO (debate quality improvement)
+**Where**: debate/019C-systematic-data-exploration/README.md
+**Actions**: Technical soundness (must debate) vs prioritization (campaign-level)
+distinction. Condensed summary approach per rules.md §10.
+**Impact on rebuild**: None — debate-level change.
+
+### K-04. Topic 019F — DFL-14/DFL-18 conflict resolution strategy
+**Severity**: INFO (debate quality improvement)
+**Where**: debate/019F-regime-dynamics/README.md
+**Actions**: 3 resolution options (Condition, Precedence, Dual metadata), recommended
+debate ordering (regime conflict → D-17/D-21), DFL-13 upstream dependency noted.
+**Impact on rebuild**: None — debate-level change.
+
+### K-05. Cross-references updated in 4 downstream topics
+**Severity**: INFO (consistency fix)
+**Where**: 003 README + findings, 006 README + findings, 015 findings, 016 findings
+**Actions**: All "017" generic references → "017A" or "017A/017B" with finding-level
+specificity. 003 dependencies updated: 017→017A, 019→019A+019D1. 013 deferred
+numerics integration noted in 003.
+**Impact on rebuild**: Stale references in blueprint files (this document, 02, 03, 05,
+06) should be updated — see below.
+
+### Stale references in rebuild files — APPLIED (2026-04-03)
+
+> **UPDATE**: All stale references in solution files (01-06) have been fixed.
+> Active references in 00-issues-registry (B-01, C-02, C-03, C-05, E-01, G-03,
+> HIGH summary, I-07, I-resolved) have also been updated to 017A/017B.
+> Only purely historical titles (G-03 header, D-06 original count) left as-is.
+
+| File | Issue | Status |
+|------|-------|--------|
+| 01-taxonomy | "blocked_by: 017" | Already fixed (017A) prior to this audit |
+| 02-concept-structure | "017" in open topics list (line 70) | **FIXED** → 017A, 017B |
+| 02-concept-structure | mapping table (line 85) | Already updated with SPLIT info |
+| 03-dependency-rules | Problem summary C-02/C-03 | **FIXED** → 017A/017B, 013↔017A |
+| 03-dependency-rules | Circular dep section | **FIXED** → 017A throughout |
+| 03-dependency-rules | DAG (lines 53-56) | Already had 017A/017B |
+| 05-spec-gates | §11 stub tracking | **FIXED** → 017A/017B split noted |
+| 06-tracking | Domain Status table | **FIXED** → 17 SPLIT into 17A + 17B rows |
+| 06-tracking | Deferred Items / Circular Deps | **FIXED** → 17A references |
+| 06-tracking | Spec Readiness | **FIXED** → 17A/17B |
+| 06-tracking | Directory structure | **FIXED** → 17 annotation, archive count |
+| 00-issues-registry | G-03 "16 OPEN findings" | **FIXED** → "6 OPEN, now 3+3" |
+
+### Updated Final Summary (pre-L)
+
+| Category | Count | HIGH | MEDIUM | LOW |
+|----------|-------|------|--------|-----|
+| A. Taxonomy & Labeling | 5 | 1 | 2 | 2 |
+| B. Cross-topic Overlap | 6 | 2 | 3 | 1 |
+| C. Dependency & Ordering | 5 | 2 | 3 | 0 |
+| D. Governance Overhead | 6 | 1 | 3 | 2 |
+| E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
+| F. Status Tracking | 3 | 0 | 3 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
+| I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
+| J. Genesis Export & Import | 3 | 3 | 0 | 0 |
+| K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
+| **TOTAL** | **60** | **17** | **22** | **8** |
+
+> Category K issues are ALL INFO-level and COMPLETED. Stale rebuild file
+> references logged in table above — ALL APPLIED (2026-04-03).
+
+---
+
+## L. CROSS-VALIDATION AUDIT — Rebuild vs debate-index.md (2026-04-03)
+
+> Cross-checked all 8 rebuild files against debate-index.md (ground truth)
+> and 03-dependency-rules.md's own activation rules. Found 5 issues: 3 HIGH
+> (status/DAG consistency), 1 MEDIUM (missing DAG entries), 1 LOW (unresolved "or").
+
+### L-01. Domain Status table uses ACTIVE for sub-domains with unmet internal deps
+**Severity**: HIGH
+**Where**: 06-tracking.md, Domain Status table (7 rows)
+**Problem**: The rebuild plan defines activation rule: "A domain activates when ALL
+items in depends_on have zero OPEN findings." But 7 sub-domains were listed as ACTIVE
+despite having unmet internal dependencies:
+| Sub-domain | Listed as | Should be | Blocked by |
+|------------|-----------|-----------|------------|
+| 17B-inter-campaign-esp | ACTIVE | BLOCKED | 17A |
+| 18B-ai-analysis-reporting | ACTIVE | BLOCKED | 18A |
+| 18C-systematic-data-exploration | ACTIVE | BLOCKED | 18A |
+| 18D1-pipeline-structure | ACTIVE | BLOCKED | 18A + 18B |
+| 18D2-statistical-budget | ACTIVE | BLOCKED | 18A + 18B |
+| 18D3-grammar-expansion | ACTIVE | BLOCKED | 18D2 |
+| 16-bounded-recalibration | ACTIVE | BLOCKED | 03-identity, 14-deployment |
+Additionally, 18D2 note said "after 18A" but debate-index says "after 019A+B" → corrected
+to "after 18A+B" for consistency with debate-index.md line 108.
+**Status**: CORRECTED (2026-04-03). All 7 rows updated to BLOCKED with explicit wait list.
+
+### L-02. 10-protocol-engine blocking list wrong
+**Severity**: HIGH
+**Where**: 06-tracking.md, Domain Status table, line 44
+**Problem**: Listed as "BLOCKED (waits 16, 17A, 18A-D1/D2/D3)". Two errors:
+(a) Missing 03-identity-versioning — which IS in depends_on (DAG line 69) and still
+ACTIVE with OPEN findings.
+(b) Includes 18D2, 18D3 — which are NOT in depends_on (DAG lists only 18A, 18D1).
+**Correct**: "BLOCKED (waits 03-identity, 16, 17A, 18A, 18D1)" — 5 blockers derived
+from DAG depends_on=[02✅, 03, 04✅, 05✅, 16, 17A, 18A, 18D1] minus closed domains.
+**Status**: CORRECTED (2026-04-03).
+
+### L-03. 018 internal DAG implies 18C blocks 18D1/D2
+**Severity**: HIGH
+**Where**: 03-dependency-rules.md, line 62-64 (Tier 3, 18-DFL internal structure)
+**Problem**: Chain notation "18A → 18B + 18C → 18D1 + 18D2 → 18D3" implies 18C
+is a dependency for 18D1/D2. But debate-index.md (line 107-108) says:
+"019B + 019C (after 019A)" and "019D1 + 019D2 (after 019A+B)" — meaning 18D1/D2
+need 18A + 18B only, NOT 18C. 18C (systematic data exploration, DFL-06/07) runs
+in parallel with 18B but is not on the critical path to 18D1/D2.
+**Fix**: Rewrote to explicit dependency lines:
+"18A → 18B + 18C (parallel) / 18A + 18B → 18D1 + 18D2 (parallel; 18C NOT blocking)
+/ 18D2 → 18D3 (sequential)."
+**Status**: CORRECTED (2026-04-03).
+
+### L-04. 14-deployment and 15-quality-assurance missing from DAG
+**Severity**: MEDIUM
+**Where**: 03-dependency-rules.md, Tier 2 section
+**Problem**: DAG lists 8 Tier 2 domains (03, 11, 12, 13) but omits 14-deployment
+and 15-quality-assurance. These are real domain files in the decisions/ directory
+structure (06-tracking.md lines 243-249). Both have satisfied dependencies
+(14: 01✅+06✅; 15: 01✅) so the omission didn't cause status errors, but the DAG
+should be complete per rebuild principle "Every domain has a depends_on list."
+16-bounded-recalibration correctly lists 14-deployment in its depends_on, which
+references a domain not in the DAG — an internal inconsistency.
+**Status**: CORRECTED (2026-04-03). Added both to Tier 2 with depends_on lists
+derived from debate-index.md dependency section.
+
+### L-05. 009 mapping unresolved "or" in concept-structure
+**Severity**: LOW
+**Where**: 02-concept-structure.md, open topic mapping table, line 79
+**Problem**: Says "`03-identity-versioning.md` or standalone `13-data-integrity.md`"
+but the decision was already made: 13-data-integrity.md IS standalone in the
+directory structure (06-tracking.md line 245), DAG (03-dependency-rules.md Tier 2),
+and Domain Status table. The "or" is stale.
+**Status**: CORRECTED (2026-04-03). Resolved to standalone `13-data-integrity.md`.
+
+### Updated Final Summary
+
+| Category | Count | HIGH | MEDIUM | LOW |
+|----------|-------|------|--------|-----|
+| A. Taxonomy & Labeling | 5 | 1 | 2 | 2 |
+| B. Cross-topic Overlap | 6 | 2 | 3 | 1 |
+| C. Dependency & Ordering | 5 | 2 | 3 | 0 |
+| D. Governance Overhead | 6 | 1 | 3 | 2 |
+| E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
+| F. Status Tracking | 3 | 0 | 3 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
+| I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
+| J. Genesis Export & Import | 3 | 3 | 0 | 0 |
+| K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
+| L. Cross-Validation Audit (2026-04-03) | 5 | 3 | 1 | 1 |
+| **TOTAL** | **65** | **20** | **23** | **9** |
+
+> Category L: 5 issues, ALL CORRECTED in blueprint files (2026-04-03).
+> L-01/L-02 were the most impactful — 7 wrong status values in the Domain Status
+> table template. L-03 fixed a DAG ambiguity that would have misled Step 0 extraction.
+> L-04 closed an internal inconsistency (domain referenced in depends_on but missing
+> from DAG). L-05 resolved a stale "or" from early design.
+
+---
+
+## M. DAG & TAXONOMY CONSISTENCY AUDIT (2026-04-03)
+
+> Cross-checked all DAG depends_on lists against debate-index.md dependency
+> section, and Domain Status Open/Constraint counts against 01-taxonomy.md
+> rules (routed findings from closed topics = CONSTRAINT, not OPEN).
+
+### M-01. 17A depends_on missing 08-search-expansion
+**Severity**: MEDIUM
+**Where**: 03-dependency-rules.md, Tier 3 (line 57)
+**Problem**: 17A listed `depends_on: [04, 06, 07]` but debate-index has 5 deps:
+002✅(=04) + 008✅(=03*) + 010✅(=06) + 013✅(=07) + 018✅(=08).
+08-search-expansion (topic 018) was missing. All deps are DONE so no activation
+impact, but inconsistent with other domains (e.g. 16 lists all deps including DONE).
+*Topic 008 is in domain 03 — see M-03 for why it can't be listed.
+**Status**: CORRECTED (2026-04-03). Added 08 to depends_on.
+
+### M-02. 12-feature-engine depends_on missing 01-philosophy
+**Severity**: LOW
+**Where**: 03-dependency-rules.md, Tier 2 (line 47)
+**Problem**: Listed `depends_on: [08]` but topic 006 also has soft-dep on
+007✅(=01-philosophy). 01 is DONE. Convention from other domains (e.g. 16)
+is to list all deps including satisfied ones.
+**Status**: CORRECTED (2026-04-03). Added 01 to depends_on.
+
+### M-03. Domain 03 implicit dependency undocumented (DAG limitation)
+**Severity**: MEDIUM
+**Where**: 03-dependency-rules.md (missing)
+**Problem**: 5 Tier 2+ domains (11, 12, 13, 15, 17A) have SATISFIED dependencies
+on Topic 008 (architecture-identity) decisions, which reside in domain
+03-identity-versioning. These cannot be listed in `depends_on` because domain 03
+also contains OPEN findings from Topics 011/015 — the activation rule
+("ALL depends_on have zero OPEN") would falsely BLOCK these domains.
+This is a known trade-off of domain-level DAG granularity. Without documentation,
+Step 0 extraction could miss importing Topic 008 constraints into these domains.
+**Status**: CORRECTED (2026-04-03). Explanatory note added after DAG block.
+17A entry also annotated.
+
+### M-04. 10-protocol-engine Open/Constraint count wrong
+**Severity**: MEDIUM
+**Where**: 06-tracking.md, Domain Status table (line 44)
+**Problem**: Listed `Open=4, Constraints=?`. But SSE-D-04 is routed from closed
+Topic 018 — per 01-taxonomy.md rules, routed findings from closed topics enter
+as CONSTRAINT, not OPEN. Correct: `Open=3 (F-05, F-36, F-37), Constraints=1 (SSE-D-04)`.
+Inconsistent with 17A/17B which correctly separate Open from Constraints.
+**Status**: CORRECTED (2026-04-03).
+
+### M-05. 12-feature-engine Open count wrong
+**Severity**: LOW
+**Where**: 06-tracking.md, Domain Status table (line 46)
+**Problem**: Listed `Open=3, Constraints=1`. But SSE-D-03 (the Constraint) was
+also counted in Open. 3 total findings = 2 Open (F-08, F-38) + 1 Constraint
+(SSE-D-03). Open should be 2, not 3.
+**Status**: CORRECTED (2026-04-03).
+
+### Updated Final Summary
+
+| Category | Count | HIGH | MEDIUM | LOW |
+|----------|-------|------|--------|-----|
+| A. Taxonomy & Labeling | 5 | 1 | 2 | 2 |
+| B. Cross-topic Overlap | 6 | 2 | 3 | 1 |
+| C. Dependency & Ordering | 5 | 2 | 3 | 0 |
+| D. Governance Overhead | 6 | 1 | 3 | 2 |
+| E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
+| F. Status Tracking | 3 | 0 | 3 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
+| I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
+| J. Genesis Export & Import | 3 | 3 | 0 | 0 |
+| K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
+| L. Cross-Validation Audit (2026-04-03) | 5 | 3 | 1 | 1 |
+| M. DAG & Taxonomy Consistency (2026-04-03) | 5 | 0 | 3 | 2 |
+| **TOTAL** | **70** | **20** | **26** | **11** |
+
+> Category M: 5 issues, ALL CORRECTED in blueprint files (2026-04-03).
+> M-03 is the most significant — documents a structural DAG limitation that
+> could mislead Step 0 extraction without the explanatory note.
+> M-04/M-01 were consistency gaps that L-audit missed (L checked status values
+> but not Open/Constraint taxonomy or complete dep lists).

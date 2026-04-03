@@ -112,7 +112,7 @@ Alpha-Lab cần classification tương tự:
 | 003 | F-05 | Protocol stages define WHEN artifacts are produced; F-14 defines WHAT is produced — if 003 changes stage boundaries, artifact enumeration may need updating | 003 owns stage structure; 015 adapts artifact spec |
 | 011 | F-28 | **B-02 CONTRADICTION (HIGH)**: F-17 (this topic) says sizing change = semantic change = new algo_version. F-28 (Topic 011) says sizing = deployment concern = deploy_version, NOT algo_version. Direct contradiction. F-28 proposes unit-exposure canonicalization as resolution — if adopted, F-17 classification table MUST be amended to exclude sizing from semantic changes. **REQUIRES JOINT DECISION with Topic 011.** | 011 debates F-28 first (boundary decision); 015 amends F-17 accordingly. Cannot close 015 F-17 independently until 011 F-28 decided. |
 | 016 | C-12 | Bounded recalibration (if adopted) may create semantic changes mid-campaign that F-17 must classify — current classification assumes freeze-once model | 016 owns decision |
-| 017 | ESP-01, ESP-02 | Topic 017 introduces 5+ new mandatory artifacts: epistemic_delta.json (Stage 8), coverage_map (Stages 3/7), phenotype_pack (Stage 7), comparison_set (Stage 7), prior_registry (inter-campaign). F-14 must enumerate these in state pack; F-17 must classify when ESP artifact changes (descriptor taxonomy revision, coverage map format change, phenotype contract change) invalidate prior results. | 017 defines artifact contracts; 015 owns enumeration + invalidation rules |
+| 017A/017B | ESP-01 (017A), ESP-02 (017B) | Topics 017A+017B introduce 5+ new mandatory artifacts: epistemic_delta.json (Stage 8, 017A), coverage_map (Stages 3/7, 017A), phenotype_pack (Stage 7, 017B), comparison_set (Stage 7, 017B), prior_registry (inter-campaign, 017B). F-14 must enumerate these in state pack; F-17 must classify when ESP artifact changes invalidate prior results. | 017A/017B define artifact contracts; 015 owns enumeration + invalidation rules |
 | 018 | SSE-07, SSE-08, SSE-04-INV | Discovery lineage, contradiction registry, and invalidation cascade details routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 015 owns implementation; 018 provides architectural context (confirmed). |
 
 ## Bảng tổng hợp
@@ -189,8 +189,8 @@ Topic 015 owns:
 2. Retention policy (how long entries persist, what triggers purge)
 3. Reconstruction-risk handling for phenotype layer
 
-**Shared with 017**: Topic 017 owns contradiction consumption semantics (how
-surprise queue and proof bundle reference entries). Topic 015 owns storage contract.
+**Shared with 017B**: Topic 017B owns contradiction consumption semantics (how
+surprise queue and proof bundle reference entries — SSE-08-CON). Topic 015 owns storage contract.
 
 **Evidence**:
 - `debate/018-search-space-expansion/final-resolution.md` SSE-D-08

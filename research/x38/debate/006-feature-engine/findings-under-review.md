@@ -96,7 +96,7 @@ cross_tf) nhưng không define:
    definition không formal, convergence measurement bị ambiguous — hai agents có
    thể classify cùng feature vào families khác nhau.
 
-4. **Family ↔ ESP cell-axis**: Topic 017 ESP-01 proposes `mechanism_family` as
+4. **Family ↔ ESP cell-axis**: Topic 017A ESP-01 proposes `mechanism_family` as
    cell axis cho cell-elite archive. Cell axis cần categorical values — nhưng
    F-08 families ≠ mechanism families (e.g., "trend" family includes both
    momentum AND trend-following, which are different mechanisms).
@@ -112,7 +112,7 @@ cross_tf) nhưng không define:
 **Evidence**:
 - F-08: 6 families listed without formal definition criteria
 - Topic 013 CA-01: "family-level convergence" — requires formal family definition
-- Topic 017 ESP-01: `mechanism_family` as cell axis — requires categorical values
+- Topic 017A ESP-01: `mechanism_family` as cell axis — requires categorical values
 - CONVERGENCE_STATUS_V3.md [extra-archive]: "hội tụ ở cấp family (D1 slow)" — but
   "D1 slow" is not one of F-08's families, it's an ad hoc grouping
 - F-36 (Topic 003): multi-asset pipeline → different assets may need different
@@ -124,7 +124,7 @@ cross_tf) nhưng không define:
 
 | Topic | Finding | Tension | Resolution path |
 |-------|---------|---------|-----------------|
-| 017 | ESP-01, ESP-02 | Phenotype descriptor taxonomy (017) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017 owns strategy-level descriptors. Must not conflict. |
+| 017A/017B | ESP-01 (017A), ESP-02 (017B) | Phenotype descriptor taxonomy (017A/017B) overlaps feature family taxonomy (006). Both define how to categorize/tag strategies and features. | 006 owns feature-level taxonomy; 017A owns strategy-level descriptors, 017B owns phenotype contracts. Must not conflict. |
 | 018 | SSE-D-03 | `generation_mode` feeds registry acceptance — registry must accept auto-generated features from `grammar_depth1_seed`. Routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. | 006 owns registry acceptance rules; 018 provides generation mode contract (confirmed). |
 | 019 | DFL-08 (Stage 4) | Feature candidate graduation path feeds discovery loop features into F-08 registry with `source: discovery_loop` + provenance chain. Registry must accept this new source type alongside grammar-generated features. | 006 owns registry schema; 019 defines discovery-to-registry interface (DFL-08). |
 

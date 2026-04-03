@@ -80,7 +80,7 @@ For DEFERRED items:
 ## §9.3 Convergence Numeric Floors
 
 > **Provenance**: X38-CVG-THR (DEFERRED)
-> **Blocked by**: 17-epistemic-search (consumption framework)
+> **Blocked by**: 17A-intra-campaign-esp (consumption framework)
 > **Provisional value**: methodology frozen, exact numerics TBD
 > **GATE**: This section CANNOT advance to REVIEW until X38-CVG-THR resolves.
 
@@ -99,7 +99,7 @@ For DEFERRED items:
 | Spec section | Finding | Current treatment | Correct treatment |
 |-------------|---------|-------------------|-------------------|
 | architecture §7.1 | MK-07 | Cited as frozen | Add: `AUTHORED, DECIDED, risk LOW` |
-| architecture §9.2-9.4 | SSE-04-THR | Cited as frozen | Add: `DEFERRED, blocked_by: 17-epistemic-search, GATE` |
+| architecture §9.2-9.4 | SSE-04-THR | Cited as frozen | Add: `DEFERRED, blocked_by: 17A-intra-campaign-esp, GATE` |
 | discovery §2 | SSE-D-05 | Cited as authoritative | Add: `ARBITRATED, DECIDED, risk MEDIUM — working minimum, not immutable` |
 
 ---
@@ -158,7 +158,7 @@ _Content pending._
 | architecture §4 | Data Management | X38-DAT-10, X38-DAT-11 | 13-data-integrity | SKELETON |
 | architecture §8 | Deployment Boundary | X38-IDV-27/28/29 (merged) | 03-identity-versioning | SKELETON |
 | architecture §10 | Bounded Recalibration | X38-RCL-34, X38-RCL-35 | 16-bounded-recalibration | SKELETON |
-| architecture §11 | Epistemic Search | X38-ESP-01 through X38-ESP-06 | 17-epistemic-search | SKELETON |
+| architecture §11 | Epistemic Search | X38-ESP-01, ESP-04 (017A) + ESP-02, ESP-03 (017B) | 17-epistemic-search (SPLIT: 17A intra + 17B inter) | SKELETON |
 | architecture §14 | Discovery Pipeline Routing | X38-DFL-* (Topic 019) | 18-discovery-feedback-loop | PROPOSAL (non-authoritative) |
 | discovery §1-§5 | v1 (bounded ideation, recognition stack, APE, etc.) | Topic 018 (CLOSED) | 08-search-expansion | DRAFTING (authoritative) |
 | discovery §6-§11 | v2 (data profiling, grammar, pre-filter, budget, loop, graduation) | X38-DFL-01→DFL-18 (Topic 019 OPEN) | 18-discovery-feedback-loop | PROPOSAL (non-authoritative until 019 CLOSED) |

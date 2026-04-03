@@ -65,7 +65,7 @@ Additionally:
 | CA-01 | 013 | ARBITRATED | False dichotomy broken, scope boundary |
 | CA-02 | 013 | DEFAULT | Bootstrap practical constants |
 | SSE-09 | 013 | DEFAULT | Holm alpha=0.05 conventional |
-| SSE-04-THR | 013 | DEFERRED | Circular 013<->017 dependency, blocked_by: 017 |
+| SSE-04-THR | 013 | DEFERRED | Circular 013<->017A dependency, blocked_by: 017A |
 | D-03 | 001 | CONVERGED | Was mislabeled; agents agreed |
 | SSE-D-05 | 018 | ARBITRATED | Evidence quality dispute |
 
@@ -80,11 +80,11 @@ Additionally:
 | D-15 | 001 | TBD | Two cumulative scopes — verify if CONVERGED or JC |
 | (others) | 013 | TBD | Topic 013 has 15 findings; verify all JC/Converged splits |
 
-### Actual scale (updated 2026-04-02)
+### Actual scale (updated 2026-04-03)
 
 ```
 Closed topics (8):   ~79 findings (56 Converged + 23+ JC)
-Open topics (11):    ~81 active findings (per debate-index.md, excl. MK-series/C-notes)
+Open topics (12):    ~81 active findings (per debate-index.md, excl. MK-series/C-notes)
   - Topic 019 (DFL): 18 findings (largest single topic)
   - Gap audit (2026-03-31): +5 findings (F-36, F-37, F-38, F-39, ER-03)
   - F-19 demoted to supporting evidence (net -1)

@@ -67,7 +67,7 @@ Possible splits:
 - 05-meta-knowledge → 05a-meta-taxonomy + 05b-meta-lifecycle (if >20)
 - 03-identity-versioning → 03a-identity-schema + 03b-versioning-rules (if >20)
 
-### What happens to open topics (003, 005, 006, 009, 011, 012, 014, 015, 016, 017, 019)
+### What happens to open topics (003, 005, 006, 009, 011, 012, 014, 015, 016, 017A, 017B, 019)
 
 Open topic findings are **not yet decisions**. They go into the relevant domain file under a separate `## Open` section:
 
@@ -76,13 +76,13 @@ Open topic findings are **not yet decisions**. They go into the relevant domain 
 | 003 (protocol engine) | New domain: `10-protocol-engine.md` (kept separate — integration hub) | F-05, F-36, F-37 + SSE-D-04 (4 findings) |
 | 005 (core engine) | `11-engine-design.md` (merged with 014) | F-07 (1 finding) |
 | 006 (feature engine) | `08-search-expansion.md` (SSE-D-03) + new `12-feature-engine.md` (F-08, F-38) | F-08, F-38 + SSE-D-03 (3 findings) |
-| 009 (data integrity) | `03-identity-versioning.md` or standalone `13-data-integrity.md` | F-10, F-11 (2 findings) |
+| 009 (data integrity) | `13-data-integrity.md` (standalone — confirmed in directory structure and DAG) | F-10, F-11 (2 findings) |
 | 011 (deployment) | `03-identity-versioning.md` (F-28/F-29) + `14-deployment.md` (F-26/F-27) | 4 findings |
 | 012 (QA) | `15-quality-assurance.md` (F-18, F-39; F-19 becomes supporting evidence) | F-18, F-39 active (2); F-19 demoted |
 | 014 (execution) | `11-engine-design.md` (merged with 005 — solves B-06) | ER-01, ER-02, ER-03 (3 findings) |
 | 015 (artifact versioning) | `03-identity-versioning.md` (F-17 merged with 011 F-28/F-29 — solves B-02) | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV (5 findings) |
 | 016 (recalibration) | `16-bounded-recalibration.md` (cross-cutting, kept separate) | BR-01, BR-02 (2 findings) |
-| 017 (epistemic search) | `17-epistemic-search.md` (cross-cutting, kept separate) | ESP-01→04 + SSE-08-CON, SSE-04-CELL (6 findings) |
+| 017 (epistemic search) **SPLIT (2026-04-03)** | `17-epistemic-search.md` (cross-cutting, 2 sub-sections: 17A intra-campaign v1, 17B inter-campaign v2) | 017A: ESP-01, ESP-04, SSE-04-CELL (3). 017B: ESP-02, ESP-03, SSE-08-CON (3). 003 only needs 017A. |
 | **019 (discovery feedback loop)** | **SPLIT (2026-04-02)** → 9 sub-domains in `18-discovery-feedback-loop.md` | **DFL-01→DFL-18 (18 findings across 9 sub-domains)** |
 
 > **UPDATE (2026-04-02)**: Topic 019 added. Gap audit (2026-03-31) added F-36, F-37

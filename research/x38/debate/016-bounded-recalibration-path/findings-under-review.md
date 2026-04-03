@@ -207,7 +207,7 @@ INCONCLUSIVE triggers new reserve window on strictly new data). Options:
 | 011 | F-26 | Monitoring trigger scope ambiguous — "full re-discovery or triage?" | within this topic (016 resolves the "triage" branch) |
 | 015 | F-17 | Parameter change = semantic change = new version — but recalibration is "same algorithm, different params" | F-34 must reconcile with F-29 algo_version definition |
 | 013 | F-31 | Stop conditions: adding session after convergence may violate campaign stop rules | F-35 Phương án A interaction |
-| 017 | ESP-04 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). ESP treats recalibrated algo as new phenotype entry. | Explicit scope exclusion in 017. 016 and 017 do not depend on each other. |
+| 017A | ESP-04 | If ESP manages search budget, interaction with bounded recalibration: ESP MUST NOT suggest parameter directions (answer-level influence). ESP treats recalibrated algo as new phenotype entry. | Explicit scope exclusion in 017A. 016 and 017A/017B do not depend on each other. |
 
 ---
 

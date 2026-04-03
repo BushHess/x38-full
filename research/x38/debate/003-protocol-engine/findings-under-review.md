@@ -169,7 +169,7 @@ do feature bug → human review Stage 4 shortlist phát hiện).
 | 016 | F-35 | Bounded recalibration may require protocol stages to support mid-campaign parameter updates — incompatible with current freeze-at-Stage-7 design | 016 must CLOSE before 003 debate; 016 owns decision |
 | 002 | F-04 | Firewall enforcement gates protocol transitions — if firewall rejects a lesson mid-pipeline, protocol must handle gracefully | 002 owns firewall rules; 003 adapts |
 | 007 | D-25 | F-25 regime-aware policy froze prohibition (no external classifiers, no post-freeze switching). Ablation gate thresholds deferred to 003. | 007 CLOSED; 003 owns thresholds. |
-| 017 | ESP-01 | Cell-elite archive replaces Stage 4 global pruning. Descriptor tagging adds Stage 3 output. epistemic_delta.json adds Stage 8 mandatory output. Local probes change Stage 5 search strategy. | 003 owns pipeline structure; 017 defines ESP component contracts. 017 must CLOSE before 003 debate. |
+| 017A | ESP-01 | Cell-elite archive replaces Stage 4 global pruning. Descriptor tagging adds Stage 3 output. epistemic_delta.json adds Stage 8 mandatory output. Local probes change Stage 5 search strategy. | 003 owns pipeline structure; 017A defines v1 ESP component contracts. 017A must CLOSE before 003 debate. (017B v2 contracts can run parallel with 003.) Post-017A: 013 deferred numerics (3a, 3b, item 4) become resolvable — 003 reconciles as integration step. |
 | 018 | SSE-D-04 | Breadth-activation blocker at `protocol_lock` — protocol must declare all 7 fields before activation. Routed from Topic 018 (CLOSED 2026-03-27). Routing confirmed. Stage 3 scan-phase multiple-testing routed via SSE-D-09→013. | 003 owns protocol gate; 018 provides 7-field contract (confirmed). |
 
 ## Bảng tổng hợp
