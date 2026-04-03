@@ -178,7 +178,7 @@ ONE file tracks all dynamic state. Domain decision files track static state (dec
 
 ### Input
 
-All 32 directories under `debate/NNN-slug/` (19 original + 13 from splits: 017A/B, 019A-G, 019D1-D3), specifically:
+All 32 directories under `debate/NNN-slug/` (20 original + 12 from splits: 017A/B, 019A-G, 019D1-D3), specifically:
 - `final-resolution.md` (primary source for DECIDED findings)
 - `findings-under-review.md` (primary source for OPEN/DEFERRED findings)
 - Debate round files (secondary source for rationale and evidence)
@@ -207,7 +207,7 @@ A draft domain file following the format in 02-concept-structure.md:
 ### Verification pass
 
 After all 32 topic directories are extracted:
-1. **Count check**: Total extracted findings (pre-import) ≈ ~160 (known estimate). Flag if <140 or >180. After X40 import (step 7), total may increase by up to ~10 new findings — report pre-import and post-import counts separately.
+1. **Count check**: Total extracted items (pre-import) ≈ ~123 (verified: 60 closed decisions + 51 open findings + 12 C-notes). Flag if <110 or >140. After X40 import (step 7), total may increase by up to ~10 new findings — report pre-import and post-import counts separately.
 2. **No orphans**: Every finding in every `final-resolution.md` and `findings-under-review.md` is accounted for.
 3. **No duplicates**: No finding ID appears in two domain files (except as CONSTRAINT cross-ref).
 4. **Cross-reference integrity**: Every `blocked_by` and `depends_on` reference points to a valid finding or domain.
@@ -268,7 +268,7 @@ x38/
 ├── published/                       ← Final specs (read-only)
 │
 ├── archive/                         ← OLD structure (read-only reference)
-│   ├── debate/                      ← All 32 topic directories (19 original + 13 from splits)
+│   ├── debate/                      ← All 32 topic directories (20 original + 12 from splits)
 │   ├── EXECUTION_PLAN.md
 │   └── debate-index.md
 │

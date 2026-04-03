@@ -17,7 +17,7 @@ Additionally:
 
 ---
 
-## Solution: Reorganize from 20 topics to 18 concept domain files
+## Solution: Reorganize from 32 topic directories (20 original + 12 from splits) to 18 concept domain files
 
 > 8 consolidated domains (closed topics merged by concept) + 1 tracking file +
 > 9 domain files for open topics. Consolidation happens for closed topics where
@@ -185,8 +185,8 @@ Each domain file follows this structure:
 
 ## Verify Checklist
 
-- [ ] All ~56 CONVERGED findings placed in correct domain
-- [ ] All 23+ reclassified JCs placed in correct domain
+- [ ] All 44 CONVERGED decisions placed in correct domain
+- [ ] All 16 reclassified JCs placed in correct domain (7 ARBITRATED, 5 AUTHORED, 3 DEFAULT, 1 DEFERRED)
 - [ ] B-02 contradiction visible in single file (03-identity-versioning.md)
 - [ ] B-03 merged: 011 F-28/F-29 -> 1 multi-part finding in 03-identity-versioning; F-26/F-27 -> 14-deployment
 - [ ] B-04 resolved: 015 native vs imported clearly separated
@@ -194,6 +194,6 @@ Each domain file follows this structure:
 - [ ] B-06 resolved: 005 + 014 in single file with ordering
 - [ ] Each domain file follows standard format
 - [ ] No finding appears in 2 domain files (except as CONSTRAINT cross-ref)
-- [ ] Topic count reduced from 20 to ~18 concept domain files (8 consolidated + 1 tracking + 9 open)
+- [ ] 32 topic directories consolidated to 18 concept domain files (8 consolidated + 1 tracking + 9 open)
 - [ ] Topic 019 mapped to `18-discovery-feedback-loop.md` with all 18 DFL findings across 9 sub-domains (18A/B/C/D1/D2/D3/E/F/G)
 - [ ] Every finding has `genesis_target` field assigned (per 07-genesis-pipeline.md)

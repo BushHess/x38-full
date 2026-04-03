@@ -44,8 +44,9 @@ Additionally:
 > findings + ~85 open-topic findings = ~164 total.
 >
 > **ACTION REQUIRED**: Before executing rebuild, extract COMPLETE finding list from
-> every final-resolution.md and findings-under-review.md. The table below is PARTIAL
-> and must be completed during Step 1 of rebuild execution.
+> every final-resolution.md and findings-under-review.md. JC reclassification table
+> below is now COMPLETE (all 16 JCs verified 2026-04-03). Step 0 should still
+> cross-check against extracted finding list to confirm no items were missed.
 
 #### Known JC reclassifications (17 verified)
 
@@ -69,33 +70,39 @@ Additionally:
 | D-03 | 001 | CONVERGED | Was mislabeled; agents agreed |
 | SSE-D-05 | 018 | ARBITRATED | Evidence quality dispute |
 
-#### Missing — must be extracted and reclassified
+#### Previously uncertain — now verified (2026-04-03 audit)
 
 | Current ID | Topic | New Type | Notes |
 |------------|-------|----------|-------|
-| MK-12 | 004 | TBD | Confidence scoring — read final-resolution.md |
-| MK-13 | 004 | TBD | Storage format — read final-resolution.md |
-| MK-15 | 004 | TBD | Bootstrap problem — read final-resolution.md |
-| MK-17 | 004 | TBD | Central question — read final-resolution.md |
-| D-15 | 001 | TBD | Two cumulative scopes — verify if CONVERGED or JC |
-| (others) | 013 | TBD | Topic 013 has 15 findings; verify all JC/Converged splits |
+| MK-12 | 004 | CONVERGED | Epistemic states qualitative — verified from final-resolution.md (2026-04-03 audit) |
+| MK-13 | 004 | CONVERGED | transitions/ = canonical source — verified from final-resolution.md (2026-04-03 audit) |
+| MK-15 | 004 | CONVERGED | Bootstrap classification via derivation test — verified from final-resolution.md (2026-04-03 audit) |
+| MK-17 | 004 | CONVERGED | Same-dataset = shadow-only pre-freeze (pre-debate resolved) — verified from final-resolution.md (2026-04-03 audit) |
+| D-15 | 001 | CONVERGED | Two cumulative scopes — verified from final-resolution.md (2026-04-03 audit) |
+| ~~(others)~~ | ~~013~~ | ~~N/A~~ | ~~Topic 013 has 4 findings (not 15), all 4 JCs already in known table above (CA-01, CA-02, SSE-09, SSE-04-THR). No missing reclassifications from 013.~~ |
 
-### Actual scale (updated 2026-04-03)
+### Actual scale (verified 2026-04-03 — all final-resolution.md + findings-under-review.md read)
 
 ```
-Closed topics (8):   ~79 findings (56 Converged + 23+ JC)
-Open topics (12):    ~81 active findings (per debate-index.md, excl. MK-series/C-notes)
+Closed topics (8):   60 decisions (44 Converged + 16 JC)
+  - Topic 004 (MK-series): 23 items (18 Converged + 5 JC)
+  - Other 7 topics:        37 items (26 Converged + 11 JC; incl D-03 mislabel fix)
+Open topics (20 leaf): 51 findings
+  - debate-index "81 distributed" = 30 closed-topic findings + 51 open-topic findings
   - Topic 019 (DFL): 18 findings (largest single topic)
   - Gap audit (2026-03-31): +5 findings (F-36, F-37, F-38, F-39, ER-03)
   - F-19 demoted to supporting evidence (net -1)
-TOTAL:               ~160 findings
+Topic 000 C-notes:   12 (C-01→C-12, reference material — not decisions)
+TOTAL:               ~123 items for Step 0 extraction (60 closed + 51 open + 12 C-notes)
 
-JC breakdown (23+):  ~8 ARBITRATED, ~7 AUTHORED, ~4 DEFAULT, ~4 DEFERRED
+JC breakdown (16):  7 ARBITRATED, 5 AUTHORED, 3 DEFAULT, 1 DEFERRED
 ```
 
-> **The exact numbers will be known only after full extraction in rebuild Step 0.**
-> Previous estimate (2026-03-29) assumed ~85 open findings. Actual open count
-> is 81 active (debate-index 2026-04-01), with Topic 019 contributing 18.
+> **Previous estimates superseded**: G-01 (2026-03-29) estimated "~79 closed + ~85 open
+> = ~164 total". Overcounted because: (a) estimated 004 JCs at ~9+ (actual 5),
+> (b) inflated Converged count (~56 vs actual 44), (c) misread debate-index "81
+> distributed" as open-only (it includes 30 closed-topic findings).
+> All counts above are now verified from source files.
 
 ---
 
@@ -177,8 +184,8 @@ Items that fail these criteria become:
 
 ## Verify Checklist
 
-- [ ] All ~160 existing findings reclassified with new 5-type system
-- [ ] All 23+ former JCs have correct new type + rationale
+- [ ] All ~123 items reclassified with new 5-type system (60 closed decisions + 51 open findings + 12 C-notes)
+- [ ] All 16 former JCs have correct new type + rationale (7 ARBITRATED, 5 AUTHORED, 3 DEFAULT, 1 DEFERRED)
 - [ ] All routed findings marked CONSTRAINT (not OPEN)
 - [ ] All finding IDs migrated to X38-{DOMAIN}-{NN} format
 - [ ] Old-to-new ID mapping table complete

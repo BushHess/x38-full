@@ -316,8 +316,8 @@
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit | 5 | 2 | 2 | 0 |
-| **TOTAL** | **35** | **9** | **20** | **5** |
+| G. Plan Self-Audit | 5 | 3 | 2 | 0 |
+| **TOTAL** | **35** | **10** | **20** | **5** |
 
 ### Rebuild execution prerequisite
 Before starting rebuild, **Step 0** must complete:
@@ -420,9 +420,9 @@ Integration Log uses dates when domains didn't exist yet.
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
-| **TOTAL** | **45** | **14** | **22** | **8** |
+| **TOTAL** | **45** | **15** | **22** | **8** |
 
 ### 5 NEW HIGH issues from round 2:
 8. **H-01**: 19→17 files, not 19→9 (overclaimed simplification)
@@ -539,10 +539,10 @@ depends_on updated to reference 18A-D (not just 18).
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
 | I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
-| **TOTAL** | **52** | **14** | **22** | **8** |
+| **TOTAL** | **52** | **15** | **22** | **8** |
 
 > Category I issues are ALL CORRECTED in blueprint files (2026-04-02).
 > They are logged for audit trail — no open action items remain.
@@ -604,11 +604,11 @@ for other asset classes without manual cleanup.
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
 | I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
 | J. Genesis Export & Import | 3 | 3 | 0 | 0 |
-| **TOTAL** | **55** | **17** | **22** | **8** |
+| **TOTAL** | **55** | **18** | **22** | **8** |
 
 > 3 new HIGH issues (J-01, J-02, J-03) all addressed by 07-genesis-pipeline.md.
 
@@ -696,12 +696,12 @@ numerics integration noted in 003.
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
 | I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
 | J. Genesis Export & Import | 3 | 3 | 0 | 0 |
 | K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
-| **TOTAL** | **60** | **17** | **22** | **8** |
+| **TOTAL** | **60** | **18** | **22** | **8** |
 
 > Category K issues are ALL INFO-level and COMPLETED. Stale rebuild file
 > references logged in table above — ALL APPLIED (2026-04-03).
@@ -789,13 +789,13 @@ and Domain Status table. The "or" is stale.
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
 | I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
 | J. Genesis Export & Import | 3 | 3 | 0 | 0 |
 | K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
 | L. Cross-Validation Audit (2026-04-03) | 5 | 3 | 1 | 1 |
-| **TOTAL** | **65** | **20** | **23** | **9** |
+| **TOTAL** | **65** | **21** | **23** | **9** |
 
 > Category L: 5 issues, ALL CORRECTED in blueprint files (2026-04-03).
 > L-01/L-02 were the most impactful — 7 wrong status values in the Domain Status
@@ -869,17 +869,103 @@ also counted in Open. 3 total findings = 2 Open (F-08, F-38) + 1 Constraint
 | D. Governance Overhead | 6 | 1 | 3 | 2 |
 | E. Spec Draft Integrity | 5 | 1 | 4 | 0 |
 | F. Status Tracking | 3 | 0 | 3 | 0 |
-| G. Plan Self-Audit (round 1) | 5 | 2 | 2 | 0 |
+| G. Plan Self-Audit (round 1) | 5 | 3 | 2 | 0 |
 | H. Plan Self-Audit (round 2) | 10 | 5 | 2 | 3 |
 | I. Post-Blueprint Sync | 7 | 0 | 0 | 0 |
 | J. Genesis Export & Import | 3 | 3 | 0 | 0 |
 | K. Quality Audit (2026-04-03) | 5 | 0 | 0 | 0 |
 | L. Cross-Validation Audit (2026-04-03) | 5 | 3 | 1 | 1 |
 | M. DAG & Taxonomy Consistency (2026-04-03) | 5 | 0 | 3 | 2 |
-| **TOTAL** | **70** | **20** | **26** | **11** |
+| **TOTAL** | **70** | **21** | **26** | **11** |
 
 > Category M: 5 issues, ALL CORRECTED in blueprint files (2026-04-03).
 > M-03 is the most significant — documents a structural DAG limitation that
 > could mislead Step 0 extraction without the explanatory note.
 > M-04/M-01 were consistency gaps that L-audit missed (L checked status values
 > but not Open/Constraint taxonomy or complete dep lists).
+
+---
+
+## Post-M Correction — Directory Count Arithmetic (2026-04-03)
+
+> Cross-validated directory counts in 06-tracking.md and 02-concept-structure.md
+> against debate-index.md Topic Registry (32 entries).
+
+### Corrected: "19 original + 13 from splits" → "20 original + 12 from splits"
+**Where**: 06-tracking.md (Step 0 input + archive note), 02-concept-structure.md (header + checklist)
+**Problem**: Text claimed "19 original + 13 from splits = 32". Listed split items
+(017A/B, 019A-G, 019D1-D3) sum to 12, not 13. Topic 000 is an original directory
+(pre-split framework proposal), not a split product. Correct: 20 original (000-019)
++ 12 from splits = 32.
+**Additionally**: 02-concept-structure header said "from 20 topics" — updated to
+"from 32 topic directories" to reflect actual Step 0 extraction input.
+**Status**: CORRECTED. No impact on DAG, status, or extraction logic — purely
+arithmetic/labeling. Missed by L/M audits (both focused on status values and
+dependency lists, not input counts).
+
+## Post-M Correction — Taxonomy Missing Table (2026-04-03)
+
+> Cross-validated 01-taxonomy.md "Missing — must be extracted" table against
+> actual final-resolution.md files from closed topics.
+
+### Corrected: D-15 (001) TBD → CONVERGED
+**Where**: 01-taxonomy.md, missing reclassification table (line 80)
+**Problem**: D-15 listed as "TBD — verify if CONVERGED or JC". Verified from
+001 final-resolution.md: D-15 (Two cumulative scopes) is CONVERGED at R2.
+**Status**: CORRECTED. Type updated to CONVERGED.
+
+### Corrected: "(others) | 013" — wrong count and redundant entry
+**Where**: 01-taxonomy.md, missing reclassification table (line 81)
+**Problem**: Entry claimed "Topic 013 has 15 findings; verify all JC/Converged splits".
+Actual: Topic 013 has **4 findings** (CA-01, CA-02, SSE-09, SSE-04-THR), all 4 are
+Judgment calls, and ALL 4 are already in the known reclassification table above
+(CA-01→ARBITRATED, CA-02→DEFAULT, SSE-09→DEFAULT, SSE-04-THR→DEFERRED).
+The "15" count appears to be confusion with number of resolved sub-items in debate
+rounds, not finding count. No missing reclassifications from 013.
+**Status**: CORRECTED. Entry struck through with explanation.
+
+## Post-M Correction — Topic 004 MK-series Verification (2026-04-03)
+
+> Cross-validated 01-taxonomy.md MK-series TBD entries against Topic 004
+> final-resolution.md (23 items: 17 Converged + 5 JC + 1 pre-debate resolved).
+
+### Corrected: MK-12, MK-13, MK-15, MK-17 — all CONVERGED (not JCs)
+**Where**: 01-taxonomy.md, missing reclassification table (lines 76-79)
+**Problem**: 4 entries listed as "TBD — read final-resolution.md". All 4 are actually
+CONVERGED decisions, not Judgment calls. They should never have been in the "Missing
+JC reclassification" table. Topic 004 has exactly 5 JCs (MK-03, MK-04, MK-07, C1, C2)
+— all already in the known table. Remaining 18 items are Converged/pre-debate resolved.
+**Status**: CORRECTED. All 4 updated to CONVERGED with verification note.
+
+## Post-M Correction — Summary Table Severity Arithmetic (2026-04-03)
+
+> Cross-validated all 8 summary tables in 00-issues-registry.md.
+
+### Corrected: G-01 CRITICAL counted as HIGH in all summary tables
+**Where**: 00-issues-registry.md, 7 summary tables (G through M) + 7 TOTAL rows
+**Problem**: G-01 severity is "CRITICAL" but was not counted in the HIGH column.
+G row showed "5 | 2 | 2 | 0" (sum=4≠5). Correct: "5 | 3 | 2 | 0" (G-01 CRITICAL +
+G-02 HIGH + G-03 HIGH = 3 HIGH; G-04 MEDIUM + G-05 MEDIUM = 2 MEDIUM).
+This error propagated to all subsequent TOTAL rows (HIGH undercount by 1).
+**Impact**: Final M total changed from 20→21 HIGH. Categories I (7 issues, all
+CORRECTED) and K (5 issues, all INFO) correctly show 0/0/0 — their gap vs TOTAL
+is by design (no H/M/L severity applicable).
+**Status**: CORRECTED. G row fixed in 7 tables, TOTAL HIGH fixed in 7 tables.
+
+## Post-M Correction — Scale Estimates Replaced with Verified Counts (2026-04-03)
+
+> Read ALL 8 closed-topic final-resolution.md files + all open-topic findings-under-review.md.
+> Discovered scale estimates were ~30% overcounted. Replaced with verified numbers.
+
+### Corrected: "~79 closed (56C + 23+JC)" → "60 closed (44C + 16JC)"
+**Where**: 01-taxonomy.md (scale section + checklist), 02-concept-structure.md (checklist), 06-tracking.md (Step 0 count check)
+**Problem**: G-01 (2026-03-29) estimated 79 closed-topic findings and 23+ JCs.
+Verified from final-resolution.md: actual is 60 decisions (44 Converged + 16 JC).
+Root causes: (a) Topic 004 JCs estimated at ~9+ (actual 5 — MK-12/13/15/17 are
+all Converged), (b) debate-index "81 distributed" was misread as open-only (it
+includes 30 closed-topic finding IDs), (c) Converged inflated (56→44).
+**Additionally**: Open-topic count "~81" corrected to 51 (81 is the total including
+closed). Total for Step 0: ~123 items (not ~160). JC breakdown: 7 ARBITRATED,
+5 AUTHORED, 3 DEFAULT, 1 DEFERRED (not "~8/~7/~4/~4").
+Stale "~56 CONVERGED" and "23+ reclassified JCs" in 02-concept-structure checklist also fixed.
+**Status**: CORRECTED. All scale references now verified from source files.
