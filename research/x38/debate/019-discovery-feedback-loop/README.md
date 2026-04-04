@@ -14,7 +14,7 @@ not from grammar enumeration or template parameterization.
 > chỉ còn giữ lại finding index trỏ tới topic mới. Original `findings-under-review.md`
 > (3005 lines, 167KB) được giữ nguyên làm reference.
 >
-> **Lý do chia tách**: 18 findings / 21 decisions / 167KB trong một topic duy nhất
+> **Lý do chia tách**: 18 findings / 22 decisions / 167KB trong một topic duy nhất
 > không thể debate hiệu quả. Chia thành 9 sub-topics cho phép:
 > - Debate song song (019E + 019F song song với tất cả)
 > - Context nhỏ hơn cho mỗi debate (~250-870 lines thay vì 3005)

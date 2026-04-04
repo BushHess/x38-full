@@ -781,7 +781,7 @@ Vai trò kép:
 | 016 | Bounded recalibration path | BR-01, BR-02 | **OPEN** (2026-03-23, Wave 2.5 — chờ 001+002+010+011+015) |
 | 017 | Epistemic search policy **(SPLIT)** | → 017A (ESP-01, ESP-04, SSE-04-CELL) + 017B (ESP-02, ESP-03, SSE-08-CON) | **SPLIT** (2026-04-03, Wave 2.5 — deps satisfied: 002✅+008✅+010✅+013✅). 003 only needs 017A |
 | 018 | Search-space expansion | SSE-D-01→D-11 | **CLOSED** (2026-03-27, 6 rounds, 10 Converged + 1 Judgment call) |
-| 019 | Discovery feedback loop **(SPLIT)** | → 9 sub-topics: 019A-G, 019D1-D3 (18 findings, 21 decisions) | **SPLIT** (2026-04-02, Wave 2.5 — deps satisfied: 018✅+002✅+004✅). 003 only needs 019A+019D1 |
+| 019 | Discovery feedback loop **(SPLIT)** | → 9 sub-topics: 019A-G, 019D1-D3 (18 findings, 22 decisions) | **SPLIT** (2026-04-02, Wave 2.5 — deps satisfied: 018✅+002✅+004✅). 003 only needs 019A+019D1 |
 
 **Dependencies** (synced with `debate/debate-index.md`):
 
