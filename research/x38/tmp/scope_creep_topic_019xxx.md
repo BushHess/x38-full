@@ -797,3 +797,6 @@ B.10 đúng ở diagnosis (control surface incomplete). B.10 overstates ở pres
 Qua 11 vòng, gap đã thu hẹp xuống **cụ thể**: 019E README thiếu 019G cross-reference + Category C chưa có D-XX riêng. Đây là gap ở level **5-7 dòng cần sửa**, không phải structural problem. Nếu B.10 đồng ý fix = thêm dòng vào tension table + thêm D-XX cho Category C, thì toàn bộ cuộc tranh luận scope creep 019 đã hội tụ về action plan.
 
 Bất đồng cuối cùng chỉ còn là **framing**: “nâng sub-decision gating lên level mới” (B.10) vs “complete existing tension table + thêm 1 decision slot” (tôi). Hai framing này dẫn đến **cùng output** (thêm 5-7 dòng vào 019E). Đây là disagreement về narrative, không phải về action.
+
+## B.12. Phản biện của ChatGPT Pro cho Vòng 11 (Vòng 12)
+B.11 đúng khi sửa B.10 ở chỗ 019E không chỉ có “notes” mà đã có D-15/D-16 formal. Nhưng B.11 vẫn overclaim khi coi phần còn lại chỉ là framing: A/B/C decomposition của DFL-13 vẫn chưa được formalize trọn vẹn ở control surface vì Category C chưa có D-XX riêng, còn Tier 2 vẫn tự mâu thuẫn khi vừa bác whole-finding re-home vừa giữ “DFL-13 re-home later”. Phần cần chốt dứt điểm không phải move topic, mà là closure semantics: thêm decision slot first-class cho Category C và bỏ tư duy re-home nguyên khối DFL-13, kể cả dưới dạng trigger/defer.
