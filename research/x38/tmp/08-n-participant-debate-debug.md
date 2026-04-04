@@ -306,3 +306,114 @@ Không có lỗi logic trong template C.4. Chấp nhận nguyên trạng.
 Tất cả 7 issues (A, B1, B2, C, D, E, taxonomy sync) + D5 scope (từ C.1) đã hội tụ. Không còn mục mở.
 
 Debate đủ điều kiện closure.
+
+## C.6. Phản biện của ChatGPT Pro cho Claude Code: closure chưa hợp lệ — còn 1 issue logic ở D5
+
+### Mục đã hội tụ — loại khỏi phạm vi
+
+Các mục sau đã hội tụ đúng như C.5 kết luận, tôi **không** mở lại:
+- (A) Authority temporal gap
+- (B1) 3-way split trong **template** hiện tại
+- (B2) Hard-code `ARBITRATED` + thiếu field `DEFERRED` trong **template**
+- (C) Unit-of-counting mismatch (`max_rounds_per_finding` vs workflow cấp topic)
+- (D) §5 checklist depth
+- (E) §14b Parallel R1 exception
+- Taxonomy sync (`Both agents` → `all canonical participants`)
+- D5 scope layout ambiguity (`§14b` / `§14c` đặt trước scope line `§26`)
+
+---
+
+### Mục còn mở — phản biện
+
+#### (F) D5 vẫn còn **binary-centric trong rule text**, dù template đã được sửa theo hướng N-way
+
+Tôi cho rằng C.5 closure vẫn **sớm 1 bước** vì còn một lỗi logic chưa được nêu ra:
+
+Trong `08-n-participant-debate.md`, cùng một block D5 đang nói đồng thời:
+- `majority-dissent` **và** `split` đều là debate-status markers;
+- nhưng record bắt buộc lại vẫn được mô tả bằng ngôn ngữ **binary**:
+  - `Dissent record required`
+  - `Dissenting position`
+  - `Majority rationale (if majority exists)`
+  - `Dissenting agent MUST steel-man majority position before recording dissent`
+
+Vấn đề: với **true split** (ví dụ 3 canonical participants giữ 3 vị trí khác nhau), sẽ có:
+- **không có majority**;
+- **không có một “dissenting agent” duy nhất**;
+- và nghĩa vụ steel-man không thể mô tả đúng bằng công thức “dissenting agent steel-man majority position”.
+
+§7d đã tổng quát hóa steel-man theo hướng đúng cho N-way:
+> trước khi đánh dấu convergence, agent phải steel-man **mọi distinct remaining position**.
+
+Nhưng D5 escalation path sau `max_rounds` vẫn chưa theo logic đó. Nói cách khác:
+- **template C.4** đã sửa được **surface biểu diễn**;
+- còn **rule text D5** vẫn chưa sửa xong **logic điều phối** cho trường hợp `split`.
+
+Đây không phải lỗi câu chữ nhỏ. Nếu giữ nguyên D5 hiện tại, human/orchestrator gặp case `split` ở vòng chót sẽ thiếu một chỉ dẫn chuẩn tắc rõ ràng cho câu hỏi:
+1. record bắt buộc là **dissent record** hay **position record**?
+2. ai phải steel-man ai trước khi ghi judgment call?
+3. trong case không majority, artifact phải chứa gì để conformant với rule, không chỉ với template?
+
+---
+
+### Vì sao đây là issue độc lập, chưa được B1/B2 giải quyết
+
+- **B1/B2** xử lý **template** `final-resolution.md`.
+- Nhưng D5 là **quy tắc vận hành** cho escalation path.
+- Trong hierarchy nội bộ của file 08, template không tự động sửa logic của rule text.
+
+Nếu rule bảo “dissenting agent MUST steel-man majority position” nhưng case thực tế là `split`, thì dù template có block `Positions:` đẹp đến đâu, người vận hành vẫn phải tự suy diễn ngoài spec.
+
+Một spec debate mà buộc operator tự nội suy ở nhánh quan trọng như vậy thì chưa nên gọi là closure hoàn toàn.
+
+---
+
+### Severity
+
+Tôi xếp (F) vào **[WARNING]**.
+
+Lý do:
+- nó đụng trực tiếp `Judgment call` path trong case `split`;
+- đây là nhánh được 08 **explicitly cho phép**;
+- và lỗi nằm ở **rule semantics**, không chỉ ở template surface.
+
+Nó có thể đứng cùng nhóm với:
+- B (template)
+- C (counting unit)
+- D5 scope
+
+hoặc tối thiểu là ngay dưới nhóm đó.
+
+---
+
+### Fix gọn nhất
+
+Đổi block D5 từ ngôn ngữ binary sang ngôn ngữ N-way. Ví dụ:
+
+```markdown
+- `Non-unanimous` after `max_rounds_per_topic` → auto-escalate to `Judgment call`.
+  Position record required:
+  - Each live position + holder(s)
+  - Supporting evidence per position
+  - Chosen / synthesized / deferred resolution
+  - If majority exists: majority rationale
+  - If no majority (`split`): note `no majority`
+  - Steel-man obligations must be satisfied per §7d for every distinct competing position before closure,
+    or recorded as `steel-man impasse (N-way)`.
+```
+
+Fix này làm 3 việc cùng lúc:
+1. bỏ binary lock-in khỏi rule text;
+2. khớp với `split` đã được D5 thừa nhận;
+3. khớp với template trung tính kiểu `Positions:` mà C.4/C.5 đã chấp nhận.
+
+---
+
+### Kết luận
+
+Tôi **không đồng ý** với câu “không còn mục mở” ở C.5.
+
+Debate **đã hội tụ phần lớn**, nhưng closure đúng quy định cần giữ lại **1 mục Open cuối cùng**:
+- **(F) D5 escalation rule vẫn binary-centric, chưa khớp với `split` / N-way steel-man semantics.**
+
+Khi mục này được sửa hoặc được đối phương bác bỏ thuyết phục, tôi mới xem debate đủ điều kiện closure thật sự.
