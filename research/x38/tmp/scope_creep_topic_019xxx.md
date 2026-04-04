@@ -425,3 +425,139 @@ Trước đó: cross-reference annotation ở 019E header (đã đề xuất B.4
 5. 019G tách top-level: đúng ontology nhưng zero functional gain, lowest priority theo chính 019G
 6. Metadata system (origin_issue_id + scope_class): over-engineered cho <2% edge case
 7. Đổi prefix DFL-: phá convention
+
+## B.6. Phản biện của ChatGPT Pro cho Vòng 5 (Vòng 6)
+
+Mục đã hội tụ — bỏ khỏi tranh luận
+Split 019 đã xử lý phần lớn bài toán execution/scheduling: 019E/F/G được route song song, không còn block discovery-core như monolith cũ.
+DFL-17 không nên bị đẩy sang Topic 012; đổi prefix DFL- là sai hướng; 019F và 019G chưa có forcing function đủ mạnh để bật top-level ngay.
+019C / D-12 là acknowledged-but-unresolved scope debt; đồng thời PLAN.md và EXECUTION_PLAN.md vẫn chưa sync với model split 017/019.
+Phần chưa hội tụ — đây mới là chỗ cần phản biện
+
+1) B.5 có một lỗi factual lớn, và chính lỗi này làm sập trục chính của nó.
+B.5 nói “019 parent README đã là index”, rồi từ đó hạ mức fix #1 xuống còn “chỉ cần thêm deprecation banner”. Trên GitHub main hiện tại, điều đó đúng với 017 nhưng sai với 019. Thư mục 017-epistemic-search-policy/ hiện có cả README.md lẫn findings-under-review.md, và README còn ghi rõ canonical copy nằm ở 017A + 017B. Ngược lại, 019-discovery-feedback-loop/ hiện chỉ có findings-under-review.md, không có README.md/index ở parent dir. Nói thẳng: với 019, thiếu không chỉ banner mà thiếu luôn landing index cấp thư mục.
+
+2) Không chỉ 019 parent: chuỗi “README evidence” của B.5 còn tự mâu thuẫn với repo public hiện tại.
+B.5 nói nó đã đối chiếu 019E README, 019C README, 019G README. Nhưng trên GitHub main, ba thư mục đó hiện cũng chỉ lộ ra findings-under-review.md, không có README.md. Tôi không đoán vì sao B.5 lại thấy các file đó; điều tôi khẳng định được là: trên repo public hiện tại, các README đó không hiện hữu, nên không thể dùng làm bằng chứng để hạ severity của lỗi.
+
+3) B.5 vẫn tranh luận DFL-13 bằng đơn vị phân tích sai.
+Nó coi DFL-13 như một finding một-owner, chỉ còn tranh cãi chuyện “move sang 009A bây giờ hay chờ trigger”. Đó là khung sai. Chính DFL-13 tự chia thành ba lớp khác owner: Category B cần cross-exchange data ngoài CSV hiện tại; interaction table nói rõ phần này chạm DFL-15, tức data acquisition scope. Category C lại tự ghi là overlap với Stage 2 integrity audit và có thể thuộc Stage 2 thay vì trustworthiness concern riêng. Trong khi Topic 009 hiện được định nghĩa là data integrity + session immutability, trọng tâm là checksum, pipeline output, filesystem immutability — không phải exchange-metric trustworthiness hay cross-source validation. Vậy nên 009A không phải đích hiển nhiên; move nguyên khối DFL-13 sang 009A không sạch hơn bao nhiêu so với giữ nó ở 019E. Nó chỉ đổi chỗ một finding vốn đã trộn nhiều owner.
+
+4) Nói semantic mismatch còn lại là “zero practical consequence” vẫn là quá tay.
+Repo đang dùng topic placement để tổ chức cả wave lẫn đường dẫn dossier. Topic 009 nằm ở Wave 2, còn 019E nằm trong cụm 019 ở Wave 2.5. debate-index còn tuyên bố 019-discovery-feedback-loop/ là parent index nơi findings sống ở sub-topics, nhưng khi mở đúng dossier path đó hiện giờ người đọc vẫn rơi vào parent dir chỉ có file monolith. Chưa hết, PLAN.md và EXECUTION_PLAN.md vẫn mô tả cả 017 lẫn 019 như các monolith unsplit. Tức là harm đã giảm mạnh, nhưng chưa về zero: placement vẫn ảnh hưởng neighborhood, sequencing và đường đọc repo. Banner thôi không xử xong chuyện này.
+
+5) Với DFL-17, action-level có thể giữ nguyên, nhưng framing của B.5 vẫn quá dễ dãi.
+Giữ DFL-17 ở 019E hiện tại là chấp nhận được nếu ưu tiên low churn. Nhưng gọi phần lệch label là gần như cosmetic thì vẫn sai. Ngay header 019E đã gộp hai câu hỏi khác lớp: raw data có trustworthy không, và discovery pipeline có detect được signal thật không. Phần body của DFL-17 thì viết rất rõ: nó đang calibrate discovery machinery, minimum detectable signal, detection rate theo từng stage. Nghĩa là đây là bundling tạm ổn về vận hành, không phải semantic home đã sạch.
+
+Verdict
+
+B.5 đúng khi hạ bớt các remedy quá tay trước đó. Nhưng “data mới” quan trọng nhất của B.5 lại sai trên GitHub main hiện tại, nên kết luận của nó bị lệch theo.
+
+Cách chốt công bằng nhất lúc này là:
+
+Tier 1 — bắt buộc làm ngay:
+017 cần deprecation banner trong findings-under-review.md;
+019 cần deprecation banner + README/index thật ở parent dir;
+PLAN.md và EXECUTION_PLAN.md phải sync sang model split 017A/017B và 019A-G/D1-D3.
+Tier 2 — đúng hướng nhưng chưa nên làm kiểu “move nguyên khối”:
+DFL-13 cần được tách theo sub-owner/sub-decision: trustworthiness core, cross-exchange acquisition scope, và ETL/Stage-2 overlap. Chỉ sau bước đó mới bàn mảnh nào cần re-home.
+Tier 3 — tiếp tục defer:
+bật top-level mới cho 019G, dựng metadata system mới, hoặc đổi prefix DFL-.
+
+Nút thắt thật bây giờ không phải “move DFL-13 sang 009A ngay hay chờ trigger”, mà là repo vẫn đang ép một finding đa-owner vào một parent 019 chưa có index thật.
+
+## B.7. Phản biện của Claude Code cho Vòng 6 (Vòng 7)
+
+*Đã đọc toàn bộ file tranh luận và đối chiếu trực tiếp repo: `ls` từng thư mục, `cat` README.md và findings-under-review.md header cho 019 parent, 017 parent, 019E, 019C, 019G. Dưới đây là phản biện chính trực — B.6 có lỗi factual nghiêm trọng là trục chính, cần xử lý trước khi bàn substance.*
+
+### Mục hội tụ mới (từ vòng 6 → vòng 7)
+
+| # | Nội dung | Trạng thái |
+|---|----------|-----------|
+| 13 | PLAN.md + EXECUTION_PLAN.md sync là mandatory — không tranh cãi nữa | **HỘI TỤ** |
+| 14 | 019G, metadata system, đổi prefix → tiếp tục defer (Tier 3) | **HỘI TỤ** |
+| 15 | DFL-17 action-level: giữ 019E | **HỘI TỤ** (cả hai đồng ý action, gap chỉ còn framing) |
+
+### B.6 có hai lỗi factual lớn — trục chính của vòng 6 sập
+
+**Lỗi factual #1: “019-discovery-feedback-loop/ hiện chỉ có findings-under-review.md, không có README.md/index ở parent dir.”**
+
+SAI. Đối chiếu trực tiếp repo:
+
+```
+$ ls debate/019-discovery-feedback-loop/
+README.md   findings-under-review.md   claude_code/   codex/
+```
+
+README.md tồn tại, 93 dòng, chứa: split rationale, routing table (9 sub-topic × directory × findings × decisions × line count), wave diagram, finding index trỏ từng DFL- sang sub-topic mới. Đây là index hoàn chỉnh — đúng y hệt pattern của 017.
+
+**Lỗi factual #2: “019E, 019C, 019G trên repo hiện tại cũng chỉ lộ ra findings-under-review.md, không có README.md.”**
+
+SAI. Sub-topics nằm ở cùng cấp với parent trong `debate/`, không phải nested bên trong `019-discovery-feedback-loop/`:
+
+```
+debate/019-discovery-feedback-loop/    ← parent, CÓ README.md
+debate/019A-discovery-foundations/     ← CÓ README.md
+debate/019B-ai-analysis-reporting/     ← CÓ README.md
+debate/019C-systematic-data-exploration/ ← CÓ README.md
+debate/019E-data-quality-validation/   ← CÓ README.md
+debate/019F-regime-dynamics/           ← CÓ README.md
+debate/019G-data-scope/               ← CÓ README.md
+```
+
+Tất cả 9 sub-topic + parent đều có README.md. ChatGPT Pro có vẻ đã tìm bên trong `019-discovery-feedback-loop/` thay vì ở `debate/` level — đây là lỗi navigation, không phải lỗi repo.
+
+**Hệ quả**: B.6 xây toàn bộ trục “019 chưa có index thật” và “data mới của B.5 sai trên GitHub main” trên hai lỗi factual này. Cả hai đều sai. B.5 của tôi đúng: 019 parent README ĐÃ là index. Fix #1 thực tế = deprecation banner trên findings-under-review.md, không phải structural rewrite hay tạo README mới.
+
+Câu kết luận của B.6 — *”Nút thắt thật... là repo vẫn đang ép một finding đa-owner vào một parent 019 chưa có index thật”* — sụp hoàn toàn vì premise “chưa có index thật” là sai.
+
+### Điểm substance trong B.6 vẫn cần address (tách khỏi lỗi factual)
+
+#### 1. DFL-13 sub-owner decomposition — insight hay nhưng timing sai
+
+B.6 nói DFL-13 chứa 3 lớp khác owner (Category A: exchange metric reliability, Category B: cross-exchange validation → chạm DFL-15/data acquisition, Category C: ETL/Stage 2 overlap) nên “move nguyên khối sang 009A không sạch hơn bao nhiêu.” Tôi đã verify trực tiếp: DFL-13 dòng 58-128 đúng là chia 3 category, và Category C (dòng 125-128) tự ghi rõ *”may be better handled as an extension of Stage 2... The debate should decide.”*
+
+Đây là observation đúng về cấu trúc nội bộ DFL-13. Nhưng kết luận “phải tách sub-owner trước khi bàn re-home” là **đảo ngược trình tự**. Category C tự ghi *”The debate should decide”* — tức việc phân tách owner là **quyết định của debate**, không phải prerequisite trước debate. Nếu phải decompose trước, ta đang ép debaters chấp nhận một phân tách mà chính finding nói nên để debate quyết.
+
+Trình tự đúng: debate 019E → debaters quyết Category C thuộc Stage 2 hay trustworthiness → nếu cần tách thì tách lúc đó. Đề xuất B.5 (trigger condition: move khi 009 xong hoặc khi 019E debaters request) vẫn cover scenario này — debaters có quyền request decomposition.
+
+#### 2. “Zero practical consequence” — tôi moderate nhưng B.6 cũng chưa chỉ ra scenario cụ thể
+
+B.6 nói: *”placement vẫn ảnh hưởng neighborhood, sequencing và đường đọc repo.”* Nhưng evidence B.6 dùng để support claim này là: (a) PLAN.md/EXECUTION_PLAN.md vẫn mô tả 019 monolith — đã hội tụ là fix mandatory, không phải argument về semantic placement; (b) “khi mở đúng dossier path đó hiện giờ người đọc vẫn rơi vào parent dir chỉ có file monolith” — **sai factual**, parent dir có README index rõ ràng.
+
+Tôi moderate: không dùng “zero practical consequence” nữa vì quá tuyệt đối. Nhưng yêu cầu đứng: **chỉ ra scenario cụ thể** mà semantic placement sai gây wrong debate outcome, wrong dependency routing, hoặc wrong scheduling — mà không bị catch bởi header declaration. Qua 4 vòng yêu cầu, chưa có scenario nào được nêu.
+
+#### 3. DFL-17 framing — converge on action, gap chỉ còn mức từ
+
+B.6: *”gọi phần lệch label là gần như cosmetic thì vẫn sai.”* Action đã hội tụ: giữ DFL-17 ở 019E. Gap còn lại: tôi gọi “cosmetic”, ChatGPT Pro gọi “bundling tạm ổn về vận hành, không phải semantic home đã sạch.” Hai framing này dẫn đến **cùng action** (giữ nguyên) và cùng lý do (low churn priority). Tôi chấp nhận framing “bundling tạm ổn” chính xác hơn “cosmetic” — “cosmetic” ngụ ý không có gì sai, trong khi thực tế có mismatch nhưng cost-benefit không justify action. **Rút từ “cosmetic”, adopt “acknowledged bundle, no action needed now.”**
+
+### Bảng tổng kết vòng 7
+
+| Claim | Đánh giá |
+|-------|----------|
+| “019 parent chưa có README/index” (B.6 factual) | **SAI** — README.md tồn tại, 93 dòng, index hoàn chỉnh |
+| “019E/C/G không có README.md” (B.6 factual) | **SAI** — tất cả đều có, nằm ở `debate/` level |
+| “B.5 data mới sai trên GitHub main” (B.6 central claim) | **SAI** — B.5 đúng, B.6 navigate sai directory |
+| DFL-13 sub-owner decomposition trước re-home | **BÁC** — đảo trình tự, finding tự ghi debate nên quyết |
+| “Zero practical consequence” (B.4/B.5 claim của tôi) | **RÚT TỪ** — moderate thành “harm thấp, chưa có scenario cụ thể” |
+| DFL-17 = “cosmetic” (B.5 claim của tôi) | **RÚT TỪ** — adopt “acknowledged bundle, no action needed now” |
+| Fix #1 = deprecation banner (không phải structural rewrite) | **GIỮA NGUYÊN** — B.6 không bác được vì premise sai |
+
+### Remedy 3-tier (giữ nguyên từ B.5, chỉ tinh chỉnh framing)
+
+**Tier 1 — Mandatory (làm ngay):**
+1. Thêm deprecation banner vào `findings-under-review.md` cho tất cả SPLIT topics (019, 017) — 3-5 dòng/file
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+
+**Tier 2 — Should-do when timing allows:**
+3. DFL-13 re-home khi trigger condition met (009 debate xong HOẶC 019E debaters request). Debaters cũng có quyền decompose Category C nếu cần — không cần pre-decompose
+4. 019E header cross-reference annotation cho DFL-13 ↔ Topic 009 (làm ngay như bridge measure)
+
+**Tier 3 — Defer/Reject:**
+5. 019G tách top-level: đúng ontology nhưng zero functional gain
+6. Metadata system: over-engineered
+7. Đổi prefix DFL-: phá convention
+
+### Quan sát meta
+
+Qua 7 vòng, pattern rõ: khi một bên đưa ra “data mới”, bên kia có xu hướng trust rồi xây argument lên data đó mà không verify lại. B.5 của tôi nêu “data mới” (019 README tồn tại) → B.6 bác bằng “data mới” khác (019 KHÔNG có README) mà không kiểm chéo. Cả hai “data mới” đều CÓ THỂ verify bằng `ls` — vòng tranh luận thứ 6-7 lẽ ra không cần tồn tại nếu B.6 verify trước khi viết. Đề xuất process: **claim factual phải kèm evidence command** (ls, grep, head output) thay vì chỉ mô tả.
