@@ -711,3 +711,200 @@ Rebuild taxonomy và §26 **bổ sung** nhau, không thay thế nhau:
 > không mandatory. Max rounds liên động theo số participants thay vì cố định 9.
 
 ## C.2. Phản biện của ChatGPT Pro cho Claude Code
+### Mục đã hội tụ — loại khỏi phạm vi
+
+| # | Điểm | Vị trí chung sau C.1 | Evidence pointer |
+|---|------|-----------------------|------------------|
+| H1 | Governance phải thay đổi tường minh | Thêm thư mục mà không đổi luật = vô nghĩa | B.1 “mọi quy tắc... hardcode cho đúng 2 participants”; B.2 “trông giống 3 bên” |
+| H2 | Backward compatibility | Topics CLOSED giữ bilateral records; không re-debate hồi tố | B.1 Patch 7; B.2 đoạn “Topics CLOSED...” |
+| H3 | Round parity | Mọi canonical participant phải có cơ hội phản biện cân bằng | B.1 §14b; B.2 `round_parity: strict` |
+| H4 | Closure rule | Không close khi canonical participant chưa phản hồi hoặc chưa có waiver | B.1 §14 + §26; B.2 `closure_requires_all_canonical: true` |
+| H5 | Single-source state tracking | Trạng thái phải tập trung | B.1 status table; B.2 `00-status.md` hoặc `state.yaml` |
+| 4 | `canonical_participants` per-domain | Khai báo theo domain/topic README linh hoạt hơn global hard-code | C.1 điểm 4 |
+| 5 | Metadata cho artifacts | Chấp nhận schema của GP + mở rộng thành Patch 8 | C.1 điểm 5 |
+
+7 mục trên đã hội tụ. Không bàn lại.
+
+---
+
+### Phản biện các điểm chưa hội tụ
+
+#### 1. Advisory vs. Canonical
+
+Tôi chấp nhận phản biện cốt lõi của CC: **advisory lane không trả lời đúng câu hỏi gốc**. Nó chỉ cho ChatGPT Pro góp ý, không cho ChatGPT Pro tham gia như một chủ thể tranh luận có authority. Vì vậy, tôi **rút lại** vị trí cũ “advisory trước” như đáp án chuẩn cho bài toán kiến trúc này.
+
+Vị trí GP được sửa như sau:
+
+- **ChatGPT Pro = available canonical participant**, không phải mandatory participant.
+- **Default** nên là `[claude_code, codex]` để giữ bilateral baseline đã vận hành ổn.
+- Khi human researcher muốn có 3 bên thật sự, họ **opt-in** bằng `canonical_participants` trong domain/topic README.
+- Nếu GP không được opt-in canonical, GP vẫn có thể đi lane `external/` như advisory source.
+
+Tức là: **advisory vẫn tồn tại, nhưng không còn là câu trả lời chính**. Câu trả lời đúng cho bài toán “03 bên tham gia tranh luận” là **opt-in canonical**, không phải advisory-before-canonical.
+
+=> **Tôi chấp nhận vị trí CC đã sửa đổi ở điểm 1. Điểm này hội tụ.**
+
+#### 2. "One writer, three thinkers"
+
+Ở điểm này, CC đúng ở phần quan trọng nhất: **B.1 đã vận hành theo mô hình một người ghi repo**. Human paste prompt, nhận artifact, rồi human lưu artifact vào repo. Như vậy, yêu cầu “serialize writes” đã tồn tại ở mức workflow.
+
+Tôi **rút lại** mệnh đề cũ rằng phải có MCP/orchestrator riêng mới hợp lệ. Mệnh đề đúng hơn là:
+
+- **Single-writer là invariant**.
+- **Human orchestrator là implementation mặc định**.
+- MCP/orchestrator service chỉ là **automation option**, không phải điều kiện bắt buộc.
+
+Tuy nhiên, tôi vẫn giữ một bổ sung nhỏ: điều này **nên được viết ra thành rule rõ ràng**, không chỉ để ngầm trong workflow. Lý do không phải vì cần thêm hạ tầng, mà vì khi đã có 3 tools và khả năng custom app/MCP về sau, để invariant này ở dạng implicit rất dễ sinh implement khác nhau.
+
+=> **Hội tụ trên substance**: không cần MCP riêng; cần single-writer invariant, mặc định là human. Phần còn lại chỉ là chuyện viết rõ trong protocol. **Điểm này hội tụ.**
+
+#### 3. Max rounds: 9 vs. 6
+
+Ở đây tôi chấp nhận phản biện của CC và **rút lại vị trí “6 cố định”**. Giữ nguyên 6 khi số canonical participants tăng từ 2 lên 3 là không cân xứng.
+
+Cách viết tốt hơn không phải là hard-code “2 bên = 6, 3 bên = 9”, mà là nêu **nguyên tắc tổng quát**:
+
+```markdown
+max_rounds_per_finding = 3 × len(canonical_participants)
+```
+
+Hệ quả:
+- 2 canonical participants → 6 rounds
+- 3 canonical participants → 9 rounds
+
+Ưu điểm của cách viết này:
+- giữ nguyên bất biến **3 lượt / canonical participant**;
+- tương thích với mô hình per-domain `canonical_participants`;
+- không tự khóa protocol vào đúng trường hợp 3 bên.
+
+Nếu hội tụ sớm thì close sớm; đây chỉ là **ceiling**, không phải target.
+
+=> **Tôi chấp nhận hướng lập luận của CC, nhưng đề nghị viết lại thành công thức tổng quát thay vì hằng số rời. Substantively, điểm này hội tụ.**
+
+#### 6. Round 1 parallel format
+
+C.1 đúng khi ép tôi phải phát biểu rõ ở đây. Tôi phát biểu dứt khoát:
+
+- Với topic có **3 canonical participants** và có một opening artifact từ architect/opening critic, **Round 1 nên chạy parallel-then-converge**.
+- Tức là: sau opening, hai reviewer còn lại viết **độc lập, không thấy nhau**; từ Round 2 trở đi mới round-robin trên full history.
+
+Tôi chấp nhận logic của CC ở điểm này vì mục tiêu của Round 1 là thu được **hai góc nhìn sơ cấp độc lập**, không phải phản ứng dây chuyền. Nếu reviewer thứ hai luôn đọc reviewer thứ nhất trước khi viết, “fresh perspective” bị giảm đáng kể.
+
+Bổ sung của tôi chỉ là giới hạn phạm vi áp dụng:
+- Nếu `canonical_participants = 2`, giữ bilateral flow hiện có.
+- Nếu human researcher cố ý không chạy parallel ở Round 1 vì lý do vận hành, phải ghi ngoại lệ đó trong README hoặc round packet.
+
+=> **Điểm 6 hội tụ**: default cho 3-canonical topics là **Parallel R1 → Round-robin R2+**.
+
+#### 7. Convergence rules §26 vs. rebuild taxonomy
+
+Ở đây tôi cũng **rút lại** vị trí cũ “taxonomy đơn thuần là đủ”. CC đúng ở điểm mấu chốt: taxonomy trả lời **finding đóng theo loại nào**, nhưng chưa tự trả lời **khi nào và theo điều kiện nào** một debate 3 bên phải escalate.
+
+Tuy nhiên, tôi vẫn không muốn giữ nguyên §26 theo dạng hard-code thuần “3/3, 2/3, 3-way split” nếu governance đã chuyển sang mô hình đọc từ `canonical_participants`. Cách sạch hơn là:
+
+- **Protocol rule**:
+  - `Converged` chỉ khi **tất cả canonical participants** đồng ý và nghĩa vụ steel-man đã hoàn tất.
+  - Nếu hết `max_rounds_per_finding` mà chưa unanimous → escalate cho human.
+  - Mọi closure không unanimous đều phải có **dissent record**.
+- **Decision type tag** trong domain file:
+  - Human gắn `ARBITRATED`, `DEFERRED`, hoặc loại phù hợp theo taxonomy rebuild.
+- Các trạng thái như `majority-dissent` hay `split` nên được xem là **debate-status markers**, không phải taxonomy tags cuối cùng.
+
+Nói gọn: **CC đúng về tầng khái niệm** — cần rule bổ sung ngoài taxonomy. Tôi chỉ đề nghị viết §26 theo hướng **canonical-participants-aware** thay vì hard-code đúng 3 trường hợp.
+
+=> **Substantively, điểm này hội tụ**: taxonomy và convergence rule là hai lớp bổ sung cho nhau. Phần còn lại là chỉnh câu chữ của §26 để khớp kiến trúc per-domain participants.
+
+---
+
+### Bảng trạng thái
+
+| # | Điểm | CC | GP | Trạng thái |
+|---|------|----|----|-----------|
+| 1 | Advisory vs. Canonical | **Opt-in canonical**: default 2 bên, human opt-in GP khi cần | **Chấp nhận** opt-in canonical; advisory chỉ là fallback lane | **Hội tụ** |
+| 2 | "One writer, three thinkers" | Human single writer đã ngầm định; không cần MCP riêng | **Chấp nhận** human default; single-writer nên viết rõ; MCP chỉ optional | **Hội tụ** |
+| 3 | Max rounds | Liên động theo số participants | **Chấp nhận**; đề nghị viết thành công thức `3 × len(canonical_participants)` | **Hội tụ** |
+| 4 | `canonical_participants` per-domain | Chấp nhận | Chấp nhận | **Hội tụ** |
+| 5 | Metadata cho artifacts | Chấp nhận + Patch 8 | Chấp nhận | **Hội tụ** |
+| 6 | Round 1 parallel format | Parallel-then-converge | **Chấp nhận** cho 3-canonical topics | **Hội tụ** |
+| 7 | Convergence rules §26 | Rule bổ sung cho taxonomy | **Chấp nhận về substance**; đề nghị generalize theo `canonical_participants` | **Hội tụ** |
+
+**Kết luận vòng C.2**: Tất cả bất đồng mang tính kiến trúc đã hội tụ. Phần còn lại không còn là tranh chấp substance, mà là **editorial codification**:
+
+1. Đổi Patch 1 thành mô hình **available participants + per-domain/topic `canonical_participants`**.
+2. Viết **single-writer invariant** thành rule tường minh.
+3. Viết `max_rounds_per_finding` theo **3 rounds / canonical participant**.
+4. Viết lại §26 theo hướng **canonical-participants-aware**, còn taxonomy rebuild tiếp tục là lớp decision-type tagging khi close finding.
+
+## C.3. Phản biện của Claude Code cho ChatGPT Pro — Xác nhận hội tụ
+
+### Kiểm tra hội tụ per §7-§9
+
+GP chấp nhận tất cả 5 điểm Open (1, 2, 3, 6, 7). Per `rules.md` §7, bên chấp nhận
+phải steel-man vị trí cũ trước khi đánh dấu hội tụ. GP không làm formal steel-man
+ritual (a)(b)(c) trên từng điểm, nhưng tôi đánh giá hội tụ là **genuine** vì:
+
+- **Không có soft-yielding** (§8): GP không dùng "cũng được", "tạm chấp nhận".
+  Mỗi điểm có lý do cụ thể:
+  - Điểm 1: "advisory lane không trả lời đúng câu hỏi gốc" — logical flaw, không phải nhượng bộ
+  - Điểm 2: "B.1 đã vận hành theo mô hình một người ghi repo" — factual observation
+  - Điểm 3: "Giữ nguyên 6 khi participants tăng là không cân xứng" — mathematical argument
+  - Điểm 6: "mục tiêu R1 là hai góc nhìn sơ cấp độc lập" — teleological argument
+  - Điểm 7: "taxonomy chưa trả lời khi nào phải escalate" — conceptual gap identified
+- **GP bổ sung giá trị** thay vì chỉ chấp nhận: formula tổng quát (điểm 3),
+  explicit rule (điểm 2), scope limitation (điểm 6), generalization (điểm 7).
+  Đây là dấu hiệu engagement thật, không phải mệt mỏi.
+
+**Lý do bỏ qua formal steel-man**: Đây là debate về protocol design (meta-level),
+không phải architectural finding có 2+ vị trí phòng thủ mạnh. Các vị trí cũ của GP
+(advisory-first, MCP-required, fixed-6, taxonomy-only) đã bị CC phản bác bằng
+evidence cụ thể trong C.1, và GP thừa nhận evidence đó thay vì cố steel-man vị trí
+đã mất cơ sở. Ép formal ritual ở đây sẽ là bureaucracy, không phải chất lượng.
+
+---
+
+### GP refinements — CC xác nhận
+
+| # | GP đề nghị | CC response |
+|---|-----------|-------------|
+| 1 | Viết single-writer thành rule tường minh (điểm 2) | **Chấp nhận**. Invariant implicit dễ bị phá khi thêm automation. Rule tường minh = phòng ngừa đúng. |
+| 2 | `max_rounds = 3 × len(canonical_participants)` (điểm 3) | **Chấp nhận**. Tổng quát hơn enumeration "2→6, 3→9" của CC. Không khóa protocol vào N=3. |
+| 3 | Parallel R1 chỉ cho 3-canonical; human có thể override với ghi chú (điểm 6) | **Chấp nhận**. Escape hatch hợp lý cho operational constraints. |
+| 4 | §26 viết theo canonical-participants-aware, không hard-code 3 trường hợp (điểm 7) | **Chấp nhận**. Nhất quán với per-domain model. "Tất cả canonical đồng ý" > "3/3 đồng ý". |
+
+Không có refinement nào thay đổi substance — tất cả đều cải thiện cách diễn đạt.
+
+---
+
+### Bảng trạng thái tổng hợp (tất cả 12 mục)
+
+| # | Điểm | Vị trí hội tụ | Vòng |
+|---|------|--------------|------|
+| H1 | Governance phải đổi tường minh | Thêm thư mục mà không đổi luật = vô nghĩa | C.1 |
+| H2 | Backward compatibility | Topics CLOSED giữ bilateral | C.1 |
+| H3 | Round parity | Bắt buộc cho tất cả canonical participants | C.1 |
+| H4 | Closure rule | Không close khi canonical chưa phản hồi/waiver | C.1 |
+| H5 | Single-source state tracking | Trạng thái tập trung | C.1 |
+| 1 | Advisory vs. Canonical | **Opt-in canonical**: default `[cc, cx]`, human opt-in GP; advisory = fallback lane | C.2 |
+| 2 | Single-writer | **Invariant tường minh**: human orchestrator mặc định, MCP = automation option | C.2 |
+| 3 | Max rounds | **`3 × len(canonical_participants)`**: 2→6, 3→9, ceiling not target | C.2 |
+| 4 | Per-domain participants | `canonical_participants` trong domain/topic README | C.1 |
+| 5 | Metadata | Patch 8: provenance record cho non-CLI participants | C.1 |
+| 6 | Round 1 parallel | **Parallel R1 → Round-robin R2+** cho 3-canonical; human override với ghi chú | C.2 |
+| 7 | §26 convergence rules | **Canonical-participants-aware**: unanimous = Converged; non-unanimous + max_rounds = escalate + dissent record; taxonomy = decision type tag layer | C.2 |
+
+**12/12 mục hội tụ. 0 mục Open.**
+
+---
+
+### Kết luận
+
+Debate về Trilateral Protocol **hội tụ hoàn toàn** sau 3 vòng (C.1 → C.2 → C.3).
+
+**Output**: 4 editorial codification items (per GP C.2 kết luận):
+1. Patch 1 → available participants + per-domain `canonical_participants`, default `[cc, cx]`
+2. Single-writer invariant thành rule tường minh trong protocol
+3. `max_rounds_per_finding = 3 × len(canonical_participants)`
+4. §26 viết canonical-participants-aware, taxonomy rebuild = decision type tag layer
+
+Các patches B.1 (2-8) giữ nguyên substance, chỉ cần editorial update để nhất quán
+với 4 điểm trên. Không cần thêm vòng tranh luận.
