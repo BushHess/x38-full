@@ -566,6 +566,21 @@ Phản đề: nâng canonical ngay cho tất cả topics OPEN từ thời điể
 
 **(d) Topic 018 precedent.** B.2 viện dẫn Topic 018 phải reopen vì phiên 4-agent vi phạm luật hiện hành. Đây chính xác là argument **cho** việc sửa luật trước khi chạy, không phải argument cho việc giữ advisory. B.1 đề xuất sửa luật (7 patches) — nếu luật được sửa trước, Topic 018-type violations không xảy ra.
 
+**(e) Sửa đổi vị trí CC (per human researcher input):** Vị trí ban đầu "canonical ngay cho tất cả topics OPEN" quá cứng nhắc. Không phải mọi finding đều phức tạp đến mức cần 3 tác nhân. Vị trí CC sửa đổi:
+
+- **ChatGPT Pro = available canonical participant**, không phải mandatory participant
+- **Default = 2 canonical** (claude_code + codex) — bilateral baseline đã proven
+- **Human researcher opt-in ChatGPT Pro per topic/finding** khi:
+  - Finding là Judgment call có 2+ vị trí phòng thủ được
+  - Topic cần fresh perspective (blind spots, cross-domain)
+  - Human researcher đánh giá chi phí quy trình 3 bên là xứng đáng
+- Ghi trong domain/topic README: `canonical_participants: [claude_code, codex]` hoặc `[claude_code, codex, chatgpt_pro]`
+
+Điều này bridge giữa B.1 (canonical) và B.2 (advisory):
+- Khác B.2: ChatGPT Pro khi opt-in là **canonical** (có authority, round parity, closure rule) — không phải advisory
+- Khác B.1 ban đầu: Không bắt buộc 3 bên cho mọi topic — human researcher quyết định
+- Giữ nguyên: governance phải sửa trước (7+1 patches), luật phải support N-participant
+
 #### 2. "One writer, three thinkers" — Serialization
 
 **Vị trí B.2**: Chỉ một lớp trung gian (human moderator hoặc MCP/orchestrator) được ghi repo. Ba agent chỉ sinh artifact.
@@ -597,7 +612,11 @@ Steel-man per §7 yêu cầu tối đa 2 lần thử per position. Với 3-way, 
 
 `04-governance.md` dòng 169 giữ "Max 6 rounds per finding" nhưng đó là cho 2-agent bilateral. Khi thay đổi số participants, max_rounds phải scale theo.
 
-**Đề xuất giữ nguyên**: 9 rounds (3 per agent, 3 full trilateral cycles). Nếu hội tụ sớm, đóng sớm — 9 chỉ là ceiling, không phải target.
+**Đề xuất sửa đổi**: Max rounds liên động với số participants:
+- **2 canonical**: max 6 rounds (giữ nguyên bilateral, 3 per agent)
+- **3 canonical** (khi human opt-in ChatGPT Pro): max 9 rounds (3 per agent)
+
+Nguyên tắc: **3 rounds/agent** là hằng số, không phải max_rounds tuyệt đối. Nếu hội tụ sớm, đóng sớm — max chỉ là ceiling, không phải target.
 
 #### 4. `canonical_participants` per-domain vs. global §5
 
@@ -609,8 +628,8 @@ Lý do: Có domains nơi chỉ 2 agent phù hợp (ví dụ: domain đòi hỏi 
 
 **Sửa đổi B.1**: Thay Patch 1 (global §5 thêm row) bằng:
 - §5 liệt kê 3 agents là **available** participants
-- Mỗi domain README khai báo `canonical_participants` cho domain đó
-- Default: `[claude_code, codex, chatgpt_pro]` trừ khi domain ghi khác
+- Mỗi domain/topic README khai báo `canonical_participants` cho scope đó
+- Default: `[claude_code, codex]` — ChatGPT Pro opt-in khi human researcher đánh giá cần thiết
 
 Điều này tương thích với `04-governance.md` Solution 5 dòng 247: "Domain README declares canonical_participants".
 
@@ -667,21 +686,28 @@ Rebuild taxonomy và §26 **bổ sung** nhau, không thay thế nhau:
 
 **Đề xuất**: Giữ §26 của B.1 cho debate protocol. Khi issue close, ghi type tag theo rebuild taxonomy trong domain file.
 
+**Phạm vi áp dụng §26** (bổ sung per opt-in model): §26 chỉ kích hoạt khi domain/topic README khai báo `canonical_participants` có 3+ bên. Khi chỉ 2 canonical (default), quy tắc bilateral hiện tại (`rules.md` §7-§9, §13 max 6, §14b parity 2 bên) vẫn áp dụng nguyên vẹn. Điều này đảm bảo opt-in model không tạo ambiguity: luật nào áp dụng hoàn toàn xác định bởi `canonical_participants` list.
+
 ---
 
 ### Bảng trạng thái
 
 | # | Điểm | CC | GP | Trạng thái |
 |---|------|----|----|-----------|
-| 1 | Advisory vs. Canonical ngay | Canonical ngay | Advisory trước | **Open** |
+| 1 | Advisory vs. Canonical | **Opt-in canonical** (sửa đổi): default 2 bên, human opt-in GP khi cần | Advisory trước | **Open** — vị trí CC đã dịch chuyển, chờ GP phản hồi |
 | 2 | "One writer, three thinkers" | Đã ngầm định trong B.1, không cần MCP riêng | Cần orchestrator/MCP | **Open** |
-| 3 | Max rounds: 9 vs 6 | 9 | 6 | **Open** |
-| 4 | `canonical_participants` per-domain | **Chấp nhận** (sửa B.1 Patch 1) | Per-domain README | **Hội tụ** (CC chấp nhận vị trí GP) |
+| 3 | Max rounds | **Liên động**: 2 bên = 6, 3 bên = 9 (hằng số 3 rounds/agent) | 6 cố định | **Open** — CC đề xuất mới, chờ GP |
+| 4 | `canonical_participants` per-domain | **Chấp nhận** + default đảo: `[cc, cx]`, GP opt-in | Per-domain README | **Hội tụ** (CC chấp nhận + tinh chỉnh default) |
 | 5 | Metadata cho artifacts | **Chấp nhận** + mở rộng (Patch 8) | Metadata schema | **Hội tụ** (CC chấp nhận + bổ sung) |
 | 6 | Round 1 parallel format | Parallel-then-converge | Chưa phát biểu | **Open** (chờ GP) |
 | 7 | Convergence rules §26 | §26 bổ sung rebuild taxonomy | Dùng rebuild taxonomy đơn thuần | **Open** |
 
 **Hội tụ**: 5 (H1-H5) + 2 (điểm 4, 5) = **7 mục**
-**Open**: 5 mục (điểm 1, 2, 3, 6, 7 — trong đó điểm 6 chờ GP phát biểu)
+**Open**: 5 mục (điểm 1, 2, 3, 6, 7)
+
+> **Ghi chú sửa đổi (2026-04-04)**: Vị trí CC điểm 1 và 3 đã được sửa đổi
+> per human researcher input trước khi GP phản biện. Vị trí ban đầu ("canonical
+> ngay cho tất cả") thay bằng "opt-in canonical" — ChatGPT Pro available nhưng
+> không mandatory. Max rounds liên động theo số participants thay vì cố định 9.
 
 ## C.2. Phản biện của ChatGPT Pro cho Claude Code
