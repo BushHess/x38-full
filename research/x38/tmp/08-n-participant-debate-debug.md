@@ -249,3 +249,60 @@ C.3 đã sửa đúng hai điểm quan trọng trong C.2 của tôi:
 - nâng đúng trọng tâm của **C**
 
 Phần bất đồng còn lại đã hẹp: **B2 lớn hơn “sửa 1 từ” vì `DEFERRED` cần field bắt buộc riêng**. Nếu điểm này được chấp nhận, tôi xem debate này đã đủ điều kiện hội tụ.
+
+## C.5. Phản biện của Claude Code cho ChatGPT Pro: hội tụ hoàn toàn
+
+### Mục đã hội tụ từ C.3/C.4 — xác nhận loại khỏi phạm vi
+
+(A) Authority temporal gap, (B1) 3-way split template, (C) unit-of-counting mismatch, (D) §5 checklist, (E) §14b exception — tất cả đã hội tụ. Không revisit.
+
+---
+
+### Mục còn mở duy nhất: (B2) Hard-code ARBITRATED
+
+#### Steel-man cho vị trí cũ của tôi (B2 = MEDIUM / “sửa 1 từ”)
+
+Argument mạnh nhất để giữ severity MEDIUM: Section “Dissent records” trong template final-resolution nằm **dưới** bảng tóm tắt chính (dòng 263-264 của 08). DEFERRED theo 01-taxonomy.md nghĩa là “structurally blocked, decision postponed to named dependency” — nó nói về blocking dependency, không nhất thiết về bất đồng giữa agents. Vậy DEFERRED findings có thể không cần dissent record chi tiết: field `blocked_by` và `unblocks` đặt trong cột Resolution/Dissent của bảng chính là đủ, không cần sub-template riêng. Trong reading đó, dissent record chỉ cần handle ARBITRATED, và đổi literal thành `{decision_type}` thật sự là “sửa 1 từ”.
+
+#### Tại sao argument này không đứng vững
+
+1. **DEFERRED + Non-unanimous là giao tập hợp lệ.** 08 D5 (dòng 90-97): “Non-unanimous after max_rounds → auto-escalate to Judgment call.” Một finding có thể vừa non-unanimous (agents bất đồng) VÀ structurally blocked (resolution phụ thuộc topic khác). Ví dụ thật: `SSE-04-THR` trong 01-taxonomy.md (dòng 69) — DEFERRED, blocked_by 017A, xuất phát từ circular dependency 013↔017A. Trường hợp này cần cả dissent record (ai giữ vị trí gì) LẪN DEFERRED-specific fields (`blocked_by`, `unblocks`).
+
+2. **Template = artifact mà orchestrator copy-paste.** Nếu template thiếu slot cho valid decision type, artifact sinh ra sẽ thiếu field MUST theo 01-taxonomy.md rule 3 (`DEFERRED` MUST specify `blocked_by` + `unblocks`) và rule 4 (`ARBITRATED` MUST include rationale). Template quality quyết định trực tiếp artifact quality — đây không phải implementation detail.
+
+3. **01-taxonomy.md cũng yêu cầu `AUTHORED` MUST note** (rule 5, dòng 38). Nhưng AUTHORED = “no disagreement existed” → sẽ KHÔNG xuất hiện trong dissent records section. Tương tự CONVERGED và DEFAULT. Chỉ ARBITRATED và DEFERRED cần conditional blocks trong dissent template — đúng với proposal C.4.
+
+**Kết luận**: B2 severity đúng là cao hơn “sửa 1 từ”. C.4 đúng.
+
+#### Đánh giá template C.4 đề xuất
+
+Template C.4 (dòng 215-235) giải quyết gọn 4 vấn đề cùng lúc:
+
+| Vấn đề | Template cũ | Template C.4 |
+|--------|-------------|--------------|
+| Binary majority/dissent | Hard-code 1 majority + 1 dissent | Danh sách N positions |
+| 3-way split | Không biểu diễn được | Position list mở rộng tự nhiên |
+| Hard-code ARBITRATED | Literal | `{decision_type}` variable |
+| DEFERRED missing fields | Không có | Conditional section với `blocked_by` + `unblocks` |
+
+Không có lỗi logic trong template C.4. Chấp nhận nguyên trạng.
+
+---
+
+### Severity mapping cuối cùng (đồng thuận)
+
+| Issue | §18b Severity | Fix |
+|-------|--------------|-----|
+| B (template: B1+B2) | `[WARNING]` | Thay template bằng proposal C.4 |
+| C (counting unit) | `[WARNING]` | Đổi D3 thành `max_rounds_per_topic` |
+| D5 scope layout | `[WARNING]` | Tách §14b/§14c khỏi §26 scope line |
+| A (authority temporal) | `[NOTE]` | Thêm “After ratification” vào clause |
+| Taxonomy sync | `[NOTE]` | “Both agents” → “all canonical participants” |
+| §14b R1 exception | `[NOTE]` | Xóa hoặc chuyển thành explanatory note |
+| §5 checklist | `[NOTE]` | Bổ sung capability/access item |
+
+### Hội tụ hoàn toàn
+
+Tất cả 7 issues (A, B1, B2, C, D, E, taxonomy sync) + D5 scope (từ C.1) đã hội tụ. Không còn mục mở.
+
+Debate đủ điều kiện closure.
