@@ -690,3 +690,110 @@ Claim tôi đưa ra: **semantic mismatch tồn tại, harm thấp vì repo đã 
 Gap thực sự giữa hai bên đã thu hẹp rất nhiều. Cả hai đồng ý: DFL-13 multi-owner, giữ tại 019E, resolve by category. Bất đồng duy nhất: ChatGPT Pro cho rằng repo cần thêm formalization cho sub-decision gating; tôi cho rằng repo đã có đủ (interaction table dòng 136-147, debate notes dòng 125-128, cross-topic tensions dòng 64-71 trong 019E README, cross-ref dòng 294 trong 019G).
 
 Nếu ChatGPT Pro có thể chỉ ra **cụ thể** sub-decision gating nào CHƯA được documented mà cần thêm — tôi sẵn sàng concede. Nhưng nếu answer là “thêm formalization ở level khác” (topic-level thay vì finding-level) thì tôi cần argument tại sao finding-level gating hiện tại KHÔNG ĐỦ cho debaters.
+
+## B.10. Phản biện của ChatGPT Pro cho Vòng 9 (Vòng 10)
+B.9 đúng khi bác bỏ whole-finding re-home, nhưng vẫn overclaim ở chỗ cho rằng repo đã formalize xong resolve-by-category cho DFL-13. Thực tế repo mới có note A/B/C trong body finding; control surface của 019E vẫn thiếu 019G ở dependency/tension map, vẫn nói “NONE from other 019 sub-topics”, và vẫn chưa có decision slot first-class cho Category C owner-assignment. Vấn đề còn lại không phải move topic, mà là nâng sub-decision gating từ mức mô tả trong body lên mức decision-accounting/closure semantics.
+
+## B.11. Phản biện của Claude Code cho Vòng 10 (Vòng 11)
+
+*Đã đọc toàn bộ B.10 và đối chiếu trực tiếp: 019E README (78 dòng), 019E findings-under-review.md (DFL-13 dòng 33-174, cross-topic tensions dòng 354-360, decision summary dòng 364-377), 019G README (99 dòng, cross-topic tensions dòng 76-80). Dưới đây là phản biện chính trực.*
+
+### Mục hội tụ mới (từ vòng 10 → vòng 11)
+
+| # | Nội dung | Trạng thái |
+|---|----------|-----------|
+| 20 | Whole-finding re-home sai framing — cả hai đồng ý | **HỘI TỤ** |
+| 21 | Tier 1 mandatory: banner + sync planning surfaces | **HỘI TỤ** |
+| 22 | Tier 3 defer: 019G top-level, metadata, prefix | **HỘI TỤ** |
+| 23 | DFL-17 action: giữ 019E | **HỘI TỤ** |
+
+### Điểm tôi chấp nhận từ B.10
+
+**019E README thiếu 019G trong tension map — CONCEDE.** Đã verify trực tiếp:
+
+019E README cross-topic tensions (dòng 66-70): liệt kê 009, 003, 019F. **Không có 019G.** Findings file cross-topic tensions (dòng 354-360): cũng chỉ 3 topic — **không có 019G.**
+
+Trong khi đó, 019G README (dòng 79) GHI RÕ: *”019E | DFL-13 | Cross-exchange validation (DFL-13 Category B) requires external data — DFL-15 scopes whether this is in framework.”*
+
+Và DFL-13 interaction table (dòng 143) bên trong body: *”DFL-15: Data acquisition scope. Category B requires cross-exchange data — DFL-15 scopes whether external data acquisition is in framework.”*
+
+Nghĩa là: 019G→019E cross-reference tồn tại, nhưng 019E→019G KHÔNG tồn tại ở control surface (README + findings cross-topic tensions). Đây là **asymmetric cross-reference gap** — body-level documentation đúng, control-surface-level thiếu.
+
+**”NONE from other 019 sub-topics” inconsistent — CONCEDE.** 019E README dòng 58 ghi “NONE from other 019 sub-topics.” Nhưng DFL-13 Category B explicitly gated bởi DFL-15 (019G). “NONE” quá tuyệt đối.
+
+Distinction quan trọng: 019E **scheduling-independent** from 019G (đúng — Tier 4, parallel debatable). Nhưng **content-dependency** tồn tại (DFL-15 quyết scope → ảnh hưởng Category B feasibility). README không phân biệt hai loại dependency này — nó nói “NONE” cho cả hai.
+
+**B.9 overclaimed “chính xác” — CONCEDE.** Tôi nói ở B.9 “repo đã implement chính xác điều này” về resolution-by-sub-decision, citing 5 evidence items. 4/5 đúng, nhưng tôi bỏ sót 019G missing từ tension table. **Rút từ “chính xác”, sửa thành “phần lớn đã implement, thiếu 019G cross-reference ở control surface.”**
+
+### Điểm tôi BẤT ĐỒNG
+
+#### 1. “Repo mới có note A/B/C trong body finding” — B.10 UNDERSTATES repo
+
+B.10 nói: *”Thực tế repo mới có note A/B/C trong body finding.”* Đây là understatement. Repo có:
+
+- **D-15** (formal decision slot, dòng 374): “Should data trustworthiness be a framework stage?” — Stage 1.5 / Part of Stage 2 / One-time validation
+- **D-16** (formal decision slot, dòng 375): “Cross-exchange data: acquire or not?” — covers Category B explicitly
+- **D-20** (formal decision slot, dòng 376): cho DFL-17
+- **Interaction table** (dòng 136-147): 7 cross-references chi tiết, mapping cụ thể finding nào ảnh hưởng category nào
+- **”Architecture decision for debate”** section (dòng 156-162): alternatives table với implications
+- **”What this is NOT”** section (dòng 148-154): 3 boundary clarifications
+
+Gọi tất cả những thứ này là “note A/B/C trong body” bằng phẳng hóa distinction giữa informal notes và formal decision slots. D-15 và D-16 là decision slots **ĐÃ CÓ ID, ĐÃ CÓ ALTERNATIVES, ĐÃ ĐƯỢC LIST trong Decision Summary** (dòng 370-377 — table chính thức “what debate must resolve”). Đây không phải “note” — đây là first-class decisions trong hệ thống decision-accounting hiện tại.
+
+#### 2. “Chưa có decision slot first-class cho Category C owner-assignment” — PARTIALLY CONCEDE
+
+D-15 asks: “Should data trustworthiness be a framework stage?” với alternatives bao gồm “Part of Stage 2.” Nếu debate chọn “Part of Stage 2” → Category C (ETL correctness, dòng 105-128) route sang 003. D-15 covers territory.
+
+Gap thật: không có D-XX **riêng** hỏi “Category C: trustworthiness (019E) hay Stage 2 (003)?” Dòng 125-128 ghi *”The debate should decide”* và dòng 146 ghi *”debate should assign ownership”* — nhưng không D-XX number.
+
+Tuy nhiên: debate instructions NÓI RÕ để debate quyết. Debaters đọc DFL-13 body SẼ gặp instructions này ở 2 nơi (dòng 125-128 VÀ dòng 146). Nếu cần, debaters có quyền tạo D-XX mới trong quá trình debate — đây là normal debate process.
+
+**Đề xuất compromise**: thêm D-XX cho Category C owner-assignment vào decision summary table. Cost: 1-2 dòng. Benefit: closure tracking rõ ràng hơn. Tôi concede đây là **improvement có giá trị**, nhưng bác claim nó là prerequisite trước khi debate có thể hoạt động đúng.
+
+#### 3. “Nâng sub-decision gating từ body lên decision-accounting/closure semantics” — framing OVERSTATED cho fix nhỏ
+
+B.10 dùng cụm “nâng sub-decision gating từ mức mô tả trong body lên mức decision-accounting/closure semantics” — nghe như architectural paradigm shift. Thực tế fix cần làm:
+
+1. Thêm 019G vào 019E README tension table: **~3 dòng** (topic, finding, tension, resolution path)
+2. Thêm 019G vào findings cross-topic tensions (dòng 354-360): **~1 dòng**
+3. Sửa “NONE from other 019 sub-topics” → “019G (DFL-15 gates Category B scope — informational, not scheduling blocker)”: **~1 dòng sửa**
+4. (Optional) Thêm D-XX cho Category C owner: **~1-2 dòng trong decision summary**
+
+Tổng: **5-7 dòng sửa**. Không cần “nâng level” — chỉ cần **complete existing tension table** và (optionally) **thêm 1 decision slot**.
+
+B.10 đúng ở diagnosis (control surface incomplete). B.10 overstates ở prescription (framing 5-7 dòng fix thành paradigm shift).
+
+### Bảng tổng kết vòng 11
+
+| Claim | Đánh giá |
+|-------|----------|
+| 019E tension table thiếu 019G | **CONCEDE** — verified, asymmetric gap |
+| “NONE from other 019 sub-topics” inconsistent | **CONCEDE** — content-dependency tồn tại dù scheduling-independent |
+| B.9 overclaimed “chính xác” | **CONCEDE** — rút từ |
+| “Repo mới có note A/B/C” (B.10 framing) | **BÁC** — D-15/D-16 là formal decision slots, không phải “notes” |
+| Category C missing D-XX | **PARTIALLY CONCEDE** — gap có thật, fix = 1-2 dòng, debate instructions đã cover |
+| “Nâng sub-decision gating lên mức mới” (framing) | **BÁC** — actual fix = 5-7 dòng, không phải architectural change |
+
+### Remedy 3-tier (cập nhật sau vòng 11)
+
+**Tier 1 — Mandatory (làm ngay):**
+1. Deprecation banner vào `findings-under-review.md` cho SPLIT topics (019, 017)
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+3. **MỚI**: Fix 019E control surface:
+   - Thêm 019G vào tension table (cả README lẫn findings cross-topic tensions)
+   - Sửa “NONE from other 019 sub-topics” → ghi nhận 019G informational content-dependency
+   - Thêm D-XX cho Category C owner-assignment vào decision summary
+
+**Tier 2 — Should-do when timing allows:**
+4. DFL-13 re-home khi trigger condition met (009 debate xong HOẶC 019E debaters request)
+
+**Tier 3 — Defer/Reject:**
+5. 019G tách top-level: đúng ontology nhưng zero functional gain
+6. Metadata system: over-engineered
+7. Đổi prefix DFL-: phá convention
+
+### Quan sát meta
+
+Qua 11 vòng, gap đã thu hẹp xuống **cụ thể**: 019E README thiếu 019G cross-reference + Category C chưa có D-XX riêng. Đây là gap ở level **5-7 dòng cần sửa**, không phải structural problem. Nếu B.10 đồng ý fix = thêm dòng vào tension table + thêm D-XX cho Category C, thì toàn bộ cuộc tranh luận scope creep 019 đã hội tụ về action plan.
+
+Bất đồng cuối cùng chỉ còn là **framing**: “nâng sub-decision gating lên level mới” (B.10) vs “complete existing tension table + thêm 1 decision slot” (tôi). Hai framing này dẫn đến **cùng output** (thêm 5-7 dòng vào 019E). Đây là disagreement về narrative, không phải về action.
