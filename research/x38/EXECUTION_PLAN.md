@@ -21,7 +21,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 004 | **CLOSED** (2026-03-21). 6 rounds, 23/23 resolved. Xem `debate/004-meta-knowledge/final-resolution.md`. |
 | Topic 000 split | **DONE** (2026-03-22). 11 sub-topics created: 001-003, 005-012. Xem `debate/debate-index.md`. |
 | Gap analysis | **DONE** (2026-03-22). 2 topics mới (013-014), 4 findings (F-30→F-33). |
-| Rebalance | **DONE** (2026-03-22). 003 split: F-14/F-17 → Topic 015. 003 giảm từ 3→1 finding. |
+| Rebalance | **DONE** (2026-03-22). 003 split: F-14/F-17 → Topic 015. 003 hiện có 4 findings (F-05, F-36, F-37, SSE-D-04). |
 | Topic 016 | **OPEN** (2026-03-23). Bounded recalibration path. Wave 2.5. 2 findings (BR-01, BR-02). |
 | Topic 007 | **CLOSED** (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`. |
 | Topic 001 | **CLOSED** (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`. |
@@ -348,7 +348,7 @@ có thể publish độc lập khi ready.
 |---|--------|----------|------------|
 | R1 | Topic 004 deadlock trên MK-03 (bias-variance tradeoff là irreducible) | MEDIUM | Cap 6 rounds. MK-03 → Judgment call. Solution proposal đã cho operating point cụ thể. |
 | R2 | Overlap guard (C4) deadlock — quá mạnh = zero meta-knowledge cho BTC, quá yếu = contamination leak | MEDIUM | Critique đã đề xuất: overlap guard chỉ trên evaluation data, không phải all data. Test against V4→V8 evidence. |
-| R3 | Topic 003 bottleneck (phụ thuộc 4 upstream topics) | MEDIUM | Giảm từ HIGH sau rebalance: 003 giờ chỉ 1 finding (F-05). F-14/F-17 đã tách sang 015 (Wave 2). 003 focused vào pipeline stages. |
+| R3 | Topic 003 bottleneck (phụ thuộc 4 upstream topics) | MEDIUM | Giảm từ HIGH sau rebalance: F-14/F-17 đã tách sang 015 (Wave 2). 003 hiện có 4 findings (F-05, F-36, F-37, SSE-D-04), focused vào pipeline stages. |
 | R4 | ~~Topics 001-003 chưa có findings document~~ | ~~LOW~~ | **RESOLVED** (2026-03-22): Tất cả topics đã có findings-under-review.md. |
 | R5 | Firewall boundary conflict giữa meta_spec và architecture_spec | MEDIUM | MK-14 phải resolve TRƯỚC khi bất kỳ draft nào bắt đầu. Ghi constraint này vào Phase 4 checklist. |
 | R6 | Human researcher bottleneck (nhiều judgment calls) | LOW-MEDIUM | Batch judgment calls: thu thập sau mỗi phase, trình một lượt. Ước lượng ~3-5 calls mỗi batch. |

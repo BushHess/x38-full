@@ -1,4 +1,4 @@
-# Findings Under Review — Data Pipeline Quality
+# Findings Under Review — Data Quality Validation
 
 **Topic ID**: X38-T-19E
 **Opened**: 2026-04-02

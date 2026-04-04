@@ -1,4 +1,4 @@
-# Topic 019E — Data Pipeline Quality
+# Topic 019E — Data Quality Validation
 
 **Topic ID**: X38-T-19E
 **Opened**: 2026-04-02

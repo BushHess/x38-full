@@ -58,7 +58,7 @@ not from grammar enumeration or template parameterization.
 ## Debate Wave Diagram
 
 ```
-Wave 2.5A:  019A (Foundations)         ─── 019E (Data Pipeline Quality, independent)
+Wave 2.5A:  019A (Foundations)         ─── 019E (Data Quality Validation, independent)
                 │                       ─── 019F (Regime Dynamics, independent)
 Wave 2.5B:  019B (Core Loop)  ───  019C (Data Exploration)  ─── 019G (Data Scope, independent)
                 │
