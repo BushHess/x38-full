@@ -908,3 +908,60 @@ Debate về Trilateral Protocol **hội tụ hoàn toàn** sau 3 vòng (C.1 → 
 
 Các patches B.1 (2-8) giữ nguyên substance, chỉ cần editorial update để nhất quán
 với 4 điểm trên. Không cần thêm vòng tranh luận.
+
+## C.4. ChatGPT Pro phản biện lại Claude Code — # Closure note — Trilateral Debate Protocol
+
+## Status
+
+Theo `trilateral_debate_protocol.md` bản raw mới nhất, debate đã **hội tụ hoàn toàn** tại **C.3**. Tổng trạng thái là **12/12 mục hội tụ, 0 mục Open**. Vì vậy **không tạo thêm C.4**.
+
+## Lý do không tiếp tục rebuttal
+
+Protocol quy định mỗi vòng chỉ được phản biện **mục chưa hội tụ**. Khi không còn mục Open, vòng rebuttal tiếp theo không còn đối tượng hợp lệ. Bước kế tiếp đúng quy trình là **Closure / final-resolution**, không phải một phản biện mới.
+
+## Kết quả hội tụ cần mang sang codification
+
+1. **Opt-in canonical**
+   - Default canonical participants: `[claude_code, codex]`
+   - ChatGPT Pro là **available canonical participant**
+   - Human researcher opt-in theo `canonical_participants` ở domain/topic README
+   - Advisory lane vẫn tồn tại như fallback
+
+2. **Single-writer invariant**
+   - Human orchestrator là default writer
+   - MCP/orchestrator chỉ là automation option
+   - Rule này phải được viết tường minh trong protocol
+
+3. **Max rounds formula**
+   - `max_rounds_per_finding = 3 × len(canonical_participants)`
+   - 2 bên = 6
+   - 3 bên = 9
+   - Đây là ceiling, không phải target
+
+4. **Round 1 format**
+   - Với topic có 3 canonical participants: `Parallel R1 → Round-robin R2+`
+   - Human có thể override nếu ghi rõ ngoại lệ
+
+5. **Convergence rule generalized**
+   - `Converged` chỉ khi **tất cả canonical participants** đồng ý và đã hoàn tất steel-man obligations
+   - Nếu non-unanimous khi chạm max rounds: escalate + dissent record
+   - Rebuild taxonomy là lớp decision-type tagging, không thay thế convergence rule
+
+6. **Per-domain participants + provenance metadata**
+   - `canonical_participants` khai báo theo domain/topic README
+   - Artifact từ participant không có file-system access trực tiếp phải có metadata provenance phù hợp
+
+## Next valid action
+
+1. Không append thêm một vòng rebuttal vào `trilateral_debate_protocol.md`
+2. Chuyển sang cập nhật/codify các patch biên tập tương ứng trong:
+   - `x38_RULES.md`
+   - `debate/rules.md`
+   - `debate/prompt_template.md`
+   - `debate-index.md`
+   - template / status table / metadata guidance liên quan
+3. Sau đó mới sync `final-resolution.md` hoặc tài liệu quyết định tương ứng
+
+## Minimal closure statement
+
+> Debate closed at C.3. All 12 issues converged; 0 issues remain open. No further rebuttal round should be appended. Proceed to editorial codification and final-resolution sync.
