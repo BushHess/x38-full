@@ -944,3 +944,23 @@ B.14 không đưa ra điểm bất đồng mới nào mà B.13 chưa address. Ha
 3. Đổi prefix DFL-
 
 Nếu ChatGPT Pro xác nhận B.13 đã address đủ hai gap, cuộc tranh luận kết thúc ở vòng 15 với full convergence trên action plan.
+
+## B.16. Phản biện của ChatGPT Pro cho Vòng 15 (Vòng 16) — FINAL
+
+Mục đã hội tụ, nên bỏ khỏi tranh luận:
+
+Whole-finding re-home cho DFL-13 đã chết hẳn. B.13 xóa Tier 2 “re-home later”, và B.15 chỉ nhắc lại đúng việc đó.
+D-XX cho Category C đã được nâng từ optional lên mandatory. Đây không còn là điểm tranh cãi mở nữa.
+Remedy đã hội tụ về cùng một action plan nhỏ, không còn tranh cãi structural lớn. Cả hai bên thực chất đã chốt cùng một gói: banner cho parent split topics, sync planning surfaces, và vá control surface của 019E bằng cách thêm 019G + sửa NONE + thêm D-XX cho Category C.
+Các hướng re-home lớn, đổi prefix, mở top-level mới, metadata system đều đã bị loại khỏi lõi tranh luận. Chúng còn giá trị lịch sử tranh luận, nhưng không còn là phần chưa hội tụ.
+
+Phần chưa hội tụ thật sự chỉ còn 1 điểm — và nó không còn là bất đồng giữa hai bên, mà là lỗi diễn đạt của B.15:
+
+B.15 nói “hội tụ hoàn toàn”. Câu này chỉ đúng nếu hiểu là hội tụ hoàn toàn về action plan. Nó sai nếu bị hiểu là repo đã hội tụ hoặc bug đã hết. Repo hiện tại vẫn chưa được patch theo đúng action plan mà B.13/B.15 vừa chốt: debate-index.md đã coi 017 và 019 là parent indexes kiểu SPLIT, nhưng PLAN.md và EXECUTION_PLAN.md vẫn mô tả 017 và 019 như các topic monolith; parent 019/findings-under-review.md vẫn tự mở đầu như dossier sống 18 findings, và parent 017/findings-under-review.md cũng vẫn là một live file chứ chưa thành deprecation surface.
+
+Tương tự, ngay ở 019E — chỗ action plan đang nhắm tới — repo vẫn chưa phản ánh fix đã hội tụ: 019E/README.md vẫn ghi NONE from other 019 sub-topics và bảng tension chỉ có 009, 003, 019F; 019E/findings-under-review.md vẫn chỉ có D-15, D-16, D-20 và bảng cross-topic tensions cũng chưa có 019G; trong khi 019G/README.md ghi rất rõ DFL-13 Category B phụ thuộc vào DFL-15 về scope external data. Tức là debate đã hội tụ, repo chưa hội tụ.
+
+Kết luận thẳng: B.15 thắng về state của cuộc tranh luận, nhưng overstate ở chữ “hội tụ hoàn toàn” nếu không gắn rõ phạm vi. Câu đúng phải là: “đã hội tụ hoàn toàn về remedy/action plan; chưa hội tụ ở trạng thái repo vì patch chưa được áp.” Tiếp tục cãi thêm nội dung ở vòng sau gần như chỉ làm phình file; việc còn lại là triển khai đúng patch đã thống nhất.
+
+Tóm lại:
+B.15 đúng ở lõi: B.14 thực chất đang đánh vào hai điểm B.13 đã concede và sửa xong trong remedy plan — xóa Tier 2 whole-finding re-home và nâng D-XX của Category C lên mandatory. Vì vậy, tranh luận đã hội tụ về action plan. Điểm duy nhất cần sửa là câu “hội tụ hoàn toàn”: đúng nếu hiểu là hội tụ về remedy, sai nếu hiểu là repo đã sạch bug, vì planning surfaces, parent findings surfaces, và 019E control surface hiện vẫn chưa được patch theo chính action plan đó.
