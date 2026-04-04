@@ -298,3 +298,130 @@ Tổng gain: labeling accuracy. Tổng cost: churn + thêm surface cần maintai
 3. 019E header → thêm cross-reference annotation cho DFL-13 ↔ Topic 009
 
 **Không nên làm lúc này:** move DFL-13, tách 019G, thêm metadata system, hay bất kỳ action nào có churn > labeling benefit.
+
+## Phản biện của ChatGPT Pro cho B.4 (Vòng 4)
+
+Mục đã hội tụ — bỏ khỏi tranh luận để khỏi phình content
+
+Split 019 đã xử lý đáng kể bài toán execution/scheduling: registry đã tách 019 thành các leaf/sub-topic, và 019E/F/G đều được ghi rõ là Tier 4, independent, có thể tranh luận song song.
+“Dual truth” vẫn là lỗi có thật: debate-index gọi 019 là parent index, nhưng parent 019 vẫn là full dossier 18 findings; PLAN.md và EXECUTION_PLAN.md cũng vẫn mô tả Topic 019 như monolith 18 findings.
+Đổi prefix DFL- là không thuyết phục. Repo hiện vận hành prefix như historical/origin ID hơn là owner ID: F-14/F-17 vẫn giữ prefix F sau khi tách khỏi 003, và SSE-04-CELL / SSE-08-CON vẫn giữ prefix SSE sau khi route khỏi 018.
+
+Phần chưa hội tụ — đây mới là chỗ cần phản biện
+
+1) Về DFL-17, Claude đúng một nửa nhưng dừng quá sớm.
+Claude đúng khi bác lý do “đẩy DFL-17 sang 012 vì F-39 same domain”. F-39 của Topic 012 là automated correctness assurance cho framework implementation: unit tests, determinism regression, integration tests để kiểm stage gating và artifact correctness. DFL-17 thì khác: nó calibrate chính discovery pipeline bằng signal injection, end-to-end false positive rate, và VDO reconstruction, tức là đang kiểm xem DFL-06/07/08/11 có tìm ra tín hiệu thật hay không. Đây là methodological calibration của discovery machinery, không phải software QA thuần. Nhưng từ đó không thể nhảy sang kết luận “vậy ontology hiện tại đã sạch”. 019E tự mô tả là Tier 4, independent of discovery-loop architecture; nói gọn, DFL-17 không thuộc Topic 012 hiện tại, nhưng cũng không phải discovery-core architecture. Vị trí tạm thời trong 019E là chấp nhận được nếu ưu tiên ít churn; dùng F-39 để chứng minh move sang 012 thì sai, nhưng dùng việc “không move được sang 012” để coi DFL-17 là đã đúng nhà hoàn toàn thì cũng sai.
+
+2) Phản biện của Claude với DFL-13 → 009 đang đánh trượt mục tiêu.
+Claude phản đối bằng lập luận “re-home sang 009 sẽ tạo asymmetry và xáo lịch”, nhưng đề xuất trước đó không phải nhét thẳng DFL-13 vào Topic 009 hiện hữu; nó là tách 009A. Điểm này quan trọng vì nó triệt tiêu đúng cái tradeoff “1 finding nặng hơn cả dossier” mà Claude dùng để phản bác. Về semantic owner, DFL-13 bàn về raw-number trustworthiness, cross-exchange validation, ETL correctness; chính 019E cũng nói Category C có thể thuộc Stage 2 và tension với F-10 là accuracy vs completeness. Trong khi đó Topic 009 đã là data integrity / input management. Nói cách khác: scheduling tradeoff là thật, nhưng nó không bác được owner argument. DFL-13 vẫn là ứng viên re-home mạnh nhất trong nhóm 019E/F/G; Claude mới chỉ nêu cost tradeoff, chưa bác được phần semantic ownership.
+
+3) Với 019C / D-12, Claude đang gọi nhầm “đã ghi chú rõ” thành “đã hết scope debt”.
+019C tự viết rất rõ: DFL-06 chứa cả architecture content lẫn research-plan content, và D-12 tồn tại để chốt “Architecture / Research plan / Split”. Chỉ riêng chuyện đó đã đủ cho thấy boundary chưa resolve. Đúng là severity đã giảm mạnh so với monolith cũ, vì 019C cũng ghi luôn rằng các phân tích cụ thể chỉ là evidence cho architecture proposal, không phải implementation binding. Nhưng “đã khoanh vùng và làm explicit” không đồng nghĩa với “đã sạch scope”. Cách nói công bằng nhất là: đây là acknowledged-but-unresolved scope debt — không còn là scope creep mù mờ như trước, nhưng cũng chưa phải boundary đã được xử lý xong.
+
+4) Cost-benefit: Claude đúng khi chê gói maximal, nhưng sai khi gộp mọi remedy thành một cục rồi bác luôn.
+Có một nhóm sửa rất rẻ mà giá trị rất thật: biến split parent thành index thật, và sync PLAN.md / EXECUTION_PLAN.md với registry. Đó không phải cosmetic; đó là cách gỡ một active two-map problem đang tồn tại ngay bây giờ. Và lỗi này không chỉ ở 019: debate-index nói split entries là parent indexes, nhưng parent 017 hiện cũng vẫn giữ full findings, giống 019. Nghĩa là đây là bug vệ sinh cấu trúc ở level hệ thống, không phải bookkeeping lặt vặt của riêng Topic 019. Ngược lại, rename prefix và ép mở top-level 020/021 là nhóm sửa high-churn / low-certainty, hoàn toàn có thể defer. Vậy nên cost-benefit đúng không phải “quá tay nên thôi”, mà là “tách mandatory cleanup ra khỏi speculative refactor”.
+
+5) Tiêu chuẩn owner đúng phải sắc hơn cả B.1 lẫn B.2.
+Không thể dùng quy tắc thô kiểu “Tier 4 thì phải rời 019”, nhưng cũng không thể dùng quy tắc ngược kiểu “còn connect tới DFL-08 thì cứ giữ dưới 019 là xong”. Owner nên được xác định theo artifact/spec nào bị thay đổi khi finding đó được resolve. Áp tiêu chuẩn này thì bức tranh rõ hơn: DFL-13 nghiêng mạnh về data integrity / trustworthiness; DFL-17 vẫn neo vào discovery-pipeline calibration; DFL-14/18 neo trực tiếp vào DFL-08 Stage 2 nên 019F ở lại là defensible; còn 019G là data-policy leaf, semantically lệch khỏi discovery-core nhưng urgency re-home thấp hơn, nhất là khi chính file 019G đã tự đánh nó là lowest priority và khuyến nghị defer sau khi exhaust intra-BTC trước.
+
+Verdict cuối
+B.2 tốt hơn B.1 ở ba chỗ: nó dập đúng overreach “F-39 = DFL-17 same domain”, đúng khi bác chuyện đổi prefix, và đúng khi không vội mở top-level mới cho 019F. Nhưng B.2 cũng overcorrect ở ba chỗ: nó đánh trượt phương án 009A cho DFL-13, coi D-12 như đã sạch scope debt chỉ vì đã được ghi chú, và bundle mọi remedy thành một cục để gắn nhãn churn. Kết luận thực tế nhất hiện giờ là: làm ngay cleanup tối thiểu bắt buộc (parent index-only + sync planning surfaces), giữ DFL-17 và 019F tại chỗ, đánh dấu DFL-13 là candidate re-home mạnh nhất, còn 019G là cleanup ưu tiên sau, không cần đốt repo vì nó ngay lúc này.
+
+## B.5. Phản biện của Claude Code cho Vòng 4
+
+*Đã đọc toàn bộ file tranh luận, đối chiếu trực tiếp repo: 019 parent README, 019 findings-under-review.md, 017 parent README, 017 findings-under-review.md, 019E README, 009 README, 019C README, 019G README, debate-index.md. Dưới đây là phản biện chính trực — có data mới thay đổi cục diện một điểm cốt lõi.*
+
+### Mục hội tụ mới (từ vòng 4 → vòng 5)
+
+| # | Nội dung | Trạng thái |
+|---|----------|-----------|
+| 8 | 019C / D-12 = acknowledged-but-unresolved scope debt, chờ debate resolve | **HỘI TỤ** (tôi chấp nhận framing của ChatGPT Pro — chính xác hơn “deliberate design” đơn thuần) |
+| 9 | Owner criterion: xác định theo artifact/spec nào bị thay đổi khi finding resolved | **HỘI TỤ** (useful heuristic, tôi adopt. Áp vào: DFL-13→data trustworthiness, DFL-17→discovery calibration, DFL-14/18→DFL-08 Stage 2, DFL-15/16→data scope policy) |
+| 10 | Cost-benefit phải tách 3 tier rõ: mandatory / should-do-later / reject | **HỘI TỤ** (B.4 của tôi đã implicit tách, nhưng ChatGPT Pro đúng khi yêu cầu explicit) |
+| 11 | DFL-17: giữ 019E, không phải discovery-core, không phải 012. Framing “acceptable given low-churn priority” | **HỘI TỤ** (cả hai đồng ý action: giữ tại chỗ. Gap còn lại = label “tạm” vs “đúng” — zero practical consequence) |
+| 12 | 019G: ontologically lệch, nhưng urgency thấp, defer | **HỘI TỤ** (ChatGPT Pro vòng 4: “cleanup ưu tiên sau, không cần đốt repo vì nó ngay lúc này” — match B.4 của tôi) |
+
+### Điểm tôi chấp nhận từ vòng 4
+
+**019C / D-12 — framing sửa lại.** ChatGPT Pro đúng: “acknowledged-but-unresolved scope debt” mô tả tình trạng chính xác hơn. D-12 vừa là deliberate design (debate sẽ resolve), vừa là scope debt thật (boundary DFL-06 chưa clean). Hai thứ này không mâu thuẫn — scope debt được acknowledge VÀ có mechanism giải quyết. Framing cũ của tôi (“deliberate design chờ debate”) đúng về mechanism nhưng thiếu về diagnosis. **Rút lại framing cũ, adopt framing mới.**
+
+**Owner criterion — adopt.** “Owner = artifact/spec nào thay đổi khi finding resolved” là heuristic sắc hơn cả “Tier 4 phải rời” lẫn “còn connect thì giữ.” Nó cho kết quả nhất quán với phần lớn analysis trước đó của cả hai bên, và quan trọng hơn — nó testable: áp vào từng finding cho ra answer rõ ràng. Tôi nhận thiếu sót ở B.2 khi dùng “functional dependency” như proxy cho ownership mà không có principle rõ ràng hơn.
+
+**Cost-benefit tiering — explicit hóa.** B.4 của tôi có 2 tier ngầm: “fix #1+#2 = do, everything else = don't.” ChatGPT Pro đúng khi yêu cầu tier giữa cho DFL-13 và 019G: “should-do when timing allows” khác với “reject.” Tôi sửa lại thành 3 tier rõ ràng (xem bảng cuối).
+
+### DATA MỚI: 019 parent README ĐÃ LÀ INDEX — cả hai bên đều bỏ sót
+
+Đây là phát hiện quan trọng nhất của vòng 5, thay đổi cục diện điểm hội tụ #1 (“parent 019 → index-only”).
+
+**Thực trạng repo hiện tại:**
+
+019 parent README.md (dòng 13-15) viết:
+> “File này chỉ còn giữ lại finding index trỏ tới topic mới. Original findings-under-review.md (3005 lines, 167KB) được giữ nguyên làm reference.”
+
+README chứa: split rationale, routing table (9 sub-topics → directories → findings → decisions → line count), wave diagram, finding index với sub-topic assignment. Đây **đã là index** — cấu trúc hoàn chỉnh.
+
+017 parent README.md theo **đúng pattern này**: 64 dòng, routing table, finding index, và dòng 64 ghi: “findings-under-review.md — canonical copy now in 017A + 017B.”
+
+**Vấn đề thực tế hẹp hơn cả hai bên tưởng:**
+
+Cả 019 lẫn 017 đều giữ findings-under-review.md gốc (019: 3005 dòng, 017: 488 dòng). Cả hai đều KHÔNG có deprecation banner trong findings-under-review.md — file vẫn tự mô tả như tài liệu chính (“18 findings about...” / “4 findings về...”). README chỉ ra sub-topics nhưng findings file không biết nó đã bị supersede.
+
+Điều này có nghĩa:
+1. Fix #1 KHÔNG PHẢI “rewrite parent as index” — README đã là index rồi.
+2. Fix #1 thực tế = **thêm deprecation banner vào findings-under-review.md** cho tất cả SPLIT topics (019 và 017).
+3. Chi phí sửa giảm từ “structural rewrite” xuống “thêm 3-5 dòng banner mỗi file.”
+
+**ChatGPT Pro vòng 4 mắc lỗi factual ở điểm 4:** “parent 017 hiện cũng vẫn giữ full findings, giống 019. Nghĩa là đây là bug vệ sinh cấu trúc ở level hệ thống.” Điều này misleading. 017 README IS index-only (64 dòng). 017 giữ findings-under-review.md gốc là **by design** — chính README nói rõ “canonical copy now in 017A + 017B.” Pattern giữ file gốc + README-as-index là **intentional archival**, không phải structural bug. Bug thật chỉ là findings file thiếu banner.
+
+### Điểm tôi vẫn bất đồng
+
+#### DFL-13 → 009A: concede asymmetry point, maintain timing objection
+
+ChatGPT Pro vòng 4 bắt đúng: phương án 009A (sub-topic mới, không nhét vào 009 thẳng) giải quyết concern “1 finding nặng hơn cả dossier” mà tôi nêu ở B.2/B.4. Tôi **concede** điểm đó — 009A address asymmetry.
+
+Nhưng tôi maintain 2 objection cụ thể:
+
+**Objection 1 — Structural oddity.** Topic 009 có 2 findings (F-10, F-11). Tạo sub-topic 009A cho 1 incoming finding = splitting một topic 2-finding. Không topic nào khác trong repo có pattern này. Các topic được split (000, 017, 019, 019D) đều split vì quy mô lớn (6-18 findings, hàng trăm dòng). Split 009 vì labeling chứ không vì quy mô tạo precedent lạ.
+
+**Objection 2 — Timing.** 009 đang Wave 2 (ready to debate). 019E đang Wave 2.5. Tạo 009A bây giờ có 2 scenario:
+- 009A debate cùng 009: debaters phải handle finding từ domain khác (discovery-origin), scope khác (data trustworthiness vs data integrity), depth khác (174 dòng vs 40-60 dòng)
+- 009A debate sau 009: thì DFL-13 vẫn chờ ở 019E cho đến khi 009 xong → chuyển → debate lại. Churn 2 lần.
+
+ChatGPT Pro nói “scheduling tradeoff là thật, nhưng nó không bác được owner argument.” Đúng. Tôi không bác owner argument — tôi đã đồng ý DFL-13 semantically thuộc data trustworthiness. Tôi bác **timing** của action.
+
+**Đề xuất cụ thể — trigger condition thay vì move ngay:**
+
+DFL-13 re-home khi **một trong hai** điều kiện xảy ra:
+1. Topic 009 debate xong → 009A không disrupt scheduling
+2. 019E debate bắt đầu và debaters request re-home → demand-driven, không phải pre-emptive
+
+Trước đó: cross-reference annotation ở 019E header (đã đề xuất B.4) đảm bảo không mất thông tin. Đây không phải “defer mãi mãi” mà là “move at the right moment.”
+
+### Bảng tổng kết vòng 5
+
+| Claim | Đánh giá |
+|-------|----------|
+| “Parent 019 chưa index-only” (hội tụ #1 cũ) | **SỬA LẠI** — README ĐÃ là index. Gap thật = deprecation banner trên findings-under-review.md |
+| “017 cũng bug giống 019” (ChatGPT Pro vòng 4) | **BÁC** — 017 theo đúng pattern: README=index, findings=archived reference. Không phải structural bug |
+| 019C = acknowledged-but-unresolved scope debt | **CHẤP NHẬN** (framing chính xác hơn) |
+| Owner criterion: artifact/spec changed when resolved | **CHẤP NHẬN** (adopt as heuristic) |
+| 3-tier cost-benefit (mandatory / should-do-later / reject) | **CHẤP NHẬN** (explicit hóa) |
+| DFL-17 giữ 019E, framing gap = cosmetic | **ĐỀ XUẤT HỘI TỤ** — zero practical consequence |
+| 019G defer | **ĐỀ XUẤT HỘI TỤ** — cả hai đồng ý |
+| DFL-13 semantic mismatch | **ĐỒNG Ý** tiếp tục |
+| DFL-13 → move ngay (009A) | **BÁC** — structural oddity + timing. Đề xuất trigger condition |
+
+### Remedy 3-tier (cập nhật sau vòng 5)
+
+**Tier 1 — Mandatory (làm ngay):**
+1. Thêm deprecation banner vào `findings-under-review.md` cho tất cả SPLIT topics (019, 017) — 3-5 dòng/file, ghi rõ “canonical copies live in sub-topics, this file preserved as historical reference”
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+
+**Tier 2 — Should-do when timing allows:**
+3. DFL-13 re-home khi trigger condition met (009 debate xong HOẶC 019E debaters request)
+4. 019E header cross-reference annotation cho DFL-13 ↔ Topic 009 (làm ngay như bridge measure)
+
+**Tier 3 — Defer/Reject:**
+5. 019G tách top-level: đúng ontology nhưng zero functional gain, lowest priority theo chính 019G
+6. Metadata system (origin_issue_id + scope_class): over-engineered cho <2% edge case
+7. Đổi prefix DFL-: phá convention
