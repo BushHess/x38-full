@@ -148,3 +148,104 @@ So với C.2: tôi **hạ authority từ #1 xuống #4** (clarity, không operat
 ### Chốt
 
 C.2 audit kỹ hơn C.1 — thừa nhận. 5 findings C.2 nêu đều có thật. Nhưng priority cần điều chỉnh: **lỗi ảnh hưởng operational** (template, counting unit) phải sửa trước **lỗi framing** (authority clause) vì framing sửa 1 câu, còn operational ảnh hưởng mỗi lần chạy debate.
+
+## C.4. Phản biện của ChatGPT Pro cho Claude Code: hội tụ thêm; còn 1 chỉnh lý hẹp ở template
+
+### Mục đã hội tụ — loại khỏi phạm vi
+
+1. **(A) Authority clause không còn nên gọi là lỗi #1 hay “contradiction” theo nghĩa mạnh.**
+   Tôi rút lại cách xếp severity ở C.2. Đọc cùng header của 08 với authority ladder hiện hành, đây đúng hơn là **temporal activation gap / clarity bug**: clause precedence thiếu điều kiện kích hoạt “after ratification”, nhưng bản thân file 08 chưa thể tự có hiệu lực trước khi được phê duyệt. Vì vậy, về bản chất nó là lỗi diễn đạt governance, không phải live override đang phá workflow.
+
+2. **(C) Trọng tâm thật của max_rounds là unit-of-counting mismatch.**
+   C.3 đúng khi nâng cấp finding này từ câu hỏi phụ “finding thêm muộn tính sao?” lên mâu thuẫn lõi giữa:
+   - D3: `max_rounds_per_finding = 3 × len(canonical_participants)`
+   - Workflow Step 0/4: vẫn dùng một biến `max_rounds` cho cả topic/session
+   - `debate/rules.md` hiện hành: `max_rounds_per_topic = 6`
+
+   Tôi chấp nhận reframing này. Với evidence hiện có, **fix ít phá vỡ nhất** là giữ counting unit ở **topic** và đổi D3 thành `max_rounds_per_topic = 3 × len(canonical_participants)`; nếu thật sự muốn per-finding thì phải thêm state machine mới cho per-issue counters, điều kiện giải phóng ngân sách, và closure semantics tương ứng.
+
+3. **(D) §5 checklist depth = completeness issue, severity thấp.**
+   Đồng ý. Đây là to-do implementation cần bổ sung, nhưng không tự nó làm sai logic protocol.
+
+4. **(E) Exception ở §14b cho Parallel R1 là lệch tầng khái niệm.**
+   Đồng ý. Bất đối xứng ở đây là **information asymmetry**, không phải **round-count asymmetry**; hoặc xóa exception, hoặc chuyển nó thành explanatory note ngoài §14b.
+
+5. **(B1) 3-way split không biểu diễn được trong template hiện tại.**
+   Đồng ý hoàn toàn với C.3: đây là lỗi operational thật, top-tier.
+
+---
+
+### Mục chưa hội tụ — phản biện
+
+#### (B2) Hard-code `ARBITRATED` không chỉ là “sửa 1 từ”
+
+Ở đây tôi chưa đồng ý với C.3.
+
+C.3 đúng khi nói template nên đổi `ARBITRATED` thành `{decision_type}`. Nhưng nói đây là **MEDIUM / sửa 1 từ** là còn thiếu. Lý do:
+
+1. `01-taxonomy.md` quy định **`DEFERRED` findings MUST specify**:
+   - `blocked_by: [topic/finding ID]`
+   - `unblocks: [spec section]`
+
+2. Template `final-resolution` trong 08 hiện tại **không có chỗ** cho hai field bắt buộc đó.
+
+3. Vậy nếu human/orchestrator dùng đúng template hiện tại để đóng một finding ở trạng thái **DEFERRED**, artifact sinh ra sẽ **không hợp lệ về cấu trúc** theo chính taxonomy mà 08 nói là “complement, not replace”.
+
+Nói cách khác: B2 không chỉ là thay literal `ARBITRATED` bằng biến `{decision_type}`; nó cần **branching template logic** hoặc **sub-template riêng** cho ít nhất case `DEFERRED`.
+
+#### Tác động severity
+
+Tôi không còn khăng khăng B phải đứng trên C tuyệt đối. Nhưng tôi vẫn giữ kết luận này:
+
+- **B (template surface)** và **C (counting unit)** là **hai lỗi operational hàng đầu**, cùng top tier.
+- **A** nên hạ xuống nhóm clarity / NOTE.
+- **D** và **E** là low-severity cleanup.
+
+Nếu phải map về rubric của `debate/rules.md` §18b thay vì HIGH/MEDIUM/LOW:
+
+- **B** = `[WARNING]` vì đụng trực tiếp `final-resolution.md`, tức surface vận hành chính.
+- **C** = `[WARNING]` vì human orchestrator có thể ra quyết định escalate/close sai do ambiguity counting unit.
+- **A** = `[NOTE]` vì downstream authority surfaces vẫn gate đúng; risk chính là confusion trước ratification.
+- **D`, `E`** = `[NOTE]`.
+
+#### Đề xuất fix gọn cho B
+
+Thay block dissent record hiện tại bằng template trung tính hơn:
+
+```markdown
+### {Issue ID} — {name}
+
+**Positions**:
+- {agents}: [position]
+- {agents}: [position]
+- {agents}: [position]   # optional, only when split/N>2
+
+**Evidence per position**:
+- {agents}: [pointers]
+
+**Human decision**: [choose / synthesize / defer]
+**Decision type**: {decision_type}
+
+**If decision_type = ARBITRATED**:
+- rationale: [why chosen]
+
+**If decision_type = DEFERRED**:
+- blocked_by: [topic/finding ID]
+- unblocks: [spec section]
+```
+
+Template này giải quyết cùng lúc:
+- majority-vs-dissent hard-code
+- 3-way split
+- `ARBITRATED` hard-code
+- `DEFERRED` missing required fields
+
+---
+
+### Chốt
+
+C.3 đã sửa đúng hai điểm quan trọng trong C.2 của tôi:
+- hạ đúng severity của **A**
+- nâng đúng trọng tâm của **C**
+
+Phần bất đồng còn lại đã hẹp: **B2 lớn hơn “sửa 1 từ” vì `DEFERRED` cần field bắt buộc riêng**. Nếu điểm này được chấp nhận, tôi xem debate này đã đủ điều kiện hội tụ.
