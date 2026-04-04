@@ -981,16 +981,16 @@ B.16 đúng: “hội tụ hoàn toàn” cần gắn scope. Sửa lại: **đã
 3. Fix 019E control surface:
    - Thêm 019G vào tension table (README + findings cross-topic tensions)
    - Sửa “NONE from other 019 sub-topics” → ghi nhận 019G content-dependency (informational, not scheduling blocker)
-   - Thêm D-XX cho Category C owner-assignment (mandatory)
+   - Thêm D-22 cho Category C owner-assignment (mandatory)
 
-**Tier 2 — XÓA.** Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled bởi debate process (D-15, D-16, D-XX mới).
+**Tier 2 — XÓA.** Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled bởi debate process (D-15, D-16, D-22).
 
 **Tier 3 — Defer/Reject:**
 1. 019G tách top-level: đúng ontology nhưng zero functional gain
 2. Metadata system (origin_issue_id + scope_class): over-engineered
 3. Đổi prefix DFL-: phá convention
 
-## Trạng thái: remedy hội tụ, repo chưa patch
+## Trạng thái: ĐÃ PATCH (2026-04-04)
 
 ---
 
@@ -1041,7 +1041,7 @@ Split 2026-04-02 tách 019 thành 9 sub-topic (019A-G, 019D1-D3). Hiệu quả:
 | 16 | DFL-13 là finding đa-owner (Category A/B/C, 3 scope khác nhau) | 9 |
 | 17 | Whole-finding re-home sai framing — cả hai rút | 9 |
 | 25* | Tier 2 re-home trigger bị xóa vì mâu thuẫn với multi-owner consensus | 13 |
-| 26* | D-XX cho Category C nâng lên mandatory | 13 |
+| 26* | D-22 (Category C owner-assignment) nâng lên mandatory | 13 |
 
 *\*Đánh số ngoài bảng 24 chính thức vì được concede cùng vòng.*
 
@@ -1075,11 +1075,11 @@ Split 2026-04-02 tách 019 thành 9 sub-topic (019A-G, 019D1-D3). Hiệu quả:
 3. **Fix 019E control surface** (5-7 dòng tổng):
    - Thêm 019G vào tension table (cả README lẫn findings cross-topic tensions)
    - Sửa "NONE from other 019 sub-topics" → ghi nhận 019G informational content-dependency (DFL-15 gates DFL-13 Category B)
-   - Thêm D-XX cho Category C owner-assignment vào decision summary (mandatory — closure tracking cần explicit decision slot)
+   - Thêm D-22 cho Category C owner-assignment vào decision summary (mandatory — closure tracking cần explicit decision slot)
 
 ### Tier 2 — XÓA
 
-Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled hoàn toàn bởi debate process qua D-15 (trustworthiness as framework stage?), D-16 (acquire cross-exchange data?), và D-XX mới cho Category C (owner: trustworthiness layer hay Stage 2?).
+Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled hoàn toàn bởi debate process qua D-15 (trustworthiness as framework stage?), D-16 (acquire cross-exchange data?), và D-22 (Category C owner: trustworthiness layer hay Stage 2?).
 
 ### Tier 3 — Defer/Reject
 
@@ -1112,11 +1112,20 @@ Các heuristic sau đây được hai bên adopt và có thể áp dụng cho au
 | Planning surfaces lệch registry | **Cao** | PLAN.md/EXECUTION_PLAN.md vẫn mô tả 017/019 monolith. Bất kỳ ai đọc planning surfaces thay vì debate-index sẽ hiểu sai workload và dependency. Fix = Tier 1 item #2. |
 | Parent findings file trông như live dossier | **Trung bình** | Thiếu banner → người đọc có thể edit parent thay vì sub-topic file. Fix = Tier 1 item #1. |
 | 019E thiếu 019G cross-reference | **Thấp** | Asymmetric gap: 019G→019E có, 019E→019G thiếu. Debaters 019E có thể không biết DFL-15 gates Category B. Fix = Tier 1 item #3. |
-| DFL-13 semantic mismatch | **Thấp** | DFL-13 về data trustworthiness, không phải discovery loop. Nhưng harm thấp vì: (a) 019E header ghi rõ independent, (b) interaction table + cross-topic tensions document dependencies, (c) debate process + D-15/D-16/D-XX handle category routing. |
+| DFL-13 semantic mismatch | **Thấp** | DFL-13 về data trustworthiness, không phải discovery loop. Nhưng harm thấp vì: (a) 019E header ghi rõ independent, (b) interaction table + cross-topic tensions document dependencies, (c) debate process + D-15/D-16/D-22 handle category routing. |
 | 019G ontologically lệch | **Rất thấp** | Đúng về ontology nhưng: đã independent, parallel debatable, self-contained, không block topic nào. Defer hợp lý. |
 
-## D.7. Trạng thái tính đến thời điểm đóng (2026-04-04)
+## D.7. Trạng thái (2026-04-04)
 
 - **Tranh luận**: HỘI TỤ HOÀN TOÀN về action plan (16 vòng, 24+ điểm hội tụ).
-- **Repo**: CHƯA PATCH. Tất cả 3 Tier 1 items chưa được triển khai.
-- **Hành động tiếp theo**: Triển khai Tier 1 (banner + sync + 019E control surface fix). Không cần thêm vòng tranh luận.
+- **Repo**: ĐÃ PATCH (2026-04-04). Tất cả 3 Tier 1 items đã triển khai.
+- **Files đã sửa** (8 files, ~60 dòng):
+  1. `debate/019-discovery-feedback-loop/findings-under-review.md` — SUPERSEDED banner + Status: SPLIT
+  2. `debate/017-epistemic-search-policy/findings-under-review.md` — SUPERSEDED banner + Status: SPLIT
+  3. `debate/019E-data-quality-validation/README.md` — dependency split, 019G tension, D-22 scope, files count
+  4. `debate/019E-data-quality-validation/findings-under-review.md` — 019G tension, D-22 decision, count 3→4
+  5. `debate/019-discovery-feedback-loop/README.md` — routing table D-22, decision count 21→22
+  6. `PLAN.md` — topic table SPLIT, dependency graph sub-topics, wave 2.5, journal, priority, summary, decision count 21→22
+  7. `EXECUTION_PLAN.md` — status table SPLIT, critical path, wave 2.5 detail, Topic 003 dep, milestones, steps, decision count 21→22
+  8. `tmp/scope_creep_topic_019xxx.md` — Section D audit summary + post-patch update
+- **Hành động tiếp theo**: Không. Tier 1 hoàn tất, Tier 2 đã xóa, Tier 3 deferred.
