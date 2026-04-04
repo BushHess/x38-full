@@ -214,9 +214,14 @@ debate/
     4. `debate/rules.md` — toàn bộ quy tắc tranh luận bao gồm steel-man (§7).
     5. `debate/prompt_template.md` — mẫu vòng (Prompt A/B/C).
     6. `debate/{TOPIC_DIR}/`:
+       - `README.md` → **ĐỌC TRƯỚC TIÊN**.
+         • Nếu `Status = SPLIT`: DỪNG. Reroute sang sub-topic từ routing table
+           trong README. Không load findings bên dưới.
+         • Nếu README liệt kê upstream dependencies (hard-dep): với mỗi upstream
+           topic, kiểm tra `debate/{UPSTREAM_DIR}/final-resolution.md` tồn tại.
+           Nếu thiếu → DỪNG, ghi lý do (fail-closed).
        - `final-resolution.md` → nếu tồn tại, áp dụng closed-topic check theo mode
        - `findings-under-review.md`
-       - `README.md`
        - `input_*.md` (nếu có — read-only reference, không phải authority)
     7. Artifact của bên kia (nếu đang phản biện — Prompt B).
     8. Round files gần nhất trong topic dir (chống lặp, đảm bảo liên tục).

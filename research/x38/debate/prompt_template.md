@@ -7,6 +7,11 @@ Trước khi viết:
 - Đọc `docs/online_vs_offline.md` (bắt buộc).
 - Đọc `x38_RULES.md` để xác nhận authority order:
   `published/ > debate/{TOPIC_DIR}/ > docs/design_brief.md > PLAN.md`.
+- Đọc `debate/{TOPIC_DIR}/README.md` **TRƯỚC**.
+  - Nếu `Status = SPLIT`: DỪNG — reroute sang sub-topic từ routing table trong README.
+  - Nếu README liệt kê upstream dependencies (hard-dep): với mỗi upstream topic,
+    kiểm tra `debate/{UPSTREAM_DIR}/final-resolution.md` tồn tại.
+    Nếu thiếu → DỪNG, ghi lý do (fail-closed).
 - Nếu `debate/{TOPIC_DIR}/final-resolution.md` đã tồn tại thì DỪNG:
   topic đã CLOSED, không mở debate mới.
 - Follow `AGENTS.md` for environment boundaries (working directory, git root, Python root).
@@ -34,14 +39,17 @@ Các bên tranh luận: Claude Code ↔ Codex
 
 Nhiệm vụ:
 1. Đọc `AGENTS.md` (nếu cần), `docs/online_vs_offline.md`, `x38_RULES.md`,
-   `debate/rules.md`, `debate/{TOPIC_DIR}/findings-under-review.md`, và evidence
-   liên quan đến topic.
-2. Đọc `debate/{TOPIC_DIR}/README.md` và `input_*.md` nếu có.
-3. Với mỗi issue có `current_status = Open`, đưa ra critique kèm:
+   `debate/rules.md`.
+2. Đọc `debate/{TOPIC_DIR}/README.md` TRƯỚC. Kiểm tra:
+   - Nếu `Status = SPLIT` → DỪNG, reroute sang sub-topic.
+   - Nếu upstream hard-dep chưa có `final-resolution.md` → DỪNG.
+3. Đọc `debate/{TOPIC_DIR}/findings-under-review.md`, `input_*.md` nếu có,
+   và evidence liên quan đến topic.
+4. Với mỗi issue có `current_status = Open`, đưa ra critique kèm:
    - classification (Sai thiết kế / Thiếu sót / Judgment call)
    - evidence pointer (file path + dòng, hoặc nguyên tắc kỹ thuật)
    - lập luận tấn công argument, không phải kết luận
-4. Kết thúc bằng bảng trạng thái theo mẫu trong rules.md §11.
+5. Kết thúc bằng bảng trạng thái theo mẫu trong rules.md §11.
 
 Sau khi bạn nêu ý kiến, tôi sẽ chuyển cho bên kia phản biện.
 ```
@@ -54,6 +62,11 @@ Gửi cho bên nhận phản biện. Sửa round number, `{TOPIC_DIR}`, và đư
 artifact cho khớp vòng hiện tại.
 
 Trước khi viết:
+- Đọc `debate/{TOPIC_DIR}/README.md` **TRƯỚC**.
+  - Nếu `Status = SPLIT`: DỪNG — reroute sang sub-topic từ routing table trong README.
+  - Nếu README liệt kê upstream dependencies (hard-dep): với mỗi upstream topic,
+    kiểm tra `debate/{UPSTREAM_DIR}/final-resolution.md` tồn tại.
+    Nếu thiếu → DỪNG, ghi lý do (fail-closed).
 - Nếu `debate/{TOPIC_DIR}/final-resolution.md` đã tồn tại thì DỪNG:
   topic đã CLOSED, không viết thêm round artifact.
 - Đọc `AGENTS.md` (nếu chưa có trong context), `docs/online_vs_offline.md`,

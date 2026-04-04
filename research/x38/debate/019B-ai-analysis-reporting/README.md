@@ -37,14 +37,13 @@ This topic does NOT own:
 | D-13 | AI analysis layer: stateless or stateful (memory across reports)? | DFL-01 | Stateless / Stateful (contamination risk per DFL-04) |
 | D-14 | Findings cap per report? | DFL-02 | Fixed N=10 / Dynamic by confidence / Uncapped |
 
-All 4 decisions are Tier 2 (mechanisms). They depend on 019A resolving D-01, D-02,
-D-03 first (foundational boundary decisions).
+All 4 decisions are Tier 2 (mechanisms). They depend on 019A closing first
+(foundational boundary decisions).
 
 ## Dependencies
 
-- **Upstream (must resolve first)**:
-  - 019A (discovery foundations) — D-01 (analysis vs ideation boundary), D-02
-    (human-mediated feedback contamination status), D-03 (code authoring scope).
+- **Upstream (must close first)**:
+  - 019A (discovery foundations) — all foundational boundary decisions (D-01, D-02, D-03).
     019B's decisions require these foundational answers.
   - 018 (CLOSED) — SSE-D-02 (bounded ideation), SSE-D-11 (APE v1)
   - 002 (CLOSED) — F-04 (contamination firewall)
@@ -77,7 +76,7 @@ AI analysis hooks).
     automatic + stateful maximizes coverage but maximizes contamination risk.
   - D-14: Findings cap interacts with D-08 trigger mode (automatic generates
     more reports, cap becomes more important).
-- Prerequisite check: 019A D-01, D-02, D-03 must be resolved before debate starts.
+- Prerequisite check: 019A must close before debate starts.
 
 ## Files
 

@@ -55,11 +55,11 @@ This topic does NOT own:
 ## Dependencies
 
 - **Upstream (CLOSED)**: 018 (bounded ideation, recognition stack), 002 (contamination firewall), 004 (meta-knowledge, MK-17 shadow-only)
-- **Upstream (OPEN)**: 019A — needs DFL-09 scope resolution (D-01: is analysis exempt from OHLCV-only?). DFL-06 scans all 13 fields; if D-01 = NO, scope changes
+- **Upstream (must close first)**: 019A — foundational decisions including DFL-09 scope (D-01: is analysis exempt from OHLCV-only?). DFL-06 scans all 13 fields; if D-01 = NO, scope changes
 - **Parallel**: 019B (AI analysis layer — DFL-07 provides the methodology toolkit that DFL-01's analysis layer would use)
 
 **Wave placement**: Wave 2.5B (after 019A, parallel with 019B). Depends on 019A
-outcome for D-01 (SSE-D-02 scope), which determines whether DFL-06 can use
+closing (including D-01 SSE-D-02 scope resolution), which determines whether DFL-06 can use
 non-OHLCV fields. Must close BEFORE 003 — analyses may introduce protocol
 interactions.
 

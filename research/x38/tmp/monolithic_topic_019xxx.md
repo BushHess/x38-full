@@ -670,3 +670,31 @@ Về **thủ tục đóng hồ sơ**, C.8 mới là lượt parity/closure-audit
 1. human researcher chọn **Phương án A** hoặc **B** cho TMP-019-02;
 2. ghi judgment đó vào `judgment-call-deliberation.md` hoặc trực tiếp trong `final-resolution.md`;
 3. chạy **Prompt C** để đồng bộ `final-resolution.md`, `findings-under-review.md`, `README.md`, `debate-index.md`.
+
+---
+
+# D. JUDGMENT CALL — HUMAN RESEARCHER
+
+**NOTE** (Judgment call, TMP-019-02): Chọn **Phương án A** — chuẩn hóa dependency về topic-level closure.
+
+**Lý do**: authority surface hiện tại của repo là topic-level (`final-resolution.md`); downstream 019B/019D1/019D2/019D3 đã vận hành theo model này, còn 019C là ngoại lệ duy nhất nhưng vẫn được schedule after 019A. Giữ mixed-granularity sẽ đòi thêm protocol authoritative cho partial-resolution mid-topic, hiện repo chưa có.
+
+**Decision owner**: human researcher
+
+**Ngày**: 2026-04-04
+
+### Bảng trạng thái (FINAL — post-judgment)
+
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — README trước findings; abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Judgment call → DECIDED** | `[WARNING]` — Option A: topic-level closure, gate bằng `final-resolution.md`. Sửa README 019B/019C. |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — inline TL;DR nếu cần |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Action items
+
+1. **Patch `rules.md` §25**: Đảo thứ tự — README.md trước findings-under-review.md. Thêm SPLIT guard + dependency gate (check upstream `final-resolution.md`, fail-closed).
+2. **Patch `prompt_template.md` Prompt A/B**: Tương tự — README trước, SPLIT guard, dependency gate.
+3. **Sửa 019B README**: "must resolve first" + named-decisions → "must close first" (whole-topic).
+4. **Sửa 019C README**: "needs D-01" → "must close first: 019A" (whole-topic).
