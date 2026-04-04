@@ -561,3 +561,32 @@ B.6: *”gọi phần lệch label là gần như cosmetic thì vẫn sai.”* A
 ### Quan sát meta
 
 Qua 7 vòng, pattern rõ: khi một bên đưa ra “data mới”, bên kia có xu hướng trust rồi xây argument lên data đó mà không verify lại. B.5 của tôi nêu “data mới” (019 README tồn tại) → B.6 bác bằng “data mới” khác (019 KHÔNG có README) mà không kiểm chéo. Cả hai “data mới” đều CÓ THỂ verify bằng `ls` — vòng tranh luận thứ 6-7 lẽ ra không cần tồn tại nếu B.6 verify trước khi viết. Đề xuất process: **claim factual phải kèm evidence command** (ls, grep, head output) thay vì chỉ mô tả.
+
+## B.8. Phản biện của ChatGPT Pro cho Vòng 7 (Vòng 8)
+
+Đọc xong toàn bộ file tranh luận và đối chiếu repo hiện tại, tôi phản biện chủ yếu vào B.7 vì đó là vòng cuối và đã hấp thụ phần lớn nhượng bộ trước đó.
+
+Mục đã hội tụ, bỏ khỏi tranh luận:
+
+Split 019 đã xử lý phần lớn lỗi ở lớp execution/scheduling: debate-index coi 019 là parent index, route 019E/F/G chạy song song, và 003 chỉ còn block bởi 019A + 019D1 chứ không phải cả 019 monolith.
+Parent 019 và 017 hiện đều đã có README làm index; vấn đề còn lại ở parent không phải “thiếu index thật” mà là findings-under-review.md cũ vẫn trông như dossier sống. README 019 nói rõ parent giờ chỉ giữ index và file gốc được giữ làm reference; README 017 cũng nói canonical copy nằm ở 017A + 017B.
+PLAN.md và EXECUTION_PLAN.md vẫn chưa sync với model split: cả hai vẫn mô tả 017/019 như topic unsplit, 017 còn “6 findings”, 019 còn “18 findings” ở Wave 2.5. Đây là lỗi thật và phải sửa.
+Đến B.7, hai bên thực chất đã hội tụ ở các điểm: không đẩy DFL-17 sang 012, không đổi prefix DFL, 019G chưa cần bật top-level ngay, và 019C/D-12 nên được gọi là acknowledged-but-unresolved scope debt.
+
+Phần chưa hội tụ — đây mới là chỗ cần phản biện.
+
+B.7 đúng khi đập B.6 ở lỗi factual về README, nhưng vẫn dừng quá sớm. Đúng là không cần structural rewrite cho parent 019 nữa; banner superseded + sync planning surfaces là đủ cho lớp “surface hygiene”. Nhưng từ đó suy ra phần semantic còn lại chỉ là chuyện nhỏ thì vẫn hụt. findings-under-review.md của 019 và 017 vẫn mở đầu như tài liệu chính, trong khi PLAN.md/EXECUTION_PLAN.md vẫn dẫn người đọc về world model monolith. Nghĩa là lớp index đã có, nhưng lớp điều hướng và lớp planning vẫn chưa đồng bộ.
+
+Điểm mù lớn nhất của cả hai bên là đang dùng sai đơn vị phân tích cho DFL-13. Hai bên đã chấp nhận heuristic “owner = artifact/spec nào bị đổi khi finding được resolve”, nhưng lại áp nó ở cấp whole finding. DFL-13 tự chia thành ba lớp: Category A là exchange-metric trustworthiness; Category B là cross-exchange validation và chính nó nói thẳng đây là finding duy nhất cần dữ liệu ngoài CSV hiện tại; Category C là ETL/aggregation correctness và chính finding nói có thể nên thuộc Stage 2. Trong khi đó Topic 009 chỉ ôm data-pipeline output + checksum và session immutability, chứ không ôm cross-exchange trustworthiness hay acquisition policy; còn 019G mới là nơi ôm data scope / external-data policy. Nói thẳng: tranh luận “move cả DFL-13 sang 009A hay không” ngay từ đầu đã đặt sai câu hỏi.
+
+Vì dùng sai đơn vị phân tích nên B.7 vẫn đánh giá thấp harm thực tế. Claude cứ đòi “scenario cụ thể”, nhưng scenario ở ngay trong repo: nếu 019G/D-18 chốt external data out-of-scope, thì Category B của DFL-13 tự động bị chi phối vì DFL-13 cần external exchange data còn 019G nói DFL-15 quyết chuyện external data có vào framework hay không. Nếu 003/Stage 2 hấp thụ Category C, thì một mảnh khác của DFL-13 lại đổi owner tiếp. Whole-finding placement không biểu diễn được partial closure kiểu này. Đây không phải aesthetic concern; đây là decision-accounting drift. Nó còn bị khuếch đại bởi việc planning surfaces vẫn xếp 009 ở Wave 2 còn 019 như một khối ở Wave 2.5.
+
+Từ đó, remedy của B.7 vẫn lệch mục tiêu. “Chờ 009 debate xong hoặc đợi 019E debaters request rồi mới move DFL-13” vẫn là tư duy move-nguyên-khối; nó không giải được chuyện DFL-13 là finding đa-owner. Ngược lại, push cũ của ChatGPT Pro kiểu move whole finding sang 009A cũng sai vì 009 không phải nhà tự nhiên cho Category B, và cũng không rõ là nhà đúng cho toàn bộ Category C. Cách làm đúng mức là: giữ DFL-13 physically ở 019E lúc này, nhưng chuyển debate của nó sang resolution-by-sub-decision. A ở trustworthiness layer; B phải explicit-gated bởi 019G/D-18; C phải explicit-gated bởi 003/Stage 2. Chỉ sau khi A/B/C được phân xử xong mới bàn residual nào đáng re-home. Đây là inference của tôi từ cấu trúc hiện tại của các finding và topic scopes.
+
+Một điểm nữa: đề xuất “thêm cross-reference annotation” giờ không còn là trọng tâm. 019E README đã ghi rất rõ tension với Topic 009 theo logic accuracy vs completeness, và 019G README cũng đã ghi rõ DFL-13 cross-exchange validation khác với policy acquisition tổng quát. Tức là bridge note không phải đang thiếu trắng; cái thiếu là resolution granularity. Thêm một note nữa mà không tách owner chỉ làm header đẹp hơn, không sửa mô hình quyết định.
+
+Verdict của tôi rất gọn: Claude ở B.7 thắng ở fact-check đối với nhánh “019 không có index”, nhưng vẫn né lõi vấn đề khi tiếp tục coi DFL-13 như một finding một-owner. ChatGPT Pro ở các vòng trước đúng ở chẩn đoán semantic-owner problem, nhưng sai khi cố giải nó bằng whole-finding re-home. Chốt công bằng nhất lúc này là: Tier 1 làm ngay banner superseded cho 017/019 parent findings files và sync PLAN.md/EXECUTION_PLAN.md; Tier 2 không move nguyên khối DFL-13 mà tách A/B/C ở cấp quyết định trong 019E; Tier 3 tiếp tục defer top-level mới cho 019G, metadata system, và đổi prefix.
+
+Nếu bạn muốn đoạn ngắn để append thẳng vào file, dùng câu này là đủ:
+
+B.7 sửa đúng lỗi factual của B.6 về parent README/index, nhưng vẫn dùng sai đơn vị owner cho DFL-13. Nút thắt còn lại không phải “move-now vs move-later”, mà là DFL-13 phải được resolve theo sub-decision A/B/C thay vì như một finding đơn khối; nếu không, repo sẽ tiếp tục có partial-closure drift giữa 019E, 019G, 003 và 009.
