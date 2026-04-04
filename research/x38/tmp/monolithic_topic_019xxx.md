@@ -1,3 +1,8 @@
+> **RESOLVED** (2026-04-04) — Tất cả 4 issues đã disposition xong (3 Converged + 1 Judgment call DECIDED).
+> 4 patches đã áp vào repo: SPLIT guard + dependency gate (prompt_template.md, rules.md §25),
+> 019B/019C README chuẩn hóa về topic-level closure. debate-index.md đã sync.
+> File này là audit trail lịch sử — không còn action items mở.
+
 > **QUY ĐỊNH TRANH LUẬN — ĐỌC TRƯỚC KHI PHẢN BIỆN**
 >
 > 1. Mỗi lượt phản biện bắt đầu bằng tiêu đề có đánh số: **"C.N. Phản biện của \<tên agent\> cho \<tên agent đối phương\>: ..."** (N tăng dần từ 1)

@@ -2,7 +2,8 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-04-03 — Quality audit: Topic 017 SPLIT into 017A (intra-campaign ESP, v1)
+**Cập nhật**: 2026-04-04 — debate-index sync fix: (1) 019D2 tách khỏi 019D1 (019D2 chỉ cần 019A, không cần 019B); (2) 019D3 thêm 019A vào HARD-dep (README ghi 019A + 019D2); (3) internal waves sửa phản ánh 019D2 có thể song song 019B. Tất cả khớp với README authoritative.
+Previous: 2026-04-03 — Quality audit: Topic 017 SPLIT into 017A (intra-campaign ESP, v1)
 + 017B (inter-campaign ESP, v2). 3 findings each. Scheduling benefit: 003 only needs 017A.
 Topic 016: pre-debate burden of proof framework added (decision tree, evidence requirements).
 Topic 019C: debate scope clarification added (focus on D-12 meta-decision, not individual analyses).
@@ -104,8 +105,9 @@ Wave 2.5:  016 (bounded recalibration)    ← chờ 001✅ + 002✅ + 010✅ + 0
            019E/019F/019G (independent)   ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
                ↓
            019B + 019C (after 019A)       ← chờ 019A (Wave 2.5B)
-           019D1 + 019D2 (after 019A+B)   ← chờ 019A + 019B (Wave 2.5C)
-           019D3 (after 019D2)            ← chờ 019D2 (Wave 2.5D, sequential)
+           019D1 (after 019A+B)            ← chờ 019A + 019B (Wave 2.5C)
+           019D2 (after 019A)             ← chờ 019A (Wave 2.5B′, có thể song song 019B)
+           019D3 (after 019D2)            ← chờ 019D2 + 019A (Wave 2.5D, sequential)
            017B (inter-campaign ESP, v2)  ← chờ 017A (sequential)
                ↓
 Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A+019D1 (017B can run parallel)
@@ -128,7 +130,7 @@ minor adjustments sau nếu cần.
 decisions. 016 chạm 5 Wave 2 topics (001, 002, 010, 011, 015). 017A chạm 4
 Wave 2 topics (002, 008, 010, 013). 019 sub-topics kế thừa 018 + 002 + 004.
 016, 017A, 019A, 019E/F/G KHÔNG depend lẫn nhau — debate song song. 019 has
-internal waves: 019A (Tier 1 blocker) → 019B/C → 019D1/D2 → 019D3.
+internal waves: 019A (Tier 1 blocker) → 019B/C + 019D2 → 019D1 (cần 019A+B) + 019D3 (cần 019A+019D2).
 019E/F/G independent of 019A — debate anytime. 017B depends on 017A (sequential).
 **003 chỉ cần 017A** (v1 pipeline) — 017B (v2 contracts) có thể chạy song song với 003.
 
@@ -186,8 +188,9 @@ convergence notes liên quan — không lặp lại full text.
 019A (foundations)   ← HARD-dep from 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (Tier 1 blocker)
 019E/F/G (independent) ← HARD-dep from 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
 019B/C              ← HARD-dep from 019A
-019D1/D2            ← HARD-dep from 019A + 019B
-019D3               ← HARD-dep from 019D2 (sequential)
+019D1               ← HARD-dep from 019A + 019B
+019D2               ← HARD-dep from 019A
+019D3               ← HARD-dep from 019A + 019D2
 017B (inter-ESP)    ← HARD-dep from 017A
     ↓
 003 (protocol) ← HARD-dep from 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1 (017B can run parallel)
@@ -244,5 +247,5 @@ thì ghi "Không có tension đã biết."
 
 1. **Topic 007** (philosophy-mission) — debate ĐẦU TIÊN — **CLOSED** (2026-03-23)
 2. **Wave 2** (10 remaining topics, 001 closed early) — song song sau khi 007 closed
-3. **Wave 2.5**: 016 + 017A + 019A + 019E/F/G (song song, sau Wave 2 prereqs) → 019B/C (sau 019A) → 019D1/D2 (sau 019A+B) → 019D3 (sau 019D2) + 017B (sau 017A)
+3. **Wave 2.5**: 016 + 017A + 019A + 019E/F/G (song song, sau Wave 2 prereqs) → 019B/C + 019D2 (sau 019A) → 019D1 (sau 019A+B) + 019D3 (sau 019A+019D2) + 017B (sau 017A)
 4. **Wave 3**: Topic 003 (protocol-engine, cần 017A) + Topic 014 (execution) — cuối cùng
