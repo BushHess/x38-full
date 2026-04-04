@@ -358,12 +358,13 @@ human intuition and cannot be fully systematized.
 | 009 | F-10 | Data integrity audit scope — DFL-13 proposes trustworthiness layer BELOW integrity | DFL-13 validates data accuracy, F-10 validates data completeness. Complementary, not competing |
 | 003 | F-05 | Pipeline stages — DFL-13 trustworthiness + DFL-10 Stage 2.5 | 003 owns pipeline stage design. DFL-13 proposes; 003 decides staging |
 | 019F | DFL-14, DFL-18 | DFL-13 Category A (volume trustworthiness) affects DFL-14 Layer 2 DGP detection and DFL-18 volume regime definitions | If volume is unreliable, both regime-detection methods are compromised. DFL-13 validation should precede or run in parallel |
+| 019G | DFL-15 | DFL-13 Category B (cross-exchange validation) requires external data — DFL-15 scopes whether external data enters the framework | 019G scopes the general acquisition policy; 019E scopes the specific validation need. D-18 outcome gates Category B feasibility |
 
 ---
 
 ## Decision summary — what debate must resolve
 
-Debate for Topic 019E must produce decisions on these 3 questions. All are
+Debate for Topic 019E must produce decisions on these 4 questions. All are
 Tier 4 — independent of discovery loop architecture (Tier 1-3). Can resolve
 in any order.
 
@@ -374,6 +375,7 @@ in any order.
 | D-15 | Should data trustworthiness be a framework stage? | DFL-13 | Stage 1.5 (before audit) / Part of Stage 2 / One-time validation |
 | D-16 | Cross-exchange data: acquire for validation or document as assumption? | DFL-13 | Acquire (one-time) / Skip (accept risk) |
 | D-20 | Pipeline validation via synthetic data: before or after DFL-06? | DFL-17 | Before (validate pipeline first) / After (calibrate from real results) / In parallel |
+| D-22 | DFL-13 Category C owner: trustworthiness layer (019E) or Stage 2 integrity audit (003)? | DFL-13 | Stay in 019E (trustworthiness) / Route to 003 (Stage 2 extension) / Split (ETL correctness → 003, aggregation validation → 019E) |
 
 ---
 

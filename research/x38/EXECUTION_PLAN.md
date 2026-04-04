@@ -25,13 +25,13 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 016 | **OPEN** (2026-03-23). Bounded recalibration path. Wave 2.5. 2 findings (BR-01, BR-02). |
 | Topic 007 | **CLOSED** (2026-03-23). 4 rounds, 4/4 Converged. Xem `debate/007-philosophy-mission/final-resolution.md`. |
 | Topic 001 | **CLOSED** (2026-03-23). 6 rounds, 3/3 resolved (2 Converged + 1 Judgment call). Xem `debate/001-campaign-model/final-resolution.md`. |
-| Topic 017 | **OPEN** (2026-03-24). Epistemic search policy. Wave 2.5. 6 findings (ESP-01→ESP-04 + SSE-08-CON, SSE-04-CELL from Topic 018). |
+| Topic 017 | **SPLIT** (2026-04-03). Epistemic search policy → 017A (intra-campaign ESP: ESP-01, ESP-04, SSE-04-CELL) + 017B (inter-campaign ESP: ESP-02, ESP-03, SSE-08-CON). 3 findings each. 003 only needs 017A. |
 | Topic 002 | **CLOSED** (2026-03-25). 6 rounds, 7/7 resolved (3 Converged + 4 Judgment call). Xem `debate/002-contamination-firewall/final-resolution.md`. |
 | Topic 010 | **CLOSED** (2026-03-25). 6 rounds, 4/4 resolved (3 Converged + 1 Judgment call). Xem `debate/010-clean-oos-certification/final-resolution.md`. |
 | Topic 018 | **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed to 006/015/017/013/008/003. Prior 4-agent debate (7 rounds, extra-canonical) served as input evidence. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
 | Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
-| Topic 019 | **OPEN** (2026-03-29). Discovery feedback loop. Wave 2.5. 18 findings (DFL-01→DFL-18). DFL-01→12: discovery loop architecture. DFL-13→18: data foundation & quality assurance (added 2026-03-31). 21 decisions in 4 tiers. All deps satisfied (018✅, 002✅, 004✅). Song song 017. |
+| Topic 019 | **SPLIT** (2026-04-02). Discovery feedback loop → 9 sub-topics: 019A (foundations, Tier 1 blocker), 019B (AI analysis), 019C (data exploration), 019D1 (pipeline), 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics), 019G (data scope). 18 findings, 21 decisions. Internal waves: 019A→B/C→D1/D2→D3. 019E/F/G independent, song song. 003 only needs 019A+019D1. |
 | Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
 | Specs drafted | SEEDED (1): `meta_spec.md` seeded from 002/004/007/008 closures (eligible for DRAFTING). DRAFTING (3): `architecture_spec.md` from 001/002/004/007/008/010/013/018 closures (§14 proposal from 019); `discovery_spec.md` from 018 closure (§6-§11 proposals from 019); `methodology_spec.md` from 013 closure. |
 | Specs published | ZERO |
@@ -57,10 +57,14 @@ Wave 2:    018✅ (search-space expansion) ← CLOSED (2026-03-27, routings conf
            015 (artifact/version)         ← song song, soft-dep 007✅, 008✅
                ↓
 Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 011 + 015
-           017 (epistemic search policy) ← chờ 002✅ + 008✅ + 010✅ + 013✅ — ALL DEPS SATISFIED
-           019 (discovery feedback loop) ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED
+           017A (intra-campaign ESP)     ← chờ 002✅ + 008✅ + 010✅ + 013✅ + 018✅ — ALL DEPS SATISFIED
+           019A (discovery foundations)  ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (Tier 1 blocker)
+           019E/F/G (independent)        ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
                ↓
-Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017 + 019
+           019B/C (after 019A) → 019D1/D2 (after 019A+B) → 019D3 (after 019D2)
+           017B (inter-campaign ESP)     ← chờ 017A (sequential)
+               ↓
+Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1
            014 (execution)               ← chờ 003 + 005
                ↓
 Phase 4:   Specs (5-6 documents)
@@ -73,11 +77,13 @@ thêm 013 (convergence) + 014 (execution). Topic 003 rebalanced: F-14/F-17 tách
 sang 015 (artifact/version) → 003 focused vào pipeline stages, 015 debate sớm
 hơn (Wave 2). Topic 016 (bounded recalibration) added 2026-03-23, Wave 2.5 —
 cross-cutting decision chạm 5 Wave 2 topics, phải close trước 003.
-Topic 017 (epistemic search policy) added 2026-03-24, Wave 2.5 —
-cross-cutting decision chạm 4 Wave 2 topics (002, 008, 010, 013),
-phải close trước 003. Song song với 016. Topic 007
-(philosophy) là bottleneck duy nhất. Sau 007, 10 remaining Wave 2 topics song song →
-016 + 017 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
+Topic 017 (epistemic search policy) added 2026-03-24, SPLIT 2026-04-03 →
+017A (intra-campaign) + 017B (inter-campaign). 003 only needs 017A.
+Topic 019 (discovery feedback loop) added 2026-03-29, SPLIT 2026-04-02 →
+9 sub-topics (019A-G, 019D1-D3). 003 only needs 019A + 019D1.
+Topic 007 (philosophy) là bottleneck duy nhất. Sau 007, 10 remaining Wave 2 topics
+song song → 016 + 017A + 019A + 019E/F/G (Wave 2.5, song song) →
+019B/C → 019D1/D2 → 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
 
 ---
 
@@ -224,7 +230,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 > archive-only gap: Convergence V1/V2 chưa đọc; không blocking cho spec draft
 > vì V3 đã là bản tổng hợp mới nhất và D-16 đóng bằng Judgment call.
 
-#### Wave 2.5 — Topics 016 + 017 + 019 (sau Wave 2 prerequisites)
+#### Wave 2.5 — Topics 016 + 017A/B + 019A-G/D1-D3 (sau Wave 2 prerequisites)
 
 **Topic 016** — `016-bounded-recalibration-path/`
 - Findings: BR-01, BR-02 (2 findings)
@@ -234,31 +240,29 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - **Phải close TRƯỚC 003**: nếu 016 cho phép recalibration, protocol pipeline
   cần thêm branch. Nếu close sau 003, protocol có thể phải reopen.
 
-**Topic 017** — `017-epistemic-search-policy/`
-- Findings: ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL (6 findings)
-- Key: Epistemic search policy — intra-campaign illumination, phenotype/structural
-  prior contracts, promotion ladder, budget governor
-- Ước lượng: 2-3 rounds
-- Phụ thuộc: 002✅ + 008✅ + 010✅ + 013✅ (4/4 satisfied — ALL DEPS MET)
-- **Phải close TRƯỚC 003**: cell-elite archive, descriptor tagging, và
-  epistemic_delta.json ảnh hưởng protocol pipeline stage design.
-- 016, 017, và 019 KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
+**Topic 017 (SPLIT → 017A + 017B)** — `017-epistemic-search-policy/` (parent index)
+- **017A** (`017A-intra-campaign-esp/`): ESP-01, ESP-04, SSE-04-CELL (3 findings).
+  Intra-campaign ESP — illumination, cell-elite archive. ALL DEPS SATISFIED.
+- **017B** (`017B-inter-campaign-esp/`): ESP-02, ESP-03, SSE-08-CON (3 findings).
+  Inter-campaign ESP — promotion ladder, budget governor. Depends on 017A.
+- Ước lượng: 017A 1-2 rounds, 017B 1-2 rounds (sequential)
+- **003 chỉ cần 017A** (v1 pipeline) — 017B có thể chạy song song với 003.
+- 016, 017A, và 019A KHÔNG depend lẫn nhau — debate song song trong Wave 2.5.
 
-**Topic 019** — `019-discovery-feedback-loop/`
-- Findings: DFL-01→DFL-18 (18 findings). DFL-01→12: discovery loop architecture.
-  DFL-13→18: data foundation & quality assurance (added 2026-03-31).
-- Key: Human-AI collaborative discovery loop — AI result analysis (data + results),
-  human-facing reporting, human feedback capture, contamination boundary,
-  deliberation-gated code authoring, raw data exploration (06/07), feature
-  graduation path (08), SSE-D-02 scope clarification (09), pipeline integration (10),
-  statistical budget (11), grammar composition (12), data trustworthiness (13),
-  non-stationarity protocol (14), resolution gap (15), cross-asset context (16),
-  pipeline validation (17), regime-conditional profiling (18)
-- Ước lượng: 2-3 rounds
+**Topic 019 (SPLIT → 9 sub-topics)** — `019-discovery-feedback-loop/` (parent index)
+- **019A** (foundations, Tier 1 blocker): DFL-04, DFL-05, DFL-09 (3 findings)
+- **019B** (AI analysis): DFL-01, DFL-02, DFL-03 (3 findings) — after 019A
+- **019C** (data exploration): DFL-06, DFL-07 (2 findings) — after 019A
+- **019D1** (pipeline structure): DFL-08, DFL-10 (2 findings) — after 019A+B
+- **019D2** (statistical budget): DFL-11 (1 finding) — after 019A+B
+- **019D3** (grammar expansion): DFL-12 (1 finding) — after 019D2
+- **019E** (data quality): DFL-13, DFL-17 (2 findings) — independent, Tier 4
+- **019F** (regime dynamics): DFL-14, DFL-18 (2 findings) — independent, Tier 4
+- **019G** (data scope): DFL-15, DFL-16 (2 findings) — independent, Tier 4
+- Internal waves: 019A→B/C→D1/D2→D3. 019E/F/G song song, không chờ 019A.
 - Phụ thuộc: 018✅ + 002✅ + 004✅ (3/3 satisfied — ALL DEPS MET)
-- **Phải close TRƯỚC 003**: discovery loop may add protocol interaction points
-  (human checkpoints, AI analysis hooks).
-- Song song với 016 và 017 — khác dependency set, không depend lẫn nhau.
+- **003 chỉ cần 019A + 019D1** — các sub-topic khác là informational, không blocking.
+- Song song với 016 và 017A — khác dependency set, không depend lẫn nhau.
 
 #### Wave 3 — Topics 003 + 014 (sau upstream closed)
 
@@ -266,7 +270,7 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - Findings: F-05, F-36, F-37 + SSE-D-04 (4 findings — F-14/F-17 tách sang 015)
 - Key: 8 stages, phase gating, provenance, WFO, multi-asset adaptation, session isolation
 - Ước lượng: 1-2 rounds
-- Phụ thuộc: 001 + 002 + 004(closed) + 015 + 016 + 017 + 019 (tất cả phải CLOSED)
+- Phụ thuộc: 001 + 002 + 004(closed) + 015 + 016 + 017A + 019A + 019D1 (017B có thể chạy song song với 003)
 - Rủi ro: nếu upstream decisions thay đổi muộn, 003 phải redo
 
 **Topic 014** — `014-execution-resilience/`
@@ -362,7 +366,7 @@ có thể publish độc lập khi ready.
 | ~~Wave 1 end~~ | ~~Judgment calls cho F-01, F-20, F-22, F-25~~ | **DONE** (2026-03-23) — all Converged, no judgment calls needed |
 | Wave 2 start | Approve mở debate cho 10 remaining Wave 2 topics (001 already closed) | Sau Wave 1 |
 | Wave 2 | Mediate debate, judgment calls per topic | Rolling |
-| Wave 2.5 start | Approve mở Topics 016 (bounded recalibration) + 017 (epistemic search policy) + 019 (discovery feedback loop) | Sau Wave 2 prerequisites |
+| Wave 2.5 start | Approve mở Topics 016 + 017A/017B (epistemic search policy, SPLIT) + 019A-G/D1-D3 (discovery feedback loop, SPLIT) | Sau Wave 2 prerequisites |
 | Wave 3 | Approve mở Topics 003 + 014 sau upstream closed | Sau Wave 2.5 |
 | Phase 4 | Review draft specs; resolve cross-spec inconsistencies | Rolling |
 | Phase 5 | Final publication approval per spec | Cuối |
@@ -405,8 +409,8 @@ before formal Wave 2 opening approval. `architecture_spec.md` seeded from 001/00
 
 **Bước 23** (cần human approve): Mở Wave 2 — 10 remaining topics song song (001 already closed)
 **Bước 24-34**: Debate remaining Wave 2 topics (song song, human mediate mỗi round)
-**Bước 35** (cần human approve): Mở Wave 2.5 — Topics 016 (bounded recalibration) + 017 (epistemic search policy) + 019 (discovery feedback loop)
-**Bước 36-38**: Debate Topics 016 (1-2 rounds) + 017 (2-3 rounds) + 019 (2-3 rounds) — song song
+**Bước 35** (cần human approve): Mở Wave 2.5 — Topics 016 + 017A (intra-ESP) + 019A (foundations, Tier 1 blocker) + 019E/F/G (independent, song song)
+**Bước 36-38**: Debate Wave 2.5 sub-topics: 016 (1-2 rounds) + 017A (1-2 rounds) + 019A→B/C→D1/D2→D3 (internal waves) + 019E/F/G (song song) + 017B (after 017A)
 **Bước 38** (cần human approve): Mở Wave 3 — Topics 003 + 014
 **Bước 39-41**: Debate Topics 003 + 014 (1-2 rounds mỗi topic)
 

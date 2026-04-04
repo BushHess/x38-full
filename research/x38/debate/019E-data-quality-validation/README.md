@@ -33,11 +33,11 @@ other 019 sub-topics.
 
 ## Scope
 
-2 findings, 3 decisions (Tier 4, independent):
+2 findings, 4 decisions (Tier 4, independent):
 
 | ID | Finding | Decision(s) |
 |----|---------|-------------|
-| DFL-13 | Data trustworthiness & cross-source validation | D-15: Framework stage? D-16: Acquire cross-exchange data? |
+| DFL-13 | Data trustworthiness & cross-source validation | D-15: Framework stage? D-16: Acquire cross-exchange data? D-22: Category C owner (019E or 003)? |
 | DFL-17 | Pipeline validation via synthetic known-signal injection | D-20: Before or after DFL-06? |
 
 This topic does NOT own:
@@ -55,7 +55,8 @@ This topic does NOT own:
 ## Dependencies
 
 - **Upstream (CLOSED)**: 018 (bounded ideation, recognition stack), 002 (contamination firewall), 004 (meta-knowledge, MK-17 shadow-only)
-- **NONE from other 019 sub-topics**. Independent cluster — does not depend on 019A outcomes.
+- **Scheduling**: NONE from other 019 sub-topics — independent cluster, does not depend on 019A outcomes.
+- **Content**: 019G (DFL-15 gates DFL-13 Category B scope — whether cross-exchange external data enters the framework). Informational, not scheduling blocker.
 
 **Wave placement**: Wave 2.5 parallel (can debate simultaneously with 019A and
 all other 019 sub-topics). All hard deps satisfied (018, 002, 004 CLOSED).
@@ -68,10 +69,11 @@ Tier 4 decisions are independent of Tier 1-3 foundational decisions.
 | 009 | F-10 | Data integrity audit scope — DFL-13 proposes trustworthiness layer BELOW integrity | DFL-13 validates data accuracy, F-10 validates data completeness. Complementary, not competing |
 | 003 | F-05 | Pipeline stages — DFL-13 trustworthiness + DFL-10 Stage 2.5 | 003 owns pipeline stage design. DFL-13 proposes; 003 decides staging |
 | 019F | DFL-14, DFL-18 | DFL-13 Category A (volume trustworthiness) affects DFL-14 Layer 2 DGP detection and DFL-18 volume regime definitions | If volume is unreliable, both regime-detection methods are compromised. DFL-13 validation should precede or run in parallel |
+| 019G | DFL-15 | DFL-13 Category B (cross-exchange validation) requires external data — DFL-15 scopes whether external data enters the framework | 019G scopes the general acquisition policy; 019E scopes the specific validation need. D-18 outcome gates Category B feasibility |
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `findings-under-review.md` | 2 findings (DFL-13, DFL-17) + decision summary (3 Tier 4 decisions) |
+| `findings-under-review.md` | 2 findings (DFL-13, DFL-17) + decision summary (4 Tier 4 decisions) |
 | `final-resolution.md` | Created upon closure |

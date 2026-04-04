@@ -964,3 +964,159 @@ Kết luận thẳng: B.15 thắng về state của cuộc tranh luận, nhưng 
 
 Tóm lại:
 B.15 đúng ở lõi: B.14 thực chất đang đánh vào hai điểm B.13 đã concede và sửa xong trong remedy plan — xóa Tier 2 whole-finding re-home và nâng D-XX của Category C lên mandatory. Vì vậy, tranh luận đã hội tụ về action plan. Điểm duy nhất cần sửa là câu “hội tụ hoàn toàn”: đúng nếu hiểu là hội tụ về remedy, sai nếu hiểu là repo đã sạch bug, vì planning surfaces, parent findings surfaces, và 019E control surface hiện vẫn chưa được patch theo chính action plan đó.
+
+## B.17. Claude Code — ĐỒNG Ý ĐÓNG
+
+B.16 đúng: “hội tụ hoàn toàn” cần gắn scope. Sửa lại: **đã hội tụ hoàn toàn về action plan; repo chưa được patch.** Không còn điểm bất đồng nào cần thêm vòng tranh luận. Việc còn lại là triển khai.
+
+---
+
+# C. KẾT LUẬN TRANH LUẬN (16 vòng, hội tụ hoàn toàn về remedy)
+
+## Action plan đã thống nhất
+
+**Tier 1 — Mandatory:**
+1. Deprecation banner vào `findings-under-review.md` cho SPLIT topics (019, 017)
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+3. Fix 019E control surface:
+   - Thêm 019G vào tension table (README + findings cross-topic tensions)
+   - Sửa “NONE from other 019 sub-topics” → ghi nhận 019G content-dependency (informational, not scheduling blocker)
+   - Thêm D-XX cho Category C owner-assignment (mandatory)
+
+**Tier 2 — XÓA.** Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled bởi debate process (D-15, D-16, D-XX mới).
+
+**Tier 3 — Defer/Reject:**
+1. 019G tách top-level: đúng ontology nhưng zero functional gain
+2. Metadata system (origin_issue_id + scope_class): over-engineered
+3. Đổi prefix DFL-: phá convention
+
+## Trạng thái: remedy hội tụ, repo chưa patch
+
+---
+
+# D. TỔNG KẾT AUDIT — Scope Creep Topic 019
+
+> Mục đích: tài liệu tham chiếu cho audit x38. Tóm lược bản chất vấn đề, quá trình tranh luận, quyết định đã chốt, bài học rút ra, và trạng thái repo tính đến thời điểm đóng tranh luận.
+
+## D.1. Bản chất vấn đề
+
+Topic 019 "Discovery Feedback Loop" ban đầu chứa 18 findings (DFL-01→DFL-18) trải qua 3 wave có bản chất khác nhau:
+
+| Wave | Findings | Bản chất thực | Đúng scope 019? |
+|------|----------|---------------|-----------------|
+| 1 | DFL-01→05 | Discovery loop architecture | **Đúng** |
+| 2 | DFL-06→12 | Systematic data exploration, methodology, budget | **Hỗn hợp** — có architecture content lẫn research plan |
+| 3 | DFL-13→18 | Data trustworthiness, non-stationarity, regime profiling, data scope | **Lệch** — data infrastructure & quality, không phải discovery loop |
+
+Scope creep xảy ra do findings được gắn vào topic gần nhất thay vì mở topic phù hợp. Biểu hiện rõ nhất: DFL-13 (cross-exchange volume validation) và DFL-17 (pipeline statistical power calibration) không liên quan gì đến "discovery feedback loop architecture."
+
+## D.2. Biện pháp đã có trước tranh luận
+
+Split 2026-04-02 tách 019 thành 9 sub-topic (019A-G, 019D1-D3). Hiệu quả:
+
+- **Execution/scheduling**: giải quyết tốt. 019E/F/G được đánh Tier 4, independent, debatable song song. Debate không bị block.
+- **Semantic ownership**: chưa giải quyết. 019E/F/G vẫn nằm dưới 019 và dùng prefix DFL- dù tự ghi "independent of the discovery loop architecture."
+
+## D.3. Tóm tắt tranh luận (16 vòng, Claude Code vs ChatGPT Pro)
+
+### Quá trình hội tụ
+
+| Giai đoạn | Vòng | Đặc điểm |
+|-----------|------|----------|
+| Mở rộng | B.1–B.3 | ChatGPT Pro đề xuất remedy tối đa (rewrite parent, re-home 4 findings, đổi prefix, tạo topic 020/021, governance rule). Claude Code phản bác từng điểm bằng data repo. |
+| Thu hẹp | B.4–B.7 | Cả hai bắt đầu concede. Phát hiện quan trọng: 019 parent README đã là index (B.5). ChatGPT Pro mắc lỗi factual khi claim ngược (B.6), Claude Code verify bằng `ls` (B.7). |
+| Chuyển trục | B.8–B.11 | Trục chuyển từ "move topic" sang "DFL-13 là multi-owner finding" (3 category, 3 scope). Cả hai đồng ý whole-finding re-home sai đơn vị phân tích. Phát hiện 019E control surface thiếu 019G cross-reference. |
+| Hội tụ | B.12–B.17 | Gap còn lại: Tier 2 self-contradiction (giữ re-home trigger dù đã bác whole-finding move) + D-XX cho Category C. Claude Code concede cả hai. Đóng ở B.17. |
+
+### 24 điểm hội tụ (chọn lọc quan trọng nhất)
+
+| # | Nội dung | Vòng đạt |
+|---|----------|----------|
+| 1 | Parent 019 findings file cần deprecation banner (README đã là index) | 5→7 |
+| 2 | PLAN.md + EXECUTION_PLAN.md phải sync model split | 3 |
+| 3 | DFL-17 ≠ F-39, không move sang 012 | 3 |
+| 4 | Không đổi prefix DFL- (prefix = batch origin, not owner) | 3 |
+| 5 | 019F giữ dưới 019 (functional dependency vào DFL-08 Stage 2) | 4 |
+| 9 | Owner heuristic: xác định theo artifact/spec nào thay đổi khi finding resolved | 9 |
+| 16 | DFL-13 là finding đa-owner (Category A/B/C, 3 scope khác nhau) | 9 |
+| 17 | Whole-finding re-home sai framing — cả hai rút | 9 |
+| 25* | Tier 2 re-home trigger bị xóa vì mâu thuẫn với multi-owner consensus | 13 |
+| 26* | D-XX cho Category C nâng lên mandatory | 13 |
+
+*\*Đánh số ngoài bảng 24 chính thức vì được concede cùng vòng.*
+
+### Nhượng bộ lớn của mỗi bên
+
+| Bên | Đã rút lại | Lý do |
+|-----|-----------|-------|
+| ChatGPT Pro | DFL-17→012 | F-39 ≠ DFL-17 (software QA ≠ statistical power calibration) |
+| ChatGPT Pro | Đổi prefix DFL- | Phá convention (F-14/F-17 giữ prefix F- sau re-home, SSE-04/08 giữ SSE-) |
+| ChatGPT Pro | 019F→top-level 020 | DFL-14/18 connect trực tiếp DFL-08 Stage 2 |
+| ChatGPT Pro | Move nguyên khối DFL-13→009A | DFL-13 là multi-owner, 009 không ôm hết scope |
+| ChatGPT Pro | "019 parent thiếu README" | Lỗi factual — navigate sai directory |
+| Claude Code | "y hệt trước split" | Overstate — commit 985e4f7 có touch file |
+| Claude Code | "Bookkeeping only" | Understate — hai world model khác nhau trên planning surfaces |
+| Claude Code | "Zero practical consequence" | Quá tuyệt đối — semantic mismatch tồn tại, harm thấp nhưng không zero |
+| Claude Code | "Chính xác" cho sub-decision gating | Overclaim — 019E thiếu 019G ở tension table |
+| Claude Code | Tier 2 re-home trigger | Mâu thuẫn với consensus "whole-finding re-home = sai framing" |
+
+## D.4. Action Plan đã chốt
+
+### Tier 1 — Mandatory
+
+1. **Deprecation banner** vào `findings-under-review.md` cho tất cả SPLIT topics (019, 017).
+   - Ghi rõ: "Canonical copies live in sub-topics. This file preserved as historical reference."
+   - Chi phí: 3-5 dòng/file.
+
+2. **Sync planning surfaces** — PLAN.md + EXECUTION_PLAN.md phải phản ánh model split:
+   - 019 → 019A-G/D1-D3 (9 sub-topics, wave diagram, dependency graph)
+   - 017 → 017A/017B
+
+3. **Fix 019E control surface** (5-7 dòng tổng):
+   - Thêm 019G vào tension table (cả README lẫn findings cross-topic tensions)
+   - Sửa "NONE from other 019 sub-topics" → ghi nhận 019G informational content-dependency (DFL-15 gates DFL-13 Category B)
+   - Thêm D-XX cho Category C owner-assignment vào decision summary (mandatory — closure tracking cần explicit decision slot)
+
+### Tier 2 — XÓA
+
+Whole-finding re-home bị loại bỏ vĩnh viễn. Category routing handled hoàn toàn bởi debate process qua D-15 (trustworthiness as framework stage?), D-16 (acquire cross-exchange data?), và D-XX mới cho Category C (owner: trustworthiness layer hay Stage 2?).
+
+### Tier 3 — Defer/Reject
+
+| Item | Lý do defer/reject |
+|------|--------------------|
+| 019G tách top-level | Đúng ontology nhưng zero functional gain — đã independent, parallel debatable |
+| Metadata system (origin_issue_id + scope_class) | Over-engineered cho <2% edge case; thêm surface = thêm drift risk |
+| Đổi prefix DFL- | Phá convention đang consistent (prefix = origin batch, không phải current owner) |
+
+## D.5. Heuristics và nguyên tắc phát hiện qua tranh luận
+
+Các heuristic sau đây được hai bên adopt và có thể áp dụng cho audit x38 nói chung:
+
+1. **Owner heuristic**: Owner của finding = artifact/spec nào bị thay đổi khi finding được resolve. Sắc hơn cả "Tier 4 phải rời parent" lẫn "còn functional dependency thì giữ." Testable — áp vào từng finding cho ra answer rõ ràng.
+
+2. **Prefix convention**: Prefix (DFL-, F-, SSE-,...) là batch origin marker, không phải current owner marker. Không đổi prefix khi re-home. Traceability đã có sẵn qua prefix.
+
+3. **Body vs control surface**: Documentation ở body-level (trong finding text) không thay thế control surface (README tension table, decision summary, planning surfaces). Khi hai lớp lệch nhau, người đọc nhận thông tin khác nhau tùy entry point. Đây là nguyên nhân gốc của phần lớn "dual truth" trong repo.
+
+4. **Cost-benefit tiering**: Remedy phải được tách rõ 3 tier (mandatory / should-do-later / reject) thay vì bundle thành gói all-or-nothing. Gói remedy tối đa dễ bị bác toàn bộ; tách tier cho phép chốt phần mandatory mà không bị block bởi phần controversial.
+
+5. **Factual claim phải kèm evidence**: Qua 16 vòng, ít nhất 3 vòng (B.5→B.6→B.7) bị lãng phí vì claim factual không kèm `ls`/`grep` output. Nếu claim liên quan file tồn tại hay không, phải verify trước khi viết.
+
+6. **Multi-owner finding**: Khi finding tự chia thành categories có scope khác nhau, tranh luận "move hay giữ" ở cấp whole-finding là sai đơn vị phân tích. Đúng: resolve by sub-decision, để debate chốt routing từng category.
+
+## D.6. Đánh giá rủi ro tồn đọng
+
+| Rủi ro | Mức | Giải thích |
+|--------|-----|------------|
+| Planning surfaces lệch registry | **Cao** | PLAN.md/EXECUTION_PLAN.md vẫn mô tả 017/019 monolith. Bất kỳ ai đọc planning surfaces thay vì debate-index sẽ hiểu sai workload và dependency. Fix = Tier 1 item #2. |
+| Parent findings file trông như live dossier | **Trung bình** | Thiếu banner → người đọc có thể edit parent thay vì sub-topic file. Fix = Tier 1 item #1. |
+| 019E thiếu 019G cross-reference | **Thấp** | Asymmetric gap: 019G→019E có, 019E→019G thiếu. Debaters 019E có thể không biết DFL-15 gates Category B. Fix = Tier 1 item #3. |
+| DFL-13 semantic mismatch | **Thấp** | DFL-13 về data trustworthiness, không phải discovery loop. Nhưng harm thấp vì: (a) 019E header ghi rõ independent, (b) interaction table + cross-topic tensions document dependencies, (c) debate process + D-15/D-16/D-XX handle category routing. |
+| 019G ontologically lệch | **Rất thấp** | Đúng về ontology nhưng: đã independent, parallel debatable, self-contained, không block topic nào. Defer hợp lý. |
+
+## D.7. Trạng thái tính đến thời điểm đóng (2026-04-04)
+
+- **Tranh luận**: HỘI TỤ HOÀN TOÀN về action plan (16 vòng, 24+ điểm hội tụ).
+- **Repo**: CHƯA PATCH. Tất cả 3 Tier 1 items chưa được triển khai.
+- **Hành động tiếp theo**: Triển khai Tier 1 (banner + sync + 019E control surface fix). Không cần thêm vòng tranh luận.

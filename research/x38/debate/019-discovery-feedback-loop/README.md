@@ -48,7 +48,7 @@ not from grammar enumeration or template parameterization.
 
 | Sub-topic | Slug | Findings | Decisions | Lines |
 |-----------|------|----------|-----------|-------|
-| **019E** | data-quality-validation | DFL-13, DFL-17 | D-15, D-16, D-20 (Tier 4) | ~320 |
+| **019E** | data-quality-validation | DFL-13, DFL-17 | D-15, D-16, D-20, D-22 (Tier 4) | ~320 |
 | **019F** | regime-dynamics | DFL-14, DFL-18 | D-17, D-21 (Tier 4) + tension resolution | ~365 |
 | **019G** | data-scope | DFL-15, DFL-16 | D-18, D-19 (Tier 4) | ~240 |
 

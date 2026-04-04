@@ -757,7 +757,7 @@ Vai trò kép:
 | 000 | Framework architecture (index) | — | **SPLIT** (2026-03-22) → 11 sub-topics |
 | 001 | Campaign model | F-03, F-15, F-16 | **CLOSED** (2026-03-23, 6 rounds, 3/3 resolved) |
 | 002 | Contamination firewall | F-04 | **CLOSED** (2026-03-25, 6 rounds, 3 Converged + 4 Judgment call) |
-| 003 | Protocol engine | F-05, F-36, F-37 + SSE-D-04 | **OPEN** (2026-03-22, Wave 3 — chờ 001+002+004+015+016+017+019) |
+| 003 | Protocol engine | F-05, F-36, F-37 + SSE-D-04 | **OPEN** (2026-03-22, Wave 3 — chờ 001+002+004+015+016+017A+019A+019D1) |
 | 004 | Meta-knowledge governance | F-06 | **CLOSED** (2026-03-21, 6 rounds, 23/23 resolved) |
 | 005 | Core engine design | F-07 | **OPEN** (2026-03-22, Wave 2) |
 | 006 | Feature engine design | F-08, F-38 + SSE-D-03 | **OPEN** (2026-03-22, Wave 2) |
@@ -779,9 +779,9 @@ Vai trò kép:
 | 014 | Execution & resilience | F-32, F-33, F-40/ER-03 | **OPEN** (2026-03-22, Wave 3 — chờ 003+005) |
 | 015 | Artifact & version management | F-14, F-17 + SSE-07, SSE-08, SSE-04-INV | **OPEN** (2026-03-22, Wave 2) |
 | 016 | Bounded recalibration path | BR-01, BR-02 | **OPEN** (2026-03-23, Wave 2.5 — chờ 001+002+010+011+015) |
-| 017 | Epistemic search policy | ESP-01, ESP-02, ESP-03, ESP-04 + SSE-08-CON, SSE-04-CELL | **OPEN** (2026-03-24, Wave 2.5 — deps satisfied: 002✅+008✅+010✅+013✅) |
+| 017 | Epistemic search policy **(SPLIT)** | → 017A (ESP-01, ESP-04, SSE-04-CELL) + 017B (ESP-02, ESP-03, SSE-08-CON) | **SPLIT** (2026-04-03, Wave 2.5 — deps satisfied: 002✅+008✅+010✅+013✅). 003 only needs 017A |
 | 018 | Search-space expansion | SSE-D-01→D-11 | **CLOSED** (2026-03-27, 6 rounds, 10 Converged + 1 Judgment call) |
-| 019 | Discovery feedback loop | DFL-01→DFL-18 | **OPEN** (2026-03-29, Wave 2.5 — deps satisfied: 018✅+002✅+004✅) |
+| 019 | Discovery feedback loop **(SPLIT)** | → 9 sub-topics: 019A-G, 019D1-D3 (18 findings, 21 decisions) | **SPLIT** (2026-04-02, Wave 2.5 — deps satisfied: 018✅+002✅+004✅). 003 only needs 019A+019D1 |
 
 **Dependencies** (synced with `debate/debate-index.md`):
 
@@ -792,10 +792,13 @@ Vai trò kép:
 001, 002, 005, 006, 013, 015  ← soft-dep from 007 — Wave 2, song song
     ↓
 016 (bounded-recal) ← HARD-dep from 001 + 002 + 010 + 011 + 015 — Wave 2.5
-017 (epistemic-SP)  ← HARD-dep from 002 + 008 + 010 + 013 — Wave 2.5
-019 (discovery-FL)  ← HARD-dep from 018 + 002 + 004 — Wave 2.5
+017A (intra-ESP)    ← HARD-dep from 002 + 008 + 010 + 013 + 018 — Wave 2.5, ALL DEPS SATISFIED
+019A (foundations)   ← HARD-dep from 018 + 002 + 004 — Wave 2.5, ALL DEPS SATISFIED (Tier 1 blocker)
+019E/F/G (indep.)   ← HARD-dep from 018 + 002 + 004 — Wave 2.5, song song với 019A
+019B/C → 019D1/D2 → 019D3 (internal waves, after 019A)
+017B (inter-ESP)    ← HARD-dep from 017A (sequential)
     ↓
-003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017 + 019 — Wave 3
+003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017A + 019A + 019D1 — Wave 3
 014 (execution) ← soft-dep from 003 + 005 — Wave 3
 ```
 
@@ -804,7 +807,7 @@ Vai trò kép:
 2. ~~Topic **000**~~ — **SPLIT** (2026-03-22). 29 findings → 11 sub-topics.
 3. ~~Topic **007**~~ — **CLOSED** (2026-03-23). 4 rounds, 4/4 Converged.
 4. Wave 2 (11 topics, 3 CLOSED: ~~001~~, ~~002~~, ~~010~~; 8 remaining) — song song, 007 đã closed.
-5. Wave 2.5: Topic **016** (bounded recalibration) + **017** (epistemic search policy) — song song, sau Wave 2 prerequisites.
+5. Wave 2.5: Topic **016** (bounded recalibration) + **017A/B** (epistemic search policy, SPLIT) + **019A-G/D1-D3** (discovery feedback loop, SPLIT) — song song, sau Wave 2 prerequisites.
 6. Wave 3: Topic **003** (protocol) + **014** (execution) — cuối cùng.
 7. Topic **018** — **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Discovery mechanisms distributed to 006/015/017/013/008/003. Downstream routings confirmed.
 
@@ -1136,8 +1139,8 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 
 **Topics OPEN** (11 topics, 3 waves):
 - **Wave 2** (6 topics song song): 005, 006, 009, 011, 012, 015
-- **Wave 2.5** (3 topics song song): 016 (bounded-recalibration) — chờ 001✅ + 002✅ + 010✅ + 011 + 015; 017 (epistemic-search-policy) — chờ 002✅ + 008✅ + 010✅ + 013✅ — ALL DEPS SATISFIED; 019 (discovery-feedback-loop) — chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED
-- **Wave 3**: 003 (protocol-engine) — chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017 + 019; 014 (execution) — chờ 003 + 005
+- **Wave 2.5** (12 debatable sub-topics): 016 (bounded-recalibration) — chờ 001✅ + 002✅ + 010✅ + 011 + 015; 017A (intra-campaign ESP) — ALL DEPS SATISFIED; 019A (discovery foundations, Tier 1 blocker) + 019E/F/G (independent, song song) — ALL DEPS SATISFIED. Internal waves: 019A→019B/C→019D1/D2→019D3. 017B after 017A. 003 chỉ cần 017A + 019A + 019D1
+- **Wave 3**: 003 (protocol-engine) — chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1; 014 (execution) — chờ 003 + 005
 
 > **Topic 019 OPENED 2026-03-29** — Discovery feedback loop. Gap identified during
 > Topic 018 closure audit: framework designed validation infrastructure but missed
@@ -1149,8 +1152,14 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 > DFL-06/07 (2026-03-30): raw data exploration + methodology.
 > DFL-08/09 (2026-03-31): feature graduation path + SSE-D-02 scope clarification.
 > DFL-10 (2026-03-31): pipeline integration — Stage 2.5 Data Characterization.
+> **Topic 019 SPLIT 2026-04-02** — 9 sub-topics: 019A (foundations, Tier 1 blocker),
+> 019B (AI analysis), 019C (data exploration), 019D1 (pipeline structure),
+> 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics),
+> 019G (data scope). Internal waves: 019A→B/C→D1/D2→D3. E/F/G independent, song song.
+> **Topic 017 SPLIT 2026-04-03** — 017A (intra-campaign ESP: ESP-01+ESP-04+SSE-04-CELL)
+> + 017B (inter-campaign ESP: ESP-02+ESP-03+SSE-08-CON). 003 only needs 017A.
 
-**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017 + 019 (Wave 2.5, song song) → 003 + 014 (Wave 3) cuối cùng.
+**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017A + 019A + 019E/F/G (Wave 2.5, song song) → 019B/C → 019D1/D2 → 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
 
 ### Execution Plan
 
