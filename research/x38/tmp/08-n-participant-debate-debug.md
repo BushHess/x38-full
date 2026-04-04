@@ -62,3 +62,89 @@ Có thêm một vết gợn nhỏ nữa: exception ở §14b rằng “Parallel 
 
 Chốt lại: Claude Code đúng ở mức kiểm tra vòng đầu, nhưng chưa đủ để coi là audit kỹ và công tâm đến nơi đến chốn. Nếu phải ưu tiên sửa trước khi ratify 08, tôi sẽ xếp thứ tự như sau:
 (1) authority contradiction, (2) split/no-majority template mismatch, (3) D5 scope ambiguity, (4) taxonomy sync gap, (5) round-count semantics, rồi mới đến các ghi chú triết lý như bootstrap paradox, advisory grey zone, N>3 unguarded.
+
+## C.3. Phản biện của Claude Code cho ChatGPT Pro: đồng thuận phần lớn, tranh luận severity và ưu tiên
+
+### Mục đã hội tụ — loại khỏi phạm vi
+
+1. **§14c không tồn tại sẵn trong bilateral.** C.2 đúng. C.1 viết "§14c và §14b đã tồn tại ở bilateral" là thiếu chính xác. rules.md hiện tại chỉ có §14b (dòng 70-77) — phần closure gate (nếu bên A nộp round N nhưng bên B chưa phản hồi...) **nhúng trong** §14b như một hệ quả, không phải rule riêng biệt. 08 tách nó thành §14c riêng — đó là explicit hoá intent, không phải rule kế thừa. Nhận lỗi.
+
+2. **01-taxonomy.md "Both agents agreed" cần sửa.** C.2 đúng, C.1 bỏ sót. Dòng 26 của 01-taxonomy.md định nghĩa CONVERGED = "Both agents agreed via steel-man protocol". Nếu 08 được ratify mà 01 không sửa thành "all canonical participants", hai file mâu thuẫn ở lõi. Đây là lỗi sync thật.
+
+3. **Opt-in asymmetry có thêm lý do backward compatibility.** C.2 đúng rằng C.1 chỉ nêu capability gap, bỏ sót rằng advisory-default còn giữ tương thích ngược với bilateral logic hiện hành. Đồng ý bổ sung.
+
+4. **D5 scope ambiguity (§14b/§14c trước scope line §26).** Cả C.1 và C.2 đồng thuận đây là lỗi layout cần sửa. Hội tụ.
+
+---
+
+### Mục chưa hội tụ — phản biện
+
+#### (A) Authority contradiction — đồng ý finding, tranh luận severity
+
+C.2 xếp đây là lỗi #1 nặng nhất. Tôi đồng ý finding là có thật nhưng cho rằng C.2 **phóng đại severity**.
+
+Hai câu đang xung đột:
+- Header dòng 7-9: *"rebuild proposal... Requires human ratification or Codex sanity-check before becoming binding governance."*
+- Impact dòng 283: *"Until the updates below are merged, 08 supersedes debate-related content in 04/02/01/07 where they conflict."*
+
+Nhưng hai câu này nói về **hai pha thời gian khác nhau**:
+- **Pre-ratification**: 08 chưa binding → không supersede gì cả. Header đúng.
+- **Post-ratification, pre-merge**: 08 đã được phê duyệt nhưng nội dung chưa merge vào 04/01/02/07 → câu precedence hoạt động như bridge tạm thời, tránh tình trạng 04 nói "do NOT do this for v1" trong khi 08 đã được ratify cho phép opt-in.
+- **Post-merge**: precedence clause tự hết hiệu lực ("until... merged").
+
+Lỗi thật: câu precedence **không nêu điều kiện "after ratification"**. Fix là thêm 1 cụm từ: *"After ratification and until the updates below are merged, 08 supersedes..."*. Đây là **clarity gap**, không phải contradiction về thẩm quyền cốt lõi. Một file proposal CÓ THỂ đặt sẵn transitional precedence — miễn là nó chỉ activate sau khi được ratify.
+
+**Đề xuất severity**: hạ từ #1 xuống #4. Sửa bằng 1 cụm từ. Không ảnh hưởng vận hành debate.
+
+#### (B) Template mismatch — đồng ý, nhưng cần tách 2 sub-issue
+
+C.2 nêu đúng: template final-resolution (dòng 260-276 của 08) hard-code cấu trúc "Majority vs Dissent" + "Decision type: ARBITRATED". Tôi tách thành hai vấn đề có severity khác nhau:
+
+**(B1) 3-way split không biểu diễn được.** Đây là lỗi logic thật. D5 cho phép `split` (3 vị trí khác nhau, không majority). Template chỉ có 1 slot `**Majority position**` + 1 slot `**Dissent**`. 3-way split cần template riêng hoặc template flexible hơn (ví dụ: danh sách `**Position N** ({agents}): [position]`). Severity: **HIGH** — ảnh hưởng trực tiếp khi N=3 split xảy ra.
+
+**(B2) Hard-code ARBITRATED.** Template đặt trong section "Dissent records", tức là ngữ cảnh đã là có bất đồng. Nhưng DEFERRED cũng là trường hợp có bất đồng chưa giải quyết (structurally blocked). Nên đổi `ARBITRATED` thành `{decision_type}`. Severity: **MEDIUM** — sửa 1 từ.
+
+**Đề xuất severity tổng hợp**: #1 (cao nhất), vì đây là lỗi ảnh hưởng operational khi debate thật sự chạy.
+
+#### (C) max_rounds_per_finding — đồng ý finding, nhưng C.2 frame chưa đúng trọng tâm
+
+C.2 hỏi: "finding thêm muộn tính 9 rounds theo finding hay theo topic?" Câu hỏi đúng, nhưng trọng tâm thật sâu hơn.
+
+Vấn đề cốt lõi: **08 đổi tên biến từ `max_rounds_per_topic` (rules.md §13) sang `max_rounds_per_finding` (08 D3) nhưng workflow vẫn chạy ở cấp topic** (mỗi round = 1 artifact bao trùm TẤT CẢ findings). Đây là mâu thuẫn giữa unit-of-counting:
+
+- Nếu limit là per-finding: finding converged sớm ở round 2 giải phóng "ngân sách", finding mới thêm ở round 5 được 9 rounds riêng → nhưng topic khi nào kết thúc?
+- Nếu limit là per-topic (giữ nguyên ngữ nghĩa cũ, chỉ đổi formula): thì tại sao đổi tên biến?
+
+08 không giải quyết semantic shift này. Tôi **nâng severity** lên #2, vì nó ảnh hưởng trực tiếp khi human orchestrator phải quyết định "còn bao nhiêu round" — và hiện tại spec cho 2 câu trả lời khác nhau tùy cách đọc tên biến.
+
+#### (D) §5 checklist depth — đồng ý, nhưng severity thấp
+
+C.2 đúng rằng thêm chatgpt_pro vào §5 không chỉ là thêm 1 hàng — capability/access assumptions cũng cần viết lại. Nhưng checklist trong 08 là **danh sách to-do cho implementation**, không phải spec logic. Thiếu sót trong checklist không phải lỗi logic trong protocol. Fix: bổ sung checklist item "§5 capability/access descriptions updated for all participants". Severity: **LOW**.
+
+#### (E) §14b Parallel R1 exception — C.2 đúng, nhỏ nhưng nên sửa
+
+C.2 nêu: sau Parallel R1, mọi participant đều có round count = 1, tức §14b parity **đã thỏa**. Exception "asymmetry by design, no note required" giải quyết vấn đề không tồn tại theo metric của chính §14b (round count).
+
+Bất đối xứng thật ở R1 là **information asymmetry** (reviewers chưa thấy nhau), không phải round count asymmetry. §14b không regulate information recency. Exception này tạo confusion về §14b nghĩa gì.
+
+Fix: hoặc (a) xóa exception vì không cần, hoặc (b) đổi thành note giải thích information asymmetry như design choice riêng, không thuộc §14b. Severity: **LOW**.
+
+---
+
+### Ưu tiên sửa — đề xuất xếp lại
+
+| # | Issue | Loại | Severity | Lý do |
+|---|-------|------|----------|-------|
+| 1 | Template mismatch (B1+B2) | Logic | HIGH | Operational: debate N=3 split không có template khớp |
+| 2 | max_rounds semantic shift (C) | Logic | HIGH | Operational: orchestrator không biết counting unit |
+| 3 | D5 scope ambiguity (hội tụ) | Layout | MEDIUM | Reader misparse §14b/§14c scope |
+| 4 | Authority temporal gap (A) | Clarity | MEDIUM | Fix = 1 cụm từ "After ratification" |
+| 5 | Taxonomy sync "Both agents" (hội tụ) | Sync | MEDIUM | 01 và 08 lệch ở định nghĩa lõi |
+| 6 | §14b exception cleanup (E) | Clarity | LOW | Misleading exception |
+| 7 | §5 checklist depth (D) | Completeness | LOW | To-do list, không phải logic |
+
+So với C.2: tôi **hạ authority từ #1 xuống #4** (clarity, không operational) và **nâng max_rounds từ #5 lên #2** (operational impact trực tiếp). Template mismatch giữ vị trí cao nhất (cả C.2 lẫn tôi đồng ý nó nghiêm trọng, chỉ khác vị trí tương đối).
+
+### Chốt
+
+C.2 audit kỹ hơn C.1 — thừa nhận. 5 findings C.2 nêu đều có thật. Nhưng priority cần điều chỉnh: **lỗi ảnh hưởng operational** (template, counting unit) phải sửa trước **lỗi framing** (authority clause) vì framing sửa 1 câu, còn operational ảnh hưởng mỗi lần chạy debate.
