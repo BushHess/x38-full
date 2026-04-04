@@ -613,3 +613,60 @@ Cả hai phía đồng ý:
 2. Cùng vị trí: sau README, duyệt hard-dep list, check upstream `final-resolution.md` tồn tại, fail-closed nếu thiếu.
 
 **Pending Judgment call**: Trước khi implement patch 2, human researcher chọn A/B rồi chuẩn hóa README dependencies cho consistent.
+
+## C.8. Phản biện của ChatGPT Pro cho Claude Code: Closure audit — C.7 đúng ở chẩn đoán, nhưng chưa đủ điều kiện để tự tuyên bố đóng phiên
+
+### Mục đã hội tụ (loại khỏi phạm vi)
+1. **TMP-019-01** — `[WARNING]`, fix đồng thuận: `README.md` trước `findings-under-review.md`, abort nếu `Status = SPLIT`. CONVERGED.
+2. **TMP-019-02 severity** — `[WARNING]` cho 019B/019C/019D1/019D2/019D3. CONVERGED.
+3. **TMP-019-02 authority surface** — dependency gate phải dựa trên `final-resolution.md`, không dùng `debate-index.md` làm truth source cho abort logic. CONVERGED.
+4. **TMP-019-03** — `[NOTE]`, 019C không bắt buộc file summary riêng; inline TL;DR là đủ nếu cần. CONVERGED.
+5. **TMP-019-04** — `[NOTE]`, granularity debt là debt governance thật nhưng không tái tạo monolith cấp-cha. CONVERGED.
+6. **TMP-019-02 state transition** — sau round cap, issue còn mở phải chuyển thành `Judgment call` với tradeoff rõ ràng. Tôi chấp nhận việc C.7 chuyển TMP-019-02 sang `Judgment call`. CONVERGED.
+
+### Closure audit — điểm tôi KHÔNG chấp nhận trong C.7
+C.7 đúng ở chỗ: sau `max_rounds_per_topic`, không được giả vờ hội tụ; TMP-019-02 phải được đưa sang `Judgment call`.
+
+Nhưng tôi **không chấp nhận** câu: **"Tranh luận đóng tại C.7"** như một kết luận thủ tục đã hoàn tất.
+
+**Evidence pointer**:
+- `research/x38/debate/rules.md:L13-L14b`
+- `research/x38/debate/prompt_template.md:L8-L12`
+- `research/x38/tmp/monolithic_topic_019xxx.md:L82-L95`
+
+**Lý do 1 — parity rule chưa được đáp ứng tại chính C.7**
+`rules.md` yêu cầu: sau round cap, issue mở chuyển thành `Judgment call`; nhưng trước khi chuyển sang judgment/closure, **hai bên phải có số round bằng nhau**, hoặc bất đối xứng phải được ghi rõ kèm lý do trong `final-resolution.md`.
+
+Sau C.7, Claude Code có 4 lượt (`C.1`, `C.3`, `C.5`, `C.7`), còn ChatGPT Pro mới có 3 lượt (`C.2`, `C.4`, `C.6`). Nghĩa là **C.7 không tự thân hoàn tất closure**. Nó chỉ hoàn tất phần **merits**. Muốn đóng hồ sơ sạch theo rules, phải có **lượt parity này** hoặc một `final-resolution.md` ghi rõ vì sao bất đối xứng được chấp nhận.
+
+**Lý do 2 — Prompt C còn thiếu human judgment**
+`prompt_template.md` Prompt C ghi rất rõ: closure chỉ chạy khi **(a)** mọi issue đã là `Converged` hoặc `Judgment call`, **và (b)** human researcher đã quyết định mọi `Judgment call`.
+
+Điều kiện (a) hiện đã đạt. Nhưng điều kiện (b) **chưa đạt**: TMP-019-02 vẫn chỉ mới có **khuyến nghị** "Phương án A recommended", chứ chưa có **phán quyết của decision_owner**.
+
+**Lý do 3 — lượt này chính là closure audit còn thiếu**
+Ngay trong Prompt C cũng có note: **Codex closure audit nên hoàn thành trước khi possible**. Lượt C.8 này chính là closure audit đó. Vì vậy, câu đúng về mặt thủ tục không phải là **"đóng tại C.7"**, mà là:
+
+> **Debate merits kết thúc tại C.7; closure pending human judgment cho TMP-019-02 và Prompt C synchronization.**
+
+### Phán quyết của tôi ở C.8
+- **Chấp nhận** TMP-019-02 = `Judgment call` `[WARNING]`.
+- **Không mở lại merits** giữa Phương án A và B trong tranh luận agent-to-agent; phần đó đã chuyển sang decision owner.
+- **Không phản bác** việc C.7 nghiêng về **Phương án A** như default vận hành. Tôi đồng ý đây là default thực dụng hơn, nhưng nó vẫn là **khuyến nghị**, chưa phải resolution cho tới khi human researcher chọn.
+- **Bác bỏ duy nhất** tuyên bố procedural: chưa nên viết **"tranh luận đóng tại C.7"** như thể closure đã hoàn tất.
+
+### Bảng trạng thái (closure audit)
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — `README.md` trước findings; abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Judgment call** | `[WARNING]` — authority = `final-resolution.md` (converged). Semantic model A/B do human researcher chọn; **A là default khuyến nghị hiện tại** |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — inline TL;DR nếu cần |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Kết luận tạm thời
+Về **tranh luận nội dung**, hồ sơ đã xong ở C.7: không còn merits issue nào cần agent phản biện thêm.
+
+Về **thủ tục đóng hồ sơ**, C.8 mới là lượt parity/closure-audit cần thiết. Bước kế tiếp đúng quy định **không phải C.9 rebuttal**, mà là:
+1. human researcher chọn **Phương án A** hoặc **B** cho TMP-019-02;
+2. ghi judgment đó vào `judgment-call-deliberation.md` hoặc trực tiếp trong `final-resolution.md`;
+3. chạy **Prompt C** để đồng bộ `final-resolution.md`, `findings-under-review.md`, `README.md`, `debate-index.md`.
