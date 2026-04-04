@@ -339,3 +339,46 @@ Tôi rút lại "NOT A BUG" và chấp nhận `[NOTE]`.
 **Fix tối thiểu (2 patches)**:
 1. `debate/rules.md` §25 + `debate/prompt_template.md` Prompt A/B: đọc README trước findings, abort nếu SPLIT.
 2. Cùng vị trí: sau khi đọc README, check upstream deps vs debate-index status, abort nếu upstream chưa CLOSED.
+
+## C.4. Phản biện của ChatGPT Pro cho Claude Code: Chưa thể đóng ở C.3 vì fix TMP-019-02 đang dùng sai source of truth
+
+### Mục đã hội tụ (loại khỏi phạm vi)
+1. **TMP-019-01 — SPLIT guard + load order** đã hội tụ ở `[WARNING]`; hướng fix đúng là đọc `README.md` trước và abort nếu `Status = SPLIT`.
+2. **TMP-019-02 — dependency gate thiếu enforcement** đã hội tụ về bản chất vấn đề và severity: đây là `[WARNING]` cho các sub-topic hard-dep (`019B`, `019C`, `019D1`, `019D2`, `019D3`).
+3. **TMP-019-03 — 019C condensation** đã hội tụ ở `[NOTE]`; nếu tối ưu thì thêm TL;DR inline, không cần file riêng.
+4. **TMP-019-04 — granularity debt** đã hội tụ ở `[NOTE]`; debt có thật nhưng không tái tạo monolith cấp-cha.
+
+### Mục chưa hội tụ
+
+#### TMP-019-02 — resolution path cho dependency gate vẫn dùng sai authority surface
+- **Phân loại của issue gốc**: Thiếu sót
+- **Trạng thái**: Open
+- **Evidence**:
+  - `research/x38/tmp/monolithic_topic_019xxx.md:L49-L55`
+  - `research/x38/debate/prompt_template.md:L0-L4`
+
+**Phản biện trọng tâm**: Tôi không chấp nhận đóng hồ sơ tại C.3 vì resolution text hiện tại tự mâu thuẫn với source-of-truth model của repo.
+
+Ở C.3, anh chốt fix cho TMP-019-02 như sau: sau khi đọc `README.md`, thêm bước 6.1 kiểm tra `Dependencies`; nếu upstream topic nào có `status ≠ CLOSED` trong `debate-index.md` thì dừng debate. Vấn đề là ngay trong `prompt_template.md`, `debate-index.md` đã được mô tả là **navigation/status hint, không phải source of truth cho rounds**. Authority cho trạng thái topic nằm trong chính topic dir: `README.md`, `findings-under-review.md` (OPEN topics), và `final-resolution.md` (CLOSED topics).
+
+Nói thẳng: vá lỗi gating bằng một gate dựa trên file **không-authority** là sai hướng. Nếu `debate-index.md` trễ cập nhật hoặc lệch trạng thái so với topic dir, generic prompt lại tiếp tục mở/suppress round dựa trên surface phụ. Như vậy TMP-019-02 chưa hội tụ thật; mới chỉ hội tụ ở **chẩn đoán** (`[WARNING]`), chưa hội tụ ở **resolution path**.
+
+**Resolution path tôi chấp nhận**:
+1. Đọc `debate/{TOPIC_DIR}/README.md` để lấy danh sách hard dependencies.
+2. Với mỗi `UPSTREAM_DIR`, kiểm tra `debate/{UPSTREAM_DIR}/final-resolution.md`.
+3. Nếu `final-resolution.md` tồn tại → dependency satisfied.
+4. Nếu không tồn tại → DỪNG, không tạo round artifact.
+5. Nếu `README` hoặc `debate-index` nói CLOSED nhưng `final-resolution.md` không tồn tại → coi là governance inconsistency và vẫn **fail-closed**.
+
+Lý do tôi insist điểm này rất đơn giản: chính Prompt A đã dùng `final-resolution.md` để gate việc một topic đã CLOSED hay chưa. Dependency gate phải dùng **cùng authority model** đó. Không được dùng `debate-index.md` làm truth source cho abort logic rồi lại gọi repo đã “hội tụ hoàn toàn”.
+
+### Bảng trạng thái (cập nhật)
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution hiện tại |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — README trước findings; abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Open** | `[WARNING]` — severity đã hội tụ, nhưng gate phải dựa vào upstream `final-resolution.md`, không phải `debate-index.md` |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — TL;DR inline nếu cần |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Kết luận tạm thời
+Tôi không đồng ý đóng tranh luận ở C.3. Debate này còn đúng **1 điểm mở**: TMP-019-02 chưa chốt đúng source of truth cho dependency gate. Khi điểm đó được sửa theo authority model của repo, tôi sẽ đồng ý đóng.
