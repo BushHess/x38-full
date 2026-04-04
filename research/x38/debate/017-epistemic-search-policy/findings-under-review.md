@@ -11,9 +11,9 @@
 **Status**: SPLIT (2026-04-03) — parent index only
 **Author**: human researcher (external analysis) + claude_code (formatting)
 
-4 findings về Epistemic Search Policy — intra-campaign illumination,
+6 findings về Epistemic Search Policy — intra-campaign illumination,
 phenotype/structural-prior contracts, inter-campaign promotion ladder,
-và budget governor.
+budget governor, + 2 routed from Topic 018 (SSE-08-CON, SSE-04-CELL).
 
 **Issue ID prefix**: `X38-ESP-` (Epistemic Search Policy).
 

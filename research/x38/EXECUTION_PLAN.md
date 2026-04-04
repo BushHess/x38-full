@@ -1,10 +1,10 @@
 # X38 Execution Plan
 
 **Mục đích**: Kế hoạch thực thi cụ thể đưa x38 từ trạng thái hiện tại (88 rounds done —
-topic 004, 007, 001, 002, 010, 008, 018, 013 CLOSED; 11 topics OPEN + 1 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
+topic 004, 007, 001, 002, 010, 008, 018, 013 CLOSED; 20 OPEN + 4 SPLIT) đến sản phẩm cuối (5-6 published specs). File này là tài liệu tham chiếu cho
 MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đâu trong quy trình.
 
-**Cập nhật lần cuối**: 2026-03-29
+**Cập nhật lần cuối**: 2026-04-04
 
 ---
 
@@ -32,7 +32,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
 | Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
 | Topic 019 | **SPLIT** (2026-04-02). Discovery feedback loop → 9 sub-topics: 019A (foundations, Tier 1 blocker), 019B (AI analysis), 019C (data exploration), 019D1 (pipeline), 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics), 019G (data scope). 18 findings, 22 decisions. Internal waves: 019A→B/C→D1/D2→D3. 019E/F/G independent, song song. 003 only needs 019A+019D1. |
-| Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 11 topics remaining (all OPEN; Topic 000 SPLIT into sub-topics). |
+| Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 20 OPEN entries remaining (Topics 000/017/019/019D SPLIT into sub-topics). |
 | Specs drafted | SEEDED (1): `meta_spec.md` seeded from 002/004/007/008 closures (eligible for DRAFTING). DRAFTING (3): `architecture_spec.md` from 001/002/004/007/008/010/013/018 closures (§14 proposal from 019); `discovery_spec.md` from 018 closure (§6-§11 proposals from 019); `methodology_spec.md` from 013 closure. |
 | Specs published | ZERO |
 
