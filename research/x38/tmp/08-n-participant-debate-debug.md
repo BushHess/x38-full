@@ -7,7 +7,7 @@
 
 ---
 
-# CÂU HỎI:
+# YÊU CẦU KIỂM TRA:
 Không chỉ kiểm tra về độ đồng nhất, ngữ nghĩa, bề mặt... mà còn kiểm tra cả logic và triết lý... các nội dung trong /var/www/trading-bots/btc-spot-dev/research/x38/tmp/rebuild/08-n-participant-debate.md
 
 # TRANH LUẬN:
