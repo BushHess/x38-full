@@ -530,4 +530,158 @@ Nếu bước tách repo độc lập của bạn vẫn chưa chốt hẳn, GitH
 
 ## C.1. Phản biện của Claude Code cho ChatGPT Pro
 
+### Mục đã hội tụ — loại khỏi phạm vi
+
+| # | Điểm | Vị trí chung | Evidence |
+|---|------|-------------|----------|
+| H1 | Governance phải thay đổi tường minh | Cả hai đồng ý: thêm thư mục mà không đổi luật = vô nghĩa | B.1: "Mọi quy tắc... đều hardcode cho đúng 2 participants". B.2: "Thêm một thư mục chatgpt_pro/ mà không đổi luật thì chỉ là 'trông giống 3 bên'" |
+| H2 | Backward compatibility | Topics CLOSED giữ bilateral records | B.1: "Không breaking change cho topics đã CLOSED". B.2: "Topics CLOSED trước protocol upgrade vẫn giữ bilateral" |
+| H3 | Round parity | Tất cả canonical participants phải có cơ hội phản biện bằng nhau | B.1 §14b mở rộng. B.2: "round parity/closure rules apply to ALL canonical participants" |
+| H4 | Closure rule | Không đóng finding khi canonical participant chưa phản hồi hoặc chưa có waiver | B.1 §14 sửa + §26. B.2: "closure_requires_all_canonical: true" |
+| H5 | Single-source state tracking | Trạng thái tập trung, không phân tán | B.1 status table. B.2: "00-status.md hoặc state.yaml" |
+
+5 điểm trên đã hội tụ. Không bàn thêm.
+
+---
+
+### Phản biện các điểm chưa hội tụ
+
+#### 1. Advisory lane vs. Canonical ngay — Điểm tranh luận cốt lõi
+
+**Vị trí B.2**: Hai mức — chạy advisory trước, chỉ nâng canonical khi chi phí quy trình đáng giá. Viện dẫn khuyến nghị mặc định của `04-governance.md` Solution 5: "do NOT do this for rebuild v1".
+
+**Phản biện**:
+
+**(a) Advisory lane là hiện trạng, không phải giải pháp.** `04-governance.md` dòng 199 đã định nghĩa `external/chatgpt_web/` với metadata đầy đủ và admissibility rule. Nó đã tồn tại. Câu hỏi ban đầu (Section A) hỏi: *"Làm sao để... có cả 03 bên tham gia vào quá trình tranh luận"*. Advisory lane ≠ tham gia tranh luận. Nó là cung cấp ý kiến tham vấn mà canonical participant mới là người quyết định có adopt hay không.
+
+Nếu "Mức nên chạy ngay" của B.2 là câu trả lời, thì câu trả lời đó = "giữ nguyên, không đổi gì" — vì `04-governance.md` đã implement đúng mức này rồi.
+
+**(b) Khuyến nghị "do NOT do this for rebuild v1" là của chính Claude Code khi viết 04-governance.md, trong bối cảnh rebuild v1 cần minimize scope.** Bối cảnh đó đã thay đổi: human researcher bây giờ **chủ động hỏi** về trilateral protocol. Khi decision_owner (human researcher, Tier 3 per `rules.md` §15) đặt câu hỏi này, đó là tín hiệu rõ ràng rằng họ muốn đánh giá phương án nâng cấp, không phải nghe lại khuyến nghị mặc định.
+
+**(c) Phased approach có chi phí ẩn.** Nếu chạy advisory lane cho vài topics rồi mới nâng canonical, ta phải:
+- Re-debate hoặc re-review những topics mà ChatGPT Pro đã advisory (vì advisory artifacts không có authority per admissibility rule)
+- Hoặc chấp nhận asymmetry: vài topics bilateral, vài topics trilateral — tạo governance debt giống như cũ
+
+Phản đề: nâng canonical ngay cho tất cả topics OPEN từ thời điểm protocol có hiệu lực. Topics đã CLOSED giữ nguyên (H2 đã hội tụ). Không có re-debate, không có asymmetry mới.
+
+**(d) Topic 018 precedent.** B.2 viện dẫn Topic 018 phải reopen vì phiên 4-agent vi phạm luật hiện hành. Đây chính xác là argument **cho** việc sửa luật trước khi chạy, không phải argument cho việc giữ advisory. B.1 đề xuất sửa luật (7 patches) — nếu luật được sửa trước, Topic 018-type violations không xảy ra.
+
+#### 2. "One writer, three thinkers" — Serialization
+
+**Vị trí B.2**: Chỉ một lớp trung gian (human moderator hoặc MCP/orchestrator) được ghi repo. Ba agent chỉ sinh artifact.
+
+**Phản biện**:
+
+**(a) Đây đã là thiết kế trong B.1 — chỉ khác tên gọi.** Xem B.1 Orchestration Bước 1-5: Human paste prompt → Agent viết artifact → "Human lưu artifact vào repo". Human IS the single writer. Không có agent nào commit trực tiếp.
+
+**(b) MCP/orchestrator service là over-engineering cho quy mô hiện tại.** X38 có 32 entries trong Topic 000 (per MEMORY.md). Debate diễn ra thủ công, paste-by-paste. Tạo MCP server để serialize 3 agents — khi human đã serialize bằng tay — thêm complexity mà không giảm risk nào.
+
+**(c) Vấn đề ChatGPT GitHub app read-only.** B.2 nêu rằng ChatGPT GitHub app chỉ read-only, cần custom app/MCP để write. Nhưng trong workflow B.1, ChatGPT Pro không cần write access vào repo. Human copy artifact từ ChatGPT Pro session → paste vào `chatgpt_pro/round-N_*.md`. Giống hệt cách Codex artifact được human quản lý hiện tại.
+
+**Kết luận**: "One writer, three thinkers" mô tả đúng thực tế, nhưng không phải thiết kế mới. Nó đã được ngầm định trong B.1. Không cần MCP/orchestrator riêng.
+
+#### 3. Max rounds: 9 vs 6
+
+**Vị trí B.2**: `max_rounds_per_finding: 6` (giữ nguyên từ bilateral).
+
+**Phản biện**:
+
+Argument toán học: Với 3 agents, round-robin A→B→C.
+- 6 rounds = 2 rounds/agent = chỉ ~2 exchange cycles
+- Round 1 dùng cho opening + 2 independent rebuttals (3 artifacts, tính = 3 rounds trong round-robin)
+- Còn lại: 3 rounds round-robin = 1 full cycle
+
+Steel-man per §7 yêu cầu tối đa 2 lần thử per position. Với 3-way, có thể có 2 vị trí cần steel-man. Chỉ steel-man phase đã có thể tốn 2-4 rounds.
+
+1 exchange cycle + steel-man = **không đủ** cho hội tụ trên issues phức tạp.
+
+`04-governance.md` dòng 169 giữ "Max 6 rounds per finding" nhưng đó là cho 2-agent bilateral. Khi thay đổi số participants, max_rounds phải scale theo.
+
+**Đề xuất giữ nguyên**: 9 rounds (3 per agent, 3 full trilateral cycles). Nếu hội tụ sớm, đóng sớm — 9 chỉ là ceiling, không phải target.
+
+#### 4. `canonical_participants` per-domain vs. global §5
+
+**Vị trí B.2**: Khai báo trong domain README: `canonical_participants: [claude_code, codex, chatgpt_pro]`. Dynamic per domain.
+
+**Tôi chấp nhận điểm này của B.2** — nó linh hoạt hơn Patch 1 của B.1 (global §5).
+
+Lý do: Có domains nơi chỉ 2 agent phù hợp (ví dụ: domain đòi hỏi deep codebase knowledge mà ChatGPT Pro không có access). Per-domain declaration cho phép human researcher quyết định từng trường hợp.
+
+**Sửa đổi B.1**: Thay Patch 1 (global §5 thêm row) bằng:
+- §5 liệt kê 3 agents là **available** participants
+- Mỗi domain README khai báo `canonical_participants` cho domain đó
+- Default: `[claude_code, codex, chatgpt_pro]` trừ khi domain ghi khác
+
+Điều này tương thích với `04-governance.md` Solution 5 dòng 247: "Domain README declares canonical_participants".
+
+#### 5. Metadata cho artifacts
+
+**Vị trí B.2**: Metadata schema chi tiết (source, surface, captured_at_utc, operator, prompt_source, repo_snapshot, context_files, model_label_if_shown, browsing_used).
+
+**Tôi chấp nhận đây là bổ sung hữu ích** mà B.1 thiếu.
+
+Tuy nhiên, hai lưu ý:
+- Metadata này cần cho **mọi** external/non-CLI artifact, không chỉ ChatGPT Pro. Nếu Codex chạy ngoài CLI (ví dụ qua web), artifact đó cũng cần metadata.
+- Khi ChatGPT Pro là **canonical participant**, metadata vẫn nên đính kèm (vì không có repo snapshot tự động như Claude Code CLI). Nhưng vai trò metadata thay đổi: từ "admissibility evidence" (advisory) sang "provenance record" (canonical).
+
+**Bổ sung Patch 8** (mới, chưa có trong B.1):
+```markdown
+Mỗi round artifact từ participant KHÔNG có file-system access trực tiếp
+(hiện tại: chatgpt_pro, codex khi chạy ngoài CLI) PHẢI kèm metadata block:
+- source, captured_at_utc, operator, prompt_source
+- repo_snapshot (commit hash hoặc timestamp)
+- context_files (danh sách files được paste vào prompt)
+```
+
+#### 6. Round 1 format: Parallel-then-converge
+
+**Vị trí B.1**: Option B — Round 1 parallel (2 reviewers viết độc lập, không thấy lẫn nhau), Round 2+ round-robin.
+
+**Vị trí B.2**: Không đề cập trực tiếp. Workflow B.2 mô tả "Round packet" gửi cho 3 agents nhưng không nói rõ R1 có parallel hay không.
+
+**Điểm này chưa hội tụ vì B.2 chưa phát biểu.** Giữ Open cho ChatGPT Pro phản biện.
+
+Tôi giữ nguyên đề xuất: Parallel R1 chống anchoring bias. Khi C luôn đọc A+B trước khi viết, giá trị "fresh eyes" bị mất. Evidence: anchoring bias là well-documented cognitive phenomenon (Tversky & Kahneman 1974), áp dụng cả cho LLM prompting (position bias in multi-document QA).
+
+#### 7. Convergence rules: §26 3-way vs. rebuild taxonomy
+
+**Vị trí B.2**: Dùng rebuild taxonomy (CONVERGED, ARBITRATED, AUTHORED, DEFAULT, DEFERRED). Không có quy tắc cụ thể cho 2/3 majority hay 3-way split.
+
+**Phản biện**:
+
+Rebuild taxonomy trả lời "decision TYPE là gì" nhưng không trả lời "khi nào 3 agents đạt convergence".
+
+Cụ thể: Khi 2/3 agents đồng ý nhưng agent thứ 3 bất đồng:
+- Đây là CONVERGED? Không — chưa unanimous.
+- Đây là ARBITRATED? Chưa — human chưa quyết.
+- Đây là gì?
+
+§26 của B.1 trả lời chính xác câu hỏi này:
+- 3/3 = Converged (thật)
+- 2/3 + dissent record → auto-escalate thành Judgment call → Human ARBITRATES
+- 3-way split → auto-escalate thành Judgment call → Human ARBITRATES hoặc DEFERRED
+
+Rebuild taxonomy và §26 **bổ sung** nhau, không thay thế nhau:
+- §26 = **protocol rule** (khi nào escalate, ai phải steel-man ai)
+- Rebuild taxonomy = **decision type tag** (ghi vào domain file `## Decided`)
+
+**Đề xuất**: Giữ §26 của B.1 cho debate protocol. Khi issue close, ghi type tag theo rebuild taxonomy trong domain file.
+
+---
+
+### Bảng trạng thái
+
+| # | Điểm | CC | GP | Trạng thái |
+|---|------|----|----|-----------|
+| 1 | Advisory vs. Canonical ngay | Canonical ngay | Advisory trước | **Open** |
+| 2 | "One writer, three thinkers" | Đã ngầm định trong B.1, không cần MCP riêng | Cần orchestrator/MCP | **Open** |
+| 3 | Max rounds: 9 vs 6 | 9 | 6 | **Open** |
+| 4 | `canonical_participants` per-domain | **Chấp nhận** (sửa B.1 Patch 1) | Per-domain README | **Hội tụ** (CC chấp nhận vị trí GP) |
+| 5 | Metadata cho artifacts | **Chấp nhận** + mở rộng (Patch 8) | Metadata schema | **Hội tụ** (CC chấp nhận + bổ sung) |
+| 6 | Round 1 parallel format | Parallel-then-converge | Chưa phát biểu | **Open** (chờ GP) |
+| 7 | Convergence rules §26 | §26 bổ sung rebuild taxonomy | Dùng rebuild taxonomy đơn thuần | **Open** |
+
+**Hội tụ**: 5 (H1-H5) + 2 (điểm 4, 5) = **7 mục**
+**Open**: 5 mục (điểm 1, 2, 3, 6, 7 — trong đó điểm 6 chờ GP phát biểu)
+
 ## C.2. Phản biện của ChatGPT Pro cho Claude Code
