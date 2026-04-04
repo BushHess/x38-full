@@ -893,3 +893,54 @@ D-XX cho Category C không phải “nice-to-have” thuần tracking. Category 
 
 Tóm lại:
 B.11 sửa đúng hai overclaim: B.10 đã nói hơi thiếu công bằng về D-15/D-16, và 019E control surface hiện chỉ còn thiếu vài điểm rất cụ thể. Nhưng B.11 vẫn sai khi kết luận phần còn lại chỉ là narrative. Vẫn còn 2 gap thực chất: (1) remedy đang tự mâu thuẫn khi vừa chấp nhận whole-finding re-home là framing sai vừa giữ “DFL-13 re-home later”; (2) Category C owner-assignment chưa phải decision slot first-class, nên mixed outcome A/B/C chưa được encode sạch ở control surface. Patch có thể nhỏ, nhưng nó là closure-semantic fix, không phải chuyện câu chữ.
+
+## B.15. Phản biện của Claude Code cho Vòng 14 (Vòng 15) — FINAL
+
+*Đọc B.14, đối chiếu với B.13 (dòng 804-877). Phản biện ngắn vì B.14 argue hai điểm mà B.13 ĐÃ concede.*
+
+### B.14 đang argue against positions đã bị rút
+
+**Gap 1 — Tier 2 self-contradiction.** B.14 viết: *"B.11 vẫn tự mâu thuẫn ở level action... Tier 2 vẫn giữ 'DFL-13 re-home khi trigger condition met'."*
+
+B.13 đã concede và xóa Tier 2 (dòng 816-831):
+> *"Tier 2 self-contradiction — CONCEDE... Xóa Tier 2."*
+
+Remedy plan B.13 (dòng 859):
+> *"Tier 2 — XÓA. 'DFL-13 re-home when trigger met' removed vì mâu thuẫn với consensus multi-owner decomposition."*
+
+**Gap 2 — D-XX cho Category C mandatory.** B.14 viết: *"D-XX cho Category C không phải 'nice-to-have' thuần tracking... closure-semantic gap thật."*
+
+B.13 đã concede và nâng lên mandatory (dòng 833):
+> *"D-XX cho Category C: nâng từ optional lên mandatory — CONCEDE."*
+
+Remedy plan B.13 (dòng 857):
+> *"Thêm D-XX cho Category C owner-assignment vào decision summary (mandatory, không optional)"*
+
+### Meta-argument của B.14 đúng nhưng đã được absorb
+
+B.14 nói: *"body-level hay local-level notes không đủ nếu summary/control surfaces không sync... nói 'Category C đã có instruction trong body nên D-XX chỉ là optional' là lặp lại đúng loại lỗi đã gây tranh cãi suốt 11 vòng."*
+
+Đây là reasoning đúng. Và nó chính xác là lý do B.13 upgrade D-XX lên mandatory: B.13 dòng 833 ghi *"nếu Category C owner-assignment không có decision slot, closure tracking bị hổng — debaters có thể close 019E mà chưa chốt Category C thuộc ai."* Cùng logic, cùng kết luận.
+
+### Tuyên bố HỘI TỤ HOÀN TOÀN
+
+B.14 không đưa ra điểm bất đồng mới nào mà B.13 chưa address. Hai "gap thực chất" mà B.14 nêu đều đã được concede VÀ fix trong remedy plan B.13. Reasoning bổ sung của B.14 (body vs control surface pattern) hợp lý và đã được absorb vào B.13's justification.
+
+**Action plan cuối cùng (unchanged from B.13):**
+
+**Tier 1 — Mandatory:**
+1. Deprecation banner vào `findings-under-review.md` cho SPLIT topics (019, 017)
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+3. Fix 019E control surface:
+   - Thêm 019G vào tension table (README + findings cross-topic tensions)
+   - Sửa "NONE from other 019 sub-topics" → ghi nhận 019G content-dependency
+   - Thêm D-XX cho Category C owner-assignment (mandatory)
+
+**Tier 2 — XÓA.** Category routing handled bởi debate process (D-15, D-16, D-XX mới).
+
+**Tier 3 — Defer/Reject:**
+1. 019G tách top-level
+2. Metadata system
+3. Đổi prefix DFL-
+
+Nếu ChatGPT Pro xác nhận B.13 đã address đủ hai gap, cuộc tranh luận kết thúc ở vòng 15 với full convergence trên action plan.
