@@ -2,7 +2,7 @@
 
 Chỉ mục toàn cục cho các topic đang được tranh luận.
 
-**Cập nhật**: 2026-04-04 — debate-index sync fix: (1) 019D2 tách khỏi 019D1 (019D2 chỉ cần 019A, không cần 019B); (2) 019D3 thêm 019A vào HARD-dep (README ghi 019A + 019D2); (3) internal waves sửa phản ánh 019D2 có thể song song 019B. Tất cả khớp với README authoritative.
+**Cập nhật**: 2026-04-04 — Dependency sync fix across debate-index, PLAN.md, EXECUTION_PLAN.md: (1) 019D2 tách khỏi 019D1 (019D2 chỉ cần 019A, không cần 019B); (2) 019D3 thêm 019A vào HARD-dep (README ghi 019A + 019D2); (3) internal waves + "Bắt đầu từ đâu" sửa: 019D2 song song 019B/C, 019D1+019D3 song song (không sequential). Tất cả khớp với README authoritative.
 Previous: 2026-04-03 — Quality audit: Topic 017 SPLIT into 017A (intra-campaign ESP, v1)
 + 017B (inter-campaign ESP, v2). 3 findings each. Scheduling benefit: 003 only needs 017A.
 Topic 016: pre-debate burden of proof framework added (decision tree, evidence requirements).

@@ -31,7 +31,7 @@ MỌI agent tham gia debate — đọc file này để hiểu mình đang ở đ
 | Topic 018 | **CLOSED** (2026-03-27). 6 rounds (standard 2-agent). 10 Converged + 1 Judgment call (SSE-D-05). Downstream routings confirmed to 006/015/017/013/008/003. Prior 4-agent debate (7 rounds, extra-canonical) served as input evidence. Xem `debate/018-search-space-expansion/final-resolution.md`. |
 | Topic 008 | **CLOSED** (2026-03-27). 4 rounds (author) / 4 rounds (reviewer), 4/4 Converged. Xem `debate/008-architecture-identity/final-resolution.md`. |
 | Topic 013 | **CLOSED** (2026-03-28). 6 rounds (canonical) + 12 rounds (3-agent JC-debate), 4/4 Judgment call. Hybrid C convergence framework, bootstrap defaults with 5-tier provenance, Holm correction law, equivalence thresholds. Unblocks Topic 017. Xem `debate/013-convergence-analysis/final-resolution.md`. |
-| Topic 019 | **SPLIT** (2026-04-02). Discovery feedback loop → 9 sub-topics: 019A (foundations, Tier 1 blocker), 019B (AI analysis), 019C (data exploration), 019D1 (pipeline), 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics), 019G (data scope). 18 findings, 22 decisions. Internal waves: 019A→B/C→D1/D2→D3. 019E/F/G independent, song song. 003 only needs 019A+019D1. |
+| Topic 019 | **SPLIT** (2026-04-02). Discovery feedback loop → 9 sub-topics: 019A (foundations, Tier 1 blocker), 019B (AI analysis), 019C (data exploration), 019D1 (pipeline), 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics), 019G (data scope). 18 findings, 22 decisions. Internal waves: 019A→B/C+D2→D1(cần A+B)+D3(cần A+D2). 019E/F/G independent, song song. 003 only needs 019A+019D1. |
 | Debate rounds thực hiện | **88** (topic 004: 6, topic 007: 4, topic 001: 6, topic 002: 6, topic 010: 6, topic 008: 8, topic 013: 12 canonical+JC, topic 018: 12 standard + 28 extra-canonical rounds not counted). 20 OPEN entries remaining (Topics 000/017/019/019D SPLIT into sub-topics). |
 | Specs drafted | SEEDED (1): `meta_spec.md` seeded from 002/004/007/008 closures (eligible for DRAFTING). DRAFTING (3): `architecture_spec.md` from 001/002/004/007/008/010/013/018 closures (§14 proposal from 019); `discovery_spec.md` from 018 closure (§6-§11 proposals from 019); `methodology_spec.md` from 013 closure. |
 | Specs published | ZERO |
@@ -61,7 +61,7 @@ Wave 2.5:  016 (bounded recalibration)   ← chờ 001✅ + 002✅ + 010✅ + 01
            019A (discovery foundations)  ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (Tier 1 blocker)
            019E/F/G (independent)        ← chờ 018✅ + 002✅ + 004✅ — ALL DEPS SATISFIED (song song)
                ↓
-           019B/C (after 019A) → 019D1/D2 (after 019A+B) → 019D3 (after 019D2)
+           019B/C + 019D2 (after 019A) → 019D1 (after 019A+B) + 019D3 (after 019A+019D2)
            017B (inter-campaign ESP)     ← chờ 017A (sequential)
                ↓
 Wave 3:    003 (protocol)                ← chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1
@@ -83,7 +83,7 @@ Topic 019 (discovery feedback loop) added 2026-03-29, SPLIT 2026-04-02 →
 9 sub-topics (019A-G, 019D1-D3). 003 only needs 019A + 019D1.
 Topic 007 (philosophy) là bottleneck duy nhất. Sau 007, 10 remaining Wave 2 topics
 song song → 016 + 017A + 019A + 019E/F/G (Wave 2.5, song song) →
-019B/C → 019D1/D2 → 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
+019B/C + 019D2 → 019D1 + 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
 
 ---
 
@@ -254,12 +254,12 @@ Tổng: 16 topics mới (không kể 000 SPLIT và 004 đã CLOSED trước spli
 - **019B** (AI analysis): DFL-01, DFL-02, DFL-03 (3 findings) — after 019A
 - **019C** (data exploration): DFL-06, DFL-07 (2 findings) — after 019A
 - **019D1** (pipeline structure): DFL-08, DFL-10 (2 findings) — after 019A+B
-- **019D2** (statistical budget): DFL-11 (1 finding) — after 019A+B
-- **019D3** (grammar expansion): DFL-12 (1 finding) — after 019D2
+- **019D2** (statistical budget): DFL-11 (1 finding) — after 019A
+- **019D3** (grammar expansion): DFL-12 (1 finding) — after 019A + 019D2
 - **019E** (data quality): DFL-13, DFL-17 (2 findings) — independent, Tier 4
 - **019F** (regime dynamics): DFL-14, DFL-18 (2 findings) — independent, Tier 4
 - **019G** (data scope): DFL-15, DFL-16 (2 findings) — independent, Tier 4
-- Internal waves: 019A→B/C→D1/D2→D3. 019E/F/G song song, không chờ 019A.
+- Internal waves: 019A→B/C+D2→D1(cần A+B)+D3(cần A+D2). 019E/F/G song song, không chờ 019A.
 - Phụ thuộc: 018✅ + 002✅ + 004✅ (3/3 satisfied — ALL DEPS MET)
 - **003 chỉ cần 019A + 019D1** — các sub-topic khác là informational, không blocking.
 - Song song với 016 và 017A — khác dependency set, không depend lẫn nhau.
@@ -410,7 +410,7 @@ before formal Wave 2 opening approval. `architecture_spec.md` seeded from 001/00
 **Bước 23** (cần human approve): Mở Wave 2 — 10 remaining topics song song (001 already closed)
 **Bước 24-34**: Debate remaining Wave 2 topics (song song, human mediate mỗi round)
 **Bước 35** (cần human approve): Mở Wave 2.5 — Topics 016 + 017A (intra-ESP) + 019A (foundations, Tier 1 blocker) + 019E/F/G (independent, song song)
-**Bước 36-38**: Debate Wave 2.5 sub-topics: 016 (1-2 rounds) + 017A (1-2 rounds) + 019A→B/C→D1/D2→D3 (internal waves) + 019E/F/G (song song) + 017B (after 017A)
+**Bước 36-38**: Debate Wave 2.5 sub-topics: 016 (1-2 rounds) + 017A (1-2 rounds) + 019A→B/C+D2→D1+D3 (internal waves) + 019E/F/G (song song) + 017B (after 017A)
 **Bước 38** (cần human approve): Mở Wave 3 — Topics 003 + 014
 **Bước 39-41**: Debate Topics 003 + 014 (1-2 rounds mỗi topic)
 

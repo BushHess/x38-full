@@ -795,7 +795,7 @@ Vai trò kép:
 017A (intra-ESP)    ← HARD-dep from 002 + 008 + 010 + 013 + 018 — Wave 2.5, ALL DEPS SATISFIED
 019A (foundations)   ← HARD-dep from 018 + 002 + 004 — Wave 2.5, ALL DEPS SATISFIED (Tier 1 blocker)
 019E/F/G (indep.)   ← HARD-dep from 018 + 002 + 004 — Wave 2.5, song song với 019A
-019B/C → 019D1/D2 → 019D3 (internal waves, after 019A)
+019B/C + 019D2 (after 019A) → 019D1 (after 019A+B) + 019D3 (after 019A+019D2)
 017B (inter-ESP)    ← HARD-dep from 017A (sequential)
     ↓
 003 (protocol) ← HARD-dep from 001 + 002 + 004(closed) + 015 + 016 + 017A + 019A + 019D1 — Wave 3
@@ -1142,7 +1142,7 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 
 **Topics OPEN** (20 entries, 3 waves):
 - **Wave 2** (6 topics song song): 005, 006, 009, 011, 012, 015
-- **Wave 2.5** (12 debatable sub-topics): 016 (bounded-recalibration) — chờ 001✅ + 002✅ + 010✅ + 011 + 015; 017A (intra-campaign ESP) — ALL DEPS SATISFIED; 019A (discovery foundations, Tier 1 blocker) + 019E/F/G (independent, song song) — ALL DEPS SATISFIED. Internal waves: 019A→019B/C→019D1/D2→019D3. 017B after 017A. 003 chỉ cần 017A + 019A + 019D1
+- **Wave 2.5** (12 debatable sub-topics): 016 (bounded-recalibration) — chờ 001✅ + 002✅ + 010✅ + 011 + 015; 017A (intra-campaign ESP) — ALL DEPS SATISFIED; 019A (discovery foundations, Tier 1 blocker) + 019E/F/G (independent, song song) — ALL DEPS SATISFIED. Internal waves: 019A→019B/C+019D2→019D1(cần A+B)+019D3(cần A+D2). 017B after 017A. 003 chỉ cần 017A + 019A + 019D1
 - **Wave 3**: 003 (protocol-engine) — chờ 001✅ + 002✅ + 004✅ + 015 + 016 + 017A + 019A + 019D1; 014 (execution) — chờ 003 + 005
 
 > **Topic 019 OPENED 2026-03-29** — Discovery feedback loop. Gap identified during
@@ -1158,11 +1158,11 @@ V1/V2, 3 changelogs đã đọc toàn bộ. Xem `docs/evidence_coverage.md` §3.
 > **Topic 019 SPLIT 2026-04-02** — 9 sub-topics: 019A (foundations, Tier 1 blocker),
 > 019B (AI analysis), 019C (data exploration), 019D1 (pipeline structure),
 > 019D2 (budget), 019D3 (grammar), 019E (data quality), 019F (regime dynamics),
-> 019G (data scope). Internal waves: 019A→B/C→D1/D2→D3. E/F/G independent, song song.
+> 019G (data scope). Internal waves: 019A→B/C+D2→D1(cần A+B)+D3(cần A+D2). E/F/G independent, song song.
 > **Topic 017 SPLIT 2026-04-03** — 017A (intra-campaign ESP: ESP-01+ESP-04+SSE-04-CELL)
 > + 017B (inter-campaign ESP: ESP-02+ESP-03+SSE-08-CON). 003 only needs 017A.
 
-**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017A + 019A + 019E/F/G (Wave 2.5, song song) → 019B/C → 019D1/D2 → 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
+**Ưu tiên debate**: ~~007 (Wave 1)~~ CLOSED → ~~018~~ CLOSED (routings confirmed) + 6 remaining Wave 2 topics song song (001/002/008/010/013 CLOSED) → 016 + 017A + 019A + 019E/F/G (Wave 2.5, song song) → 019B/C + 019D2 → 019D1 + 019D3 + 017B → 003 + 014 (Wave 3) cuối cùng.
 
 ### Execution Plan
 
