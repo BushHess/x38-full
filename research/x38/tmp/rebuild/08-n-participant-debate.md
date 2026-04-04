@@ -58,7 +58,7 @@ Purpose: avoid merge conflicts, serialize writes, ensure provenance.
 ### D3. Max Rounds Formula
 
 ```
-max_rounds_per_finding = 3 × len(canonical_participants)
+max_rounds_per_topic = 3 × len(canonical_participants)
 ```
 
 | Canonical count | Max rounds | Exchange cycles |
@@ -87,12 +87,16 @@ note the exception in README or round packet.
 
 - `Converged` = ALL canonical participants unanimous + steel-man
   obligations completed per §7(d).
-- `Non-unanimous` after `max_rounds_per_finding` → auto-escalate
-  to `Judgment call`. Dissent record required:
-  - Dissenting position (who, specific argument)
-  - Supporting evidence
-  - Majority rationale (if majority exists)
-  - Dissenting agent MUST steel-man majority position before recording dissent
+- `Non-unanimous` after `max_rounds_per_topic` → auto-escalate
+  to `Judgment call`. Position record required:
+  - Each live position + holder(s)
+  - Supporting evidence per position
+  - Chosen / synthesized / deferred resolution
+  - If majority exists: majority rationale
+  - If no majority (`split`): note `no majority`
+  - Steel-man obligations must be satisfied per §7d for every distinct
+    competing position before closure, or recorded as
+    `steel-man impasse (N-way)`.
 - `majority-dissent` and `split` are **debate-status markers**,
   not final decision type tags.
 
@@ -111,10 +115,15 @@ is a governance violation, not an efficiency gain.
 **Round parity** (§14b): Before closure or Judgment call, all canonical
 participants must have total round count within ±1, OR the asymmetry
 must be noted with reason in `final-resolution.md`.
-Exception: Parallel R1 (reviewers write same round-1 while architect
-only has round-1 opening) — asymmetry by design, no note required.
+Note: After Parallel R1, all participants have round count = 1 (parity
+satisfied). The information asymmetry (reviewers did not see each
+other's R1) is a design choice of D4, not a parity exception.
 
-**Scope**: §26 activates fully when N > 2. When N = 2, existing
+**Scope of §14b/§14c**: Apply to ALL canonical participant counts
+(N ≥ 2). These rules existed in bilateral form (`rules.md` §14b) and
+are generalized here.
+
+**Scope of §26**: Activates fully when N > 2. When N = 2, existing
 bilateral rules (§7a-c, §13 max 6, §14b 2-party parity) apply.
 
 ### D6. Actor Identity + Provenance Metadata
@@ -195,7 +204,7 @@ Step 3 — Round-robin (Round 2+):
 Step 4 — Convergence check after each round:
   ALL issues Converged (unanimous) or Judgment call → Step 5
   Still Open → continue round-robin
-  Reached max_rounds → all Open → Judgment call + dissent record
+  Reached max_rounds → all Open → Judgment call + position record
 
 Step 5 — Closure:
   Human → any agent: Prompt C
@@ -263,23 +272,34 @@ Abbreviations per §5: CC = claude_code, CX = codex, GP = chatgpt_pro.
 | Issue ID | Finding | Resolution | Decision type | Round closed | Dissent |
 |----------|---------|------------|--------------|-------------|---------|
 
-## Dissent records
+## Non-unanimous records
 
 ### {Issue ID} — {name}
 
-**Majority position** ({agents}): [position]
-**Dissent** ({agent}): [position]
-**Dissent evidence**: [pointers]
-**Majority rationale**: [why dissent doesn't hold]
-**Human decision**: [choose majority / dissent / synthesize / defer]
-**Decision type**: ARBITRATED
+**Positions**:
+- {agents}: [position]
+- {agents}: [position]
+- {agents}: [position]   <!-- only when split / N > 2 -->
+
+**Evidence per position**:
+- {agents}: [pointers]
+
+**Human decision**: [choose / synthesize / defer]
+**Decision type**: {decision_type}
+
+**If decision_type = ARBITRATED**:
+- rationale: [why chosen]
+
+**If decision_type = DEFERRED**:
+- blocked_by: [topic/finding ID]
+- unblocks: [spec section]
 ```
 
 ---
 
 ## Impact on Other Rebuild Files
 
-**Rule precedence**: Until the updates below are merged, 08 supersedes
+**Rule precedence**: After ratification and until the updates below are merged, 08 supersedes
 debate-related content in 04/02/01/07 where they conflict. Specifically:
 - 04-governance.md Solution 5 "do NOT do this for v1" → overridden by D1
 - 04-governance.md "max 6 rounds" → overridden by D3 formula
@@ -292,7 +312,7 @@ debate-related content in 04/02/01/07 where they conflict. Specifically:
 | `04-governance.md` Solution 4 | Embed §25b, §26, formula §13 in debate rules section |
 | `04-governance.md` Solution 5 | Standardize actor ID: `chatgpt_pro` + `surface` field per D6 |
 | `02-concept-structure.md` | Domain file template includes `canonical_participants` field |
-| `01-taxonomy.md` | Note: taxonomy = decision type layer; §26 = protocol layer |
+| `01-taxonomy.md` | Note: taxonomy = decision type layer; §26 = protocol layer. Update CONVERGED definition: "Both agents" → "All canonical participants" |
 | `07-genesis-pipeline.md` | Migration step includes trilateral protocol adoption |
 
 ---
@@ -312,7 +332,8 @@ debate-related content in 04/02/01/07 where they conflict. Specifically:
 - [ ] Parallel B1/B2 only when N ≥ 3
 - [ ] Directory structure dynamic per canonical_participants + external/ lane
 - [ ] Status table columns adapt to participant count
-- [ ] Final resolution template includes Dissent column + Decision type tags
+- [ ] Final resolution template supports N-way positions + conditional fields per decision type
 - [ ] Metadata block required for non-CLI participant artifacts
 - [ ] `04-governance.md` Solution 5 updated (opt-in replaces advisory-only default)
+- [ ] §5 capability/access descriptions updated for all participants
 - [ ] Topics CLOSED before upgrade keep bilateral structure unchanged

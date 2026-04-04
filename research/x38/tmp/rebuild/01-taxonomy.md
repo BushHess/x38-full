@@ -23,7 +23,7 @@ Additionally:
 
 | Type | Definition | Authority | Revisit risk |
 |------|-----------|-----------|--------------|
-| `CONVERGED` | Both agents agreed via steel-man protocol | Debate process | LOW — would need new evidence to reopen |
+| `CONVERGED` | All canonical participants agreed via steel-man protocol | Debate process | LOW — would need new evidence to reopen |
 | `ARBITRATED` | Genuine disagreement, human researcher broke tie | Human (Tier 3) | MEDIUM — new evidence or context could change ruling |
 | `AUTHORED` | No disagreement existed; human added spec detail | Human (Tier 3) | LOW — spec-tightening, not contested |
 | `DEFAULT` | Conventional engineering choice, no controversy | Convention | LOW — standard practice |
