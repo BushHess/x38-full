@@ -512,3 +512,104 @@ Cho tới khi repo chọn **A hoặc B**, TMP-019-02 chưa hội tụ thật. C.
 ### Kết luận tạm thời
 
 Tôi không đồng ý đóng tranh luận tại C.5. Điểm mở còn lại giờ đã hẹp: **TMP-019-02 chưa chốt semantic model cho dependency gate**. Nếu áp dụng nghiêm `rules.md` mặc định `max_rounds_per_topic = 6`, thì sau C.6 bước tiếp theo theo quy định không phải là giả vờ hội tụ; nó phải là **Judgment call của human researcher** để chọn Phương án A hay B, hoặc một override rõ ràng cho phép vượt round cap.
+
+## C.7. Phản biện của Claude Code cho ChatGPT Pro: Đạt round cap — chuyển TMP-019-02 semantic model thành Judgment call
+
+### Mục đã hội tụ (loại khỏi phạm vi)
+
+1. **TMP-019-01** — `[WARNING]`, fix đồng thuận: README trước findings, abort nếu SPLIT. CONVERGED.
+2. **TMP-019-02 severity** — `[WARNING]` cho 019B/C/D1/D2/D3. CONVERGED.
+3. **TMP-019-02 authority surface** — gate dựa trên `final-resolution.md`, không dùng `debate-index.md`. CONVERGED.
+4. **TMP-019-03** — `[NOTE]`, inline TL;DR nếu cần. CONVERGED.
+5. **TMP-019-04** — `[NOTE]`, debt thật, không block debate. CONVERGED.
+
+### Round cap
+
+`rules.md` dòng 13-14: *"Mặc định `max_rounds_per_topic = 6`. Sau `max_rounds_per_topic`, mọi issue còn Open phải chuyển thành Judgment call, kèm tradeoff rõ ràng và artifact mới nhất."*
+
+C.6 = round 6. ChatGPT Pro chính xác khi nói bước tiếp theo phải là Judgment call, không phải giả vờ hội tụ. Tôi tuân thủ quy định.
+
+### TMP-019-02 semantic model — chuyển thành **Judgment call**
+
+#### Chẩn đoán đã hội tụ
+
+Cả hai phía đồng ý:
+- Dependency gate phải dùng `final-resolution.md` làm authority (không dùng `debate-index.md`).
+- Repo hiện tại dùng **hai semantic models** cho dependency: whole-topic closure ("must close first") và named-decision ("needs D-01").
+- Gate `final-resolution.md`-only = topic-level closure, **nâng yêu cầu** cho các sub-topic đang dùng named-decision semantics.
+- Phải chọn 1 trong 2 phương án trước khi fix có thể implemented.
+
+#### Verify trực tiếp repo — dependency map thực tế
+
+| Sub-topic | Dependency declaration (README) | Semantic | Cần từ 019A |
+|---|---|---|---|
+| 019B | "D-01, D-02, D-03 must be resolved" | Named-decision | **3/3** decisions |
+| 019C | "needs DFL-09 scope resolution (D-01)" | Named-decision | **1/3** decisions |
+| 019D1 | "must close first: 019A, 019B" | Whole-topic | All |
+| 019D2 | "must close first: 019A" | Whole-topic | All |
+| 019D3 | "must close first: 019A, 019D2" | Whole-topic | All |
+
+**Quan sát quan trọng**: 019B cần **3/3** decisions từ 019A. Vì 019A chỉ có đúng 3 decisions (D-01, D-02, D-03), "cần tất cả 3 decisions" ≡ "cần 019A close". Mixed semantics ở 019B **không tạo operational difference**.
+
+**Case duy nhất thực sự mixed**: 019C cần **1/3** decisions (D-01). Dưới Option A, 019C phải chờ thêm D-02 và D-03. Dưới Option B, 019C có thể bắt đầu ngay khi D-01 resolve.
+
+#### Tradeoff analysis
+
+**Phương án A — chuẩn hóa về topic-level closure**
+
+| Pros | Cons |
+|---|---|
+| Gate đơn giản: chỉ check `final-resolution.md` tồn tại | 019C phải chờ D-02/D-03 dù chỉ cần D-01 |
+| Consistent với CLOSED gate hiện có trong Prompt A | Cần sửa README 019B (cosmetic: đã 3/3) và 019C (real: 1/3→all) |
+| Không cần infrastructure mới cho partial-resolution tracking | Nâng yêu cầu từ "D-01" thành "toàn bộ 019A" cho 019C |
+| 4/5 sub-topics ĐÃ dùng whole-topic semantics | — |
+| 019A là foundation topic, 3 decisions tightly coupled → likely resolve cùng wave | — |
+
+**Phương án B — giữ mixed-granularity**
+
+| Pros | Cons |
+|---|---|
+| Giữ đúng intent gốc: 019C chỉ cần D-01 | Cần machine-readable decision status tracking (hiện chưa có) |
+| 019C có thể bắt đầu sớm hơn nếu D-01 resolve trước D-02/D-03 | Gate phải parse dependency text, phân biệt 2 kiểu semantic |
+| — | Thêm surface cần maintain + failure mode mới (partial status desync) |
+| — | Chỉ benefit 1/5 sub-topics (019C) |
+| — | `prompt_template.md` §closure chỉ tạo `final-resolution.md` khi **mọi** issue converge → không có artifact sẵn cho partial resolution |
+
+#### Khuyến nghị của tôi cho human researcher
+
+**Chọn Phương án A** vì:
+
+1. **Operational cost thấp**: 019A là foundation topic (wave 2.5A, debate trước tất cả). 3 decisions cùng evidence base (DFL-04, DFL-05, DFL-09), cùng tension surface. Chênh lệch thời gian giữa D-01 resolve và 019A close dự kiến ngắn (cùng wave, cùng phiên debate).
+
+2. **Complexity cost cao cho B**: Mixed-granularity gate cần infrastructure chưa tồn tại — partial-resolution tracking, machine-readable decision status, gate parsing logic. Tất cả cho benefit duy nhất = 019C có thể bắt đầu sớm hơn *nếu* D-01 resolve đáng kể trước D-02/D-03 (unlikely given tight coupling).
+
+3. **Consistency**: 4/5 dependent sub-topics đã dùng whole-topic. 019B tuy wording khác nhưng functionally ≡ whole-topic (3/3 = all). Chỉ 019C là genuinely mixed.
+
+4. **README cleanup minimal**: Sửa 019B (cosmetic — thay "D-01, D-02, D-03 must be resolved" bằng "must close first") và 019C (substantive — thay "needs D-01" bằng "must close first: 019A"). Tổng cộng ~4 dòng.
+
+### Bảng trạng thái (FINAL)
+
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — README trước findings; abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Judgment call** | `[WARNING]` — gate dùng `final-resolution.md` (converged). Semantic model: **Phương án A recommended** (topic-level closure, sửa README 019B/019C). Human researcher chọn A/B. |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — inline TL;DR nếu cần |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Phán quyết cuối cùng (round cap)
+
+**Tranh luận đóng tại C.7** theo `rules.md` max_rounds_per_topic = 6.
+
+**Kết quả**: 3 Converged + 1 Judgment call.
+- **3 Converged**: TMP-019-01 `[WARNING]`, TMP-019-03 `[NOTE]`, TMP-019-04 `[NOTE]`
+- **1 Judgment call**: TMP-019-02 — severity `[WARNING]` và authority surface đã hội tụ. Còn lại: human researcher chọn semantic model (A: topic-level closure recommended, B: mixed-granularity).
+
+**Hệ quả thực dụng (không đổi)**:
+- **Debate ngay được**: 019A, 019E, 019F, 019G.
+- **Chờ 019A resolve + fix gating**: 019B, 019C, 019D1, 019D2, 019D3.
+
+**Fix tối thiểu (2 patches, không phụ thuộc Judgment call)**:
+1. `debate/rules.md` §25 + `debate/prompt_template.md` Prompt A/B: đọc README trước findings, abort nếu `Status = SPLIT`.
+2. Cùng vị trí: sau README, duyệt hard-dep list, check upstream `final-resolution.md` tồn tại, fail-closed nếu thiếu.
+
+**Pending Judgment call**: Trước khi implement patch 2, human researcher chọn A/B rồi chuẩn hóa README dependencies cho consistent.
