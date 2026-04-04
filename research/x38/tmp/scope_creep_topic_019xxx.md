@@ -800,3 +800,78 @@ Bất đồng cuối cùng chỉ còn là **framing**: “nâng sub-decision gat
 
 ## B.12. Phản biện của ChatGPT Pro cho Vòng 11 (Vòng 12)
 B.11 đúng khi sửa B.10 ở chỗ 019E không chỉ có “notes” mà đã có D-15/D-16 formal. Nhưng B.11 vẫn overclaim khi coi phần còn lại chỉ là framing: A/B/C decomposition của DFL-13 vẫn chưa được formalize trọn vẹn ở control surface vì Category C chưa có D-XX riêng, còn Tier 2 vẫn tự mâu thuẫn khi vừa bác whole-finding re-home vừa giữ “DFL-13 re-home later”. Phần cần chốt dứt điểm không phải move topic, mà là closure semantics: thêm decision slot first-class cho Category C và bỏ tư duy re-home nguyên khối DFL-13, kể cả dưới dạng trigger/defer.
+
+## B.13. Phản biện của Claude Code cho Vòng 12 (Vòng 13)
+
+*Đối chiếu B.12 với remedy plan B.11 (dòng 777-793) và consensus record (hội tụ #16-#20). Dưới đây là phản biện chính trực.*
+
+### Mục hội tụ mới (từ vòng 12 → vòng 13)
+
+| # | Nội dung | Trạng thái |
+|---|----------|-----------|
+| 24 | D-15/D-16 là formal decision slots, không phải “notes” | **HỘI TỤ** (B.12 concedes B.11 đúng ở điểm này) |
+
+### Điểm tôi chấp nhận từ B.12
+
+**Tier 2 self-contradiction — CONCEDE.** Đây là catch sắc nhất của toàn bộ vòng 12.
+
+Bằng chứng tự mâu thuẫn trong remedy plan B.11:
+
+- Hội tụ #17 (vòng 9): *”'Move whole DFL-13 sang 009A' là sai framing — cả hai bên đều rút.”*
+- Hội tụ #20 (vòng 11): *”Whole-finding re-home sai framing — cả hai đồng ý.”*
+- Tier 2 B.11 (dòng 788): *”DFL-13 re-home khi trigger condition met”*
+
+Nếu whole-finding re-home là sai framing (đã hội tụ), thì giữ nó dưới dạng “deferred trigger” vẫn là **cùng framing sai, chỉ khác thời điểm**. “Move cả DFL-13 sau” không coherent hơn “move cả DFL-13 bây giờ” khi cả hai bên đã đồng ý DFL-13 là multi-owner (3 categories, 3 scope khác nhau).
+
+Routing đúng:
+- **Category B** → đã có D-16 (acquire cross-exchange data?). Kết quả debate quyết.
+- **Category C** → sẽ có D-XX mới (owner: trustworthiness hay Stage 2?). Kết quả debate quyết.
+- **Category A** → stays at DFL-13/trustworthiness layer. Nếu debate phát hiện cần route khác, debaters tạo decision lúc đó.
+
+Không còn scenario nào cần “re-home nguyên khối DFL-13.” Debate process + D-XX system **thay thế hoàn toàn** Tier 2 trigger. **Xóa Tier 2.**
+
+**D-XX cho Category C: nâng từ optional lên mandatory — CONCEDE.** B.11 đã đề xuất thêm D-XX nhưng ghi “(Optional).” B.12 đúng khi argue đây phải là non-optional: nếu Category C owner-assignment không có decision slot, closure tracking bị hổng — debaters có thể close 019E mà chưa chốt Category C thuộc ai. Upgrade lên mandatory trong Tier 1.
+
+### Điểm còn lại: framing “closure semantics” vs “complete tension table”
+
+B.12 nói: *”phần còn lại chỉ là framing”* là overclaim từ B.11.
+
+Tôi reassess: B.12 đúng **một phần**. Khi tôi ghi “chỉ là framing” ở B.11 meta, tôi bỏ sót Tier 2 contradiction — đó là substantive bug, không phải framing. Sau khi fix Tier 2 (xóa), phần còn lại **bây giờ** mới thật sự chỉ là framing:
+
+- B.12 gọi action plan là “closure semantics.”
+- Tôi gọi cùng action plan là “complete tension table + add D-XX.”
+- Cả hai mô tả **cùng output**: thêm 019G vào tension table, fix “NONE”, thêm D-XX cho Category C.
+
+Hai cách gọi complementary: “closure semantics” giải thích **tại sao** fix cần thiết; “complete tension table + add D-XX” mô tả **cái gì** cần fix. Không có disagreement về action.
+
+### Tuyên bố HỘI TỤ
+
+Qua 13 vòng, hai bên đã converge **hoàn toàn về action plan**:
+
+**Tier 1 — Mandatory:**
+1. Deprecation banner vào `findings-under-review.md` cho SPLIT topics (019, 017)
+2. Sync PLAN.md + EXECUTION_PLAN.md → model split 019A-G/D1-D3 và 017A/017B
+3. Fix 019E control surface:
+   - Thêm 019G vào tension table (README + findings cross-topic tensions)
+   - Sửa “NONE from other 019 sub-topics” → ghi nhận 019G content-dependency (informational, not scheduling blocker)
+   - Thêm D-XX cho Category C owner-assignment vào decision summary (mandatory, không optional)
+
+**Tier 2 — XÓA.** “DFL-13 re-home when trigger met” removed vì mâu thuẫn với consensus multi-owner decomposition. Category routing giờ handled hoàn toàn bởi debate process qua D-15, D-16, và D-XX mới cho Category C.
+
+**Tier 3 — Defer/Reject:**
+1. 019G tách top-level: đúng ontology nhưng zero functional gain
+2. Metadata system (origin_issue_id + scope_class): over-engineered
+3. Đổi prefix DFL-: phá convention
+
+### Tổng kết toàn bộ 13 vòng tranh luận
+
+**Consensus đã đạt được (24 điểm hội tụ):**
+
+Scope creep 019 đã được giảm mạnh bởi split (9 sub-topics, parallel routing). Vấn đề còn lại = control surface hygiene, không phải structural. Cụ thể: (a) parent findings files thiếu deprecation banner, (b) planning surfaces chưa sync, (c) 019E tension table thiếu 019G + “NONE” inconsistent + Category C chưa có D-XX. Fix tổng = banner + sync + 5-7 dòng sửa ở 019E. Không cần re-home, không cần đổi prefix, không cần metadata system, không cần tạo topic mới.
+
+**Nhượng bộ lớn của mỗi bên:**
+
+| Bên | Đã rút lại |
+|-----|-----------|
+| ChatGPT Pro | DFL-17→012 (sai, F-39≠DFL-17), đổi prefix DFL- (phá convention), 019F→top-level 020 (overstated), move nguyên khối DFL-13→009A (sai đơn vị phân tích), “019 parent thiếu README” (lỗi factual), maximal remedy package |
+| Claude Code | “y hệt trước split” (overstate), “bookkeeping only” (understate), “zero practical consequence” (quá tuyệt đối), “chính xác” cho sub-decision gating (overclaim), “cosmetic” cho DFL-17 bundling, Tier 2 re-home trigger (mâu thuẫn với multi-owner consensus) |
