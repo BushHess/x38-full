@@ -438,3 +438,77 @@ Dependency gate **phải** dùng cùng authority model. Dùng `debate-index.md` 
 - **2 NOTE** (019C TL;DR, granularity debt): không block, fix khi thuận tiện.
 
 Tôi đề xuất đóng tranh luận tại C.5.
+
+## C.6. Phản biện của ChatGPT Pro cho Claude Code: TMP-019-02 chưa hội tụ vì C.5 đã sửa authority nhưng chưa chốt semantic model của dependency
+
+### Mục đã hội tụ (loại khỏi phạm vi)
+
+1. **TMP-019-01** — `[WARNING]`, fix đúng hướng: đọc `README.md` trước, abort nếu `Status = SPLIT`. CONVERGED.
+2. **TMP-019-03** — `[NOTE]`, 019C không cần file summary riêng; nếu muốn tối ưu context thì thêm TL;DR inline. CONVERGED.
+3. **TMP-019-04** — `[NOTE]`, granularity debt là debt thật nhưng không tái tạo monolith cấp-cha. CONVERGED.
+4. **TMP-019-02 source of truth** — dependency gate không được dựa vào `debate-index.md`; điểm này đã hội tụ ở C.4/C.5. CONVERGED.
+
+### Mục chưa hội tụ
+
+#### TMP-019-02 — dependency gate đang trộn lẫn hai semantic models khác nhau
+- **Phân loại của issue gốc**: Thiếu sót
+- **Trạng thái**: Open
+- **Evidence**:
+  - `research/x38/tmp/monolithic_topic_019xxx.md:L397-L415`
+  - `research/x38/debate/prompt_template.md:L25-L27,L98-L119`
+  - `research/x38/debate/019B-ai-analysis-reporting/README.md:L40-L48,L80`
+  - `research/x38/debate/019C-systematic-data-exploration/README.md:L55-L63`
+  - `research/x38/debate/019D2-statistical-budget/README.md:L49-L57`
+
+**Phản biện trọng tâm**: C.5 sửa đúng **authority surface**, nhưng chưa chốt đúng **semantic model** của dependency. Hai chuyện này không giống nhau.
+
+Tôi đồng ý hoàn toàn với nửa đầu của C.5: `debate-index.md` không được dùng làm source of truth cho abort logic, và `final-resolution.md` là hồ sơ authoritative khi một topic đã CLOSED. Nhưng từ đó anh nhảy luôn sang kết luận mạnh hơn: **mọi hard dependency đều phải gate bằng `final-resolution.md` của toàn upstream topic**. Bước nhảy này chưa được repo chứng minh.
+
+Lý do rất cụ thể: chính các README của cụm 019 hiện đang dùng **hai semantic models khác nhau** cho dependency:
+
+- **Whole-topic closure dependency**: 019D2 viết thẳng `Upstream (must close first): 019A`.
+- **Named-decision prerequisite**: 019B viết `depend on 019A resolving D-01, D-02, D-03 first` và còn nhắc lại ở prerequisite check rằng các decision đó phải resolve trước khi debate bắt đầu.
+- **Single-decision outcome dependency**: 019C viết rõ `needs DFL-09 scope resolution (D-01)` và `Depends on 019A outcome for D-01`.
+
+Nói thẳng: repo hiện **không dùng một semantic duy nhất**. Có chỗ nói “phải đóng cả topic”, có chỗ nói “chỉ cần answer cụ thể từ upstream”.
+
+Trong khi đó, `prompt_template.md` lại nói `final-resolution.md` chỉ được tạo trong phase closure, khi **mọi issue trong scope** đã là Converged hoặc Judgment call. Vì vậy, gate `final-resolution`-only không chỉ chọn một source of truth; nó còn **nâng yêu cầu** của 019B/019C từ “cần answer upstream cụ thể” thành “cần toàn bộ 019A đóng”. Đó là thay đổi semantic dependency, không còn là fix kỹ thuật thuần túy.
+
+**Steel-man mạnh nhất cho vị trí C.5**: “Một gate duy nhất dựa trên `final-resolution.md` là đơn giản nhất, fail-closed nhất, và tránh phải parse dependency text hay theo dõi partial closure.”
+
+**Vì sao steel-man này vẫn chưa đủ để đóng hồ sơ**:
+
+1. Nó là **một lựa chọn thiết kế mới**, không phải hệ quả logic bắt buộc từ repo hiện tại.
+2. Nếu muốn chọn model “whole-topic closure only”, thì phải **chuẩn hóa lại README dependencies** của 019B và 019C để chúng nói đúng semantic đó. Giữ nguyên wording hiện tại rồi tuyên bố hội tụ là không sạch.
+3. Nếu muốn giữ nguyên wording hiện tại của 019B/019C, thì gate phải hỗ trợ **mixed granularity** chứ không thể ép tất cả về topic-level closure.
+
+Tức là C.5 mới giải được câu hỏi **"authority nằm ở đâu"**, nhưng chưa giải xong câu hỏi **"dependency được diễn đạt ở granularity nào"**.
+
+**Resolution path tôi chấp nhận**:
+
+**Phương án A — chuẩn hóa về topic-level closure**
+1. Sửa README của các topic như 019B và 019C để bỏ wording kiểu `needs D-01`, `resolving D-01/D-02/D-03 first`.
+2. Thay bằng wording nhất quán kiểu `Upstream (must close first): 019A`.
+3. Khi đó, gate `final-resolution`-only của C.5 là hợp lệ và TMP-019-02 có thể đóng.
+
+**Phương án B — giữ mixed-granularity như hiện tại**
+1. Giữ nguyên dependency declarations hiện có trong README.
+2. Thêm một surface authoritative, machine-readable cho status ở mức issue/decision trong topic dir (hoặc chuẩn hóa rõ cách dùng `current_status` trong `findings-under-review.md` cho partial dependency satisfaction).
+3. Dependency gate phải phân biệt:
+   - dependency kiểu `must close first` → check `final-resolution.md`
+   - dependency kiểu `needs D-01`, `resolving D-01/D-02/D-03 first` → check đúng issue/decision upstream theo authority surface đó.
+
+Cho tới khi repo chọn **A hoặc B**, TMP-019-02 chưa hội tụ thật. C.5 đang đóng quá sớm.
+
+### Bảng trạng thái (cập nhật)
+
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution hiện tại |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — README trước findings; abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Open** | `[WARNING]` — source of truth đã hội tụ, nhưng semantic model của dependency chưa được chuẩn hóa (topic-level only vs mixed granularity) |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — TL;DR inline nếu cần |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Kết luận tạm thời
+
+Tôi không đồng ý đóng tranh luận tại C.5. Điểm mở còn lại giờ đã hẹp: **TMP-019-02 chưa chốt semantic model cho dependency gate**. Nếu áp dụng nghiêm `rules.md` mặc định `max_rounds_per_topic = 6`, thì sau C.6 bước tiếp theo theo quy định không phải là giả vờ hội tụ; nó phải là **Judgment call của human researcher** để chọn Phương án A hay B, hoặc một override rõ ràng cho phép vượt round cap.
