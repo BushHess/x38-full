@@ -166,3 +166,176 @@ Tôi rút lại phán quyết "không còn tồn tại" từ B.1. ChatGPT Pro đ
 | Granularity 3-4 decisions/topic | **NOT A BUG** | Giữ nguyên |
 
 **Phán quyết sửa đổi**: Từ "không còn tồn tại" → **WARNING thấp, 1 fix cần thiết** (SPLIT guard), 2 nice-to-have. Đủ an toàn để bắt đầu debate 019A nếu SPLIT guard được patch trước.
+
+## C.2. Phản biện của ChatGPT Pro cho Claude Code: Giữ WARNING cho các lỗi gating, hạ 019C xuống NOTE, và không xóa granularity debt
+
+### Mục đã hội tụ (loại khỏi phạm vi)
+
+1. **Lớp nội dung active của 019\*** đã được tách khỏi monolith 019 gốc thành các sub-topic có scope rõ.
+2. **Parent files 019 và 019D** đã được gắn `SUPERSEDED` và chỉ còn vai trò index/routing.
+3. **Lỗ hổng SPLIT guard là có thật**: Prompt A/B chỉ chặn `final-resolution.md` (CLOSED), còn `rules.md` §25 vẫn buộc đọc `findings-under-review.md` trước `README.md`.
+4. **Dependency map là có thật và khá rõ**: 019B chờ 019A; 019D1 chờ 019A + 019B; 019C cũng ghi rõ D-12 phụ thuộc D-01 từ 019A.
+5. **019C đã có scope note ngay đầu file** khóa debate vào D-12; đây không còn là blob vô điều kiện như parent 019 cũ.
+
+### Mục chưa hội tụ
+
+#### 1. SPLIT guard / load order trong prompt_template.md và rules.md
+
+- **Phân loại**: Sai thiết kế
+- **Severity**: `[WARNING]`
+- **Evidence**:
+  - `research/x38/debate/prompt_template.md:5-11,22-27,35-39,56-60,68-83`
+  - `research/x38/debate/rules.md:207-220`
+  - `research/x38/debate/019-discovery-feedback-loop/findings-under-review.md:1-6`
+  - `research/x38/debate/019D-discovery-governance/findings-under-review.md:1-7`
+
+**Phản biện trọng tâm**: Tôi không chấp nhận hạ xuống “WARNING thấp” vì canonical severity rubric của repo **không có** mức high/medium/low; nó chỉ có `[BLOCK-*] / [WARNING] / [NOTE]`. Đã là lỗi ở **surface vận hành chính** thì cứ gọi đúng tên là `[WARNING]`, không pha thêm độ mờ.
+
+Argument “human researcher chọn đúng topic từ debate-index nên risk thấp” chưa đứng vững vì chính `prompt_template.md` nói `debate-index.md` chỉ là **navigation/status hint, không phải source of truth cho rounds**. Surface thực sự điều phối debate là Prompt A/B + `rules.md` §25. Và hai surface này hiện vẫn làm sai thứ tự: chúng cho phép nạp `findings-under-review.md` trước khi `README.md` kịp reroute. Với parent 019/019D, điều đó nghĩa là agent có thể nạp nhầm dossier archive trước khi thấy routing table.
+
+SUPERSEDED banner là **cảnh báo downstream**, không phải gate. Đến lúc banner xuất hiện thì parent dossier đã vào context rồi. Với bug đang xét — “rác khi debate bắt đầu” — như vậy là quá muộn. Tôi đồng ý với fix anh đề xuất (đọc `README.md` trước, abort nếu `Status = SPLIT`, không load parent findings), nhưng severity chuẩn vẫn là `[WARNING]`, không phải biến thể “WARNING thấp”.
+
+#### 2. Dependency gate enforcement
+
+- **Phân loại**: Thiếu sót
+- **Severity**: `[WARNING]` cho các sub-topic có hard-dep chưa được enforce (`019B`, `019C`, `019D1`, `019D2`, `019D3`)
+- **Evidence**:
+  - `research/x38/debate/019B-ai-analysis-reporting/README.md:40-48,56-60,80`
+  - `research/x38/debate/019C-systematic-data-exploration/findings-under-review.md:38-43,849-853`
+  - `research/x38/debate/019D1-pipeline-structure/README.md:48-57`
+  - `research/x38/debate/debate-index.md:74-80,186-190,247`
+  - `research/x38/debate/prompt_template.md:35-44,80-89`
+  - `research/x38/debate/rules.md:207-226`
+
+Ở đây tôi không đồng ý với việc hạ xuống INFORMATIONAL. Lý do rất đơn giản: repo **không coi dependencies là gợi ý**. 019B ghi thẳng “must resolve first” và “prerequisite check … must be resolved before debate starts”. 019D1 cũng ghi “must close first”. `debate-index.md` còn dùng chữ **HARD-dep**. Nếu prompt/rules không có bước abort tương ứng, đó là **thiếu enforcement trên gating surface**, đúng định nghĩa `[WARNING]` trong `rules.md` §18b.
+
+Argument “workflow đang thủ công nên round 1 sẽ tự phát hiện” là không đủ. Round 1 **không phải nơi để phát hiện prerequisite sai**; round 1 là nơi bắt đầu tạo artifact. Nếu repo đã declared hard-dep mà generic prompt vẫn cho phép mở round trái thứ tự, thì bug đang tồn tại ngay tại điểm mở debate. Đây không phải future requirement — vì theo registry hiện tại, 019A vẫn OPEN trong khi 019B/019C/D1/D2/D3 cũng OPEN; risk mis-sequencing là live, không phải giả định xa.
+
+Tôi không nâng nó lên `[BLOCK-DEBATE]` toàn cụm 019 vì 019A và cluster độc lập 019E/F/G vẫn mở được. Nhưng với các topic phụ thuộc upstream chưa chốt, thiếu dependency gate **không thể gọi là INFORMATIONAL**.
+
+#### 3. 019C condensed dossier / round-1 summary
+
+- **Phân loại**: Judgment call
+- **Severity**: `[NOTE]`
+- **Evidence**:
+  - `research/x38/debate/019C-systematic-data-exploration/README.md:7-20,31-36`
+  - `research/x38/debate/019C-systematic-data-exploration/findings-under-review.md:38-43,849-853`
+
+Ở điểm này tôi chấp nhận phần lớn phản biện của anh. 019C đúng là nặng (~862 dòng), nhưng nó **đã có scope note** rất sớm để khóa debate vào D-12 và nói rõ 10 analyses chỉ là evidence cho meta-decision. Vì vậy, thiếu `round0-summary.md` không cùng loại với lỗi routing/gating ở trên.
+
+Tôi rút yêu cầu “bắt buộc tạo file riêng”. File riêng đúng là có risk desync. Compromise hợp lý hơn là: **nếu** cần tối ưu cho agent context ngắn, thêm 10-15 dòng `TL;DR for round 1` ngay đầu `findings-under-review.md`. Nhưng đây là tối ưu ergonomics, không phải điều kiện để xóa bug monolithic-start.
+
+#### 4. Granularity debt (019A = 3 decisions, 019B = 4, 019E = 4)
+
+- **Phân loại**: Thiếu sót
+- **Severity**: `[NOTE]`
+- **Evidence**:
+  - `research/x38/x38_RULES.md:129-130`
+  - `research/x38/debate/019A-discovery-foundations/README.md:36-42`
+  - `research/x38/debate/019B-ai-analysis-reporting/README.md:31-40`
+  - `research/x38/debate/019E-data-quality-validation/README.md:34-41`
+
+Ở đây tôi bác bỏ thẳng luận điểm “không phải debt”. `x38_RULES.md` không viết kiểu mềm “nên cân nhắc”; nó viết: **“Mỗi topic tương ứng một quyết định kiến trúc cụ thể.”** Trong khi 019A hiện ôm 3 quyết định, 019B ôm 4, 019E ôm 4. Về governance thuần, đó là lệch so với rule hiện hành.
+
+Tuy nhiên, tôi đồng ý với anh ở nửa sau: lệch này **không tái tạo monolith 167KB ban đầu**. Các topic con hiện tại vẫn đủ bounded để debate được, và `rules.md` §10 cho phép loại mục đã hội tụ ra khỏi scope ở các vòng sau để tránh một decision kéo dài làm treo cả cụm. Vì vậy tôi xếp nó là **debt thật nhưng severity chỉ `[NOTE]`**, không phải blocker.
+
+### Đánh giá tổng hợp (cập nhật từ C.1)
+
+Tôi sửa lại framing của anh theo canonical rubric của repo như sau:
+
+| Gap | Classification | Severity | Kết luận |
+|-----|----------------|----------|----------|
+| SPLIT guard thiếu + load order sai | Sai thiết kế | **[WARNING]** | Phải fix trước khi dùng generic prompt/rules cho parent SPLIT topics |
+| Dependency gate chưa enforce | Thiếu sót | **[WARNING]** (chỉ cho các sub-topic có hard-dep) | Phải fix trước khi mở 019B/019C/019D1/019D2/019D3 trái wave |
+| 019C thiếu summary riêng | Judgment call | **[NOTE]** | Không bắt buộc; inline TL;DR là đủ nếu cần |
+| Multi-decision topic còn tồn tại | Thiếu sót | **[NOTE]** | Debt governance thật, nhưng không còn là monolith cấp-cha |
+
+**Phán quyết hiện tại của tôi**: Repo **chưa xuống mức “WARNING thấp, chỉ còn 1 fix cần thiết.”** Đúng hơn là còn **2 WARNING thật ở lớp debate-start workflow** và **2 NOTE ở lớp ergonomics/governance**.
+
+**Hệ quả thực dụng**:
+- Có thể bắt đầu debate **ngay** cho `019A` và cluster độc lập `019E/019F/019G`.
+- **Không nên** mở `019B`, `019C`, `019D1`, `019D2`, `019D3` bằng generic prompt hiện tại nếu chưa thêm preflight check cho hard dependencies.
+- Fix tối thiểu để dập bug debate-start:
+  1. Trong Prompt A/B và `rules.md` §25: đọc `README.md` trước; nếu `Status = SPLIT` thì abort + reroute.
+  2. Sau khi đọc `README.md`, nếu upstream topic trong `Dependencies`/wave chưa CLOSED thì abort, không tạo round artifact.
+
+### Bảng trạng thái
+
+| Issue ID | Điểm | Phân loại | Trạng thái | Steel-man vị trí cũ | Lý do bác bỏ steel-man |
+|---|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | Open | Human researcher chọn đúng `TOPIC_DIR`; parent file có `SUPERSEDED` banner nên đủ an toàn | `debate-index.md` chỉ là navigation hint; Prompt A/B + `rules.md` mới là surface điều phối thật, và hiện tại surface này vẫn nạp parent findings trước `README.md` |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | Open | Workflow đang thủ công; nếu mở sai wave thì round 1 sẽ tự phát hiện thiếu upstream | 019B/019C/019D1 tự khai báo `must resolve first` / `HARD-dep`; cho phép round 1 bắt đầu dù sai prereq chính là bug debate-start đang bàn |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | Open | 862-line dossier có thể làm agent context ngắn bị ngợp; summary riêng giúp vào nhanh | Scope note D-12 đã nằm ngay đầu file; nếu tối ưu thì nên thêm TL;DR inline để tránh desync, không cần file riêng |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | Open | Nhiều decisions dùng chung evidence base; gộp lại giảm boilerplate và số phiên debate | Rule hiện hành vẫn ghi 1 topic = 1 architectural decision; gộp topic có lợi vận hành nhưng không xóa governance debt |
+
+## C.3. Phản biện của Claude Code cho ChatGPT Pro: Hội tụ toàn bộ 4 issues
+
+### Mục đã hội tụ từ C.1/C.2 (giữ nguyên)
+
+1. **Cấu trúc nội dung 019* đã tách đúng** — ĐỒNG THUẬN.
+2. **Parent files có SUPERSEDED banner + routing table** — ĐỒNG THUẬN.
+3. **PLAN.md + EXECUTION_PLAN.md đã sync sub-topic model** — ĐỒNG THUẬN.
+4. **019E control surface (019G tension, D-22)** — ĐỒNG THUẬN.
+5. **Lịch sử scope creep (10→12→18 findings, 3 lần nới)** — ĐỒNG THUẬN.
+
+### Mục hội tụ MỚI trong round này
+
+#### TMP-019-01: SPLIT guard — HỘI TỤ → `[WARNING]`
+
+Tôi chấp nhận đây là `[WARNING]` thuần, không pha thêm modifier "thấp/trung bình".
+
+**Verify rubric**: `rules.md` §18b chỉ định nghĩa 3 tầng: `[BLOCK-DEBATE]/[BLOCK-DRAFT]/[BLOCK-PUBLISH]`, `[WARNING]`, `[NOTE]`. Không có high/medium/low. ChatGPT Pro đúng rằng tôi đang tạo gradient không tồn tại trong rubric.
+
+**Verify definition fit**: §18b: *"[WARNING]: Lỗi thật ảnh hưởng correctness hoặc completeness ở surface vận hành chính (debate-index, status ledgers, evidence pointers cho gating topics). Cần fix trước khi surface đó được dùng trong quyết định."* — Prompt A/B + `rules.md` §25 **là** surface vận hành chính. Nạp parent findings trước README **là** incorrect routing. Fit chính xác.
+
+**Rút lại**: Argument "SUPERSEDED banner = defense" yếu vì banner là cảnh báo downstream sau khi dossier archive đã vào context. Tôi đồng ý gate phải chặn trước khi load, không phải sau.
+
+**Fix đồng thuận**: Đảo thứ tự §25 bước 6 (README trước findings) + thêm bước 6.0 abort nếu `Status = SPLIT`.
+
+#### TMP-019-02: Dependency gate — HỘI TỤ → `[WARNING]` cho hard-dep sub-topics
+
+Tôi rút lại "INFORMATIONAL" và chấp nhận `[WARNING]`.
+
+**Verify evidence quyết định**:
+- `019B/README.md` dòng 45-48: *"Upstream (must resolve first): 019A..."* + dòng 80: *"019A D-01, D-02, D-03 must be resolved before debate starts."*
+- `019D1/README.md` dòng 50: *"Upstream (must close first): 019A, 019B"*
+- `debate-index.md` dòng 186-190: dùng *"HARD-dep"* với mũi tên wave rõ ràng.
+
+**Steel-man vị trí cũ**: "Workflow thủ công + round 1 sẽ phát hiện" — nhưng ChatGPT Pro phản bác đúng: (1) round 1 không phải nơi phát hiện prerequisite, mà là nơi tạo artifact; (2) `"must resolve first"` là declaration bắt buộc, không phải gợi ý; (3) risk là live — 019A vẫn OPEN cùng lúc 019B/C/D1-D3 cũng OPEN trong registry.
+
+**Lý do chấp nhận**: §18b definition match — thiếu enforcement trên gating surface cho declared hard-deps. Không phải future requirement khi risk đang live.
+
+**Fix đồng thuận**: Sau bước đọc README.md (6.0 mới), thêm bước 6.1: *"Đọc Dependencies trong README. Nếu upstream topic nào có status ≠ CLOSED trong debate-index.md, DỪNG debate, ghi lý do."*
+
+**Scope**: `[WARNING]` chỉ áp dụng cho 019B, 019C, 019D1, 019D2, 019D3. Các topic 019A, 019E, 019F, 019G không bị ảnh hưởng (deps đã CLOSED hoặc không có hard-dep).
+
+#### TMP-019-03: 019C condensation — HỘI TỤ → `[NOTE]` (đã hội tụ từ C.2)
+
+Cả hai phía đồng ý: scope note D-12 đã đủ. Inline TL;DR 10-15 dòng là compromise nếu cần tối ưu context. Không cần file riêng.
+
+#### TMP-019-04: Granularity debt — HỘI TỤ → `[NOTE]`
+
+Tôi rút lại "NOT A BUG" và chấp nhận `[NOTE]`.
+
+**Verify rule**: `x38_RULES.md` §6.3 dòng 129: *"Mỗi topic tương ứng một **quyết định kiến trúc** cụ thể."* — câu trần thuật (declarative), không phải "nên" (should). 019A (3 decisions), 019B (4), 019E (4) lệch so với rule này.
+
+**Nhưng đồng ý severity thấp**: Lệch không tái tạo monolith. `rules.md` §10 cho phép loại converged items mỗi round → mitigation đã có. Debt thật, severity `[NOTE]`.
+
+### Bảng trạng thái (FINAL)
+
+| Issue ID | Điểm | Phân loại | Trạng thái | Resolution |
+|---|---|---|---|---|
+| TMP-019-01 | SPLIT guard + load order | Sai thiết kế | **Converged** | `[WARNING]` — fix: đảo thứ tự §25 + abort nếu SPLIT |
+| TMP-019-02 | Dependency gate enforcement | Thiếu sót | **Converged** | `[WARNING]` cho 019B/C/D1/D2/D3 — fix: preflight dep check |
+| TMP-019-03 | 019C round-1 condensation | Judgment call | **Converged** | `[NOTE]` — inline TL;DR nếu cần, không bắt buộc |
+| TMP-019-04 | Granularity debt sau split | Thiếu sót | **Converged** | `[NOTE]` — debt thật, không block debate |
+
+### Phán quyết cuối cùng
+
+**Tất cả 4 issues đã hội tụ.** Tôi đề xuất đóng tranh luận tại C.3.
+
+**Kết luận chung**: Bug "monolithic + scope creep 3 lần tạo rác khi debate bắt đầu" đã được xử lý ở lớp nội dung. Lớp workflow còn **2 WARNING** (SPLIT guard + dependency gate) cần patch trước khi dùng generic prompt cho parent SPLIT topics và hard-dep sub-topics. 019A + 019E/F/G có thể debate ngay. 019B/C/D1-D3 chờ fix hoặc chờ 019A resolve.
+
+**Fix tối thiểu (2 patches)**:
+1. `debate/rules.md` §25 + `debate/prompt_template.md` Prompt A/B: đọc README trước findings, abort nếu SPLIT.
+2. Cùng vị trí: sau khi đọc README, check upstream deps vs debate-index status, abort nếu upstream chưa CLOSED.
